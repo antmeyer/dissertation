@@ -1,0 +1,926 @@
+\chapter{LITERATURE REVIEW}
+
+%\begin{figure}[htb]
+%  \centering
+%  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.75cm,
+%        thick,main node/.style={rectangle,draw,minimum size=1cm,inner sep=0pt]}]
+%% \begin{tikzpicture}[
+%%            >= stealth, % arrow head style
+%%            shorten > = 1pt, % don't touch arrow head to node
+%%            auto,
+%%            node distance=2.5cm, % distance between nodes
+%%            semithick % line style
+%%        ]
+%%    \node[shape=rectangle,draw=black] (A) at (0,0) {};
+%%    \node[shape=rectangle,draw=black] (B) at (2,0) {};
+%%    \node[shape=rectangle,draw=black] (C) at (4,0) {};
+%%    \node[shape=rectangle,draw=black] (D) at (6,0) {};
+%      \node[main node] (1) {};
+%    \node[main node] (2) [right of=1]  {};
+%    \node[main node] (3) [right of=2] {};
+%    \node[main node] (4) [right of=3] {};
+%%    \path [->] (A) edge node[right] {} (B);
+%%    \path [->] (B) edge node[right] {} (C);
+%%    \path [->] (C) edge node[right] {} (D);
+%    \path[->]
+%    (1) edge node {} (2)
+%        %edge node {} (3)
+%    (2) edge node {} (3)
+%        %edge node {} (3)
+%    (3) edge node {} (4);
+%        %edge node {} (2);
+%  \end{tikzpicture}
+%  \caption{A picture of the same gull
+%           looking the other way!}
+%\end{figure}
+
+
+\label{sec:rel-work}
+\cite{mccarthy:1981} notes a fundamental flaw in linear, strictly concatenative approaches to morphological analysis: 
+Because such approaches acknowledge only a single level of representation, the segmental string, they are forced to represent within the same string both the linear order of phonemes and their grouping into morphemes. This effectively binds morphological grouping to the linear order of phonemes, leaving a linear analysis 
+%A linear analysis 
+with no straightforward means of identifying a discontiguous phoneme sequence as a unified morpheme.
+%---i.e., as a single unit with a single, unified set of properties.
+
+%they  However, as we saw in the case of Hebrew, morphemes are not always contiguous.
+%As noted by \cite{mccarthy:1981}, strictly concatenative approaches to
+%morphology acknowledge only a single level of representation, the
+%segmental string.
+% (roughly, the string of phonemes). 
+%Consequently, they must represent both the %linear 
+%order of characters
+%(or phonemes) and their morphological grouping within the same linear
+%string.
+% The problem is that morphemes are not always contiguous, and
+% %as we saw above in the case of Hebrew, and 
+% %Many languages exhibit non-concatenative processes, and in such cases. 
+% a linear analysis has no straightforward means of treating a discontiguous subsequence as a unified morpheme.
+%, i.e., as a single unit with a single, unified set of properties.
+%, i.e., a truly unified morpheme. 
+%McCarthy offers a nonlinear formalism with morphemes represented as
+%nodes on autosegmental tiers, allowing
+
+McCarthy thus offers an alternative \emph{nonlinear} formalism in which morphemes are represented as nodes on \emph{autosegmental} tiers, 
+i.e., tiers that are separate from the segmental string, allowing
+associations between morphemes and phonemes to be independent of phonemes' linear order.
+%segments' linear arrangement.
+This framework turns out to be highly general, for it uses the same formal machinery to model both 
+concatenative and non-concatenative processes; that is, it treats them as essentially the same rather than fundamentally different.
+
+%as fundamentally different; it uses the same formal machinery whether morphemes are contiguous or discontiguous.
+
+% Carry over framework to unsupervised morpheme segmentation?
+One can apply McCarthy's ``linear vs. nonlinear" conceptual framework to categorizing existing approaches in ULM.
+%Following McCarthy, we 
+%distinguish ``linear vs. nonlinear" conceptual framework to categorize existing approaches in ULM.
+In the following discussion, we
+use the term \textbf{nonlinear} (NL) as a label for algorithms that employ one
+or more \textit{hidden layers} to encode the structure of the
+\textit{surface layer}.
+%, the layer of the graphemes/phonemes.
+% Here, \textit{hidden layer} is conceptually related to McCarthy's
+% \textit{autosegmental tier}, but the two terms are not necessarily
+% equivalent formally.  
+We use \textbf{linear} (L) %(cf. ``one-dimensional'') 
+to label
+algorithms that reference only the surface layer of graphemes in the representation of
+morphological structure, e.g., by annotating the
+ surface string itself with morpheme boundary symbols. Note that our sense of \textit{linear} is similar to `one dimensional,' which is not necessarily the same as `in/like a (straight) line.'
+% This definition is not unlike ``one dimensional," a fairly common
+% sense of \textit{linear}.  We do not, however, use \textit{linear} to
+% mean ``in/like a straight line."
+%but one to be distinguished from ``in/like a straight line." As it is used in this paper, the term \textit{linear} s not related in any direct way to the notions of line and straightness.
+%We do not, however, use \textit{linear} to mean ``in a straight line" or even ``like a straight line."
+%
+
+We further divide the categories
+\textit{linear} and \textit{nonlinear} each into
+\textbf{sequential} and \textbf{non-sequential} subcategories:
+%, obtaining four categories in all. We describe each below.
+An algorithm is sequential (S) if there is a necessary sequence to its morphological classification decisions, i.e., if its decisions are ordered so that for every two decisions, one must precede the other.\footnote{By \textit{morphological 
+%if its makes morphological classification decisions depend on preceding or succeeding context, i.e., if there is a necessary sequence to its decisions.
+%presentational unit (or feature) depends on the immediately preceding unit(s). %the value of each representational unit is determined independently of all other units
+classification decision}, we mean any decision that maps an atomic representational unit (usually a character or a feature) to a morphological category. This definition includes simple ``split" decisions, where there are only two possible categories: ``part of the current morpheme" and ``part of the next morpheme."}
+On the other hand, in a non-sequential (NS) algorithm, all morphological classification decisions are made in parallel; i.e., the decisions are unordered.
+
+%is made images these mapping decisions in parallel. That is,  morphemes  in decisions in parallel, the value each representational unit is computed independently of all other units,
+%, and thus the immediate context of a given unit is not the predominant factor that determines its value. 
+%i.e., if the values of all units are determined in parallel rather than in sequence.
+%with each prediction depending on the prediction(s) for the preceding unit(s).
+%\begin{itemize}
+%\item Given a sequence of morpheme classification decisions, each decision depends on the preceding chain of decisions.
+%\item Given a sequence of candidate morpheme split points, each split decision depends on the preceding chain of split decisions. either the preceding representational units or succeither immediately left or immediately right), where \textit{representational unit} is a grapheme if the algorithm is linear and a hidden variable if the algorithm is nonlinear. 
+% A \textit{morpheme segmentation decision} is, broadly speaking, an answer to the question, ``What is the morphological category/status of the current representational unit? (e.g., Does the current unit begin a new segment?)"
+%\item The dependencies in the sequence all go in the same direction.
+%\end{itemize}
+ We thus have a total of four categories: linear sequential (LS),
+ linear non-sequential  (LNS), non-linear sequential  (NLS), and finally
+ non-sequential nonlinear (NLNS). In what follows, we describe each of these in turn.
+
+%We will now discuss and exemplify each of these categories in turn.
+
+\section{linear sequential algorithms}
+\label{subsec:seq-lin}
+
+The linear sequential (LS) type of algorithm is depicted in figure~\ref{fig:seq-lin}. 
+LS algorithms consider only one layer of representation, namely the surface layer. They use no hidden layers, hence their linearity. The surface layer is made up of surface units, depicted as squares in figure~\ref{fig:seq-lin}.
+In LS algorithms, these squares are usually the characters themselves. 
+The task is to assign each character to a morphological class. Thus, in effect, 
+each square represents a morphological classification decision.
+The arrows indicate the sequential order of the algorithm's decisions. 
+The fact that there is such an order is the reason this type of algorithm is sequential.
+%It is linear because it uses no hidden layer, acknowledging only the surface layer of characters. 
+%nthe order in which the algorithm processes the characters. Since the task is to assign each character to a morphological class, each square in effect represents a kind of morphological classification decision. Importantly, there is only one layer of representation, namely the surface layer of characters, hence the linearity of this type of algorithm. Its sequentiality 
+%representend in figure~\ref{fig:seq-lin},
+%forms morphological hypotheses on the basis of sequential evidence; each prediction depends on immediately preceding
+% The circles are positions or character positions (or characters). What do the arrows represent? dependencies. But what depends on what? Maybe the circles are classification decisions, i.e., is character x part of morpheme y? What is it that LS algorithms are typically trying to do? Morpheme-boundary detection/segmentation.
+%decisions. Furthermore, LS algorithms acknowledge only the surface layer.
+%as well as the evidence informing these decisions, are restricted to the surf
+%there is no hidden layer.
+% The first unsupervised morpheme segmentation algorithms were linear sequential algorithms.
+%The earliest example is the Letter Successor Variety (LSV) method
+%\citep{harris:1955, harris:1967}.
+
+The first unsupervised morphological learners were LS algorithms. The earliest examples employed the Letter Successor/Precessor Variety (LSV/LPV) measures \citep{harris:1955, harris:1967}. 
+Both measures are intended to indicate likely affixes.
+$\text{LSV}(x)$ is intended to find prefixes; given a string $x$ and corpus $W$, $\text{LSV}(x)$ returns the number of letter types that immediately follow $x$ whenever $x$ is word-initial in $W$.
+%Both iterate over a corpus $W$.
+%$\text{LSV}(x)$ is used to measure the likelihood that the string $x$ is a prefix. and is computed as follows: Given a string $x$ and corpus $W$, $\text{LSV}(x,W)$ iterates over the words $w \in W$, tallying up the letter \emph{types} that occur in the position immediately following $x$ whenever $x$ is word-initial.
+%Given a corpus of words $W$ and a string $x$, $\text{LSV}(x,W)$ is the number of letter \textit{types} 
+%(as opposed to \textit{tokens}) 
+%that found in the position immediately following $x$ whenever $x$ begins a word in $W$.
+%the immediately follow $x$ whenever $x$ is word-initial in $W$. 
+Letter Predecessor Variety (LPV) is essentially the same measure, except that its function is to find suffixes:
+%That is, LPV is simply LSV from the opposite direction: 
+it counts the grapheme types that immediately \emph{precede} $x$ whenever $x$ is \emph{word-final}.
+%$\text{LSV}(x,W)$ is used to find prefix-stem boundaries, and $\text{LPV}(x)$ to find stem-suffix boundaries. 
+
+
+% Given a corpus
+% %  $W$
+% and a string $x$, $\text{LSV}(x)$ is the number of letter
+% \textit{types}
+% %(as opposed to \textit{tokens}) 
+% that occur in the next position following $x$ whenever $x$ is an
+% initial substring of a word.
+% $w$ in $W$.
+% Letter Predecessor Variety (LPV) is the same measure, except the substring $x$ is word-final rather than word-initial, and the direction of the algorithm is reversed. 
+% $\text{LSV}(x)$ is used to find prefix-stem boundaries, while $\text{LPV}(x)$ is used to find stem-suffix boundaries.
+%
+% Stress sequential nature of algorithm
+%The different techniques for using LSV to discover morpheme boundaries
+%%, such as the ``peak and plateau'' technique
+%\citep[see][]{hammarstrom:2011} rely on the intuition that at any
+%given point within a morpheme, the next letter is fairly predictable,
+%i.e., has a smaller number of succeeding letter types.
+%% But at the border between two morphemes, the
+%% next letter is much less predictable.
+%More recent linear sequential methods
+%%have thus abandoned LSV/LPV, often in favor of
+%use frequency-based heuristics, such as pointwise mutual information
+
+% Stress sequential nature of algorithm
+By themselves, of course, LSV and LSP are merely counts; they must be ``unpacked" if they are to be used to discover legitimate morpheme boundaries.
+There are a few different techniques for doing this
+%using LSV/LSP to discover morpheme boundaries 
+\citep[see][]{hammarstrom:2011}; one is the ``peak and plateau" technique. The following describes the use of peak and plateau with LSV: 
+%The following is the peak-and-plateau procedure for finding morpheme boundaries in a word $w$ of the corpus $W$. Suppose the graphemes of $w$ are indexed from 0 to $n$, so that $w[0:2]$, for example, represents the 3-letter string spanning indices 0 to 2. 
+%\begin{itemize}
+%\item Compute $\text{LSV}(w[0:i], W)$ for each $i$ in the range $[0, n)$.
+% \item Insert a morpheme boundary after the substring $w[0:i]$ if and only if $\text{LSV}(w[0:i-1]) \le \text{LSV}(w[0:i]) \ge \text{LSV}(w[0:i+1])$, i.e., there is a local peak in the LSV sequence at index $i$.
+%\end{itemize}
+\begin{itemize}
+\item Given an $n$-length word $w$ whose graphemes are indexed from 0 to $n$, compute $\text{LSV}(w[0:i])$ for each $i$ in the range $[0, n)$.
+%in the range $[0, n)$. 
+\item Then, for each $i$ in $[0, n)$, insert a morpheme boundary after the substring $w[0:i]$ if and only if 
+\begin{equation*}
+\text{LSV}(w[0:i-1]) \le \text{LSV}(w[0:i]) \ge \text{LSV}(w[0:i+1]),
+\end{equation*}
+i.e., there is a local peak in the LSV sequence at index $i$.
+\end{itemize}
+
+It is not difficult to see the sequentiality and linearity of an LSV/LPV technique like peak and plateau.
+% are not difficult to see.
+Such a technique is sequential because its decision making process is shaped by the sequential order of graphemes.
+%its decision-making process is to a large extent informed by sequential r graphemes is central to its decision-making process.
+%process words as ordered sequences of symbols. bound to make their segmentation decisions in a certain order. This order is imposed by the definition of either LSV or LPV. 
+An LSV technique, for example, must proceed left to right, one index at a time, because the LSV calculation at index $i$ depends on the preceding $i-1$ graphemes. Moreover, in peak and plateau, the question of whether or not to draw a morpheme boundary at index $i$ depends not only on the LSV at $i$, but also on the preceding and succeeding LSVs. LSV/LPV techniques are linear because they incorporate no hidden nodes and thus have no means of mediating associations between nonadjacent characters.
+% process a string sequence of segmentation decisions proceeding either left to right or right to left, advancing one index at a time that is, at each $i$, the LSV count depends on the preceding $i-1$ graphemes. Notice also the technique's linearity:
+%
+%Notice the sequential nature of this technique: The algorithm makes a sequence of segmentation decisions proceeding left to right, advancing one index at a time. This left-to-right order is imposed by the definition of LSV; that is, at each $i$, the LSV count depends on the preceding $i-1$ graphemes. Notice also the technique's linearity:
+%It has no hidden nodes and thus has no means of mediating associations between discontiguous substrings.
+%; at each $i$, for instance, the algorithm can only ``see" the LSVs at $i-1$ and $i+1$
+%starting at index 0. The definition of LSV makes  index $0$ to the final index$i$.
+%A morphological classification decision is made at each index $i$ starting at the first index of the word in question and ending at the final index. 
+%There is a necessary order to this chain of decisions because each decision must consider not only the LSV at $i$, but also the immediately preceding and succeeding LSVs
+%First, the LSV count at each $i$ depends on the preceding $i-1$ graphemes. Then, a segmentation decision is made at each $i$
+%each LSV calculation is determined solely by the immediately preceding string of graphemes. Note also its linearity: there is only a single layer of representation for both the grapheme sequence and the morphological analysis.
+
+%The intuition behind the LSV/LPV method is essentially the same as that behind the entropy-based methods:
+%in natural language processing:
+%In fact, LSV generally increases/decreases as entropy increases/deceases:
+The intuition behind the LSV/LPV method is that \emph{within} a morpheme, the identity of each letter depends on the letters that immediately precede or succeed it. But this is not the case \emph{between} morphemes. That is, the first letter of a morpheme is largely unpredictable given its preceding letters. Likewise, a morpheme's final letter is largely unpredictable given its succeeding letters. Thus, the number
+ of possible letter types tends to increase sharply at the boundary between two morphemes.
+%---and hence a larger LVP/LSV---at the boundary between two morphemes. 
+%At any given point \emph{within} a morpheme, the next letter is fairly predictable, which generally coincides with a smaller number of succeeding letter types. But at the border between two morphemes, the next letter is much less predictable. This low predictability generally translates to a much larger set of options for the succeeding letter (i.e., a higher LSV). 
+However, while morpheme boundaries generally coincide with high LVP/LSV counts, it is not necessarily true that a high LVP/LSV indicates a morpheme boundary.
+%LSV is not always a reliable indicator of morpheme boundaries. 
+\cite{hammarstrom:2011}, for example, provide LPV counts for the word \textit{disturbance}. 
+The highest LPV count of 25 
+%(i.e., 25 of the 26 possible letters in the English alphabet) 
+occurs between \textit{disturbanc} and \textit{e}.
+An LPV-based analysis would thus incorrectly identify \textit{e} as a suffix, a consequence of the ubiquity of \textit{e} as a stem-final letter in English spelling. 
+
+%Goldsmith
+Because of such problems, most linear sequential methods today have abandoned LSV/LPV, often in favor of frequency-based heuristics.
+\cite{goldsmith:2001}, for example, uses a score based on pointwise mutual information (PMI) to approximate the likelihood that a given character $n$-gram $c_{1}c_{2}...c_{n}$ is a morpheme. 
+%In particular, the PMI of the characters $c_{1}, c_{2}, ..., c_{n}$ is multiplied by the relative frequency of the $n$-gram $c_{1}c_{2}...c_{n}$. 
+\cite{goldsmith:2001} obtains candidate suffixes (intended for further processing) by taking the $n$-grams that are ranked highest according to this score.  
+%(i.e., the count of $c_{1}c_{2}...c_{n}$ divided by the total count of all $n$-grams). 
+
+%Moon
+\cite{moon-et-al:2009} apply tree data structures known as \textit{tries} to the task of finding stems and affixes, as have a number of other researchers \citep[e.g.,][]{schone-and-jurafsky:2000, monson:2004, argamon:2004}.
+Tries are useful for learning concatenative morphology because they compactly store recurring character sequences.
+%that are repeated a group of words. by sets of words beginning with the same character. 
+Each node in a trie represents a certain prefix string (with the root node representing the empty string), 
+and every path proceeding out from a node represents a possible succeeding character. 
+Thus, even though tries are tree data structures, they process data in a sequential manner. 
+They 
+%also represent morphological relationships linearly 
+are linear
+because they lack hidden nodes, and every path through a trie is deterministic. 
+ \cite{moon-et-al:2009} depart from other trie-based methods in using document 
+ boundaries to approximate semantic context. 
+ This helps them weed out spurious analyses like the \textit{disturbanc}+\textit{e} 
+ example above, but it does not change the fundamentally sequential and linear nature of their approach.
+%\citep{goldsmith:2001} or trie-based affix-finding
+%\citep{moon-et-al:2009}.
+% , for example, uses a score based on pointwise mutual information
+% (PMI) to approximate the likelihood that a given character $n$-gram
+% %$c_{1}c_{2}...c_{n}$ 
+% is a morphemic unit.
+% In particular, the PMI of the characters $c_{1},
+% c_{2}, ..., c_{n}$ is multiplied by the relative frequency of the
+% $n$-gram $c_{1}c_{2}...c_{n}$. \cite{goldsmith:2001} obtains candidate
+% suffixes by taking the $n$-grams that are ranked highest according to
+% this score.
+%(i.e., the count of $c_{1}c_{2}...c_{n}$ divided by the total count of all $n$-grams).  
+%
+%Moon
+% \cite{moon-et-al:2009} apply tries to the task of finding stems and
+% affixes, to store recurring character sequences.
+%, as have a number of other researchers. 
+% Tries are useful for learning concatenative morphology because they
+% compactly store recurring character sequences.
+%that are repeated a group of words. by sets of words beginning with the same character. 
+% Each node in a trie represents a certain prefix string (with the root node representing the empty string), 
+% and every path proceeding out from a node represents a possible succeeding character. 
+% Thus, even though tries are tree data structures, 
+%In all cases, the methods process data in a sequential manner and
+%lack hidden nodes for representing morphological relationships.
+% linearly, lacking hidden nodes.
+
+% ; one of them is the ``peak and plateau" technique, which works as follows:
+% \begin{itemize}
+% \item Given an $n$-length word $w$ whose graphemes are indexed from 0 to $n$, compute $\text{LSV}(w[0:i])$ for each $i$ in the range $[0, n)$. \item Insert a morpheme boundary after the substring $w[0:i]$ if and only if $\text{LSV}(w[0:i-1]) \le \text{LSV}(w[0:i]) \ge \text{LSV}(w[0:i+1])$, i.e., there is a local peak in the LSV sequence at index $i$.
+% \end{itemize}
+% Notice the sequential nature of this technique: each LSV calculation is determined solely by the immediately preceding string of graphemes. Note also its linearity: there is only a single layer of representation for both the grapheme sequence and the morphological analysis.
+
+ \begin{figure}[tb]
+ %\begin{minipage}{.3\textwidth}
+ \begin{center}
+ \begin{tikzpicture}[shorten >=1pt,->,draw=black!100,node distance = 1.3cm, auto]]
+ 	\def \startnode{1.5cm}
+ %	\def\secondrow{1.0cm}
+ 	\tikzstyle{r-node}=[regular polygon sides=4,draw=black!100,thick,inner sep=0pt,minimum size=4mm]
+ 	\tikzstyle{annot} = [text width=3cm]
+ %	\tikzstyle{annot} = [text width=2.0cm, text centered]
+ 	% labels
+ %	\node[annot] (m-label) at (0,\thirdrow) {hidden-unit vector};
+ %	\node[annot] (r-label) at (0, \secondrow) {prediction vector};
+ %	\node[annot] (d-label) (0, 0) {observed data vector};
+ 	% hidden layer
+ 	\node[annot] (surface-label) at (0cm,0cm) {surface layer};
+ %	\node[annot] (r-label) at (0, \secondrow) {prediction vector};
+ %	\node[annot] (d-label) (0, 0) {observed data vector};
+	
+ 	% surface layer
+ 	\node[r-node] 	(r0)	at (\startnode,0cm)		{};
+ 	\node[r-node] 	(r1)	at (2.5cm, 0cm)		{};
+ 	\node[r-node] 	(r2)	at (3.5cm,0cm)	 	{};
+ 	\node[r-node] 	(r3)	at (4.5cm,0cm) 		{};
+ 	\node[r-node] 	(r4) 	at (5.5cm,0cm)   		{};
+	
+ 	\path (r0)	edge	node	{}	(r1)
+ 		(r1)	edge	node	{}	(r2)
+ 		(r2)	edge	node	{}	(r3)
+ 		(r3)	edge	node	{}	(r4);
+ \end{tikzpicture}
+ \end{center}
+ \caption{linear sequential architecture.}
+ %. Each representational unit depends on the preceding unit, and no unit exists outside of the surface layer.}
+ \label{fig:seq-lin}
+ \end{figure}
+
+% The intuition behind the LSV/LPV method is related to that behind the entropy-based methods in natural language processing:
+% %In fact, LSV generally increases/decreases as entropy increases/deceases: 
+% At any given point \emph{within} a morpheme, the next letter is fairly predictable, which generally coincides with a smaller number of succeeding letter types. But at the border between two morphemes, the next letter is much less predictable. This low predictability generally translates to a much larger set of options for the succeeding letter (i.e., a higher LSV). However, it out that LSV is not always a reliable indicator of morpheme boundaries. \cite{hammarstrom:2011}, for example, provide LPV counts for the word \textit{disturbance}. 
+% The highest count (25) 
+% %(i.e., 25 of the 26 possible letters in the English alphabet) 
+% occurs between \textit{disturbanc} and \textit{e}, An LPV-based analysis would thus yield an incorrect result in this case, a consequence of the fact that \textit{e} is such a ubiquitous word-final letter in English spelling. 
+
+%Goldsmith
+% More recent linear sequential methods
+% %have thus abandoned LSV/LPV, often in favor of
+% use frequency-based heuristics.  \cite{goldsmith:2001}, for example,
+% uses a score based on pointwise mutual information (PMI) to
+% approximate the likelihood that a given character $n$-gram
+% %$c_{1}c_{2}...c_{n}$ 
+% is a morphemic unit.
+% % In particular, the PMI of the characters $c_{1},
+% % c_{2}, ..., c_{n}$ is multiplied by the relative frequency of the
+% % $n$-gram $c_{1}c_{2}...c_{n}$. \cite{goldsmith:2001} obtains candidate
+% % suffixes by taking the $n$-grams that are ranked highest according to
+% % this score.
+% %(i.e., the count of $c_{1}c_{2}...c_{n}$ divided by the total count of all $n$-grams).  
+% %
+% %Moon
+% \cite{moon-et-al:2009} applies \textit{tries} to the task of finding stems and
+% affixes, to store recurring character sequences in the search for recurring character sequences.
+% % A number of other researchers have done the same.
+% % Tries are useful for learning concatenative morphology because they
+% % compactly store recurring character sequences.
+% %that are repeated a group of words. by sets of words beginning with the same character. 
+% % Each node in a trie represents a certain prefix string (with the root node representing the empty string), 
+% % and every path proceeding out from a node represents a possible succeeding character. 
+% % Thus, even though tries are tree data structures, 
+% In all cases, the methods process data in a sequential manner and
+% represent morphological relationships linearly, lacking hidden nodes.
+
+% , and every path through a trie is deterministic.
+% \cite{moon-et-al:2009} depart from other trie-based methods in using
+% document boundaries to approximate semantic context.  This helps them
+% weed out spurious analyses like the \textit{disturbanc}+\textit{e}
+% example above, but it does not change the fundamentally sequential and
+% linear nature of their approach.
+
+\section{inear non-sequential algorithms}
+\label{subsec:nonseq-lin}
+In the linear non-sequential  (LNS) type of algorithm, shown in figure~\ref{fig:nonseq-lin}, the representational units are generally not raw characters, but rather \emph{features}, i.e., binary variables representing the presence or absence of particular properties.
+%specifying whether or not a word has a certain property. 
+Features in non-sequential algorithms need not correspond to contiguous chunks of the original string; for example, features like the following are perfectly valid: ``\textit{t} precedes \textit{i} within $\delta$ characters" and ``\textit{t} precedes \textit{b} within $\delta$ characters," where the character pairs \emph{t..i} and \emph{t..b} are discontiguous as long as $\delta \ne 0$. Notice that such features cannot really be ordered; each is either \textsc{true} or \textsc{false} irrespective of order.
+All non-sequential algorithms---of which LNS algorithms are a subcategory---view a given word's features as being unordered, i.e., as being sequentially unrelated to each other. 
+But while LNS algorithms are non-sequential, they are linear because they incorporate no hidden units. Thus, even though an LNS algorithm's features may refer to discontiguous subsequences of characters, they are nonetheless restricted to representing only properties that are overtly present in the surface layer of characters. 
+
+One LNS example is the algorithm of \cite{poon-et-al:2009}, which uses log-linear models to induce morphological segmentations for Arabic and Hebrew. 
+Log-linear models are inherently non-sequential because they treat all features as independent, estimating a global joint probability for the entire bag of features. 
+%Sequential models, in contrast, estimate conditional probabilities based on sequential dependencies between features
+The algorithm of \cite{poon-et-al:2009} in particular searches for the set of parameters $\theta$ that maximizes the joint probability of a corpus $W$ and a morphological segmentation $S$, i.e., $P(W,S| \theta) = P(W|S; \theta) \cdot P(S| \theta)$. The segmentation $S$ is encoded by a set of features.
+%They generate candidate segmentations via Gibbs sampling. For each candidate, they extract a feature set
+
+%Log-linear models are well-suited for large numbers of arbitrarily defined features. 
+\cite{poon-et-al:2009} use two categories of features to encode a morphological segmentation: \textit{morpheme features} and \textit{morpheme context} features.
+The former encode (potential) morpheme types and their frequencies, e.g., \texttt{vlAv:5} and \texttt{w:31}. The 
+latter encode context types and their frequencies, where a \emph{context} consists of the $n$ characters preceding and succeeding a (potential) morpheme;
+%the character bigrams to the left and right of a potential morpheme, 
+e.g., the feature \texttt{\#w\_wn:12} would represent a context whose left side consists of \textit{w} preceded by the word boundary, whose right side is the bigram \textit{wn}, and whose frequency is 12. Importantly, these context features overlap. That is, in \texttt{\#w\_wn:12}, the \textit{w} and \textit{wn} are themselves morphemes whose contexts must be extracted.
+This feature overlap is made possible by the non-sequentiality of log-linear models.
+%is on the right, , respectively, and whose frequency of this particular context as 12.
+%s that the left context is the character \textit{w} preceded by the word boundary, the right context is the character bigram \textit{wn}, and the frequency of this particular context is 12).
+% and \textand the characters \textit{w} and \textit{n} are on the right potential morpheme\textit{w} on the left 
+%and the characters \textit{w} and \textit{n} on the right).
+%Note, however, that 
+
+Note, however, that log-linear models can handle much more non-sequentiality than this. Indeed, since a log-linear models is inherently non-sequential, it accommodate any sort of non-sequential feature. 
+%one can incorporate into log-linear model.
+%feature %or combination of feature types 
+%in a log-linear model.  
+One could, for example, incorporate
+features representing discontiguous bigrams,
+as already noted.
+ One could also combine contiguous and discontiguous bigram features in the same feature set.
+%for example, have features representing both contiguous and discontinous bigrams in the same feature set.
+%However, one in principle could use any sort of feature in a log linear model, such as a feature type representing discontiguous bigrams, for example.
+%Each feature represents the both corpus and the segmentation jointly, and a fully specified set of features thus represents an entire segmented corpus;
+%but there is no limit on the variety or quantity of features one can incorporate into a log-linear model.
+% Why is a log linear model non-sequential?
+%Log-linear models are inherently non-sequential because they treat all features as independent, estimating a global joint probability for the entire bag of features. Sequential models, in contrast, estimate conditional probabilities based on sequential dependencies between features.
+% Why is a log linear model non-sequential?
+And yet it is not the nature of the features themselves that makes an algorithm non-sequential, but rather the lack of sequential relationships between features. The algorithm of \cite{poon-et-al:2009} is non-sequential because it does not process features in a particular order.
+% Why is Poon et al's algorithm linear?
+It is, however, linear because it incorporates no hidden units to mediate associations between features.
+
+%\cite{poon-et-al:2009} incorporate no latent variables, however. 
+%Their representation of morphological structure makes reference only to the the surface layer of graphemes. Their morpheme features are limited to  contiguous grapheme sequences, 
+%and their morpheme context features encode only extreme left and right contexts, 
+%thus assuming no internal boundaries (i.e., no morpheme interruptions).
+%%They generate candidate segmentations via Gibbs sampling, but, for an $n$-length word, they consider 
+%Because it only acknowledges the surface layer of text, the algorithm of \cite{poon-et-al:2009} can only isolate stems and affixes, not the discontiguous roots and patterns of Arabic and Hebrew.
+
+%\paragraph{inear non-sequential algorithms}
+%\label{subsec:nonseq-lin}
+%
+%Like LS algorithms, \textbf{linear non-sequential } (LNS) algorithms consist only of surface units, having no hidden layer, hence their linearity. LNS algorithms are different in that there are no dependencies between representational units. Each unit is independent of other units, hence their \textit{non-sequential} characterization.
+%%They consist only of surface units, hence their linearity. What sets LNS algorithms apart is the lack of dependencies between these units, h
+%%illustrated in figure~\ref{fig:nonseq-lin}, 
+%%there are no dependencies between representational units, but also no
+%%hidden units.
+%%; i.e., all representational units reside in the surface layer.  
+%As one example, \cite{poon-et-al:2009} use log-linear models to induce
+%morphological segmentations for Arabic and Hebrew. 
+%% Their algorithm
+%% searches for the set of parameters $\theta$ that maximizes the joint
+%% probability of a corpus $W$ and a segmentation $S$ (i.e., $P(W,S|
+%% \theta)$).
+%% = P(W|S; \theta) \cdot P(S| \theta)$.
+%%They generate candidate segmentations via Gibbs sampling. For each candidate, they extract a feature set
+%% Log-linear models are well-suited for large numbers of arbitrarily
+%% defined features.
+%% \cite{poon-et-al:2009} use morpheme features and morpheme context
+%% features.  The former category specifies a morpheme type and its
+%% frequency, e.g., \texttt{vlav:1} and \texttt{w:2}.  The latter
+%% category indicates the character bigrams to the left and right of a
+%% given morpheme, e.g., \texttt{\#w\_wn:1} (a word boundary followed by
+%% the character \textit{w} on the left and the characters \textit{w} and
+%% \textit{n} on the right).  Note, however, that one could use any type
+%% of feature or combination of feature types with a log-linear
+%% model. One could, for example, have features representing both
+%% contiguous and discontinues bigrams in the same feature set.
+%%
+%%However, one in principle could use any sort of feature in a log linear model, such as a feature type representing discontiguous bigrams, for example.
+%%Each feature represents the both corpus and the segmentation jointly, and a fully specified set of features thus represents an entire segmented corpus;
+%%but there is no limit on the variety or quantity of features one can incorporate into a log-linear model.
+%% Why is a log linear model non-sequential?
+%Log-linear models are non-sequential because they treat all features
+%as independent, estimating a global joint probability.
+%%for the entire bag of features.
+%% Sequential models, in contrast, estimate conditional probabilities
+%% based on sequential dependencies between features.
+%% Why is Poon et al's algorithm linear?
+%% \cite{poon-et-al:2009} incorporate no latent variables,
+%% %, however, 
+%% %Their representation of morphological structure makes 
+%% referencing only the the surface layer of graphemes.
+%% Their morpheme
+%% features are limited to contiguous grapheme sequences, and their
+%% morpheme context features encode only extreme left and right contexts,
+%% thus assuming no internal boundaries (i.e., no morpheme
+%% interruptions).  
+%Even though such a log-linear model allows for any type of feature,
+%including both contiguous and discontiguous $n$-grams,
+%%They generate candidate segmentations via Gibbs sampling, but, for an $n$-length word, they consider  
+%the algorithm ultimately can only isolate stems and affixes, because
+%it only acknowledges the surface layer of text.
+%%, and not discontiguous roots and patterns.
+%% of Arabic and Hebrew.
+
+ \begin{figure}[tb]
+ %\begin{minipage}{.3\textwidth}
+ \begin{center}
+ \begin{tikzpicture}[shorten >=1pt,->,draw=black!100]
+ 	\def \startnode{1.5cm}
+ %	\def\secondrow{1.0cm}
+ 	\tikzstyle{r-node}=[regular polygon sides=4,draw=black!100,thick,inner sep=0pt,minimum size=4mm]
+ 	\tikzstyle{annot} = [text width=3cm]
+ 	% labels
+ 	\node[annot] (surface-label) at (0cm,0cm) {surface layer};
+ %	\node[annot] (r-label) at (0, \secondrow) {prediction vector};
+ %	\node[annot] (d-label) (0, 0) {observed data vector};
+	
+ 	% surface layer
+ 	\node[r-node] 	(r0)	at (\startnode,0cm)		{};
+ 	\node[r-node] 	(r1)	at (2.5cm, 0cm)		{};
+ 	\node[r-node] 	(r2)	at (3.5cm,0cm)	 	{};
+ 	\node[r-node] 	(r3)	at (4.5cm,0cm) 		{};
+ 	\node[r-node] 	(r4) 	at (5.5cm,0cm)   		{};
+	
+ %	\path (r0)	edge	node	{}	(r1)
+ %		(r1)	edge	node	{}	(r2)
+ %		(r2)	edge	node	{}	(r3)
+ %		(r3)	edge	node	{}	(r4);
+ \end{tikzpicture}
+ \end{center}
+ \caption{inear non-sequential architecture}
+ 
+ %. No dependencies exist between representational units, and no unit exists outside of the surface layer.}
+ \label{fig:nonseq-lin}
+ \end{figure}
+
+% \cite{poon-et-al:2009} use morpheme features and morpheme context
+% features.  The former category specifies a morpheme type and its
+% frequency, e.g., \texttt{vlav:1} and \texttt{w:2}.  The latter
+% category indicates the character bigrams to the left and right of a
+% given morpheme, e.g., \texttt{\#w\_wn:1} (a word boundary followed by
+% the character \textit{w} on the left and the characters \textit{w} and
+% \textit{n} on the right).  Note, however, that one could use any type
+% of feature or combination of feature types with a log-linear
+% model. One could, for example, have features representing both
+% contiguous and discontinues bigrams in the same feature set.
+
+
+\section{Sequential nonlinear algorithms}
+\label{subsec:seq-nonlin}
+% First, what sort of algorithms are sequential nonlinear?
+The sequential nonlinear (NLS) type of algorithm is illustrated in figure~\ref{fig:seq-nonlin}. 
+Note in particular the addition of a hidden layer, whose units (the circular nodes)
+represent the underlying sources of the surface data's implicit structure.
+%account for the surface %the surface units and thus take responsibility for the regularities ac
+%for 
+%algorithms differ from linear sequential ones in that 
+%they add a layer of hidden units for 
+%encoding 
+%take responsibility for generating the structure implicit
+%the regularities %, i.e., the implicit structure, 
+%in the surface layer and thus the
+%data.
+%These hidden units can be viewed as causing or generating the surface data.
+NLS algorithms are nonlinear because they incorporate a hidden layer.
+However, they are sequential because the hidden layer in an NLS algorithm is sequential; i.e., its component hidden units
+%hidden units
+are sequentially ordered.
+Since the surface units depend on the hidden units, the hidden layer imposes its sequential order on the surface layer. 
+%they have a certain each hidden unit depends on its predecessor hidden unit(s). 
+% I need to say what the nonlinear aspect brings to the table. If being nonlinear is beneficial, sequential nonlinear algorithms should be better than linear sequential ones. So what do sequential nonlinear algorithms have that linear sequential algorithms don't? How does being nonlinear help them?
+% First, what sort of algorithms are sequential nonlinear?
+
+%Sequential nonlinear (NLS) algorithms
+%%, illustrated in figure~\ref{fig:seq-nonlin}, 
+%differ from sequential
+%linear ones by adding a layer of hidden units for encoding the
+%structure of the surface layer.
+%This makes them nonlinear. 
+% They are still sequential, however, in that there are sequential
+% dependencies within the hidden layer.
+%; i.e., each hidden unit depends on its predecessor hidden unit(s).
+%The prototypical example of a sequential nonlinear model is the Hidden
+%Markov Model (HMM).  \cite{creutz-and-lagus:2005,
+%  creutz-and-lagus:2007} employ an HMM to induce a morphological
+%lexicon.
+The prototypical NLS model is the Hidden Markov Model (HMM). 
+\cite{creutz-and-lagus:2005, creutz-and-lagus:2007} employ an HMM to induce a morphological lexicon, i.e., a list of morpheme-like segments they call \textit{morphs}. 
+%, i.e., a list of morpheme-like segments.
+%that they call \textit{morphs}.
+%sorted in order of increasing morph length. 
+%They take a maximum a posteriori (MAP) approach.
+Their algorithm seeks to find the lexicon such that $P(lexicon|corpus)$ is maximized. Due to Bayes' theorem, this equates to finding the lexicon that maximizes $P(corpus|lexicon) \cdot P(lexicon)$. The probability $P(corpus|lexicon)$ is computed by an HMM. Each unit in this HMM's hidden layer can take on five possible values: \textit{prefix}, \textit{stem}, \textit{suffix}, \textit{word boundary}, and \textit{non-morpheme}. 
+Note how the first four relate sequentially to each other: prefixes must precede stems, stems must precede suffixes, and so on.
+%The observation sequence is a segmentation hypothesis, i.e., a candidate segmentation of the corpus into morphs. 
+%Candidate segmentations are generated independently of the HMM, as are the transition and emission probabilities. 
+%The HMM's role to find likely hidden state sequence, which is computed by the Viterbi algorithm, along with the probability $P(corpus|lexicon)$. 
+The hidden layer in this case serves to facilitate the search for the optimal lexicon 
+(i.e., segmentation) by providing a means of abstracting away from the literal surface characters.
+
+%The HMM's role is to evaluate each candidate morph sequence. 
+% took out the "h"
+ \begin{figure}[tb]
+ %\begin{minipage}{.3\textwidth}
+ \begin{center}
+ \begin{tikzpicture}[shorten >=1pt,->,draw=black!100]
+ 	\def \rowtwoht{1.0cm}
+ 	\def \rowoneht{0.0cm}
+ 	\tikzstyle{m-node}=[circle,draw=black!100,thick,inner sep=0pt,minimum size=4mm]
+ 	\tikzstyle{r-node}=[regular polygon sides=4,draw=black!100,thick,inner sep=0pt,minimum size=4mm]
+ 	\tikzstyle{annot} = [text width=3cm]
+ 	% labels
+ 	\node[annot] (hidden-label) at (0cm,\rowtwoht) {hidden layer};
+ 	\node[annot] (surface-label) at (0cm,\rowoneht) {surface layer};
+
+ %	\node[annot] (d-label) (0, 0) {observed data vector};
+	
+ 	% hidden layer
+ 	\node[m-node] 	(m0)	at (1.5cm,\rowtwoht)		{};
+ 	\node[m-node] 	(m1)	at (2.5cm,\rowtwoht)		{};
+ 	\node[m-node] 	(m2)	at (3.5cm,\rowtwoht)	 	{};
+ 	\node[m-node] 	(m3)	at (4.5cm,\rowtwoht) 		{};
+ 	\node[m-node] 	(m4) 	at (5.5cm,\rowtwoht)   		{};
+	
+ 	% surface layer
+ 	\node[r-node] 	(r0)	at (1.5cm,\rowoneht)		{};
+ 	\node[r-node] 	(r1)	at (2.5cm,\rowoneht)		{};
+ 	\node[r-node] 	(r2)	at (3.5cm,\rowoneht)	 	{};
+ 	\node[r-node] 	(r3)	at (4.5cm,\rowoneht) 		{};
+ 	\node[r-node] 	(r4) 	at (5.5cm,\rowoneht)   		{};
+	
+ 	\path (m0)	edge	node	{}	(m1)
+ 		(m1)	edge	node	{}	(m2)
+ 		(m2)	edge	node	{}	(m3)
+ 		(m3)	edge	node	{}	(m4);
+		
+ 	\path (m0)	edge	node	{}	(r0)
+ 		(m1)	edge	node	{}	(r1)
+ 		(m2)	edge	node	{}	(r2)
+ 		(m3)	edge	node	{}	(r3)
+ 		(m4)	edge	node	{}	(r4);
+			
+ \end{tikzpicture}
+ \end{center}
+ \caption{Sequential nonlinear architecture}
+ % . Sequential dependencies only exist between hidden units, 
+ % not between the observed units of the surface layer. The hidden units ``cause" the surface units.}
+ \label{fig:seq-nonlin}
+ \end{figure}
+
+\section{Non-sequential nonlinear algorithms}
+\label{subsec:nonseq-nonlin}
+% Intro
+ Like sequential nonlinear (NLS) algorithms, \textit{non}-sequential
+ nonlinear (NLNS) algorithms incorporate a hidden layer whose units generate the observed
+ units of the surface layer.
+The difference is that the hidden layer in an NLNS algorithm is \emph{non-sequential}; 
+i.e., the algorithm computes the values of all hidden units in parallel rather than in a sequence.
+The surface layer in a NLNS algorithm is also non-sequential.
+ %dependencies.
+ Thus, every unit---whether hidden or surface---is entirely independent
+ within its own layer. Figure~\ref{fig:nonseq-nonlin} illustrates the NLNS framework; notice that no two nodes with the same layer are connected by an arc.
+This intra-layer independence allows a hidden unit to associate with
+any combination of surface units, whether contiguous or discontiguous
+%(see Figure \ref{fig:nonseq-nonlin}).
+
+ \begin{figure}[tb]
+ %\begin{minipage}{.3\textwidth}
+ \begin{center}
+ \begin{tikzpicture}[shorten >=1pt,->,draw=black!100] %,scale=.95]
+ 	\def \rowtwoht{1.25cm}
+ 	\def \rowoneht{0.0cm}
+ 	\tikzstyle{m-node}=[circle,draw=black!100,thick,inner sep=0pt,minimum size=5mm]
+ 	\tikzstyle{r-node}=[regular polygon sides=4,draw=black!100,thick,inner sep=0pt,minimum size=4mm]
+ 	\tikzstyle{annot} = [text width=3cm]
+ 	% labels
+ 	\node[annot] (hidden-label) at (0cm,\rowtwoht) {hidden layer};
+ 	\node[annot] (surface-label) at (0cm,\rowoneht) {surface layer};
+
+ %	\node[annot] (d-label) (0, 0) {observed data vector};
+	
+ 	% hidden layer
+ 	\node[m-node] 	(m0)	at (2.5cm,\rowtwoht)		{};
+ 	\node[m-node] 	(m1)	at (3.5cm,\rowtwoht)		{};
+ 	\node[m-node] 	(m2)	at (4.5cm,\rowtwoht)	 	{};
+ 	\node[m-node] 	(m3)	at (5.5cm,\rowtwoht) 		{};
+	
+ 	% surface layer
+ 	\node[r-node] 	(r0)	at (1.5cm,\rowoneht)		{};
+ 	\node[r-node] 	(r1)	at (2.5cm,\rowoneht)		{};
+ 	\node[r-node] 	(r2)	at (3.5cm,\rowoneht)	 	{};
+ 	\node[r-node] 	(r3)	at (4.5cm,\rowoneht) 		{};
+ 	\node[r-node] 	(r4) 	at (5.5cm,\rowoneht)   		{};
+ 	\node[r-node] 	(r5) 	at (6.5cm,\rowoneht)   		{};
+	
+ 	\path (m0)	edge	node	{}	(r0)
+ 		(m1)	edge	node	{}	(r1)
+ 		(m2)	edge	node	{}	(r3)
+ 		(m1)	edge	node	{}	(r2)
+ 		(m1)	edge	node	{}	(r4)
+ 		(m3)	edge	node	{}	(r5);
+		
+ \end{tikzpicture}
+ \end{center}
+ \caption{Non-sequential nonlinear architecture}
+ %. Neither layer contains sequential dependencies; every unit is independent within its own layer. Each hidden unit is thus free to cause any combination of observed units.}
+ \label{fig:nonseq-nonlin}
+ \end{figure}
+
+%The NLNS type can take many forms.  \cite{baroni-et-al:2002}, for
+%example, implicitly detect hidden units by computing edit distance for
+%pairs of words.
+%% The
+%% Levenshtein algorithm finds the minimum number of edit operations
+%% (typically allowing substitutions, deletions, and insertions) required
+%% to change a \textit{source} word into a \textit{target} word.  In
+%% addition to edit distance and edit operations, the algorithm can align
+%% the characters of the source with those of the target word.  
+%From an alignment, one can extract the two words' (potentially
+%discontiguous) common subsequence.  Thus, one may view the alignment
+%as showing
+%%indicative of
+%a single hidden unit behind the surface occurrences of the
+%subsequence.  For example, for the Hebrew words \textit{dibr} `he
+%spoke' and \textit{mdbr} `he is speaking', the discontiguous root
+%\textit{d.b.r} is found.
+% Of course, a common subsequence does not necessarily indicate a
+% morphological relationship; consider, for instance, the English pair
+% To avoid finding spurious relationships
+% (cf. \textit{pork}/\textit{park}), \cite{baroni-et-al:2002} compute a
+% semantic similarity score, based on mutual information, to combine
+% with this orthographic similarity.
+% based on minimum edit distance.
+%orthographic similarity score.
+
+The NLNS type can take many forms. 
+\cite{baroni-et-al:2002}, for example, detect implicit causal units by computing the Levenshtein alignments for pairs of words. 
+The Levenshtein algorithm finds the minimum number of edit operations 
+(typically allowing substitutions, deletions, and insertions) required to change 
+a \textit{source} word into a \textit{target} word.
+An alignment of the source and target characters is obtained as a by-product of computing the edit operations. 
+%In addition to edit distance and edit operations, the algorithm can align the characters of the source with those of the target word. 
+From the alignment, one can extract the (not necessarily contiguous) subsequence held in common by the two words.
+%One might view the common subsequence as suggesting a sin
+Thus, one may view the alignment as suggesting a single causal unit behind both occurrences of the subsequence, i.e., as a kind of implicit hidden unit, as it were.
+For example, the alignment in figure~\ref{fig:lev-align} implies a single cause behind both occurrences of the subsequence \textit{dbr}.
+Of course, a common subsequence does not necessarily indicate a morphological relationship; 
+consider, for instance, the English pair \textit{pork}/\textit{park}. 
+To avoid finding spurious relationships, 
+\cite{baroni-et-al:2002} compute a semantic similarity score based on mutual information, 
+combining it with an orthographic similarity score based on minimum edit distance.
+
+ \begin{figure}[htb!]
+ %\begin{minipage}{.3\textwidth}
+ \begin{center}
+ \begin{tikzpicture}[draw=black!100]
+ 	%[shorten >=1pt,->,draw=black!100]
+ 	\def \rowtwoht{1.5cm}
+ 	\def \rowoneht{0.0cm}
+ 	\tikzstyle{m-node}=[circle,draw=black!100,thick,inner sep=0pt,minimum size=6mm]
+ 	\tikzstyle{r-node}=[circle,draw=black!100,thick,inner sep=0pt,minimum size=6mm]
+ 	\tikzstyle{annot} = [text width=2.5cm, text centered]
+ 	% labels
+ 	\node[annot] (hidden-label) at (0cm,\rowtwoht) {target};
+ 	\node[annot] (surface-label) at (0cm,\rowoneht) {source};
+
+ %	\node[annot] (d-label) (0, 0) {observed data vector};
+	
+ 	% hidden layer
+ 	\node[m-node] 	(m0)	at (2.5cm,\rowtwoht)		{m};
+ 	\node[m-node] 	(m1)	at (3.5cm,\rowtwoht)		{d};
+ 	\node[m-node] 	(m2)	at (4.5cm,\rowtwoht)	 	{b};
+ 	\node[m-node] 	(m3)	at (5.5cm,\rowtwoht) 		{r};
+	
+ 	% surface layer
+ 	\node[r-node] 	(r0)	at (2.5cm,\rowoneht)		{d};
+ 	\node[r-node] 	(r1)	at (3.5cm,\rowoneht)		{i};
+ 	\node[r-node] 	(r2)	at (4.5cm,\rowoneht)	 	{b};
+ 	\node[r-node] 	(r3)	at (5.5cm,\rowoneht) 		{r};
+ 	%\node[r-node] 	(r4) 	at (6.5cm,\rowoneht)   		{};
+ 	%\node[r-node] 	(r5) 	at (7.5cm,\rowoneht)   		{};
+	
+ 	\path (m1)	edge	node	{}	(r0)
+ 		(m2)	edge	node	{}	(r2)
+ 		(m3)	edge	node	{}	(r3);
+ %		(m3)	edge	node	{}	(r3)
+ %		(m1)	edge	node	{}	(r4)
+ %		(m3)	edge	node	{}	(r5);
+		
+ \end{tikzpicture}
+ \end{center}
+ \caption{The minimum-edit-distance alignment for the Hebrew words \textit{dibr} `he spoke' and \textit{mdbr} `he is speaking'. The discontiguous root \textit{d.b.r } is discovered by aligning \textit{dibr} with \textit{mdbr} and extracting the common subsequence.}
+ \label{fig:lev-align}
+ \end{figure}
+
+
+Other authors simulate a nonlinear, multi-tier representation by separating the 
+learning process into two or more phases.
+The first phase classifies individual literal characters into abstract categories that are then used by a second phase (and perhaps subsequent phases) to perform other aspects of the analysis.
+Multiple phases occurring at different times can thus replicate the effects of multiple simultaneous levels of representation.
+This is the approach taken by \cite{rodrigues-and-cavar:2005} to induce the non-concatenative morphology of Arabic. 
+%Following the statistical constraint-based method of \cite{elghamry:2005}, 
+Their first phase identifies root radicals according to the statistical constraint-based method of \cite{elghamry:2005}. 
+For each word in their corpus, 
+they generate a set of candidate triliteral roots according to 
+constraints derived from the tendencies of Arabic roots as observed in corpora. 
+In particular, any 3-length subsequence is admitted into the candidate set 
+if and only if it satisfies both of the following:
+%, which in Arabic comprise both a consonantal root and a vocalic pattern. A string is allowed into a word's candidate stem set if and only if it satisfies the following constraints, which are based on the tendencies of Arabic roots as observed in corpora.
+\begin{enumerate} 
+\item No two consecutive radicals may be separated by more than two characters.
+\item No more than four characters intervene between the first and third radicals.
+\end{enumerate}
+%\item ``The distance between the first and third radicals cannot be greater than five" \citep[][p. 3]{elghamry:2005}. 
+Then, a statistical score is computed for each candidate, and the one with the highest score is selected as the root.
+Once the roots---and thus the stems---have been isolated by the first phase, the second phase identifies the concatenative affixes through a separate methodology.
+
+% Goldsmith and Xanthos
+An alternative first-phase strategy can be found in \cite{goldsmith-and-xanthos:2009}, 
+who present methods for
+partitioning a phonemic inventory into a class of consonants and a class of vowels. 
+Their paper does not go into automatic morphological analysis, but it is not difficult to see how C and V classes could be useful to a multi-phase morphological analyzer.
+The first phase would partition the phonemic inventory and, for each word, label each phoneme/grapheme as either a consonant or vowel, thus creating a sort of CV skeleton similar to the segmental tier of autosegmental phonology.
+Subsequent phases would then use these CV skeletons to isolate roots, patterns, and other morphemes.
+%The second phase (and perhaps subsequent phases) would then use template to Such a template would be helpful to subsequent phases as they go about isolating the root, pattern, and other morphemes. 
+%To delimit distinct morphemes, the linear approach must 
+
+While the NLNS approaches described in this section provide a means for detecting discontiguous morphemes, they are not without their weaknesses. 
+% Baroni
+%% Mucho filtering
+The algorithm of \cite{baroni-et-al:2002} must filter out a large proportion of its input corpus, accepting only the words with relative frequencies of less than 0.01 percent; which are presumed to be content words.
+%% Arbitrary thresholds
+It also relies on arbitrary thresholds; e.g., the threshold for orthographic similarity measure (i.e., $1 - $ the normalized minimum edit distance) is set at 0.5, although there is no obvious reason why this should be so.
+Note also that behind this threshold is the assumption that morphologically related words share at least half of their characters, which is not necessarily true. Such an assumption would be especially problematic for highly agglutinative languages, 
+in which it is not uncommon for a stem to comprise a minority of a word's characters.
+Moreover, the Levenshtein edit-distance approach is only capable of comparing words pairwise, which only allows morphological relationships to be expressed on a pairwise basis. This is a consequence of the lack of an explicitly encoded hidden causal layer; an explicit (as opposed to implicit) hidden layer could easily mediate multi-way associations among surface layer components.                                   
+
+% Rodrigues and Cavar
+%% Only tri-literal roots
+Moreover, \cite{rodrigues-and-cavar:2005}, following \cite{elghamry:2005}, limit their algorithm's search to triliteral roots in order to reduce the problem's complexity, even though quadriliteral roots are not uncommon in Hebrew or Arabic.
+%% Reasonable constraints, but constraints nonetheless. A truly general algorithm wouldn't need constraints. 
+And while their two constraints on candidate-root generation are quite reasonable, these constraints are particular to the case of Semitic morphology, and thus they would not be required by a truly general algorithm.
+
+\cite{botha:blunsom:13} use mildly context-free grammars 
+with crossing branches to generate words with discontiguous morphemes. This approach
+is nonlinear because it utilizes multiple levels of structure in the form of a tree.
+The surface characters
+constitute the leaf nodes, which are the children of either the \emph{root} 
+or the \emph{template} node, which in turn are the children of the \emph{stem} 
+node, and so on.  It is nonsequential because the root and template nodes are unordered with respect to
+each other.
+
+%So far, none of the works discussed in this section represent both the hidden layer and surface layer simultaneously in a single, straightforward model. \cite{botha:blunsom:13}, however, do offer a u
+\marginpar{Note some shortcoming.}
+ In contrast [to the works discussed in this section], the Multiple Cause Mixture Model (MCMM) \citep{saund:94} is an NLNS algorithm that explicitly represents both surface and hidden nodes in a single graphical model. The MCMM is the focus of the next section.
+
+
+%The next section presents the MCMM and its properties.
+%The MCMM is the focus the next section.
+%We discuss the MCMM in greater detail 
+%In the next section, we shift our focus to the MCMM itself.
+%We now turn to a fuller description of the MCMM.
+%We now turn to a fuller description of the MCMM and its properties.
+%Other authors simulate a multi-tier representation by separating the
+%learning process into phases.  The first phase classifies individual
+%characters into abstract categories that subsequent phases use for
+%finer-grained analysis.
+%% Multiple phases
+%% % that are temporally separate can
+%% thus replicate what is achieved by multiple simultaneous levels of
+%% representation.
+%This is the approach that \cite{rodrigues-and-cavar:2005} take to
+%induce the non-concatenative morphology of Arabic.
+%%Following the statistical constraint-based method of \cite{elghamry:2005}, 
+%Their first phase identifies root radicals \citep{elghamry:2005} and
+%selects a root.
+%% following the statistical constraint-based method of
+%% \cite{elghamry:2005}.
+%% For each word in their corpus, they generate a set of candidate
+%% triliteral roots according to constraints derived from the tendencies
+%% of Arabic roots as observed in corpora.  In particular, any 3-length
+%% subsequence is admitted into the candidate set if and only if it
+%% satisfies both of the following:
+%% %, which in Arabic comprise both a consonantal root and a vocalic pattern. A string is allowed into a word's candidate stem set if and only if it satisfies the following constraints, which are based on the tendencies of Arabic roots as observed in corpora. 
+%% (1) No two consecutive radicals may be separated by more than two characters, and (2) ``the distance between the first and third radicals cannot be greater than five" \citep[][p. 3]{elghamry:2005}. 
+%% Then, a statistical score is computed for each candidate, and the one
+%% with the highest score is selected as the root.  Once the roots 
+%% %(and thus the stems) 
+%% have been determined,
+%%by the first phase, the second phase 
+%Then, concatenative affixes are isolated through a separate
+%methodology.
+%%
+%% Goldsmith and Xanthos
+%An alternative first-phase strategy can be found in
+%\cite{goldsmith-and-xanthos:2009}, who induce
+%% present methods for partitioning a phonemic inventory into a class of
+%% consonants and a class of vowels, thereby creating a CV template
+%a CV template similar to the segmental tier of autosegmental
+%phonology.
+%
+%% An algorithm could use these classes to label each
+%% phoneme/grapheme in a string as either a consonant or vowel, thus
+%% creating a sort of CV skeleton or template similar to the segmental
+%% tier of autosegmental phonology.  Such a template would be helpful to
+%% subsequent phases as they go about isolating the root, pattern, and
+%% other morphemes.
+%%To delimit distinct morphemes, the linear approach must 
+%
+%While these NLNS approaches can detect discontiguous morphemes, they
+%are not without their weaknesses, such as 
+%% using an arbitrary threshold of 0.5 for two words to be similar enough
+%% to share a root.
+%% Baroni
+%%% Mucho filtering
+%% The algorithm of \cite{baroni-et-al:2002} must filter out a large
+%% proportion of its input corpus, accepting only the words with relative
+%% frequencies of less than 0.01 percent, presumed to be content words.
+%% %% Arbitrary thresholds
+%% It also relies on arbitrary thresholds; e.g., the threshold for
+%% orthographic similarity measure (i.e., $1 - $ normalized minimum edit
+%% distance) is set at 0.5, although their is no obvious reason why this
+%% should be so.  Note also that behind this threshold is the assumption
+%% that morphologically related words share at least half of their
+%% characters, which is not necessarily true. It would be especially
+%% problematic for agglutinative languages, in which relatively short
+%% stems are frequently combined with long strings of affixes.  
+%the edit distance approach \citep{baroni-et-al:2002} only 
+%%being capable of 
+%expressing pairwise morphological relationships.
+%% comparing words pairwise, and thus morphological
+%% relationships can only be expressed on a pairwise basis. 
+%% This limitation can be regarded as a consequence of the lack of an
+%% explicitly-encoded hidden causal layer; 
+%By contrast, an explicit hidden layer could mediate multi-way
+%relationships in the surface layer.
+%% Rodrigues and Cavar
+%%% Only tri-literal roots
+%\cite{rodrigues-and-cavar:2005} 
+%%(following \cite{elghamry:2005})
+%reduce the complexity of the search for discontiguous roots by
+%requiring triliteral roots.  However, quadriliteral roots are not
+%uncommon in Hebrew or Arabic, and
+%%% Reasonable constraints, but constraints nonetheless. A truly general algorithm wouldn't need constraints. 
+%% The two constraints on candidate-root generation are otherwise quite reasonable, but they are particular to the case of Semitic morphology. 
+%a truly general algorithm would not require such constraints.  
+%% In general, none of these works represent both the hidden layer and
+%% surface layer simultaneously in a single model. In contrast, 
+%% The NLNS model we use explicitly represents both surface and hidden
+%% nodes in a single graphical model.
+
+% Multiple Cause Mixture Model (MCMM) \citep{saund:94} is an
+% NLNS algorithm that explicitly represents both surface and hidden
+% nodes in a single graphical model.

@@ -1,0 +1,197 @@
+\documentclass{iuphd}
+%\documentclass[a4paper,12pt,times,authoryear,print,index]{iuphd}
+%\usepackage[round]{natbib}
+\usepackage{natbib}
+\bibliographystyle{abbrvnat}
+\setcitestyle{authoryear}
+%\bibliographystyle{plainnat}
+%\usepackage{natbib}botha:blunsom:2013
+\usepackage[utf8]{inputenc}
+%\usepackage{cite}
+% removing ACL style package
+%\usepackage{styles/acl2016}
+%\usepackage{palatino}
+%\usepackage{tgpagella}
+%\usepackage{tgschola}
+%\usepackage{lmodern}
+%\usepackage{tgbonum}
+\usepackage{tipa}
+\usepackage{times}
+\usepackage{latexsym}
+%\aclfinaltrue
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{framed}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{subfigure}
+\usepackage{wrapfig}
+\usepackage{cjhebrew}
+%\usepackage{subcaption}
+\usepackage{url}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{pbox}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\usepackage{booktabs}
+\newcommand\Tstrut{\rule{0pt}{2.6ex}}       % "top" strut
+\newcommand\Bstrut{\rule[-1.2ex]{0pt}{0pt}} % "bottom" strut
+\newcommand\TBstrut{\Tstrut\Bstrut} % top&bottom struts
+	
+\newcommand{\myparagraph}[1]{\vspace{8pt}\noindent\textbf{#1.}}
+\newcommand{\myparagraphtwo}[1]{\vspace{8pt}\noindent\textbf{#1}\hspace{\textwidth}}
+\newcommand{\mysubparagraph}[1]{\vspace{2.5pt}\indent\textit{#1.}}
+% \titlebox only appropriate for ACL style
+%\setlength\titlebox{6.5cm}    % Expanding the titlebox
+\newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
+\newcommand{\tab}[1]{\hspace{.2\textwidth}\rlap{#1}}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{shapes,arrows}
+
+\usepackage{natbib}
+\usepackage{multicol}
+\usepackage{gb4e}
+\usepackage[normalem]{ulem}
+% Uncomment this to make sure marginpars are removed before submission:
+%\renewcommand{\marginpar}[1]{}
+%\renewcommand{\theequation}{\roman{equation}}
+%\newcommand\tab[1][1cm]{\hspace*{#1}}
+%\usepackage{tabto}
+%data for Title Page
+\title{A Multilinear Approach to the Unsupervised Learning of Morphology}
+\author{Anthony Meyer}
+\date{Completion Date}
+
+%data for Acceptance Page
+\committeechair{Committee Chair}
+\readertwo{2nd Reader}
+\readerthree{3rd Reader}
+\readerfour{4th Reader}
+\defensedate{Defense Date}
+
+
+%data for Copyright Page
+\cryear{Current Year}
+
+\begin{document}
+\maketitle
+
+\acceptancepage
+
+\copyrightpage
+
+%\begin{dedication}
+%\end{dedication}
+
+\begin{acknowledgments}
+%The acknowledgments are designed to recognize people or agencies to whom you feel grateful for any academic,
+%technical, financial, or personal aid in the preparation of your thesis or dissertation; as a matter of
+%courtesy, you would ordinarily mention the members of your committee here, as well as institutions that
+%provided funding, your typist, or anyone else who helped.
+I just love everyone. I just want everyone to be happy and to like me.
+\end{acknowledgments}
+
+%\begin{preface}
+%\end{preface}
+
+\begin{abstract}
+This dissertation will present a novel approach to the 
+unsupervised learning of morphology (ULM). 
+My primary research objective is to demonstrate \emph{how} one can 
+implement autosegmental morphological theory in a machine learning system.
+Most previous work in ULM has treated concatenative and non-concatenative 
+morphological processes as fundamentally different, 
+e.g., by designing separate modules, one for concatenative morphology 
+and one for non-concatenative.
+I will show that a Multiple Cause Mixture Model (MCMM) 
+can serve as a universal framework for ULM, i.e., one that handles concatenative 
+and non-concatentive morphology in a unified way. 
+
+My secondary research objectives address matters of implementation 
+and thus support my primary objective.
+The matters of feature-set design and the system's evaluation are especially important.
+I am using exclusively word-internal features. That is, there will be no 
+features referencing markings on adjacent words or any other property that transcends word boundaries.
+Each feature vector (representing a word) is utterly void of morphosyntactic information.
+Consequently, the MCMM has no means of learning traditional morphemes 
+or morphosyntactic categories.
+Instead, it learns \emph{morphs}, intermediate units that reside between 
+phonology and morphosyntax. 
+However, this requires us to evaluate morphs, even though we do not know 
+beforehand what the morphs should be.
+My final research objective is thus to devise a suitable evaluation method 
+for a system that learns morphs.
+\end{abstract}
+%\begin{abstract}
+% The abstract is double-spaced and limited to 350 words. As many people will learn about
+%your work through your abstract published in Dissertation Abstracts (http://proquest.umi.com/login),
+%you should spend a good bit of effort in the composition of both the abstract and the title of your work.
+%Try to convey the flavor of your work, not just the bare bones of your findings; in an average abstract
+%there will be about 70 characters per line with a maximum of 35 lines. You should also work to phrase your
+%title so that it truly describes the contents and will be easily found in the index of Dissertation Abstracts.
+%The index is based on key words, so be as specific as you can be about your subject \cite{saund:94}.
+%\end{abstract}
+
+\tableofcontents
+%\include{iuphd-doc}
+\include{chap1}
+\include{chap2}
+\include{chap3}
+\include{chap4}
+\include{chap5}
+\include{chap6}
+\include{chap7}
+\include{chap8}
+\include{chap9}
+
+%%%%%%%%%%% Overview %%%%%%%%%%%%
+%
+%I. Introduction
+%
+%II. Literature Review
+%	2.1. Linear sequential (LS)
+%	2.2. Non-linear sequential (NLS)
+%	2.3. Linear non-sequential (LNS)
+%	2.4. Non-linear non-sequential (NLNS)
+%
+%III. Graph-Theoretic Foundation
+%
+%IV. The Multiple Cause Mixture Model
+%	4.1. Architecture
+%	4.2. Mixing Function
+%	4.3. Learning
+%
+%V. Evaluation
+%	5.1. Targets of learning
+%	5.2. Input Data
+%		Orthographic Words
+%		Transcribed Words
+%	5.3. Experimental Variables
+%		Data Representation
+%		^Mixing Function.
+%		^Objective Function.
+%		Features.
+%			Positional
+%			Precedence
+%			Bigrams
+%	5.4. Evaluation paradigms
+%		Intrinsic evaluation
+%		Extrinsic evaluation
+%	5.5. Results
+%	
+%VI. Discussion
+%
+%VII. Conclusion
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\bibliographystyle{plain}
+%\bibliographystyle{plainnat}
+\bibliography{dissertation}
+
+%\include{CV}
+\end{document}          
+
