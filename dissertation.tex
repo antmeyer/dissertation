@@ -2,6 +2,7 @@
 %\documentclass[a4paper,12pt,times,authoryear,print,index]{iuphd}
 %\usepackage[round]{natbib}
 \usepackage{natbib}
+\usepackage[toc,page]{appendix}
 \bibliographystyle{abbrvnat}
 \setcitestyle{authoryear}
 %\bibliographystyle{plainnat}
@@ -124,6 +125,7 @@ However, this requires us to evaluate morphs, even though we do not know
 beforehand what the morphs should be.
 My final research objective is thus to devise a suitable evaluation method 
 for a system that learns morphs.
+$\alpha = \rho + \sigma$
 \end{abstract}
 %\begin{abstract}
 % The abstract is double-spaced and limited to 350 words. As many people will learn about
@@ -137,15 +139,16 @@ for a system that learns morphs.
 
 \tableofcontents
 %\include{iuphd-doc}
-\include{chap1}
-\include{chap2}
-\include{chap3}
-\include{chap4}
-\include{chap5}
-\include{chap6}
-\include{chap7}
-\include{chap8}
-\include{chap9}
+\include{ch-Intro}
+\include{ch-LitReview}
+\include{ch-GraphTheoretic} % Graph-Theoretic Foundation
+\include{ch-MCMM} % The MCMM
+%\include{ch-Implementation}%Implementation
+\include{ch-Autonomous} %
+\include{ch-ExperimentalSetup} %
+\include{ch-Evaluation} %
+\include{ch-Results} %
+\include{ch-Discussion} %
 
 %%%%%%%%%%% Overview %%%%%%%%%%%%
 %
@@ -190,6 +193,11 @@ for a system that learns morphs.
 
 %\bibliographystyle{plain}
 %\bibliographystyle{plainnat}
+\begin{appendices}
+\chapter{Some Appendix}
+The contents...
+\end{appendices}
+
 \bibliography{dissertation}
 
 %\include{CV}
