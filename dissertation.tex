@@ -47,11 +47,11 @@
 \newcommand{\myparagraph}[1]{\vspace{8pt}\noindent\textbf{#1.}}
 \newcommand{\myparagraphtwo}[1]{\vspace{8pt}\noindent\textbf{#1}\hspace{\textwidth}}
 \newcommand{\mysubparagraph}[1]{\vspace{2.5pt}\indent\textit{#1.}}
-% \titlebox only appropriate for ACL style
+%\titlebox only appropriate for ACL style
 %\setlength\titlebox{6.5cm}    % Expanding the titlebox
 \newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
-\newcommand{\tab}[1]{\hspace{.2\textwidth}\rlap{#1}}
-
+%\newcommand{\tab}[1]{\hspace{.2\textwidth}\rlap{#1}}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{shapes,arrows}
@@ -78,7 +78,6 @@
 \readerthree{3rd Reader}
 \readerfour{4th Reader}
 \defensedate{Defense Date}
-
 
 %data for Copyright Page
 \cryear{Current Year}
@@ -119,10 +118,14 @@ and non-concatentive morphology in a unified way.
 
 My secondary research objectives address matters of implementation 
 and thus support my primary objective.
-The matters of feature-set design and the system's evaluation are especially important.
-I am using exclusively word-internal features. That is, there will be no 
-features referencing markings on adjacent words or any other property that transcends word boundaries.
-Each feature vector (representing a word) is utterly void of morphosyntactic information.
+The matters of feature-set design and the system's 
+evaluation are especially important.
+I am using exclusively word-internal features. That is, 
+there will be no 
+features referencing markings on adjacent words or any 
+other property that transcends word boundaries.
+Each feature vector (representing a word) is utterly void 
+of morphosyntactic information.
 Consequently, the MCMM has no means of learning traditional morphemes 
 or morphosyntactic categories.
 Instead, it learns \emph{morphs}, intermediate units that reside between 
@@ -149,7 +152,6 @@ $\alpha = \rho + \sigma$
 \include{ch-LitReview}
 \include{ch-GraphTheoretic} % Graph-Theoretic Foundation
 \include{ch-MCMM} % The MCMM
-%\include{ch-Implementation}%Implementation
 \include{ch-Autonomous} %
 \include{ch-ExperimentalSetup} %
 \include{ch-Evaluation} %
