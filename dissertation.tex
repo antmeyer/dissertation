@@ -1,14 +1,36 @@
 \documentclass{iuphd}
 %\documentclass[a4paper,12pt,times,authoryear,print,index]{iuphd}
 %\usepackage[round]{natbib}
+\usepackage[font=normal,skip=0pt]{caption}
 \usepackage{natbib}
 \usepackage[toc,page]{appendix}
+\usepackage{lmodern}
+%\usepackage[sfdefault]{ClearSans}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+%\usepackage{tipx}
+\usepackage{tipa}
+%\usepackage[T1]{tipa}
+\usepackage{tipx}
+\usepackage[hebrew,english]{babel}
+\usepackage[T1]{fontenc}
+\DeclareFontFamily{T3}{ClearSans-LF}{}
+\DeclareFontShape{T3}{ClearSans-LF}{m}{n}
+ {<-> ssub * cmss/m/n }{}
+\DeclareFontShape{T3}{ClearSans-LF}{b}{n}
+ {<-> ssub * cmss/bx/n }{}
+\DeclareFontShape{T3}{ClearSans-LF}{m}{it}
+ {<-> ssub * cmss/m/sl }{}
+\DeclareFontShape{T3}{ClearSans-LF}{m}{sl}
+ {<-> ssub * cmss/m/sl }{}
+
 \bibliographystyle{abbrvnat}
 \setcitestyle{authoryear}
 %\bibliographystyle{plainnat}
-%\usepackage{natbib}botha:blunsom:2013
-\usepackage[utf8]{inputenc}
+%\usepackage{natbib}
+
 %\usepackage{cite}
+%\usepackage{makecell}
 % removing ACL style package
 %\usepackage{styles/acl2016}
 %\usepackage{palatino}
@@ -16,23 +38,24 @@
 %\usepackage{tgschola}
 %\usepackage{lmodern}
 %\usepackage{tgbonum}
-\usepackage{tipa}
-\usepackage{times}
-\usepackage{latexsym}
+%\usepackage{tipa}
+%\usepackage{times}
+%\usepackage{latexsym}
 %\aclfinaltrue
 \usepackage{amsmath}
 \usepackage{mathtools}
 \usepackage{framed}
 \usepackage{multirow}
-\usepackage{rotating}
+%\usepackage{rotating}
 \usepackage{subfigure}
 \usepackage{wrapfig}
 \usepackage{cjhebrew}
+
+%\usepackage[T1, T2A]{fontenc}
 %\usepackage{subcaption}
 %\usepackage{dcolumn}
 %\usepackage[utf8x]{inputenc}
 \usepackage{url}
-\usepackage{caption}
 \usepackage{array}
 \usepackage{threeparttable}
 \usepackage{pbox}
@@ -43,20 +66,16 @@
 \newcommand\Tstrut{\rule{0pt}{2.6ex}}       % "top" strut
 \newcommand\Bstrut{\rule[-1.2ex]{0pt}{0pt}} % "bottom" strut
 \newcommand\TBstrut{\Tstrut\Bstrut} % top&bottom struts
-	
-\newcommand{\myparagraph}[1]{\vspace{8pt}\noindent\textbf{#1.}}
-\newcommand{\myparagraphtwo}[1]{\vspace{8pt}\noindent\textbf{#1}\hspace{\textwidth}}
-\newcommand{\mysubparagraph}[1]{\vspace{2.5pt}\indent\textit{#1.}}
-%\titlebox only appropriate for ACL style
-%\setlength\titlebox{6.5cm}    % Expanding the titlebox
+%\usepackage{caption}	
+%\newcommand{\myparagraph}[1]{\vspace{8pt}\noindent\textbf{#1.}}
+%\newcommand{\myparagraphtwo}[1]{\vspace{8pt}\noindent\textbf{#1}\hspace{\textwidth}}
+%\newcommand{\mysubparagraph}[1]{\vspace{2.5pt}\indent\textit{#1.}}
 \newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
 %\newcommand{\tab}[1]{\hspace{.2\textwidth}\rlap{#1}}
-\newcommand\tab[1][1cm]{\hspace*{#1}}
+%\newcommand\tab[1][1cm]{\hspace*{#1}}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{shapes,arrows}
-
-\usepackage{natbib}
 \usepackage{multicol}
 \usepackage{gb4e}
 %\usepackage{expex}
@@ -80,9 +99,9 @@
 \defensedate{Defense Date}
 
 %data for Copyright Page
-\cryear{Current Year}
+\cryear{2018}
 
-\includeonly{ch-Autonomous} %
+%\includeonly{ch-ExperimentalSetup} %
 
 \begin{document}
 \maketitle
@@ -116,7 +135,7 @@ e.g., by designing separate modules, one for concatenative morphology
 and one for non-concatenative.
 I will show that a Multiple Cause Mixture Model (MCMM) 
 can serve as a universal framework for ULM, i.e., one that handles concatenative 
-and non-concatentive morphology in a unified way. 
+and non-concatentive morphology in a unified manners. 
 
 My secondary research objectives address matters of implementation 
 and thus support my primary objective.
@@ -136,7 +155,7 @@ However, this requires us to evaluate morphs, even though we do not know
 beforehand what the morphs should be.
 My final research objective is thus to devise a suitable evaluation method 
 for a system that learns morphs.
-$\alpha = \rho + \sigma$
+%$\alpha = \rho + \sigma$
 \end{abstract}
 %\begin{abstract}
 % The abstract is double-spaced and limited to 350 words. As many people will learn about
