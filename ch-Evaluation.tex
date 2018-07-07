@@ -1,0 +1,487 @@
+\chapter{DUAL-PARADIGM EVALUATION}
+\label{ch:eval}
+
+\section{Introduction}
+
+\paragraph{Evaluation.} The system described in this proposal is an unsupervised 
+learning system and is thus inherently difficult to evaluate, as one goal of 
+unsupervised learning is to discover previously unknown categories \citep{parsons:2004}.
+The previously unknown categories in this case are going to be morphological 
+units of some kind. However, these units will not be conventional morphemes 
+or morphosyntactic categories. 
+
+Instead, MCMM-generated clusters will correspond roughly to Aronoff's 
+\emph{morphomes} \citep{aronoff:1994}, which can be described as 
+\emph{pre-morphosyntactic} units, i.e., units that have been assembled from 
+phonemes, but have not yet been assigned 
+a syntactic or semantic meaning. I will use the term \emph{morph} instead of 
+\emph{morphome}, however, since MCMM-generated clusters may not correspond 
+precisely to morphomes in every case (see section REF). %~\ref{sec:targets}).
+
+Thus, the evaluation itself presents an important research question, namely the question 
+of how to evaluate the output of an unsupervised morphological clustering algorithm, 
+particularly one that considers only features of \emph{word-internal form}, having no 
+access to word-external morphosyntactic features, e.g., the person, number, and 
+gender of  surrounding words.
+
+As explained in section (ref), Multimorph is unsupervised machine learning system, and as such,
+ it is intrinsically difficult to evaluate, and thus no single 
+evaluation method is likely to be perfect. I will therefore use two complementary methods, %I would thus rather not rely on a single method.
+%not only because is it an unsupervised learning system, which are notoriously challenging to evaluate,  it learns unconventional morphological units, namely morphs. Indeed, it would be very difficult to come up with a gold standard for the morphs because we do not know what the morphs are supposed to look like; i.e., the ``right answers" are not obvious at the outset. 
+%In particular, I will use 
+one \emph{extrinsic} method and one \emph{intrinsic} method.
+
+\section{Intrinsic Evaluation}
+An \emph{intrinsic} evaluation considers a system as independent, examining its 
+output directly. That is, the system is evaluated as a stand-alone application, on its
+on terms, as it were,
+not as one embedded in a larger system.
+
+The intrinsic component of the evaluation will compare an MCMM-generated clustering to a 
+\emph{gold-standard categorization}.\footnote{By convention, 
+gold-standard clusters are not actually called clusters, 
+but (gold-standard) \emph{categories}.} 
+An MCMM's output consists of 
+%Given the final valuations in the MCMM matrices $\mathbf{M}$ and $\mathbf{C}$,
+the final values in the matrices $\mathbf{M}$ and $\mathbf{C}$.
+Given these values, one can derive a list of word-to-cluster mappings; 
+each mapping, or item, in this list
+consists of a word followed by a list of cluster labels, i.e., labels pointing to
+the clusters in which the word has membership, 
+as in ``runs: run, -s,"  where \textit{runs} is the word, and \textit{run} and \textit{-s} 
+are the labels of the clusters to which \textit{runs} belongs. These labels also represent 
+morphs. That is, e.g., \emph{-s} represents a cluster whose words end with the morph 
+\emph{-s}.
+
+To evaluate a list of mappings like ``runs: run, -s," we need an analogous 
+gold-standard list, one that supplies, for each word, a list of gold-standard \emph{categories}.
+%(i.e., the categories to which the word belongs). 
+This is to say that we need a gold-standard morphological analysis for each word. 
+We actually need different gold standard lists for the orthographic and transcribed datasets, 
+since these datasets come from different sources, and their respective gold standards must 
+be obtained through separate means.
+
+% (Notice that a lot of properties are packed into the suffix \textit{-s}).
+% Let us consider  
+% briefly the nature of an MCMM's output. One can represent a 
+% clustering (or categorization) as a table in which the rows 
+% correspond to the clustered (or categorized) items, and 
+% the columns to the clusters (or categories) themselves. Now, 
+% in the proposed dissertation, the items will be feature-vector 
+% representations of words, and the clusters will be morphs. Each 
+% $\text{cell}_{i,k}$ contains either 1 or 0: 1 if $\text{word}_i$ has 
+% morph $k$, and 0 if it does not. 
+%%What we have just described is essentially the MCMM's $\mathb{M}$ matrix. 
+% Each 1 thus represents the presence of a particular morph. 
+ 
+% If we wanted to get away from the matrix format, i.e., the grid 
+% of 1's and 0's, we could replace each 1 with its morph and eliminate the 0's altogether. 
+% Suppose, for example, 
+% that $\text{word}_{1253}$ is \textit{runs}, which has two morphs, namely the stem 
+% \textit{run} and the suffix \textit{-s} 3rd-person (\textsc{3p}), present-tense (\textsc{Pres}) singular (\textsc{Sg}) s.
+% (Notice that a lot of properties are packed into the suffix \textit{-s}). 
+% Suppose further that \textit{run} is cluster 87 and \textit{-s} is cluster 6, and the overall clustering 
+% has a total of $K=500$ clusters, in which case $\mathbf{M}$ has 500 columns, and
+% row 1253 has 498 zeros and only two 1's, one at column 6 and the other at column 87.
+%We can replace the 
+%1 in column 6 with \textit{-s} and the 1 in column 87 with \textit{run} 
+%and discard the zeros, yielding ``runs: run, -s," which is tantamount a 
+%morphological segmentation. 
+%---
+%Notice that the suffix \textit{-s} maps to three 
+%``atomic" morphosyntactic categories, 
+%namely 3rd-person (\textsc{3p}), present-tense (\textsc{pres}), 
+%and singular (\textsc{sg}). 
+%My system cannot learn abstract morphosyntactic labels like \textsc{3p} 
+%and \textsc{sg}. Rather, it learns \emph{morphs}, 
+%%the pre-morphosyntactic units of form. We will call these units \emph{morphs}, 
+%which may or may not correspond to morphosyntactic categories (see the discussion in section~\ref{sec:targets}). 
+%When there \emph{is} a 
+%correspondence between morphs and morphosyntactic categories, it is often a 
+%one-to-many mapping because the same morph can be
+%requisitioned by more than one morphosyntactic category.
+%---
+ %can lay claim to the same morph. 
+%In ``runs: run, -s," for example, the suffix \textit{-s} 
+%represents the union of three ``atomic" morphosyntactic categories, namely \textsc{3p}, \textsc{pres}, and \textsc{sg}. 
+
+%Thus, the output of an MCMM, after a little post-processing, can look like ``runs: run, -s." It is essentially a list of morphological segmentations. But more accurately, it is a list of word-to-cluster mappings; for each word, it will specify the cluster(s) to which it belongs. Note that the morphs \emph{run} and  \emph{-s} are essentially the labels of particular morphological clusters.
+%The output of an MCMM is thus essentially a list of word-to-cluster mappings. Each item in this list is a word followed by a list of the clusters in which it has membership.
+%%After little post-processing, it can look like ``runs: run, -s." 
+%Morphs like \emph{run} and \emph{-s} are essentially cluster labels. 
+%That is, \emph{-s} represents a cluster whose words predominantly end in  \emph{-s}.
+
+\paragraph{Orthographic data.}
+
+To obtain morphological analyses for the wordlist O, I will use the 
+MILA Morphological Analysis tool (\textsc{mila-ma}) \citep{hebrew-resources:2008}.
+Because \textsc{mila-ma} requires that input words be spelled 
+according to Modern Hebrew standard orthography, it can only be
+used to create a gold standard for orthographic wordlist O. The 
+gold-standard morphological analyses for the transcribed wordlists TS and TR 
+must come from a different source (see below).
+\textsc{mila-ma} is essentially a finite-state transducer. Because its morphological 
+knowledge has been manually coded by humans and its output is
+deterministic, it provides a good approximation to human
+annotation. 
+
+However, many of the original \textsc{mila-ma} categories are ill-suited to the purpose
+of evaluating an MCMM's clustering. The \textsc{mila-ma} categories are
+often atomic and abstract, e.g., \texttt{feminine} and \texttt{masculine}. 
+Such categories are purely morphosyntactic; they are meaningless at the 
+word-internal level because they can only be observed in agreement phenomena. 
+Moreover, there is no morphological unit in Hebrew that means strictly `feminine,' %(i.e., nothing more than `feminine' and nothing less). 
+nor is there one that means strictly ``masculine." Hebrew inflectional affixes 
+tend to be fusional, having meanings like ``feminine plural" and ``masculine plural."
+
+For this and similar reasons, \textsc{mila-ma}'s categories need to be mapped 
+to a modified set of gold-standard categories, i.e., categories that correspond 
+more closely to actual differences in form.
+The MCMM's clustering will then be quantitatively compared to the modified 
+\textsc{mila-ma}-based gold-standard categorization. 
+In particular, I will use the measures \emph{average cluster-wise purity}, 
+\emph{BCubed precision} and \emph{BCubed recall}. The latter two are important 
+because they are specifically designed for cases of overlapping clusters 
+\citep{amigo-et-al:2009}.
+
+\paragraph{Transcribed data.} I shall obtain gold-standard category mappings for the 
+transcribed words by extracting morphological analyses from the Berman 
+longitudinal corpus. Recall that for each utterance in the Berman longitudinal corpus, 
+there is a transcription tier and a morphological-analysis tier. The latter provides a 
+morphological analysis for each word in the utterance, including roots for the words 
+that have roots. I will extract the morphological analyses and use them to create a list of 
+word-to-categories mappings like ones created from \textsc{mila-ma}'s analyses.
+
+\section{Extrinsic Evaluation} \label{sec:eval-extrinsic} An \emph{extrinsic evaluation} 
+views a system as a component of a larger, or outer, system. 
+Its purpose is to evaluate the embedded system, but it does so by evaluating the outer 
+system. If the outer system scores highly,
+the embedded system, i.e., the system under evaluation, scores highly.
+An extrinsic evaluation makes sense for my system for two reasons:
+\begin{enumerate}
+\item Multimorph is essentially an embedded system by nature: It learns morphs, which are intermediate units, intended to facilitate the learning of morphemes. %My system is thus meant to be an embedded component of a larger process. 
+\item While it would be very difficult to come up with gold-standard morphs, gold-standard morphemes are relatively easy to produce, since morphemes, in contrast to morphs, are already well-defined. 
+%As intermediate units, the value of morphs lies in their utility, i.e., in their capacity for yielding correct morphemes. What they look like is not important as long as they are effective. is evaluate \emph{morphemes} that have been induced from morphs. 
+%On the other hand, it is relatively easy to come up with gold-standard morphemes, since morphemes, in contrast to morphs, are well-defined. 
+\end{enumerate}
+
+The extrinsic evaluation will consist of the four stages described below. 
+Stages 1 to 3 prepare the output of an MCMM to be fed to Morfessor in Stage 4. 
+To obtain the gold-standard datasets for Morfessor, I will manually segment 
+$\frac{1}{10}$ of the original, unprocessed wordlists, i.e., both the transcribed 
+and orthographic wordlists. Note that this four-stage extrinsic evaluation only considers 
+stem-external, concatenative morphology. This is because Stage 3 effectively removes 
+interdigitation. Morfessor is not even capable of handling interdigitation, since it is 
+a sequential algorithm.
+
+****************
+But how is one to assess the output's quality? Ho do we tell how \emph{good} it is? I need a way to evaluate the clusters produced by the MCMM.
+But a cluster is just a group of words that Multimorph has seen fit to put together according to criteria of its own devising.
+These criteria could be virtually anything, as Multimorph is directed solely by an algorithm, not by any previously attained knowledge concerning
+the workings of morphology or human language. 
+Thus, the \emph{meaning} of one of Multimorph's clusters may not be immediately obvious.
+ 
+ 
+%\subsection{} \label{sec:paradigms}
+\subsection{Four-stage post-processing} \label{sec:extrinsic}. Multimorph's output 
+will have to processed before it can be evaluated. This subsection 
+will describe each of the four stages. The input to Stage 1 is a cluster centroid vector, 
+i.e., one the $K$ columns in the $J \times K$ matrix $.\mathbf{C}$. The $k$th column 
+corresponds to the $k$th cluster. Each $j \in J$ corresponds to a particular feature; the 
+$J$ rows correspond to the same $J$ features present in each original data point 
+$\mathbf{x}_{i}$ as well as each reconstructed data points $\mathbf{r}_{i}$, where 
+$0 \ge i < I$, and $I$ is the total number of data points (original and reconstructed).
+
+\subsubsection{Stage 1: Identify the morph characters} The first stage is to map each cluster's set of active features to a particular sequence of alphabetic characters. This sequence will be regarded as the \emph{morph} corresponding to the cluster. Also in this stage, each morph is labeled as a prefix, stem-component, or suffix.
+
+\begin{enumerate}
+  \item Mapping from features to root or pattern characters:
+    \begin{enumerate}
+   	\item Only precedence [and bigram features] can map to root and pattern characters. Positional features never can.
+   	\item There must be at least one precedence feature [or one bigram feature] for each root-character bigram. (Note that precedence features are themselves basically bigrams.) These features must also overlap; e.g., the features \texttt{a<b} and \texttt{b<c}, which overlap at \textit{b}, indicate the root \textit{a.b.c}. %Note that roots can also be indicated by bigram features as well as combinations of bigram and precedence features (e.g., \texttt{a+b} and \texttt{b<c}).
+     \end{enumerate}
+
+   \item Mapping from features to prefix characters:
+   \begin{enumerate}
+       %\ex \label{ex-1a} 
+       \item If there are at least two features of the form \texttt{a<b} and \texttt{a<c}, such that \textit{b} $\ne$ \textit{c}, then \textit{a} is at least part of a prefix. But what if the precedence features have an abstract component, as in the following?
+       \begin{itemize}
+       \item \texttt{x<C}
+       \item \texttt{x<V}
+       \end{itemize}
+       How does one determine inequality between abstract characters? Answer: C $\ne$ V. So there can still be inequality, just less of it. 
+       %If there is additionally a bigram feature \texttt{a+t} or \texttt{t+a}, such that \textit{t} $\ne$ \textit{b}, \textit{t} $\ne$ \textit{c} (see above), then the prefix is either \textit{at-} or \textit{ta-}, respectively. 
+%       \ex When there is a character \textit{a} satisfying rule \ref{ex-1a} has more than one character can only be determined by \emph{bigram} features. In particular, if there is additionally a bigram feature \texttt{a+t} or \texttt{t+a}, such that \textit{t} $\ne$ \textit{b}, \textit{t} $\ne$ \textit{c} (see above), then the prefix is either \textit{at-} or \textit{ta-}, respectively.
+       %\ex 
+       \item If there is at least one positional feature of the form \texttt{a@[}$x$\texttt{]}, where $x$ is a positive integer, then \textit{a} is at least part of a prefix. If there are two or more consecutive positional features, i.e., features like \texttt{a@[}$x$\texttt{]}, \texttt{b@[}$x+1$\texttt{]}, \texttt{c@[}$x+2$\texttt{]}, and so on, then the prefix is the entire string of characters indicated by these features.
+    \end{enumerate}
+
+  \item Mapping from features to suffix characters:
+   \begin{enumerate}
+   \item If there are at least two features of the form \texttt{b<a} and \texttt{c<a}, such that \textit{b} $\ne$ \textit{c}, then \textit{a} is at least part of a suffix. If there is additionally a bigram feature \texttt{a+t} or \texttt{t+a}, where \textit{t} is a different character than either \textit{b} or \textit{c} (see above), then the prefix is either \textit{-at} or \textit{-ta}, respectively.
+
+   \item If there is at least one positional feature of the form \texttt{a@[}$x$\texttt{]}, where $x$ is a negative integer, then \textit{a} is at least part of a suffix. If there are two or more consecutive positional features, i.e., features like \texttt{a@[}$x${]}, \texttt{b@[}$x-1${]},\texttt{ c@[}$x-2${]}, and so on, then the suffix is the entire string of characters indicated by these features.
+   \end{enumerate}
+  \item If a cluster centroid has conflicting active features, then the cluster is void; it does not correspond to any morph.
+\end{enumerate}
+%EXAMPLES
+
+\begin{exe}
+%Cluster #0 from 3_3_1_K-50_N-6888_2015-01-24_14-48
+\ex Active features: e+w (1.0), e+i (1.0), l@[0] (1.0), e@[0] (1.0), e$<$w (0.9713), l+w (0.9466), e$<$i (0.8878), l<w (0.7655), e@[1] (0.7321), e+t (0.7049) \\
+Morph: None \\
+Pertinent rule: 4
+%
+%Cluster #2 from 3_3_1_K-50_N-6888_2015-01-24_14-48
+\ex Active feature: w+i (1.0), l+i (1.0), i+m (1.0), i+i (1.0), w$<$i (1.0), i@[-2] (1.0), m@[-1] (1.0), l<i (0.9941), i<i (0.8206), l+m (0.7164) \\
+Morph: -liim (suffix) \\
+Pertinent rule: 3b
+%
+%Cluster #5 from 3_3_1_K-50_N-6888_2015-01-24_14-48
+%Active features: m+i (1.0), i+m (1.0), m<i (1.0), i@[-2] (1.0), m@[-1] (1.0), m+m (0.9825), m@[0] (0.8077), w+m (0.7786), m+w (0.7006), m<m (0.6840)
+%Morph: None
+%Pertinent rule: 4
+%
+%Cluster #6 from 3_3_1_K-50_N-6888_2015-01-24_14-48
+\ex Active features: b@[0] (1.0), b$<$w (0.9285), b$<$i (0.9232), b+t (0.6000), b+r (0.5867), b$<$t (0.4608), b+m (0.4576), b@[1] (0.4512) \\
+Morph: b- (prefix) \\
+Pertinent rules: 2a and 2b 
+%
+%Cluster #13 from 4_star_K-350_N-_2014-07-20_03-45.K@303
+\ex Active features: p$<$q (1.0), p$<$d (0.9999), q$<$d (0.9999) \\
+Morph: p.q.d. (root)  (The feature p*d is not relevant, as it turns out.) \\
+Pertinent rule: 1b
+%
+%Cluster #1 from 4_star_K-350_N-_2014-07-20_03-45.K@303
+\ex Active features: w$<$t (1.0), w@[-2] (1.0), t@[-1] (1.0) \\
+Morph: -wt (suffix) \\
+Pertinent rule: 3b
+%
+%Cluster #26 from 4_star_K-350_N-_2014-07-20_03-45.K@303
+\ex Active features: r$<$i (0.99), r@[-3] (0.98), r+i (0.96), i@[-2] (0.9), i+r (0.84), r+m (0.8), h+r (0.8), r$<$m (0.79), r+t (0.74), w+r (0.68) \\
+Morph: None (There are active features for both a prefix and a suffix.) \\
+Pertinent rule: 4
+%
+%Cluster #184 from 4_star_K-350_N-_2014-07-20_03-45.K@303
+\ex Active feature: p$<$g (1.0) \\
+Morph: None \\
+Pertinent rule: 1b 
+%
+%Cluster #201 from 4_star_K-350_N-_2014-07-20_03-45.K@303
+\ex Active features: x$<$z (1.0), z$<$q (0.98) \\
+Morph: x.z.q. (root) \\
+Pertinent rule: 1b
+%
+%Cluster #219 from 4_star_K-350_N-_2014-07-20_03-45.K@303
+\ex Active features: d$<$h (1.0), h$<$z (1.0), z$<$d (0.99), z$<$t (0.99) \\
+Morph: None \\
+Pertinent rule: 4
+\end{exe}
+
+\subsubsection{Stage 2: Match morph characters to word characters} Once a morph has been gleaned from a cluster's centroid vector, the characters of the morph must be matched to the corresponding characters in the cluster's member words. 
+
+The $\mathbf{M}$ matrix contains the cluster activities for each word. By consulting $\mathbf{M}$, we can ascertain the set of clusters to
+which each cluster belongs. Each cluster can be thought of as essentially equivalent to a particular morph, since the identities of morphs come from clusters. Indeed, Stage 1 ``extracts" from each cluster a $K$-length vector that  contains the key alphabetic characters associated with the cluster. Thus, via the cluster activities, each word is mapped to its set of morphs.
+
+At this point we will know which morphs are associated with each word, but we do not yet know the order of the morphs in words with more than one. Additionally, we will know, for each morph, whether it is a prefix ($P$), suffix ($SU$), or stem-component ($ST$). For example, suppose that the word \textit{whxlwm} (`and the dream') belongs to four clusters, namely those corresponding to the morphs \texttt{w}_{P}, \texttt{h}_{P}, \texttt{xlm}_{ST}, \texttt{w}_{ST}, where the subscripts $P$ and $ST$ stand for \textit{prefix} and \textit{stem-component}, respectively.
+
+First, the prefixes are matched to word characters. Then stem-components are matched, and finally any suffixes are matched (there are no suffixes in the present example). Whenever a morph character matches a word character, the word character is popped from the word, and the morph character is popped from the morph. The word character is then linked to the morph in question. 
+
+Thus, in our example, the matching algorithm proceeds as follows: First, each of the prefixes \texttt{h}_{P} and \texttt{w}_{P} (the order should not matter) are compared to the first character of \textbf{whxlwm}. The \texttt{w}_{P} matches, so we get \{ \texttt{w}_{P}:\texttt{w} \}. The \texttt{w} is popped from \textbf{whxlwm} as well as from \texttt{w}_{P}, thus completing the prefix morph \texttt{w}_{P} and removing it from consideration. Next, \texttt{h}_{P} (the only remaining prefix) is matched to the \texttt{h} of \textbf{hxlwm}, leaving us with \{  \texttt{w}_{P}:\texttt{w} \texttt{h}_{P}:\texttt{h} \}, \textbf{xlwm}, and no more prefixes.
+
+Now only the stem-components remain. \texttt{w}_{ST} fails to match the first character 
+of \textbf{xlwm}. However, the \texttt{m} of \texttt{xlm}_{ST} does, yielding
+ \{ \texttt{w}_{P}:\texttt{w} \texttt{h}_{P}:\texttt{h}, \texttt{xlm}_{ST}:m\}, 
+ \textbf{lwm}, an stem-components {\texttt{lm}_{ST} and \texttt{w}_{ST}. 
+ The \texttt{q} of {\texttt{lm}_{ST} matches the \texttt{q} in \textbf{qm}, giving us 
+ \{\texttt{w}_{P}:\texttt{w} \texttt{h}_{P}:\texttt{h}, \texttt{xlm}_{ST}:\texttt{mq}\}, 
+ \textbf{wm}, and stem-components \texttt{m}_{ST} and 
+ \texttt{w}_{ST}. Next, \texttt{w}_{ST} matches the \texttt{w} in \textbf{wm}, 
+completing the stem-component \texttt{w}_{ST}. We now have \{\texttt{w}_{P}:\texttt{w} \texttt{h}_{P}:\texttt{h}, \texttt{xlm}_{ST}:\texttt{mq}, \texttt{w}_{ST}:\texttt{w}\}, \textbf{m}, and  
+ \texttt{m}_{ST}.
+ Finally, \texttt{m}_{ST} matches \textbf{m}, completing \{\texttt{xlm}_{ST}\} and consuming the word's last remaining character.
+
+\subsubsection{Stage 3: Compress}. Here, each morph to an atomic symbol, 
+so that, e.g., a three-character morph becomes in effect single-character item, 
+as do all morphs consisting of more than one character. In this way, most of 
+the words will be shortened (in terms of character-count) and thus compressed.
+Each atomic morph symbol will be a unique unicode character. For example, 
+consider the 
+Hebrew words \textit{magdil} and \textit{gadol}, which share the root 
+\textit{g.d.l}. 
+Suppose that the Stage 2 outputs for these words are as in \eqref{ex:magdil} and 
+\eqref{ex:gadol}, respectively. 
+\begin{exe}  \ex \label{ex:unicode} \begin{xlist}
+	\ex magdil \quad ma-, \,\, g.d.l, \,\, i 
+	\label{ex:magdil}
+	\ex gadol \, \quad  g.d.l, \,\, a.o
+	\label{ex:gadol}
+	\end{xlist}
+\end{exe}
+Altogether, there are four \emph{unique} morphs in \eqref{ex:unicode}, namely \textit{ma-}, \textit{g.d.l}, 
+\textit{i}, and \textit{a.o}.
+Stage 3 will map each of these to a unique symbol, as in \eqref{ex:map}, for instance.
+\begin{exe}
+	\ex  \textit{ma-} $\mapsto$ \$ \quad \textit{g.d.l} $\mapsto$ \% \quad
+\textit{i} $\mapsto$ \& \quad \textit{a.o} $\mapsto$ \#
+\label{ex:map}
+\end{exe}
+Finally, each word is reassembled with atomic symbols being substituted for the morphs. 
+They are put together in the original order of their corresponding morphs.
+\begin{exe}  
+	\ex \label{ex:reassembled} \begin{xlist}
+	\ex magdil \quad \$\%\&
+	\label{ex:re-magdil}
+	\ex gadol \, \quad \%\#
+	\label{ex:re-gadol}
+	\end{xlist}
+\end{exe}
+% The atomic symbols are put together in the order of their corresponding character sequences, as illustrated in \eqref{ex:reassembled}. 
+Note, however, that in the case of interdigitation, the relative order of atomic symbols corresponding to interleaved sequences will have to be  decided arbitrarily.
+
+\subsubsection{Stage 4: Test} 
+Two input files, a test and a 
+control file, will now be fed to Morfessor. 
+The test file will be the output of Stage 3.  %will contain the test data, i.e., the compressed words from Stage 3. 
+The control file will consist of the original, unaltered words. 
+It will provide a baseline for measuring the effect 
+of the compression carried out in Stage 3. 
+The idea here is to see if the MCMM's morphs, 
+now represented as atomic symbols, aide the 
+process of morphological segmentation. 
+That is, do they make the task easier? 
+Do they improve segmentation accuracy? 
+
+\subsection{Gold-standard data}
+Recall that Morfessor is a nonlinear \emph{sequential} algorithm; that is, it possesses nonlinearity, but not nonsequentiality (see section~\ref{sec:nls})
+and is thus incapable of detecting non-concatenative roots and patterns. 
+Moreover, interdigitation is lost when atomic symbols are substitute for character sequences. 
+I will thus need two basic types of gold-standard data: one to assess Morfessor's output and one to evaluate the 
+stem-internal root-and-pattern morphology.
+I will need gold-standard segmentations against which to assess Morfessor's output. 
+\paragraph{Morfessor gold standard}
+%I will need gold-standard segmentations against which to assess Morfessor's output.  
+Morfessor will produce two output (or analysis) files, one for the test file (processed words) and one for the control file (original or uprocessed words)
+To obtain gold-standard datasets for Morfessor, I will manually segment $\frac{1}{10}$ of the original, unprocessed wordlist.
+
+Note that I will have a total of three unprocessed wordlists: a list of transcribed words, a list of transcribed words with stress marked, and a list of words spelled according to orthographic conventions. 
+
+\paragraph{Non-concatenative gold standard}
+To evaluate my system's performance on non-concatenative morphology, I will need gold-standard roots for both the transcribed wordlists and the orthographic data. For the transcribed data, I extracted root annotations from the CHILDES morphological analyses. 
+
+%For the orthographic wordlist, I will take advantage of the root annotations provided in the original dataset of \cite{daya-et-al:2008} (see section~\ref{sec:data}).
+
+%\paragraph{Gold-standard annotation}
+%How are we going to figure this out? The control will serve as the baseline. 
+%But we also need a gold standard segmentation to provide a frame of reference for comparing the test and control segmentations. 
+%That is, the respective accuracies of the test and control segmentations 
+%will be measured with respect to the gold standard.
+
+%How large does the gold-standard set need to be? 1000 words? 1/10 of the total data set?
+
+%\subsection{Ancillary (Gold-Standard-Based) Evaluation}
+%This evaluation will involve mapping \textsc{mila-ma}'s categories onto different sets of gold-standard categories. How will these sets differ? The idea, I guess, is to use sets with varying amounts of granularity, or different amounts of modification, or perhaps different types of modification.
+%For example, do we want the categories to create a strict partition? Maybe the gold-standard categories could/should overlap.
+%
+%An MCMM clusters its input vectors (= words) according to shared hidden-unit activations. 
+%Its clusters overlap one another; i.e.,
+%a single word can belong to several clusters at once. % because a word can contain multiple morphemes. 
+%%Evaluating overlapping clusters is more complicated than evaluating disjoint clusters. 
+%To evaluate these clusters,
+%I will use the measures \emph{BCubed Precision} and \emph{BCubed Recall}, 
+%which are specially designed for overlapping clusters \citep{amigo-et-al:2009}.
+%%Precision and recall evaluate a system's output against an external gold standard. 
+%
+%I will use a
+%finite-state morphological analyzer, namely the MILA Morphological Analysis tool (\textsc{mila-ma}) 
+%\citep{hebrew-resources:2008} to generate gold-standard categories. It is, however, non-trivial to apply \textsc{mila-ma} to this purpose.
+%is not entirely straightforward. First, there is the general problem of evaluating an unsupervised clustering algorithm
+%against external criteria. One usually has an idea about what the output should be, 
+%but without a training set,
+%it is difficult to be specific about this. 
+%Second, one must consider that
+%\textsc{mila-ma}'s particular categories may not be appropriate for cluster evaluation in every case.
+%
+%For example, \textsc{mila-ma} tends to use atomic categories such as \textsc{masc} and \textsc{pl} as opposed to \textsc{masc.pl}. In the case of Hebrew, \textsc{masc} and \textsc{pl} are abstract because neither corresponds to an actual morpheme. That is, the Hebrew \textsc{masc.pl} suffix \textit{-im} is fusional; it cannot be split into separate \textsc{masc} and \textsc{pl} substrings (cf. \textsc{masc.sg} forms, 
+%which have no ending, and the \textsc{fem.pl} suffix \textit{-wt}).
+%A clustering algorithm would be 
+%disinclined to treat \textsc{masc} and \textsc{pl} as \textsc{mila-ma} does, since this would mean creating separate \textsc{masc} and \textsc{pl} clusters  despite the lack of a \emph{particular} \textsc{masc} suffix and a \emph{particular} \textsc{pl} suffix.
+%%lack of shared formal elements. clusters because such clusters would not be based on shared formal elements; \textsc{masc} 
+%%would contain words ending in -$\emptyset$ and \textit{-im}, and \textsc{pl} would contain words ending in \textit{-wt} and \textit{-im}.
+%For this and similar reasons, \textsc{mila-ma}'s categories will need to be mapped to a somewhat adapted set 
+%of gold-standard categories.
+
+****************
+\begin{description}
+\item[Stage 1: Extract.] Derive morphs from cluster centroids. That is, for each cluster centroid vector,  map the \emph{active} features to a particular sequence of alphabetic characters. The mappings will be governed by a set of mapping rules. The resulting sequence of alphabetic characters is the morph. Repeat this process for each cluster (i.e., cluster centroid).
+
+\textbf{Example:} Suppose that \texttt{z<k} and \texttt{k<r} are the active features in a given cluster's centroid. These features would map to the (potentially discontinuous) character sequence \textit{zkr}. The morph would thus be the root \textit{z.k.r}.
+
+\item[Stage 2: Match.] Map morph characters to word characters. That is, given a cluster and its morph (obtained in Stage 1), go through the cluster's words, and in each word, determine which characters are the morph's characters. Label these characters as components of the morph in question. Repeat this process for each cluster/morph.
+%Each morph is a (possibly discontinuous) sequence of alphabetic characters. 
+%Given a cluster and its newly extracted morph, identity the morph's characters in each of the clusters words. 
+%That is, for each word, match the morph's characters to the \emph{correct} word characters. Note that there is potential for ambiguity here. Suppose, for example, that the morph in question is the \textit{-wt}. It's easy enough to find a single \texttt{t} in a string of letters, but \texttt{t} is a frequently occurring letter, and it could easily occur elsewhere in the word. I have to make sure my matching algorithm selects the right character in cases like this. Repeat this process for each cluster. 
+%For each word $w$ in a given cluster, identify the characters in $w$ that correspond to the morph's characters. counterparts of each the morph characters to their counterpart character in the word in question. with their matching characters in the word in 
+%the characters of the morph to the corresponding characters in the cluster's member words.
+
+\textbf{Example:}  
+Consider a cluster whose member words are \textit{mazkir}, \textit{hizkir}, \textit{zoker}, \textit{zokrim}, and \textit{zikron}. The morph in this case is the root \textit{z.k.r}. Stage 2 identifies the root consonants in each word and labels them as components of the morph \textit{z.k.r}. Here, the morph's characters are ``labeled" via boldface type:
+%\footnote{In reality, of course, a larger and more sophisticated labeling/indexing system will be necessary, as every morph will require a distinct label/index.}:  
+\textit{ma\textbf{zk}i\textbf{r}},
+\textit{hi\textbf{zk}i\textbf{r}}, \textit{{z}o\textbf{k}e\textbf{r}}, \textit{\textbf{z}o\textbf{kr}im},
+and \textit{\textbf{z}i\textbf{kr}on}.
+The process is repeated for each cluster/morph.
+
+\item[Stage 3: Compress.] Map each morph to a single unique unicode character.
+\textbf{Example:} Consider the 
+Hebrew words \textit{magdil} and \textit{gadol}, which share the root \textit{g.d.l}. 
+Suppose that the Stage-2 outputs for these words are as in \eqref{ex:magdil} and \eqref{ex:gadol}, respectively. 
+\begin{exe}  \ex \label{ex:unicode} \begin{xlist}
+	\ex magdil \quad ma-, \,\, g.d.l, \,\, i 
+	\label{ex:magdil}
+	\ex gadol \, \quad  g.d.l, \,\, a.o
+	\label{ex:gadol}
+	\end{xlist}
+\end{exe}
+Altogether, there are four \emph{unique} morphs in \eqref{ex:unicode}, namely \textit{ma-}, \textit{g.d.l}, 
+\textit{i}, and \textit{a.o}.
+Each of these is mapped to a unique atomic symbol, as in \eqref{ex:map}.
+\begin{exe}
+	\ex  \textit{ma-} $\mapsto$ \$ \quad \textit{g.d.l} $\mapsto$ \% \quad
+\textit{i} $\mapsto$ \textit{i} \quad \textit{a.o} $\mapsto$ \#
+\label{ex:map}
+\end{exe}
+%Let the atomic symbols inherit the sequential order of their counterpart morphs. 
+In general, the atomic symbols inherit the ordering of the original morphs. 
+The exceptional cases are those of interdigitation. When two morphs are interleaved, 
+they are unordered with respect to each other.
+However, when they are mapped to atomic symbols, they necessarily 
+take on an arbitrary relative order because there is no way to interleave two 
+\emph{atomic} units: either $A$ precedes $B$ or $B$ precedes $A$; 
+there is no other option.
+%but with the atomic symbols now taking the places of of the original morphs. Put the symbols in the same order as their morph counterparts.  hat for morphs that are two or more characters long.. They are put together in the same order as the original morphs. This reducing or elsince it replaces whole character sequences, even discontinuous ones, with atomic symbols (see section~). 
+\begin{exe}  
+	\ex \label{ex:reassembled} \begin{xlist}
+	\ex magdil \quad \$\%\textit{i}
+	\label{ex:re-magdil}
+	\ex gadol \, \quad \%\#
+	\label{ex:re-gadol}
+	\end{xlist}
+\end{exe}
+%Now, when the characters of the two morphs are interleaved, i.e. in the case of interdigitation, the relative order of the morphs is indeterminate. However, when these two morphs are mapped to atomic symbols, they necessarily take on an arbitrary relative order. That is, either $A$ precedes $B$ or $B$ precedes $A$; there is no other option. 
+The mapping from morphs to atomic symbols thus abstracts interdigitation.  
+
+\item[Stage 4: Test.]
+%-- concatenative morphs.]
+Feed both the control file (i.e., the file containing the original wordlist) and the test file (i.e., the output of Stage 3) to
+Morfessor \citep{creutz-and-lagus:2005, creutz-and-lagus:2007}. Morfessor then will induce morphological segmentations for each input file, yielding a \emph{control segmentation} and a \emph{test segmentation}. The words in the test segmentation will at this point still consist of the atomic symbols from Stage 3. Without disrupting Morfessor's segmentation decisions, change the atomic symbols back to morphs (i.e., undo Stage 3). Finally, evaluate the two segmentations against a common gold standard.
+%control file, will 
+%%now be fed to Morfessor. 
+%The test file will be the output of Stage 3.  The control file will contain the original, unaltered words. 
+%It will provide a baseline 
+%for measuring the effect of the compression carried out in Stage 3. 
+%The idea here is to see if the MCMM's morphs, 
+%now represented as atomic symbols, aide the process of morphological segmentation. 
+%That is, do they make the task easier? 
+%Do they improve segmentation accuracy? 
+\end{description}
