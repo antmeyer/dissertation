@@ -103,11 +103,11 @@ were conducted over a period of 12 to 19 months.
 %12 and 19 months.
 % (i.e., 1 year to 1 year, 7 months). 
 Each child was between 16 and 21 months old when his/her 
-recording sessions began, and between 28 to 39 months old ($2\frac{1}{3}$ years to $3\frac{1}{4}$) when they ended.
+recording sessions began, and between 28 to 39 months old ($2\frac{1}{3}$ to $3\frac{1}{4}$ years old) when they ended.
 %\citep{albert-et-al:2013}, \citep{albert-et-al:2012}, \citep{macwhinney:2000a}
 %and thus contains the 
 %speech of adults as well as children. 
-On the corpus's website, Berman characterizes the subjects and their backgrounds as follows: ``All four children are native speakers of Hebrew raised in monolingual, highly educated Hebrew-speaking homes, with both parents professionals, in urban communities of central Israel" \citep{berman-long-web}.
+%On the corpus's website, Berman characterizes the subjects and their backgrounds as follows: ``All four children are native speakers of Hebrew raised in monolingual, highly educated Hebrew-speaking homes, with both parents professionals, in urban communities of central Israel" \citep{berman-long-web}.
 
 %On the corpus's website, Berman characterizes the subjects and their backgrounds as follows:``All four children are native speakers of Hebrew raised in monolingual, highly educated Hebrew-speaking homes, with both parents professionals, in urban communities of central Israel" \citep{berman-long-web}.
 %``Finally, both the transcribers and the researchers involved in the project knew the children and their parents, and were familiar with the children's linguistic development beyond the data provided by the recorded sessions." (Berman, Intro to Berman Longitudinal Corpus)
@@ -138,14 +138,18 @@ by the child's mother (MOT).
 \textsf{\%gra:} \> \textsf{1|0|ROOT 2|1|ANONAGR 3|1|PUNCT}
 \end{tabbing}
 \end{figure}
-The first utterance is the mother's,
-who says, ``What is Mommy doing in the kitchen?". The child
+
+The first utterance in figure~\ref{fig:excerpt} is that of mother,
+who says, ``What is Mommy doing in the kitchen?" 
+
+The child
 replies,``\textsf{rox\a'{e}cet kel\a'{i}m .}'' `Washing dishes.'
 %by the target child (\textsf{CHI}), and the second by the child's 
 %mother (\textsf{MOT}). 
 %The first utterance is the mother's.
 %She says, ``What is Mommy doing in the kitchen?"  
 %The child answers, ``Washing dishes."
+
 The asterisk (*) 
 preceding the labels \textsf{CHI} and \textsf{MOT} indicates 
 that these tiers are \emph{main} tiers, i.e.,  
@@ -404,7 +408,7 @@ would be transcribed as \textsf{we\# ha\# y\'eled}.
 
 \begin{exe}\label{ex:preclitics}
 	\ex
-	\textsf{we\#\, \v{s}e\# me\textipa{Q}arbev\'im} \textsf{me\textipa{Q}arbev\'im}\\
+	\textsf{we\#\, \v{s}e\# me\textipa{Q}arbev\'im} \\ %\textsf{me\textipa{Q}arbev\'im}\\
 	\textsf{conj|we conj:subor|\v{s}e\, part|\textipa{P}irb\'ev\&root:\textipa{Q}rbb\&ptn:piel\&gen:ms\&num:pl} 
 \end{exe}
 
@@ -480,7 +484,7 @@ between the two is not entirely clear.
 
 In any case, however, the distinction, if there is one, is not important for our  purposes. 
 Either way, we want to replace the anomalous form with the form in enclosed in 
-(the first pair of) brackets (see REF). We can just discard the \textsf{[*]} if it is present.
+(the first pair of) brackets (see REF). We can just discard the \textsf{[*$\tau$]} if it is present, regardless of what $\tau$ is.
 
 %\begin{figure}[ht]
 %\vspace{10pt}
@@ -521,7 +525,7 @@ The BLC's transcribers ``restored'' such dropped or deleted sounds and enclosed 
 \end{tabbing}
 \end{exe}
 
-\paragraph{Redundancies}
+\paragraph{Duplications}
 Sometimes a word, or, as in (\ref{ex:redundant}), a prefixal clitic, is duplicated, and sometimes repeated
 several times consecutively. As in (\ref{ex:redundant}), in which the prefixal clitic \textit{we\#} is 
 repeated several times, no special annotation is to mark or correct the repetition. Notice that morphological analysis for
@@ -810,13 +814,10 @@ The experimental portion of this dissertation consisted of two major axes of inq
 %Alright, now let us turn to question of what I needed to obtain/extract from the corpus
 %in order to run the experiments.
 %following is what I needed to get from the corpus:
-The \textsc{data representation} variable refers to the way the words were encoded in the input
+\textsc{data representation} refers to the ``encoding'' of the input
 word lists. Essentially, it refers to a choice between one of two alphabets (and the spelling conventions that 
 accompany each alphabet). The two alphabets are the standard consonantal Hebrew alphabet, consisting of 22 letters,
 and the 34-symbol BLC transcriptional system. 
-
-
-
 
 %Multimorph was run on each type of representation, and the results were compared. 
 
@@ -942,8 +943,6 @@ part of the evaluation (see chapter \ref{ch:eval}).
 %What is a transcription? What are the ``quasi-transcriptions" in the BLC like?
 %How is it and different and similar to the Orthographic Data?
 
-%\subsection{Mixing Function}
-%\subsection{Objective Function}
 In \ref{ch:intro}, we discussed the problem of choosing a feature set. We described it as a problem of selecting one finite subset of 
 features from an infinite number of possible features.
 In the remainder of this chapter, we revisit this question. Our approach will be to think in terms of feature categories, i.e., to define categories of features that have favorable properties. We shall also consider the properties of our learning framework, discarding feature types (or categories) that are at odds with our learning framework, whether conceptually or mathematically. Ultimately, we cannot consider every possible feature or feature set. What we can do is produce some principled candidate feature sets with which to experiment. 
@@ -966,13 +965,13 @@ also relevant to ULM.
 
 \subsection {Data Representation.} 
  %\emph{representation} of the input data,
-By \emph{representation} we refer to mainly the alphabet used to spell out the strings (i.e., words) 
+By \emph{representation} we refer mainly to the alphabet used to spell out the strings (i.e., words) 
 %---the
 %particular set of symbols---that compose the strings (i.e., words) 
 of a input wordlist.
 In the present work, two data representations were tested, one transcriptional 
-(\textbf{T}), the other orthographic (\textbf{O}). We shall identity the dataset with transcriptional representation as``T,' and
-the one with the orthographic as ``O.''
+(\textbf{T}), the other orthographic (\textbf{O}). 
+%We shall identity the dataset with transcriptional representation as``T,' and the one with the orthographic as ``O.''
 T is essentially the BLC (but without stress markings). Its alphabet is thus BLC's 
 transcriptional system, which we discussed above in section. % \ref{sec:transcription}.
 T and O differ both qualitatively and quantitatively. 
@@ -980,9 +979,6 @@ Arguably, T contains more information than O,
 since T has a distinct symbol for each of MH's five vowels sounds, %, %and each vowel sound has its own distinct symbol 
 %that is devoted exclusively to that vowel.
 as well as all of the archaic consonantal distinctions found in O.
-
-\subsection{Experimental Program}
-The experiments tested 
 
 \subsection{Features}\label{sec:expvars:features}
 \label{sec:features}
@@ -1140,11 +1136,11 @@ are rotation variant.
 %What about global and local features? How do global and local relate 
 %to variant and invariant? Are global and local independent of invariant and 
 %variant? If so we have a 2x2 confusion matrix.
-Multimorph clusters words on the basis of shared components. 
-Word length---even normalized word length---is not %really
-germane to whether or not two words share a component. 
+%Multimorph clusters words on the basis of shared components. 
+%Word length---even normalized word length---is not %really
+%germane to whether or not two words share a component. 
 
-
+\subsubsection{Global vs. Local Features}
 Global features describe an image as a whole, whereas local features are concerned
 only with a particular region in the image. That is, the value of local feature is dependent
 only upon its particular region; it is not affected by other regions. 
@@ -1152,22 +1148,20 @@ In OCR, an example of a global feature is \emph{aspect ratio}, defined
 as the width of a character's rectangular bounding box divided by the same 
 box's height. Note that aspect ratio is size invariant. Global features 
 can be made invariant 
-through normalization, and ratios are means of normalization.
+through normalization, and ratios are a means of normalization.
 
-A global feature for ULM might be something like the number 
+A global feature for ULM could be the number 
 of characters in a given word, which could be binned. Another 
 could be the consonant to vowel ratio in a word. The question, however, is 
 whether such properties are relevant and beneficial to Multimorph's task,
 which is to group together words that share components.
-
 %Multimorph detects systematic similarity by grouping together words that share
 %components (see chapter \ref{autonomous}). 
 %Features like word length---even 
 %normalized word length---are not helpful to this task.  
-
-Global features are not conducive to bipartite graphical learning frameworks.
-Recall from (REF) that an MCMM is a bipartite graph, and from (REF) that 
-a bipartite graph satisfies the following:
+However, global features are not conducive to bipartite graphical learning frameworks.
+Recall from chapter~\ref{ch:graph} that an MCMM is a bipartite graph and thus 
+satisfies the following:
 %[Insert definition here:]
 %A multipartite graph is a graph 
 %whose nodes can be partitioned into $N$ \emph{disjoint} sets of 
@@ -1180,30 +1174,39 @@ a bipartite graph satisfies the following:
 \item within each partition, all nodes are independent, i.e., mutually 
 nonadjacent.
 \end{enumerate}
-In the case of an MCMM, the two partitions are the vectors $\textbf{m}_{i}$
-and $\textbf{r}_{i}$ (for each word $i$). The former is the vector of cluster activities; the latter
-is the \emph{reconstruction} of the feature-vector representation of word $i$. (Recall from REF that $\textbf{r}_i$ is a working
+In an MCMM, the two partitions are the vectors $\textbf{m}_{i}$
+and $\textbf{r}_{i}$ (for each word $i$). The former is the vector of cluster activities, and the latter
+is the \emph{reconstruction} of word $i$'s original feature-vector representation of word. (Recall from chapter~\ref{ch:MCMM}, specifically section~\ref{sec:architecture}, that $\textbf{r}_i$ is a working
 reconstruction of $\textbf{x}_i$, the original and target feature vector for word $i$.)
 By the definition of \emph{bipartite}, \emph{every} feature in $\textbf{r}_i$ is independent,
 and thus every feature is local. 
 
-Moreover, words tend to be complex objects, composed multiple morphological units.
-These morphological units are often to some extent orthogonal. For example, a given 
-plural suffix can appear with wide variety of stems. Any two words may share 
-just one morphological component among many. The discrepancies could easily 
-outnumber the one shared component, and yet 
+Moreover, words tend to be complex objects, often composed of multiple morphological units.
+These morphological units are generally to some extent orthogonal. That is, a
+plural suffix can appear with wide variety of stems, for example, and a given stem may occur with a wide variety of suffixes.
+Two words can share a single morphological component and differ in the rest their of their components. Indeed,
+they can be more different than they are alike from a cumulative, quantitative point of view. Nevertheless,
+as far as that one shared component is concerned, these two are \emph{the same} and thus co-members of a morphological
+class. Global features do not seem well-suited to represent this kind of modular similarity. 
 
-and a single stem can appear with many different suffixes. 
-rather, each is composed one or more---potentially many more---morphological units. 
-Moreover, these morphological units are more or less orthogonal and thus freely recombinable. 
-For instance, a given plural suffix can appear with wide variety of stems, 
-and a single stem can appear with many different suffixes. The point 
-is that global features, features 
-that pertain to an object as a whole, are probably not going to benefit the %useful in %for the purpose of 
-clustering of complex objects such as words. That is, any two words may share 
-just one morphological component among multiple components in either word,
-being otherwise entirely different. The differences  could easily 
-outnumber the one shared component. 
+This dissertation's experiments were thus did not test global features, and thus all features in the present study were local.
+On the other hand, the invariant vs. variant distinction was a focal point in this study.
+The kind of invariance at issue was \emph{affixation-invariance}; which means that the value of a given feature does not change
+when affixes are attached to the beginning or end of the word. 
+Two main feature types were tested, namely \emph{positional features}, which are affixation-variant, 
+and \emph{precedence features}, which are affixation-invariant.
+
+%and a single stem can appear with many different suffixes. 
+%rather, each is composed one or more---potentially many more---morphological units. 
+%Moreover, these morphological units are more or less orthogonal and thus freely recombinable. 
+%For instance, a given plural suffix can appear with wide variety of stems, 
+%and a single stem can appear with many different suffixes. The point 
+%is that global features, features 
+%that pertain to an object as a whole, are probably not going to benefit the %useful in %for the purpose of 
+%clustering of complex objects such as words. That is, any two words may share 
+%just one morphological component among multiple components in either word,
+%being otherwise entirely different. The differences  could easily 
+%outnumber the one shared component. 
 %Recall that an MCMM is a bipartite graph because its layer of cluster-activity 
 %nodes is separate from the ``surface'' feature nodes of the reconstruction later. 
 %Thus, each cluster-activity node $m_{ik}$ can either connect to the
@@ -1246,36 +1249,91 @@ to the end are negative. In any case, the number of positions considered
 at the beginning is always equal to the number at the end. This number, 
 $s$, is an experimental variable.
 %the variable $s$ is equal to the absolute value of the smallest negative index. 
-For example, $s=3$ means that for each character $\alpha$, the following 
-features are generated: $\alpha$\texttt{@[0]}, $\alpha$\texttt{@[1]}, 
-$\alpha$\texttt{@[2]}, $\alpha$\texttt{@[-1]}, $\alpha$\texttt{@[-2]}, 
-$\alpha$\texttt{@[-3]}.
+%For example, $s=4$ means that for each character $\alpha$, the following 
+%features are generated: $\alpha$\texttt{@[0]}, $\alpha$\texttt{@[1]}, 
+%$\alpha$\texttt{@[2]}, $\alpha$\texttt{@[3]}, $\alpha$\texttt{@[-1]}, $\alpha$\texttt{@[-2]}, 
+%$\alpha$\texttt{@[-3]}, $\alpha$\texttt{@[-4]}.
 %\footnote{Note, however, that the textual labels 
 %of features are ultimately arbitrary; it is a feature's index that truly matters.} 
 That is, we count three positions inward from each word boundary.
+Positional features are \emph{variant} 
+with respect to affixation, which is to say that positional features are 
+defined relative to the absolute beginning 
+or end of a given word. 
 
 \subsubsection{Precedence Features}
 Precedence features indicate, for any two characters $x$ and $y$,
 whether $x$ precedes $y$ within $\delta$ characters,
 where $\delta$ is an experimental variable defined as
-	\begin{equation*}
+	\begin{equation}\label{eq:indexdif}
 	\delta = \text{index}(x) - \text{index}(y)
-	\end{equation*}
+	\end{equation}
 Note that if $\delta = 1$, the precedence features are pairs of adjacent 
 characters, i.e., bigrams.
-Precedence features are affixation-invariant. Consider for example 
-the word \textit{bediy\'uq}. If $\delta = 1$, \dots 
+Precedence features are affixation-invariant. 
+Consider for example 
+the word \textsf{bediy\'uq}. If $\delta = 1$, \dots 
+As an example, consider again the word \textsf{we\v{s}eme\textipa{Q}arbevim} `and which confuse', whose BLC morphological 
+analysis appears above in example (\ref{ex:preclitics}). This word has two prefixal clitics, namely \textsf{we} 
+(`and') and \textsf{\v{s}e} (`which'). %, and one inflectional prefix, namely \textsf{-im} `masc. pl.' 
+Consider the features \textsf{b < v}, \, \textsf{e < v}, \,\textsf{\textipa{Q} < r},\, and \textsf{\textipa{Q} < b}. If $\delta=2$, these features would get the 
+following values: 
+\begin{exe}	
+	\ex \textsf{b < v} $ =1 $, \qquad \textsf{e < v} $ =1 $, \qquad\textsf{\textipa{Q} < r} $ =1$, \qquad \textsf{\textipa{Q}< b} $=0$
+\end{exe}
 
-Precedence features are invariant with respect to affixation; that is to say, 
+All evaluate to 1 or \textsc{true} except \textsf{\textipa{Q} < b}, since
+\begin{exe}
+	\ex $\text{index}($\textsf{b}$) - \text{index}($\textsf{\textrevglotstop}$) = 9 - 6 = 3$
+\end{exe}
+which is greater than 2.
+The others evaluate to 1 because the difference between indices in their cases is \emph{at most} 2. That is,
+\begin{exe}
+    \ex \begin{xlist}
+	\ex $\text{index}($\textsf{v}$) - \text{index}($\textsf{b}$) = 11 - 9 = 2$ 
+	\ex $\text{index}($\textsf{v}$) - \text{index}($\textsf{e}$) = 11 - 10 = 1$ 
+	\ex $\text{index}($\textsf{r}$) - \text{index}($\textsf{\textrevglotstop}$) = 8 - 6 = 2 $
+    \end{xlist}
+\end{exe}
+%\begin{exe}\label{ex:preclitics2}
+%	\ex
+%	\textsf{we\#\, \v{s}e\#\, me\textipa{Q}arbev\'im}\, \textsf{me\textipa{Q}arbev\'im}\\
+%	\textsf{conj|we\, conj:subor|\v{s}e\, part|\textipa{P}irb\'ev\&root:\textipa{Q}rbb\&ptn:piel\&gen:ms\&num:pl} 
+%\end{exe}
+
+%Now, notice what happens when we remove the prefixal clitics \textsf{we} 
+%and \textsf{\v{s}e}, leaving just the present tense, masc. pl. 
+%verb \textsf{me\textipa{Q}arbevim}.
+%\begin{align*}
+%	\text{index}(\textsf{\textipa{v}}) - \text{index}(\textsf{b}) &= 7 - 5 = 2 \quad\to\quad \textsf{b\<v}=1 \\
+%	\text{index}(\textsf{\textipa{v}}) - \text{index}(\textsf{e}) &= 7 - 6 = 1 \quad\to\quad \textsf{e\<v}=1 \\
+%	\text{index}(\textsf{\textipa{r}}) - \text{index}(\textsf{Q})  &= 4 - 2 = 2 \quad\to\quad \textsf{\textipa{Q}\<r}=1  \\
+%	\text{index}(\textsf{\textipa{b}}) - \text{index}(\textsf{Q}) &= 5 - 2 = 3 \quad\to\quad \textsf{\textipa{Q}\<b}=0\\ 
+%\end{align*}
+\begin{exe}
+    \ex \begin{xlist}
+	\ex $\text{index}($\textsf{v}$) - \text{index}($\textsf{b}$) = 7 - 5 = 2 \quad\to\quad $ \textsf{b < v} $ =1 $
+	\ex $\text{index}($\textsf{v}$) - \text{index}($\textsf{e}$) = 7 - 6 = 1 \quad\to\quad $ \textsf{e < v} $ =1 $
+	\ex $\text{index}($\textsf{r}$) - \text{index}($\textsf{\textrevglotstop}$) = 4 - 2 = 2 \quad\to\quad $\textsf{\textipa{Q} < r} $ =1 $
+	\ex $\text{index}($\textsf{b}$) - \text{index}($\textsf{\textrevglotstop}$) = 5 - 2 = 3 \quad\to\quad $ \textsf{\textipa{Q} < b} $ =0 $ 
+    \end{xlist}
+\end{exe}
+
+
+The feature valuations do not change.
+Precedence features are thus invariant with respect to affixation; that is to say, 
 they are 
 \emph{affixation-invariant}.
 Precedence features are not bound to absolute character positions, i.e., 
 absolute indices. They are not defined relative to fixed points such as 
 the beginning or end of a word.
-On the other hand, positional features are \emph{variant} 
-with (respect to) affixation, which is to say that positional features are 
-defined relative to the (absolute) beginning 
-or end of a given word. 
+%On the other hand, positional features are \emph{variant} 
+%with (respect to) affixation, which is to say that positional features are 
+%defined relative to the (absolute) beginning 
+%or end of a given word. 
 %\section{Evaluation paradigms}
 %\subsubsection{Intrinsic evaluation}
 %\subsubsection{Extrinsic evaluation}
+
+\subsection{Experimental Program}
+The experiments tested the following combinations of the parameters 
