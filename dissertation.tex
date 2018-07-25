@@ -50,6 +50,7 @@
 \usepackage{subfigure}
 \usepackage{wrapfig}
 \usepackage{cjhebrew}
+\usepackage[printonlyused,withpage]{acronym}
 %\usepackage[T1, T2A]{fontenc}
 %\usepackage{subcaption}
 %\usepackage{dcolumn}
@@ -77,9 +78,11 @@
 \usetikzlibrary{shapes,arrows}
 \usepackage{multicol}
 \usepackage{gb4e}
+%\usepackage[printonlyused,withpage]{acronym}
 %\usepackage{expex}
 %\input expex
-\usepackage[normalem]{ulem}
+%\usepackage[normalem]{ulem}
+%\usepackage{nomencl}
 % Uncomment this to make sure marginpars are removed before submission:
 %\renewcommand{\marginpar}[1]{}
 %\renewcommand{\theequation}{\roman{equation}}
@@ -100,8 +103,13 @@
 %data for Copyright Page
 \cryear{2018}
 
-\includeonly{ch-ExperimentalSetup}
+%\includeonly{ch-ExperimentalSetup}
 
+
+%\makenomenclature
+ 
+%\renewcommand{\nomname}{List of Abbreviations}
+ 
 \begin{document}
 \maketitle
 
@@ -109,32 +117,43 @@
 
 \copyrightpage
 
+
 %\begin{dedication}
 %\end{dedication}
 
-\begin{acknowledgments}
+%\begin{acknowledgments}
 %The acknowledgments are designed to recognize people or agencies to whom you feel grateful for any academic,
 %technical, financial, or personal aid in the preparation of your thesis or dissertation; as a matter of
 %courtesy, you would ordinarily mention the members of your committee here, as well as institutions that
 %provided funding, your typist, or anyone else who helped.
-I just love everyone. I just want everyone to be happy and to like me.
-\end{acknowledgments}
-
+%I just love everyone. I just want everyone to be happy and to like me.
+%\end{acknowledgments}
+ 
+%\printnomenclature 
+%\hfill % add blank space
+% 
+%NLP is a field of computer science, artificial intelligence, and linguistics concerned with the interactions between computers and human (natural) languages.
+% 
+%\nomenclature{NLP}{Natural Language Processing}
+% 
+%$\sigma$ is the eighteenth letter of the Greek alphabet, and carries the 's' sound. In the system of Greek numerals, it has a value of 200. 
+% 
+%\nomenclature{$\sigma$}{The total mass of angels per unit area}
 %\begin{preface}
 %\end{preface}
 
 \begin{abstract}
-This dissertation will present a novel approach to the 
-unsupervised learning of morphology (ULM). 
+This dissertation will present a novel approach to the \ac{ULM}
+%unsupervised learning of morphology (ULM). 
 My primary research objective is to demonstrate \emph{how} one can 
 implement autosegmental morphological theory in a machine learning system.
-Most previous work in ULM has treated concatenative and non-concatenative 
+Most previous work in \ac{ULM} has treated concatenative and non-concatenative 
 morphological processes as fundamentally different, 
 e.g., by designing separate modules, one for concatenative morphology 
 and one for non-concatenative.
-I will show that a Multiple Cause Mixture Model (MCMM) 
-can serve as a universal framework for ULM, i.e., one that handles concatenative 
-and non-concatentive morphology in a unified manners. 
+I will show that a \ac{MCMM}
+can serve as a universal framework for \ac{ULM}, i.e., one that handles concatenative 
+and non-concatentive morphology in a unified manner. 
 
 My secondary research objectives address matters of implementation 
 and thus support my primary objective.
@@ -146,7 +165,7 @@ features referencing markings on adjacent words or any
 other property that transcends word boundaries.
 Each feature vector (representing a word) is utterly void 
 of morphosyntactic information.
-Consequently, the MCMM has no means of learning traditional morphemes 
+Consequently, the \ac{MCMM} has no means of learning traditional morphemes 
 or morphosyntactic categories.
 Instead, it learns \emph{morphs}, intermediate units that reside between 
 phonology and morphosyntax. 
@@ -168,6 +187,33 @@ for a system that learns morphs.
 
 \tableofcontents
 %\include{iuphd-doc}
+\chapter*{Acronyms and Abbreviations}
+\addcontentsline{toc}{chapter}{Acronyms}
+\begin{acronym}[TDMA]
+	\acro{1}[1p]{first person}
+	\acro{2}[2p]{second person}
+	\acro{3}[3p]{third person}
+	\acro{n}[\textsc{n}] {\textsc{number}}
+	\acro{p}[\textsc{p}] {\textsc{person}}
+	\acro{g}[\textsc{g}] {\textsc{gender}}
+	\acro{sg}[\textit{sg}]{singular}
+	\acro{pl}[\textit{pl}]{plural}
+	\acro{past}[\textit{past}]{past tense}
+	\acro{pres}[\textit{pres}]{present tense}
+	\acro{fut}[\textit{fut}]{future tense}
+	\acro{pp}[\textit{pp}]{perfect participle}
+	\acro{MCMM}{Multiple Cause Mixture Model}
+	\acro{ULM}[unsupervised morphological learning]{Unsupervised Learning of Morphology}
+	\acro{BLC}{Berman Longitudinal Corpus}
+	\acro{MH}{Modern Hebrew}
+	\acro{CH}{Classical Hebrew}
+	\acro{MPS}{morphosyntactic property set}
+	\acro{LPV}{Letter Predecessor Variety}
+	\acro{LSV}{Letter Successor Variety}
+	\acro{DM}{Distributional Morphology}
+	\acro{PFM}{Paradigm Function Morphology}
+	
+\end{acronym}
 \include{ch-Intro}
 \include{ch-LitReview}
 \include{ch-GraphTheoretic} % Graph-Theoretic Foundation
