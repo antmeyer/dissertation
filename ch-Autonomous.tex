@@ -17,7 +17,7 @@
 %% In some depth: Stump, Aronoff
 %% However, most WP proponents these days, assume that Aronoff's morphomes exist.
 %% and use the term morphome in their own theories.
-%Where the \ac{ULM} 
+%Where the \ac{ULM}  
 %``Unsupervised Learning of Morphology" is concerned, what 
 %is the learning target? The most immediate answer would 
 %seem to be ``morphology,"
@@ -28,32 +28,31 @@
 %of \emph{morphology}.
 %One of the most pernicious 
 %[and yet potentially most solvable] 
-%problems in \ac{ULM}
+%problems in \ac{ULM} 
 %%the Unsupervised Learning of 
-%%Morphology (\ac{ULM}) 
+%%Morphology (\ac{ULM} ) 
 %is that its researchers do not seem to understand what
 %their systems are learning. That is, morphological status
 %what
 %their systems
 \section{Introduction}
 Many morphologists in recent decades have rejected the notion of the morpheme---a concept that inextricably binds morphology to syntax and semantics---in favor of approaches that regard morphology as autonomous, i.e., as independent 
-of both syntax/semantics and phonology. The principle objective of this chapter is to :
+of both syntax/semantics and phonology. The principle objective of this chapter is to 
 %\begin{itemize}
 %\item 
-yo demonstrate the legitimacy of autonomous morphology as a learning target for a \ac{ULM} system, i.e., to show that it makes sense to try to learn morphological units that are not morphemes.
+show that autonomous morphological units are legitimate learning targets for a \ac{ULM}  system. In fact, as we shall soon, autonomous morphology is more than just legitimate; it is the only possible learning target for \ac{ULM}  as it is conventionally defined. %, i.e., to show that it makes sense to try to learn morphological units that are not morphemes.
 %\item 
-We will discuss some of the more prominent theories of autonomous morphology, noting their significance to \ac{ULM} (and Multimorph in particular.) 
+In the course of the discussion, we shall consider some of the more prominent theories of autonomous morphology, contrasting them with ``non-automonous" approaches, and  noting their significance to \ac{ULM} (and Multimorph in particular).
 
-%and discuss their signifance where relationship to \ac{ULM} and, more specifically, to Multimorph.
+%and discuss their signifance where relationship to \ac{ULM}  and, more specifically, to Multimorph.
 %\end{itemize}
-% is to demonstrate that autonomous morphology is more than as a earning target for a \ac{ULM} system. However, autonomous morphology, as we shall see, is more   in doing so, we shall  But more than that, this chapter will show , %an unsupervised morphological learning system, 
+% is to demonstrate that autonomous morphology is more than as a earning target for a \ac{ULM}  system. However, autonomous morphology, as we shall see, is more   in doing so, we shall  But more than that, this chapter will show , %an unsupervised morphological learning system, 
 %instead to develop\emph{autonomous morphology} refers to a view of morphology wherein morphology is considered to be independent of both syntax/semantics and phonology.  often used to describe morphological theories 
 %The main objective of this chapter is to demonstrate that not only is autonomous morphology
 
 
 \section{The Unsupervised Learning of \textit{What}, Exactly?} 
-In the literature on the Unsupervised Learning of Morphology 
-(\ac{ULM}), authors often use the word \emph{morphemes} 
+In the \ac{ULM} literature, authors often use the word \emph{morpheme(s)} 
 when describing their the systems' \emph{learning target(s)}, i.e., what their systems are meant to learn and 
 output, as well as the features that compose their input feature vectors.
 \cite{poon-et-al:2009}, for example, use two main categories 
@@ -89,8 +88,8 @@ in more formal or technical contexts. Indeed,
 of the above three terms, they probably use 
 \emph{morph} most frequently.
 
-Moreover, \ac{ULM} researchers virtually never specify what they mean
-when they they use the word \emph{morphology}, even though there
+Moreover, \ac{ULM}  researchers virtually never specify what they mean
+when they use the word \emph{morphology}, even though there
 are currently at least two fundamentally different schools of thought concerning the nature of morphology. These are the 
 the \emph{morpheme-based} and \emph{lexeme-based} views, to borrow the labels that \cite{aronoff:1994} has assigned 
 to these categories. The lexeme-based view, to which a majority of morphologists now subscribe (CITE),
@@ -99,18 +98,18 @@ and phonological realization, but has neither meaning nor phonologically realize
 of lexeme-based morphology thus do not believe in pairings of form and meaning, i.e., morphemes, as fundamental linguistic
 units. We shall further discuss the notion of autonomous morphology in section (REF). %, but for now, observe 
 
-One's morphological theory effects the way in which one interprets the output of a \ac{ULM} system. 
-If one describes a \ac{ULM} system and its learning task in terms of morpheme-based morphology, one must also struggle to 
+One's morphological theory effects the way in which one interprets the output of a \ac{ULM}  system. 
+If one describes a \ac{ULM}  system and its learning task in terms of morpheme-based morphology, one must also struggle to 
 describe its output as consisting of morphemes, as do, for example, \cite{creutz-and-lagus:2007,creutz-and-lagus:2005}. 
 In contrast, under a lexeme-based theory, 
-one would view the output of a \ac{ULM} system as consisting of \emph{autonomous} morphological units, i.e., 
+one would view the output of a \ac{ULM}  system as consisting of \emph{autonomous} morphological units, i.e., 
 expressly non-morpheme units. 
-Thus, one's theory of morphology makes an implicit claim about the output of his/her \ac{ULM} system.
+Thus, one's theory of morphology makes an implicit claim about the output of his/her \ac{ULM}  system.
 %At this point, the attentive reader would be well-justified 
 %in asking, 
 %``WTF? What the F-word does Morfessor learn? What indeed 
 %does \emph{any} 
-%\ac{ULM} system learn?" Indeed, dear reader, these are 
+%\ac{ULM}  system learn?" Indeed, dear reader, these are 
 %excellent questions; 
 %they will prove very significant to us, particularly the latter, 
 %more general question, for it is directly relevant to what we 
@@ -119,21 +118,21 @@ Thus, one's theory of morphology makes an implicit claim about the output of his
 The output of any machine learning system depends to 
 a great extent on the nature of its input, which, in the case of the \emph{unsupervised} learning of morphology, 
 has a lot to do with the meaning of ``unsupervised." 
-%In the case of \ac{ULM}, the input is invariably a list of contextless words [cite?]. 
+%In the case of \ac{ULM} , the input is invariably a list of contextless words [cite?]. 
 %And thus no syntactic or otherwise word-external features can be considered. 
 %Any categories acquired by the algorithm thus cannot be conventional (or ``classical") 
 %%morphemes, since morphemes are by definition minimal pairings of form and meaning.
-%Now unsupervised learning is of course central to \ac{ULM}, 
+%Now unsupervised learning is of course central to \ac{ULM} , 
 %but one might might reasonably ask what ``unsupervised" 
 %means in the context of morphological learning. 
-All of the major \ac{ULM} 
+All of the major \ac{ULM}  
 systems take as input a list of independent tokenized words. 
 Thus, a convention seems to have emerged whereby, in the 
-case of \ac{ULM}, the meaning of \emph{unsupervised} includes a
+case of \ac{ULM} , the meaning of \emph{unsupervised} includes a
 requirement that each word be free of morphosyntactic 
 or semantic information. In practice,
 this means being entirely free of context. I am 
-not aware of a \ac{ULM} system that extracts features from a word's raw context, i.e.,
+not aware of a \ac{ULM}  system that extracts features from a word's raw context, i.e.,
 unanalyzed adjacent words. Presumably, this is because 
 such a context would not be helpful to a machine learner. 
 It would probably have to be abstracted and categorized 
@@ -148,12 +147,12 @@ for it to be helpful to a system.
 
 Because morphemes are irreducible and arbitrary pairings of form and meaning
 but in order to deduce meaning, one needs contextual information. Because
-a \ac{ULM} system does not have access to context, it simply cannot learn classical morphemes.
-A \ac{ULM} system might learn subsequences of word strings that tend to resemble
- classical morphemes \emph{in form}, but even in such cases, \ac{ULM} systems are oblivious to what
+a \ac{ULM}  system does not have access to context, it simply cannot learn classical morphemes.
+A \ac{ULM}  system might learn subsequences of word strings that tend to resemble
+ classical morphemes \emph{in form}, but even in such a case, it would be oblivious to what
  these pieces of form actually mean. 
 Since the words under analysis in \ac{ULM} are not accompanied by contextual features,
-there is no way to induce classical morphemes in \ac{ULM},
+there is no way to induce classical morphemes in \ac{ULM} ,
 which are by definition (minimal) pairings of one form and one 
 meaning.
 %\footnote{Bloomfield, the leader of the American 
@@ -163,12 +162,12 @@ meaning.
 %turn be analyzed into smaller recurrent (meaningful) forms. 
 %Hence any unanalyzable word or formative is a morpheme" 
 %\citep[][p. 155]{bloomfield:1926}.} 
-And thus, \ac{ULM} systems, particularly those which learn solely from 
+And thus, \ac{ULM}  systems, particularly those which learn solely from 
 from lists of raw, contextless words, simply cannot learn 
 \emph{morphemes} in the strict sense of the term.
 
 Consider, for example, Linguistica, the seminal 
-\ac{ULM} system developed by \cite{goldsmith:2001, goldsmith:2006}. 
+\ac{ULM}  system developed by \cite{goldsmith:2001, goldsmith:2006}. 
 Linguistica finds morphological relationships by filling in 
 data structures 
 called \emph{signatures} as it iterates over datasets comprising many
@@ -211,7 +210,7 @@ most common signature that Linguistica found among the words of
 The corresponding stem set had 14 members, though \cite{goldsmith:2001} 
 does not identify the individual stems. 
 In any case, the affix set \textsc{null}\textit{.ed.ing.s} represents 
-a stem equivalence class. Its extraction would be an impressive achievement for any \ac{ULM} system, and this
+a stem equivalence class. Its extraction would be an impressive achievement for any \ac{ULM}  system, and this
 is but one of many such signatures that Linguistica has found. However, 
 suppose we had no knowledge of English. It would then be impossible to deduce the nature 
 of this equivalence class. We might
@@ -290,7 +289,7 @@ phenomena. Morphemes, therefore, are not reasonable targets of unsupervised morp
 %\end{enumerate}
 %of the algorithm, and there is wide variety of unsupervised learning algorithms out there.
 %way in which these algorithms can be we (and on the nature of the input), 
-%but in any case, the output of any \ac{ULM} system will consist of forms entirely or almost entirely and be virtually void 
+%but in any case, the output of any \ac{ULM}  system will consist of forms entirely or almost entirely and be virtually void 
 %of any real meaning. 
 %It will find units that are building blocks of a sort, but these building blocks may not be what one expects. 
 %They will serve to account for the internal structure of words while remaining utterly blind to the external contexts 
@@ -303,7 +302,7 @@ its signatures. % are clearly morphological structures.
 %, I must say that it is an impressive system.
 However, it does not learn morphemes. The same can be said of Morfessor, the system of \cite{poon-et-al:2009}, and %virtually
 %(if not absolutely) all 
-every other \ac{ULM} system. 
+every other \ac{ULM}  system. 
 %but not morphemes, even though
 % the word morpheme was used by Goldsmith.
  % the word morpheme. The Morfessor bunch at least seems to demonstrate some awareness that Morfessor 
@@ -448,7 +447,7 @@ the undergraduate and graduate level. Any introductory text containing a unit on
 %Bloomfieldian methods of morphological analysis. The morpheme is central concept in any undergraduate
 %linguistics textbook. 
 It is therefore perhaps no surprise that
-computational linguists, including researchers in the field of \ac{ULM}, tend to presume %a morpheme-based morphology.
+computational linguists, including researchers in the field of \ac{ULM} , tend to presume %a morpheme-based morphology.
 the reality of Bloomfieldian morphemes and the soundness of a Bloomfieldian view of morphology. The Bloomfieldian approach is essentially
 the lexical-incramental approach.
 %most familiar with and the type that all linguistics 
@@ -563,23 +562,38 @@ Thus, the content paradigm cannot directly influence phonological form.
 %The form paradigm acts an intervening layer.
 
 Realizational rules come in come in two varieties:
-\emph{rules of exponence} and \emph{rules of referral}. Rules of exponence, e.g., \eqref{eq:roexp}, describe the 
-realization of surface forms from morphological \emph{exponents}.
+\emph{rules of exponence} and \emph{rules of referral}. Rules of exponence, e.g., t\eqref{eq:roexp}, describe the 
+realization of surface forms from morphological \emph{exponents}. They take the form $\text{X},\text{C},\sigma \to f(\text{X})$, where X is the stem, C is the lexical category of X, $\sigma$ is an \ac{MPS},  and $f(\text{X})$ is the morphological operation to be performed on X, as in ``Xs" (The addition of an \emph{-s} suffix. The two rules of exponence in \eqref{eq:roexp} %\eqref{eq:roexp1} and \eqref{eq:roexp2} 
+correspond to the two forms 
+of English present-tense verbs (see table~\ref{tab:engverbpres}). 
 \begin{align}
 \label{eq:roexp}
-	\text{X}_{V},\sigma\text{:}\{ \textsc{pers:3}\text{,} \, \textsc{num:}\text{sg,} \, \textsc{tns:}\text{pres} \} &= \text{X}s \\
-	\text{X}_{V},\sigma\text{:}\{((\textsc{pers:}\text{1}\vee\text{2}) \land (\textsc{num:}\text{sg}\vee\text{pl})) \vee (\textsc{pers:}3 \vee \text{sg})\} &= \text{X}
+	\text{X},\text{V},\sigma\text{:}\{ \textsc{pers:3}\text{,} \, \textsc{num:}\text{sg,} \, \textsc{tns:}\text{pres} \} &= \text{X}s \\ \label{eq:roexp1}
+	\text{X},\text{V},\tau\text{:}\{((\textsc{pers:}\text{1}\vee\text{2}) \land (\textsc{num:}\text{sg}\vee\text{pl})) \vee (\textsc{pers:}3 \vee \text{sg})\} &= \text{X} 
 \end{align}
-where the subscript $V$ denotes the lexical category in question, which is a global property of the paradigm and  in this case is \textsc{verb}, 
-and $\sigma\text{:}\{ \textsc{pers:sg}\text{,} \, \textsc{num:sg}\text{,} \, \textsc{tns:pres} \}$ is an \ac{MPS}.
-By contrast, a rule of referral redirects the word formation process to a different paradigm. 
-That is, it is a pointer from a form cell to another in a different paradigm and thus 
-triggers a ``foreign" rule of exponence.
-``G. T. Stump's term for a rule in morphology by which one form 
-is derived as identical to another. E.g., in English, a rule by which regular 
-participles in -ed, such as opened in had opened or was opened, might be derived, 
-by an identity operation, from forms of the past tense, such as opened in They opened it."
- [**Insert Example Here.**]
+The subscript $V$ in \eqref{eq:roexp} denotes the lexical category of \textit{X}, which is %a global property of the paradigm and  
+in this case is \textsc{verb}, 
+and $\sigma$ and $\tau$ are \ac{MPS}s. %\text{:}\{ \textsc{pers:sg}\text{,} \, \textsc{num:sg}\text{,} \, \textsc{tns:pres} \}$ is an \ac{MPS}.
+By contrast, a rule of referral redirects the word formation process to a different ``rule block," i.e.,
+a different \ac{MPS}. Such a rule takes the form 
+\begin{equation}
+\label{eq:ror}
+\text{X}, \text{C}, \sigma \to \tau \text{in Block textit{A}}
+\end{equation}
+Here, X again is a stem, 
+C its lexical category, and $\sigma$ its MPS. However, instead of the usual $f(\text{X})$ %sort of morphological operation 
+to the right of the arrow, we have in this case a redirection to a different \ac{MPS} in a different rule block. (Note that the \textit{A} in ``Block A" is purely arbitrary in this case.) Stump cites the English perfect participle to exemplify rules of referral. That is, for many lexemes, the form of the past participle is identical to the simple-past form, e.g., \textit{raked}. These participles would be formed via a rule of referral, i.e., one that says, in effect, ``To get your perfect participle form, pretend that you are a past-tense form and proceed accordingly. 
+% perfect participles by taking the  
+We shall revisit the English past participle when we discuss morphomes in section~\ref{the-morphome}. 
+
+%That is, it is a pointer from a form cell to another in a different paradigm and thus 
+%triggers a ``foreign" rule of exponence.
+%``G. T. Stump's term for a rule in morphology by which one form 
+%is derived as identical to another. E.g., in English, a rule by which regular 
+%participles in -ed, such as opened in had opened or was opened, might be derived, 
+%by an identity operation, from forms of the past tense, such as opened in \emph{They opened it.}"
+%
+% [**Insert Example Here.**]
 
 PFM is an example of a morphological theory that involves an intermediate layer between
 meaning (i.e., content) and phonological form---and thus an indirect relationship between
@@ -629,7 +643,7 @@ to the cells in Stump's form paradigm, but it is also more complex. It is to the
 
 
 \subsection{The Morphome}
-
+\label{the-morphome}
 %\cite{aronoff:1994} and the concept of the 
 The morphome has sparked a 
 great deal of research since Aronoff introduced it in 1994. Researchers
@@ -668,8 +682,9 @@ Round expresses a word's \emph{morphomic representation} as a pair consisting of
 %  extends the notation of realizational morphology \citep{stump:2001} to handle derivational morphomes. 
   
   But first we must establish some notation. 
-  One of Round's contributions is his formalized descriptions of morphomic phenomena. In \cite{round:2011}, for instance, he expresses the \emph{morphomic representation} of a word \textit{WORD} as a function $ \mu{\textsc{word}}$ that takes as input a pair of items, the precise nature %follows:
-  of which depends on whether one is dealing with inflectional or derivational morphology. In the former case, the input pair comprises a lexeme $\lambda$ and an \ac{MPS} ($\sigma$); in the latter, it consists of a root $\rho$ and a derivational property set $\delta$. Both cases are presented in table~\ref{tab:morphreps}.
+  One of Round's contributions is his formalized descriptions of morphomic phenomena. In \cite{round:2011}, for instance, he expresses the \emph{morphomic representation} of a word \textit{WORD} as a function $\mu{\textsc{word}}$ that takes as input a pair of items, the precise nature %follows:
+  of which depends on whether one is dealing with inflectional or derivational morphology. In the former case, the input pair comprises a lexeme $\lambda$ and an \ac{MPS} ($\sigma$); in the latter, it consists of a root $\rho$ and a derivational property set $\delta$. Both cases are presented in table~\ref{tab:morphreps}. If \textit{WORD} is is complex, its morphomic representation $\mu{\textsc{word}}$ can be decomposed (or factorized) into its constituents as  $\langle  \mu_{I} \dots \mu_{2}, \mu_{1}, x \rangle$, where $x$ is some kind of initial form, such as a root or a stem. The sequence 
+  $ \mu_{I} \dots \mu_{2}, \mu_{1}$ are morphomes themselves, which, according to \cite{round:2015} can viewed as operations, each of which applies rightward, starting with the lowest index. Whereas the $\mu$'s in table~\ref{tab:morphreps} represent morphomes and morphomic representations, the $\Phi$'s represent phonological units (or phonological operations). Like the $\mu$'s, the $\Phi$'s are indexed. But note that the $\Phi$ indices $(1,2,\dots,J)$ do not necessarily match the $\mu$ indices $(1,2,\dots,I)$. That is, according to cite{round:2015}, the correspondence between morphomes and phonological units is not always one-to-one. This observation will prove to be important in our analysis of Hebrew feminine suffixes in section \ref{sec:heb-example}.
 % \begin{align}
 % \mu{\textsc{word}}(\lambda,\sigma) \\ %\qquad \textit{or} \qquad   
 % \mu{\textsc{word}}(\rho,\delta)
@@ -734,25 +749,24 @@ $\Phi{\textsc{word}}(\rho,\delta)$ \\
 Consider the morphomic 
 representation       %, that sameness at the surface level indicates sameness at the morphomic level.
 $\mu{\textsc{word}}(\lambda,\sigma)$. %Suppose now that we were to replace 
-Suppose the \ac{MPS} $\sigma$ were replaced with a different \ac{MCU}, $\tau$. %, such that $\sigma \ne \tau$. 
-This change could result in a different phonological realization, but not necessarily. 
+Suppose the \ac{MPS} $\sigma$ were replaced with a different \ac{MCU}, namely $\tau$. %, such that $\sigma \ne \tau$. 
+Such a swap could result in a different phonological realization, but not necessarily. 
 %not necessarily change the surface, or phonological, form. %That is, 
 That is, $\Phi{\textsc{word}}(\lambda,\tau)$ could very well be identical to 
  $\Phi{\textsc{word}}(\lambda,\sigma)$. One sees this kind of identity in English
- present-tense verbs. See, for example, table~\ref{tab:engverbpres}.
-Every form in the present-tense paradigm is the same except for the 3sg, which takes the \textit{-s} suffix  %for a given lexeme contain the same form, namely the bare form of the verb. %English verbs are realized as the same formbare form of the verb. 
+ present-tense verbs, as exemplified in table~\ref{tab:engverbpres}. Every form is identical except the 3.sg, which takes the \textit{-s} suffix.%for a given lexeme contain the same form, namely the bare form of the verb. %English verbs are realized as the same formbare form of the verb. 
 
 % observedRecall, for instance, the example of the English 
 %present tense in table \ref{tab:engverbpres}.
 %wherein $\Phi\textsc{\text{kick}}({kick},\{ 1\vee2 \land {sg}\vee{pl} \})$.
 %That is, 
 
-A central maxim of morphomic theory is that \emph{sameness at the phonological level entails sameness
+A central maxim of morphomic theory is that \emph{identity at the phonological level entails identity
 at the morphomic level} \citep{round:2011}. That is, if two or more words share a particular subsequence of phonemes 
 (or symbols, etc.), then their respective 
 morphomic representations must all share a particular morphome, since it is the single shared morphome 
 that gives rise to the shared subsequence at the phonological level. This maxim is crucial for the purposes 
-of \ac{ULM} because it licenses an algorithm to identify morphological units solely on the bases of similarities in form (irrespective of meaning).
+of \ac{ULM}  because it licenses an algorithm to identify morphological units solely on the bases of similarities in form (irrespective of meaning).
 %is a reflection shared \emph{morphome} between words' morphomic representations.
 %subsequence indicates the result of sam
 %---a shared phonological unit---indicates a corresponding shared unit in these words' morphomic representations.
@@ -797,7 +811,8 @@ when we discuss the limitations on unsupervised morphological learning, i.e., wh
 Round's taxonomy comprises three categories, namely %according to the %scope of the morphomic relation and
 %the nature of the the \emph{shared aspect of form} that defines the morphome in question. %of the shared element of ththat defines the relation. 
 These are \textit{\textbf{rhizo}morphomes}, \textit{\textbf{meta}morphomes}, and \textit{\textbf{mero}morphomes}. 
-Rhizomorphomes and metamorphomes both transcend the confines of particular lexemes; Rhizomorphomes and metamorphomes are thus rather abstract. Meromorphomes, in contrast, correspond to``concrete" pieces of form. They are the raw material from which paradigms are constructed.  
+Rhizomorphomes and metamorphomes both transcend the confines of particular lexemes; Rhizomorphomes and metamorphomes are thus rather abstract. Meromorphomes, in contrast, correspond to``concrete" pieces of form. They are the raw material from which paradigms are constructed. 
+%Of these three, metamorphomes and merophomes are most germane to our discussion, so we 
 
 \paragraph{Rhizomorphomes.} A rhizomorphome is a set of stems or roots
  %(depending on the language in question) 
@@ -904,7 +919,7 @@ identified as a unified, albeit complex, morphome by \cite{aronoff:1994}. The te
 itself refers not to a particular syntactic category, but 
 to a class of 
 forms whose members 
-can serve certain a variety of  syntactic purposes. For instance, it can be combined
+can serve a variety of  syntactic purposes. For instance, it can be combined
 with inflections of \emph{have} to form the perfect tenses, but also with 
 \emph{was} to express the passive voice. 
 %In either case,
@@ -1190,160 +1205,160 @@ Root & Type & Form & Perfect & Passive  \\ [0.5ex] % inserts table
 \caption{The English perfect participle: a polyvalent polymorphous metamorphome. The spokes radiating downward represent meromorphomes.}
 \end{figure}
 
-\begin{figure}[ht]
-\centering
-%Monovalent monomorphous
-\subfigure[\label{fig:mtypes:mvmm}]{
-     \begin{tikzpicture}[draw=black!100]
- 	%[shorten >=1pt,->,draw=black!100]
-	\def \rowatticone{4.0cm}
- 	\def \rowtwoht{3.5cm}
-	\def \rowtwohta{3.2cm}
- 	\def \rowoneht{2cm}
-	\def \rowzerohta{0.8cm}
-	\def \rowzeroht{0.5cm}
-	\def \basementone{0.0cm}
- 	\tikzstyle{ms-node}=[text centered]
- 	\tikzstyle{m-node}=[circle,draw=black!100,thin,inner sep=0pt,minimum size=2mm]
-	\tikzstyle{pf-node}=[text centered]
- 	\tikzstyle{m-lbl}=[text centered]
-	\node[m-lbl] (morphome-label) at (5ex,\rowoneht) {$\mu{\textit{MENT}}$};
- 	% morphosyntax
- 	\node[ms-node] 	(ms0)	at (0ex,\rowtwoht)		{+noun};
- 	% morphome
- 	\node[m-node] 	(m0)	at (0ex,\rowoneht)		{};
-	%phonological form
-	 \node[pf-node] 	(pf0)	at (0ex,\rowzeroht)		{\textit{-ment}};
+%\begin{figure}[ht]
+%\centering
+%%Monovalent monomorphous
+%\subfigure[\label{fig:mtypes:mvmm}]{
+%     \begin{tikzpicture}[draw=black!100]
+% 	%[shorten >=1pt,->,draw=black!100]
+%	\def \rowatticone{4.0cm}
+% 	\def \rowtwoht{3.5cm}
+%	\def \rowtwohta{3.2cm}
+% 	\def \rowoneht{2cm}
+%	\def \rowzerohta{0.8cm}
+%	\def \rowzeroht{0.5cm}
+%	\def \basementone{0.0cm}
+% 	\tikzstyle{ms-node}=[text centered]
+% 	\tikzstyle{m-node}=[circle,draw=black!100,thin,inner sep=0pt,minimum size=2mm]
+%	\tikzstyle{pf-node}=[text centered]
+% 	\tikzstyle{m-lbl}=[text centered]
+%	\node[m-lbl] (morphome-label) at (5ex,\rowoneht) {$\mu{\textit{MENT}}$};
+% 	% morphosyntax
+% 	\node[ms-node] 	(ms0)	at (0ex,\rowtwoht)		{+noun};
+% 	% morphome
+% 	\node[m-node] 	(m0)	at (0ex,\rowoneht)		{};
+%	%phonological form
+%	 \node[pf-node] 	(pf0)	at (0ex,\rowzeroht)		{\textit{-ment}};
+%
+% 	\path (pf0)	edge	node	{}	(m0)
+%		(m0) edge node 	{}	(ms0);		
+% \end{tikzpicture}
+%} %Monovalent polymorphous
+%\subfigure[\label{fig:mtypes:mvpm}]{
+%     \begin{tikzpicture}[draw=black!100]
+% 	%[shorten >=1pt,->,draw=black!100]
+%	\def \rowatticone{4.0cm}
+% 	\def \rowtwoht{3.6cm}
+%	\def \rowtwohta{3.2cm}
+% 	\def \rowoneht{2cm}
+%	\def \rowzerohta{0.8cm}
+%	\def \rowzeroht{0.4cm}
+%	\def \basementone{0.0cm}
+% 	\tikzstyle{ms-node}=[text centered]
+% 	\tikzstyle{m-node}=[circle,draw=black!100,thin,inner sep=0pt,minimum size=2mm]
+%	\tikzstyle{pf-node}=[text centered]
+% 	\tikzstyle{m-lbl}=[text centered]
+%	\node[m-lbl] (morphome-label) at (12ex,\rowoneht) {$\mu{\textit{PAST}}$};
+%	
+% 	% morphosyntax
+% 	\node[ms-node] 	(ms0)	at (7.5ex,3.0cm)		{past};
+%	
+% 	% morphome
+% 	\node[m-node] 	(m0)	at (7.5ex,\rowoneht)		{}; %{$\mu{\textit{EN}}$};
+%	
+%	%phonological form
+%	 \node[pf-node] 	(pf0)	at (0ex,\rowzerohta)		{$\emptyset$};
+% 	\node[pf-node]  	(pf1)	at (3ex,\rowzeroht)		{\textit{-t}};
+% 	\node[pf-node]  	(pf2)	at (7.5ex,\basementone)	 	{ablaut};
+% 	\node[pf-node]  	(pf3)	at (12ex,\rowzeroht) 		{\textit{-d}};
+% 	\node[pf-node] 	(pf4)	at (15ex,\rowzerohta) 		{\dots};	
+%	
+% 	\path (pf0)	edge	node	{}	(m0)
+% 		(pf1)	edge	node	{}	(m0)
+% 		(pf2)	edge	node	{}	(m0)
+% 		(pf3)	edge	node	{}	(m0)
+%		(pf4)	edge	node	{}	(m0)
+%		(m0) edge node 	{}	(ms0);	
+% \end{tikzpicture}
+%}
+%%Polyvalent polymorphous
+%\subfigure[\label{fig:mtypes:pvpm}]{
+%	\vspace{12pt}
+%     \begin{tikzpicture}[draw=black!100]
+% 	%[shorten >=1pt,->,draw=black!100]
+%	\def \rowatticone{4.0cm}
+% 	\def \rowtwoht{3.5cm}
+%	\def \rowtwohta{3.2cm}
+% 	\def \rowoneht{2cm}
+%	\def \rowzerohta{0.8cm}
+%	\def \rowzeroht{0.5cm}
+%	\def \basementone{0.0cm}
+% 	\tikzstyle{ms-node}=[text centered]
+% 	\tikzstyle{m-node}=[circle,draw=black!100,thin,inner sep=0pt,minimum size=2mm]
+%	\tikzstyle{pf-node}=[text centered]
+% 	\tikzstyle{m-lbl}=[text width=5ex]
+%	\node[m-lbl] (label0) at (13ex,\rowoneht) {$\mu{\textit{EN}}$};
+%	
+% 	% morphosyntax
+% 	\node[ms-node] 	(ms0)	at (3ex,\rowtwohta)		{perfect};
+% 	\node[ms-node] 	(ms1)	at (13ex,\rowtwohta)	{passive};
+%	
+% 	% morphome
+% 	\node[m-node] 	(m0)	at (8ex,\rowoneht)		{};
+%	
+%	%phonological form
+%	 \node[pf-node] 	(pf0)	at (0ex,1cm)		{\textit{-en}};
+% 	\node[pf-node]  	(pf1)	at (4ex,\rowzeroht)		{ablaut};
+% 	\node[pf-node]  	(pf2)	at (9.5ex,-0.2cm)	 	{[ablaut,\textit{-en}]};
+% 	\node[pf-node]  	(pf3)	at (13ex,\rowzeroht) 		{\textit{-D}};
+% 	\node[pf-node] 	(pf4)	at (16ex,1cm) 		{\textit{-t}};	
+%	
+% 	\path (pf0)	edge	node	{}	(m0)
+% 		(pf1)	edge	node	{}	(m0)
+% 		(pf2)	edge	node	{}	(m0)
+% 		(pf3)	edge	node	{}	(m0)
+%		(pf4)	edge	node	{}	(m0)
+%		(m0) edge node 	{}	(ms0)
+%		(m0) edge node 	{}	(ms1);
+%		%(label0) edge node {}      (m0);	
+% \end{tikzpicture}
+% }
+%% Polyvalent monomorphous
+%\subfigure[\label{fig:mtypes:pvmm}]{
+%     \begin{tikzpicture}[draw=black!100]
+%	\def \rowatticone{4.0cm}
+% 	\def \rowtwoht{3.5cm}
+%	\def \rowtwohta{3.2cm}
+% 	\def \rowoneht{2cm}
+%	\def \rowzerohta{0.8cm}
+%	\def \rowzeroht{0.5cm}
+%	\def \basementone{0.0cm}
+% 	\tikzstyle{ms-node}=[text centered]
+% 	\tikzstyle{m-node}=[circle,draw=black!100,thin,inner sep=0pt,minimum size=2mm]
+%	\tikzstyle{pf-node}=[text width=12ex, text centered]
+% 	\tikzstyle{m-lbl}=[text width=5ex]
+%	\node[m-lbl] (label) at (11ex,1.5cm) {$\mu{Z}$};
+%	
+% 	% morphosyntax
+%	 \node[ms-node] 	(ms0)	at (0ex,2.5cm)			{clitic};
+% 	\node[ms-node]  	(ms1)	at (4ex,3.2cm)		{poss.};
+% 	\node[ms-node]  	(ms2)	at (9 ex,3.2cm)	 	{n.pl};
+% 	\node[ms-node]  	(ms3)	at (13ex,2.5cm) 		{v.3sg};
+% 	% morphome
+% 	\node[m-node] 	(m0)	at (6ex,1.5cm)		{};
+%	
+%	%phonological form
+% 	\node[pf-node]  	(pf0)	at (6ex,0.0cm)	 	{\textit{-Z}};
+%
+% 	\path (pf0)	edge	node	{}	(m0)
+% 		(m0)	edge	node	{}	(ms0)
+% 		(m0)	edge	node	{}	(ms1)
+% 		(m0)	edge	node	{}	(ms2)
+%		(m0)	edge	node	{}	(ms3);
+%		%(label)  edge  node {}     (m0);		
+% \end{tikzpicture}
+%}
+%\caption[]{Round's is not the only morphome taxonomy. \cite{aronoff:md:2016} classifies morphomes by complexity. 
+%Subfigure \subref{fig:mtypes:mvmm} represents the  
+%\textbf{monovalent monomorphous} type, 
+%\subref{fig:mtypes:mvpm} the \textbf{monovalent polymorphous} type, 
+%\subref{fig:mtypes:pvpm} the \textbf{polyvalent polymorphous} type, 
+%and \subref{fig:mtypes:pvmm} the \textbf{polyvalent monomorphous} type. (This 
+%diagram is a reproduction of the one in \cite{aronoff:md:2016}.) } 
+%\label{fig:mtypes}
+%\end{figure}
 
- 	\path (pf0)	edge	node	{}	(m0)
-		(m0) edge node 	{}	(ms0);		
- \end{tikzpicture}
-} %Monovalent polymorphous
-\subfigure[\label{fig:mtypes:mvpm}]{
-     \begin{tikzpicture}[draw=black!100]
- 	%[shorten >=1pt,->,draw=black!100]
-	\def \rowatticone{4.0cm}
- 	\def \rowtwoht{3.6cm}
-	\def \rowtwohta{3.2cm}
- 	\def \rowoneht{2cm}
-	\def \rowzerohta{0.8cm}
-	\def \rowzeroht{0.4cm}
-	\def \basementone{0.0cm}
- 	\tikzstyle{ms-node}=[text centered]
- 	\tikzstyle{m-node}=[circle,draw=black!100,thin,inner sep=0pt,minimum size=2mm]
-	\tikzstyle{pf-node}=[text centered]
- 	\tikzstyle{m-lbl}=[text centered]
-	\node[m-lbl] (morphome-label) at (12ex,\rowoneht) {$\mu{\textit{PAST}}$};
-	
- 	% morphosyntax
- 	\node[ms-node] 	(ms0)	at (7.5ex,3.0cm)		{past};
-	
- 	% morphome
- 	\node[m-node] 	(m0)	at (7.5ex,\rowoneht)		{}; %{$\mu{\textit{EN}}$};
-	
-	%phonological form
-	 \node[pf-node] 	(pf0)	at (0ex,\rowzerohta)		{$\emptyset$};
- 	\node[pf-node]  	(pf1)	at (3ex,\rowzeroht)		{\textit{-t}};
- 	\node[pf-node]  	(pf2)	at (7.5ex,\basementone)	 	{ablaut};
- 	\node[pf-node]  	(pf3)	at (12ex,\rowzeroht) 		{\textit{-d}};
- 	\node[pf-node] 	(pf4)	at (15ex,\rowzerohta) 		{\dots};	
-	
- 	\path (pf0)	edge	node	{}	(m0)
- 		(pf1)	edge	node	{}	(m0)
- 		(pf2)	edge	node	{}	(m0)
- 		(pf3)	edge	node	{}	(m0)
-		(pf4)	edge	node	{}	(m0)
-		(m0) edge node 	{}	(ms0);	
- \end{tikzpicture}
-}
-%Polyvalent polymorphous
-\subfigure[\label{fig:mtypes:pvpm}]{
-	\vspace{12pt}
-     \begin{tikzpicture}[draw=black!100]
- 	%[shorten >=1pt,->,draw=black!100]
-	\def \rowatticone{4.0cm}
- 	\def \rowtwoht{3.5cm}
-	\def \rowtwohta{3.2cm}
- 	\def \rowoneht{2cm}
-	\def \rowzerohta{0.8cm}
-	\def \rowzeroht{0.5cm}
-	\def \basementone{0.0cm}
- 	\tikzstyle{ms-node}=[text centered]
- 	\tikzstyle{m-node}=[circle,draw=black!100,thin,inner sep=0pt,minimum size=2mm]
-	\tikzstyle{pf-node}=[text centered]
- 	\tikzstyle{m-lbl}=[text width=5ex]
-	\node[m-lbl] (label0) at (13ex,\rowoneht) {$\mu{\textit{EN}}$};
-	
- 	% morphosyntax
- 	\node[ms-node] 	(ms0)	at (3ex,\rowtwohta)		{perfect};
- 	\node[ms-node] 	(ms1)	at (13ex,\rowtwohta)	{passive};
-	
- 	% morphome
- 	\node[m-node] 	(m0)	at (8ex,\rowoneht)		{};
-	
-	%phonological form
-	 \node[pf-node] 	(pf0)	at (0ex,1cm)		{\textit{-en}};
- 	\node[pf-node]  	(pf1)	at (4ex,\rowzeroht)		{ablaut};
- 	\node[pf-node]  	(pf2)	at (9.5ex,-0.2cm)	 	{[ablaut,\textit{-en}]};
- 	\node[pf-node]  	(pf3)	at (13ex,\rowzeroht) 		{\textit{-D}};
- 	\node[pf-node] 	(pf4)	at (16ex,1cm) 		{\textit{-t}};	
-	
- 	\path (pf0)	edge	node	{}	(m0)
- 		(pf1)	edge	node	{}	(m0)
- 		(pf2)	edge	node	{}	(m0)
- 		(pf3)	edge	node	{}	(m0)
-		(pf4)	edge	node	{}	(m0)
-		(m0) edge node 	{}	(ms0)
-		(m0) edge node 	{}	(ms1);
-		%(label0) edge node {}      (m0);	
- \end{tikzpicture}
- }
-% Polyvalent monomorphous
-\subfigure[\label{fig:mtypes:pvmm}]{
-     \begin{tikzpicture}[draw=black!100]
-	\def \rowatticone{4.0cm}
- 	\def \rowtwoht{3.5cm}
-	\def \rowtwohta{3.2cm}
- 	\def \rowoneht{2cm}
-	\def \rowzerohta{0.8cm}
-	\def \rowzeroht{0.5cm}
-	\def \basementone{0.0cm}
- 	\tikzstyle{ms-node}=[text centered]
- 	\tikzstyle{m-node}=[circle,draw=black!100,thin,inner sep=0pt,minimum size=2mm]
-	\tikzstyle{pf-node}=[text width=12ex, text centered]
- 	\tikzstyle{m-lbl}=[text width=5ex]
-	\node[m-lbl] (label) at (11ex,1.5cm) {$\mu{Z}$};
-	
- 	% morphosyntax
-	 \node[ms-node] 	(ms0)	at (0ex,2.5cm)			{clitic};
- 	\node[ms-node]  	(ms1)	at (4ex,3.2cm)		{poss.};
- 	\node[ms-node]  	(ms2)	at (9 ex,3.2cm)	 	{n.pl};
- 	\node[ms-node]  	(ms3)	at (13ex,2.5cm) 		{v.3sg};
- 	% morphome
- 	\node[m-node] 	(m0)	at (6ex,1.5cm)		{};
-	
-	%phonological form
- 	\node[pf-node]  	(pf0)	at (6ex,0.0cm)	 	{\textit{-Z}};
-
- 	\path (pf0)	edge	node	{}	(m0)
- 		(m0)	edge	node	{}	(ms0)
- 		(m0)	edge	node	{}	(ms1)
- 		(m0)	edge	node	{}	(ms2)
-		(m0)	edge	node	{}	(ms3);
-		%(label)  edge  node {}     (m0);		
- \end{tikzpicture}
-}
-\caption[]{Round's is not the only morphome taxonomy. \cite{aronoff:md:2016} classifies morphomes by complexity. 
-Subfigure \subref{fig:mtypes:mvmm} represents the  
-\textbf{monovalent monomorphous} type, 
-\subref{fig:mtypes:mvpm} the \textbf{monovalent polymorphous} type, 
-\subref{fig:mtypes:pvpm} the \textbf{polyvalent polymorphous} type, 
-and \subref{fig:mtypes:pvmm} the \textbf{polyvalent monomorphous} type. (This 
-diagram is a reproduction of the one in \cite{aronoff:md:2016}.) } 
-\label{fig:mtypes}
-\end{figure}
-
-\paragraph{Meromorphomes.} Whereas rhizomorphomes and metamorphomes transcend the realms of individual lexemes and paradigms and thus highly abstract, meromorphomes are comparatively concrete, as they correspond to particular parts of word forms. To be sure, meromorphomes are not the word parts themselves, since all morphomes reside at the morphomic level rather than the phonological, or surface, level (CITE Round). Even so, meromorphomes map directly onto phonological forms, and are thus more closely associated with phonological forms than rhizomorphomes or metamorphomes. Indeed, meromorphomes serve as the  rhizomorphomes and metamorphomes are composed of meromorphomes, since, at some point the abstract, trans-lexemic types of morphomes must interact with particular phonological forms. Meromorphomes provide a kind of interface for this interaction.
+\paragraph{Meromorphomes.} Whereas rhizomorphomes and metamorphomes transcend the realms of individual lexemes and paradigms and thus highly abstract, meromorphomes are comparatively concrete, as they correspond to particular parts of word forms. To be sure, meromorphomes are not the word parts themselves, since all morphomes reside at the morphomic level rather than the phonological, or surface, level (CITE Round). Even so, meromorphomes map directly onto phonological forms, and are thus more closely associated with phonological forms than rhizomorphomes or metamorphomes. Indeed, both rhizomorphomes and metamorphomes are composed of meromorphomes, since, at some point, the abstract, trans-lexemic types of morphomes must interact with specific phonological forms. Meromorphomes provide a kind of interface for this interaction.
 %For example, figure (\ref{fig:mtypes:pvpm}) (a subfigure in \ref{} % \ref{fig:mtypes}, for example,
 
 For example, in English perfect participles, each individual root, e.g., \textit{s-ng}, \textit{br-k}, \textit{kick}, etc., is a meromorphome. Each suffix as well as each particular variety of ablaut is also a meromorphome. 
@@ -1679,8 +1694,7 @@ According to Faust, \textit{-at} sometimes uses \textit{-i} and
 thus forming complex units, either \emph{-it} or \emph{-ut}, respectively, 
 which then attach to
 the non-primitive stem. Because \emph{-it} and \emph{-ut} are complex, 
-they
-cannot be roots and are thus free of roots' selectional constraints.
+they cannot be roots and are thus free of roots' selectional constraints.
 
 %That is, they first attach to
 %-i- or -u-, thus forming -it or -ut (the a is deleted), which can then attach to any base, including all manner of derived bases. 
@@ -1724,8 +1738,8 @@ not suit Faust's \ac{DM} analysis.
          %& $\Phi{\textsc{stem}} (\text{a.i}, \text{\textipa{P}.b.b} )$ & $\Phi_{\textsc{i}}$ & $\Phi_{\textsc{t}}$ \\ %\hline
          %& $\Phi{\textsc{stem}} (\text{a.i}, \textsc{\textipa{P}bb})$ & $\Phi{\textsc{i}}$ & $\Phi{\textsc{t}}$ \\
          & $\Phi${\textsc{stem}} & $\Phi${\textsc{i}} & $\Phi${\textsc{t}} \\
-       Morphomic & $\mu$\textsc{a.i}, $\surd \textsc{\textipa{P}bb}$ & $\mu{\textsc{i}}$  & $\mu{\textsc{t}}$ \\ 
-        Lexical & \multicolumn{3}{c}{$\surd \textsc{\textipa{P}bb}$, \{\text{adj}, \text{fem}, \text{sg}\}}\\
+       Morphomic & $\mu$\textsc{a-i}, $\surd \textsc{\textipa{P}-b-b}$ & $\mu{\textsc{i}}$  & $\mu{\textsc{t}}$ \\ 
+        Lexical & \multicolumn{3}{c}{$\surd \textsc{\textipa{P}-b-b}$, \{\text{adj}, \text{fem}, \text{sg}\}}\\
         \bottomrule 
     \end{tabular}
     }
@@ -1923,14 +1937,14 @@ property \{\text{n}$\to$\text{n}[fem] among the derivational properties $\delta$
 
 
 
-\section{Implications for \ac{ULM} and Multimorph}
+\section{Implications for \ac{ULM}  and Multimorph}
 
 %\begin{itemize}
 %\item 
-\ac{ULM} systems learn do not learn morphemes. Because they do not have access to
+\ac{ULM}  systems learn do not learn morphemes. Because they do not have access to
 semantic or syntactic features, they cannot learn pairings of form and meaning. 
 They can, however, learn recurrent units of \emph{pure} form. Consider again, 
-for example, the feminine endings of Hebrew. A \ac{ULM} system would likely be 
+for example, the feminine endings of Hebrew. A \ac{ULM}  system would likely be 
 able to discover facts \ref{ex:Xi} and \ref{ex:Yi} and from them deduce 
 \ref{ex:i-and-t}: %and 2 and arrive at  
 \begin{exe} \label{ex:observations1}
@@ -1961,11 +1975,11 @@ for the identities of exponence between tables \ref{subtab:der-adjectives}
 and \ref{subtab:der-nouns-i}, but also the difference, e.g., there is no independent
 \text{-i} in table \ref{subtab:der-nouns-i}.
 %This is a rather morphome-centric analysis, and it may be not entirely necessary depending
-%on a \ac{ULM} system's use context. Even so, facts \ref{ex:YequalsXi} and \ref{ex:YneXi} are 
+%on a \ac{ULM}  system's use context. Even so, facts \ref{ex:YequalsXi} and \ref{ex:YneXi} are 
 %significant observations. 
 
-It would be difficult, however, for most \ac{ULM} systems to capture such subtlety. 
-Most \ac{ULM} systems would probably just decompose \textit{-it} 
+It would be difficult, however, for most \ac{ULM}  systems to capture such subtlety. 
+Most \ac{ULM}  systems would probably just decompose \textit{-it} 
 into \textit{-i} and \textit{-t} wherever it occurs, regardless of whether it is of the
  \ref{YequalsXi} type or the \ref{YneXi} type. However, this would not necessarily be wrong, not
  even from a morphomic perspective, 
@@ -1996,8 +2010,8 @@ from (REF) that an \ac{MCMM} can map multiple causes (multiple morphological uni
  [I intend to describe what Multimorph actually 
 does once I get the results.]
 
-At any rate, no \ac{ULM} system is going to be able to learn the full range of morphomic
-phenomena. No \ac{ULM} system is going to be able to identify a metamorphome in its full
+At any rate, no \ac{ULM}  system is going to be able to learn the full range of morphomic
+phenomena. No \ac{ULM}  system is going to be able to identify a metamorphome in its full
  extra-lexemic, trans-paradigmatic glory. Such a capability would require some means
 of keeping track of what different lexemes do in different paradigm cells, which are essentially 
 morphosyntactic property sets. %Multimorph
@@ -2106,7 +2120,7 @@ aspects of form can be observed only at the phonological level.
 Identity of exponence is important not just to a morphomic analysis,
 but also to Stump's Paradigm Function Morphology, especially where the 
 the form paradigm is concerned, and indeed, it is central to any 
-brand of autonomous morphology. It is thus appropriate that \ac{ULM} systems--Multimorph
+brand of autonomous morphology. It is thus appropriate that \ac{ULM}  systems--Multimorph
 included---are driven by form.
 
 %Multimorph's output %observes/finds 
@@ -2453,7 +2467,7 @@ included---are driven by form.
 %
 %\item Both Linguistica \citep{goldsmith:2001, goldsmith:2006} and Morfessor \citep{creutz-and-lagus:2002, creutz:2003, creutz-and-lagus:2005, creutz-and-lagus:2007} present systems that are very good at recognizing that \textit{-ing}, for example, must be some sort of reusable building block, but their systems cannot learn the function or meaning of \textit{-ing}. They cannot learn how it is actually used. 
 %
-%\item The very idea of \ac{ULM} [implies] that there is an intermediate layer of organization between phonology and morphosyntax. 
+%\item The very idea of \ac{ULM}  [implies] that there is an intermediate layer of organization between phonology and morphosyntax. 
 %\end{itemize}
 %
 %\cite{aronoff:1994} and *others* call this intermediate layer the \textit{morphomic} layer. \textit{Who are the others?}
@@ -2490,4 +2504,4 @@ included---are driven by form.
 %\section{Motivate Two-Pronged Evaluation}
 %How difficult is it to identify morphomes? Are there clearcut criteria? How straightforward is the procedure?
 %
-%Do other \ac{ULM} approaches find morphomes? If so, how do the do it without morphosyntactic annotation?
+%Do other \ac{ULM}  approaches find morphomes? If so, how do the do it without morphosyntactic annotation?

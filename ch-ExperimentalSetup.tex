@@ -83,11 +83,16 @@ concerned with the question of what features to test.
 
 \subsection{Corpus Overview}
 The input datasets (i.e., wordlists) were extracted from the \ac{BLC},   %Berman Longitudinal Corpus (\ac{BLC}),
-\citep{berman-weissenborn:1991},
-which is part of the Hebrew section of the CHILDES Corpus \citep{macwhinney:2000a}. 
-The CHILDES corpus consists of transcribed 
-conversations between young children and adults. Those whose utterances appear in the corpus are
-called \emph{participants}. Each file is the transcription of a particular session. 
+\citep{berman-weissenborn:1991}.
+The \ac{BLC} is part of the Hebrew section of the CHILDES Corpus \citep{macwhinney:2000a}, a
+%[***Insert Explanation for using a corpus of children's speech***]. 
+corpus of transcribed 
+conversations between young children and adults. %Those whose utterances appear in the corpus are
+%called \emph{participants}. 
+I chose the \ac{BLC} because it is one of the few sources of \emph{transcribed} \ac{MH}. Most other sources of Hebrew consist of printed material, such as newspaper text, and thus is orthographic rather than
+transcribed. The Hebrew alphabet has no dedicated letters vowels, and thus Hebrew orthography is largely without vowels. I wanted data that in which the vowels were fully represented. Another advantage of the \ac{BLC} is that it is quite extensive; I am unaware of larger source of transcribed Modern Hebrew. 
+
+Each file in the BLC is the transcription of a particular session. 
 The participants, who are identified in each file's
 header, can include, for example, the parents,
  other relatives, such as a grandmother, 
@@ -125,25 +130,26 @@ by the child's mother (MOT).
 \caption{Excerpt from the Berman Longitudinal Corpus}
 \vspace{-12pt}\begin{tabbing}
 \small
-\hspace{0.6in} \= \hspace{5.5in} \kill
-\textsf{*MOT:} \> \textsf{ma\, \textipa{P}\a'{i}ma\textipa{P} \,
-\textipa{P}o\textipa{\.*s}\a'{a}\, ba\#\, mi\textipa{\.*t}b\a'{a}x ?} \\
+\hspace{0.6in} \= \hspace{0.6in} \=  \hspace{0.5in} \= \hspace{0.6in} \= \hspace{3.4in} \kill
+\textsf{*MOT:} \> \textsf{ma} \> \textsf{\textipa{P}\a'{i}ma\textipa{P}} \> \textsf{\textipa{P}o\textipa{\.*s}\a'{a}} \>  \textsf{ba\# mi\textipa{\.*t}b\a'{a}x ?} \\
+\> \textit{What [is]} \> \textit{Mom} \> \textit{doing} \> \textit{in.\textsc{def}+kitchen ?} \\
 \textsf{\%mor:} \> \textsf{que|ma=what n|\textipa{P}\a'{i}ma\textipa{P}\&gen:fm\&num:sg\&stat:free=mother} \\
  \> \textsf{part|\textipa{P}a\textipa{\.*s}\a'{a}\&root:\textipa{P}\textipa{\.*s}y\&ptn:qal\&gen:fm\&num:sg-\a'{a}=do} \\
    \> \textsf{prep|be~det|ha n|mi\textipa{\.*t}b\a'{a}x\&gen:ms\&num:sg\&stat:unsp=kitchen ?}\\
 \textsf{\%gra:} \>	\textsf{1|3|ANONAGR 2|3|AAGR 3|0|ROOT 4|3|MPRE 5|6|MDET 6|4|APREP 7|3|PUNCT}\\
-\textsf{*\ac{CH}I:} \> \textsf{rox\a'{e}cet kel\a'{i}m .}\\
-\textsf{\%mor:} \> \textsf{part|rax\a'{a}c\&root:rxc\&ptn:qal\&gen:fm\&num:sg-et=wash} \\
+\textsf{CHI:} \> \textsf{rox\a'{e}cet} \> \textsf{kel\a'{i}m .}\\
+		\> \textit{Washing} \> \textit{dishes .}  \\
+\textsf{\%mor:} \> \textsf{part|rax\a'{a}c\&root:rxc\&ptn:qal\&gen:fm\&num:sg-et=wash} \\ 
     \>  \textsf{n|kli}\&\textsf{gen:ms\&num:pl\&pl:masc:match\&stat:free-\a'{i}m=tool .} \\ 
 \textsf{\%gra:} \> \textsf{1|0|ROOT 2|1|ANONAGR 3|1|PUNCT}
 \end{tabbing}
 \end{figure}
-
+%\footnote{The Hebrew word here is generally translated as `tools,' and in this context it means 
+		%something like `eating tools'. But in English, one says ``washing dishes" rather than ``washing eating tools." 
 The first utterance in figure~\ref{fig:excerpt} is that of mother,
-who says, ``What is Mommy doing in the kitchen?" 
-
-The child
-replies \textsf{[rox\a'{e}cet kel\a'{i}m]}, `Washing dishes.'
+who says, ``What is Mom doing in the kitchen?" The child
+replies \textsf{[rox\a'{e}cet kel\a'{i}m]}, `Washing dishes.' The glosses are given in figure~\ref{fig:excerpt} beneath
+the transcribed words.
 %by the target child (CHI), and the second by the child's 
 %mother (\textsf{MOT}). 
 %The first utterance is the mother's.
@@ -190,14 +196,24 @@ Hebrew's five-vowel inventory. %  that match the five vowels of \ac{MH}'s vowel 
 %together with their stressed
 %counterparts, accurately represents the vowel inventory of spoken \ac{MH}. 
 At the same time, however, 
-It is a \emph{transliteration} system in that it is sensitive to orthography. This sensitivity is evident in 
-table~\ref{table:alphabet}; note the nearly perfect one-to-one correspondence between the \ac{BLC}'s consonant 
-symbols and those of the actual Hebrew alphabet. The consonantal component of the \ac{BLC}'s transcriptional system 
-honors a number of historical distinctions that have preserved in the orthography, i.e., the alphabet and word 
-spellings, but neutralized or otherwise lost in spoken \ac{MH}. Table~\ref{tab:phon-neut} compares 
-(reconstructed) \ac{CH} phonemes, which are considered to be in one-to-one correspondence with the letters of 
-the Hebrew alphabet, \ac{MH} speech sounds, and transcription symbols from the \ac{BLC}. Notice that there are fewest distinctions
-in the \ac{MH} column.
+It is a \emph{transliteration} system in that it is sensitive to orthographic distinctions that no longer correspond
+to phonemic distinctions. The consonantal component of the \ac{BLC}'s transcriptional system 
+honors a number of historical distinctions that have preserved in the orthography, i.e., the alphabet and 
+spelling conventions, but neutralized or otherwise lost in spoken \ac{MH}. Table~\ref{tab:phon-neut} compares 
+(reconstructed) \ac{CH} phonemes, which are taken to be in a one-to-one correspondence with the letters of 
+the Hebrew alphabet, \ac{MH} speech sounds, and transcription symbols from the \ac{BLC}. Notice that the
+the \ac{MH} column has the fewest distinctions.
+
+
+
+%This sensitivity is evident in 
+%table~\ref{table:alphabet}; note the nearly perfect one-to-one correspondence between the \ac{BLC}'s consonant 
+%symbols and those of the actual Hebrew alphabet. The consonantal component of the \ac{BLC}'s transcriptional system 
+%honors a number of historical distinctions that have preserved in the orthography, i.e., the alphabet and 
+%spelling conventions, but neutralized or otherwise lost in spoken \ac{MH}. Table~\ref{tab:phon-neut} compares 
+%(reconstructed) \ac{CH} phonemes, which are considered to be in one-to-one correspondence with the letters of 
+%the Hebrew alphabet, \ac{MH} speech sounds, and transcription symbols from the \ac{BLC}. Notice that the
+%the \ac{MH} column has the fewest distinctions.
 %with an eye to retain a number  orthographic consonants in mind. 
 %During the revival of Hebrew care taken to remain as faithful as possible to earlier forms of the language, especially Biblical Hebrew (a sub-case of Classi
 
@@ -294,7 +310,7 @@ the sound \textipa{Q}, despite there being no such sound in \ac{MH}.
 For the purposes of learning Hebrew morphology, this is probably useful information. 
 For example, the presence of the phantom \textipa{Q} 
 probably makes it easier to identify the root 
-$\surd$y.d.\textipa{Q}{.}
+$\surd$y-d-\textipa{Q}{.}
 
 
 	
@@ -310,7 +326,10 @@ possibly pharyngealized in \ac{CH}, but in \ac{MH}, it has merged with the velar
 %\begin{cjhebrew}k|\end{cjhebrew} (\textit{kaf}, IPA \textipa{[k]}).
 %Thus, 
 %as the \emph{emphatic consonants}, were once associated with pharyngealized phonemes, but now they are pronounced simply as [s] and [t]. 
- Thus, the pronunciations (or affiliated phonemes) of \textit{\textipa{same\.*k}} and \textit{\textipa{\.*te\.*t}} have merged with those of \textit{sin} and \textit{tav} respectively, so that \textit{\textipa{same\.*k}} and \textit{\textipa{sin}} are both pronounced as [s], and \textit{\textipa{\.*te\.*t}} and \textit{tav} as [t].
+ Thus, the pronunciations (or affiliated phonemes) of \textit{\textipa{same\.*k}} and 
+ \textit{\textipa{\.*te\.*t}} have merged with those of \textit{sin} and \textit{tav} respectively, 
+ so that \textit{\textipa{same\.*k}} and \textit{\textipa{sin}} are both pronounced as [s], 
+ and \textit{\textipa{\.*te\.*t}} and \textit{tav} as [t].
 %\begin{cjhebrew}q\end{cjhebrew} (\textit{qof}) have merged phonetically 
 %with their non-pharangealized
 %counterparts \textit{tav} and \textit{sin}, respectively. Thus, \dots.
