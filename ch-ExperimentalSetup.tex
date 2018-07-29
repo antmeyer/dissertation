@@ -21,7 +21,7 @@ such as characters in the former way, i.e., as sequences of code points. I thus 
 to map the sequences onto atomic code points such as \texttt{U+0323} 
 for \textsf{\textipa{\.*k}}.
 
-Now, when Multimorph reads the input wordlist, 
+When Multimorph reads the input wordlist, 
 it maps each word onto
 a sequence of 1s and 0s called a \emph{feature vector}, 
 where each 1 or 0 is the value of a
@@ -32,21 +32,6 @@ constitute some of this study's main experimental
 variables. We shall thus be particularly 
 concerned with the question of what features to test.
 
-%will be discussed further in section \ref{sec:features}.
-%For the present, however, let us note that Multimorph requires a wordlist $W$. And $W$
-%must be extracted from some source. We shall discuss this process in section 
-%be extracted 
-
-%In addition to the initial wordlist W, I need gold-standard data  
-%\item What is the output?
-%\item How do we tell \emph{how good} the output is? But this isn't really relevant to this 
-%section, right? What this chapter is really concerned with is the input data, 
-%its nature, source, and what I did to prepare it. It is also concerned with the experimental 
-%variables--what I chose to test and why. (These, of course, are directly related to 
-%my research questions. Each experimental variable represents an attempt to answer a 
-%research question or part of one. Finally, it is concerned with how the experimental 
-%variables were tested. 
-%\end{enumerate}
 \section{Data Source: The Berman Longitudinal Corpus}
 
 \subsection{Corpus Overview}
@@ -67,9 +52,9 @@ fully represented. Another advantage of the \ac{BLC} is that
 it is quite extensive; I am unaware of larger source of 
 transcribed Modern Hebrew. 
 
-Each file in the \ac{BLC} is the transcription of a particular session. 
-The participants, who are identified in each file's
-header, can include, for example, the parents,
+Each file in the \ac{BLC} is the transcription of a 
+particular session. The participants, who are identified 
+in each file's header, can include, for example, the parents,
  other relatives, such as a grandmother, 
 the researcher (or \emph{investigator}) conducting the 
 session, and most importantly the child him or herself, 
@@ -88,8 +73,10 @@ target child (CHI), and the other by the child's mother (MOT).
 \begin{figure}[ht]
 \vspace{10pt}
 \label{fig:excerpt}
-\caption{\emph{Excerpt from the Berman Longitudinal Corpus (BLC).} *The word `tools,' is perhaps a more general translation of the Hebrew \textit{kel\'{i}m}, the context here seems to suggest `dishes' 
-has a better translation; i.e., `tools (for eating)' = `dishes.' } 
+\caption{\emph{Excerpt from the Berman Longitudinal Corpus (BLC).}
+*The BLC's gloss `tools' is a generic translation of the Hebrew \textit{kel\'{i}m}; 
+the context here seems to suggest `dishes' 
+as a better translation. That is, `tools (for eating)' = `dishes.' } 
 \vspace{-12pt}\begin{tabbing}
 \small
 \hspace{0.6in} \= \hspace{0.6in} \=  \hspace{0.5in} \= \hspace{0.6in} \= \hspace{3.4in} \kill
@@ -106,38 +93,44 @@ has a better translation; i.e., `tools (for eating)' = `dishes.' }
 \textsf{\%gra:} \> \textsf{1|0|ROOT 2|1|ANONAGR 3|1|PUNCT}
 \end{tabbing}
 \end{figure}
-%\footnote{
-		%something like `eating tools'. But in English, one says ``washing dishes" rather than ``washing eating tools." 
 The first utterance in figure~\ref{fig:excerpt} is that of mother,
 who says, ``What is Mom doing in the kitchen?" The child
 replies \textsf{[rox\a'{e}cet kel\a'{i}m]}, `Washing dishes.' 
-The glosses are given in 
-italics beneath the transcribed words in figure~\ref{fig:excerpt}. Note that 
-these glosses have been added by the present author; 
-they do not appear in the actual \ac{BLC}.
-%by the target child (CHI), and the second by the child's 
-%mother (\textsf{MOT}). 
-%The first utterance is the mother's.
-%She says, ``What is Mommy doing in the kitchen?"  
-%The child answers, ``Washing dishes."
+I have inserted glosses in 
+italics beneath the transcribed words in figure~\ref{fig:excerpt}. 
+Note that these particular glosses do not appear 
+in the actual \ac{BLC}.
 
 The asterisk (*) preceding the labels CHI and \textsf{MOT} 
 indicates that these tiers are \emph{main} tiers, i.e.,  
-utterance tiers. Each utterance is accompanied by two additional tiers, 
-namely, a morphological tier, labeled \textsf{\%mor}, and a syntactic 
-(or grammatical) tier, labeled \textsf{\%gra}. 
+utterance tiers. Each utterance is accompanied by two 
+additional tiers, 
+namely, a morphological tier, labeled \textsf{\%mor}, 
+and a syntactic (or grammatical) tier, labeled \textsf{\%gra}. 
 The syntactic tier is not relevant to the present thesis,
 so we shall not refer to it further. The morphological tier 
 has a hierarchical structure. At the highest level, it consists of a 
 series of space-delimited morphological analyses, 
 There is exactly one analysis for each word in the main tier.  
-%Just as the words in main tier are delimited by white spaces, so are the morphological analyses in the morphological tier. 
 Each \emph{individual} morphological analysis consists
 of \textit{morphosyntactic properties}. These are delimited by the 
 ampersand symbol (\textsf{\&}). Morphosyntactic properties are 
 generally expressed as feature-value pairs of the 
 form \textsf{\textit{feature}:\textit{value}}, e.g., 
-\textsf{gen:fm} `gender: feminine.' We shall turn to the BLC's transcription
+\textsf{gen:fm} `gender: feminine.' 
+
+In the remainder of this section, we shall first discuss the 
+\ac{BLC}'s unique transcription system, a system that 
+honors Hebrew orthography as much as it does its spoken 
+pronunciation. We shall then discuss some key aspects of 
+the \ac{BLC}'s morphological annotation scheme. The 
+transcription system is important for the present study 
+because the features
+depend on the alphabet in which the data is represented.
+ The morphological annotation 
+is significant because  the BLC's morphological annotations must 
+serve as raw material for creation of  the intrinsic evaluation's 
+gold-standard categories (see REF).
 
 % such that a col typically 
 %a given morphological analysis are morphosyntactic properties, usually composed
@@ -147,18 +140,15 @@ form \textsf{\textit{feature}:\textit{value}}, e.g.,
 %categories, many of expressed as feature-value pairs, e.g., \textsf{gen:fm}.  
 
 \subsection{Transcription System}\label{sec:transcription}
-The \ac{BLC}'s transcription system eludes simple one-word characterizations 
-such as ``orthographic,"
+The \ac{BLC}'s transcription system eludes simple one-word 
+characterizations such as ``orthographic,"
 ``phonetic," or ``phonemic." It is in fact a hybrid system, drawing
 both from phonetics and orthography \citep{albert-et-al:2013}. 
-It is a transcription system in some ways and a transliteration system in others.
-It is a transcription system in that it has five dedicated vowel symbols, 
-namely \{a, e, i, o, u\}, each of which matches one of the vowels in Modern 
-Hebrew's five-vowel inventory. %  that match the five vowels of \ac{MH}'s vowel inventory 
-%along with five complementary stressed-vowel symbols, which accurately
-%capture the  and part a transliteration system---the former because, for instance, in that its five vowels 
-%together with their stressed
-%counterparts, accurately represents the vowel inventory of spoken \ac{MH}. 
+It is a transcription system in some ways and a transliteration 
+system in others. It is a transcription system in that it has 
+five dedicated vowel symbols, 
+namely \{a, e, i, o, u\}, each of which matches one of the 
+vowels in Modern Hebrew's five-vowel inventory. 
 At the same time, however, 
 it is a \emph{transliteration} system in that it is sensitive to 
 orthographic distinctions that no longer correspond
@@ -196,47 +186,9 @@ the Hebrew alphabet, \ac{MH} speech sounds, and transcription symbols
 from the \ac{BLC}. Notice that the
 the \ac{MH} column has the fewest distinctions.
 
-%This sensitivity is evident in 
-%table~\ref{table:alphabet}; note the nearly perfect one-to-one correspondence between the \ac{BLC}'s consonant 
-%symbols and those of the actual Hebrew alphabet. The consonantal component of the \ac{BLC}'s transcriptional system 
-%honors a number of historical distinctions that have preserved in the orthography, i.e., the alphabet and 
-%spelling conventions, but neutralized or otherwise lost in spoken \ac{MH}. Table~\ref{tab:phon-neut} compares 
-%(reconstructed) \ac{CH} phonemes, which are considered to be in one-to-one correspondence with the letters of 
-%the Hebrew alphabet, \ac{MH} speech sounds, and transcription symbols from the \ac{BLC}. Notice that the
-%the \ac{MH} column has the fewest distinctions.
-%with an eye to retain a number  orthographic consonants in mind. 
-
-%However, certain consonant letters, namely 
-%\begin{cjhebrew}'\end{cjhebrew} (\textit{'alef}), 
-%\begin{cjhebrew}w\end{cjhebrew} (\textit{waw}), and 
-%\begin{cjhebrew}y\end{cjhebrew} (\textit{yod}), sometimes function as vowel 
-%letters, but they always retain their fundamental consonantal affiliation
-
-%The \ac{MH} alphabet has the same graphemes as the alphabet of \ac{CH}. However, while the graphemes themselves have not changed for millennia, the mappings from graphemes to sounds have changed substantially.  In the time of \ac{CH}, the alphabet was an accurate representation of the consonant phonemic inventory, whereas today two consonants may be mapped to the same sound due to a neutralization process. 
-
-%definitely shows were clearly devised with
-%the orthographic Hebrew alphabet in mind. 
-%th\dots, as well as part transliteration 
-%system in that is it encodes of orthography of Hebrew (i.e., the Hebrew alphabet 
-%and Hebrew spelling) and the phonemic inventory of classical Hebrew, 
-%which is not the same as that of \ac{MH} \dots. It \dots.
-%Each utterance is transcribed according to a system
-%specially designed for the purpose of representing \ac{MH} speech. 
-%\citep{albert-et-al:2013}. It is based on previous transcription systems 
-%devised by Berman (CITE). The alphabet is (thus) in fact neither truly 
-%phonetic nor phonemic.  
-%It cannot be described as purely phonemic because of its close ties to 
-%orthography--its ``consciousness"
-%of orthography, so to speak. 
-
-%Like \ac{CH}, \ac{MH} is 
-%written (and printed) solely with consonant letters. Certain consonant letters, namely 
-%\begin{cjhebrew}'\end{cjhebrew} (\textit{'alef}), \begin{cjhebrew}w\end{cjhebrew} (\textit{waw}), and 
-%\begin{cjhebrew}y\end{cjhebrew} (\textit{yod}),
-%sometimes function as vowel letters, but they always retain their fundamental consonantal affiliation.
 \begin{table}[ht]
 \centering
-\caption{Transcription System of the Berman Longitudinal Corpus}% title of Table
+\caption{Transcription System of the Berman Longitudinal Corpus}
 \label{table:alphabet}
 \subtable[Consonants\label{subtab:trans-cons}]{
 \begin{tabular}{c c c c c c c c c c c c c}
@@ -272,25 +224,18 @@ The orthography of \ac{MH} thus preserves the shadows of
 lost \ac{CH} phonemes, as it were. 
 Similarly, many morphophonological processes in \ac{MH}
 preserve residues of \ac{CH} phonotactics and phonological processes. 
-That is, even though 
-the triggering contexts of these \ac{CH} processes have been obscured 
-or altogether lost 
-due to sound changes, many have nonetheless been revived as 
-fully-fledged components of \ac{MH}. %\ac{CH}. 
-%Ancient phonotactics and 
-%(morpho-)phonological alternations are often preserved in \ac{MH},  
-%even though the motivation for these processes, the triggering contexts, 
-%have been obscured or altogether lost due to sound change. 
+That is, even though the triggering contexts of these \ac{CH} processes 
+have been obscured or altogether lost due to sound changes, 
+many have nonetheless been revived as fully-fledged components of \ac{MH}. 
 For example, in \ac{CH}, the consonants \begin{cjhebrew}.h\end{cjhebrew} 
 (\textit{\textipa{\textcrh{et}}}) and \begin{cjhebrew}`\end{cjhebrew}
-(\textit{`ayin}) 
-were both pharyngeal consonants; the former was a voiceless fricative
-(IPA \textipa{[\textcrh]}), and the latter a voiced stop (IPA \textipa{[Q]}). 
-There was a process in \ac{CH} whereby the 
-[+low] vowel \textipa{[a]} was inserted between a [-low] vowel and a 
-pharyngeal consonant to
-mediate the transition between the [-low] vowel and the [+low] pharyngeal.
-This process is illustrated in table~\ref{tab:a-insertion}. 
+(\textit{`ayin}) were both pharyngeal consonants; the former 
+was a voiceless fricative (IPA \textipa{[\textcrh]}), and the latter a 
+voiced stop (IPA \textipa{[Q]}). There was a process in \ac{CH} 
+whereby the [+low] vowel \textipa{[a]} was inserted between 
+a [-low] vowel and a pharyngeal consonant to
+mediate the transition between the [-low] vowel and the 
+[+low] pharyngeal. This process is illustrated in table~\ref{tab:a-insertion}. 
 
 \begin{table}[h]
 \centering
@@ -334,9 +279,8 @@ word-final position, not even a glottal stop for most
 speakers. The inserted \textit{a} thus ends up being the 
 word's final phonological segment. And yet it is not the final segment
 in the \ac{BLC}'s transcription, namely \textipa{yod\'eaQ} in row (c). 
-The \ac{BLC} includes the grapheme 
-\begin{cjhebrew}`\end{cjhebrew} (\textit{`ayin}) in the form 
-of the transcriptional 
+The \ac{BLC} includes the grapheme \begin{cjhebrew}`\end{cjhebrew} 
+(\textit{`ayin}) in the form of the transcriptional 
 symbol \textipa{[\textrevglotstop]}, as though it
 were an actual speech sound.
 \begin{table}[h]
@@ -361,14 +305,8 @@ quite valuable information.
 Phonemic mergers can obscure category memberships and thus 
 create ambiguity. For instance, 
 the forms for `(he) knew' and `her hand' in  table~\ref{tab:yada}
-%\begin{exe}
-%\ex \begin{cjhebrew}d\end{cjhebrew}-\begin{cjhebrew}`\end{cjhebrew} `know') 
-%\ex
-%\end{exe}
-%For example, numerous consonantal roots contain one or more of the lost consonants among their three or four elements, such as the roots $\surd$y-d-\textipa{Q}$ (\begin{cjhebrew}y\end{cjhebrew}-\begin{cjhebrew}d\end{cjhebrew}-\begin{cjhebrew}`\end{cjhebrew} `know') and $\surd$q-r-\textitpa{P}$ (\begin{cjhebrew}q\end{cjhebrew}-\begin{cjhebrew}r\end{cjhebrew}-\begin{cjhebrew}'\end{cjhebrew} `read')  In the \emph{qal} binyan, the 3ms present-tense instantiations of these two roots
-%are  \texit By representing relationships 
-have identical pronunciations in \ac{MH}, as indicated by their identical 
-\ac{IPA} transcriptions
+have identical pronunciations in \ac{MH}, as indicated 
+by their identical \ac{IPA} transcriptions
 in \ref{tab:yada}. And yet they are different. 
 The former is a 3ms past-tense verb of the 
 \emph{qal} binyan. Its root consists of the \emph{three}
@@ -389,7 +327,7 @@ information is not entirely accurate vis-\`{a}-vis \ac{MH}
 pronunciation.
 
 On the other hand, the inclusion of these non-Modern 
-sounds means the more features are necessary to describe 
+sounds means that more features are necessary to describe 
 words. More features results in longer processing times. 
 A larger number of features can also decrease accuracy 
 if the additional features are not useful. 
@@ -434,27 +372,13 @@ it has merged with the velar voiceless stop
 \begin{cjhebrew}k|\end{cjhebrew} (\textit{kaf}, IPA \textipa{[k]}).
 %Thus, 
 %as the \emph{emphatic consonants}, were once associated with pharyngealized phonemes, but now they are pronounced simply as [s] and [t]. 
-Similarly, the pronunciations (or affiliated phonemes) of \textit{\textipa{same\.*k}} and 
- \textit{\textipa{\.*te\.*t}} have merged with those of \textit{sin} and \textit{tav} respectively, 
- so that \textit{\textipa{same\.*k}} and \textit{\textipa{sin}} are both pronounced as [s], 
- and \textit{\textipa{\.*te\.*t}} and \textit{tav} as [t]. But whereas the phonemic inventory of \ac{MH} has lost
- distinctions, t
-%\begin{cjhebrew}q\end{cjhebrew} (\textit{qof}) have merged phonetically 
-%with their non-pharangealized
-%counterparts \textit{tav} and \textit{sin}, respectively. Thus, \dots.
-%
-%The consonant \begin{cjhebrew}q\end{cjhebrew} (\textit{qof}, IPA \textipa{[q]}) was uvular and 
-%possibly pharyngealized in \ac{CH}, but in \ac{MH}, it has merged with the velar stop 
-%\begin{cjhebrew}k|\end{cjhebrew} (\textit{kaf}, IPA \textipa{[k]}). Thus, in \ac{MH},
-%both 
-%\begin{cjhebrew}.h\end{cjhebrew}, and \begin{cjhebrew}.s| \end{cjhebrew}. Thus, \dots.
-
-%The oral obstruents
-%\begin{cjhebrew}b\end{cjhebrew} \textit{bet} ,
-%\begin{cjhebrew}g\end{cjhebrew} \textit{gimel}, \begin{cjhebrew}d\end{cjhebrew} 
-%\textit{dalet}, \begin{cjhebrew}k|\end{cjhebrew} \textit{kaf}, \begin{cjhebrew}p|\end{cjhebrew} 
-%\textit{pe}, and \begin{cjhebrew}t\end{cjhebrew} \textit{tav} in \ac{CH} 
-%became fricatives in the context Vowel\_.
+Similarly, the pronunciations (or affiliated phonemes) of 
+\textit{\textipa{same\.*k}} and \textit{\textipa{\.*te\.*t}} 
+have merged with those of \textit{sin} and \textit{tav} respectively, 
+ so that \textit{\textipa{same\.*k}} and \textit{\textipa{sin}} 
+ are both pronounced as [s], and \textit{\textipa{\.*te\.*t}} and 
+ \textit{tav} as [t]. But whereas the phonemic inventory of 
+ \ac{MH} has lost distinctions, the Hebrew writing system has preserved sever inter-consonantal distinctions.
 
 \begin{table}[ht]
 \centering 
@@ -484,18 +408,6 @@ Similarly, the pronunciations (or affiliated phonemes) of \textit{\textipa{same\
 \label{tab:phon-neut} 
 \caption{Relationships between Orthography and Speech Sounds}
 \end{table}
-
-%table of neutralizations and losses in \ac{MH} phonemic inventory.
-%\begin{table}[ht]
-%\centering
-%\caption{a-insertion before historic pharyngeals}
-%\label{tab:a-insertion}
-%\begin{tabular}{l c c c}
-%Actual \ac{MH} & \ac{BLC} & Ancient Heb. & Gloss \\
-%\textipa{yod\'ea}  & \textipa{yod\'eaQ} & \textipa{yod\'eaQ} & `know(s), one who knows' \\
-%\textipa{bore\'ax} & \textipa{bor\'eax} & \textipa{bor\'ea\textcrh} & `flee(s), escape(s), one who flees'  \\
-%\end{tabular}
-%\end{table}
 
 \subsection{Morphological Annotation}
 For our purposes, the most salient aspects the \ac{BLC}'s morphological 
@@ -539,13 +451,9 @@ the end of each prefixal clitic: \textsf{wehay\'eled}
 would be transcribed as \textsf{we\# ha\# y\'eled}.
 \begin{exe}\label{ex:preclitics}
 	\ex
-	\textsf{we\#\, \v{s}e\# me\textipa{Q}arbev\'im} \\ %\textsf{me\textipa{Q}arbev\'im}\\
+	\textsf{we\#\, \v{s}e\# me\textipa{Q}arbev\'im} \\ 
 	\textsf{conj|we conj:subor|\v{s}e\, part|\textipa{P}irb\'ev\&root:\textipa{Q}rbb\&ptn:piel\&gen:ms\&num:pl} 
 \end{exe}
-
-%\subparagraph{Phonologically merged clitics.} This is actually good for my buddy Multimorph. 
-%We don't want to unmerge these
-%puppies. The two are notationally linked via the tilde symbol ($\sim$).
 
 \paragraph{Demarcation of inflectional affixes.}
 Past tense verbs take inflectional suffixes. Future-tense verbs take both inflectional prefixes and suffixes. 
@@ -765,57 +673,22 @@ is composed of the prefixal preposition \textit{be-} `in' and the
 noun \textit{diy\'uk} `exactitude, accuracy', which is itself composed of the 
 root $\surd$d.y.q and the nominal vowel pattern C\textbf{i}C\textbf{\'u}C 
 a pattern that implies a relationship to a verb of the \textit{Piel} binyan.  
-The adverb \textit{\textsf{me\textglotstop{a}xoran\a'{i}t}} in (\ref{ex:adv:dscr}) 
-is even more complex. It has two nominalizing
+The adverb \textit{\textsf{me\textglotstop{a}xoran\a'{i}t}} in 
+(\ref{ex:adv:dscr}) is even more complex. It has two nominalizing
 derivation affixes \textit{\textsf{-an}} and \textit{\textsf{-it}} in addition 
 to the prefixal preposition \textit{\textsf{me/i-}}. Moreover, it contains the 
 root $\surd$\textsf{\textipa{P}.x.r}, which is generally associated with meanings 
 related to `late' and `after'.
 
-%In its morphological analyses, the \ac{BLC} focuses on inflectional morphology. 
-%Except for roots and vowel patterns, it largely ignores derivational morphology.
-
-
-
-%except for roots and vowel patterns.
-%To be fair, derivational morphology is not within the \ac{BLC}'s stated objectives (CITE). 
-%One can thus
-%hardly criticize its lack of derivational morphological analysis. Unfortunately, adverbs by nature
-%have no inflectional morphology, but they often have derivational morphology.
-
-%This adverb has
-%segments that do not contribute to its meaning in any clear way. 
-%Their semantic contributions are not entirely 
-%clear. So how do we handle this?
-
-%In its morphological analyses, the \ac{BLC} focuses on inflectional morphology, ignoring derivational morphology
-%except for roots and vowel patterns.
-
-%In this way, the \ac{BLC}'s morphological analyses are much like 
-%those produced by the finite state morphological analyzer MILA (CITE), which was the source of the
-%gold-standard morphological analyses used in \cite{meyer:2006} to evaluate morphological
-%clusters. Moreover, both MILA analyses and \ac{BLC} analyses consist of highly abstract
-%categories like \texttt{num:pl} and \texttt{gen:ms}, which do not map neatly to Hebrew's
-%fusional and synchretic inflectional morphology. 
-
-%That is, its morphological categories are each atomic and abstract they are highly conceptual in nature highly semantic and not grounded in form, at least not in every case, and perhaps not in most cases. 
-%That is, if it is not morphomic not at all, it is the opposite, if you will. It lies on the other end of the spectrum. It does not acknowledge and intermediate level of autonomous morphology between phonology and syntax. This is clear in the example above the example of ...
-%
-%But the \ac{BLC}'s morphological analyses are basically sound from the viewpoint of classical morpheme-based morphology. This is how this is the way morphome[-based] morphological analyses are typically. As is mentioned elsewhere in this dissertation(?), there are no existing gold-standard segmentations of words into their component morphomes, and thus one must work with what one has, however imperfect (from a morphomic point of view).
-
 I thus expanded the morphological analyses of complex adverbs in order to capture at 
-least some of the derivational morphology of these adverbs. %its morphological analysis. 
-The (originally) simplistic morphological analyses of complex adverbs were expanded 
-(by yours truly). 
-%I did add information. 
+least some of the derivational morphology of these adverbs.
+The (originally) simplistic morphological analyses of complex adverbs were expanded.
 But I did not go so far as to delineate morphomes, as this would 
 be straying too far from the rest of the analyses in the \ac{BLC}. Such 
 analyses would be out of place among all of the other analyses in corpus. 
 This would at best be a futile, and at worst, experimentally detrimental.
 
 The expansion of adverb analyses thus consisted of the following limited set of actions. 
-%are principles for expanding the analyses of complex adverbs. We took these steps, and only these steps.
-%to expand the the morphological analysis of a complex adverb.
 \begin{enumerate}
 \item Identify any prefixal prepositions that contribute to the adverb's form.
 \item Specify the \emph{root}, if any is present.
@@ -827,7 +700,6 @@ Compound nouns in both \ac{CH} and \ac{MH} are made up of a \emph{chain} of
 one or more nouns in the \emph{construct} state followed by a final noun
 in the \emph{absolute} state. The latter is marked by reduced stress 
 and the latter by a normal stress assignment. The following examples 
-%(\ref{ex:cstr:pasey}--\ref{ex:cstr:bdiqat})%in %\ref{ex:cstr:examples}
 illustrate the way compound nouns are treated in the \ac{BLC}.
 \begin{exe}
 \ex \label{ex:cstr:pasey}
@@ -842,83 +714,44 @@ illustrate the way compound nouns are treated in the \ac{BLC}.
 \end{exe}
 In the main tier (i.e., the transcription tier), the components of a compound noun are
 delimited by the `+' symbol. 
-%In the morphological tier, however, things get a bit more
-%complicated. Allow me to provide some background, please. I promise that it will be thinnest
-%foundation ever laid. 
 
 Now, a compound noun consists of at least two nouns. One of these 
-(and only one) is the head of compound, that is to say, that it carries the morphosyntactic 
-features of the whole compound.
-In a Hebrew compound noun, the first noun
-is always the morphosyntactic head, despite its phonologically reduced state.
-%, which, perhaps counterintuitively, is always phonologically reduced. 
-%But in any case, the first noun is indeed the head of any given compound noun.
-Thus, in (\ref{ex:cstr:pasey}), \textsf{pas\'{e}y} 'stripes/bands' is the head of 
-\textsf{pas\'{e}y+ha+rak\'{e}vet} `the railroad tracks.'\footnote{The \textit{ha} at the beginning of  
-\textsf{\textit{ha}rak\'{e}vet} 
-is the definite article, a prefixal clitic. The definite-article clitic attaches not 
-to the compound's morphosyntactic head, but rather to its \emph{phonological} 
-head, i.e., the final component noun, which bears the compound's primary stress.}
+(and only one) is the head of compound, that is to say, that it carries 
+the morphosyntactic features of the whole compound. In a Hebrew compound 
+noun, the first noun
+is always the morphosyntactic head, despite its phonologically 
+reduced state.
+Thus, in (\ref{ex:cstr:pasey}), \textsf{pas\'{e}y} 'stripes/bands' 
+is the head of \textsf{pas\'{e}y+ha+rak\'{e}vet} `the railroad 
+tracks.'\footnote{The \textit{ha} at the beginning of  
+\textsf{\textit{ha}rak\'{e}vet} is the definite article, a prefixal 
+clitic. The definite-article clitic attaches not to the compound's 
+morphosyntactic head, but rather to its \emph{phonological} head, 
+i.e., the final component noun, which bears the compound's primary stress.}
 
-%There remains the question of what exactly we should extract where compound 
-%nouns are concerned. Should, one, for instance, take the \emph{whole} the 
-%compound, i.e., \emph{all} of is component nouns? 
-
-%Now, in this study, whenever the data-extraction script encountered a compound 
-%noun, it 
-For our purposes, we extract only the first noun of a compound noun, discarding the others. %when confronted with a compound noun. 
-% the morphosyntactic head, were
-%extracted and included in the input datasets; the other component nouns were discarded. 
-% and any other component noun was discarded. 
-There are two reasons for doing so: %keeping only the first noun. 
+For our purposes, we extract only the first noun of a compound noun, 
+discarding the others. 
+There are two reasons for doing so:
 The first is word length; 
 i.e., compound nouns can, in principle, be indefinitely long and comprise
 indefinitely many component nouns.\marginpar{What 
 is the longest in the data?} 
-Even a compound of two nouns begins to exceed the scope of a ULM study. morphological learning. 
-It is challenge enough to identify a single content stem or a single content root.  in a word. 
-The second reason the distribution 
-of features among the component nouns: Because the initial noun is head, its 
-features are \emph{the same as} the features of the whole compound. The means that we only 
-have to extract the morphosyntactic features of the initial noun to extract the features of the whole 
-compound. In fact, the other nouns in the compound will be morphosyntactically empty. They still have
-morphology, of course, but this sort of morphology is not annotated in the \ac{BLC}. The \ac{BLC} 
-provides only morphosyntactic features, which are the morphosyntactic features of the initial noun. 
-There is nothing else to extract where compound nouns are
-concerned. % (so that the features of the 
-%whole compound are equal to the features of the initial noun, and vice versa).
-%noun's morphological analysis will consist of only the first noun's features. 
-%The other component nouns essentially have no morphosyntactic features. The are 
-%morphosyntactically empty. Since we need to extract morphological analyses
-%along with the words themselves, there is no point in extracting words  %---namely, 
-%non-head nouns within compound nouns---that 
-%that in effect have no morphological analysis.
-
-%There are a couple of reasons for keeping
-%only the first noun in a compound-noun construction, namely:
-%\begin{enumerate}
-%\item Hebrew compounds (or ``construct chains'') can be indefinitely long---
-%long in terms of characters (or symbol) number as well as  number of stems.
-%\item The existence of multitude
-%\end{enumerate}
-% 
-%What are the relevant points? 1) Long-ass words. 2) multiple stems, i.e., multiple 
-%``free" morphological units; that is, they would be free if only they were not in the 
-%construct state, which is 
-%a phonological property, not a lexical one (per se?). 
-%Therefore, each component noun in a compound is \emph{lexically} independent(?)
-%Hebrew compounds have also been called \emph{construct chains}, an apt term, 
-%since they can be indefinitely.
-%long in principle. [CITE example?]  The multiple stems and the potentially prodigious 
-%lengths of compound nouns make them seem impractical as subjects of a ULM study.
-
-%Alternative Course of Action:
-%Just think for moment about the problem of really long words, compound words, 
-%compounds nouns, no less. They seem to be too syntactic. 
-%Instead, I extracted just the morphosyntactic head (i.e., the first component noun) 
-%of each compound noun. As the morphosyntactic head, its features \emph{are} 
-%the features of the whole compound noun, and compound noun are in fact features 
-%of the first component noun. 
+Even a compound of two nouns begins to exceed the scope 
+of a ULM study. morphological learning. It is challenge enough 
+to identify a single 
+content stem or a single content root.  in a word. 
+The second reason the distribution of features among the 
+component nouns: Because the initial noun is head, its 
+features are \emph{the same as} the features of the whole compound. 
+The means that we only have to extract the morphosyntactic 
+features of the initial noun to extract the features of the whole 
+compound. In fact, the other nouns in the compound will be 
+morphosyntactically empty. They still have morphology, of course, 
+but this sort of morphology is not annotated in 
+the \ac{BLC}. The \ac{BLC} provides only morphosyntactic 
+features, which are the morphosyntactic features of the initial 
+noun. There is nothing else to extract where compound nouns 
+are concerned.
 
 \begin{exe}
 \ex \label{ex:cstr:pasey2}
@@ -953,175 +786,44 @@ The experimental component of this dissertation consists of two major axes of in
 One concerns \textsc{representation} of the input data, and the other the \textsc{features}. 
 We shall address each of these in turn. 
 
-
-
-%Alright, now let us turn to question of what I needed to obtain/extract from the corpus
-%in order to run the experiments.
-%following is what I needed to get from the corpus:
-. 
-
-%Multimorph was run on each type of representation, and the results were compared. 
-
-%What is Hebrew orthography like?  
-%Look at that table, table~\ref{}
-%How did you obtain the orthographic data from the 
-%\ac{BLC}'s transcribed data? 
-%The symbols in T's transcriptional system are mapped to those of     %(see table \ref{}) 
-%Hebrew writing. As is evident in table~\ref{},
-
-%The source of the transcriptional data was the \ac{BLC}, whose orthography-conscious 
-%transcriptional system we discussed above in section (REF). %Many of this system's 
-%%consonant symbols
-%Table~\ref{table:alphabet} above demonstrates the close correspondence between the \ac{BLC} 
-%consonant symbols and those of
-% those of standard Hebrew orthography. The vowel-to-vowel correspondence, 
-% on the other hand, is
-% nonexistent. This is because there are no dedicated vowel symbols in standard 
-% Hebrew orthography. 
- 
- % What shall we call the \ac{BLC} set? 
-% This is because the \ac{BLC} transcriptional system 
-%is sensitive to orthographic distinctions. The consonant-to-consonant mappings were thus mostly 
-%straightforward.
-
-%to its performance on 
-%orthographic data (\textbf{O}).
-%The source of the transcriptional data was the \ac{BLC}, whose orthography-conscious 
-%transcriptional system we discussed above in section (REF). Many of this system's 
-%consonant symbols 
-%map directly to Hebrew letters rather than actual \ac{MH} speech sounds (see REF).
-%The transcriptional dataset actually comprises two closely datasets. These are 
-%\textbf{T}, which in no way indicates stress assignment, and \textbf{TS}, in which 
-%an accented vowel 
-%(\'a, \'e, \'i, \'o, or \'u) appears in each stressed syllable instead of a ``regular''
-%(accent-less) vowel.   Well, in the present study, these stress marks were terminated with
-%extreme prejudice. 
-%Stress is effin' worthless. 
-%over the vowel of the stressed syllable.  represent accented w bearing vowels, namely \'a, \'e, \'i, \'o, or \'u.      The first, which we will label simply as T, does not indicate primary (or any other) stress; i.e., it contains no stress marks of any kind. The second, is the same  in which stress \emph{is} marked, so that the vowel nuclei of stressed syllables appear with an accent mark, i.e., as in \'a, \'e, \'i, \'o, or \'u. Let us adopt the shorthand T for the stressless transcriptional dataset and TS for the stress-marked transcriptional S stands for ``stress."
-%one in which stress is not marked. We shall abbreviate the former TS
-% which each word's primary stress is indicated via an accented vowel, i.e., \'a, \, 
-%and the other with no stress markings. we shall label \textbf{TR}
-%The morphological analyses are, in their raw form, just lists of morphological categories, 
-%i.e., lists of simple feature-value pairs.
-%The following is a \ac{BLC} morphological analysis after undergoing the transformations 
-%described in section~\ref{sec:extr}
-%\begin{exe} 
-%\ex \label{ex:finished}
-%\begin{tabbing}
-%\hspace{0.8in} \= \hspace{5.5in} \kill
-%\textsf{matxilim} \> \textsf{\textbf{matxil+im}\$\$part\&root:txl\&ptn:hifil\&gen:ms\&num:pl}\, \\
-%\> \textsf{\textbf{matxil+im}\$\$adj\&root:txl\&ptn:tbd\&gen:ms\&num:pl}
-%\end{tabbing}
-%\end{exe}
-%Note that there two separate analyses in (\ref{ex:finished}), a result of ambiguity. Note also that each analysis is preceded by a segmentation (in boldface). In cases of ambiguity, i.e., of multiple analyses, each analysis gets its own segmentation, even though
-%the segmentations may be identical.
-%
-%%We also need a \emph{morphological segmentation} for each morphological analysis.
-%We need two sets of morphological segmentations, namely $T_{SEG}$ and $O_{SEG}$, where:
-%\begin{itemize}
-%\item $T_{SEG}$ = segmentations for 10 percent of the words in T.
-%\item  $O_{SEG}$ = segmentations for 10 percent of the words in O.
-%\end{itemize}
-%%as segmentations for 10 percent of the words in each dataset (i.e., both $T$  and $O$). % both T and O. % i.e., we need a segmentations for 1/10 Recall that this employs two methods of evaluation; one is intrinsic, and the other extrinsic. 
-%Each acts as a gold-standard in the extrinsic 
-%part of the evaluation (see chapter \ref{ch:eval}). 
-%component, we need segmentations for 1/10 of the words of each wordlist. The  
-%For the extrinsic evaluation component, we need to extract a morphological analysis (or multiple 
-%morphological analyses if the word in question is ambiguous). We need such an analysis set for 
-%each word in \emph{each} wordlist.  Each word can have multiple possible morphological 
-%analyses, and a segmentation is more accurately regarded as a correlate---perhaps even a 
-%result---of a \emph{particular} morphological analysis (i.e., one of potentially many in the 
-%analysis set) than it is a innate property of the string (i.e., word) itself.
-
-%A list of pairs ${(t_n, A_n)}_n$ % n \in N$ where $A$ is an inner list of pairs, namely $A {=}_{def} {({seg}_m, {a}_m)}_n$
-%\begin{enumerate}
-%    \item $T$: a list of transcribed words to serve as input to Multimorph.
-%    \item $A$: list  of morphological analyses $\textbf{a}$ Each $t \in T$. Some
-%\end{enumerate}
-
-%Transformations of/on the transcriptions.
-%What does one input to Multimorph? What is the origin of the process? What does Multimorph 
-%do with the input? 
-%Multimorph takes as input any list of words. In its current configuration, 
-%Multimorph expects each word to be on a new line, but this is trivial. What is important is
-%that Multimorph, like %many
-%other ULM systems, presumes that each word is contextless, i.e., 
-%independent of the other words in its list (REF and CITE).
-
-%\subsection{Orthographic Words}
-%I am using two primary wordlists: an orthographic and a transcribed wordlist. The 
-%latter serves as the basis for two wordlists, and we thus have a total of three wordlists: 
-%Orthographic Words (O), Transcribed Words with Stress Markings (TS), and Transcribed 
-%Words \emph{without} Stress Markings (TR).
-%
-%\textbf{Orthographic Words (O):} I obtained the 6888 [or 12236 with vowels; this is the main 
-%number, as the O list is derived from the TR and TS lists]. The following stuff is wrong: in 
-%O from the dataset used by \cite{daya-et-al:2008} in their study of automatic root identification.
-%These words are transliterations (Romanizations) of Standard \ac{MH} spellings. Each 
-%character in the Hebrew alphabet is unambiguously mapped to a distinct character
-%in the Roman alphabet. Each Hebrew character is always mapped to the same Roman character. 
-%
-%\subsection{Transcribed Words}
-
-%\textbf{Transcribed Words:} The source of the transcribed data is the Berman longitudinal 
-%corpus \citep{berman-weissenborn:1991}, which is part of the Hebrew section of the 
-%CHILDES databse, a multilingual corpus of verbal interactions between young children 
-%and adults \citep{macwhinney:2000a}. Each utterance in the corpus is both transcribed and 
-%morphologically analyzed. 
-%In the transcriptions, stressed vowels are marked with acute accent marks.  
-%   \begin{itemize}
-%   	\item \textbf{Transcribed Words with Stress Markings (TS)}: The wordlist TS consists 
-%	of 12,416 unique transcribed words extracted from the Berman longitudinal corpus.
-%	%, I extracted the transcribed words present in the Berman longitudinal corpus. I removed duplicates so that each word in TS was unique. The pre-existing stress markings were left intact. TS contains %12,494 words. 
-%12,416 words
-%	\item \textbf{Transcribed Words without Stress Markings (TR)}: I obtained TR by 
-%	stripping the stress markings from the words in TS. That is, TR is simply TS without 
-%	stress markings. TR contains 12,352 unique words, Each word in TR can be mapped 
-%	to at least one word in TR by giving it appropriate accent marks.
-%	I will run my system on both TS and TR, but I do not expect the presence/absence of accent marks in the input data to make a significant difference where Multimorph's performance is concerned.
-%\end{itemize}	
-
-%What is a transcription? What are the ``quasi-transcriptions" in the \ac{BLC} like?
-%How is it and different and similar to the Orthographic Data?
-
 In \ref{ch:intro}, we discussed the problem of choosing a feature set. 
 We described it as a problem of selecting one finite subset of 
 features from an infinite number of possible features.
-In the remainder of this chapter, we revisit this question. Our approach is to think in terms of feature categories, i.e., to define categories of features that have favorable properties. We shall also take into account the properties of our learning framework, discarding feature types (or categories) that are at odds with our learning framework, whether conceptually or mathematically. Ultimately, we cannot consider every possible feature or feature set. What we can do is produce some principled candidate feature sets with which to experiment. 
+In the remainder of this chapter, we revisit this question. Our approach 
+is to think in terms of feature categories, i.e., to define categories of 
+features that have favorable properties. We shall also take into account 
+the properties of our learning framework, discarding feature types 
+(or categories) that are at odds with our learning framework, whether 
+conceptually or mathematically. Ultimately, we cannot consider every 
+possible feature or feature set. What we can do is produce some 
+principled candidate feature sets with which to experiment. 
 
-We shall glean considerable insight
-from the field of computer vision. That is, we shall consider feature categories that 
-are significant to computer vision and do so with an eye to adapting them for the purposes of \ac{ULM}. The idea is that 
-%the task of clustering objects, which one might identifying significant similarities amid a sea of differences.   makes two objects similar and what makes them different,
-%and figuring out which objects to group together and which to separate, 
-is actually a very general problem. And thus the
-same types of features sometimes should apply to different types of objects
-%These categories are \textit{variant} features and \textit{invariant} features. 
-%>>>
-We shall focus in particular on \emph{invariant} and \emph{variant} features. 
-%As discussed in chapter\ref{ch:intro}, 
-The distinction between these two feature types is highly significant in
-computer vision and its various subfields. In the present dissertation, we hypothesize that this distinction is
-also relevant to ULM. 
-
+We shall glean considerable insight from the field of computer vision. 
+That is, we shall consider feature 
+categories that are significant to computer vision and do so with an 
+eye to adapting them for the purposes of \ac{ULM}. The idea is that 
+is actually a very general problem. And thus the same types of features 
+sometimes should apply to different types of objects
+We shall focus in particular on \emph{invariant} and \emph{variant} 
+features. The distinction between these two feature types is highly significant in
+computer vision and its various subfields. In the present dissertation, 
+we hypothesize that this distinction is also relevant to ULM. 
 
 \subsection {Data Representation.} 
- %\emph{representation} of the input data,
-By \emph{representation} we refer mainly to the alphabet whose symbols compose the strings (i.e., words) 
-%---the
-%particular set of symbols---that compose the strings (i.e., words) 
+By \emph{representation} we refer mainly to the alphabet whose 
+symbols compose the strings (i.e., words) 
 of an input wordlist.
 In the present work, two data representations were tested, one transcriptional 
 (\textbf{T}), the other orthographic (\textbf{O}). 
-%We shall identity the dataset with transcriptional representation as``T,' and the one with the orthographic as ``O.''
-$T$ is essentially the \ac{BLC} (but without stress markings). Its alphabet is thus the \ac{BLC}'s 34-symbol
-transcriptional system, which we discussed above in section. % \ref{sec:transcription}.
-$O$ consists of $T$'s words, but mapped onto orthographic representations; every character in $O$ is thus
+$T$ is essentially the \ac{BLC} (but without stress markings). 
+Its alphabet is thus the \ac{BLC}'s 34-symbol
+transcriptional system, which we discussed above in section.
+$O$ consists of $T$'s words, but mapped onto orthographic 
+representations; every character in $O$ is thus
 a letter of the 22-letter consonantal Hebrew alphabet.
 %$T$ and $O$ differ both qualitatively and quantitatively. 
 Arguably, $T$ contains more information than $O$,
-since $T$ has a distinct symbol for each of \ac{MH}'s five vowels sounds, %, %and each vowel sound has its own distinct symbol 
-%that is devoted exclusively to that vowel.
+since $T$ has a distinct symbol for each of \ac{MH}'s five vowels sounds,
 as well as all of the archaic consonantal distinctions found in $O$. 
 %\textsc{data representation} refers to the ``encoding'' of the input
 %word lists. Essentially, it refers to a choice between one of two alphabets (and the spelling conventions that 
@@ -1132,75 +834,11 @@ word lists. Essentially, it refers to a choice between one of two alphabets (and
 accompany each alphabet). The two alphabets are the standard consonantal Hebrew alphabet, consisting of 22 letters,
 and the 34-symbol \ac{BLC} transcriptional system.]
 
-\subsection{Features}\label{sec:expvars:features}
+\subsection{Features}   %\label{sec:expvars:features}
 \label{sec:features}
 
-%is relevant to morphological learning. We noted that in Optical Character 
-%Recognition (OCR), both 
-%variant and invariant features are necessary to distinguish some character pairs, 
-%e.g., 6 and 9. 
-
-%We hypothesized that both variant and invariant features would be required for 
-%morphological learning also, i.e. that a combination would be most advantageous, i.e., 
-%yield the best results. 
-%
-%We thus asked the question of whar We thus devised two types of features. S
-%
-%In particular, bullshit oh man oh man 
-
-
-%Now, let $F$ be the infinite set of all possible features. In keeping with the spirit of my primary research objective, we will assume that there exists at least one $\phi$ such that that $\phi \subset F$, $\phi$ is finite, and $\phi$ allows an ULM system to learn a multilinear model of morphology. The objective here is to confirm this assumption, i.e., to find such a subset.
-
-%Feature-set design is a crucial component of any machine-learning project. It therefore
-%constitutes one this dissertation's main research questions. One way to come with likely feature subsets is to
-%find feature properties that are likely to be beneficial, namely, \textit{Which types of features are most
-%beneficial to a non-linear non-sequential morphological learner such as the MCMM-based Multimorph?}
-
-\subsection{Feature-set Desiderata: Insights from Computer Vision}
-%Anyway, the point is that that \cite{dudani-et-al:1977} present a kind of theory about what constitutes good features. However, they do not really justify these desiderata; rather they treat them as obvious. Basically, they just make a sort of pronouncement?
-
-%Q001: But is this pronouncement revisited later in the paper? If so, why? What do they say about it?
-
-%Q002: What are the desiderata for my features, and what is the rationale for the desiderata? In testing the features, am I testing the desiderata? Am I testing the rationale behind the desiderata?
-
-%Why precedence features? Why positional features? What would happen if 
-%all features were positional features? What if all features 
-%were precedence features? What other types of features might be possible? %[What are some other such questions?]
-%Why precedence features? 
-
-%[A year ago, I suspected that precedence features may not be sufficient per se. 
-%But why did I suspect this?]
-
-%%These involve rational argumentation rather than experimentation. I?m 
-%%saying that these feature-related insights are important. But what are they?
-%There is a great deal of information tacitly present in a string of alphabetic 
-%symbols. This is true regardless of whether the string is written, in which 
-%case the symbols are graphemes, or spoken, in which case they are phonemes.
-%Many machine learning models require that each input object or learning 
-%instance (in our case, each word) be represented as a vector of binary features, 
-%not alphabetic features. Moreover, all input objects (learning instances) must 
-%be described by the same feature set, and all feature vectors must be of 
-%the same length.
-%One cannot, of course, have an infinite number of features, since feature vectors 
-%must be of finite length. 
-%Now, let $F$ be the infinite set of all possible features. 
-%In keeping with the spirit of my primary research objective, we will assume that 
-%there exists at least one  such that that $F$, is finite, and  allows an ULM 
-%system to learn a multilinear model of morphology. The objective here is to 
-%confirm this assumption, i.e., to find such a subset.
-%Goals for designing a feature set: Invariant and variant (adapted from computer vision) We want to glean from literature, 
-%perhaps even literature from other fields, insights for assembling a list or set of desiderata for a 
-%feature set. We also want to find conceptually coherent (i.e., natural) categories of features 
-%used in other fields (or for other tasks). We will then be able to ask the question, Which 
-%of these features are most important for our task? Which seem unnecessary (or even 
-%detrimental)?
-
-%``In order to recognize many variations of the same character, features that are invariant to certain transformations on the character need to be used" \citep{trier-et-al:1996}. 
-%
-%``But rotation-variant features will be necessary to differentiate certain pairs of characters like 6 and 9" \citep{trier-et-al:1996}.
-%
-%``Devijver and Kittler define feature extraction as the problem of `extracting from the raw data the information which is most relevant for classification purposes, in the sense of minimizing the within-class pattern variability while enhancing the between-class pattern variability'. It should be clear that different feature extraction methods fulfill this requirement to a varying degree, depending on the specific recognition problem and available data" \citep{trier-et-al:1996}.
-\subsubsection{Invariance vs. Variance}
+\subsubsection{Feature-set Desiderata: Insights from Computer Vision}
+\paragraph{Invariance vs. Variance}
 \cite{dudani-et-al:1977} describe three desiderata for features in the 
 domain of aircraft identification:
 \begin{quote}
@@ -1234,20 +872,6 @@ but in either case, a scale-invariant feature would be oblivious, so to speak, t
 This is important because $A$ and $B$ could in fact be the one and the same object; it might appear 
 larger in one photograph simply because 
 it was closer to the camera when that photograph was taken.
-%Suppose $A$ and $B$ are shapes in different photographs. 
-%$A$ and $B$ could in fact be the same shape. 
-%Thus, if an image recognition system is to be capable of recognizing 
-%$A$ and $B$ as the same object, at least some of its features must 
-%be scale-invariant.
-%In general, in image recognition, invariant features are preferable 
-%to variant ones \citep{hossain-et-al:2012}.
-
-%Scale-invariant features are oblivious to changes in size. That is, all else being equal, 
-%of the object in question. if the size the object in question is enlarged or shrunk. 
-
-%They should be informative
-%They should be ``Invariant with translation of the object normal to the camera optical axis to and with rotation about this axis"
-%They should be either invariant with or dependent in a known way upon the distance of the object from the camera.
 
 Sometimes, however, both invariant and variant features are necessary, 
 as in optical character recognition (OCR)\citep{trier-et-al:1996}.
@@ -1291,7 +915,7 @@ are rotation variant.
 %Word length---even normalized word length---is not %really
 %germane to whether or not two words share a component. 
 
-\subsubsection{Global vs. Local Features}
+\paragraph{Global vs. Local Features.}
 Global features describe an image as a whole, whereas local features are concerned
 only with a particular region in the image. That is, the value of local feature is dependent
 only upon its particular region; it is not affected by other regions. 
@@ -1305,85 +929,51 @@ A global feature for ULM could be the number
 of characters in a given word, which could be binned. Another 
 could be the consonant to vowel ratio in a word. The question, however, is 
 whether such properties are relevant and beneficial to Multimorph's task,
-which is to group together words that share components.
-%Multimorph detects systematic similarity by grouping together words that share
-%components (see chapter \ref{autonomous}). 
-%Features like word length---even 
-%normalized word length---are not helpful to this task.  
+which is to group together words that share components. 
 However, global features are not conducive to bipartite graphical learning frameworks.
 Recall from chapter~\ref{ch:graph} that an MCMM is a bipartite graph and thus 
 satisfies the following:
-%[Insert definition here:]
-%A multipartite graph is a graph 
-%whose nodes can be partitioned into $N$ \emph{disjoint} sets of 
-%\emph{mutually nonadjacent} nodes, i.e., $N$ sets such that no two
-%nodes within the \emph{same} set are connected by an edge. A bipartite graph
-%is simply a multipartite graph such that $N = 2$. That is, 
-%a graph is bipartite if it satisfies the following criteria:
 \begin{enumerate}
 \item its nodes are separated into two disjoint sets (or partitions).
 \item within each partition, all nodes are independent, i.e., mutually 
 nonadjacent.
 \end{enumerate}
 In an MCMM, the two partitions are the vectors $\textbf{m}_{i}$
-and $\textbf{r}_{i}$ (for each word $i$). The former is the vector of cluster activities, and the latter
-is the \emph{reconstruction} of word $i$'s original feature-vector representation of word. (Recall from chapter~\ref{ch:MCMM}, specifically section~\ref{sec:architecture}, that $\textbf{r}_i$ is a working
+and $\textbf{r}_{i}$ (for each word $i$). The former is the vector of 
+cluster activities, and the latter
+is the \emph{reconstruction} of word $i$'s original 
+feature-vector representation of word. (Recall from chapter~\ref{ch:MCMM}, 
+specifically section~\ref{sec:architecture}, that $\textbf{r}_i$ is a working
 reconstruction of $\textbf{x}_i$, the original and target feature vector for word $i$.)
 By the definition of \emph{bipartite}, \emph{every} feature in $\textbf{r}_i$ is independent,
 and thus every feature is local. 
 
-Moreover, words tend to be complex objects, often composed of multiple morphological units.
-These morphological units are generally to some extent orthogonal. That is, a
-plural suffix can appear with wide variety of stems, for example, and a given stem may occur with a wide variety of suffixes.
-Two words can share a single morphological component and differ in the rest their of their components. Indeed,
-they can be more different than they are alike from a cumulative, quantitative point of view. Nevertheless,
-as far as that one shared component is concerned, these two are \emph{the same} and thus co-members of a morphological
-class. Global features do not seem well-suited to represent this kind of modular similarity. For
-these reasons, global features were not tested in this dissertation. All features were local. 
+Moreover, words tend to be complex objects, often composed of 
+multiple morphological units.These morphological units are 
+generally to some extent orthogonal. That is, a plural suffix can 
+appear with wide variety of stems, for example, and a 
+given stem may occur with a wide variety of suffixes.
+Two words can share a single morphological component and 
+differ in the rest their of their components. Indeed,
+they can be more different than they are alike from a cumulative, 
+quantitative point of view. Nevertheless,
+as far as that one shared component is concerned, these two are 
+\emph{the same} and thus co-members of a morphological
+class. Global features do not seem well-suited to represent this 
+kind of modular similarity. For these reasons, global features were 
+not tested in this dissertation. All features were local. 
 
-On the other hand, the invariant vs. variant distinction was a focal point in this study.
-The kind of invariance at issue was \emph{affixation-invariance}; which means that the value of a given feature does not change
+On the other hand, the invariant vs. variant distinction 
+was a focal point in this study.
+The kind of invariance at issue was \emph{affixation-invariance}; 
+which means that the value of a given feature does not change
 when affixes are attached to the beginning or end of the word. 
-Two main feature types were tested, namely \emph{positional features}, which are affixation-variant, 
+Two main feature types were tested, namely 
+\emph{positional features}, which are affixation-variant, 
 and \emph{precedence features}, which are affixation-invariant.
 
-%and a single stem can appear with many different suffixes. 
-%rather, each is composed one or more---potentially many more---morphological units. 
-%Moreover, these morphological units are more or less orthogonal and thus freely recombinable. 
-%For instance, a given plural suffix can appear with wide variety of stems, 
-%and a single stem can appear with many different suffixes. The point 
-%is that global features, features 
-%that pertain to an object as a whole, are probably not going to benefit the %useful in %for the purpose of 
-%clustering of complex objects such as words. That is, any two words may share 
-%just one morphological component among multiple components in either word,
-%being otherwise entirely different. The differences  could easily 
-%outnumber the one shared component. 
-%Recall that an MCMM is a bipartite graph because its layer of cluster-activity 
-%nodes is separate from the ``surface'' feature nodes of the reconstruction later. 
-%Thus, each cluster-activity node $m_{ik}$ can either connect to the
-%feature node $r_{ij}$ via weight $c_{jk}$, or not; the question of whether 
-%or not $m_{ik}$ connects $r_{ij}$ is determined separately (i.e., independently) 
-%for each $(m_{ik}, r_{ij})$ pair.
-
-%Each of the features in the vector $\textbf{r}$ is local: 
-%the scope of each is rather narrow 
-%both in a conceptual and ``spatial" sense: Each precedence feature
-%represents a span of characters (or character indices) no longer than the 
-%parameter $\delta$. The positional features each represent a single character 
-%position. Both positional and precedence features ``move" left to right, so to 
-%speak; that is, as
-%the feature index increases, the character index in the original word also increases, though 
-%at a slower rate, as
-%the original word is much shorter.
-%that is, a feature near near the beginning of the feature vector $\textbf{r} will 
-%correspond to a position near the beginning the beginning of the original word. 
-%Likewise, a feature in the middle of a word will correspond to more or less  \dots
-%**cumulative = bad**
-%**orthogonal, independent elements**
-
-\subsection{(In)variant Features for Morphological Learning}
-
-\subsubsection{Positional Features}
+\subsubsection{(In)variant Features for Morphological Learning}
+\paragraph{Positional Features.}
 Positional features
 indicate the presence of a particular
 character at a certain position relative to either the beginning or the end of 
@@ -1398,28 +988,29 @@ For example, $s=4$ means that for each character $\alpha$, the following
 features are generated: $\alpha$\texttt{@[0]}, $\alpha$\texttt{@[1]}, 
 $\alpha$\texttt{@[2]}, $\alpha$\texttt{@[3]}, $\alpha$\texttt{@[-1]}, $\alpha$\texttt{@[-2]}, 
 $\alpha$\texttt{@[-3]}, $\alpha$\texttt{@[-4]}.
-%\footnote{Note, however, that the textual labels 
-%of features are ultimately arbitrary; it is a feature's index that truly matters.} 
 That is, we count three positions inward from each word boundary.
 Positional features are \emph{variant} 
 with respect to affixation, which is to say that positional features are 
 defined relative to the absolute beginning 
 or end of a given word. 
 
-\subsubsection{Precedence Features}
+\paragraph{Precedence Features.}
 Precedence features indicate, for any two characters $x$ and $y$,
 whether $x$ precedes $y$ within $\delta$ characters,
 where $\delta$ is an experimental variable defined as
 	\begin{equation}\label{eq:indexdif}
 	\delta = \text{index}(x) - \text{index}(y)
 	\end{equation}
-Note that if $\delta = 1$, the precedence features are pairs of adjacent 
-characters, i.e., bigrams.
+Note that if $\delta = 1$, the precedence features are 
+pairs of adjacent characters, i.e., bigrams.
 Precedence features are affixation-invariant. 
-Consider for example 
-the word \textsf{bediy\'uq}. If $\delta = 1$, \dots 
-As an example, consider again the word \textsf{we\v{s}eme\textipa{Q}arbevim} `and which confuse', whose \ac{BLC} morphological 
-analysis appears above in example (\ref{ex:preclitics}). This word has two prefixal clitics, namely \textsf{we} 
+Consider for example the word \textsf{bediy\'uq}. 
+If $\delta = 1$, \dots 
+As an example, consider again the word 
+\textsf{we\v{s}eme\textipa{Q}arbevim} `and which confuse', 
+whose \ac{BLC} morphological 
+analysis appears above in example (\ref{ex:preclitics}). 
+This word has two prefixal clitics, namely \textsf{we} 
 (`and') and \textsf{\v{s}e} (`which'). %, and one inflectional prefix, namely \textsf{-im} `masc. pl.' 
 Consider the features \textsf{b < v}, \, \textsf{e < v}, \,\textsf{\textipa{Q} < r},\, and \textsf{\textipa{Q} < b}. If $\delta=2$, these features would get the 
 following values: 
@@ -1452,7 +1043,7 @@ The others evaluate to 1 because the difference between indices in their cases i
 %\begin{align*}
 %	\text{index}(\textsf{\textipa{v}}) - \text{index}(\textsf{b}) &= 7 - 5 = 2 \quad\to\quad \textsf{b\<v}=1 \\
 %	\text{index}(\textsf{\textipa{v}}) - \text{index}(\textsf{e}) &= 7 - 6 = 1 \quad\to\quad \textsf{e\<v}=1 \\
-%	\text{index}(\textsf{\textipa{r}}) - \text{index}(\textsf{Q})  &= 4 - 2 = 2 \quad\to\quad \textsf{\textipa{Q}\<r}=1  \\
+%	\text{index}(\textsf{\textipa{r}}) - \text{index}(\textsf{Q}) &= 4 - 2 = 2 \quad\to\quad \textsf{\textipa{Q}\<r}=1  \\
 %	\text{index}(\textsf{\textipa{b}}) - \text{index}(\textsf{Q}) &= 5 - 2 = 3 \quad\to\quad \textsf{\textipa{Q}\<b}=0\\ 
 %\end{align*}
 \begin{exe}
@@ -1480,40 +1071,54 @@ the beginning or end of a word.
 %\subsubsection{Intrinsic evaluation}
 %\subsubsection{Extrinsic evaluation}
 
-\subsection{Experimental Program}
-The experiments tested combinations of values for the parameters $s$ and $\delta$; 
-in particular for the values $s = \{2,4,6\}$ and $\delta = \{1,2,3\}$. Combining the
-values of $s$ with those of $\delta$ yielded nine feature sets, as illustrated in table~(REF),
-each of which served as the feature set in a particular experiment. By setting either $s = 0$ or $\delta=0$
-(but not both equal to zero at the same time), we can feature sets that contain only one type of feature;
-i.e., if $s=0$, there can be no positional features, and similarly, there can be only one positional features 
-if $\delta=0$.\footnote{That is, the valuation $\delta = 0$ is actually
-undefined; $\delta = 1$ corresponds to bigrams, i.e., adjacent characters, so $\delta = 0$ would 
-mean that two characters had the \emph{same} index, which would not make sense. 
-We therefore use $\delta = 0$ as shorthand for ``no precedence features."} In this way,
-three additional feature sets were added to the experimental lineup: three containing only 
+\section{Experimental Program}
+The experiments tested combinations of values for the 
+parameters $s$ and $\delta$; in particular for the values 
+$s = \{2,4,6\}$ and $\delta = \{1,2,3\}$. 
+Combining the values of $s$ with those of $\delta$ yielded 
+nine feature sets, as illustrated in table~(REF),
+each of which served as the feature set in a particular 
+experiment. By setting either $s = 0$ or $\delta=0$
+(but not both equal to zero at the same time), we can feature sets 
+that contain only one type of feature;
+i.e., if $s=0$, there can be no positional features, and similarly, 
+there can be only one positional features 
+if $\delta=0$.\footnote{That is, the valuation $\delta = 0$ 
+is actually undefined; $\delta = 1$ corresponds to bigrams, 
+i.e., adjacent characters, so $\delta = 0$ would 
+mean that two characters had the \emph{same} index, which 
+would not make sense. We therefore use $\delta = 0$ as shorthand 
+for ``no precedence features."} In this way,
+three additional feature sets were added to the experimental 
+lineup: three containing only 
 precedence features (i.e., at $\delta =$ 1, 2, and 3), and
 three containing only position features (at $s =$ 2, 4, and 6).
-Multimorph was run on each combination, with T serving as input.  The best valuations for $s$ 
-and $\delta$ on $T$
-were then mapped onto analogous valuations for the $O$ dataset. Because $O$ mostly lacks 
-vowels, many consonant-vowel sequences in $T$ will correspond to a single consonant in $O$. Thus, 
-we can in many cases
-%project the values of $s_{T}$ and $\delta_{T}$ (i.e., the values of $s$ and $\delta$ with $T$ as input) onto roughly equivalent values for $O$ 
-%by halving $s_{T}$ and $\delta_{T}$.
-project $s$ and $\delta$ from $T$ to $O$ by dividing by two. 
-%(i.e., the values of $s$ and $\delta$ with $T$ as input) onto roughly equivalent values for $O$ 
-by halving $s_{T}$ and $\delta_{T}$.
+Multimorph was run on each combination, with T serving as input.  
+The best valuations for $s$ and $\delta$ on $T$
+were then mapped onto analogous valuations for the $O$ 
+dataset. Because $O$ mostly lacks vowels, many consonant-vowel 
+sequences in $T$ will correspond to a single consonant in 
+$O$. Thus, we can in many cases project $s$ and $\delta$ 
+from $T$ to $O$ by dividing by two. %by halving $s_{T}$ and $\delta_{T}$.
 For example, a valuation of 
-$\langle s_T = 6, \delta_T = 2 \rangle$ (i.e. $s$ and $\delta$ with $T$ as input)  would correspond 
+$\langle s_T = 6, \delta_T = 2 \rangle$ 
+(i.e. $s$ and $\delta$ with $T$ as input)  would correspond 
 approximately to $\langle s_O = 3, \delta_O = 1 \rangle$.
- 
-% \{0,2,4,6\}
-%\times \{0,1,2,3\}$
-%\begin{align}
-%	s \times \delta &= \{2,4,6\} \times \{1,2,3\} \\
-%			   &= \langle s = 0, 2,4,6, \delta = 1 \rangle,  \langle s = 0, \delta = 2 \rangle, \langle s = 0, \delta = 3 \rangle \\
-%			   &= \langle s = 2, \delta = 0 \rangle, \langle s = 2, \delta = 1 \langle, s = 2, \delta = 2 \rangle, \langle s = 2, \delta = 3 \rangle \\
-%			   &= \dots \\   
-%\end{align}
+
+\section{summary}
+To sum up,
+\begin{itemize}
+\item Two input datasets (i.e., wordlists) were compiled: a 
+transcriptional wordlist (T) and an orthographic wordlist (O).
+    \begin{itemize}
+       \item The transcriptions (transcribed words) were extracted from 
+the \ac{BLC} to obtain T. 
+      \item The words in T were then converted to orthographically spelled 
+words according to the spelling rules of the Hebrew Language 
+Academy. This yielded wordlist O.
+     \end{itemize}
+\item Two types of features were chosen for experimentation, namely \emph{positional features} and \emph{precedence features},
+which are \emph{variant} and \emph{invariant}, respectively, with respect to affixation.
+\item 
+\end{itemize}
 
