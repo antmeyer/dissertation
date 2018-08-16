@@ -186,11 +186,16 @@ all belong to the same morphological unit. Multiple tiers are thus crucial. With
 autosegmental morphology in mind, we can state two fundamental criteria for any
 model of non-concatenative morphology:
 
-\begin{exe}  \ex \label{ex:properties}\begin{xlist}
-	\ex {\textsc{Nonlinearity}}: Morphemes are represented as being separate from the segmental tier.
-	\ex {\textsc{Nonsequentiality}}: Each morpheme tier (or node) is orthogonal to---i.e., independent of---all other morpheme tiers.
-	\end{xlist}
-\end{exe}
+	\begin{definition}\label{def:nl}{\textsc{Nonlinearity}}: %A model is \emph{nonlinear} 
+	Morphs must be separate from the phonological tier. \end{definition}
+	%Morphs, i.e., units of morphological structure, must be separate from the surface (or phonological) tier. \end{definition} %, i.e., as residing on tiers distinct from the phonological tier. %eparately for m  as being separate from (or outside of) the the phonological (or segmental) tier.  % is a property wherein morphs are represented as being separate from the segmental tier.
+	\begin{definition}\label{def:ns}{\textsc{Nonsequentiality}}: %is a property such that each morph tier (or node) is orthogonal to all other morph tiers.
+	%---i.e., independent of---all other morph tiers. 
+	Each morph tier must be orthogonal to all other morph tiers.
+	\end{definition}
+\begin{proposition}\label{prop:nlns}
+A model of morphology can handle nonconcatenative morphology if and only if it satisfies both \textbf{nonlinearity} and \textbf{nonsequentiality}. %  the modeling of nonconcatenative morphology.}
+\end{proposition}
 %\pex~ Two essential properties  %\ex \label{ex:properties}\begin{xlist}
 %	\a {\textsc{Nonlinearity}}: Morphemes are represented as being separate from the segmental tier.
 %	\a {\textsc{Nonsequentiality}}: Each morpheme tier (or node) is orthogonal to---i.e., independent of---all other morpheme tiers.
@@ -200,7 +205,7 @@ model of non-concatenative morphology:
 These criteria, or essential properties,
 %\textsc{nonlinear} and \textsc{nonsequential} 
 are basically binary variables; each \emph{must} be either True or False, and each can \emph{only} be True or False.  Each variable thus has two possible values,
-giving us $2^2 = 4$ possible combinations of (non)linearity and (non)sequentiality: 
+giving us four possible combinations of (non)linearity and (non)sequentiality: 
 \textbf{nonlinear nonsequential} (NLNS), \textbf{linear nonsequential} (LNS), 
 \textbf{nonlinear sequential} (NLS), and \textbf{linear sequential} (LS).
 
@@ -230,8 +235,6 @@ I am focusing on Modern Hebrew because
 it exhibits both concatenative and non-concatenative morphological processes 
 and thus provides a good test of the method's generality.
 
-
-
 \subsection{Secondary research objectives}
 \label{sec:secondary-objectives}
 My secondary research objectives are outlined below. They are largely concerned with matters of implementation. 
@@ -253,23 +256,23 @@ Consider the string of graphemes printed below.
 	\end{tikzpicture}
 \end{figure}
 
-This row of six graphemes contains a vast amount of tacit information. For instance, suppose we had to represent the string \textit{magdil} not as sequence of alphabetic symbols, but as a series of simple declarative statements. We might come up with statements like the following: 
-%These statements might say that a certain character is present in the string, that one character precedes another character, that a particular character occurs at a particular position in the string, and so on, as in the following examples.
-\begin{itemize}
-  \item \textit{a} immediately follows \textit{m}, \textit{g} immediately follows \textit{a}, \textit{d} immediately follows \textit{g}, and so on. 
-  \item \textit{i} immediately precedes \textit{l}, \textit{d} immediately precedes \textit{i}, and so on.
-     \item \textit{g} follows both \textit{m} and \textit{a}, \textit{d} follows \textit{m}, \textit{a}, and 
-   \textit{g}; \textit{d} precedes both \textit{i} and \textit{l}, \textit{g} precedes \textit{d}, \textit{i}, and \textit{l}, and so on.
-   \item \textit{m} is the first character, \textit{a} is the second, \dots \textit{i} is the second-to-last character, and \textit{l} is the last character, and so on.
-   %\item \textit{l} is the sixth character, \textit{i} is the fifth, \textit{d} is the fourth, and so on.
-   \item \textit{m} precedes \textit{a}, \textit{m} precedes \textit{g}, \textit{m} precedes \textit{d}, \dots, \textit{m} precedes \textit{l}; \textit{a} precedes \textit{g}, \dots , \textit{a} precedes \textit{l}; and so on.
-   \item \textit{m} is present, \textit{a} is present, \textit{g} is present, and so on.
-   \item \emph{ad infinitum}
-\end{itemize}
-A string of alphabetic symbols tacitly conveys all of these facts and many more---perhaps infinitely more.
-Statements like these are essentially what we call \emph{features}.
-Each statement can be either true or false, which is to say that each feature is \emph{binary}, drawn from an alphabet of size $N = 2$.  
-Many machine learning models require that each input object or \emph{learning instance} (in our case, each \emph{word}) be represented as a vector of binary features, not alphabetic features. Moreover, all input objects (learning instances) must be described by the same feature set, and all feature vectors must be of the same length.
+%This row of six graphemes contains a vast amount of tacit information. For instance, suppose we had to represent the string \textit{magdil} not as sequence of alphabetic symbols, but as a series of simple declarative statements. We might come up with statements like the following: 
+%%These statements might say that a certain character is present in the string, that one character precedes another character, that a particular character occurs at a particular position in the string, and so on, as in the following examples.
+%\begin{itemize}
+%  \item \textit{a} immediately follows \textit{m}, \textit{g} immediately follows \textit{a}, \textit{d} immediately follows \textit{g}, and so on. 
+%  \item \textit{i} immediately precedes \textit{l}, \textit{d} immediately precedes \textit{i}, and so on.
+%     \item \textit{g} follows both \textit{m} and \textit{a}, \textit{d} follows \textit{m}, \textit{a}, and 
+%   \textit{g}; \textit{d} precedes both \textit{i} and \textit{l}, \textit{g} precedes \textit{d}, \textit{i}, and \textit{l}, and so on.
+%   \item \textit{m} is the first character, \textit{a} is the second, \dots \textit{i} is the second-to-last character, and \textit{l} is the last character, and so on.
+%   %\item \textit{l} is the sixth character, \textit{i} is the fifth, \textit{d} is the fourth, and so on.
+%   \item \textit{m} precedes \textit{a}, \textit{m} precedes \textit{g}, \textit{m} precedes \textit{d}, \dots, \textit{m} precedes \textit{l}; \textit{a} precedes \textit{g}, \dots , \textit{a} precedes \textit{l}; and so on.
+%   \item \textit{m} is present, \textit{a} is present, \textit{g} is present, and so on.
+%   \item \emph{ad infinitum}
+%\end{itemize}
+%A string of alphabetic symbols tacitly conveys all of these facts and many more---perhaps infinitely more.
+%Statements like these are essentially what we call \emph{features}.
+%Each statement can be either true or false, which is to say that each feature is \emph{binary}, drawn from an alphabet of size $N = 2$.  
+%Many machine learning models require that each input object or \emph{learning instance} (in our case, each \emph{word}) be represented as a vector of binary features, not alphabetic features. Moreover, all input objects (learning instances) must be described by the same feature set, and all feature vectors must be of the same length.
 
 One cannot, of course, have an infinite number of features, as feature vectors must be finite in length.
 Now, let $F$ be the infinite set of all possible features. In keeping with the spirit of my primary research objective, we shall assume that there exists at least one $\phi$ such that that $\phi \subset F$, $\phi$ is finite, and $\phi$ allows an ULM system to learn a multilinear model of morphology. The objective here is to confirm this assumption, i.e., to find such a subset.

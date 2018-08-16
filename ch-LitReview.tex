@@ -1,56 +1,61 @@
 \chapter{LITERATURE REVIEW}
 \label{ch:lit-review}
 
-\cite{mccarthy:1981} notes a fundamental flaw in linear, strictly concatenative approaches to morphological analysis: 
-Because such approaches acknowledge only a single level of representation, the segmental string, they are forced to represent within the same string both the linear order of phonemes and their grouping into morphemes. This effectively binds morphological grouping to the linear order of phonemes, leaving a linear analysis 
-%A linear analysis 
-with no straightforward means of identifying a discontiguous phoneme sequence as a unified morpheme.
-%---i.e., as a single unit with a single, unified set of properties.
+\section{Introduction}
 
-%they  However, as we saw in the case of Hebrew, morphemes are not always contiguous.
-%As noted by \cite{mccarthy:1981}, strictly concatenative approaches to
-%morphology acknowledge only a single level of representation, the
-%segmental string.
-% (roughly, the string of phonemes). 
-%Consequently, they must represent both the %linear 
-%order of characters
-%(or phonemes) and their morphological grouping within the same linear
-%string.
-% The problem is that morphemes are not always contiguous, and
-% %as we saw above in the case of Hebrew, and 
-% %Many languages exhibit non-concatenative processes, and in such cases. 
-% a linear analysis has no straightforward means of treating a discontiguous subsequence as a unified morpheme.
-%, i.e., as a single unit with a single, unified set of properties.
-%, i.e., a truly unified morpheme. 
-%McCarthy offers a nonlinear formalism with morphemes represented as
-%nodes on autosegmental tiers, allowing
+\cite{mccarthy:1981} points out a fundamental flaw in linear, strictly concatenative approaches to morphological analysis: 
+Such approaches acknowledge only a single level of representation, namely that of the \emph{segmental string}, i.e., the level of minimal phonological segments (essentially phonemes).\footnote{McCarthy uses the term \emph{segment} in the phonological sense, i.e., a minimal unit of sound. 
+Research in \ac{ULM}, however, general use the word to 
+refer to minimal morphological units, 
+as in \textit{the problem of morphological segmentation}, for example.} 
+Because the are restricted to this single layer, the can only represent 
+morphological groupings in one way, and that is to insert delimiters of 
+some sort 
+into the very string under analysis. At any given
+insertion point, 
+moreover, such an approach can only see only the two segments (or phonemes) immediately to the left and right. It thus
+has no way to identify morphs that are made up of discontiguous phonemes.
 
-McCarthy thus offers an alternative \emph{nonlinear} formalism in which morphemes are represented as nodes on \emph{autosegmental} tiers, 
-i.e., tiers that are separate from the segmental string, allowing
-associations between morphemes and phonemes to be independent of phonemes' linear order.
-%segments' linear arrangement.
-This framework turns out to be highly general, for it uses the same formal machinery to model both 
-concatenative and non-concatenative processes; that is, it treats them as essentially the same rather than fundamentally different.
+\cite{mccarthy:1981} offers an alternative \emph{nonlinear} approach to grouping segments into morphs.  that liberates the representation of morphs from the segmental tier. McCarthy's formalism, known as \emph{autosegmental morphology} is based on the theory of autosegmental phonology, developed by \citep{goldsmith:1976} to account for nonlinear phenomena in phonology. One such phenomenon, for instance, is tone spreading, whereby the tone on one vowel spreads to other vowels, leapfrogging any intervening consonants. 
+Goldsmith's solution was to introduce \emph{autosegmental} tiers (or planes) of representation that were independent of and external to the segmental tier---tiers that could thus ``see" and access any vowel(s) in the segmental tier, and indeed any subsequence of segments, contiguous or discontiguous. The key was the nonlinearity (or multilinearity)\footnote{The terms nonlinear and multilinear interchangeably in this work, as they both mean, essentially, ``not linear."} introduced by the multiple tiers and their separation both from each other and the segmental tier. 
+McCarthy's insight was that this same nonlinear architecture could be applied to the problem of nonconcatenative morphology, particularly the root-and-pattern morphology of Semitic languages. 
 
-%as fundamentally different; it uses the same formal machinery whether morphemes are contiguous or discontiguous.
+The remainder of this chapter with present a novel framework for comparing and 
+classifying previous approaches to ULM . 
+This framework consists of two orthogonal axes. Each axis represents a binary distinction, i.e., 
+a pair of opposing categories, one of which must be selected over the other. One axis represents 
+the distinction ``linear vs. nonlinear," while the other represents ``sequential vs. nonsequential." 
+We use the term \emph{nonlinear} in the sense of \citep{mccarthy:1981, goldsmith:1976}, i.e., 
+to describe learning models that incorporate more than one tier of representation, i.e., more than 
+just the words (segmental strings) themselves.
 
-% Carry over framework to unsupervised morpheme segmentation?
-One can apply McCarthy's ``linear vs. nonlinear" conceptual framework to categorizing existing approaches in ULM.
+We thus use the term \textbf{linear} in the sense of `one-dimensional' (i.e., in opposition to \emph{nonlinear). 
+In particular, we use it to label learning models that  I in the sense that opposes our sense of nonlinear, i.e., 
+opposing categories to a pair of opposing categories; the first is learning models along two 
+orthogonal axes consists of four categories, namely  in two pairs of opposing categories, namely 
+``linear vs. nonlinear" and ``sequential vs. nonsequential." We cross-combine these categories 
+to create a $2\times2$ grid, the cells of which represent create a total of four categories. 
+The first is the``linear vs. nonlinear" distinction of \citep{mccarthy:1981, goldsmith:1976} 
+to categorizing existing approaches in ULM.
 %Following McCarthy, we 
 %distinguish ``linear vs. nonlinear" conceptual framework to categorize existing approaches in ULM.
-In the following discussion, we
-use the term \textbf{nonlinear} (NL) as a label for algorithms that employ one
-or more \textit{hidden layers} to encode the structure of the
-\textit{surface layer}.
+
+The following sections will discuss each of these categories in turn, citing examples  sections will use the term
+\textbf{nonlinear} (NL) to refer to learning models (or algorithms) one
+or more hidden layers to encode the morphological structure.
+% in the
+%surface layer, whereas 
 %, the layer of the graphemes/phonemes.
 % Here, \textit{hidden layer} is conceptually related to McCarthy's
 % \textit{autosegmental tier}, but the two terms are not necessarily
 % equivalent formally.  
-We use \textbf{linear} (L) %(cf. ``one-dimensional'') 
-to label
-algorithms that reference only the surface layer of graphemes in the representation of
-morphological structure, e.g., by annotating the
- surface string itself with morpheme boundary symbols. Note that our sense of \textit{linear} is similar to `one dimensional,' which is not necessarily the same as `in/like a (straight) line.'
+%The term 
+%\textbf{linear} (L), i.e., \emph{linear} in the sense of `one %(cf. ``one-dimensional'') 
+%will serve as the label for 
+%algorithms that operate solely within the layer of surface symbols.  %s the attempt to construct a representation of
+%%morphological structure. 
+%Typically, such algorithms denote the morph boundaries by inserting delimiters directly into segmental strings.
+ %surface string with morpheme boundary symbols. %Note that we will be using \textit{linear} in the sense of `one dimensional,' rather than`in/like a (straight) line.'
 % This definition is not unlike ``one dimensional," a fairly common
 % sense of \textit{linear}.  We do not, however, use \textit{linear} to
 % mean ``in/like a straight line."
@@ -58,19 +63,19 @@ morphological structure, e.g., by annotating the
 %We do not, however, use \textit{linear} to mean ``in a straight line" or even ``like a straight line."
 %
 
-We further divide the categories
-\textit{linear} and \textit{nonlinear} each into
-\textbf{sequential} and \textbf{non-sequential} subcategories:
-%, obtaining four categories in all. We describe each below.
-An algorithm is sequential (S) if there is a necessary sequence to its morphological classification decisions, i.e., if its decisions are ordered so that for every two decisions, one must precede the other.\footnote{By \textit{morphological 
-%if its makes morphological classification decisions depend on preceding or succeeding context, i.e., if there is a necessary sequence to its decisions.
-%presentational unit (or feature) depends on the immediately preceding unit(s). %the value of each representational unit is determined independently of all other units
-classification decision}, we mean any decision that maps an atomic representational unit (usually a character or a feature) to a morphological category. This definition includes simple ``split" decisions, where there are only two possible categories: ``part of the current morpheme" and ``part of the next morpheme."}
-On the other hand, in a non-sequential (NS) algorithm, all morphological classification decisions are made in parallel; i.e., the decisions are unordered.
-
- We thus have a total of four categories: linear sequential (LS),
- linear non-sequential  (LNS), non-linear sequential  (NLS), and finally
- non-sequential nonlinear (NLNS). In what follows, we describe each of these in turn.
+%In addition to the 
+%\textit{linear} vs. {nonlinear} distinction, we will also introduce a distinction between each into
+%\textbf{sequential} and \textbf{non-sequential}.
+%%, obtaining four categories in all. We describe each below.
+%An algorithm is sequential (S) if there is a necessary sequence to its morphological classification decisions, i.e., if, for any two decisions, one must precede the other.\footnote{By \textit{morphological 
+%%if its makes morphological classification decisions depend on preceding or succeeding context, i.e., if there is a necessary sequence to its decisions.
+%%presentational unit (or feature) depends on the immediately preceding unit(s). %the value of each representational unit is determined independently of all other units
+%classification decision}, we mean any decision that maps an atomic representational unit (usually a character or a feature) to a morphological category. This definition includes simple ``split" decisions, where there are only two possible categories: ``part of the current morpheme" and ``part of the next morpheme."}
+%On the other hand, in a non-sequential (NS) algorithm, all morphological classification decisions are made in parallel; i.e., the decisions are unordered.
+%
+% We thus have a total of four categories: linear sequential (LS),
+% linear non-sequential  (LNS), non-linear sequential  (NLS), and finally
+% non-sequential nonlinear (NLNS). In what follows, we describe each of these in turn.
 
 %We will now discuss and exemplify each of these categories in turn.
 
@@ -84,30 +89,13 @@ The task is to assign each character to a morphological class. Thus, in effect,
 each square represents a morphological classification decision.
 The arrows indicate the sequential order of the algorithm's decisions. 
 The fact that there is such an order is the reason this type of algorithm is sequential.
-%It is linear because it uses no hidden layer, acknowledging only the surface layer of characters. 
-%nthe order in which the algorithm processes the characters. Since the task is to assign each character to a morphological class, each square in effect represents a kind of morphological classification decision. Importantly, there is only one layer of representation, namely the surface layer of characters, hence the linearity of this type of algorithm. Its sequentiality 
-%representend in figure~\ref{fig:seq-lin},
-%forms morphological hypotheses on the basis of sequential evidence; each prediction depends on immediately preceding
-% The circles are positions or character positions (or characters). What do the arrows represent? dependencies. But what depends on what? Maybe the circles are classification decisions, i.e., is character x part of morpheme y? What is it that LS algorithms are typically trying to do? Morpheme-boundary detection/segmentation.
-%decisions. Furthermore, LS algorithms acknowledge only the surface layer.
-%as well as the evidence informing these decisions, are restricted to the surf
-%there is no hidden layer.
-% The first unsupervised morpheme segmentation algorithms were linear sequential algorithms.
-%The earliest example is the Letter Successor Variety (LSV) method
-%\citep{harris:1955, harris:1967}.
 
 The first unsupervised morphological learners were LS algorithms. The earliest examples employed the Letter Successor/Precessor Variety (LSV/LPV) measures \citep{harris:1955, harris:1967}. 
 Both measures are intended to indicate likely affixes.
 $\text{LSV}(x)$ is intended to find prefixes; given a string $x$ and corpus $W$, $\text{LSV}(x)$ returns the number of letter types that immediately follow $x$ whenever $x$ is word-initial in $W$.
-%Both iterate over a corpus $W$.
-%$\text{LSV}(x)$ is used to measure the likelihood that the string $x$ is a prefix. and is computed as follows: Given a string $x$ and corpus $W$, $\text{LSV}(x,W)$ iterates over the words $w \in W$, tallying up the letter \emph{types} that occur in the position immediately following $x$ whenever $x$ is word-initial.
-%Given a corpus of words $W$ and a string $x$, $\text{LSV}(x,W)$ is the number of letter \textit{types} 
-%(as opposed to \textit{tokens}) 
-%that found in the position immediately following $x$ whenever $x$ begins a word in $W$.
-%the immediately follow $x$ whenever $x$ is word-initial in $W$. 
 Letter Predecessor Variety (LPV) is essentially the same measure, except that its function is to find suffixes:
 %That is, LPV is simply LSV from the opposite direction: 
-it counts the grapheme types that immediately \emph{precede} $x$ whenever $x$ is \emph{word-final}.
+It counts the grapheme types that immediately \emph{precede} $x$ whenever $x$ is \emph{word-final}.
 %$\text{LSV}(x,W)$ is used to find prefix-stem boundaries, and $\text{LPV}(x)$ to find stem-suffix boundaries. 
 
 % Stress sequential nature of algorithm
@@ -274,9 +262,9 @@ because they lack hidden nodes, and every path through a trie is deterministic.
 % example above, but it does not change the fundamentally sequential and
 % linear nature of their approach.
 
-\section{inear non-sequential algorithms}
+\section{Linear non-sequential algorithms}
 \label{subsec:nonseq-lin}
-In the linear non-sequential  (LNS) type of algorithm, shown in figure~\ref{fig:nonseq-lin}, the representational units are generally not raw characters, but rather \emph{features}, i.e., binary variables representing the presence or absence of particular properties.
+In the linear non-sequential (LNS) type of algorithm, shown in figure~\ref{fig:nonseq-lin}, the representational units are generally not raw characters, but rather \emph{features}, i.e., binary variables representing the presence or absence of particular properties.
 %specifying whether or not a word has a certain property. 
 Features in non-sequential algorithms need not correspond to contiguous chunks of the original string; for example, features like the following are perfectly valid: ``\textit{t} precedes \textit{i} within $\delta$ characters" and ``\textit{t} precedes \textit{b} within $\delta$ characters," where the character pairs \emph{t..i} and \emph{t..b} are discontiguous as long as $\delta \ne 0$. Notice that such features cannot really be ordered; each is either \textsc{true} or \textsc{false} irrespective of order.
 All non-sequential algorithms---of which LNS algorithms are a subcategory---view a given word's features as being unordered, i.e., as being sequentially unrelated to each other. 
@@ -633,15 +621,10 @@ combining it with an orthographic similarity score based on minimum edit distanc
  	\node[r-node] 	(r1)	at (3.5cm,\rowoneht)		{i};
  	\node[r-node] 	(r2)	at (4.5cm,\rowoneht)	 	{b};
  	\node[r-node] 	(r3)	at (5.5cm,\rowoneht) 		{r};
- 	%\node[r-node] 	(r4) 	at (6.5cm,\rowoneht)   		{};
- 	%\node[r-node] 	(r5) 	at (7.5cm,\rowoneht)   		{};
 	
  	\path (m1)	edge	node	{}	(r0)
  		(m2)	edge	node	{}	(r2)
  		(m3)	edge	node	{}	(r3);
- %		(m3)	edge	node	{}	(r3)
- %		(m1)	edge	node	{}	(r4)
- %		(m3)	edge	node	{}	(r5);
 		
  \end{tikzpicture}
  \end{center}
@@ -655,14 +638,12 @@ learning process into two or more phases.
 The first phase classifies individual literal characters into abstract categories that are then used by a second phase (and perhaps subsequent phases) to perform other aspects of the analysis.
 Multiple phases occurring at different times can thus replicate the effects of multiple simultaneous levels of representation.
 This is the approach taken by \cite{rodrigues-and-cavar:2005} to induce the non-concatenative morphology of Arabic. 
-%Following the statistical constraint-based method of \cite{elghamry:2005}, 
 Their first phase identifies root radicals according to the statistical constraint-based method of \cite{elghamry:2005}. 
 For each word in their corpus, 
 they generate a set of candidate triliteral roots according to 
 constraints derived from the tendencies of Arabic roots as observed in corpora. 
 In particular, any 3-length subsequence is admitted into the candidate set 
 if and only if it satisfies both of the following:
-%, which in Arabic comprise both a consonantal root and a vocalic pattern. A string is allowed into a word's candidate stem set if and only if it satisfies the following constraints, which are based on the tendencies of Arabic roots as observed in corpora.
 \begin{enumerate} 
 \item No two consecutive radicals may be separated by more than two characters.
 \item No more than four characters intervene between the first and third radicals.
@@ -717,57 +698,27 @@ each other.
 Because such approaches acknowledge only a single level of representation, the segmental string, they are forced to represent within the same string both the linear order of phonemes and their grouping into morphemes. This effectively binds morphological grouping to the linear order of phonemes, leaving a linear analysis  
 with no straightforward means of identifying a discontiguous phoneme sequence as a unified morpheme.
 
-%they  However, as we saw in the case of Hebrew, morphemes are not always contiguous.
-%As noted by \cite{mccarthy:1981}, strictly concatenative approaches to
-%morphology acknowledge only a single level of representation, the
-%segmental string.
-% (roughly, the string of phonemes). 
-%Consequently, they must represent both the %linear 
-%order of characters
-%(or phonemes) and their morphological grouping within the same linear
-%string.
-% The problem is that morphemes are not always contiguous, and
-% %as we saw above in the case of Hebrew, and 
-% %Many languages exhibit non-concatenative processes, and in such cases. 
-% a linear analysis has no straightforward means of treating a discontiguous subsequence as a unified morpheme.
-%, i.e., as a single unit with a single, unified set of properties.
-%, i.e., a truly unified morpheme. 
-%McCarthy offers a nonlinear formalism with morphemes represented as
-%nodes on autosegmental tiers, allowing
-
-McCarthy thus offers an alternative \emph{nonlinear} formalism in which morphemes are represented as nodes on \emph{autosegmental} tiers, 
+McCarthy thus offers an alternative \emph{nonlinear} formalism in 
+which morphemes are represented as nodes on \emph{autosegmental} tiers, 
 i.e., tiers that are separate from the segmental string, allowing
-associations between morphemes and phonemes to be independent of phonemes' linear order.
-%segments' linear arrangement.
-This framework turns out to be highly general, for it uses the same formal machinery to model both 
-concatenative and non-concatenative processes; that is, it treats them as essentially the same rather than fundamentally different.
+associations between morphemes and phonemes to be independent of 
+phonemes' linear order. This framework turns out to be highly general, 
+for it uses the same formal machinery to model both 
+concatenative and non-concatenative processes; that is, it treats them as essentially 
+the same rather than fundamentally different.
 
-%as fundamentally different; it uses the same formal machinery whether morphemes are contiguous or discontiguous.
-
-% Carry over framework to unsupervised morpheme segmentation?
-One can apply McCarthy's ``linear vs. nonlinear" conceptual framework to categorizing existing approaches in ULM.
-%Following McCarthy, we 
-%distinguish ``linear vs. nonlinear" conceptual framework to categorize existing approaches in ULM.
+One can apply McCarthy's ``linear vs. nonlinear" conceptual framework to 
+categorizing existing approaches in ULM.
 In the following discussion, we
 use the term \textbf{nonlinear} (NL) as a label for algorithms that employ one
 or more \textit{hidden layers} to encode the structure of the
 \textit{surface layer}.
-%, the layer of the graphemes/phonemes.
-% Here, \textit{hidden layer} is conceptually related to McCarthy's
-% \textit{autosegmental tier}, but the two terms are not necessarily
-% equivalent formally.  
 We use \textbf{linear} (L) %(cf. ``one-dimensional'') 
 to label
 algorithms that reference only the surface layer of graphemes in the representation of
 morphological structure, e.g., by annotating the
 surface string itself with morpheme boundary symbols. Note that our sense of \textit{linear} 
 is similar to `one dimensional,' which is not necessarily the same as `in/like a (straight) line.'
-% This definition is not unlike ``one dimensional," a fairly common
-% sense of \textit{linear}.  We do not, however, use \textit{linear} to
-% mean ``in/like a straight line."
-%but one to be distinguished from ``in/like a straight line." As it is used in this paper, the term \textit{linear} s not related in any direct way to the notions of line and straightness.
-%We do not, however, use \textit{linear} to mean ``in a straight line" or even ``like a straight line."
-%
 
 We further divide the categories
 \textit{linear} and \textit{nonlinear} each into
@@ -778,16 +729,6 @@ i.e., if its decisions are ordered so that for every two decisions, one must pre
 classification decision}, we mean any decision that maps an atomic representational unit (usually a character or a feature) to a morphological category. This definition includes simple ``split" decisions, where there are only two possible categories: ``part of the current morpheme" and ``part of the next morpheme."}
 On the other hand, in a non-sequential (NS) algorithm, all morphological classification decisions are made in parallel; i.e., the decisions are unordered.
 
-%is made images these mapping decisions in parallel. That is,  morphemes  in decisions in parallel, the value each representational unit is computed independently of all other units,
-%, and thus the immediate context of a given unit is not the predominant factor that determines its value. 
-%i.e., if the values of all units are determined in parallel rather than in sequence.
-%with each prediction depending on the prediction(s) for the preceding unit(s).
-%\begin{itemize}
-%\item Given a sequence of morpheme classification decisions, each decision depends on the preceding chain of decisions.
-%\item Given a sequence of candidate morpheme split points, each split decision depends on the preceding chain of split decisions. either the preceding representational units or succeither immediately left or immediately right), where \textit{representational unit} is a grapheme if the algorithm is linear and a hidden variable if the algorithm is nonlinear. 
-% A \textit{morpheme segmentation decision} is, broadly speaking, an answer to the question, ``What is the morphological category/status of the current representational unit? (e.g., Does the current unit begin a new segment?)"
-%\item The dependencies in the sequence all go in the same direction.
-%\end{itemize}
  We thus have a total of four categories: sequential linear (SL),
  non-sequential linear (NSL), sequential non-linear (SNL), and finally
  non-sequential nonlinear (NSNL). In what follows, we describe each of these in turn.
@@ -828,9 +769,10 @@ $\text{LSV}(x)$ returns the number of letter types that immediately follow $x$ w
 %(as opposed to \textit{tokens}) 
 %that found in the position immediately following $x$ whenever $x$ begins a word in $W$.
 %the immediately follow $x$ whenever $x$ is word-initial in $W$. 
-Letter Predecessor Variety (LPV) is essentially the same measure, except that its function is to find suffixes:
+Letter Predecessor Variety (LPV) is essentially the same measure, except that its function is to find suffixes,
+and it works in the opposite direction:
 %That is, LPV is simply LSV from the opposite direction: 
-it counts the grapheme types that immediately \emph{precede} $x$ whenever $x$ is \emph{word-final}.
+It counts the grapheme types that immediately \emph{precede} $x$ whenever $x$ is \emph{word-final}.
 %$\text{LSV}(x,W)$ is used to find prefix-stem boundaries, and $\text{LPV}(x)$ to find stem-suffix boundaries. 
 
 

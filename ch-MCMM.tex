@@ -1,10 +1,47 @@
 \chapter{The Multiple Cause Mixture Model}
 \label{ch:MCMM}
+
+\section{Introduction}
+\label{sec:mcmm:intro}
+This chapter will focus on Multimorph's learning model, i.e. the principles and mechanisms that
+enable it to learn. By \emph{model}, 
+we mean a set of assumptions about the way the world works. In the case of Multimorph, 
+the ``world" is the morphology of natural languages, which includes non-concatenative morphology. 
+That is, is handle concatenative and non-conconcatenative morphology together, 
+in a unified a way, as does
+autosegmental morphology \citep{mccarthy:1981}. Recall from chapter~\ref{ch:graph} 
+that in order
+for a model to be able to non-concatenative morphology, it must be both \textbf{nonlinear}
+ \textbf{nonsequential},i.e., satisfy the \textsc{Nonlinearity} and \textbf{Nonsequentiality} 
+ criteria; 
+ see definitions (\ref{def:nl}, \ref{def:ns}) and 
+ proposition (\ref{prop:nlns}). Recall also that this 
+ means that we need a bipartite graph. The Multiple Cause Mixture Model (MCMM) is a general 
+ framework for unsupervised learning developed by \cite{saund:1994}. Crucially, it is 
+ a bipartite graph, and thus it can be
+applied to the case of Multimorph.  
+
+In what follows, we shall first, in section~\ref{sec:architecture}, discuss the architecture of an \ac{MCMM},
+i.e., is key components and the relationships between these components. We shall then, in 
+sections~\emph{mixing function} and \ref{sec:mcmm:learning}, describe how
+learning takes place in an \ac{MCMM}. 
+
 \section{Architecture}
 \label{sec:architecture}
-An MCMM is a graphical model consisting of two layers of nodes (or units): a layer of surface units 
+An MCMM is a graphical model consisting of two layers of nodes (or units): a layer 
+of surface units 
 and a layer of hidden, 
-or causal, units. 
+or causal, units. This is illustrated in fig.~\ref{fig:mcmm}, where $\mathbf{m}$ 
+is the vector of hidden units, and $\mathbf{r}$ the vector of (reconstructed) surface units.
+The hidden units are connected to surface units by a matrix of weights $\mathbf{C}$. 
+Each individual arc $c_{j,k}$ has a value in $[0,1]$ that represents the weight on the connection between
+$m_k$ and $r_j$.
+Each node, i.e., each hidden unit and each surface unit, has an activity value in $[0,1]$ that
+%Each hidden unit has an activity value in $[0,1]$ 
+indicates whether it is \textsc{on} (active) or \textsc{off} (inactive).
+The activity of $r_j$ is determined by a \emph{mixing function}, which takes as inputs the 
+hidden-unit activities $\mathbf{m}$ and their respective weights $\mathbf{c}_j$
+(section~\ref{sec:mixing-function}).
 
 \begin{figure}[tb]
 %\begin{minipage}{.3\textwidth}
@@ -118,15 +155,7 @@ or causal, units.
 \label{fig:autoencoder}
 \end{figure}
 
-This is illustrated in fig.~\ref{fig:mcmm}, where $\mathbf{m}$ is the vector of hidden units, and $\mathbf{r}$ the vector of (reconstructed) surface units.
-The hidden units are connected to surface units by a matrix of weights $\mathbf{C}$. 
-Each individual arc $c_{j,k}$ has a value in $[0,1]$ that represents the weight on the connection between
-$m_k$ and $r_j$.
-Each node, i.e., each hidden unit and each surface unit, has an activity value in $[0,1]$ that
-%Each hidden unit has an activity value in $[0,1]$ 
-indicates whether it is \textsc{on} (active) or \textsc{off} (inactive).
-The activity of $r_j$ is determined by a \emph{mixing function}, which takes as inputs the hidden-unit activities $\mathbf{m}$ and their respective weights $\mathbf{c}_j$
-(section~\ref{sec:mixing-function}).
+
 
 %Both hidden nodes and surface nodes have activity values, i.e., values in $[0,1]$ that
 %indicate whether a node is \textsc{on} (active) or \textsc{off} (inactive). Each surface-node activity 
@@ -156,7 +185,7 @@ a dataset.
 %The activity of $r_j$ is determined by a mixing function 
 %(section~\ref{sec:mixing-function}).
 
-\begin{figure*}[htb]
+\begin{figure}[htb]
 \begin{center}
 \small
 \begin{tikzpicture}[shorten >=1pt,->,draw=black!100]
@@ -208,11 +237,13 @@ a dataset.
 		(m0)	edge	node	{}	(r2)
 		(m0)	edge	node	{}	(r3)
 		(m0)	edge	node	{}	(r5)
+		
 		(m1)	edge	node	{}	(r0)
 		(m1)	edge	node	{}	(r1)
 		(m1)	edge	node	{}	(r2)
 		(m1)	edge	node	{}	(r3)
 		(m1)	edge	node	{}	(r5)
+		
 		(m2)	edge	node	{}	(r0)
 		(m2)	edge	node	{}	(r1)
 		(m2)	edge	node	{}	(r2)
@@ -230,7 +261,81 @@ a dataset.
 \end{center}
 \caption{Architecture of a Multiple Cause Mixture Model (MCMM)} 
 \label{fig:mcmm}
-\end{figure*}
+\end{figure}
+
+
+\begin{figure}[htb]
+\begin{center}
+\begin{tikzpicture}[shorten >=1pt,->,draw=black!100]
+	\def \rowtwoht{4.25cm}
+	\def \weightlevel{2.75cm}
+	\def \rowoneht{1.25cm}
+	\def \basement{0cm}
+	\tikzstyle{m-node}=[circle,draw=black!100,thick,inner sep=0pt,minimum size=7mm]
+	\tikzstyle{r-node}=[circle,draw=black!100,thick,inner sep=0pt,minimum size=7mm]
+	%\tikzstyle{d-node}=[circle,draw=black!100,fill=gray!45,thick,inner sep=0pt,minimum size=7mm]
+	\tikzstyle{dots}=[text width=5ex, text centered]
+	%\tikzstyle{annot}=[text width=17ex, text centered]
+%	% labels
+%	\node[annot] (hidden-layer) at (0cm,\rowtwoht) {hidden units ($\mathbf{m}$)};
+%	\node[annot] (weights) at (0cm,\weightlevel) {weights ($\mathbf{C}$)};
+%	\node[annot] (r-layer) at (0cm,\rowoneht) {predicted units ($\mathbf{r}$)};
+	%\node[annot] (d-layer) at (0cm,\basement) {observed units ($\mathbf{d}$)};
+	
+	\node[dots] 	(m3)	at (7.75cm,\rowtwoht)	 	{. . .};
+	\node[dots] 	(r4) 	at (8.5cm,\rowoneht)   		{. . .};
+	\node[dots] 	(d4) 	at (8.5cm,\basement)   		{. . .};
+	
+	\footnotesize
+	% hidden layer
+	\node[m-node] 	(m0)	at (3.25cm,\rowtwoht)		{$m_1$};
+	\node[m-node] 	(m1)	at (4.75cm,\rowtwoht)		{$m_2$};
+	\node[m-node] 	(m2)	at (6.25cm,\rowtwoht)	 	{$m_k$};
+	\node[m-node] 	(m4)	at (9.25cm,\rowtwoht)	 	{$m_K$};
+	
+	% reconstructed vector
+	\node[r-node] 	(r0)	at (2.5cm,\rowoneht)		{$r_1$};
+	\node[r-node] 	(r1)	at (4cm,\rowoneht)		{$r_2$};
+	\node[r-node] 	(r2)	at (5.5cm,\rowoneht)	 	{$r_3$};
+	\node[r-node] 	(r3)	at (7cm,\rowoneht) 		{$r_j$};
+	\node[r-node] 	(r5) 	at (10cm,\rowoneht)   		{$r_J$};
+	%\node[r-node] 	(r6) 	at (9.75cm,\rowoneht)   	{$r_J$};
+	
+	% data vector
+%	\node[d-node] 	(d0)	at (2.5cm,\basement)		{$d_1$};
+%	\node[d-node] 	(d1)	at (4cm,\basement)		{$d_2$};
+%	\node[d-node] 	(d2)	at (5.5cm,\basement)	 	{$d_3$};
+%	\node[d-node] 	(d3)	at (7cm,\basement) 		{$d_j$};
+%	\node[d-node] 	(d5) 	at (10cm,\basement)   		{$d_J$};
+	%\node[d-node] 	(d6) 	at (9.75cm,\basement)   	{$d_J$};
+	
+	\path 
+		(m0)	edge	node	{}	(r2)
+	
+		(m1)	edge	node	{}	(r2)
+
+		(m2)	edge	node	{}	(r2)
+		%(m3)	edge	node {}	(r4)
+		%(m3)	edge	node[right=1mm]	{$c_{j,k}$}	{}	(r0)
+		%	
+		(m4)	edge	node	{}	(r2);
+
+		
+\end{tikzpicture}
+\end{center}
+\caption{Architecture of a Multiple Cause Mixture Model (MCMM)} 
+\label{fig:voting}
+\end{figure}
+
+%From source: "One  can  qualitatively  understand  the  difference  between  mixtures  and  products  by  observing  that  amixture distribution can have high probability for eventxwhen only a single expert assigns high probabilityto that event.  In contrast, a product can only have high probability for an eventxwhen all experts assignhigh probability to that event.  Hence, metaphorically speaking, a single expert in a mixture has the powerto pass a bill while a single expert in a product has the power to veto it.Put another way, each component in a product represents a softconstraint, while each expert in a mixturerepresents a soft template or prototype. For an event to be likely under a product model, all constraints must1
+%be (approximately) satisfied, while an event is likely under a mixture model if it (approximately) matcheswith  a  single  template."
+
+%Bishop: "One approach is to apply gradient-based optimization techniques (Fletcher, 1987;Nocedal and Wright, 1999; Bishop and Nabney, 2008). Although gradient-basedtechniques are feasible, and indeed will play an important role when we discussmixture density networks in Chapter 5, we now consider an alternative approachknown as the EM algorithm which has broad applicability and which will lay thefoundations for a discussion of variational inference techniques in Chapter 10." p. 435
+
+%% Quora: "LDA is not a mixture model.  It is an admixture model or a mixed-membership model.
+%Mixture models have a single latent variable that denotes which cluster they're in.  This is often written as an indicator variable z.  
+%LDA is a model over documents (a bag of words), and has a latent variable for topic assignments for every token:  z1…zN
+%Thus, words can belong to different clusters.  This intuitively makes sense because documents can be about more than one thing.  I.e., about both technology and business.  This often results in better models of real text than pure mixture models."
 
 %The MCMM learns by comparing the reconstructed vector $\mathbf{r}_i$ 
 %to its corresponding original datapoint $\mathbf{d}_i$. The discrepancy between
@@ -250,28 +355,61 @@ a dataset.
 %i.e., $m_{i,k}$ indicates whether $\mathbf{d}_i$ is a member of cluster $k$.
 		
 \section{Mixing Function}
-\label{ch4:sec:mixing-function}
+\label{sec:mixing-function}
 
-The mapping between the layer of hidden nodes $\mathbf{m}$ 
-and the layer of surface nodes $\mathbf{r}$ is governed by a 
+The mapping between the layer of hidden nodes $\textbf{m}$ 
+and the layer of surface nodes $\textbf{r}$ is governed by a 
 \emph{mixing function}, which is essentially
 a voting rule \citep{saund:94}; it maps from a set of (weighted)
 input ``votes'' to a single output decision.  The output decision is 
 an activity value for a particular surface-layer node. We will call the input votes
 \emph{causes}. 
 
+In terms of architecture, the \ac{MCMM} bears a striking resemblance to the Restricted Boltzmann Machine (RBM) \citep{smolensky:1986}.
+Both the \ac{MCMM} and the \ac{RBM} are bipartite graphs. That is both have two layers of nodes, with no connections between nodes of the same layer (as described in chapter~\ref{graph}).  In a RBM, as in an \ac{MCMM}, one of these node layers functions as a hidden layer, and the other as the visible (or surface) layer \citep[see, e.g.,][]{mohamed-and-hinton:2010}. One difference between the two, however, is that an RBM acts as a \emph{product} of experts, while an \ac{MCMM} acts as a kind of hybrid between a \emph{mixture of experts}, i.e., a (standard) mixture model, and a product of experts. To be clear, though, an \ac{MCMM} itself appears to be neither a sum nor a product of experts, not at least as these terms are usually construed. 
+
+The ``experts" here 
+%The RBM's equivalent of the MCMM's mixing function is a  \emph{product of experts}\citep{hinton:1999, hinton:2002}, where the ``experts" 
+are the hidden units (along with their
+respective weights). A product of experts is, as its name suggests, a multiplication, namely the product of all hidden-unit values, whereas a mixture of experts is a summation of these same values. In both MCMMs and RBMs, every expert casts a vote concerning whether a given surface node is to be \textsc{on} or \textsc{off} (i.e., 1 or 0). In an RBM, the votes are all multiplied together, so that if one vote is 0, the collective vote will be 0. In other words, in order for a given surface unit to be 1, \emph{every} hidden unit must vote 1.\footnote{If the values are continuous, i.e., in the interval $[0,1]$, every hidden unit must be very close to 1 in order for the surface unit to be close to 1.}
+In an MCMM, by contrast, every expert save one could cast a 0 vote, and the surface unit's value would still be nonzero. As long as \emph{at least} one of the hidden-unit votes is 1, the surface unit in question will be 1. On the other hand, if multiple experts vote 1, the surface unit's value is still 1. It will not exceed one even if all hidden units vote 1. Thus, the \ac{MCMM}'s method of combining expert votes behaves like a summation in some ways and product in others.  
+
+Because an \ac{MCMM} is not a true mixture of experts, it cannot be a true mixture model. In a true mixture model, the expert votes must always sum to 1, and each surface unit's value is a \emph{weighted sum} of the votes from the hidden units. As the number of votes increases, the potency of each vote tends to decrease, unless most votes have weights that are close to zero. Mixture-of-experts models perform best when each surface unit's value is caused by a single expert, namely the best expert for that surface unit. Otherwise, the best expert's vote will be dampened. (CITE?). By contrast, in an \ac{MCMM}, a particular surface unit can be caused by one expert, all experts, or any number in between (where, again, the experts are hidden units).
+An \ac{MCMM} is in this way similar to an \emph{admixture} model like Latent Dirichlet Allocation (LDA) \citep{blei-et-al:2003}; e.g., 
+when used in document classification, LDA %are applied to topic modeling, an individual word %(a surface unit) 
+%can be 
+can attribute a single word to multiple topics, %(hidden units).
+which is to say that the word in question is \emph{caused} by multiple topics at once.
+That is, a given word, %e.g., %\emph{restaurant} 
+can be \emph{caused} by more than one topic, 
+where each topic is a cluster of words.
+%\citep[e.g.,][]{miller-et-al:2016} 
+%(and each cluster is represented as shared connections to a particular hidden unit). %The clusters would  \emph{food}, \emph{business}, and \emph{hospitality}, simultaneously.
+
+Like LDA, MCMMs can been applied to document classification; \cite{sahami-et-al:96} use an \ac{MCMM} to group $I$ documents into $K$ clusters. Each Documents are represented as vectors $\textbf{x}_i$ of $J$ features. The features, i.e. surface units, each indicate the absence or presence of a particular word (cf. the $\textbf{x}$ vector in figure~\ref{fig:mcmm}). The topics in \cite{sahami-et-al:96} are represented as the MCMM's hidden units $\textbf{m}_i$. Documents are grouped into topic clusters by the learning process described below in section~\label{sec:mcmm:learning}.
+% are analogous to the morphological clusters in the present work; i.e., they each correspond to a hidden unit in $\textbf{m}$. In particular, each hidden unit in$\textbf{m}_i$ is the activity of a particular cluster for the $i$th datapoint--i.e., the $i$th document in the case of \cite{sahami-et-al:96}, and the $i$th word in the present work. 
+
+%work hidden nodes in the vectors $  in the hidden-unit vectors $ were represented as $K$-length hidden-unit vectors $\textbf{}$ document vector is thus analagous  wordsthe express purpose of mapping 
+%particularly to map individual documents 
+%each to multiple categories at once \cite{sahami-et-al:96}. %apply the \ac{MCMM} to 
+By contrast, a true mixture model, such as \dots, is constrained to assigning each surface unit to a \emph{single} cause. In the case of 
+document classification, this would mean each word (surface unit) could be attribute to no more than
+one topic (or hidden unit). One might therefore describe any standard (i.e., true) 
+mixture model as a \emph{single-cause} mixture model. 
+
+
 Each cause is a product of the form $m_{i,k} c_{j,k}$ for $k \in K$.
 There are thus a total of $K$ distinct causes for a given surface node $r_{i,j}$. 
 If the cause $m_{i,h} c_{j,h}$, where $h \in K$, is equal to $1$ or surpasses some
-threshold, then $m_{i,h} c_{j,h}$ is an \emph{active cause}.
+threshold, then $m_{i,h} c_{j,h}$ is an active cause.
 %The input votes, are the activities of the hidden nodes,
 %i.e., the $K$-length vector $\mathbf{m}_i$,
 %coupled with their respective weights, i.e., the $K$-length vector 
 %$\mathbf{c}_j$. 
-Any differentiable function
-that maps from the vector pair $(\mathbf{m}_i, \mathbf{c}_j)$ 
-to an activity value for $r_{i,j}$ can in theory serve as a mixing function. 
-There are thus an infinite number of theoretically possible mixing functions.
+%Any differentiable function
+%that maps from the vector pair $(\mathbf{m}_i, \mathbf{c}_j)$ 
+%to an activity value for $r_{i,j}$ can in theory serve as a mixing function. 
+%There are thus an infinite number of theoretically possible mixing functions.
 
 %Following \cite{saund:94}, we use the 
 %There are perhaps an infinite number of possible mixing functions. 
@@ -305,7 +443,7 @@ decreases, $S(t_{i,j})$ will get closer to $0$.
 
 
 \section{Learning}
-\label{ch4:sec:learning}
+\label{sec:mcmm:learning}
 %\label{autoencoder-learning}
 
 % A data compression scheme is useful only to the extent that it allows

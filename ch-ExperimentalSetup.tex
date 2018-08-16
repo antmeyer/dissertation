@@ -56,7 +56,7 @@ orthography is largely without vowels. I wanted data
 that in which the vowels were 
 fully represented. Another advantage of the \ac{BLC} is that 
 it is quite extensive; I am unaware of larger source of 
-transcribed Modern Hebrew. 
+transcribed \ac{MH}. 
 
 Each file in the \ac{BLC} is the transcription of a 
 particular session. The participants, who are identified 
@@ -155,7 +155,7 @@ It is a transcription system in some ways and a transliteration
 system in others. It is a transcription system in that it has 
 five dedicated vowel symbols, 
 namely \{a, e, i, o, u\}, each of which matches one of the 
-vowels in Modern Hebrew's five-vowel inventory. 
+vowels in \ac{MH}'s five-vowel inventory. 
 At the same time, however, 
 it is a \emph{transliteration} system in that it is sensitive to 
 orthographic distinctions that no longer correspond
@@ -167,7 +167,7 @@ has remained largely unchanged
 into the present day \citep{weinberg:1975, ravid:2005}; i.e. it has the same letters as it 
 did in antiquity. The phonemic inventory 
 of Hebrew, however, has changed. Thus, the correspondence 
-between the graphemes of Hebrew's 
+between the graphemes of the Hebrew
 alphabet and the phonemes of \ac{MH} is far from perfect. 
 The consonant inventory of \ac{MH}
 has undergone a number of neutralizations, leaving 
@@ -415,20 +415,20 @@ have merged with those of \textit{sin} and \textit{tav} respectively,
 \hline
 \end{tabular}
 \label{tab:phon-neut} 
-\caption{Relationships between Orthography and Speech Sounds}
+\caption{Correspondences between Hebrew orthography, speech sounds (past and present), and the \ac{BLC}'s transcriptional system}
 \end{table}
 
 \subsection{Morphological Annotation}
 For our purposes, the most salient aspects the \ac{BLC}'s morphological 
-annotation are those that one must be aware in order to 
+annotation are those relevant to the tasks of
 \begin{itemize}
-\item extract unified word tokens, each completely free of internal morphological 
+\item extracting unified word tokens, each completely free of internal morphological 
 delimiters or any other annotative device
-\item extract each word's corresponding morphological analysis from the 
+\item extracting each word's corresponding morphological analysis from the 
 \textsf{\%mor} tier, maintaining the one-to-one
 correspondence between words and morphological analyses. 
-\end{itemize}  are those that \citep{albert-et-al:2012}.
-The morphological analyses are, in their raw form, just lists of morphological categories, 
+\end{itemize} %are those that \citep{albert-et-al:2012}.
+The morphological analyses themselves essentially lists of morphological categories, 
 i.e., lists of simple feature-value pairs.
 The following is a \ac{BLC} morphological analysis after undergoing the transformations 
 described in section~\ref{sec:extr}
@@ -584,20 +584,38 @@ for \textit{we\#} is also repeated, so that each \textit{we\#} in the main tier 
  
 \section{Extracting the Input Datasets}\label{sec:extr}
 To conduct the experiments, two input wordlists were necessary, 
-namely transcriptional list $T$, and an orthographic list $O$:
-The words in $T$ were composed of the \ac{BLC}'s transcriptional symbols, 
-whereas those in $O$
+namely transcriptional list T, and an orthographic list O:
+The words in T were composed of the \ac{BLC}'s transcriptional symbols, 
+whereas those in O
 were composed of regular Hebrew letters, following Hebrew spelling conventions. 
-In $O$, the standard Hebrew letters were converted to ASCII characters in a one-to-one
-mapping, namely the transliteration system of the Hebrew Treebank 
-\citep{simaan-et-al:2001} (see table TODO).
-$O$ was obtained by mapping each transcriptional representation 
-in $T$ onto an orthographic representation. For example, \textipa{hitkawanti}$_T$ $\to$
+In O, the standard Hebrew letters were converted to ASCII characters in a one-to-one
+mapping, namely the transliteration mapping of the Hebrew Treebank 
+\citep{simaan-et-al:2001}, displayed in table~\ref{tab:ortho-alph}). %adgdhwzxviklmnsypcqret
+\begin{table}[ht]
+\centering
+\caption{Romanization of the Hebrew Alphabet \citep{simaan-et-al:2001}}
+\label{tab:ortho-alph}
+\begin{tabular}{c c c c c c c c c c c}
+\hline %\hline                      
+\begin{cjhebrew}'\end{cjhebrew} & \begin{cjhebrew}b\end{cjhebrew} & \begin{cjhebrew}g\end{cjhebrew} & \begin{cjhebrew}d\end{cjhebrew} 
+& \begin{cjhebrew}h\end{cjhebrew} & \begin{cjhebrew}w\end{cjhebrew} & \begin{cjhebrew}z\end{cjhebrew}& \begin{cjhebrew}.h\end{cjhebrew}
+& \begin{cjhebrew}.t\end{cjhebrew} & \begin{cjhebrew}y\end{cjhebrew} & \begin{cjhebrew}k|\end{cjhebrew} \\ 
+a & b & g & d 
+& h & w & z & x & v & i & k \\[12pt]
+%& \textsubdot{t} & y & k/\textsubdot{k} & l & m \\[12pt]
+           \begin{cjhebrew}n|\end{cjhebrew} & \begin{cjhebrew}s\end{cjhebrew} & \begin{cjhebrew}`\end{cjhebrew} 
+           & \begin{cjhebrew}p|\end{cjhebrew} & \begin{cjhebrew}.s\end{cjhebrew} & \begin{cjhebrew}q\end{cjhebrew} & \begin{cjhebrew}r\end{cjhebrew} & \begin{cjhebrew},s\end{cjhebrew}/\begin{cjhebrew}+s\end{cjhebrew} & \begin{cjhebrew}t\end{cjhebrew} \\
+	  l & m & n & s & y & p & c & q & r & e & t \\
+\hline
+\end{tabular}
+\end{table}
+O was obtained by mapping each transcriptional representation 
+in T onto an orthographic representation. For example, \textipa{hitkawanti}$_T$ $\to$
 \textipa{htkwnti}$_O$ and \textipa{katavti}$_T$ $\to$ \textipa{ktbti}$_O$.
-Also necessary were two sets of morphological segmentations, namely $T_{SEG}$ and $O_{SEG}$, where:
+Also necessary were two sets of morphological segmentations, namely $\text{T}_{SEG}$ and $\text{O}_{SEG}$, where:
 \begin{itemize}
-\item $T_{SEG}$ = segmentations for 10 percent of the words in $T$.
-\item  $O_{SEG}$ = segmentations for 10 percent of the words in $O$.
+\item $\text{T}_{SEG}$ = segmentations for 10 percent of the words in T.
+\item  $\text{O}_{SEG}$ = segmentations for 10 percent of the words in O.
 \end{itemize} 
 Each acted as a gold-standard in the extrinsic 
 component of the evaluation phase. (see chapter \ref{ch:eval}).  
@@ -782,21 +800,22 @@ The experimental component of this dissertation consists of two major axes of in
 One concerns \textsc{representation} of the input data, and the other the \textsc{features}. 
 We shall address each of these in turn. 
 
-In \ref{ch:intro}, we discussed the problem of choosing a feature set. 
+In chapter~\ref{ch:intro}, we discussed the problem of choosing a feature set. 
 We described it as a problem of selecting one finite subset of 
 features from an infinite number of possible features.
-In the remainder of this chapter, we revisit this question. Our approach 
-is to think in terms of feature categories, i.e., to define categories of 
+We shall now revisit this question. Our approach 
+will be to think in terms of feature categories, i.e., to define categories of 
 features that have favorable properties. We shall also take into account 
-the properties of our learning framework, discarding feature types 
-(or categories) that are at odds with our learning framework, whether 
-conceptually or mathematically. Ultimately, we cannot consider every 
+the properties of our learning framework, namely the bipartite graph. We shall thus discard feature types 
+(or categories) that are at odds with this learning framework. (For example, global features are not well suited to
+the nature of the bipartite graph; see section~\ref{sec:features} for an explanation.)
+Ultimately, we cannot consider every 
 possible feature or feature set. What we can do is produce some 
 principled candidate feature sets with which to experiment. 
 
 We shall glean considerable insight from the field of computer vision. 
 That is, we shall consider feature 
-categories that are significant to computer vision and do so with an 
+categories that are significant to computer vision, doing so with an 
 eye to adapting them for the purposes of \ac{ULM}. The idea is that 
 is actually a very general problem. And thus the same types of features 
 sometimes should apply to different types of objects
@@ -812,16 +831,16 @@ symbols compose the strings (i.e., words)
 of an input wordlist.
 In the present work, two data representations were tested, one transcriptional 
 (\textbf{T}), the other orthographic (\textbf{O}). 
-$T$ is essentially the \ac{BLC} (but without stress markings). 
+T is essentially the \ac{BLC} (but without stress markings). 
 Its alphabet is thus the \ac{BLC}'s 34-symbol
 transcriptional system, which we discussed above in section.
-$O$ consists of $T$'s words, but mapped onto orthographic 
-representations; every character in $O$ is thus
+O consists of T's words, but mapped onto orthographic 
+representations; every character in O is thus
 a letter of the 22-letter consonantal Hebrew alphabet.
-%$T$ and $O$ differ both qualitatively and quantitatively. 
-Arguably, $T$ contains more information than $O$,
-since $T$ has a distinct symbol for each of \ac{MH}'s five vowels sounds,
-as well as all of the archaic consonantal distinctions found in $O$. 
+%T and O differ both qualitatively and quantitatively. 
+Arguably, T contains more information than O,
+since T has a distinct symbol for each of \ac{MH}'s five vowels sounds,
+as well as all of the archaic consonantal distinctions found in O. 
 %\textsc{data representation} refers to the ``encoding'' of the input
 %word lists. Essentially, it refers to a choice between one of two alphabets (and the spelling conventions that 
 %accompany each alphabet). The two alphabets are the standard consonantal Hebrew alphabet, consisting of 22 letters,
@@ -835,7 +854,7 @@ and the 34-symbol \ac{BLC} transcriptional system.]
 \label{sec:features}
 
 \subsubsection{Feature-set Desiderata: Insights from Computer Vision}
-\paragraph{Invariance vs. Variance}
+\paragraph{Invariance vs. Variance.}
 \cite{dudani-et-al:1977} describe three desiderata for features in the 
 domain of aircraft identification:
 \begin{quote}
@@ -871,10 +890,10 @@ larger in one photograph simply because
 it was closer to the camera when that photograph was taken.
 
 Sometimes, however, both invariant and variant features are necessary, 
-as in optical character recognition (OCR)\citep{trier-et-al:1996}.
-%For example, in the field of Optical Character Recognition (OCR) 
+as in optical character recognition \ac{OCR}\citep{trier-et-al:1996}.
+%For example, in the field of Optical Character Recognition (\ac{OCR}) 
 %provides some good examples of this scenario. 
-Rotation-invariant features are considered essential in OCR \citep{trier-et-al:1996}, 
+Rotation-invariant features are considered essential in \ac{OCR} \citep{trier-et-al:1996}, 
 at least
 insofar as a character's identity is independent 
 of its orientation.
@@ -888,7 +907,7 @@ However, this is not true of all letters. In many type faces, for instance,
 to become \textsf{n}. Often, a rotated (upside-down) \textsf{M} closely 
 resembles a \textsf{W}. And should we consider numerals, we would have to deal 
 with the famously rotation-variant \textsf{6} and \textsf{9}. If an 
-OCR system were to rely solely upon rotation-invariant features, it
+\ac{OCR} system were to rely solely upon rotation-invariant features, it
 would not be able to distinguish between, for instance, \textsf{6} and 
 \textsf{9}, since the only features that can distinguish \textsf{6} from \textsf{9}
 are rotation variant.
@@ -898,7 +917,7 @@ are rotation variant.
 Global features describe an image as a whole, whereas local features are concerned
 only with a particular region in the image. That is, the value of local feature is dependent
 only upon its particular region; it is not affected by other regions. 
-In OCR, an example of a global feature is \emph{aspect ratio}, defined 
+In \ac{OCR}, an example of a global feature is \emph{aspect ratio}, defined 
 as the width of a character's rectangular bounding box divided by the same 
 box's height. Note that aspect ratio is size invariant. Global features 
 can be made invariant 
@@ -1073,36 +1092,31 @@ three containing only
 precedence features (i.e., at $\delta =$ 1, 2, and 3), and
 three containing only position features (at $s =$ 2, 4, and 6).
 
-Multimorph was run on each combination, first with $T$ serving as input.  
-The best valuations for $s$ and $\delta$ on $T$
-were then mapped onto analogous valuations for the $O$ 
-dataset. Because $O$ mostly lacks vowels, many consonant-vowel 
-sequences in $T$ will correspond to a single consonant in 
-$O$. Thus, we can in many cases estimate $s$ and $\delta$ 
-for $O$ by taking the $s$ and $\delta$ values associated with $T$ and dividing them each by two. %by halving $s_{T}$ and $\delta_{T}$.
+Multimorph was run on each combination, first with T serving as input.  
+The best valuations for $s$ and $\delta$ on T
+were then mapped onto analogous valuations for the O 
+dataset. Because O mostly lacks vowels, many consonant-vowel 
+sequences in T will correspond to a single consonant in 
+O. Thus, we can in many cases estimate $s$ and $\delta$ 
+for O by taking the $s$ and $\delta$ values associated with T and dividing them each by two. %by halving $s_{T}$ and $\delta_{T}$.
 For example, a valuation of 
 $\langle s_T = 6, \delta_T = 2 \rangle$ 
-(i.e. $s$ and $\delta$ with $T$ as input)  would correspond 
+(i.e. $s$ and $\delta$ with T as input)  would correspond 
 approximately to $\langle s_O = 3, \delta_O = 1 \rangle$.
 
 \section{Summary}
 
-\begin{itemize}
-\item Two input datasets (i.e., wordlists) were compiled: a 
+Two input datasets (i.e., wordlists) were compiled: a 
 transcriptional wordlist (T) and an orthographic wordlist (O).
-    \begin{itemize}
-       \item First, the transcribed words were extracted from the \ac{BLC}, along with along with their \ac{BLC} morphological analyses. Thus $T$ was obtained.
-      \item The words in T were then converted to orthographic representations
+ First, the transcribed words were extracted from the \ac{BLC}, along with along with their \ac{BLC} morphological analyses. Thus T was obtained.
+The words in T were then converted to orthographic representations
 according to the spelling rules of the Hebrew Language 
 Academy. Thus O was derived from T. 
-     \end{itemize}
-\item Two feature types were chosen for experimentation, namely \emph{positional features} and \emph{precedence features},
+
+Two feature types were chosen for experimentation, namely \emph{positional features} and \emph{precedence features},
 These were chosen because the former is variant and the latter invariant with respect to affixation. That is, e.g., if a prefix within a given word is represented with positional features, its feature-value representation will change of another prefix is attached before it. Thus, the same prefix may have different feature-value representations in different words. Precedence features, on the other hand, are defined in such a way that they are unaffected when additional material is attached to the front or end of words. However, this does not mean that precedence features are going to be better than positional features in every case. Some morphological units, like the characters may require positional features, just as the characters 6 and 9 require position-variant features in \ac{OCR}. 
-%
+
 %ary depending on whether an affix is attached eature s attached to the would with different \emph{positional features} if an affix is \emph{variant} and \emph{invariant}, respectively, with respect to affixation.
 %\item 
-\end{itemize}
-
-In the next chapter, we shall discuss the methods whereby the results are evaluated. Much such shall be revealed, and much shall be made clear, such
-as why we needed to extract not just the words themselves from the \ac{BLC}, but also each word's morphological analysis. 
+The focus of the next chapter will be the methods whereby the results of the experiments were evaluated. We shall see why, for instance, we needed to extract not just the words from the \ac{BLC}, but their morphological analyses. 
 
