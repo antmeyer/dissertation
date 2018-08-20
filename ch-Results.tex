@@ -1,3 +1,160 @@
 \chapter{RESULTS}
+\label{ch:results}
+We use $K$ to denote the number of clusters produced in a given experimental
+trial. In theory, Multimorph should create just enough clusters to reduce the error
+to 0. In turned out, however, that Multimorph never reduced its error all the to zero. Instead,
+every trial, Multimorph's error decreased steadily to a point greater than 0, whereupon it reversed direction, starting to 
+increase, and continued to increase until the experiment was stopped at $K = 3000$ or $4000$.  The error minimum generally occurred when $K$ was between 400 and 1200. 
+The average $K$ was 589.36 for T, 833.00 for TR, and 742.92 for O. I thus 
+report results both at $K = 500$ and $K = 1000$.
 
-hhh
+The experimental variables in question here are the feature type, i.e.,  positional vs. precedence ($s$ vs. $\delta$),
+the manner, which the original data was represented, i.e., whether it was transcribed with stress, transcribed without stress,
+or orthographic (standard Hebrew orthography).
+%we set different values of $s$ (positional) and $\delta$ (precedence), in
+%various combinations.
+%(section~\ref{subsec:features}).  
+%Results are given in table~\ref{tab:results}, where * refers to an
+%unbounded $\delta$.
+
+\section{Qualitative Results}
+
+
+%
+%Among the ``exclusive" settings, i.e., the settings that exclude either precedence or positional features, note that exclusive precedence features yield much higher purity values than exclusive positional features, at least when $\delta \ge 2$.
+%This can likely be attributed, at least in part, to lesser coverage.
+% The exclusive precedence features at $\delta = 1$ and $\delta = 0$ yield perfect recall, but this is only because the precision at these settings is close to 0. The algorithm was essentially unable to make distinctions at these settings, and the result was 50 nearly identical clusters. It is not entirely clear at present why these settings produced such uniquely bad results, but it likely has something to do with information scarcity, i.e., the diminishing amounts of information available to the MCMM when $s$ is nonexistent and $\delta$ approaches 0. Notice that when $s$ is n/a and $\delta = 1$, all features are bigrams.
+
+%The best purity occurs at ($s=3$, $\delta=*$), the best precision at ($s=5$, $\delta=*$), the (second) best recall at ($s=4$, $\delta=$ n/a) (see above), and the best coverage at ($s=4$, $\delta=$ n/a). However, the setting ($s=4$, $\delta=*$) arguably yielded the best combination of results. In general, the best results tend to come from the richest features sets, that is, feature sets with the greatest variety, e.g., ($s=3$, $\delta=*$), ($s=3$, $\delta=*$), and ($s=5$, $\delta=*$).
+%precision and recall values (with high purity) use the richest set of
+%features ($s=4$, $\delta=*$).  
+%This suggests not only that our approach
+%can handle diverse feature sets, but that it thrives on them.
+
+%In the combined feature sets (i.e., the settings with no \textit{n/a}), performance improves slightly as $s$ goes from 3 to 4, but the increase from 4 to 5 seems to cause neither a decline in performance nor an improvement.
+%However, recall that the average word length in our dataset is only 5.4, and so in many words, the amount of overlap between the first $s$ and final $s$ positions becomes significant at $s > 3$. At $s = 5$, in many words, the first $s$ positions alone consume every character in the word, rendering the final $s$ positions entirely redundant.
+%and since $s$ actually refers both to the first $s$ positions \emph{and} the final $s$ positions, the amount of overlap between between the first so it makes sense that $s$ value of 5 would not yield new informati word-initial and word-final patterns 
+%from increasing $s$ (the number of positions for positional features) 
+%seems to drop off at $s=4$. There is virtually no difference between the results $s=4$ and $s=5$.
+
+%The column kiss is the percentage of error reduction.
+%Every value in the initial $\mathbf{M}$ matrix is set to 0.5, and the values of the $\mathbf{C}$ matrix are initialized randomly. These initial $\mathbf{M}$ and $\mathbf{C}$ matrices yield an initial reconstruction matrix $\mathbf{R}$, which in turn yields an initial $Err$.
+%and the discrepancy between this initial $\mathbf{R}$ and the actual data $\mathbf{D}$ yields an initial $Err$. 
+%The column in table~\ref{tab:results}, labeled \textit{\% Err Reduc'n} (i.e., \% Err Reduction) gives the percentage of the original error (see section~\ref{mcmm-learning}) that the algorithm was able to eliminate before it reached its stopping point (at $K = 50$). 
+%It is computed as follows:
+%\begin{equation*}
+%\% Err Reduc'n = \frac{{Err}_{original} - {Err}_{final}}{{Err}_{original}} \times 100.0
+%\end{equation*}
+%Notice that at nearly every setting, the algorithm was able to reduce $Err$ by a substantial proportion. The largest reduction of 90.2\% was achieved at ($s=3$, $\delta=0$). However, this setting produced some of the poorer results for purity, BP, and BR.
+%Indeed, the largest reductions in $Err$ do not coincide with the best results in the other measures. Note that in the sections of table~\ref{tab:results} concerned with combined feature sets, \% Err Reduction decreases as $\delta$ increases, even as purity, BP, and BR improve. Thus, a dramatic decrease in $Err$ does not necessarily mean that linguistically meaningful clusters are being formed.
+
+%Every activity in the initial $I \times 1$ $\mathbf{M}$ matrix is set to 0.5, and the weights in the initial $1 \times J$ $\mathbf{C}$ matrix are set to random values.
+%These 
+%The values of the $\mathbf{C}$ matrix are initialized randomly. Every cluster activity in the initial $I \times 1$ for the single initial cluster$\mathbf{R}$ matrix is then computed from these random $\mathbf{M}$ and $\mathbf{C}$ values. $$
+
+Hand-inspection reveals linguistically-interpretable clusters. For example, Figure~\ref{cl-fem} displays a group of 60 words have been randomly selected from a 1632-word cluster produced by Multimorph’s MCMM. This group is intended as an abridgment of its superset, which is too large to display here. This cluster was produced by the MCMM at the experimental settings $\delta = 2$, $s = 3$, and $K = 1000$, i.e. it was one of other 1000 clusters that the MCMM produced during this experimental run. 
+
+\begin{figure}[ht]
+\begin{tabbing}
+\hspace*{14ex}\= \hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex} \kill
+nafalt \> pizart \> webarakevet \> werevi\textipa{P}it \> we\textipa{P}omeret \> \textipa{P}emet\\
+bubot \> hakapot \> mexaberet \> wela\textipa{P}alot \> wemakot \>\v{s}ehizmant\\
+bamesilot \> bami\v{s}qefet \> fizit \> mistateret \> ye\textsubdot{k}olot \> \textipa{P}o\textsubdot{k}elet\\
+be\textipa{P}emet \> kazo\textipa{P}t \> ktumot \> laxalonot \> mat\textipa{P}imot \> \textipa{P}axeret\\
+hatmunot \> hawilonot \> ha\textipa{P}otiyot \> li\v{s}tot \> moxeqet \>\v{s}era\textipa{P}it\\
+dri\v{s}at \> lanequdot \> maxliqot \> mitxape\textsubdot{s}et \> wexalonot \>\v{s}e\textglotstop{P}amart\\
+daqot \> habdiqot \> megare\v{s}et \> ni\textsubdot{k}nast \> pi\textsubdot{t}riyot \>\v{s}ehaxanuyot\\
+ha\v{s}amenet \> hiclaxt \> laxalalit \> meha\textsubdot{s}aqit \> nimce\textipa{P}t \>\v{s}lulonet\\
+hahit\textipa{P}amlut \> labanot \> mela\textsubdot{k}le\textsubdot{k}et \> safart \> xada\v{s}ot \> \textipa{P}acuvot\\
+bakisa\textipa{P}ot \> madregot \> melu\textsubdot{k}la\textsubdot{k}ot \> melu\textsubdot{k}le\textsubdot{k}et \> mit\textipa{P}aqe\v{s}et \> \textipa{P}orot
+\end{tabbing}
+\caption{60 words randomly selected from a 1632-word cluster generated by Multimorph's MCMM (at $s = 3$, and $\delta = 2$. The endings on these words are the feminine endings discussed in section~\ref{sec:heb-example} of chapter~\ref{ch:autonomous}.} %, namely \textit{-ut}, \textit{-ot}, \textit{-t}, \textit{-eCet}, \textit{-it}, \textit{-(i)yot}, and \textit{-uyot}
+\label{fig:cl-fem}
+\end{figure}
+
+This cluster represents feminine endings discussed these words events one of the feminine endings discussed in chapter~{ch:autonomous}, section~\ref{sec:heb-example} namely, the set of suffixes that involve combinations of {-u}, {-i}, and {-t}. Notice that all of the endings in figure- at least share the t. [Here, I intend to look consult another document output by Multimorph, namely a document that those the top ten most active features in each each cluster,
+which would elucidate the contributing factors to this cluster. Perhaps, for example, the feature \texttt{t@[-1]} is (among) the most active, but perhaps others contribute significantly as well. 
+
+Another the cluster, consisting of 60 words randomly selected from a 426-word cluster, is displayed in figure~\ref{fig:cl-hit}. This cluster represents a \emph{binyan}, which, in Hebrew and other Semitic languages is class of verb stems that share the same vowel pattern(s) and combine with the same set of affixes. Vowel patterns are the complements of consonantal roots; i.e., a root and a pattern are interleaved (or interdigitated) to form a stem. 
+Nearly every verb in this cluster is of the \textit{hitpa`el}, which is distinguished by the CaCeC pattern, which undergoes some alternations due to inflectional and phonological influences. Some of these words are nouns derived from \textit{hitpa`el}, e.g., \textit{hahitna\v{s}muy\a'{o}t }, which bears the nominal suffix \textit{-ut} ($\to$ \textit{-uy} before the\textit{o}) and the fem.pl suffix \textit{-ot}
+\begin{figure}[ht]
+\begin{tabbing}
+\hspace*{14ex}\= \hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex} \kill
+hamitnag\v{s}\a'{o}t \> hitgalgel\a'{a} \> hitnadn\a'{e}d \> lehistap\a'{e}r \> welehitra\textipa{P}\a'{o}t \> wemistak\a'{e}l\\
+hithap\textsubdot{k}\a'{a} \> mitra\v{s}\a'{e}met \> titnagv\a'{i} \> titxat\a'{e}n \> wemistak\a'{e}let \> yitqalq\a'{e}l\\
+hahitna\v{s}muy\a'{o}t \> histak\a'{a}lt \> hit\textipa{P}amc\a'{u} \> hi\v{s}tat\a'{a}ta \> lehit\textipa{Q}as\a'{e}q \> titqa\v{s}r\a'{i}\\
+hitgalg\a'{a}lti \> hitragz\a'{u} \> hitwakx\a'{a} \> mitlah\a'{e}vet \> mitmac\a'{e}\textipa{P}t \> mitrag\a'{e}z\\
+behitxa\v{s}\a'{e}v \> hit\textipa{Q}orer\a'{a} \> mamtaq\a'{i}m \> mitgal\a'{e}çet \> mit\textipa{P}am\a'{e}cet \> \v{s}emistarq\a'{i}m\\
+hitnah\a'{e}g \> hitpazr\a'{u} \> hitpoc\a'{e}c \> hi\v{s}tan\a'{a} \> lehitxab\a'{e}\textipa{P} \> \v{s}ehitpoc\a'{e}c\\
+histar\a'{a}qt \> hitpocec\a'{u} \> hitrag\a'{e}z \> hitya\v{s}\a'{e}v \> lehithap\a'{e}\textsubdot{k} \> titqalx\a'{i}\\
+hit\textipa{Q}anyen\a'{a} \> lehit\textipa{Q}acb\a'{e}n \> mitpan\a'{e}qet \> mitqa\v{s}\a'{e}r \> nitgalg\a'{e}l \> tistarq\a'{i}\\
+mistak\a'{e}l \> mitno\textipa{Q}\a'{e}a\textipa{Q} \> mitpa\textipa{Q}\a'{e}l \> nitlab\a'{e}\v{s} \> titgalgel\a'{i} \> \v{s}emitkad\a'{e}r\\
+hitparq\a'{a} \> lehitqa\v{s}\a'{e}r \> mitpar\a'{e}q \> mit\textipa{Q}aq\a'{e}\v{s}et \> titxal\a'{e}q \> titya\v{s}v\a'{i}
+\end{tabbing}
+\caption{60 words randomly selected from a 426-word cluster generated by Multimorph's MCMM (at $s = 3$, and $\delta = 2$. These words are almost entirely of the \textit{hitpa`el}.}
+\label{fig:cl-hit}
+\end{figure}
+
+This last example demonstrates that Multimorph is capable of learning non-concatenative morphology. The \textit{a} and the \textit{e} in CaCeC are separated by a consonant. Among the words in \ref{fig:cl-hit}, the intervening C between the \textit{a} and \textit{e} varies. It follows that Multimorph is not merely recognizing continuous substrings that contain both \textit{a} and \textit{e}.
+
+\section{Quantitative Results}
+
+\subsection{Results from the Intrinsic Evaluation}
+
+\newcolumntype{g}{>{\columncolor{Gray}}c}
+\begin{table}[htb]
+\begin{center}
+\small
+\begin{tabular}{c|cc|ccc |rc}
+Data  &  & & &  &  & & \% Err \\ 
+  Rep        & \raisebox{1.5ex}[0pt]{$s$} & \raisebox{1.5ex}[0pt]{$\delta$} & \raisebox{1.5ex}[0pt]{Purity} 
+  & \raisebox{1.5ex}[0pt]{BP} & \raisebox{1.5ex}[0pt]{BR}                        & \raisebox{1.5ex}[0pt]{Cov.} & Reduc'n \\
+
+\hline
+$\text{T}_{S}$ & 0 & 1 & 0 & 0 & 0 & 0 & 0\\
+\rowcolor{LightGray}
+$\text{T}$        & 0 & 1 & 0 & 0 & 0 & 0 & 0\\
+
+$\text{T}_S$   & 0 & 2 & 0 & 0 & 0 & 0 & 0\\
+\rowcolor{LightGray}
+$\text{T}$       & 0 & 2 & 0 & 0 & 0 & 0 & 0\\
+
+$\text{T}_S$         & 2 & 0 & 0 & 0 & 0 & 0 & 0\\
+\rowcolor{LightGray}
+$\text{T}$         & 2 & 0 & 0 & 0 & 0 & 0 & 0\\
+
+$\text{T}_S$         & 4 & 0 & 0 & 0 & 0 & 0 & 0\\
+\rowcolor{LightGray}
+$\text{T}$         & 4 & 0 & 0 & 0 & 0 & 0 & 0\\
+
+$\text{T}_{S}$ & 6 & 0 & 0 & 0 & 0 & 0 & 0\\
+\rowcolor{LightGray}
+$\text{T}$ & 6 & 0 & 0 & 0 & 0 & 0 & 0\\
+$\text{T}_S$        & 2 & 1 & 0 & 0 & 0 & 0 & 0\\ 
+\rowcolor{LightGray}
+$\text{T}$ & 2 & 1 & 0 & 0 & 0 & 0 & 0\\ 
+$\text{T}_S$        & 2 & 2 & 0 & 0 & 0 & 0 & 0\\ \hline
+\rowcolor{LightGray}
+$\text{T}$ & 2 & 2 & 0 & 0 & 0 & 0 & 0\\ 
+$\text{T}_S$        & 4 & 1 & 0 & 0 & 0 & 0 & 0\\ 
+\rowcolor{LightGray}
+$\text{T}$ & 4 & 1 & 0 & 0 & 0 & 0 & 0\\ 
+$\text{T}_S$        & 4 & 2 & 0 & 0 & 0 & 0 & 0\\
+\rowcolor{LightGray} 
+$\text{T}$        & 4 & 2 & 0 & 0 & 0 & 0 & 0\\ \hline
+$\text{T}_{S}$ & 6 & 1 & 0 & 0 & 0 & 0 & 0\\ 
+\rowcolor{LightGray}
+$\text{T}$        & 6 & 1 & 0 & 0 & 0 & 0 & 0\\ 
+$\text{T}_{S}$ & 6 & 2 & 0 & 0 & 0 & 0 & 0\\ 
+\rowcolor{LightGray}
+$\text{T}$        & 6 & 2 & 0 & 0 & 0 & 0 & 0\\ 
+\end{tabular}
+\end{center}
+\caption{Results at various settings}
+\label{tab:results}
+\end{table}
+
+\subsection{Results from the Extrinsic Evaluation}
+
+Here will be placed at chart, along with accompanying expository text, displaying
+the results of the extrinsic evaluation described in chapter~\ref{ch:eval}. 
