@@ -5,7 +5,7 @@ trial. In theory, Multimorph should create just enough clusters to reduce the er
 to 0. In turned out, however, that Multimorph never reduced its error all the to zero. Instead,
 every trial, Multimorph's error decreased steadily to a point greater than 0, whereupon it reversed direction, starting to 
 increase, and continued to increase until the experiment was stopped at $K = 3000$ or $4000$.  The error minimum generally occurred when $K$ was between 400 and 1200. 
-The average $K$ was 589.36 for T, 833.00 for TR, and 742.92 for O. I thus 
+The average $K$ was 589.36 for TS (transcriptions with stress markings), 833.00 for T, and 742.92 for O. I thus 
 report results both at $K = 500$ and $K = 1000$.
 
 The experimental variables in question here are the feature type, i.e.,  positional vs. precedence ($s$ vs. $\delta$),
@@ -18,7 +18,6 @@ or orthographic (standard Hebrew orthography).
 %unbounded $\delta$.
 
 \section{Qualitative Results}
-
 
 %
 %Among the ``exclusive" settings, i.e., the settings that exclude either precedence or positional features, note that exclusive precedence features yield much higher purity values than exclusive positional features, at least when $\delta \ge 2$.
@@ -76,7 +75,7 @@ This cluster represents feminine endings discussed these words events one of the
 which would elucidate the contributing factors to this cluster. Perhaps, for example, the feature \texttt{t@[-1]} is (among) the most active, but perhaps others contribute significantly as well. 
 
 Another the cluster, consisting of 60 words randomly selected from a 426-word cluster, is displayed in figure~\ref{fig:cl-hit}. This cluster represents a \emph{binyan}, which, in Hebrew and other Semitic languages is class of verb stems that share the same vowel pattern(s) and combine with the same set of affixes. Vowel patterns are the complements of consonantal roots; i.e., a root and a pattern are interleaved (or interdigitated) to form a stem. 
-Nearly every verb in this cluster is of the \textit{hitpa`el}, which is distinguished by the CaCeC pattern, which undergoes some alternations due to inflectional and phonological influences. Some of these words are nouns derived from \textit{hitpa`el}, e.g., \textit{hahitna\v{s}muy\a'{o}t }, which bears the nominal suffix \textit{-ut} ($\to$ \textit{-uy} before the\textit{o}) and the fem.pl suffix \textit{-ot}
+Nearly every verb in this cluster is of the \textit{hitpa`el}, which is distinguished by the CitCaCeC pattern, which undergoes some alternations due to inflectional and phonological influences. Some of these words are nouns derived from \textit{hitpa`el}, e.g., \textit{hahitna\v{s}muy\a'{o}t }, which bears the nominal suffix \textit{-ut} ($\to$ \textit{-uy} before the\textit{o}) and the fem.pl suffix \textit{-ot} 
 \begin{figure}[ht]
 \begin{tabbing}
 \hspace*{14ex}\= \hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex} \kill
@@ -99,62 +98,65 @@ This last example demonstrates that Multimorph is capable of learning non-concat
 
 \section{Quantitative Results}
 
-\subsection{Results from the Intrinsic Evaluation}
+While I have already run every experiment for this thesis and have the output, I have lately had some problems with my evaluation scripts, i.e. the scripts that perform the procedures outlined in chapter~{ch-Evaluation}. These are procedures to performed on the output to obtain quantitative measures. (Again, the output itself is already computed; otherwise, I would not have been able to perform the qualitative evaluation.) 
+Thus, draft will not be presenting the actual numbers that my evaluation scripts will compute. The qualitative scores are meant to complement the qualitative analysis. The qualitative analysis was done manually, whereas the quantitative evaluation will be done computationally. Since we are dealing wiht linguistic theory, it makes to have human eyes examine the output. At the same time, however, a human may not catch everything. A human may also be less effect at judging overall consistency. For example, in the qualitative evaluation discussed in this chapter, I identified a cluster representating a non-concatenative morphological unit. This is example proves the systems ability to identity nonconcatenative morphs at least to some extent. The quantitative evaluation will show the consistency of the system's ability.s
+\paragraph{Results from the Intrinsic Evaluation}
 
 \newcolumntype{g}{>{\columncolor{Gray}}c}
 \begin{table}[htb]
 \begin{center}
 \small
 \begin{tabular}{c|cc|ccc |rc}
-Data  &  & & &  &  & & \% Err \\ 
+Data  &  & & &  &  & &  \\ 
   Rep        & \raisebox{1.5ex}[0pt]{$s$} & \raisebox{1.5ex}[0pt]{$\delta$} & \raisebox{1.5ex}[0pt]{Purity} 
   & \raisebox{1.5ex}[0pt]{BP} & \raisebox{1.5ex}[0pt]{BR}                        & \raisebox{1.5ex}[0pt]{Cov.} & Reduc'n \\
 
 \hline
-$\text{T}_{S}$ & 0 & 1 & 0 & 0 & 0 & 0 & 0\\
+$\text{T}_{S}$ & 0 & 1 & & & & & \\
 \rowcolor{LightGray}
-$\text{T}$        & 0 & 1 & 0 & 0 & 0 & 0 & 0\\
+$\text{T}$        & 0 & 1 & & & & & \\
 
-$\text{T}_S$   & 0 & 2 & 0 & 0 & 0 & 0 & 0\\
+$\text{T}_S$   & 0 & 2 & & & & & \\
 \rowcolor{LightGray}
-$\text{T}$       & 0 & 2 & 0 & 0 & 0 & 0 & 0\\
+$\text{T}$       & 0 & 2 & & & & & \\
 
-$\text{T}_S$         & 2 & 0 & 0 & 0 & 0 & 0 & 0\\
+$\text{T}_S$         & 2 & 0 & & & & & \\
 \rowcolor{LightGray}
-$\text{T}$         & 2 & 0 & 0 & 0 & 0 & 0 & 0\\
+$\text{T}$         & 2 & 0 & & & & &  \\
 
-$\text{T}_S$         & 4 & 0 & 0 & 0 & 0 & 0 & 0\\
+$\text{T}_S$         & 4 & 0 & & & & &  \\
 \rowcolor{LightGray}
-$\text{T}$         & 4 & 0 & 0 & 0 & 0 & 0 & 0\\
+$\text{T}$         & 4 & 0 & & & & & \\
 
-$\text{T}_{S}$ & 6 & 0 & 0 & 0 & 0 & 0 & 0\\
+$\text{T}_{S}$ & 6 & 0 & & & & & \\
 \rowcolor{LightGray}
-$\text{T}$ & 6 & 0 & 0 & 0 & 0 & 0 & 0\\
-$\text{T}_S$        & 2 & 1 & 0 & 0 & 0 & 0 & 0\\ 
+$\text{T}$ & 6 & 0 & & & & & \\
+$\text{T}_S$        & 2 & 1 & & & & & \\ 
 \rowcolor{LightGray}
-$\text{T}$ & 2 & 1 & 0 & 0 & 0 & 0 & 0\\ 
-$\text{T}_S$        & 2 & 2 & 0 & 0 & 0 & 0 & 0\\ \hline
+$\text{T}$ & 2 & 1 & & & & & \\ 
+$\text{T}_S$        & 2 & 2 & & & & & \\ 
 \rowcolor{LightGray}
-$\text{T}$ & 2 & 2 & 0 & 0 & 0 & 0 & 0\\ 
-$\text{T}_S$        & 4 & 1 & 0 & 0 & 0 & 0 & 0\\ 
+$\text{T}$ & 2 & 2 & & & & & \\ 
+$\text{T}_S$        & 4 & 1 & & & & & \\ 
 \rowcolor{LightGray}
-$\text{T}$ & 4 & 1 & 0 & 0 & 0 & 0 & 0\\ 
-$\text{T}_S$        & 4 & 2 & 0 & 0 & 0 & 0 & 0\\
+$\text{T}$ & 4 & 1 & & & & & \\ 
+$\text{T}_S$        & 4 & 2 &  & & &  & \\
 \rowcolor{LightGray} 
-$\text{T}$        & 4 & 2 & 0 & 0 & 0 & 0 & 0\\ \hline
-$\text{T}_{S}$ & 6 & 1 & 0 & 0 & 0 & 0 & 0\\ 
+$\text{T}$        & 4 & 2 & & & & & \\
+$\text{T}_{S}$ & 6 & 1 & & & & & \\ 
 \rowcolor{LightGray}
-$\text{T}$        & 6 & 1 & 0 & 0 & 0 & 0 & 0\\ 
-$\text{T}_{S}$ & 6 & 2 & 0 & 0 & 0 & 0 & 0\\ 
+$\text{T}$        & 6 & 1 & & & & & \\ 
+$\text{T}_{S}$ & 6 & 2 & & & & & \\ 
 \rowcolor{LightGray}
-$\text{T}$        & 6 & 2 & 0 & 0 & 0 & 0 & 0\\ 
+$\text{T}$        & 6 & 2 & & & & & \\ 
 \end{tabular}
 \end{center}
-\caption{Results at various settings}
+\caption{The table currently shows experiments that have been successfully run, but not
+yet scored. Note that the experiments involving the orthographic data (O) were also successfully run.}
 \label{tab:results}
 \end{table}
 
-\subsection{Results from the Extrinsic Evaluation}
+paragraph{Results from the Extrinsic Evaluation}
 
 Here will be placed at chart, along with accompanying expository text, displaying
 the results of the extrinsic evaluation described in chapter~\ref{ch:eval}. 

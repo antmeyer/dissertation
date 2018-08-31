@@ -25,7 +25,6 @@
 %\usepackage[hebrew,english]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{amsthm}
- 
 \newtheorem*{remark}{Remark}
 \newtheorem{definition}{Definition}
 \newtheorem{criterion}{Criterion}
@@ -43,7 +42,6 @@
 \bibliographystyle{abbrvnat}
 \setcitestyle{authoryear}
 %\bibliographystyle{plainnat}
-
 %\usepackage{cite}
 %\usepackage{makecell}
 % removing ACL style package
@@ -102,7 +100,7 @@
 %\usepackage[normalem]{ulem}
 %\usepackage{nomencl}
 % Uncomment this to make sure marginpars are removed before submission:
-%\renewcommand{\marginpar}[1]{}
+\renewcommand{\marginpar}[1]{}
 %\renewcommand{\theequation}{\roman{equation}}
 %\newcommand\tab[1][1cm]{\hspace*{#1}}
 %\usepackage{tabto}
@@ -246,7 +244,7 @@ for a system that learns morphs.
 	\acro{NLNS}{Nonlinear Nonsequential}
 	\acro{IPA}{International Phonetic Alphabet}
 	\acro{OCR}{Optical Character Recognition}
-	
+	\acro{RBM}{Restricted Boltzmann Machine}
 	
 \end{acronym}
 \include{ch-Intro}
@@ -304,7 +302,7 @@ for a system that learns morphs.
 %\bibliographystyle{plainnat}
 \begin{appendices}
 \chapter{Some Appendix}
-The contents...
+I may include some pseudocode or other technical detail in an appendix.
 \end{appendices}
 
 \bibliography{dissertation}

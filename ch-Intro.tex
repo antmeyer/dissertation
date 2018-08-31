@@ -218,26 +218,25 @@ giving us four possible combinations of (non)linearity and (non)sequentiality:
 \section{Research objectives}
 %State primary research objective: 
 \subsection{Primary research objective}
-My primary objective is to demonstrate that the multilinear architecture of autosegmental theory can be implemented for the purpose of ULM. That is, my goal is 
-to devise \emph{at least one} way of doing this and 
-to demonstrate that it works. In particular, I intend to show 
+In particular, I intend to show 
 %that the crucial components of autosegmental theory, i.e., 
 %those components that allow it to handle non-concatenative morphology, 
-that the properties of nonlinearity and nonsequentiality
-can be implemented in the form of 
-a Multiple Cause Mixture Model (MCMM), 
+argue both that (1) the properties of nonlinearity and nonsequentiality are crucial for dealing with non-conocatenative
+morphology, and (2) that these properties can 
+be implemented in the form of 
+an \ac{MCMM}, 
 %which is 
 %a general unsupervised learning framework developed by \cite{saund:94}. 
 a general unsupervised learning framework developed by \cite{saund:94}. 
-I shall thus develop a machine-learning system that is driven by an MCMM.
-Its input data will consist of Modern Hebrew words represented as feature vectors. 
-I am focusing on Modern Hebrew because 
-it exhibits both concatenative and non-concatenative morphological processes 
+This dissertation therefore presents \textbf{Multimorph}, an unsupervised morphology-learning system that is driven by an MCMM.
+Its input data will consist of \ac{MH} words represented as feature vectors. 
+The present study focuses on the learning of \ac{MH}, since \ac{MH}
+exhibits both concatenative and non-concatenative morphological processes 
 and thus provides a good test of the method's generality.
 
 \subsection{Secondary research objectives}
 \label{sec:secondary-objectives}
-My secondary research objectives are outlined below. They are largely concerned with matters of implementation. 
+My secondary research objectives are outlined below. %They are largely concerned with matters of implementation. 
 	 \paragraph{Features.} There is a great deal of information tacitly present in a string of alphabetic symbols.
 	 This is true regardless of whether the string is written, in which case the symbols are graphemes, or spoken,
 	 in which case they are phonemes. In either case, the symbols are each drawn from an alphabet of size $N$ and arranged along a single axis (say, the $x$ axis).
@@ -282,7 +281,7 @@ There is a great deal of information tacitly present in a string of alphabetic s
 	 symbols are graphemes, or spoken, in which case they are phonemes. In either 
 	 case, the symbols are each drawn from an alphabet of size $N$ and arranged 
 	 along a single axis (say, the $x$ axis).
-Consider the string of graphemes printed at the top of figure~\ref{many-feats}
+Consider the string of graphemes printed at the top of figure~\ref{fig:many-feats}
 %\begin{figure}[h]
 %	\centering
 %	\begin{tikzpicture}[shorten >=2pt,shorten <=3pt, draw=black!100]
@@ -338,46 +337,46 @@ set, and all feature vectors must be of the same length.
 One cannot, of course, have an infinite number of features. Feature vectors must be finite in length.
 One must therefore choose a particular subset. The problem of choosing a likely subset constitutes one of
 this dissertation's main research questions. 
-
-In \ref{ch:intro}, we mentioned the problem of choosing one finite subset of features from an infinite number of possible features.
-We shall address this question here by first gleaning some insight
-from the field of computer vision. That is, we consider feature categories that 
-are significant to computer vision, with an eye to adapting them for the purposes of ULM. The idea is that 
-the task of clustering objects, i.e., discerning what makes two objects similar and what makes them different,
-and figuring out which objects to group together and which to separate, is a very general problem. And thus the
-same types of features should apply to different types of objects
+%In \ref{ch:intro}, we mentioned the problem of choosing one finite subset of features from an infinite number of possible features.
+We will address this question further in chapter~\ref{ch:experi} in part by gleaning some insight
+from the field of computer vision. That is, we will consider feature categories that 
+are significant to computer vision, with an eye to adapting them for the purposes of ULM. 
+%The idea is that 
+%the task of clustering objects, i.e., discerning what makes two objects similar and what makes them different,
+%and figuring out which objects to group together and which to separate, is a very general problem. And thus the
+%same types of features should apply to different types of objects.
 %These categories are \textit{variant} features and \textit{invariant} features. 
 %>>>
-
-We shall focus in particular on \emph{invariant} and \emph{variant} features (see REF). 
-%As discussed in chapter\ref{ch:intro}, 
+We shall focus in particular on \emph{invariant} and \emph{variant} features.
 The distinction between these two feature types is a highly significant one in
 computer vision and its various subfields. In the present dissertation, we hypothesize that this distinction is
 also relevant to ULM. 
 
 
 \paragraph{Data Representation.} 
- \emph{representation} of the input data,
-By \emph{representation} we refer to the alphabet---the
+ %emph{representation} of the input data,
+By \emph{representation} we refer mainlyto the alphabet---the
 particular set of symbols---that compose the strings (i.e., words) of the input wordlist.
-In the present work, two data representations were tested, one transcriptional 
-(\textbf{T}), the other orthographic (\textbf{O}) .
-T is essentially the BLC (but without stress markings). Its alphabet is thus BLC's 
-transcriptional system, which we discussed above in section. % \ref{sec:transcription}.
-The information contained in T and O is different both qualitatively and quantitatively. 
+In the present work, three data representations were tested: two were transcriptional representations---one with stress markings and the other without stress ($\text{T}^{S}$ and $\text{T}^{R}$, respectively); The third was \emph{orthographic}, comprising the letters of the standard Hebrew alphabet mapped onto ASCII characters.
+%(\textbf{\text{T}^{S}); another transcriptional, but without stress (\textbf{\text{T}^{R}), and the third orthographic (\textbf{O})ransliterated to ASCII characters in the Hebrew Treebank \citep{simaan-et-al:2001}
+$\text{T}^{S}$ is the BLC's transcriptional system, and $\text{T}^{S}$ is that same system with the stress markings removed. 
+%Its alphabet is thus BLC's 
+%transcriptional system, which we discussed above in section. % \ref{sec:transcription}.
+The information contained in O is differs both qualitatively and quantitatively from information contained in the T datasets  
 Arguably, T contains more information than O,
-since T represents each of MH's five vowels and each vowel sound has its own distinct symbol 
-that is devoted exclusively to that vowel.
+since T represents each of \ac{MH}'s five vowels in such a way that each vowel sound not only has a symbol, but its own
+has its own exclusive symbol 
+exclusive symbol.
 
-The features are extracted from raw-text data, wherein Hebrew words are represented as strings of alphabetic symbols, and the symbols are drawn from a particular alphabet. Now, it so happens that we have more than one alphabet at our disposal, and thus more than one way to represent the input data. These alphabets are the following:
-	\begin{enumerate}
-		\item \textbf{Modern Hebrew standard orthography}, as transliterated to ASCII characters in the Hebrew Treebank \citep{simaan-et-al:2001}. In the orthography of Modern Hebrew, certain consonants are regularly appropriated to represent vowels. For example, the Hebrew letter
-		\textcjheb{w}, transliterated as \textit{w} in the Hebrew Treebank, is by default the consonant /v/, but it is also used to represent the vowels /o/ and /u/. In most syllables, however, the vowel is not represented at all. 
-		\item \textbf{Phonemic transcriptions}, i.e., phonemically transcribed words. I have extracted two lists of phonemically transcribed words from the Hebrew portion of the CHILDES database \citep{macwhinney:2000a}. 
-		 These lists are the same except that stress is marked in one, but not in the other.
-	\end{enumerate}
-	%The phonemic transcriptions amount to 12,494 words.
-	The question is which mode of representation yields better feature vectors. This is equivalent to asking which mode delivers the largest quantity of useful information and/or the smallest quantity of irrelevant information.
+%The features are extracted from raw-text data, wherein Hebrew words are represented as strings of alphabetic symbols, and the symbols are drawn from a particular alphabet. Now, it so happens that we have more than one alphabet at our disposal, and thus more than one way to represent the input data. These alphabets are the following:
+%	\begin{enumerate}
+%		\item \textbf{Modern Hebrew standard orthography}, as transliterated to ASCII characters in the Hebrew Treebank \citep{simaan-et-al:2001}. In the orthography of Modern Hebrew, certain consonants are regularly appropriated to represent vowels. For example, the Hebrew letter
+%		\textcjheb{w}, transliterated as \textit{w} in the Hebrew Treebank, is by default the consonant /v/, but it is also used to represent the vowels /o/ and /u/. In most syllables, however, the vowel is not represented at all. 
+%		\item \textbf{Phonemic transcriptions}, i.e., phonemically transcribed words. I have extracted two lists of phonemically transcribed words from the Hebrew portion of the CHILDES database \citep{macwhinney:2000a}. 
+%		 These lists are the same except that stress is marked in one, but not in the other.
+%	\end{enumerate}
+%	%The phonemic transcriptions amount to 12,494 words.
+%	The question is which mode of representation yields better feature vectors. This is equivalent to asking which mode delivers the largest quantity of useful information and/or the smallest quantity of irrelevant information.
 	\paragraph{Mixing and Objective Functions.} The \textbf{mixing function} 
 is essentially a voting rule \citep{saund:94}. It prescribes the method whereby the 
 ``votes" of  hidden units are combined to turn a particular feature (i.e., surface unit) \textsc{on} or \textsc{off} (see section~\ref{sec:mixing-function}. The \textbf{objective function} measures the discrepancy---or, alternatively, similarity---between the surface units' activities and their target activities. 
@@ -385,13 +384,13 @@ It thus drives the model's learning by way of trial and error. Objective functio
 be either positive or negative. Positive objective functions measure similarity and thus 
 need to be maximized. Negative objective functions measure error and thus need to be minimized (see section~\ref{sec:mcmm-learning}).
 
-I intend to experiment with two radically different mixing functions, 
-viz. one that combines hidden-unit activities linearly and one that combines them nonlinearly.
-%(see section~\ref{sec:mixing-function}). 
-Similarly, I intend to try out 
+%I intend to experimented with two radically different mixing functions, 
+%viz. one that combines hidden-unit activities linearly and one that combines them nonlinearly.
+%%%(see section~\ref{sec:mixing-function}). 
+%Similarly, I intend to try out 
 %two radically different objective functions, namely 
-both a negative and a positive % one (see section~\ref{sec:mcmm-learning}).
-objective function. %(see section~\ref{sec:mcmm-learning}).
+%both a negative and a positive % one (see section~\ref{sec:mcmm-learning}).
+%objective function. %(see section~\ref{sec:mcmm-learning}).
 %Why: What does the mixing function do? What would happen if there were no mixing function? The mixing function maps the hidden-unit activities
 %What does the objective function do? What would happen if there were no objective function? 
 %If there were no objective function, there could be no learning. Learning proceeds by trial and error. 

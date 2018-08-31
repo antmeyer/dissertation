@@ -3,7 +3,7 @@
 
 \section{Introduction}
 
-\cite{mccarthy:1981} points out a fundamental flaw in linear, strictly concatenative approaches to morphological analysis: 
+\cite{mccarthy:1981} points out a fundamental flaw in linear, concatenative approaches to morphological analysis: 
 Such approaches acknowledge only a single level of representation, namely that of the \emph{segmental string}, i.e., the level of minimal phonological segments (essentially phonemes).\footnote{McCarthy uses the term \emph{segment} in the phonological sense, i.e., a minimal unit of sound. 
 Research in \ac{ULM}, however, general use the word to 
 refer to minimal morphological units, 
@@ -692,46 +692,46 @@ or more hidden layers to encode the morphological structure.
  
 % STARTHERE
  
-\section{Morphological Learning Frameworks}
-\label{sec:rel-work}
-\cite{mccarthy:1981} notes a fundamental flaw in linear, strictly concatenative approaches to morphological analysis: 
-Because such approaches acknowledge only a single level of representation, the segmental string, they are forced to represent within the same string both the linear order of phonemes and their grouping into morphemes. This effectively binds morphological grouping to the linear order of phonemes, leaving a linear analysis  
-with no straightforward means of identifying a discontiguous phoneme sequence as a unified morpheme.
-
-McCarthy thus offers an alternative \emph{nonlinear} formalism in 
-which morphemes are represented as nodes on \emph{autosegmental} tiers, 
-i.e., tiers that are separate from the segmental string, allowing
-associations between morphemes and phonemes to be independent of 
-phonemes' linear order. This framework turns out to be highly general, 
-for it uses the same formal machinery to model both 
-concatenative and non-concatenative processes; that is, it treats them as essentially 
-the same rather than fundamentally different.
-
-One can apply McCarthy's ``linear vs. nonlinear" conceptual framework to 
-categorizing existing approaches in ULM.
-In the following discussion, we
-use the term \textbf{nonlinear} (NL) as a label for algorithms that employ one
-or more \textit{hidden layers} to encode the structure of the
-\textit{surface layer}.
-We use \textbf{linear} (L) %(cf. ``one-dimensional'') 
-to label
-algorithms that reference only the surface layer of graphemes in the representation of
-morphological structure, e.g., by annotating the
-surface string itself with morpheme boundary symbols. Note that our sense of \textit{linear} 
-is similar to `one dimensional,' which is not necessarily the same as `in/like a (straight) line.'
-
-We further divide the categories
-\textit{linear} and \textit{nonlinear} each into
-\textbf{sequential} and \textbf{non-sequential} subcategories:
-%, obtaining four categories in all. We describe each below.
-An algorithm is sequential (S) if there is a necessary sequence to its morphological classification decisions, 
-i.e., if its decisions are ordered so that for every two decisions, one must precede the other.\footnote{By \textit{morphological 
-classification decision}, we mean any decision that maps an atomic representational unit (usually a character or a feature) to a morphological category. This definition includes simple ``split" decisions, where there are only two possible categories: ``part of the current morpheme" and ``part of the next morpheme."}
-On the other hand, in a non-sequential (NS) algorithm, all morphological classification decisions are made in parallel; i.e., the decisions are unordered.
-
- We thus have a total of four categories: sequential linear (SL),
- non-sequential linear (NSL), sequential non-linear (SNL), and finally
- non-sequential nonlinear (NSNL). In what follows, we describe each of these in turn.
+%\section{Morphological Learning Frameworks}
+%\label{sec:rel-work}
+%\cite{mccarthy:1981} notes a fundamental flaw in linear, strictly concatenative approaches to morphological analysis: 
+%Because such approaches acknowledge only a single level of representation, the segmental string, they are forced to represent within the same string both the linear order of phonemes and their grouping into morphemes. This effectively binds morphological grouping to the linear order of phonemes, leaving a linear analysis  
+%with no straightforward means of identifying a discontiguous phoneme sequence as a unified morpheme.
+%
+%McCarthy thus offers an alternative \emph{nonlinear} formalism in 
+%which morphemes are represented as nodes on \emph{autosegmental} tiers, 
+%i.e., tiers that are separate from the segmental string, allowing
+%associations between morphemes and phonemes to be independent of 
+%phonemes' linear order. This framework turns out to be highly general, 
+%for it uses the same formal machinery to model both 
+%concatenative and non-concatenative processes; that is, it treats them as essentially 
+%the same rather than fundamentally different.
+%
+%One can apply McCarthy's ``linear vs. nonlinear" conceptual framework to 
+%categorizing existing approaches in ULM.
+%In the following discussion, we
+%use the term \textbf{nonlinear} (NL) as a label for algorithms that employ one
+%or more \textit{hidden layers} to encode the structure of the
+%\textit{surface layer}.
+%We use \textbf{linear} (L) %(cf. ``one-dimensional'') 
+%to label
+%algorithms that reference only the surface layer of graphemes in the representation of
+%morphological structure, e.g., by annotating the
+%surface string itself with morpheme boundary symbols. Note that our sense of \textit{linear} 
+%is similar to `one dimensional,' which is not necessarily the same as `in/like a (straight) line.'
+%
+%We further divide the categories
+%\textit{linear} and \textit{nonlinear} each into
+%\textbf{sequential} and \textbf{non-sequential} subcategories:
+%%, obtaining four categories in all. We describe each below.
+%An algorithm is sequential (S) if there is a necessary sequence to its morphological classification decisions, 
+%i.e., if its decisions are ordered so that for every two decisions, one must precede the other.\footnote{By \textit{morphological 
+%classification decision}, we mean any decision that maps an atomic representational unit (usually a character or a feature) to a morphological category. This definition includes simple ``split" decisions, where there are only two possible categories: ``part of the current morpheme" and ``part of the next morpheme."}
+%On the other hand, in a non-sequential (NS) algorithm, all morphological classification decisions are made in parallel; i.e., the decisions are unordered.
+%
+% We thus have a total of four categories: sequential linear (SL),
+% non-sequential linear (NSL), sequential non-linear (SNL), and finally
+% non-sequential nonlinear (NSNL). In what follows, we describe each of these in turn.
 
 %We will now discuss and exemplify each of these categories in turn.
 
