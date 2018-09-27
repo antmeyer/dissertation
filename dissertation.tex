@@ -1,4 +1,8 @@
 \documentclass{iuphd}
+%\usepackage[utf8]{inputenc}
+%\usepackage{cite}
+%\usepackage{pdfpages}
+%\documentclass{iuphd}
 %\documentclass[a4paper,12pt,times,authoryear,print,index]{iuphd}
 %\usepackage[round]{natbib}
 %\usepackage[font=normal,skip=0pt]{caption}
@@ -101,6 +105,7 @@
 %\usepackage{nomencl}
 % Uncomment this to make sure marginpars are removed before submission:
 \renewcommand{\marginpar}[1]{}
+\begin{document}
 %\renewcommand{\theequation}{\roman{equation}}
 %\newcommand\tab[1][1cm]{\hspace*{#1}}
 %\usepackage{tabto}
@@ -108,26 +113,31 @@
 \title{A Multilinear Approach to the Unsupervised Learning of Morphology}
 \author{Anthony Meyer}
 \date{Completion Date}
-
+\department{Department of Linguistics}
+\maketitle
 %data for Acceptance Page
-\committeechair{Committee Chair}
-\readertwo{2nd Reader}
-\readerthree{3rd Reader}
-\readerfour{4th Reader}
+%\committeechair{Committee Chair}
+%\readertwo{2nd Reader}
+%\readerthree{3rd Reader}
+%\readerfour{4th Reader}
+%\defensedate{Defense Date}
+\committeeMember{Co-Chair, PhD}
+\committeeMember{Co-Chair, PhD}
+\committeeMember{3rd Reader, PhD}
+\committeeMember{4th Reader, PhD}
+\committeeMember{5th Reader, PhD}
 \defensedate{Defense Date}
-
 %data for Copyright Page
 \cryear{2018}
 
 %\includeonly{ch-ExperimentalSetup}
 
-
 %\makenomenclature
  
 %\renewcommand{\nomname}{List of Abbreviations}
  
-\begin{document}
-\maketitle
+%\begin{document}
+%\maketitle
 
 \acceptancepage
 
@@ -244,8 +254,7 @@ for a system that learns morphs.
 	\acro{NLNS}{Nonlinear Nonsequential}
 	\acro{IPA}{International Phonetic Alphabet}
 	\acro{OCR}{Optical Character Recognition}
-	\acro{RBM}{Restricted Boltzmann Machine}
-	
+	\acro{RBM}{Restricted Boltzmann Machine}	
 \end{acronym}
 \include{ch-Intro}
 \include{ch-LitReview}
@@ -300,10 +309,10 @@ for a system that learns morphs.
 
 %\bibliographystyle{plain}
 %\bibliographystyle{plainnat}
-\begin{appendices}
-\chapter{Some Appendix}
-I may include some pseudocode or other technical detail in an appendix.
-\end{appendices}
+%\begin{appendices}
+%\chapter{Some Appendix}
+%I may include some pseudocode or other technical detail in an appendix.
+%\end{appendices}
 
 \bibliography{dissertation}
 

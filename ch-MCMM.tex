@@ -5,34 +5,63 @@
 \label{sec:mcmm:intro}
 This chapter will focus on Multimorph's learning model, i.e. the principles and mechanisms that
 enable it to learn. By \emph{model}, 
-we mean a set of assumptions about the way the world works. In the case of Multimorph, 
-the ``world" is the morphology of natural languages, which includes non-concatenative morphology. 
-That is, is handle concatenative and non-conconcatenative morphology together, 
-in a unified a way, as does
-autosegmental morphology \citep{mccarthy:1981}. Recall from chapter~\ref{ch:graph} 
+we mean a set of assumptions about how the world works. Where Multimorph is concerned, 
+the ``world" is the morphology of natural languages, which, significantly, includes \emph{non-concatenative} morphology. 
+%That is, is handle concatenative and non-concatenative morphology together, 
+%in a unified a way, as does
+autosegmental morphology \citep{mccarthy:1981}. 
+In chapter~\ref{ch:graph}, we argued
 that in order
-for a model to be able to non-concatenative morphology, it must be both \textbf{nonlinear}
- \textbf{nonsequential},i.e., satisfy the \textsc{Nonlinearity} and \textbf{Nonsequentiality} 
+for a model to be able to deal with non-concatenative morphology, it must be both \textbf{nonlinear} \textbf{and|}
+ \textbf{nonsequential},i.e., satisfy both the \textsc{Nonlinearity} and the \textbf{Nonsequentiality} 
  criteria; 
  see definitions (\ref{def:nl}, \ref{def:ns}) and 
- proposition (\ref{prop:nlns}). Recall also that this 
- means that we need a bipartite graph. The Multiple Cause Mixture Model (MCMM) is a general 
- framework for unsupervised learning developed by \cite{saund:94}. Crucially, it is 
- a bipartite graph, and thus it can be
-applied to the case of Multimorph.  
+ proposition (\ref{prop:nlns}). We also saw in chapter~\ref{graph} that these two conditions correspond to the two
+ parts of the definition of biparteness. It follows that 
+ \begin{proposition}
+% In order for a model to be able to handle non-concatenative morphology, it must be a bipartite graph.
+% \end{proposition}
+  \label{prop:bipart}
+If a model is a bipartite graph, it can handle non-concatenative morphology.
+ \end{proposition}
+  (see chapter REF). That is, in order for a model to be able to handle non-concatenative morphology, it must be a bipartite graph.  
+ of nonlinearity and nonsequentiality mean a model bust be a bipart that if a model is to be able to handle nonconcatenative
+ morphology, it must not only be a graph, but a \emph{bipartite} graph (i.e., a bipartite graphical model) %.od e graph is necessary.
+ %call for a bipartite graph, since they are essentially equivalent to
+ The Multiple Cause Mixture Model (MCMM) is a general 
+ framework for unsupervised learning developed by \cite{saund:94}. Section~\ref{sec:architecture} in this chapter will describe the architecture of an MCMM, i.e., its key components and the relationships between these components. It will become clear in this section that MCMMs are bipartite graphs and thus, by proposition~\ref{prop:bipartite}, an MCMM is capable of learning nonconcatenative morphology. 
+ %serve as Multimorph's core learning framework.
+ 
+ %  In this chapter, we shall first demonstrate an MCMM qualifies as a bipartite graph.  
 
-In what follows, we shall first, in section~\ref{sec:architecture}, discuss the architecture of an \ac{MCMM},
-i.e., is key components and the relationships between these components. We shall then, in 
+%In addition to demonstrating the bipartite \emph{bona fides} of MCMMs, this chapter will also, in section~\ref{sec:architecture}, discuss the architecture of an \ac{MCMM},
+%i.e., is key components and the relationships between these components. 
+This chapter will also, in 
 sections~\emph{mixing function} and \ref{sec:mcmm:learning}, describe how
-learning takes place in an \ac{MCMM}. 
+an \ac{MCMM} works as a learning algorithm. 
 
 \section{Architecture}
 \label{sec:architecture}
 An MCMM is a graphical model consisting of two layers of nodes (or units): a layer 
-of surface units 
-and a layer of hidden, 
-or causal, units. This is illustrated in fig.~\ref{fig:mcmm}, where $\mathbf{m}$ 
-is the vector of hidden units, and $\mathbf{r}$ the vector of (reconstructed) surface units.
+of \emph{surface} or \emph{visible} units 
+and a layer of \emph{hidden} units. 
+This is illustrated in fig~\ref{fig:mcmm}, where $\mathbf{m}$ 
+is the vector of hidden units. The vector $\mathbf{x}_i$ is the original vector of surface units\footnote{Saund uses $\mathbf{d}$ rather than $\mathbf{x}$ to denote this vector}; it is the observed, real-world data. 
+The vector $\mathbf{r}_i$ is the ``working" reconstruction of $\mathbf{x}_i$. It is dynamic; it evolves as the learning process progresses, hopefully becoming more and more similar to $\mathbf{x}_i$. This is the essence of the learning process and will be discussed more fully in section~\ref{sec:mcmm-learning}).
+that $\mathbf{x}_i$ is not directly connected to either $\mathbf{r}_i$ or $\mathbf{m}_i$. It is not an integrated component of the graphical model. Its role is to as a target for the reconstruction $\mathbf{r}_i$. The goal of the system as a learning model is to get $\mathbf{r}_i$ to match $\mathbf{x}_i$, i.e., to reconstruct $\mathbf{x}_i$ in $\mathbf{r}_i$ (as discussed in section~\ref{sec:mcmm-learning}).
+% shall discuss this reconstruction process in more detail in section REF.
+
+The vector $\mathbf{x}_i$ is but one of the $I$ rows the constitute the whole input corpus, the data matrix $X$. Each row contains $J$ columns. Similarly, $\mathbf{r}_i$, the reconstruction of $\mathbf{x}_i$, is the $i$th row in the $I \times J$ matrix $\mathbf{R}$. The subscript on the hidden-unit vector $\mathbf{m}_i$ indicates that it is related to $\mathbf{x}_i$ and $\mathbf{r}_i$. Each $J$ corresponds to a particular surface unit, i.e., feature. The hidden-unit vector is a row in the larger $I \times K$ matrix $\mathbf{M}$. Each of $\mathbf{M}$'s $K$ corresponds to a particular \emph{cluster}, and thus, the activity of each $m_{i,k}$ indicates whether the $i$th datapoint $\mathbf{x}_i$ (via its reconstruction $\mathbf{r}_i$) is a member of the $k$th cluster.  columns contains $I$, each the particular vector of hidden causes for the $i$th surface vector. $\mathbf{}$ has $K$ columns
+
+ is compared. 
+
+the vector of surface units; however, t
+The vector $\mathbf{x}_i$ is the original data vector, i.e., the original surface units
+
+Saund describes the hidden units in
+$\mathbf{m}_i$ as \textit{causes}; that is, the hidden units in an MCMM are presumed to hidden causes behind the particular arrangement of \textsc{on} and \textsc{off}) units in the original data vector $\mathbf{x}_i$. 
+
+\textsc{on} surface vectors
 The hidden units are connected to surface units by a matrix of weights $\mathbf{C}$. 
 Each individual arc $c_{j,k}$ has a value in $[0,1]$ that represents the weight on the connection between
 $m_k$ and $r_j$.
@@ -357,10 +386,10 @@ a dataset.
 \section{Mixing Function}
 \label{sec:mixing-function}
 
-The mapping between the layer of hidden nodes $\textbf{m}$ 
-and the layer of surface nodes $\textbf{r}$ is governed by a 
+The mapping between the layer of hidden nodes $\mathbf{m}$ 
+and the layer of surface nodes $\mathbf{r}$ is governed by a 
 \emph{mixing function}, which is essentially
-a voting rule \citep{saund:94}; it maps from a set of (weighted)
+a kind of voting rule \citep{saund:94}. That is, maps from a set of (weighted)
 input ``votes'' to a single output decision.  The output decision is 
 an activity value for a particular surface-layer node. We will call the input votes
 \emph{causes}. 
@@ -386,10 +415,10 @@ where each topic is a cluster of words.
 %\citep[e.g.,][]{miller-et-al:2016} 
 %(and each cluster is represented as shared connections to a particular hidden unit). %The clusters would  \emph{food}, \emph{business}, and \emph{hospitality}, simultaneously.
 
-Like LDA, MCMMs can been applied to document classification; \cite{sahami-et-al:96} use an \ac{MCMM} to group $I$ documents into $K$ clusters. Each Documents are represented as vectors $\textbf{x}_i$ of $J$ features. The features, i.e. surface units, each indicate the absence or presence of a particular word (cf. the $\textbf{x}$ vector in figure~\ref{fig:mcmm}). The topics in \cite{sahami-et-al:96} are represented as the MCMM's hidden units $\textbf{m}_i$. Documents are grouped into topic clusters by the learning process described below in section~\label{sec:mcmm:learning}.
-% are analogous to the morphological clusters in the present work; i.e., they each correspond to a hidden unit in $\textbf{m}$. In particular, each hidden unit in$\textbf{m}_i$ is the activity of a particular cluster for the $i$th datapoint--i.e., the $i$th document in the case of \cite{sahami-et-al:96}, and the $i$th word in the present work. 
+Like LDA, MCMMs can been applied to document classification; \cite{sahami-et-al:96} use an \ac{MCMM} to group $I$ documents into $K$ clusters. Each Documents are represented as vectors $\mathbf{x}_i$ of $J$ features. The features, i.e. surface units, each indicate the absence or presence of a particular word (cf. the $\mathbf{x}$ vector in figure~\ref{fig:mcmm}). The topics in \cite{sahami-et-al:96} are represented as the MCMM's hidden units $\mathbf{m}_i$. Documents are grouped into topic clusters by the learning process described below in section~\label{sec:mcmm:learning}.
+% are analogous to the morphological clusters in the present work; i.e., they each correspond to a hidden unit in $\mathbf{m}$. In particular, each hidden unit in$\mathbf{m}_i$ is the activity of a particular cluster for the $i$th datapoint--i.e., the $i$th document in the case of \cite{sahami-et-al:96}, and the $i$th word in the present work. 
 
-%work hidden nodes in the vectors $  in the hidden-unit vectors $ were represented as $K$-length hidden-unit vectors $\textbf{}$ document vector is thus analagous  wordsthe express purpose of mapping 
+%work hidden nodes in the vectors $  in the hidden-unit vectors $ were represented as $K$-length hidden-unit vectors $\mathbf{}$ document vector is thus analagous  wordsthe express purpose of mapping 
 %particularly to map individual documents 
 %each to multiple categories at once \cite{sahami-et-al:96}. %apply the \ac{MCMM} to 
 By contrast, a true mixture model, such as \dots, is constrained to assigning each surface unit to a \emph{single} cause. In the case of 
