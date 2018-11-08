@@ -307,7 +307,10 @@ of \textbf{xlwm}. However, the \texttt{m} of \texttt{xlm}_{ST} does, yielding
 completing the stem-component \texttt{w}_{ST}. We now have \{\texttt{w}_{P}:\texttt{w} \texttt{h}_{P}:\texttt{h}, \texttt{xlm}_{ST}:\texttt{mq}, \texttt{w}_{ST}:\texttt{w}\}, \textbf{m}, and  
  \texttt{m}_{ST}.
  Finally, \texttt{m}_{ST} matches \textbf{m}, completing \{\texttt{xlm}_{ST}\} and consuming the word's last remaining character.
-
+	\begin{verbatim}
+		.*(x).*(\u00F3).?.?(t).*
+	\end{verbatim}
+	\texttt{.*(x).*(\'{o}).?.?(t).*}
 \subsubsection{Stage 3: Compress}. Here, each morph to an atomic symbol, 
 so that, e.g., a three-character morph becomes in effect single-character item, 
 as do all morphs consisting of more than one character. In this way, most of 
@@ -344,20 +347,40 @@ They are put together in the original order of their corresponding morphs.
 	\end{xlist}
 \end{exe}
 % The atomic symbols are put together in the order of their corresponding character sequences, as illustrated in \eqref{ex:reassembled}. 
-Note, however, that in the case of interdigitation, the relative order of atomic symbols corresponding to interleaved sequences will have to be  decided arbitrarily.
+Note, however, that in the case of interdigitation, the relative order of atomic symbols corresponding to interleaved sequences must be decided arbitrarily.
 
 \subsubsection{Stage 4: Test} 
 Two input files, a test and a 
-control file, will now be fed to Morfessor. 
+control file, are now fed to Morfessor. 
 The test file is the output of Stage 3.  %will contain the test data, i.e., the compressed words from Stage 3. 
-The control file consists of the original, unaltered words. 
-It will provide a baseline for measuring the effect 
+The control file consists of the original, unaltered words; its purpose is to serve as a baseline for measuring the effect 
 of the compression carried out in Stage 3. 
+% But what gives
 The idea here is to see if the MCMM's morphs, 
 now represented as atomic symbols, aide the 
-process of morphological segmentation. 
-That is, do they make the task easier? 
-Do they improve segmentation accuracy? 
+process of morphological segmentation.  % But how can we tell if the atomic symbols help?
+% What are they supposed to help?  Are they supposed to aide in the process of discovering the actual morphemes (i.e., the non-compressed, non-reduced morphemes)? If so, we need to somehow translate atomic symbols back into character sequences, but retaining the segmentation divisions computed on the strings of atomic symbols.
+Morfessor induces morphological segmentations for each file, yielding a \emph{control segmentation} and a \emph{test segmentation}. The words in the test segmentation at this point still consist of the atomic symbols from Stage 3. Without disrupting Morfessor's segmentation decisions, the atomic symbols were converted back into morphs (i.e., Stage 3 was undone).
+\begin{exe}
+	\ex   \$ $\mapsto$  \textit{ma-}
+	\quad \% $\mapsto$ \textit{g.d.l} 
+	\quad  \& $\mapsto$ \textit{i}
+	\quad  \# $\mapsto$ \textit{a.o}
+\label{ex:map}
+\end{exe}
+\begin{exe}  
+	\ex \label{ex:reassembled} \begin{xlist}
+	\ex  \$ \, + \, \% \, + \,  \& \quad $\mapsto$ \quad  ma \,+ \, gdl  \, + \, i
+	\label{ex:reconverted-magdil}
+	\ex  \% \, + \, \# \quad $\mapsto$  \quad gdl \, + \, ao
+	\label{ex:reconverted-gadol}
+	\end{xlist}
+\end{exe}
+ The result is a test segmentation file whose words have the same characters as those of the control file, but possibly quite different segmentations. The two segmentations were evaluated against a common gold standard.
+%That is, do they make the task easier? 
+%Do they improve segmentation accuracy? 
+%Morfessor %then
+% induces morphological segmentations for each file, yielding a \emph{control segmentation} and a \emph{test segmentation}. The words in the test segmentation will at this point still consist of the atomic symbols from Stage 3. Without disrupting Morfessor's segmentation decisions, change the atomic symbols back to morphs (i.e., undo Stage 3). Finally, evaluate the two segmentations against a common gold standard.
 
 \subsection{Gold-standard data}
 Recall that Morfessor is a nonlinear \emph{sequential} algorithm; that is, it possesses nonlinearity, but not nonsequentiality (see section~\ref{sec:nls})
@@ -376,7 +399,7 @@ This amounts to a total of three unprocessed wordlists: a list of transcribed wo
 To evaluate my system's performance on non-concatenative morphology, I need gold-standard roots for both the transcribed wordlists and the orthographic data. For the transcribed data, I extracted root annotations from the CHILDES morphological analyses. 
 
 %For the orthographic wordlist, I will take advantage of the root annotations provided in the original dataset of \cite{daya-et-al:2008} (see section~\ref{sec:data}).
-
+% 
 %\paragraph{Gold-standard annotation}
 %How are we going to figure this out? The control will serve as the baseline. 
 %But we also need a gold standard segmentation to provide a frame of reference for comparing the test and control segmentations. 
@@ -480,7 +503,7 @@ To evaluate my system's performance on non-concatenative morphology, I need gold
 %\item[Stage 4: Test.]
 %%-- concatenative morphs.]
 %Feed both the control file (i.e., the file containing the original wordlist) and the test file (i.e., the output of Stage 3) to
-%Morfessor \citep{creutz-and-lagus:2005, creutz-and-lagus:2007}. Morfessor then induces morphological segmentations for each input file, yielding a \emph{control segmentation} and a \emph{test segmentation}. The words in the test segmentation will this point still consistof the atomic symbols from Stage 3. Without disrupting Morfessor's segmentation decisions, change the atomic symbols back to morphs (i.e., undo Stage 3). Finally, evaluate the two segmentations against a common gold standard.
+%Morfessor \citep{creutz-and-lagus:2005, creutz-and-lagus:2007}. Morfessor then induces morphological segmentations for each input file, yielding a \emph{control segmentation} and a \emph{test segmentation}. The words in the test segmentation will at this point still consist of the atomic symbols from Stage 3. Without disrupting Morfessor's segmentation decisions, change the atomic symbols back to morphs (i.e., undo Stage 3). Finally, evaluate the two segmentations against a common gold standard.
 %%control file, will 
 %%%now be fed to Morfessor. 
 %%The test file is the output of Stage 3.  The control file will contain the original, unaltered words. 

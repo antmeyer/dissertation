@@ -1,6 +1,7 @@
 \documentclass{iuphd}
 %\usepackage[utf8]{inputenc}
 %\usepackage{cite}
+\usepackage{array}
 %\usepackage{pdfpages}
 %\documentclass{iuphd}
 %\documentclass[a4paper,12pt,times,authoryear,print,index]{iuphd}
@@ -104,6 +105,7 @@
 %\usepackage[normalem]{ulem}
 %\usepackage{nomencl}
 % Uncomment this to make sure marginpars are removed before submission:
+\includeonly{ch-Results}
 \renewcommand{\marginpar}[1]{}
 \begin{document}
 %\renewcommand{\theequation}{\roman{equation}}
@@ -130,7 +132,7 @@
 %data for Copyright Page
 \cryear{2018}
 
-%\includeonly{ch-ExperimentalSetup}
+
 
 %\makenomenclature
  
@@ -169,36 +171,45 @@
 %\end{preface}
 
 \begin{abstract}
-This dissertation will present a novel approach to the \ac{ULM}
-%unsupervised learning of morphology (ULM). 
-My primary research objective is to demonstrate \emph{how} one can 
-implement autosegmental morphological theory in a machine learning system.
-Most previous work in \ac{ULM} has treated concatenative and non-concatenative 
-morphological processes as fundamentally different, 
-e.g., by designing separate modules, one for concatenative morphology 
-and one for non-concatenative.
-I will show that a \ac{MCMM}
-can serve as a universal framework for \ac{ULM}, i.e., one that handles concatenative 
-and non-concatentive morphology in a unified manner. 
+In this dissertation, I present a multilinear approach to the %\ac{ULM}
+unsupervised learning of morphology (ULM), i.e., an approach derived from the multi-tiered (or multilinear) architecture of autosegmental morphological and phonological theory. In motivating this presentation, I isolate the fundamental properties that make the autosegmental formalism so conducive to modeling non-concatenative morphology. I show that these properties are essentially the properties of graph-theoretic terms, an observation that allows me to recast the autosegmental formalism as a graphical model for unsupervised learning, namely the Multiple Cause Mixture Model (MCMM), a bipartite model that is related to the Restricted Boltzmann Machine. The dissertation presents experimental results that support the soundness of this approach. 
 
-My secondary research objectives address matters of implementation 
-and thus support my primary objective.
-The matters of feature-set design and the system's 
-evaluation are especially important.
-I am using exclusively word-internal features. That is, 
-there will be no 
-features referencing markings on adjacent words or any 
-other property that transcends word boundaries.
-Each feature vector (representing a word) is utterly void 
-of morphosyntactic information.
-Consequently, the \ac{MCMM} has no means of learning traditional morphemes 
-or morphosyntactic categories.
-Instead, it learns \emph{morphs}, intermediate units that reside between 
-phonology and morphosyntax. 
-However, this requires us to evaluate morphs, even though we do not know 
-beforehand what the morphs should be.
-My final research objective is thus to devise a suitable evaluation method 
-for a system that learns morphs.
+
+%demonstrating the fundamental equivalence between the autosegmental formalism and bipartite graphs. I
+%in a machine learning system. e To motivate this approach approach presented in this dissertation distills automsegmental approach that bridges thessentially an implementation
+%My primary research objective is to demonstrate \emph{how} one can 
+%
+
+
+%distillation of autosegmental theory as it pertains to ULM, i.e., an isolation of the fundamental properties that make it conducive to modeling non-concatenative morphology. This is accomplished by 
+% I demonstrate the both the fundamental soundness of approach through both rational argument and experimental results.  f this I demonstrate the fundamental equivalence between the multi-tiered (or multilinear) architecture autosegmental theory demonstrate the relationship between bipartite graphs is approach is It is shown in this dissertation
+%that This dissertation's 
+%Most previous work in \ac{ULM} has treated concatenative and non-concatenative 
+%morphological processes as fundamentally different, 
+%e.g., by designing separate modules, one for concatenative morphology 
+%and one for non-concatenative.
+%This dissertation shows that an \ac{MCMM}
+%can serve as a universal framework for \ac{ULM}, i.e., one that handles concatenative 
+%and non-concatentive morphology in a unified manner. 
+%
+%My secondary research objectives address matters of implementation 
+%and thus support my primary objective.
+%The matters of feature-set design and the system's 
+%evaluation are especially important.
+%I am using exclusively word-internal features. That is, 
+%there will be no 
+%features referencing markings on adjacent words or any 
+%other property that transcends word boundaries.
+%Each feature vector (representing a word) is utterly void 
+%of morphosyntactic information.
+%Consequently, the \ac{MCMM} has no means of learning traditional morphemes 
+%or morphosyntactic categories.
+%Instead, it learns \emph{morphs}, intermediate units that reside between 
+%phonology and morphosyntax. 
+%However, this requires us to evaluate morphs, even though we do not know 
+%beforehand what the morphs should be.
+%My final research objective is thus to devise a suitable evaluation method 
+%for a system that learns morphs.
 %$\alpha = \rho + \sigma$
 \end{abstract}
 %\begin{abstract}
