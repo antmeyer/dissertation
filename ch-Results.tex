@@ -1,25 +1,81 @@
 \chapter{RESULTS}
 \label{ch:results}
-We use $K$ to denote the number of clusters produced in a given experimental
-trial. In theory, Multimorph should create just enough clusters to reduce the error
-to 0. In turned out, however, that Multimorph never reduced its error all the to zero. Instead,
-every trial, Multimorph's error decreased steadily to a point greater than 0, whereupon it reversed direction, starting to 
-increase, and continued to increase until the experiment was stopped at $K = 3000$ or $4000$.  The error minimum generally occurred when $K$ was between 400 and 1200. 
-The average $K$ was 589.36 for TS (transcriptions with stress markings), 833.00 for T, and 742.92 for O. I thus 
-report results both at $K = 500$ and $K = 1000$.
 
-The experimental variables in question here are the feature type, i.e.,  positional vs. precedence ($s$ vs. $\delta$),
-the manner, which the original data was represented, i.e., whether it was transcribed with stress, transcribed without stress,
-or orthographic (standard Hebrew orthography).
+\section{Introduction}
+%We use $K$ to denote the number of clusters produced in a given experimental
+%trial. In theory, Multimorph should create just enough clusters to reduce the error
+%to 0. In turned out, however, that Multimorph never reduced its error all the to zero. Instead,
+%every trial, Multimorph's error decreased steadily to a point greater than 0, whereupon it reversed direction, starting to 
+%increase, and continued to increase until the experiment was stopped at $K = 3000$ or $4000$.  The error minimum generally occurred when $K$ was between 400 and 1200. 
+%The average $K$ was 589.36 for TS (transcriptions with stress markings), 833.00 for T, and 742.92 for O. I thus 
+%report results both at $K = 500$ and $K = 1000$.
+
+%The experimental variables in question here are the feature type, i.e.,  positional vs. precedence ($s$ vs. $\delta$),
+%the manner, which the original data was represented, i.e., whether it was transcribed with stress, transcribed without stress,
+%or orthographic (standard Hebrew orthography).
 %we set different values of $s$ (positional) and $\delta$ (precedence), in
 %various combinations.
 %(section~\ref{subsec:features}).  
 %Results are given in table~\ref{tab:results}, where * refers to an
 %unbounded $\delta$.
 
-\section{Qualitative Results}
+As discussed in chapter~\ref{ch:MCMM}, Multimorph's \ac{MCMM} in effect groups its input words into morphological clusters. 
+%of its input words (i.e., feature-vector 
+%representations of its input words). 
+%Recall that the \ac{MCMM} induces a Each hidden unit corresponds to cluster, and thus, the set of active hidden 
+%units for a given input word represents the set of clusters to which it belongs. % (see \section{}). 
+%Recall from section \ref{ch
+During the course of learning, a particular set of hidden-unit values (namely, the vector $\mathbf{m}_{i}$) is induced for each or word $i$. 
+The vector $\mathbf{m}_{i}$ consists of $K$ elements, each a real number on the interval $[0,1]$. 
+Each of these elements corresponds to a particular cluster $k$ and indicates the extent to which word $i$ is a member that cluster.
+%$\mathbf{m}_{ik} for $k \in K$, so that the and each $\mathbf{m}_{ik}
+The threshold for cluster membership is $\theta$. That is, if hidden unit $\mathbf{m}_{ik}$ has a value equal to or greater than 
+$\theta$, then word $i$ is a member of cluster $k$. Otherwise, it is not a member of cluster $k$. 
+For example, suppose that word $i$ had the hidden-unit vector $\mathbf{m}_{i} = [0.2, 0.0,0.9,0.1,0.8]$, 
+wherein $\mathbf{m}_{i,2}$ and $\mathbf{m}_{i,4}$, at 0.9 and 0.8, respectively, exceed the cluster-membership 
+threshold, while the other three values
+are well below it. Thus, of the five clusters in this hypothetical model, word $i$ is a member of clusters 
+2 and 4 (i.e. the 3rd and 5th clusters).
+%mean that word $i$ is a member of the third cluster (or the cluster indexed $k = 2$_
 
-%
+In this way, the $I \times K$ $\mathbf{M}$ matrix (i.e., the collection of all hidden-unit vectors $\mathbf{m}_i$ for $i \in I$) 
+defines a disjunctive clustering of the $I$ input words into $K$ clusters. Multimorph produced such a clustering for 
+each of the experimental parameter combinations described in chapter~\ref{ch:experi}. In chapter~\ref{ch:eval}, 
+we motivated and outlined a multi-faceted approach to evaluating Multimorph's output, an approach consisting of, 
+on the one hand, qualitative and quantitative components, and, on the other hand, intrinsic and extrinsic components. 
+In this chapter, we present the results of this multi-faceted evaluation. 
+
+Recall that the primary experimental variables in question here are the feature type, i.e.,  positional vs. precedence ($s$ vs. $\delta$),
+the manner, which the original data was represented, i.e., whether it was transcribed with stress, transcribed without stress,
+or orthographic (standard Hebrew orthography).
+
+Finally, recall from  chapter~\ref{}  that Multimorph begins with a single cluster ($K = 1$) 
+and incrementally adds a cluster (by splitting the worst cluster) until the global error can no longer be reduced. % it is important to note that  $K$ to denote the number of clusters produced in a given experimental
+5trial. 
+In theory, Multimorph should create just enough clusters to reduce the error
+to 0. In turned out, however, that Multimorph never reduced its error all the to zero. Instead,
+every trial, Multimorph's error decreased steadily to a point greater than 0, whereupon it reversed direction, starting to 
+increase, and continued to increase until the experiment was stopped at $K = 3000$ or $4000$.  The error minimum generally occurred when $K$ was between 400 and 1200. 
+The average $K$ was 589.36 for TS (transcriptions with stress markings), 833.00 for T, and 742.92 for O. I thus 
+report results both at $K = 500$ and $K = 1000$.
+
+\section{Qualitative Analysis}
+The objectivity and systematicity of quantitative methods make them very valuable
+to the task of evaluating a system's performance,  %inidiscussed later in this chapter lies in their highly objective and systematic nature, but 
+	they are unlikely to capture every salient fact regarding the 
+	output data, especially when the output data is the result of an unsupervised learning process. 
+	% in which case the learning targets are unknown. Quantitative methods are usually 
+	%devised before any output data is seen; their focus is on treating every output result in the same (pre-established) way in order to minimize bias. There is thus a certain blindness to quantitative methods. 
+	I thus an incorporated a qualitative analysis of Multimorph's output to supplement the
+	 quantitative results presented later in this chapter.
+	This qualitative analysis consists mainly in ``manually" inspecting the MCMM's clusters,
+	 i.e., the clusters of words defined by each experimental run's $\mathbf{M}$ matrix.
+	
+	We shall in addition make some qualitative observations regarding intermediate results from the four-stage extrinsic evaluation process.
+	%When the morphIDs are converted to symbols in stage 3...
+\subsection{``Hand-Inspection" of Clusters}
+
+
 %Among the ``exclusive" settings, i.e., the settings that exclude either precedence or positional features, note that exclusive precedence features yield much higher purity values than exclusive positional features, at least when $\delta \ge 2$.
 %This can likely be attributed, at least in part, to lesser coverage.
 % The exclusive precedence features at $\delta = 1$ and $\delta = 0$ yield perfect recall, but this is only because the precision at these settings is close to 0. The algorithm was essentially unable to make distinctions at these settings, and the result was 50 nearly identical clusters. It is not entirely clear at present why these settings produced such uniquely bad results, but it likely has something to do with information scarcity, i.e., the diminishing amounts of information available to the MCMM when $s$ is nonexistent and $\delta$ approaches 0. Notice that when $s$ is n/a and $\delta = 1$, all features are bigrams.
@@ -96,65 +152,67 @@ hitparq\a'{a} \> lehitqa\v{s}\a'{e}r \> mitpar\a'{e}q \> mit\textipa{Q}aq\a'{e}\
 
 This last example demonstrates that Multimorph is capable of learning non-concatenative morphology. The \textit{a} and the \textit{e} in CaCeC are separated by a consonant. Among the words in \ref{fig:cl-hit}, the intervening C between the \textit{a} and \textit{e} varies. It follows that Multimorph is not merely recognizing continuous substrings that contain both \textit{a} and \textit{e}.
 
+
+
 \section{Quantitative Results}
 
 While I have already run every experiment for this thesis and have the output, I have lately had some problems with my evaluation scripts, i.e. the scripts that perform the procedures outlined in chapter~{ch-Evaluation}. These are procedures to performed on the output to obtain quantitative measures. (Again, the output itself is already computed; otherwise, I would not have been able to perform the qualitative evaluation.) 
 Thus, draft will not be presenting the actual numbers that my evaluation scripts will compute. The qualitative scores are meant to complement the qualitative analysis. The qualitative analysis was done manually, whereas the quantitative evaluation will be done computationally. Since we are dealing wiht linguistic theory, it makes to have human eyes examine the output. At the same time, however, a human may not catch everything. A human may also be less effect at judging overall consistency. For example, in the qualitative evaluation discussed in this chapter, I identified a cluster representating a non-concatenative morphological unit. This is example proves the systems ability to identity nonconcatenative morphs at least to some extent. The quantitative evaluation will show the consistency of the system's ability.s
-\paragraph{Results from the Intrinsic Evaluation}
+\subsection{Intrinsic Evaluation Results}
 
-\newcolumntype{g}{>{\columncolor{Gray}}c}
-\begin{table}[htb]
-\begin{center}
-\small
-\setlength{\extrarowheight}{12pt}
-\begin{tabular}{c|cc|ccc |rc}
-Data  &  & & &  &  & &  \\ 
-  Rep        & \raisebox{1.5ex}[0pt]{$s$} & \raisebox{1.5ex}[0pt]{$\delta$} & \raisebox{1.5ex}[0pt]{Purity} 
-  & \raisebox{1.5ex}[0pt]{BP} & \raisebox{1.5ex}[0pt]{BR}                        & \raisebox{1.5ex}[0pt]{Cov.} & Reduc'n \\
-
-\hline
-$\text{T}_{S}$ & 0 & 1 & & & & & \\
-\rowcolor{LightGray}
-$\text{T}$        & 0 & 1 & & & & & \\
-
-$\text{T}_S$   & 0 & 2 & & & & & \\
-\rowcolor{LightGray}
-$\text{T}$       & 0 & 2 & & & & & \\
-$\text{T}_S$         & 2 & 0 & & & & & \\
-\rowcolor{LightGray}
-$\text{T}$         & 2 & 0 & & & & &  \\
-
-$\text{T}_S$         & 4 & 0 & & & & &  \\
-\rowcolor{LightGray}
-$\text{T}$         & 4 & 0 & & & & & \\
-
-$\text{T}_{S}$ & 6 & 0 & & & & & \\
-\rowcolor{LightGray}
-$\text{T}$ & 6 & 0 & & & & & \\
-$\text{T}_S$        & 2 & 1 & & & & & \\ 
-\rowcolor{LightGray}
-$\text{T}$ & 2 & 1 & & & & & \\ 
-$\text{T}_S$        & 2 & 2 & & & & & \\ 
-\rowcolor{LightGray}
-$\text{T}$ & 2 & 2 & & & & & \\ 
-$\text{T}_S$        & 4 & 1 & & & & & \\ 
-\rowcolor{LightGray}
-$\text{T}$ & 4 & 1 & & & & & \\ 
-$\text{T}_S$        & 4 & 2 &  & & &  & \\
-\rowcolor{LightGray} 
-$\text{T}$        & 4 & 2 & & & & & \\
-$\text{T}_{S}$ & 6 & 1 & & & & & \\ 
-\rowcolor{LightGray}
-$\text{T}$        & 6 & 1 & & & & & \\ 
-$\text{T}_{S}$ & 6 & 2 & & & & & \\ 
-\rowcolor{LightGray}
-$\text{T}$        & 6 & 2 & & & & & \\ 
-\end{tabular}
-\end{center}
-\caption{The table currently shows experiments that have been successfully run, but not
-yet scored. Note that the experiments involving the orthographic data (O) were also successfully run.}
-\label{tab:results}
-\end{table}
+%\newcolumntype{g}{>{\columncolor{Gray}}c}
+%\begin{table}[htb]
+%\begin{center}
+%\small
+%\setlength{\extrarowheight}{12pt}
+%\begin{tabular}{c|cc|ccc |rc}
+%Data  &  & & &  &  & &  \\ 
+%  Rep        & \raisebox{1.5ex}[0pt]{$s$} & \raisebox{1.5ex}[0pt]{$\delta$} & \raisebox{1.5ex}[0pt]{Purity} 
+%  & \raisebox{1.5ex}[0pt]{BP} & \raisebox{1.5ex}[0pt]{BR}                        & \raisebox{1.5ex}[0pt]{Cov.} & Reduc'n \\
+%
+%\hline
+%$\text{T}_{S}$ & 0 & 1 & & & & & \\
+%\rowcolor{LightGray}
+%$\text{T}$        & 0 & 1 & & & & & \\
+%
+%$\text{T}_S$   & 0 & 2 & & & & & \\
+%\rowcolor{LightGray}
+%$\text{T}$       & 0 & 2 & & & & & \\
+%$\text{T}_S$         & 2 & 0 & & & & & \\
+%\rowcolor{LightGray}
+%$\text{T}$         & 2 & 0 & & & & &  \\
+%
+%$\text{T}_S$         & 4 & 0 & & & & &  \\
+%\rowcolor{LightGray}
+%$\text{T}$         & 4 & 0 & & & & & \\
+%
+%$\text{T}_{S}$ & 6 & 0 & & & & & \\
+%\rowcolor{LightGray}
+%$\text{T}$ & 6 & 0 & & & & & \\
+%$\text{T}_S$        & 2 & 1 & & & & & \\ 
+%\rowcolor{LightGray}
+%$\text{T}$ & 2 & 1 & & & & & \\ 
+%$\text{T}_S$        & 2 & 2 & & & & & \\ 
+%\rowcolor{LightGray}
+%$\text{T}$ & 2 & 2 & & & & & \\ 
+%$\text{T}_S$        & 4 & 1 & & & & & \\ 
+%\rowcolor{LightGray}
+%$\text{T}$ & 4 & 1 & & & & & \\ 
+%$\text{T}_S$        & 4 & 2 &  & & &  & \\
+%\rowcolor{LightGray} 
+%$\text{T}$        & 4 & 2 & & & & & \\
+%$\text{T}_{S}$ & 6 & 1 & & & & & \\ 
+%\rowcolor{LightGray}
+%$\text{T}$        & 6 & 1 & & & & & \\ 
+%$\text{T}_{S}$ & 6 & 2 & & & & & \\ 
+%\rowcolor{LightGray}
+%$\text{T}$        & 6 & 2 & & & & & \\ 
+%\end{tabular}
+%\end{center}
+%\caption{The table currently shows experiments that have been successfully run, but not
+%yet scored. Note that the experiments involving the orthographic data (O) were also successfully run.}
+%\label{tab:results}
+%\end{table}
 
 %%\newcolumntype{g}{>{\columncolor{Gray}}c}
 %\begin{table}[htb]
@@ -330,37 +388,67 @@ yet scored. Note that the experiments involving the orthographic data (O) were a
 %% set up labelformat and labelsep for subtable
 %\captionsetup[subtable]{labelformat=simple, labelsep=colon}
 
+%\begin{table}[htb]
+%%%\caption{g}
+%%%\label{tab:results-500-tr}
+%%%begin{subtable}[]{       %[\small Results for transcriptional input data, stress marks included, $K = 500$.]
+%\centering
+%\small
+%\subtable[Transcriptional data with stress marking (TS). $K = 500$.\label{subtab:results-500-ts}]{
+%%\label{tab:results-500-tr}[culmination]{
+%\setlength{\extrarowheight}{8pt}
+%\begin{tabular}{cc|rrrrr}
+%%%\setlength{\extrarowheight}{10pt}
+%%\begin{tabular}{cc|rrrrr}
+%$s$ & $\delta$ & Purity &  BP & BR & Cov & $K^{\prime}$ \\ \hline
+%0 & 1 & 0.396 & 0.442 & 0.396 & 11585 & 89\\%0_1_K1000_N12272_basic_181104_14-26_k-500
+%0 & 2 & 0.426 & 0.359 & 0.479 & 11700 & 100\\%0_2_K1000_N12272_basic_181104_14-25_k-500
+%0 & 3 & 0.431 & 0.302 & 0.470 & 11348 & 75\\%0_3_K1000_N12272_basic_181104_15-15_k-500
+%2 & 1 & 0.904 & 0.381 & 0.480 & 12103 & 490\\%2_1_K6000_N12272_basic_180621_23-57_k-500
+%2 & 2 & 0.452 & 0.314 & 0.542 & 12076 & 76\\%2_2_K6000_N12272_basic_180621_21-24_k-500
+%2 & 3 & 0.448 & 0.275 & 0.560 & 12084 & 96\\%2_3_K1000_N12272_basic_181014_23-53_k-500
+%4 & n/a & 0.773 & 0.179 & 0.685 & 12261 & 486\\%4_0_K6000_N12271_basic_180629_01-17_k-500
+%4 & 1 & 0.899 & 0.260 & 0.587 & 12164 & 500\\%4_1_K6000_N12271_basic_180616_12-50_k-500
+%4 & 2 & 0.411 & 0.283 & 0.514 & 12214 & 154\\%4_2_K6000_N12271_basic_180616_13-06_k-500
+%4 & 3 & 0.426 & 0.242 & 0.561 & 12231 & 235\\%4_3_K1000_N12272_basic_181015_00-21_k-500
+%4 & 3 & 0.450 & 0.291 & 0.522 & 12010 & 101\\%4_3_K6000_N12271_basic_180621_07-55_k-500
+%6 & n/a & 0.325 & 0.191 & 0.673 & 12262 & 260\\%6_0_K6000_N12272_basic_180629_01-15_k-500
+%6 & 1 & 0.386 & 0.280 & 0.545 & 12101 & 84\\%6_1_K6000_N12271_basic_180616_13-06_k-500
+%6 & 2 & 0.415 & 0.292 & 0.548 & 11958 & 64\\%6_2_K6000_N12272_basic_180620_02-37_k-500
+%6 & 3 & 0.482 & 0.296 & 0.515 & 11858 & 79\\%6_3_K6000_N12271_basic_180621_07-59_k-500
+%\end{tabular}
 \begin{table}[htb]
-%\caption{g}
-%\label{tab:results-500-tr}
-%begin{subtable}[]{       %[\small Results for transcriptional input data, stress marks included, $K = 500$.]
 \centering
 \small
-\subtable[Transcriptional data with stress marking (TS). $K = 500$.\label{subtab:results-500-ts}]{
-%\label{tab:results-500-tr}[culmination]{
+\subtable[Transcriptions with stress (TS). $K = 500$.\label{subtab:results-500-ts-2}]{
 \setlength{\extrarowheight}{8pt}
 \begin{tabular}{cc|rrrrr}
-%%\setlength{\extrarowheight}{10pt}
-%\begin{tabular}{cc|rrrrr}
 $s$ & $\delta$ & Purity &  BP & BR & Cov & $K^{\prime}$ \\ \hline
-0 & 1 & 0.396 & 0.442 & 0.396 & 11585 & 89\\%0_1_K1000_N12272_basic_181104_14-26_k-500
-0 & 2 & 0.426 & 0.359 & 0.479 & 11700 & 100\\%0_2_K1000_N12272_basic_181104_14-25_k-500
-0 & 3 & 0.431 & 0.302 & 0.470 & 11348 & 75\\%0_3_K1000_N12272_basic_181104_15-15_k-500
-2 & 1 & 0.904 & 0.381 & 0.480 & 12103 & 490\\%2_1_K6000_N12272_basic_180621_23-57_k-500
-2 & 2 & 0.452 & 0.314 & 0.542 & 12076 & 76\\%2_2_K6000_N12272_basic_180621_21-24_k-500
-2 & 3 & 0.448 & 0.275 & 0.560 & 12084 & 96\\%2_3_K1000_N12272_basic_181014_23-53_k-500
-4 & n/a & 0.773 & 0.179 & 0.685 & 12261 & 486\\%4_0_K6000_N12271_basic_180629_01-17_k-500
-4 & 1 & 0.899 & 0.260 & 0.587 & 12164 & 500\\%4_1_K6000_N12271_basic_180616_12-50_k-500
-4 & 2 & 0.411 & 0.283 & 0.514 & 12214 & 154\\%4_2_K6000_N12271_basic_180616_13-06_k-500
-4 & 3 & 0.426 & 0.242 & 0.561 & 12231 & 235\\%4_3_K1000_N12272_basic_181015_00-21_k-500
-4 & 3 & 0.450 & 0.291 & 0.522 & 12010 & 101\\%4_3_K6000_N12271_basic_180621_07-55_k-500
-6 & n/a & 0.325 & 0.191 & 0.673 & 12262 & 260\\%6_0_K6000_N12272_basic_180629_01-15_k-500
-6 & 1 & 0.386 & 0.280 & 0.545 & 12101 & 84\\%6_1_K6000_N12271_basic_180616_13-06_k-500
-6 & 2 & 0.415 & 0.292 & 0.548 & 11958 & 64\\%6_2_K6000_N12272_basic_180620_02-37_k-500
-6 & 3 & 0.482 & 0.296 & 0.515 & 11858 & 79\\%6_3_K6000_N12271_basic_180621_07-59_k-500
+0 & 1 & 0.395 & 0.409 & 0.437 & 11404 &84\\%0_1_K1000_N12272_basic_181104_14-26_k-500
+%0 & 2 & 0.425 & 0.166 & 0.645 & 12267 &139\\%0_2_K1000_N12272_basic_180629_01-24_k-500
+%0 & 2 & 0.439 & 0.325 & 0.522 & 11379 & 91\\%0_2_K1000_N12272_basic_181104_14-25_k-500
+0 & 2 & 0.432 & 0.246 & 0.584 & 11823 &115\\%avg
+0 & 3 & 0.475 & 0.284 & 0.477 & 10976 & 70\\%0_3_K1000_N12272_basic_181104_15-15_k-500
+\hline
+2 & 1 & \textbf{0.730} & \textbf{0.347} &\textbf{ 0.487} & 12027 & 159\\%2_1_K6000_N12272_basic_180621_23-57_k-500
+2 & 2 & 0.479 & 0.296 & 0.504 & 11817 & 68\\%2_2_K6000_N12272_basic_180621_21-24_k-500
+2 & 3 & 0.468 & 0.253 & 0.516 & 11763 & 86\\%2_3_K1000_N12272_basic_181014_23-53_k-500
+\hline
+4 & n/a & 0.463 & 0.135 & 0.706 & 12260 & 216\\%4_0_K6000_N12271_basic_180629_01-17_k-500
+4 & 1 & 0.707 & 0.228 & 0.564 & 12002 & 163\\%4_1_K6000_N12271_basic_180616_12-50_k-500
+4 & 2 & 0.429 & 0.271 & 0.496 & 12074 & 134\\%4_2_K6000_N12271_basic_180616_13-06_k-500
+%4 & 3 & 0.418 & 0.212 & 0.534 & 12137 & 215\\%4_3_K1000_N12272_basic_181015_00-21_k-500
+%4 & 3 & 0.515 & 0.302 & 0.464 & 11455 & 86\\%4_3_K6000_N12271_basic_180621_07-55_k-500
+4 & 3 & 0.467 & 0.257 & 0.499 & 11796 & 151 \\ %avg
+\hline
+6 & n/a & 0.283 & 0.149 & 0.696 & 12261 & 253\\%6_0_K6000_N12272_basic_180629_01-15_k-500
+6 & 1 & 0.417 & 0.281 & 0.485 & 11795 & 77\\%6_1_K6000_N12271_basic_180616_13-06_k-500
+6 & 2 & 0.506 & 0.303 & 0.512 & 11446 & 53\\%6_2_K6000_N12272_basic_180620_02-37_k-500
+6 & 3 & 0.581 & 0.298 & 0.477 & 10971 & 60\\%6_3_K6000_N12271_basic_180621_07-59_k-500
 \end{tabular}
-%\label{subtab:results-500-ts}
 }
+%%\label{subtab:results-500-ts}
+%}
 %%\bigskip
 %%%\caption{Intrinsic results for input dataset TR (transcriptions without stress marking). $K = 500$.}
 %%\begin{table}[htb] %[Intrinsic Results] {%[Results for input dataset TR (transcriptions \texit{without} stress marking). $K = 500$.]
@@ -381,73 +469,73 @@ $s$ & $\delta$ & Purity &  BP & BR & Cov & $K^{\prime}$ \\ \hline
 %%}
 %\begin{table}[htb]
 %\centering % used for centering table
-\subtable[Transcriptional data without stress marking (TR) $K=500$.\label{subtab:results-500-tr}]{
-%\label{tab:results-500-tr}[culmination]{
-\setlength{\extrarowheight}{8pt}
-\begin{tabular}{cc|rrrrr}
-$s$ & $\delta$ & Purity &  BP & BR & Cov & $K^{\prime}$ \\ \hline
-0 & 1 & 0.613 & 0.456 & 0.437 & 11706 & 70\\%0_1_K6000_N12222_basic_180623_00-48_k-500
-0 & 1 & 0.328 & 0.346 & 0.435 & 12134 & 126\\%0_1_K6000_N12222_basic_180623_21-13_k-500
-0 & 1 & 0.328 & 0.348 & 0.432 & 12142 & 133\\%0_1_K6000_N12222_basic_180626_18-27_k-500
-0 & 2 & 0.624 & 0.428 & 0.407 & 11478 & 54\\%0_2_K6000_N12222_basic_180623_00-52_k-500
-0 & 2 & 0.353 & 0.266 & 0.545 & 12017 & 98\\%0_2_K6000_N12222_basic_180623_01-57_k-500
-0 & 3 & 0.857 & 0.210 & 0.604 & 12079 & 497\\%0_3_K6000_N12222_basic_180626_18-27_k-500
-2 & 1 & 0.356 & 0.283 & 0.571 & 12209 & 121\\%2_1_K6000_N12221_basic_180616_13-10_k-500
-2 & 1 & 0.338 & 0.275 & 0.578 & 12216 & 180\\%2_1_K6000_N12222_basic_180626_18-27_k-500
-2 & 1 & 0.953 & 0.371 & 0.406 & 12098 & 495\\%2_1_K6000_N12222_basic_180628_03-42_k-500
-2 & 1 & 0.358 & 0.287 & 0.564 & 12205 & 111\\%2_1_K6000_N12222_basic_180628_05-27_k-500
-2 & 2 & 0.387 & 0.233 & 0.625 & 12187 & 111\\%2_2_K6000_N12222_basic_180626_18-27_k-500
-2 & 3 & 0.362 & 0.202 & 0.661 & 12194 & 106\\%2_3_K1000_N12222_basic_181015_00-00_k-500
-4 & 1 & 0.345 & 0.220 & 0.621 & 12198 & 134\\%4_1_K6000_N12222_basic_180619_21-27_k-500
-4 & 2 & 0.894 & 0.242 & 0.619 & 12138 & 444\\%4_2_K6000_N12221_basic_180617_03-15_k-500
-4 & 2 & 0.361 & 0.234 & 0.599 & 12187 & 125\\%4_2_K6000_N12221_basic_180620_23-53_k-500
-4 & 2 & 0.579 & 0.255 & 0.554 & 12159 & 500\\%4_2_K6000_N12222_basic_180621_04-55_k-500
-4 & 2 & 0.366 & 0.223 & 0.633 & 12170 & 107\\%4_2_K6000_N12222_basic_180626_18-27_k-500
-4 & 3 & 0.365 & 0.234 & 0.603 & 12149 & 102\\%4_3_K6000_N12222_basic_180621_01-45_k-500
-6 & 1 & 0.853 & 0.200 & 0.666 & 12169 & 454\\%6_1_K6000_N12221_basic_180615_19-58_k-500
-6 & 1 & 0.342 & 0.200 & 0.660 & 12191 & 130\\%6_1_K6000_N12221_basic_180616_12-58_k-500
-6 & 2 & 0.374 & 0.223 & 0.645 & 12137 & 83\\%6_2_K6000_N12222_basic_180620_00-57_k-500
-6 & 2 & 0.368 & 0.221 & 0.620 & 12165 & 123\\%6_2_K6000_N12222_basic_180621_01-55_k-500
-6 & 2 & 0.356 & 0.229 & 0.605 & 12156 & 99\\%6_2_K6000_N12222_basic_180626_17-48_k-500
-6 & 3 & 0.361 & 0.231 & 0.612 & 12078 & 66\\%6_3_K6000_N12222_basic_180621_01-59_k-500
-\end{tabular}
-}
+%\subtable[Transcriptional data without stress marking (TR) $K=500$.\label{subtab:results-500-tr}]{
+%%\label{tab:results-500-tr}[culmination]{
+%\setlength{\extrarowheight}{8pt}
+%\begin{tabular}{cc|rrrrr}
+%$s$ & $\delta$ & Purity &  BP & BR & Cov & $K^{\prime}$ \\ \hline
+%0 & 1 & 0.613 & 0.456 & 0.437 & 11706 & 70\\%0_1_K6000_N12222_basic_180623_00-48_k-500
+%0 & 1 & 0.328 & 0.346 & 0.435 & 12134 & 126\\%0_1_K6000_N12222_basic_180623_21-13_k-500
+%0 & 1 & 0.328 & 0.348 & 0.432 & 12142 & 133\\%0_1_K6000_N12222_basic_180626_18-27_k-500
+%0 & 2 & 0.624 & 0.428 & 0.407 & 11478 & 54\\%0_2_K6000_N12222_basic_180623_00-52_k-500
+%0 & 2 & 0.353 & 0.266 & 0.545 & 12017 & 98\\%0_2_K6000_N12222_basic_180623_01-57_k-500
+%0 & 3 & 0.857 & 0.210 & 0.604 & 12079 & 497\\%0_3_K6000_N12222_basic_180626_18-27_k-500
+%2 & 1 & 0.356 & 0.283 & 0.571 & 12209 & 121\\%2_1_K6000_N12221_basic_180616_13-10_k-500
+%2 & 1 & 0.338 & 0.275 & 0.578 & 12216 & 180\\%2_1_K6000_N12222_basic_180626_18-27_k-500
+%2 & 1 & 0.953 & 0.371 & 0.406 & 12098 & 495\\%2_1_K6000_N12222_basic_180628_03-42_k-500
+%2 & 1 & 0.358 & 0.287 & 0.564 & 12205 & 111\\%2_1_K6000_N12222_basic_180628_05-27_k-500
+%2 & 2 & 0.387 & 0.233 & 0.625 & 12187 & 111\\%2_2_K6000_N12222_basic_180626_18-27_k-500
+%2 & 3 & 0.362 & 0.202 & 0.661 & 12194 & 106\\%2_3_K1000_N12222_basic_181015_00-00_k-500
+%4 & 1 & 0.345 & 0.220 & 0.621 & 12198 & 134\\%4_1_K6000_N12222_basic_180619_21-27_k-500
+%4 & 2 & 0.894 & 0.242 & 0.619 & 12138 & 444\\%4_2_K6000_N12221_basic_180617_03-15_k-500
+%4 & 2 & 0.361 & 0.234 & 0.599 & 12187 & 125\\%4_2_K6000_N12221_basic_180620_23-53_k-500
+%4 & 2 & 0.579 & 0.255 & 0.554 & 12159 & 500\\%4_2_K6000_N12222_basic_180621_04-55_k-500
+%4 & 2 & 0.366 & 0.223 & 0.633 & 12170 & 107\\%4_2_K6000_N12222_basic_180626_18-27_k-500
+%4 & 3 & 0.365 & 0.234 & 0.603 & 12149 & 102\\%4_3_K6000_N12222_basic_180621_01-45_k-500
+%6 & 1 & 0.853 & 0.200 & 0.666 & 12169 & 454\\%6_1_K6000_N12221_basic_180615_19-58_k-500
+%6 & 1 & 0.342 & 0.200 & 0.660 & 12191 & 130\\%6_1_K6000_N12221_basic_180616_12-58_k-500
+%6 & 2 & 0.374 & 0.223 & 0.645 & 12137 & 83\\%6_2_K6000_N12222_basic_180620_00-57_k-500
+%6 & 2 & 0.368 & 0.221 & 0.620 & 12165 & 123\\%6_2_K6000_N12222_basic_180621_01-55_k-500
+%6 & 2 & 0.356 & 0.229 & 0.605 & 12156 & 99\\%6_2_K6000_N12222_basic_180626_17-48_k-500
+%6 & 3 & 0.361 & 0.231 & 0.612 & 12078 & 66\\%6_3_K6000_N12222_basic_180621_01-59_k-500
+%\end{tabular}
+%}
 %\end{table}
 
-\subtable[Orthographic Data (O). $K = 500$.\label{subtab:results-500-o}]{
-\centering
-\small 
-%\caption{\footnotesize Orthographic (O) input words. $K = 500$.}
-%\label{subtab:results-500-o}
-% \caption{Experiment Results-I}
-%  \subtable[Indexing Performance]{
-%\setlength{\extrarowheight}{10pt}
-\setlength{\extrarowheight}{8pt}
-\begin{tabular}{cc|rrrrr}
-$s$ & $\delta$ & Purity &  BP & BR & Cov & $K^{\prime}$ \\ \hline
-0 & 1 & 0.388 & 0.313 & 0.152 & 10962 & 230 \\%0_1_K6000_N11166_basic_180727_16-17_k-500
-0 & 2 & 0.368 & 0.258 & 0.257 & 11107 & 293 \\%0_2_K6000_N11166_basic_180727_16-17_k-500
-0 & 3 & 0.587 & 0.248 & 0.346 & 11051 & 366 \\%0_3_K6000_N11166_basic_180727_16-17_k-500
-1 & 1 & 0.465 & 0.422 & 0.629 & 4488 & 500 \\%1_1_K6000_N11166_basic_180723_13-16_k-500
-1 & 2 & 0.825 & 0.368 & 0.643 & 4493 & 392 \\%1_2_K6000_N11166_basic_180723_13-15_k-500
-1 & 3 & 0.469 & 0.321 & 0.656 & 4485 & 157\\%1_3_K1000_N11166_basic_181104_15-26_k-500
-2 & 1 & 0.381 & 0.338 & 0.580 & 3447 & 67 \\%2_1_K6000_N11166_basic_180723_13-11_k-500
-2 & 2 & 0.417 & 0.305 & 0.661 & 3441 & 98 \\%2_2_K6000_N11166_basic_180723_13-11_k-500
-2 & 3 & 0.435 & 0.272 & 0.680 & 3445 & 137\\%2_3_K1000_N11166_basic_181015_00-18_k-500
-3 & 1 & 0.330 & 0.304 & 0.630 & 3447 & 79 \\%3_1_K6000_N11166_basic_180727_03-42_k-500
-3 & 2 & 0.368 & 0.278 & 0.634 & 3444 & 113\\%3_2_K6000_N11166_basic_180723_13-19_k-500
-3 & 3 & 0.427 & 0.254 & 0.654 & 3444 & 147 \\%3_3_K6000_N11166_basic_180727_16-15_k-500
-\end{tabular}
-}
-%\caption{Orthographic (O) results 500}
-%\subtable[]
-%\label{subtab:results-500-o}
-%\label{tab:results2}
-\caption{Intrinsic evaluation results at $K = 500$.}
-\label{tab:results-500}
-%\end{subtable}
+%\subtable[Orthographic Data (O). $K = 500$.\label{subtab:results-500-o}]{
+%\centering
+%\small 
+%%\caption{\footnotesize Orthographic (O) input words. $K = 500$.}
+%%\label{subtab:results-500-o}
+%% \caption{Experiment Results-I}
+%%  \subtable[Indexing Performance]{
+%%\setlength{\extrarowheight}{10pt}
+%\setlength{\extrarowheight}{8pt}
+%\begin{tabular}{cc|rrrrr}
+%$s$ & $\delta$ & Purity &  BP & BR & Cov & $K^{\prime}$ \\ \hline
+%0 & 1 & 0.388 & 0.313 & 0.152 & 10962 & 230 \\%0_1_K6000_N11166_basic_180727_16-17_k-500
+%0 & 2 & 0.368 & 0.258 & 0.257 & 11107 & 293 \\%0_2_K6000_N11166_basic_180727_16-17_k-500
+%0 & 3 & 0.587 & 0.248 & 0.346 & 11051 & 366 \\%0_3_K6000_N11166_basic_180727_16-17_k-500
+%1 & 1 & 0.465 & 0.422 & 0.629 & 4488 & 500 \\%1_1_K6000_N11166_basic_180723_13-16_k-500
+%1 & 2 & 0.825 & 0.368 & 0.643 & 4493 & 392 \\%1_2_K6000_N11166_basic_180723_13-15_k-500
+%1 & 3 & 0.469 & 0.321 & 0.656 & 4485 & 157\\%1_3_K1000_N11166_basic_181104_15-26_k-500
+%2 & 1 & 0.381 & 0.338 & 0.580 & 3447 & 67 \\%2_1_K6000_N11166_basic_180723_13-11_k-500
+%2 & 2 & 0.417 & 0.305 & 0.661 & 3441 & 98 \\%2_2_K6000_N11166_basic_180723_13-11_k-500
+%2 & 3 & 0.435 & 0.272 & 0.680 & 3445 & 137\\%2_3_K1000_N11166_basic_181015_00-18_k-500
+%3 & 1 & 0.330 & 0.304 & 0.630 & 3447 & 79 \\%3_1_K6000_N11166_basic_180727_03-42_k-500
+%3 & 2 & 0.368 & 0.278 & 0.634 & 3444 & 113\\%3_2_K6000_N11166_basic_180723_13-19_k-500
+%3 & 3 & 0.427 & 0.254 & 0.654 & 3444 & 147 \\%3_3_K6000_N11166_basic_180727_16-15_k-500
+%\end{tabular}
 %}
-\end{table}
+%%\caption{Orthographic (O) results 500}
+%%\subtable[]
+%%\label{subtab:results-500-o}
+%%\label{tab:results2}
+%\caption{Intrinsic evaluation results at $K = 500$.}
+%\label{tab:results-500}
+%%\end{subtable}
+%%}
+%\end{table}
 %\multirow{3}{*}{0} & \multirow{3}{*}{1} & 0.388 & 0.313 & 0.152 & 10962 & 230\\%0_1_K6000_N11166_basic_180727_16-17_k-500
 %\multirow{3}{*}{0} & \multirow{3}{*}{2} & 0.368 & 0.258 & 0.257 & 11107 & 293\\%0_2_K6000_N11166_basic_180727_16-17_k-500
 %\multirow{3}{*}{0} & \multirow{3}{*}{3} & 0.587 & 0.248 & 0.346 & 11051 & 366\\%0_3_K6000_N11166_basic_180727_16-17_k-500
@@ -462,60 +550,41 @@ $s$ & $\delta$ & Purity &  BP & BR & Cov & $K^{\prime}$ \\ \hline
 %\multirow{3}{*}{3} & \multirow{3}{*}{3} & 0.427 & 0.254 & 0.654 & 3444 & 147\\%3_3_K6000_N11166_basic_180727_16-15_k-500
 
 
-\begin{table}[htb]
-\subtable[Transcriptional data with stress marking (TS). $K = 500$. \label{subtab:results-500-ts-2}]{
-%\label{tab:results-500-tr}[culmination]{
-\centering
-\small
-\setlength{\extrarowheight}{8pt}
-\begin{tabular}{cc|cc|rrrrr}
-$s$ & $\delta$ & Purity &  BP & BR & Cov & $K^{\prime}$ \\ \hline
-0 & 1 & 0.395 & 0.409 & 0.437 & 11404 & 84\\%0_1_K1000_N12272_basic_181104_14-26_k-500
-0 & 2 & 0.425 & 0.166 & 0.645 & 12267 & 139\\%0_2_K1000_N12272_basic_180629_01-24_k-500
-0 & 2 & 0.439 & 0.325 & 0.522 & 11379 & 91\\%0_2_K1000_N12272_basic_181104_14-25_k-500
-0 & 3 & 0.475 & 0.284 & 0.477 & 10976 & 70\\%0_3_K1000_N12272_basic_181104_15-15_k-500
-2 & 1 & 0.730 & 0.347 & 0.487 & 12027 & 159\\%2_1_K6000_N12272_basic_180621_23-57_k-500
-2 & 2 & 0.479 & 0.296 & 0.504 & 11817 & 68\\%2_2_K6000_N12272_basic_180621_21-24_k-500
-2 & 3 & 0.468 & 0.253 & 0.516 & 11763 & 86\\%2_3_K1000_N12272_basic_181014_23-53_k-500
-4 & n/a & 0.463 & 0.135 & 0.706 & 12260 & 216\\%4_0_K6000_N12271_basic_180629_01-17_k-500
-4 & 1 & 0.707 & 0.228 & 0.564 & 12002 & 163\\%4_1_K6000_N12271_basic_180616_12-50_k-500
-4 & 2 & 0.429 & 0.271 & 0.496 & 12074 & 134\\%4_2_K6000_N12271_basic_180616_13-06_k-500
-4 & 3 & 0.418 & 0.212 & 0.534 & 12137 & 215\\%4_3_K1000_N12272_basic_181015_00-21_k-500
-4 & 3 & 0.515 & 0.302 & 0.464 & 11455 & 86\\%4_3_K6000_N12271_basic_180621_07-55_k-500
-6 & n/a & 0.283 & 0.149 & 0.696 & 12261 & 253\\%6_0_K6000_N12272_basic_180629_01-15_k-500
-6 & 1 & 0.417 & 0.281 & 0.485 & 11795 & 77\\%6_1_K6000_N12271_basic_180616_13-06_k-500
-6 & 2 & 0.506 & 0.303 & 0.512 & 11446 & 53\\%6_2_K6000_N12272_basic_180620_02-37_k-500
-6 & 3 & 0.581 & 0.298 & 0.477 & 10971 & 60\\%6_3_K6000_N12271_basic_180621_07-59_k-500
-\end{tabular}
-}
-
-\subtable[Transcriptional data without stress marking (TR). $K = 500$. \label{subtab:results-500-tr-2}]{
+\subtable[Transcriptions without stress  (TR). $K = 500$. \label{subtab:results-500-tr-2}]{
 %\label{tab:results-500-tr}[culmination]{
 \setlength{\extrarowheight}{8pt}
 \begin{tabular}{cc|cc|rrrrr}
 $s$ & $\delta$ & Purity &  BP & BR & Cov & $K^{\prime}$ \\ \hline
-0 & 1 & 0.604 & 0.389 & 0.442 & 11521 & 63\\%0_1_K6000_N12222_basic_180623_00-48_k-500
-0 & 1 & 0.314 & 0.298 & 0.469 & 12111 & 125\\%0_1_K6000_N12222_basic_180623_21-13_k-500
-0 & 1 & 0.309 & 0.301 & 0.466 & 12103 & 130\\%0_1_K6000_N12222_basic_180626_18-27_k-500
-0 & 2 & 0.680 & 0.399 & 0.458 & 11127 & 48\\%0_2_K6000_N12222_basic_180623_00-52_k-500
-0 & 2 & 0.353 & 0.228 & 0.568 & 11903 & 96\\%0_2_K6000_N12222_basic_180623_01-57_k-500
+%0 & 1 & 0.604 & 0.389 & 0.442 & 11521 & 63\\%0_1_K6000_N12222_basic_180623_00-48_k-500
+%0 & 1 & 0.314 & 0.298 & 0.469 & 12111 & 125\\%0_1_K6000_N12222_basic_180623_21-13_k-500
+%0 & 1 & 0.309 & 0.301 & 0.466 & 12103 & 130\\%0_1_K6000_N12222_basic_180626_18-27_k-500
+0 & 1 & 0.409 & 0.329 & 0.459 & 11912 & 106\\ %avg
+%0 & 2 & 0.680 & 0.399 & 0.458 & 11127 & 48\\%0_2_K6000_N12222_basic_180623_00-52_k-500
+%0 & 2 & 0.353 & 0.228 & 0.568 & 11903 & 96\\%0_2_K6000_N12222_basic_180623_01-57_k-500
+0 & 2 & \textbf{0.517} & \textbf{0.314} & \textbf{0.513} & 11515 & 72\\%avg
 0 & 3 & 0.474 & 0.175 & 0.598 & 12006 & 131\\%0_3_K6000_N12222_basic_180626_18-27_k-500
-2 & 1 & 0.353 & 0.248 & 0.578 & 12208 & 118\\%2_1_K6000_N12221_basic_180616_13-10_k-500
-2 & 1 & 0.311 & 0.234 & 0.597 & 12215 & 174\\%2_1_K6000_N12222_basic_180626_18-27_k-500
-2 & 1 & 0.898 & 0.309 & 0.413 & 11949 & 185\\%2_1_K6000_N12222_basic_180628_03-42_k-500
-2 & 1 & 0.363 & 0.252 & 0.572 & 12201 & 108\\%2_1_K6000_N12222_basic_180628_05-27_k-500
+\hline
+%2 & 1 & 0.353 & 0.248 & 0.578 & 12208 & 118\\%2_1_K6000_N12221_basic_180616_13-10_k-500
+%2 & 1 & 0.311 & 0.234 & 0.597 & 12215 & 174\\%2_1_K6000_N12222_basic_180626_18-27_k-500
+%2 & 1 & 0.898 & 0.309 & 0.413 & 11949 & 185\\%2_1_K6000_N12222_basic_180628_03-42_k-500
+%2 & 1 & 0.363 & 0.252 & 0.572 & 12201 & 108\\%2_1_K6000_N12222_basic_180628_05-27_k-500
+2 & 1 & 0.481 & 0.260 & 0.540 & 12143 & 146\\ %avg
 2 & 2 & 0.370 & 0.197 & 0.627 & 12105 & 105\\%2_2_K6000_N12222_basic_180626_18-27_k-500
 2 & 3 & 0.380 & 0.175 & 0.625 & 12136 & 100\\%2_3_K1000_N12222_basic_181015_00-00_k-500
+\hline
 4 & 1 & 0.334 & 0.183 & 0.626 & 12181 & 122\\%4_1_K6000_N12222_basic_180619_21-27_k-500
-4 & 2 & 0.867 & 0.227 & 0.590 & 11895 & 271\\%4_2_K6000_N12221_basic_180617_03-15_k-500
-4 & 2 & 0.371 & 0.214 & 0.586 & 12150 & 112\\%4_2_K6000_N12221_basic_180620_23-53_k-500
-4 & 2 & 0.504 & 0.250 & 0.533 & 12073 & 189\\%4_2_K6000_N12222_basic_180621_04-55_k-500
-4 & 2 & 0.375 & 0.199 & 0.612 & 12087 & 95\\%4_2_K6000_N12222_basic_180626_18-27_k-500
+%4 & 2 & 0.867 & 0.227 & 0.590 & 11895 & 271\\%4_2_K6000_N12221_basic_180617_03-15_k-500
+%4 & 2 & 0.371 & 0.214 & 0.586 & 12150 & 112\\%4_2_K6000_N12221_basic_180620_23-53_k-500
+%4 & 2 & 0.504 & 0.250 & 0.533 & 12073 & 189\\%4_2_K6000_N12222_basic_180621_04-55_k-500
+%4 & 2 & 0.375 & 0.199 & 0.612 & 12087 & 95\\%4_2_K6000_N12222_basic_180626_18-27_k-500
+4 & 2 & 0.529 & 0.223 & 0.580 & 12051 & 167 \\ %avg
 4 & 3 & 0.394 & 0.238 & 0.532 & 11781 & 81\\%4_3_K6000_N12222_basic_180621_01-45_k-500
+\hline
 6 & 1 & 0.354 & 0.170 & 0.650 & 12153 & 115\\%6_1_K6000_N12221_basic_180616_12-58_k-500
-6 & 2 & 0.446 & 0.213 & 0.590 & 12033 & 70\\%6_2_K6000_N12222_basic_180620_00-57_k-500
-6 & 2 & 0.401 & 0.199 & 0.593 & 12107 & 111\\%6_2_K6000_N12222_basic_180621_01-55_k-500
-6 & 2 & 0.419 & 0.218 & 0.560 & 12062 & 86\\%6_2_K6000_N12222_basic_180626_17-48_k-500
+%6 & 2 & 0.446 & 0.213 & 0.590 & 12033 & 70\\%6_2_K6000_N12222_basic_180620_00-57_k-500
+%6 & 2 & 0.401 & 0.199 & 0.593 & 12107 & 111\\%6_2_K6000_N12222_basic_180621_01-55_k-500
+%6 & 2 & 0.419 & 0.218 & 0.560 & 12062 & 86\\%6_2_K6000_N12222_basic_180626_17-48_k-500
+6 & 2 & 0.422 & 0.210 & 0.581 & 12067 & 89 \\%avg
 6 & 3 & 0.471 & 0.273 & 0.491 & 11350 & 49\\%6_3_K6000_N12222_basic_180621_01-59_k-500
 \end{tabular}
 }
@@ -527,15 +596,32 @@ $s$ & $\delta$ & Purity &  BP & BR & Cov & $K^{\prime}$ \\ \hline
 0 & 1 & 0.383 & 0.258 & 0.158 & 10882 & 227\\%0_1_K6000_N11166_basic_180727_16-17_k-500
 0 & 2 & 0.356 & 0.212 & 0.265 & 11087 & 292\\%0_2_K6000_N11166_basic_180727_16-17_k-500
 0 & 3 & 0.411 & 0.206 & 0.357 & 11014 & 257\\%0_3_K6000_N11166_basic_180727_16-17_k-500
+\hline
 1 & 1 & 0.437 & 0.387 & 0.658 & 4486 & 222\\%1_1_K6000_N11166_basic_180723_13-16_k-500
-1 & 2 & 0.620 & 0.345 & 0.668 & 4462 & 173\\%1_2_K6000_N11166_basic_180723_13-15_k-500
+1 & 2 & \textbf{0.620} & \textbf{0.345} & \textbf{0.668} & 4462 & 173\\%1_2_K6000_N11166_basic_180723_13-15_k-500
 1 & 3 & 0.466 & 0.294 & 0.683 & 4461 & 150\\%1_3_K1000_N11166_basic_181104_15-26_k-500
+\hline
 2 & 1 & 0.418 & 0.311 & 0.585 & 3435 & 65\\%2_1_K6000_N11166_basic_180723_13-11_k-500
 2 & 2 & 0.439 & 0.290 & 0.670 & 3410 & 86\\%2_2_K6000_N11166_basic_180723_13-11_k-500
 2 & 3 & 0.435 & 0.251 & 0.694 & 3418 & 130\\%2_3_K1000_N11166_basic_181015_00-18_k-500
+\hline
 3 & 1 & 0.385 & 0.301 & 0.620 & 3440 & 74\\%3_1_K6000_N11166_basic_180727_03-42_k-500
 3 & 2 & 0.396 & 0.263 & 0.633 & 3407 & 105\\%3_2_K6000_N11166_basic_180723_13-19_k-500
 3 & 3 & 0.440 & 0.235 & 0.659 & 3410 & 137\\%3_3_K6000_N11166_basic_180727_16-15_k-500
+
+%500 & O & 0 & 1 & 0.383 & 0.258 & 0.158 & 10882 & 227\\%0_1_K6000_N11166_basic_180727_16-17_k-500
+%500 & O & 0 & 2 & 0.356 & 0.212 & 0.265 & 11087 & 292\\%0_2_K6000_N11166_basic_180727_16-17_k-500
+%500 & O & 0 & 3 & 0.411 & 0.206 & 0.357 & 11014 & 257\\%0_3_K6000_N11166_basic_180727_16-17_k-500
+%500 & O & 1 & 1 & 0.437 & 0.387 & 0.658 & 4486 & 222\\%1_1_K6000_N11166_basic_180723_13-16_k-500
+%500 & O & 1 & 2 & 0.620 & 0.345 & 0.668 & 4462 & 173\\%1_2_K6000_N11166_basic_180723_13-15_k-500
+%500 & O & 1 & 3 & 0.466 & 0.294 & 0.683 & 4461 & 150\\%1_3_K1000_N11166_basic_181104_15-26_k-500
+%500 & O & 2 & 1 & 0.418 & 0.311 & 0.585 & 3435 & 65\\%2_1_K6000_N11166_basic_180723_13-11_k-500
+%500 & O & 2 & 2 & 0.439 & 0.290 & 0.670 & 3410 & 86\\%2_2_K6000_N11166_basic_180723_13-11_k-500
+%500 & O & 2 & 3 & 0.435 & 0.251 & 0.694 & 3418 & 130\\%2_3_K1000_N11166_basic_181015_00-18_k-500
+%500 & O & 3 & 1 & 0.385 & 0.301 & 0.620 & 3440 & 74\\%3_1_K6000_N11166_basic_180727_03-42_k-500
+%500 & O & 3 & 2 & 0.396 & 0.263 & 0.633 & 3407 & 105\\%3_2_K6000_N11166_basic_180723_13-19_k-500
+%500 & O & 3 & 3 & 0.440 & 0.235 & 0.659 & 3410 & 137\\%3_3_K6000_N11166_basic_180727_16-15_k-500
+
 \end{tabular}
 }
 \caption{Intrinsic evaluation results at $K = 500$. (Second Pass: Cluster-membership threshold set at 0.8 instead of 0.5.)}
@@ -544,56 +630,248 @@ $s$ & $\delta$ & Purity &  BP & BR & Cov & $K^{\prime}$ \\ \hline
 %}
 \end{table}
 
+%500 & TR & 0 & 1 & 0.604 & 0.389 & 0.442 & 11521 & 63\\%0_1_K6000_N12222_basic_180623_00-48_k-500
+%500 & TR & 0 & 1 & 0.314 & 0.298 & 0.469 & 12111 & 125\\%0_1_K6000_N12222_basic_180623_21-13_k-500
+%500 & TR & 0 & 1 & 0.309 & 0.301 & 0.466 & 12103 & 130\\%0_1_K6000_N12222_basic_180626_18-27_k-500
+%500 & TR & 0 & 2 & 0.680 & 0.399 & 0.458 & 11127 & 48\\%0_2_K6000_N12222_basic_180623_00-52_k-500
+%500 & TR & 0 & 2 & 0.353 & 0.228 & 0.568 & 11903 & 96\\%0_2_K6000_N12222_basic_180623_01-57_k-500
+%500 & TR & 0 & 3 & 0.474 & 0.175 & 0.598 & 12006 & 131\\%0_3_K6000_N12222_basic_180626_18-27_k-500
+%500 & TR & 2 & 1 & 0.353 & 0.248 & 0.578 & 12208 & 118\\%2_1_K6000_N12221_basic_180616_13-10_k-500
+%500 & TR & 2 & 1 & 0.311 & 0.234 & 0.597 & 12215 & 174\\%2_1_K6000_N12222_basic_180626_18-27_k-500
+%500 & TR & 2 & 1 & 0.898 & 0.309 & 0.413 & 11949 & 185\\%2_1_K6000_N12222_basic_180628_03-42_k-500
+%500 & TR & 2 & 1 & 0.363 & 0.252 & 0.572 & 12201 & 108\\%2_1_K6000_N12222_basic_180628_05-27_k-500
+%500 & TR & 2 & 2 & 0.370 & 0.197 & 0.627 & 12105 & 105\\%2_2_K6000_N12222_basic_180626_18-27_k-500
+%500 & TR & 2 & 3 & 0.380 & 0.175 & 0.625 & 12136 & 100\\%2_3_K1000_N12222_basic_181015_00-00_k-500
+%500 & TR & 4 & 1 & 0.334 & 0.183 & 0.626 & 12181 & 122\\%4_1_K6000_N12222_basic_180619_21-27_k-500
+%500 & TR & 4 & 2 & 0.867 & 0.227 & 0.590 & 11895 & 271\\%4_2_K6000_N12221_basic_180617_03-15_k-500
+%500 & TR & 4 & 2 & 0.371 & 0.214 & 0.586 & 12150 & 112\\%4_2_K6000_N12221_basic_180620_23-53_k-500
+%500 & TR & 4 & 2 & 0.504 & 0.250 & 0.533 & 12073 & 189\\%4_2_K6000_N12222_basic_180621_04-55_k-500
+%500 & TR & 4 & 2 & 0.375 & 0.199 & 0.612 & 12087 & 95\\%4_2_K6000_N12222_basic_180626_18-27_k-500
+%500 & TR & 4 & 3 & 0.394 & 0.238 & 0.532 & 11781 & 81\\%4_3_K6000_N12222_basic_180621_01-45_k-500
+%500 & TR & 6 & 1 & 0.354 & 0.170 & 0.650 & 12153 & 115\\%6_1_K6000_N12221_basic_180616_12-58_k-500
+%500 & TR & 6 & 2 & 0.446 & 0.213 & 0.590 & 12033 & 70\\%6_2_K6000_N12222_basic_180620_00-57_k-500
+%500 & TR & 6 & 2 & 0.401 & 0.199 & 0.593 & 12107 & 111\\%6_2_K6000_N12222_basic_180621_01-55_k-500
+%500 & TR & 6 & 2 & 0.419 & 0.218 & 0.560 & 12062 & 86\\%6_2_K6000_N12222_basic_180626_17-48_k-500
+%500 & TR & 6 & 3 & 0.471 & 0.273 & 0.491 & 11350 & 49\\%6_3_K6000_N12222_basic_180621_01-59_k-500
+%500 & O & 0 & 1 & 0.383 & 0.258 & 0.158 & 10882 & 227\\%0_1_K6000_N11166_basic_180727_16-17_k-500
+%500 & O & 0 & 2 & 0.356 & 0.212 & 0.265 & 11087 & 292\\%0_2_K6000_N11166_basic_180727_16-17_k-500
+%500 & O & 0 & 3 & 0.411 & 0.206 & 0.357 & 11014 & 257\\%0_3_K6000_N11166_basic_180727_16-17_k-500
+%500 & O & 1 & 1 & 0.437 & 0.387 & 0.658 & 4486 & 222\\%1_1_K6000_N11166_basic_180723_13-16_k-500
+%500 & O & 1 & 2 & 0.620 & 0.345 & 0.668 & 4462 & 173\\%1_2_K6000_N11166_basic_180723_13-15_k-500
+%500 & O & 1 & 3 & 0.466 & 0.294 & 0.683 & 4461 & 150\\%1_3_K1000_N11166_basic_181104_15-26_k-500
+%500 & O & 2 & 1 & 0.418 & 0.311 & 0.585 & 3435 & 65\\%2_1_K6000_N11166_basic_180723_13-11_k-500
+%500 & O & 2 & 2 & 0.439 & 0.290 & 0.670 & 3410 & 86\\%2_2_K6000_N11166_basic_180723_13-11_k-500
+%500 & O & 3 & 1 & 0.385 & 0.301 & 0.620 & 3440 & 74\\%3_1_K6000_N11166_basic_180727_03-42_k-500
+%500 & O & 3 & 2 & 0.396 & 0.263 & 0.633 & 3407 & 105\\%3_2_K6000_N11166_basic_180723_13-19_k-500
+%500 & O & 3 & 3 & 0.440 & 0.235 & 0.659 & 3410 & 137\\%3_3_K6000_N11166_basic_180727_16-15_k-500
+
+%\begin{table}[htb]
+%%\caption{g}
+%%begin{subtable}[]{       %[\small Results for transcriptional input data, stress marks included, $K = 500$.]
+%\centering
+%\small
+%\subtable[Transcriptions with stress (TS). $K = 1000$. \label{subtab:results-1000-ts}]{
+%%\label{tab:results-500-tr}[culmination]{
+%\setlength{\extrarowheight}{8pt}
+%\begin{tabular}{cc|cc|rrrrr}
+%%%\setlength{\extrarowheight}{10pt}
+%%\begin{tabular}{cc|rrrrr}
+%$s$ & $\delta$ & Purity &  BP & BR & Cov & $K^{\prime}$ \\ \hline
+%0 & 1 & 0.830 & 0.403 & 0.436 & 11461 & 317\\%0_1_K1000_N12272_basic_181104_14-26_k-1000
+%0 & 2 & 0.706 & 0.319 & 0.519 & 11468 & 192\\%0_2_K1000_N12272_basic_181104_14-25_k-1000
+%0 & 3 & 0.450 & 0.282 & 0.478 & 11407 & 139\\%0_3_K1000_N12272_basic_181104_15-15_k-1000
+%\hline
+%2 & n/a & 0.579 & 0.203 & 0.474 & 12218 & 218\\%2_0_K6000_N12272_basic_180629_01-46_k-1000
+%2 & 1 & 0.589 & 0.334 & 0.495 & 12063 & 318\\%2_1_K6000_N12272_basic_180621_23-57_k-1000
+%2 & 2 & 0.497 & 0.277 & 0.526 & 11834 & 229\\%2_2_K6000_N12272_basic_180621_21-24_k-1000
+%2 & 3 & 0.586 & 0.245 & 0.522 & 11825 & 131\\%2_3_K1000_N12272_basic_181014_23-53_k-1000
+%\hline
+%4 & n/a & 0.273 & 0.134 & 0.706 & 12263 & 383\\%4_0_K6000_N12271_basic_180629_01-17_k-1000
+%4 & 1 & 0.511 & 0.225 & 0.566 & 12084 & 127\\%4_1_K1000_N12272_basic_181104_06-06_k-1000
+%4 & 2 & 0.558 & 0.344 & 0.464 & 11201 & 137\\%4_2_K1000_N12272_basic_181104_04-36_k-1000
+%4 & 3 & 0.416 & 0.203 & 0.553 & 12200 & 285\\%4_3_K1000_N12272_basic_181015_00-21_k-1000
+%\hline
+%6 & n/a & 0.750 & 0.196 & 0.503 & 12218 & 290\\%6_0_K6000_N12272_basic_180629_01-38_k-1000
+%6 & 1 & 0.588 & 0.240 & 0.531 & 11925 & 195\\%6_1_K6000_N12271_basic_180616_13-06_k-1000
+%6 & 2 & 0.595 & 0.305 & 0.508 & 11443 & 118\\%6_2_K6000_N12272_basic_180620_02-37_k-1000
+%\end{tabular}
+%}
 
 \begin{table}[htb]
-%\caption{g}
-%begin{subtable}[]{       %[\small Results for transcriptional input data, stress marks included, $K = 500$.]
+%%\caption{g}
+%%begin{subtable}[]{       %[\small Results for transcriptional input data, stress marks included, $K = 500$.]
 \centering
 \small
-\subtable[Transcriptional data with stress marking (TS). $K = 1000$. \label{subtab:results-1000-ts}]{
-%\label{tab:results-500-tr}[culmination]{
+\subtable[Transcriptions with stress marking (TS). K = 1000.\label{subtab:results-1000-ts-2}]{
+%\label{tab:results-500-ts}[culmination]{
 \setlength{\extrarowheight}{8pt}
-\begin{tabular}{cc|cc|rrrrr}
+\begin{tabular}{cc|rrrrr}
 %%\setlength{\extrarowheight}{10pt}
 %\begin{tabular}{cc|rrrrr}
 $s$ & $\delta$ & Purity &  BP & BR & Cov & $K^{\prime}$ \\ \hline
-0 & 1 & 0.830 & 0.403 & 0.436 & 11461 & 317\\%0_1_K1000_N12272_basic_181104_14-26_k-1000
+0 & 1 & \textbf{0.830} & \textbf{0.403} & \textbf{0.436} & 11461 & 317\\%0_1_K1000_N12272_basic_181104_14-26_k-1000
 0 & 2 & 0.706 & 0.319 & 0.519 & 11468 & 192\\%0_2_K1000_N12272_basic_181104_14-25_k-1000
 0 & 3 & 0.450 & 0.282 & 0.478 & 11407 & 139\\%0_3_K1000_N12272_basic_181104_15-15_k-1000
+\hline
 2 & n/a & 0.579 & 0.203 & 0.474 & 12218 & 218\\%2_0_K6000_N12272_basic_180629_01-46_k-1000
-2 & 1 & 0.589 & 0.334 & 0.495 & 12063 & 318\\%2_1_K6000_N12272_basic_180621_23-57_k-1000
+2 & 1 & \textbf{0.589} & \textbf{0.334} & \textbf{0.495} & 12063 & 318\\%2_1_K6000_N12272_basic_180621_23-57_k-1000
 2 & 2 & 0.497 & 0.277 & 0.526 & 11834 & 229\\%2_2_K6000_N12272_basic_180621_21-24_k-1000
 2 & 3 & 0.586 & 0.245 & 0.522 & 11825 & 131\\%2_3_K1000_N12272_basic_181014_23-53_k-1000
+\hline
 4 & n/a & 0.273 & 0.134 & 0.706 & 12263 & 383\\%4_0_K6000_N12271_basic_180629_01-17_k-1000
 4 & 1 & 0.511 & 0.225 & 0.566 & 12084 & 127\\%4_1_K1000_N12272_basic_181104_06-06_k-1000
 4 & 2 & 0.558 & 0.344 & 0.464 & 11201 & 137\\%4_2_K1000_N12272_basic_181104_04-36_k-1000
 4 & 3 & 0.416 & 0.203 & 0.553 & 12200 & 285\\%4_3_K1000_N12272_basic_181015_00-21_k-1000
+\hline
 6 & n/a & 0.750 & 0.196 & 0.503 & 12218 & 290\\%6_0_K6000_N12272_basic_180629_01-38_k-1000
 6 & 1 & 0.588 & 0.240 & 0.531 & 11925 & 195\\%6_1_K6000_N12271_basic_180616_13-06_k-1000
-6 & 2 & 0.595 & 0.305 & 0.508 & 11443 & 118\\%6_2_K6000_N12272_basic_180620_02-37_k-1000
+6 & 2 & \textbf{0.595} & \textbf{0.305} & \textbf{0.508} & 11443 & 118\\%6_2_K6000_N12272_basic_180620_02-37_k-1000
 \end{tabular}
 }
 
-\subtable[Transcriptions without stress marking (TR). $K = 1000$.\label{subtab:results-1000-tr}]{
+%\subtable[Orthographic data (O). $K = 1000$.\label{subtab:results-1000-o}]{
+%\centering
+%\small 
+%%\caption{\footnotesize Orthographic (O) input words. $K = 500$.}
+%%\label{subtab:results-500-o}
+%% \caption{Experiment Results-I}
+%%  \subtable[Indexing Performance]{
+%\setlength{\extrarowheight}{8pt}
+%\begin{tabular}{cc|rrrrr}
+%%\setlength{\extrarowheight}{8pt}
+%$s$ & $\delta$ & Purity &  BP & BR & Cov & $K^{\prime}$ \\ \hline
+%0 & 1 & 0.389 & 0.257 & 0.158 & 10943 & 308\\%0_1_K6000_N11166_basic_180727_16-17_k-1000
+%0 & 2 & 0.393 & 0.211 & 0.267 & 11098 & 355\\%0_2_K6000_N11166_basic_180727_16-17_k-1000
+%0 & 3 & 0.337 & 0.202 & 0.360 & 11081 & 402\\%0_3_K6000_N11166_basic_180727_16-17_k-1000
+%1 & 1 & 0.348 & 0.377 & 0.667 & 4487 & 413\\%1_1_K6000_N11166_basic_180727_03-24_k-1000
+%1 & 2 & 0.428 & 0.331 & 0.673 & 4471 & 334\\%1_2_K6000_N11166_basic_180723_13-15_k-1000
+%2 & 1 & 0.360 & 0.300 & 0.599 & 3437 & 195\\%2_1_K6000_N11166_basic_180727_03-16_k-1000
+%2 & 2 & 0.592 & 0.288 & 0.678 & 3414 & 264\\%2_2_K6000_N11166_basic_180723_13-11_k-1000
+%2 & 3 & 0.425 & 0.246 & 0.694 & 3426 & 135\\%2_3_K1000_N11166_basic_181015_00-18_k-1000
+%3 & 1 & 0.366 & 0.276 & 0.642 & 3441 & 95\\%3_1_K6000_N11166_basic_180727_03-42_k-1000
+%3 & 1 & 0.419 & 0.293 & 0.661 & 3440 & 151\\%3_1_K6000_N11166_basic_180727_16-15_k-1000
+%3 & 2 & 0.407 & 0.286 & 0.680 & 3411 & 96\\%3_2_K6000_N11166_basic_180727_16-16_k-1000
+%3 & 3 & 0.400 & 0.221 & 0.669 & 3419 & 152\\%3_3_K6000_N11166_basic_180727_16-15_k-1000
+%\end{tabular}
+%\label{subtab:results-1000-o}
+%}
+%\caption{Orthographic (O) results 500}
+%\subtable[]
+%\label{subtab:results-500-o}
+%\label{tab:results2}
+%\caption{Intrinsic evaluation results at $K = 1000$.}
+%\label{tab:results-1000}
+%%\label{subtab:results-500-o}
+%%\end{subtable}
+%%}
+%\end{table}
+
+%\begin{table}[htb]
+%\subtable[Transcriptional data with stress marking (TS). $K = 500$. \label{subtab:results-500-ts-2}]{
+%%\label{tab:results-500-tr}[culmination]{
+%\centering
+%\small
+%\setlength{\extrarowheight}{8pt}
+%\begin{tabular}{cc|cc|rrrrr}
+%$s$ & $\delta$ & Purity &  BP & BR & Cov & $K^{\prime}$ \\ \hline
+%0 & 1 & 0.395 & 0.409 & 0.437 & 11404 & 84\\%0_1_K1000_N12272_basic_181104_14-26_k-500
+%0 & 2 & 0.425 & 0.166 & 0.645 & 12267 & 139\\%0_2_K1000_N12272_basic_180629_01-24_k-500
+%0 & 2 & 0.439 & 0.325 & 0.522 & 11379 & 91\\%0_2_K1000_N12272_basic_181104_14-25_k-500
+%0 & 3 & 0.475 & 0.284 & 0.477 & 10976 & 70\\%0_3_K1000_N12272_basic_181104_15-15_k-500
+%2 & 1 & 0.730 & 0.347 & 0.487 & 12027 & 159\\%2_1_K6000_N12272_basic_180621_23-57_k-500
+%2 & 2 & 0.479 & 0.296 & 0.504 & 11817 & 68\\%2_2_K6000_N12272_basic_180621_21-24_k-500
+%2 & 3 & 0.468 & 0.253 & 0.516 & 11763 & 86\\%2_3_K1000_N12272_basic_181014_23-53_k-500
+%4 & n/a & 0.463 & 0.135 & 0.706 & 12260 & 216\\%4_0_K6000_N12271_basic_180629_01-17_k-500
+%4 & 1 & 0.707 & 0.228 & 0.564 & 12002 & 163\\%4_1_K6000_N12271_basic_180616_12-50_k-500
+%4 & 2 & 0.429 & 0.271 & 0.496 & 12074 & 134\\%4_2_K6000_N12271_basic_180616_13-06_k-500
+%4 & 3 & 0.418 & 0.212 & 0.534 & 12137 & 215\\%4_3_K1000_N12272_basic_181015_00-21_k-500
+%4 & 3 & 0.515 & 0.302 & 0.464 & 11455 & 86\\%4_3_K6000_N12271_basic_180621_07-55_k-500
+%6 & n/a & 0.283 & 0.149 & 0.696 & 12261 & 253\\%6_0_K6000_N12272_basic_180629_01-15_k-500
+%6 & 1 & 0.417 & 0.281 & 0.485 & 11795 & 77\\%6_1_K6000_N12271_basic_180616_13-06_k-500
+%6 & 2 & 0.506 & 0.303 & 0.512 & 11446 & 53\\%6_2_K6000_N12272_basic_180620_02-37_k-500
+%6 & 3 & 0.581 & 0.298 & 0.477 & 10971 & 60\\%6_3_K6000_N12271_basic_180621_07-59_k-500
+%\end{tabular}
+%}
+
+
+%\begin{table}[htb]
+%%\caption{g}
+%%begin{subtable}[]{       %[\small Results for transcriptional input data, stress marks included, $K = 500$.]
+%\centering
+%\small
+%\subtable[Transcriptional data with stress marking (TS). K = 1000.\label{subtab:results-1000-ts-2}]{
+%%\label{tab:results-500-ts}[culmination]{
+%\setlength{\extrarowheight}{8pt}
+%\begin{tabular}{cc|rrrrr}
+%%%\setlength{\extrarowheight}{10pt}
+%%\begin{tabular}{cc|rrrrr}
+%$s$ & $\delta$ & Purity &  BP & BR & Cov & $K^{\prime}$ \\ \hline
+%0 & 1 & 0.830 & 0.403 & 0.436 & 11461 & 317\\%0_1_K1000_N12272_basic_181104_14-26_k-1000
+%0 & 2 & 0.706 & 0.319 & 0.519 & 11468 & 192\\%0_2_K1000_N12272_basic_181104_14-25_k-1000
+%0 & 3 & 0.450 & 0.282 & 0.478 & 11407 & 139\\%0_3_K1000_N12272_basic_181104_15-15_k-1000
+%2 & n/a & 0.579 & 0.203 & 0.474 & 12218 & 218\\%2_0_K6000_N12272_basic_180629_01-46_k-1000
+%2 & 1 & 0.589 & 0.334 & 0.495 & 12063 & 318\\%2_1_K6000_N12272_basic_180621_23-57_k-1000
+%2 & 2 & 0.497 & 0.277 & 0.526 & 11834 & 229\\%2_2_K6000_N12272_basic_180621_21-24_k-1000
+%2 & 3 & 0.586 & 0.245 & 0.522 & 11825 & 131\\%2_3_K1000_N12272_basic_181014_23-53_k-1000
+%4 & n/a & 0.273 & 0.134 & 0.706 & 12263 & 383\\%4_0_K6000_N12271_basic_180629_01-17_k-1000
+%4 & 1 & 0.511 & 0.225 & 0.566 & 12084 & 127\\%4_1_K1000_N12272_basic_181104_06-06_k-1000
+%4 & 2 & 0.558 & 0.344 & 0.464 & 11201 & 137\\%4_2_K1000_N12272_basic_181104_04-36_k-1000
+%4 & 3 & 0.416 & 0.203 & 0.553 & 12200 & 285\\%4_3_K1000_N12272_basic_181015_00-21_k-1000
+%6 & n/a & 0.750 & 0.196 & 0.503 & 12218 & 290\\%6_0_K6000_N12272_basic_180629_01-38_k-1000
+%6 & 1 & 0.588 & 0.240 & 0.531 & 11925 & 195\\%6_1_K6000_N12271_basic_180616_13-06_k-1000
+%6 & 2 & 0.595 & 0.305 & 0.508 & 11443 & 118\\%6_2_K6000_N12272_basic_180620_02-37_k-1000
+%\end{tabular}
+%}
+
+\subtable[Transcriptions without stress (TR). $K = 1000$.\label{subtab:results-1000-tr}]{
 %\label{tab:results-500-tr}[culmination]{
+\centering
+\small
 \setlength{\extrarowheight}{8pt}
-\begin{tabular}{cc|cc|rrrrr}
+%\begin{tabular}{cc|cc|rrrrr}
+\begin{tabular}{cc|rrrrr}
 $s$ & $\delta$ & Purity &  BP & BR & Cov & $K^{\prime}$ \\ \hline
 0 & 1 & 0.474 & 0.295 & 0.470 & 12135 & 357\\%0_1_K6000_N12222_basic_180623_21-13_k-1000
 0 & 2 & 0.528 & 0.225 & 0.567 & 11953 & 278\\%0_2_K6000_N12222_basic_180623_01-57_k-1000
 0 & 3 & 0.446 & 0.156 & 0.651 & 12153 & 276\\%0_3_K6000_N12222_basic_180626_18-27_k-1000
+\hline
 2 & 1 & 0.545 & 0.250 & 0.574 & 12203 & 224\\%2_1_K6000_N12222_basic_180628_05-27_k-1000
 2 & 2 & 0.553 & 0.187 & 0.635 & 12157 & 185\\%2_2_K6000_N12222_basic_180626_18-27_k-1000
 2 & 3 & 0.625 & 0.260 & 0.415 & 11825 & 63\\%2_3_K1000_N12222_basic_181014_23-53_k-1000
+\hline
 4 & 1 & 0.812 & 0.180 & 0.628 & 12193 & 475\\%4_1_K6000_N12222_basic_180619_21-27_k-1000
 4 & 2 & 0.384 & 0.196 & 0.616 & 12095 & 95\\%4_2_K6000_N12222_basic_180626_18-27_k-1000
 4 & 3 & 0.606 & 0.179 & 0.623 & 11879 & 265\\%4_3_K6000_N12222_basic_180621_01-45_k-1000
+\hline
 6 & 1 & 0.530 & 0.169 & 0.652 & 12158 & 234\\%6_1_K6000_N12221_basic_180616_12-58_k-1000
 6 & 2 & 0.588 & 0.196 & 0.577 & 12071 & 146\\%6_2_K6000_N12222_basic_180626_17-48_k-1000
-6 & 3 & 0.766 & 0.263 & 0.508 & 11666 & 121\\%6_3_K6000_N12222_basic_180621_01-59_k-1000
+6 & 3 & \textbf{0.766} & \textbf{0.263} & \textbf{0.508} & 11666 & 121\\%6_3_K6000_N12222_basic_180621_01-59_k-1000
 \end{tabular}
 %\label{subtab:results-1000-tr}
 }
+
+%\subtable[Transcriptions without stress marking (TR). $K = 1000$\label{subtab:results-1000-tr-2}]{
+%%\label{tab:results-500-tr}[culmination]{
+%\centering
+%\small
+%\setlength{\extrarowheight}{8pt}
+%\begin{tabular}{cc|rrrrr}
+%$s$ & $\delta$ & Purity &  BP & BR & Cov & $K^{\prime}$ \\ \hline
+%0 & 1 & 0.474 & 0.295 & 0.470 & 12135 & 357\\%0_1_K6000_N12222_basic_180623_21-13_k-1000
+%0 & 2 & 0.528 & 0.225 & 0.567 & 11953 & 278\\%0_2_K6000_N12222_basic_180623_01-57_k-1000
+%0 & 3 & 0.446 & 0.156 & 0.651 & 12153 & 276\\%0_3_K6000_N12222_basic_180626_18-27_k-1000
+%2 & 1 & 0.545 & 0.250 & 0.574 & 12203 & 224\\%2_1_K6000_N12222_basic_180628_05-27_k-1000
+%2 & 2 & 0.553 & 0.187 & 0.635 & 12157 & 185\\%2_2_K6000_N12222_basic_180626_18-27_k-1000
+%2 & 3 & 0.625 & 0.260 & 0.415 & 11825 & 63\\%2_3_K1000_N12222_basic_181014_23-53_k-1000
+%4 & 1 & 0.812 & 0.180 & 0.628 & 12193 & 475\\%4_1_K6000_N12222_basic_180619_21-27_k-1000
+%4 & 2 & 0.384 & 0.196 & 0.616 & 12095 & 95\\%4_2_K6000_N12222_basic_180626_18-27_k-1000
+%4 & 3 & 0.606 & 0.179 & 0.623 & 11879 & 265\\%4_3_K6000_N12222_basic_180621_01-45_k-1000
+%6 & 1 & 0.530 & 0.169 & 0.652 & 12158 & 234\\%6_1_K6000_N12221_basic_180616_12-58_k-1000
+%6 & 2 & 0.588 & 0.196 & 0.577 & 12071 & 146\\%6_2_K6000_N12222_basic_180626_17-48_k-1000
+%6 & 3 & 0.766 & 0.263 & 0.508 & 11666 & 121\\%6_3_K6000_N12222_basic_180621_01-59_k-1000
+%\end{tabular}
+%%\label{subtab:results-1000-tr}
+%}
 
 \subtable[Orthographic data (O). $K = 1000$.\label{subtab:results-1000-o}]{
 \centering
@@ -603,108 +881,23 @@ $s$ & $\delta$ & Purity &  BP & BR & Cov & $K^{\prime}$ \\ \hline
 % \caption{Experiment Results-I}
 %  \subtable[Indexing Performance]{
 \setlength{\extrarowheight}{8pt}
-\begin{tabular}{cc|rrrrr}
-%\setlength{\extrarowheight}{8pt}
-$s$ & $\delta$ & Purity &  BP & BR & Cov & $K^{\prime}$ \\ \hline
-0 & 1 & 0.389 & 0.257 & 0.158 & 10943 & 308\\%0_1_K6000_N11166_basic_180727_16-17_k-1000
-0 & 2 & 0.393 & 0.211 & 0.267 & 11098 & 355\\%0_2_K6000_N11166_basic_180727_16-17_k-1000
-0 & 3 & 0.337 & 0.202 & 0.360 & 11081 & 402\\%0_3_K6000_N11166_basic_180727_16-17_k-1000
-1 & 1 & 0.348 & 0.377 & 0.667 & 4487 & 413\\%1_1_K6000_N11166_basic_180727_03-24_k-1000
-1 & 2 & 0.428 & 0.331 & 0.673 & 4471 & 334\\%1_2_K6000_N11166_basic_180723_13-15_k-1000
-2 & 1 & 0.360 & 0.300 & 0.599 & 3437 & 195\\%2_1_K6000_N11166_basic_180727_03-16_k-1000
-2 & 2 & 0.592 & 0.288 & 0.678 & 3414 & 264\\%2_2_K6000_N11166_basic_180723_13-11_k-1000
-2 & 3 & 0.425 & 0.246 & 0.694 & 3426 & 135\\%2_3_K1000_N11166_basic_181015_00-18_k-1000
-3 & 1 & 0.366 & 0.276 & 0.642 & 3441 & 95\\%3_1_K6000_N11166_basic_180727_03-42_k-1000
-3 & 1 & 0.419 & 0.293 & 0.661 & 3440 & 151\\%3_1_K6000_N11166_basic_180727_16-15_k-1000
-3 & 2 & 0.407 & 0.286 & 0.680 & 3411 & 96\\%3_2_K6000_N11166_basic_180727_16-16_k-1000
-3 & 3 & 0.400 & 0.221 & 0.669 & 3419 & 152\\%3_3_K6000_N11166_basic_180727_16-15_k-1000
-\end{tabular}
-%\label{subtab:results-1000-o}
-}
-%\caption{Orthographic (O) results 500}
-%\subtable[]
-%\label{subtab:results-500-o}
-%\label{tab:results2}
-\caption{Intrinsic evaluation results at $K = 1000$.}
-\label{tab:results-1000}
-%\label{subtab:results-500-o}
-%\end{subtable}
-%}
-\end{table}
-
-\begin{table}[htb]
-%\caption{g}
-%begin{subtable}[]{       %[\small Results for transcriptional input data, stress marks included, $K = 500$.]
-\centering
-\small
-\subtable[Transcriptional data with stress marking (TS). K = 1000.\label{subtab:results-1000-ts-2}]{
-%\label{tab:results-500-tr}[culmination]{
-\setlength{\extrarowheight}{8pt}
-\begin{tabular}{cc|rrrrr}
-%%\setlength{\extrarowheight}{10pt}
-%\begin{tabular}{cc|rrrrr}
-$s$ & $\delta$ & Purity &  BP & BR & Cov & $K^{\prime}$ \\ \hline
-0 & 1 & 0.830 & 0.403 & 0.436 & 11461 & 317\\%0_1_K1000_N12272_basic_181104_14-26_k-1000
-0 & 2 & 0.706 & 0.319 & 0.519 & 11468 & 192\\%0_2_K1000_N12272_basic_181104_14-25_k-1000
-0 & 3 & 0.450 & 0.282 & 0.478 & 11407 & 139\\%0_3_K1000_N12272_basic_181104_15-15_k-1000
-2 & n/a & 0.579 & 0.203 & 0.474 & 12218 & 218\\%2_0_K6000_N12272_basic_180629_01-46_k-1000
-2 & 1 & 0.589 & 0.334 & 0.495 & 12063 & 318\\%2_1_K6000_N12272_basic_180621_23-57_k-1000
-2 & 2 & 0.497 & 0.277 & 0.526 & 11834 & 229\\%2_2_K6000_N12272_basic_180621_21-24_k-1000
-2 & 3 & 0.586 & 0.245 & 0.522 & 11825 & 131\\%2_3_K1000_N12272_basic_181014_23-53_k-1000
-4 & n/a & 0.273 & 0.134 & 0.706 & 12263 & 383\\%4_0_K6000_N12271_basic_180629_01-17_k-1000
-4 & 1 & 0.511 & 0.225 & 0.566 & 12084 & 127\\%4_1_K1000_N12272_basic_181104_06-06_k-1000
-4 & 2 & 0.558 & 0.344 & 0.464 & 11201 & 137\\%4_2_K1000_N12272_basic_181104_04-36_k-1000
-4 & 3 & 0.416 & 0.203 & 0.553 & 12200 & 285\\%4_3_K1000_N12272_basic_181015_00-21_k-1000
-6 & n/a & 0.750 & 0.196 & 0.503 & 12218 & 290\\%6_0_K6000_N12272_basic_180629_01-38_k-1000
-6 & 1 & 0.588 & 0.240 & 0.531 & 11925 & 195\\%6_1_K6000_N12271_basic_180616_13-06_k-1000
-6 & 2 & 0.595 & 0.305 & 0.508 & 11443 & 118\\%6_2_K6000_N12272_basic_180620_02-37_k-1000
-\end{tabular}
-}
-
-\subtable[Transcriptions without stress marking (TR). $K = 1000$\label{subtab:results-1000-tr-2}]{
-%\label{tab:results-500-tr}[culmination]{
-\centering
-\small
-\setlength{\extrarowheight}{8pt}
-\begin{tabular}{cc|rrrrr}
-$s$ & $\delta$ & Purity &  BP & BR & Cov & $K^{\prime}$ \\ \hline
-0 & 1 & 0.474 & 0.295 & 0.470 & 12135 & 357\\%0_1_K6000_N12222_basic_180623_21-13_k-1000
-0 & 2 & 0.528 & 0.225 & 0.567 & 11953 & 278\\%0_2_K6000_N12222_basic_180623_01-57_k-1000
-0 & 3 & 0.446 & 0.156 & 0.651 & 12153 & 276\\%0_3_K6000_N12222_basic_180626_18-27_k-1000
-2 & 1 & 0.545 & 0.250 & 0.574 & 12203 & 224\\%2_1_K6000_N12222_basic_180628_05-27_k-1000
-2 & 2 & 0.553 & 0.187 & 0.635 & 12157 & 185\\%2_2_K6000_N12222_basic_180626_18-27_k-1000
-2 & 3 & 0.625 & 0.260 & 0.415 & 11825 & 63\\%2_3_K1000_N12222_basic_181014_23-53_k-1000
-4 & 1 & 0.812 & 0.180 & 0.628 & 12193 & 475\\%4_1_K6000_N12222_basic_180619_21-27_k-1000
-4 & 2 & 0.384 & 0.196 & 0.616 & 12095 & 95\\%4_2_K6000_N12222_basic_180626_18-27_k-1000
-4 & 3 & 0.606 & 0.179 & 0.623 & 11879 & 265\\%4_3_K6000_N12222_basic_180621_01-45_k-1000
-6 & 1 & 0.530 & 0.169 & 0.652 & 12158 & 234\\%6_1_K6000_N12221_basic_180616_12-58_k-1000
-6 & 2 & 0.588 & 0.196 & 0.577 & 12071 & 146\\%6_2_K6000_N12222_basic_180626_17-48_k-1000
-6 & 3 & 0.766 & 0.263 & 0.508 & 11666 & 121\\%6_3_K6000_N12222_basic_180621_01-59_k-1000
-\end{tabular}
-%\label{subtab:results-1000-tr}
-}
-
-\subtable[Orthographic data (O). $K = 1000$.\label{subtab:results-1000-o}]{
-\centering
-\small 
-%\caption{\footnotesize Orthographic (O) input words. $K = 500$.}
-%\label{subtab:results-500-o}
-% \caption{Experiment Results-I}
-%  \subtable[Indexing Performance]{
-\setlength{\extrarowheight}{8pt}
 \begin{tabular}{cc|cc|rrrrr}
 %\setlength{\extrarowheight}{8pt}
 $s$ & $\delta$ & Purity &  BP & BR & Cov & $K^{\prime}$ \\ \hline
 0 & 1 & 0.389 & 0.257 & 0.158 & 10943 & 308\\%0_1_K6000_N11166_basic_180727_16-17_k-1000
 0 & 2 & 0.393 & 0.211 & 0.267 & 11098 & 355\\%0_2_K6000_N11166_basic_180727_16-17_k-1000
 0 & 3 & 0.337 & 0.202 & 0.360 & 11081 & 402\\%0_3_K6000_N11166_basic_180727_16-17_k-1000
+\hline
 1 & 1 & 0.348 & 0.377 & 0.667 & 4487 & 413\\%1_1_K6000_N11166_basic_180727_03-24_k-1000
-1 & 2 & 0.428 & 0.331 & 0.673 & 4471 & 334\\%1_2_K6000_N11166_basic_180723_13-15_k-1000
+1 & 2 & \textbf{0.428} & \textbf{0.331} & \textbf{0.673} & 4471 & 334\\%1_2_K6000_N11166_basic_180723_13-15_k-1000
+\hline
 2 & 1 & 0.360 & 0.300 & 0.599 & 3437 & 195\\%2_1_K6000_N11166_basic_180727_03-16_k-1000
-2 & 2 & 0.592 & 0.288 & 0.678 & 3414 & 264\\%2_2_K6000_N11166_basic_180723_13-11_k-1000
+2 & 2 & \textbf{0.592} & \textbf{0.288} & \textbf{0.678} & 3414 & 264\\%2_2_K6000_N11166_basic_180723_13-11_k-1000
 2 & 3 & 0.425 & 0.246 & 0.694 & 3426 & 135\\%2_3_K1000_N11166_basic_181015_00-18_k-1000
-3 & 1 & 0.366 & 0.276 & 0.642 & 3441 & 95\\%3_1_K6000_N11166_basic_180727_03-42_k-1000
-3 & 1 & 0.419 & 0.293 & 0.661 & 3440 & 151\\%3_1_K6000_N11166_basic_180727_16-15_k-1000
+\hline
+%3 & 1 & 0.366 & 0.276 & 0.642 & 3441 & 95\\%3_1_K6000_N11166_basic_180727_03-42_k-1000
+%3 & 1 & 0.419 & 0.293 & 0.661 & 3440 & 151\\%3_1_K6000_N11166_basic_180727_16-15_k-1000
+3 & 1 & 0.393 & 0.285 & 0.650 & 3441 & 123 \\%avg
 3 & 2 & 0.407 & 0.286 & 0.680 & 3411 & 96\\%3_2_K6000_N11166_basic_180727_16-16_k-1000
 3 & 3 & 0.400 & 0.221 & 0.669 & 3419 & 152\\%3_3_K6000_N11166_basic_180727_16-15_k-1000
 \end{tabular}
@@ -714,14 +907,15 @@ $s$ & $\delta$ & Purity &  BP & BR & Cov & $K^{\prime}$ \\ \hline
 %\subtable[]
 %\label{subtab:results-500-o}
 %\label{tab:results2}
-\caption{Intrinsic evaluation results at $K = 1000$. (Second Pass: Cluster-membership threshold set at 0.8 instead of 0.5.)}
+%\caption{Intrinsic evaluation results at $K = 1000$. (Second Pass: Cluster-membership threshold set at 0.8 instead of 0.5.)}
+\caption{Intrinsic evaluation results at $K = 1000$.}%(Second Pass: Cluster-membership threshold set at 0.8 instead of 0.5.)}
 \label{tab:results-1000}
 %\label{subtab:results-500-o}
 %\end{subtable}
 %}
 \end{table}
 
-paragraph{Results from the Intrinsic Evaluation}
+subsection{Extrinsic Evaluation Results}
 
 Here will be placed at chart, along with accompanying expository text, displaying
 the results of the extrinsic evaluation described in chapter~\ref{ch:eval}. 

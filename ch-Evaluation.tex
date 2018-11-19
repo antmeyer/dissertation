@@ -30,9 +30,11 @@ intrinsically difficult to evaluate, and thus no single
 evaluation method is likely to be perfect. I therefore use two complementary methods, %I would thus rather not rely on a single method.
 %not only because is it an unsupervised learning system, which are notoriously challenging to evaluate,  it learns unconventional morphological units, namely morphs. Indeed, it would be very difficult to come up with a gold standard for the morphs because we do not know what the morphs are supposed to look like; i.e., the ``right answers" are not obvious at the outset. 
 %In particular, I will use 
-one \emph{extrinsic} method and one \emph{intrinsic} method.
+one \emph{intrinsic} and one \emph{extrinsic}.
 
-I also incorporate a \emph{qualitative} evaluation component, which is intended to complement the quantitative intrinsic an extrinsic methods.
+Finally, the evaluation also included a qualitative component, which served to complement the quantitative 
+%utput of the MCMM was evaluated \emph{qualitatively}. The  which is intended to complement the quantitative
+ intrinsic an extrinsic methods.
 
 
 \section{Qualitative Evaluation}
@@ -68,6 +70,7 @@ This is to say that we need a gold-standard morphological analysis for each word
 We actually need different gold standard lists for the orthographic and transcribed datasets, 
 since these datasets come from different sources, and their respective gold standards must 
 be obtained through separate means.
+
 
 % (Notice that a lot of properties are packed into the suffix \textit{-s}).
 % Let us consider  
@@ -284,6 +287,8 @@ Pertinent rule: 1b
 Morph: None \\
 Pertinent rule: 4
 \end{exe}
+
+Via Chinese: Every symbol in an encoded morfessor segment is itself a distinct morph.
 
 \subsubsection{Stage 2: Match morph characters to word characters} Once a morph has been gleaned from a cluster's centroid vector, the characters of the morph must be matched to the corresponding characters in the cluster's member words. 
 
