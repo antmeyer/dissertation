@@ -41,7 +41,8 @@ Finally, the evaluation also included a qualitative component, which served to c
 The qualitative component consisted mainly of a directly (or ``manually) examining the members of clusters that Multimorph's MCMM generated. 
 The main reason a qualitative component is advantage is that the automatic, quantative procedures may not catch everything. Humans have linguistic intuition is can be very useful in interpreting a cluster. Since we are dealing with unsupervised learning, there is basically no telling what the clusters will come to represent. The qualitative component is meant to address this essentially lack of predictability.
 
-\section{Intrinsic Evaluation}
+\section{Quantitative Evaluation}
+\subsection{Intrinsic Evaluation}
 An \emph{intrinsic} evaluation considers a system as independent, examining its 
 output directly. That is, the system is evaluated as a stand-alone application, on its
 on terms, as it were,
@@ -122,7 +123,7 @@ be obtained through separate means.
 %Morphs like \emph{run} and \emph{-s} are essentially cluster labels. 
 %That is, \emph{-s} represents a cluster whose words predominantly end in  \emph{-s}.
 
-\paragraph{Orthographic data.}
+\subsubsection{Orthographic data.}
 
 %To obtain morphological analyses for the wordlist O, I will use the 
 %MILA Morphological Analysis tool (\textsc{mila-ma}) \citep{hebrew-resources:2008}.
@@ -155,15 +156,57 @@ be obtained through separate means.
 %because they are specifically designed for cases of overlapping clusters 
 %\citep{amigo-et-al:2009}.
 
-\paragraph{Transcribed data.} I obtained gold-standard category mappings for the 
-transcribed words by extracting morphological analyses from the Berman 
+\subsubsection{Transcribed data.} Gold-standard category mappings for the 
+transcribed words were obtained by extracting morphological analyses from the Berman 
 longitudinal corpus. Recall that for each utterance in the Berman longitudinal corpus, 
 there is a transcription tier and a morphological-analysis tier. The latter provides a 
 morphological analysis for each word in the utterance, including roots for the words 
 that have roots. I extracted the morphological analyses and used them to create a list of 
 word-to-categories mappings like ones created from \textsc{mila-ma}'s analyses.
+\subsubsection{Evaluation Metrics} 
+\label{sec:metrics}We evaluate the intrinsic results according to three metrics: \textbf{average purity}, \textbf{BCubed precision}, and
+ \textbf{BCubed} recall. For the purpose of describing these metrics,
+ let $U$ denote the set of $K$ clusters discovered by a system, $V$ the set of $J$ gold-standard categories, and $X$ is the set of data points to be clusters. The cardinality of $X$ is $N$; i.e., there are a total of $N$ individual data points that have been clustered.\paragraph{Average purity}The standard purity metric seeks to calculate the global correctness of a given clustering by determining the proportion of data points that have assigned to the correct cluster. Each individual data point has at some point been associated with a gold-standard \emph{category} label. Thus, in any given cluster, there are in effect as many gold-standard category labels as there are data points. Standard purity assumes that most frequent 
+ gold-standard category in a given cluster $u_k$ is the gold-standard label for the entire cluster. The number of correctly clustered data points in $u_k$ is thus equal to the frequency of  $v_j$ in cluster $u_k$. Standard purity sums up the correctly clustered data points over all clusters, and divides this sum by $N$, the total number of distinct data points in the clustering
+ %The reason $v_j$ is the most frequent category in $u_k$ is that it is associated with more of $u_k$'s members than any other data point .in the cluster is the same as the frequency of data points that bear the label. 
+% Thus, the frequency of the most common gold-standard category in a cluster $U_k$  is deemed the number of correctly clustered items in $U_k$ x$ instances of this category label in the cluster, there are also $x$ data points associated the course equal to the number of data points associated with this category. data points he purity of this particular is thi
+ The standard version of purity is computed as \begin{equation} \label{eq:pur1}\text{purity}(U, V) = frac{1}{N} \sum_{k \in K} \text{max}_{j \in J} I u_k \cap v_j|\end{equation}
+In other words, The problem for our purposes is that this version of purity assumes that each datapoint belongs to exactly only one gold-standard category. In fact, it requires that this be so, for if any data point should belong to more than one cluster belong to more than one cluster, the numerator in \eqref{eq:pur1} would be greater than than 1, and thus the resulting purity would exceed 1.In the present study, each data point is a word, and the categories are morphological categories. In natural languages, words frequently belong to multiple morphological categories at once.
+%however, which contains multi-category examples, this assumption can yield purities greater than 1. 
+To avoid purities that exceed 1, we modify equation \eqref{eq:pur1} as follows: \begin{equation} \label{eq:pur2}\text{purity}_{\text{avg}}(U, V) =  \frac{1}{K} \sum_{k \in K} max_{j \in J} |u_k \cap v_j|\end{equation}
+This new equation represents an \emph{average cluster-wise purity}; i.e., it computes each cluster's internal purity and then averages over these purities. %the mean of the $K$ clusters’ internal purities. 
+While this equation yields purities within $[0, 1]$, even 
+when clusters overlap, it retains the well-known bias of the purity metric toward small clusters. We thus incorporate other metrics. \paragraph{BCubed precision and recall}The metrics \emph{BCubed precision} (BP) and \emph{BCubed recall} (BR) \citep{bagga-and-baldwin:1998} evaluate a clustering by checking one 
+pair of data points at a time, comparing the relationships that the algorithm has posited for each pair against their 
+gold-standard relationships. These metrics are well-suited to cases of overlapping clusters \citep{amigo-et-al:2009}. 
+In such cases, it is possible for two data points $x$ and $y$ to overlap both in their algorithm-assigned clusters and their 
+gold-standard categories. Suppose that $x$ and $y$ overlap in m clusters and n categories. Ideally, $m$ would 
+equal $n$; 
+i.e. there would be a one-to-one correspondence between clusters and gold-standard categories. 
+In most cases, however, either $m$ will be less than $n$ or vice versa. BCubed precision essentially 
+measures the extent to which $m \leq n$; for if $m>n$, then the algorithm has posited at least one 
+spurious relationship be.tween $x$ and $y$. BCubed precision thus penalizes spurious cluster assignments. 
+On the other hand, BCubed recall measures the extent to which $m \geq n$; for if $n<m$, then the algorithm 
+has missed at least one gold-standard relationship between $x$ and $y$. BCubed recall thus 
+penalizes absent cluster assignments (i.e., overlooked gold-standard relationships). At the core of BCubed precision is the measure multiplicity precision ($MultiP$):
+%\begin{equation}
+%MultiP(x,y) = \frac{min|U(x) \cap U(y)|, |V(x) \cap V (y)|}{|U(x) \cap U(y)|}%\end{equation}where $x$ and $y$ are data points in $X$; $U(x)$ is the set the clusters that contain $x$, 
+and $U(y)$ is the set of clusters containing $y$.
+Finally, 
+$V(x)$ and $V(y)$ are the sets of gold-standard categories for $x$ and $y$. 
+Notice that $MultiP(x,y)$ is a comparison of two items $x$ and $y$, neither of which is the 
+particular focus of the measure. $MultiP(x,y)$ is thus a joint description $x$ and $y$. To obtain a precision value that describes $x$ alone, one must compute $Avg_{y}(MultiP (x,y))$, the 
+average $MultiP(x,y)$ over $y \in X$, by computing $MultiP(x,y)$ for every $y$ that shares a cluster with $x$ 
+and averaging the resulting values. To obtain a precision value that describes the whole dataset (not just a single $x$), 
+one must compute $Avg_y(MultiP(x,y))$ for every $x$ in $X$ and then take the average of these averages. 
+This average of averages is BCubed Precision. %\begin{equation}
+%BP=Avg_x [ Avg_{y.U(x) \cap U(y)\neq \emptyset}(MultiP(x,y))]
+%\end{equation}The measures multiplicity recall(MultiR) and BCubed recall (BR) are analogous to multiplicity precision and
+ BCubed precision. The computation of MultiR is identical to that of MultiP 
+ except that gold-standard categories replace clusters in the denominator: 
+%\begin{equation}%MultiR(x,y)= frac{min(|U(x) \cap U(y)|, |V(x) \cap V (y)|)}{|V(x) \cap V(y)|}%\end{equation}Likewise, BR is identical to BP except that MultiR replaces MultiP: %\begin{equation} %BR = Avg_x Avg_{y.V(x) \cap V(y)\neq \emptyset}(MultiR(x,y))%\end{equation}
 
-\section{Extrinsic Evaluation} \label{sec:eval-extrinsic} An \emph{extrinsic evaluation} 
+\subsection{Extrinsic Evaluation} \label{sec:eval-extrinsic} An \emph{extrinsic evaluation} 
 views a system as a component of a larger, or outer, system. 
 Its purpose is to evaluate the embedded system, but it does so by evaluating the outer 
 system. If the outer system scores highly,
@@ -312,10 +355,10 @@ of \textbf{xlwm}. However, the \texttt{m} of \texttt{xlm}_{ST} does, yielding
 completing the stem-component \texttt{w}_{ST}. We now have \{\texttt{w}_{P}:\texttt{w} \texttt{h}_{P}:\texttt{h}, \texttt{xlm}_{ST}:\texttt{mq}, \texttt{w}_{ST}:\texttt{w}\}, \textbf{m}, and  
  \texttt{m}_{ST}.
  Finally, \texttt{m}_{ST} matches \textbf{m}, completing \{\texttt{xlm}_{ST}\} and consuming the word's last remaining character.
-	\begin{verbatim}
-		.*(x).*(\u00F3).?.?(t).*
-	\end{verbatim}
-	\texttt{.*(x).*(\'{o}).?.?(t).*}
+%	\begin{verbatim}
+%		.*(x).*(\u00F3).?.?(t).*
+%	\end{verbatim}
+%	\texttt{.*(x).*(\'{o}).?.?(t).*}
 \subsubsection{Stage 3: Compress}. Here, each morph to an atomic symbol, 
 so that, e.g., a three-character morph becomes in effect single-character item, 
 as do all morphs consisting of more than one character. In this way, most of 
@@ -519,3 +562,4 @@ To evaluate my system's performance on non-concatenative morphology, I need gold
 %%That is, do they make the task easier? 
 %%Do they improve segmentation accuracy? 
 %\end{description}
+
