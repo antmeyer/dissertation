@@ -342,7 +342,9 @@ At this point we will know which morphs are associated with each word, but we do
 
 First, the prefixes are matched to word characters. Then stem-components are matched, and finally any suffixes are matched (there are no suffixes in the present example). Whenever a morph character matches a word character, the word character is popped from the word, and the morph character is popped from the morph. The word character is then linked to the morph in question. 
 
-Thus, in our example, the matching algorithm proceeds as follows: First, each of the prefixes \texttt{h}_{P} and \texttt{w}_{P} (the order should not matter) are compared to the first character of \textbf{whxlwm}. The \texttt{w}_{P} matches, so we get \{ \texttt{w}_{P}:\texttt{w} \}. The \texttt{w} is popped from \textbf{whxlwm} as well as from \texttt{w}_{P}, thus completing the prefix morph \texttt{w}_{P} and removing it from consideration. Next, \texttt{h}_{P} (the only remaining prefix) is matched to the \texttt{h} of \textbf{hxlwm}, leaving us with \{  \texttt{w}_{P}:\texttt{w} \texttt{h}_{P}:\texttt{h} \}, \textbf{xlwm}, and no more prefixes.
+Thus, in our example, the matching algorithm proceeds as follows: First, each of the prefixes \texttt{h}_{P} and \texttt{w}_{P} (the order should not matter) are compared to the first character of \textbf{whxlwm}. The \texttt{w}_{P} matches, so we get \{ \texttt{w}_{P}:\texttt{w} \}. The \texttt{w} is popped 
+
+from \textbf{whxlwm} as well as from \texttt{w}_{P}, thus completing the prefix morph \texttt{w}_{P} and removing it from consideration. Next, \texttt{h}_{P} (the only remaining prefix) is matched to the \texttt{h} of \textbf{hxlwm}, leaving us with \{  \texttt{w}_{P}:\texttt{w} \texttt{h}_{P}:\texttt{h} \}, \textbf{xlwm}, and no more prefixes.
 
 Now only the stem-components remain. \texttt{w}_{ST} fails to match the first character 
 of \textbf{xlwm}. However, the \texttt{m} of \texttt{xlm}_{ST} does, yielding
