@@ -5,25 +5,61 @@
 %MCMMs are quite capable of learning non-concatenative morphology. See the cluster samples displayed in chapter~\ref{ch-Results} as 
 %figures~\label{fig:cl-fem} and \label{fig:cl-hit}.
 
-This dissertation has proposed a multilinear approach to the learning noncatenative morphology, where multilinear is 
-equivalent to nonlinear, i.e., not everything is located in the same line (or in the row). Rather, both multilinear and nonlinear 
-mean that there is more than one row in which things can reside, and moreover, that such rows can interact with each other.  
-This dissertation’s qualitative results alone demonstrate the viability of the multilinear approach to ULM. Even though the quantitative results
-are pending, the qualitative evidence yielded by manual inspection is already sufficient to demonstrate the validity of the 
-multilinear approach to ULM, both for nonconcatenative and concatenative morphology. Some of this qualitative evidence was 
-presented in figure~\ref{fig:cl-hit} in chapter \ref{ch:results}, which showed a sample of a cluster whose were almost entirely forms
-of the \emph{hitpa`el} binyan, which are nonconcatenative by nature. Please note that I have already run Multimorph on every pairing of $s$ and $\delta$ in table~\ref{tab:results} and have collected to output for each pair.
+This dissertation has proposed a multilinear approach to the learning of morphology.
+%, both concatenative and nonconcatenative. 
+%multilinear is 
+%equivalent to nonlinear, i.e., not everything is located in the same line (or in the row). 
+%Rather, both multilinear and nonlinear 
+%mean that there is more than one row in which things can reside, and moreover, that 
+%such rows can interact with each other.  
+This dissertation’s qualitative results alone demonstrate the 
+viability of the multilinear approach to ULM. 
+Even though the quantitative results
+are pending, the qualitative evidence yielded by manual 
+inspection is already sufficient to demonstrate the validity of the 
+multilinear approach to ULM, both for nonconcatenative 
+and concatenative morphology. 
+Some of this qualitative evidence was 
+presented in figure~\ref{fig:cl-hit} in chapter \ref{ch:results}, which 
+showed a sample of a cluster whose were almost entirely forms
+of the \emph{hitpa`el} binyan, which are nonconcatenative by nature. 
+
+%Please note that I have already run 
+%Multimorph on every pairing of $s$ and $\delta$ in table~\ref{tab:results} and have collected to output for each pair.
 %I only need to run to the scripts to carry out the quantitative calculations
 
-This dissertation establishes a bridge between linguistic theory on the one hand and computation on the other. 
-It offers a novel view of autosegmental morphological theory. In particular, this dissertation has presented the autosegmental formalism 
-as an instance of a more general graphical framework, namely the bipartite graph. In so doing, it sheds light on what the autosegmental formalism
-is at its essence as well as why autosegmental analyses work for cases of nonconcatenative morphology. In chapters~\ref{ch:lit-review} and \ref{ch:graph}, I
-defined and discussed the notions of the \emph{nonlinearity} and \emph{nonsequentiality}, proposing that they were the two essential properties of the autosegmental approach, i.e., that they were what enable an autosegmental analysis to identify discontinuous morphological units. I proceeded to argure in schapter~\ref{ch:graph} that these properties map nicely onto the definition of \emph{bipartite}, hence the connection between the autosegmental formalism and bipartite graphs.
-This mathematical view of autosegmental morphology motivates the approach I have taken in the present project. It predicts that if a ULM system is based on a bipartite graph, then it will able to identify nonconcenative morphological units due to its very bipartiteness. The results presented in chapter~\ref{ch-Results} corroborate this prediction, making Multimorph a sort of proof of concept for the computational implementation of autosegmental theory.
+This dissertation has established a bridge between linguistic theory 
+on the one hand and computation on the other. 
+It offers a novel view of autosegmental morphological theory. 
+In particular, this dissertation has presented the formalism of autosegmental theory
+as an instance of a more general graphical framework, namely 
+the bipartite graph. In so doing, it has shed light on what the autosegmental formalism is in 
+its essence as well as why autosegmental analyses work for 
+cases of nonconcatenative morphology. In chapters~\ref{ch:lit-review} and \ref{ch:graph}, I
+defined and discussed the notions of the \emph{nonlinearity} and \emph{nonsequentiality}, 
+proposing that they were the two essential properties of the autosegmental approach, 
+i.e., that they were what enable an autosegmental
+analysis to identify discontinuous morphological units. I proceeded to 
+argue in chapter~\ref{ch:graph} that these
+properties map nicely onto the definition of \emph{bipartite}, 
+hence the connection between the autosegmental formalism and bipartite graphs.
+This mathematical interpretation of autosegmental morphology 
+motivates the approach I have taken in the present project. 
+It predicts that if a ULM system is based on a bipartite graph, then 
+it will able to identify nonconcenative morphological
+units due to its very bipartiteness. The results presented in chapter~\ref{ch-Results} 
+ corroborate this prediction, making 
+ Multimorph a sort of proof of concept for the 
+ computational implementation of autosegmental 
+ theory.
 
 In chapter~{autonomous}, I argue that ULM's target of learning should be reassessed; in particular, that ULM by nature
-exists in a realm separate from both phonology and syntax/semantics, and that ULM \emph{autonomous} therefore morphological units similar to Aronoff's morphomes \citep{aronoff:1994} rather than morphemes. ULM systems such as Multimorph thus lend support to the notion of the morphome and other concepts of autonomous morphology. But in order to lend such support, the actual nature of their learning targets must be acknowledged. In chapter~7, I outline intrinsic and extrinsic evaluation procedures that are designed to evaluate the output of a system whose learning target is expressly non-morphemic. i.e., something like the morphome.
+exists in a realm separate from both phonology and syntax/semantics, and that ULM \emph{autonomous} therefore morphological units similar to Aronoff's morphomes \citep{aronoff:1994} rather than morphemes. ULM systems such as 
+Multimorph thus lend support to the notion of the morphome and other concepts of autonomous 
+morphology. But in order to lend such support, the actual nature of their learning targets must 
+be acknowledged. In chapter~7, I outline intrinsic and extrinsic evaluation procedures that are 
+designed to evaluate the output of a system whose learning target is expressly 
+non-morphemic, i.e., something like the morphome.
 
 % and moreover, that it will treat nonconcatenative and concatenative morphological units as the same essential thing, via the same mechanisms and structures. 
 

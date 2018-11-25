@@ -57,11 +57,17 @@ In this chapter, we present the results of this multi-faceted evaluation.
 %or orthographic (standard Hebrew orthography).
 
 As a final preliminary matter for this chapter, recall from chapter~\ref{}  that Multimorph begins with a single cluster ($K = 1$) 
-and incrementally adds a cluster (by splitting the worst cluster) until the global error can no longer be reduced. % it is important to note that  $K$ to denote the number of clusters produced in a given experimental trial. 
+and incrementally adds a cluster (by splitting the worst cluster) until the global error can no longer be reduced. 
+% it is important to note that  $K$ to denote the number of clusters produced in a given experimental trial. 
 In theory, Multimorph should create just enough clusters to reduce the error
-to 0. In practice, however, i.e., in the course of this dissertation's experiments, Multimorph did not actually reduce its error all the to zero in any of the experimental trials. Rather, in every experiment, Multimorph's error decreased steadily to a point greater than 0, whereupon it reversed direction, starting to 
-increase, and continued to increase until the experiment was stopped at $K = 3000$ or $4000$.  The error minimum generally occurred when $K$ was between 400 and 1200. 
-The average $K$ was 589.36 for TS (transcriptions with stress markings), 833.00 for TR (transcriptions without stress markings), and 742.92 for O (orthographic data). I thus 
+to 0. In practice, however, i.e., in the course of this dissertation's experiments,
+ Multimorph did not actually reduce its error all the to zero in any of the experimental trials. 
+ Rather, in every experiment, Multimorph's error decreased steadily to a point greater than 0, 
+ whereupon it reversed direction, starting to 
+increase, and continued to increase until the experiment was stopped at $K = 3000$ or $4000$.  
+The error minimum generally occurred when $K$ was between 400 and 1200. 
+The average $K$ was 589.36 for TS (transcriptions with stress markings), 833.0 for 
+TR (transcriptions without stress markings), and 742.92 for O (orthographic data). I thus 
 report results both at $K = 500$ and $K = 1000$.
 
 \section{Qualitative Analysis}
@@ -115,9 +121,13 @@ The value of quantitative methods lies in their systematicity and objectivity, b
 %The values of the $\mathbf{C}$ matrix are initialized randomly. Every cluster activity in the initial $I \times 1$ for the single initial cluster$\mathbf{R}$ matrix is then computed from these random $\mathbf{M}$ and $\mathbf{C}$ values. $$
 
 
-Hand-inspection reveals linguistically-interpretable clusters. For example, Figure~\ref{cl-fem} displays a group of 60 words have been randomly selected from a 1632-word cluster produced by Multimorph’s MCMM. This group is intended as an abridgment of its superset, which is too large to display here. This cluster was produced by the MCMM at the experimental settings $\delta = 2$, $s = 3$, and $K = 1000$, i.e. it was one of other 1000 clusters that the MCMM produced during this experimental run.
+Hand-inspection reveals linguistically-interpretable clusters. For example, Figure~\ref{cl-fem} displays a group 
+of 60 words have been randomly selected from a 1632-word cluster produced by Multimorph’s MCMM. This group 
+is intended as an abridgment of its superset, which is too large to display here. This cluster was produced by the 
+MCMM at the experimental settings $\delta = 2$, $s = 3$, and $K = 1000$, i.e. it was one of other 1000 clusters 
+that the MCMM produced during this experimental run.
 
-\begin{figure}[ht]
+\begin{figure}[t]
 \begin{tabbing}
 \hspace*{14ex}\= \hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex} \kill
 nafalt \> pizart \> webarakevet \> werevi\textipa{P}it \> we\textipa{P}omeret \> \textipa{P}emet\\
@@ -135,12 +145,24 @@ bakisa\textipa{P}ot \> madregot \> melu\textsubdot{k}la\textsubdot{k}ot \> melu\
 \label{fig:cl-fem}
 \end{figure}
 
-This cluster represents feminine endings discussed these words events one of the feminine endings discussed in chapter~{ch:autonomous}, section~\ref{sec:heb-example} namely, the set of suffixes that involve combinations of {-u}, {-i}, and {-t}. Notice that all of the endings in figure- at least share the t. [Here, I intend to look consult another document output by Multimorph, namely a document that those the top ten most active features in each each cluster,
-which would elucidate the contributing factors to this cluster. Perhaps, for example, the feature \texttt{t@[-1]} is (among) the most active, but perhaps others contribute significantly as well. 
+This cluster represents feminine endings discussed these words events one of the feminine endings 
+discussed in chapter~{ch:autonomous}, section~\ref{sec:heb-example} namely, the set of suffixes that 
+involve combinations of {-u}, {-i}, and {-t}. Notice that all of the endings in figure- at least share the t. 
+[Here, I intend to look consult another document output by Multimorph, namely a document that those 
+the top ten most active features in each each cluster,
+which would elucidate the contributing factors to this cluster. Perhaps, for example, 
+the feature \texttt{t@[-1]} is (among) the most active, but perhaps others contribute significantly as well. 
 
-Another cluster, consisting of 60 words randomly selected from a 426-word cluster, is displayed in figure~\ref{fig:cl-hit}. This cluster represents a \emph{binyan}, which, in Hebrew and other Semitic languages is class of verb stems that share the same vowel pattern(s) and combine with the same set of affixes. Vowel patterns are the complements of consonantal roots; i.e., a root and a pattern are interleaved (or interdigitated) to form a stem. 
-Nearly every verb in this cluster is of the \textit{hitpa`el}, which is distinguished by the CitCaCeC pattern, which undergoes some alternations due to inflectional and phonological influences. Some of these words are nouns derived from \textit{hitpa`el}, e.g., \textit{hahitna\v{s}muy\a'{o}t }, which bears the nominal suffix \textit{-ut} ($\to$ \textit{-uy} before the\textit{o}) and the fem.pl suffix \textit{-ot} 
-\begin{figure}[ht]
+Another cluster, consisting of 60 words randomly selected from a 426-word cluster, is displayed 
+in figure~\ref{fig:cl-hit}. This cluster represents a \emph{binyan}, which, in Hebrew and other Semitic 
+languages is class of verb stems that share the same vowel pattern(s) and combine with the same set 
+of affixes. Vowel patterns are the complements of consonantal roots; i.e., a root and a pattern are 
+interleaved (or interdigitated) to form a stem. 
+Nearly every verb in this cluster is of the \textit{hitpa`el}, which is distinguished by the CitCaCeC 
+pattern, which undergoes some alternations due to inflectional and phonological influences. 
+Some of these words are nouns derived from \textit{hitpa`el}, e.g., \textit{hahitna\v{s}muy\a'{o}t }, 
+which bears the nominal suffix \textit{-ut} ($\to$ \textit{-uy} before the\textit{o}) and the fem.pl suffix \textit{-ot} 
+\begin{figure}[t]
 \begin{tabbing}
 \hspace*{14ex}\= \hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex} \kill
 hamitnag\v{s}\a'{o}t \> hitgalgel\a'{a} \> hitnadn\a'{e}d \> lehistap\a'{e}r \> welehitra\textipa{P}\a'{o}t \> wemistak\a'{e}l\\
@@ -154,7 +176,8 @@ hit\textipa{Q}anyen\a'{a} \> lehit\textipa{Q}acb\a'{e}n \> mitpan\a'{e}qet \> mi
 mistak\a'{e}l \> mitno\textipa{Q}\a'{e}a\textipa{Q} \> mitpa\textipa{Q}\a'{e}l \> nitlab\a'{e}\v{s} \> titgalgel\a'{i} \> \v{s}emitkad\a'{e}r\\
 hitparq\a'{a} \> lehitqa\v{s}\a'{e}r \> mitpar\a'{e}q \> mit\textipa{Q}aq\a'{e}\v{s}et \> titxal\a'{e}q \> titya\v{s}v\a'{i}
 \end{tabbing}
-\caption{60 words randomly selected from a 426-word cluster generated by Multimorph's MCMM (at $s = 3$, and $\delta = 2$. These words are almost entirely of the \textit{hitpa`el}.}
+\caption{60 words randomly selected from a 426-word cluster generated by Multimorph's MCMM 
+(at $s = 3$, and $\delta = 2$. These words are almost entirely of the \textit{hitpa`el}.}
 \label{fig:cl-hit}
 \end{figure}
 
@@ -204,29 +227,50 @@ One of the most salient observations regarding tables~\ref{tab:intr-500} and \re
    These are substantially higher that average F-score of the TR models at $K=1000$, namely 0.308.
   %0.308 at $K=500$ and $K=1000$, respectively. 
   Two important points emerge from this observation: 
-  \begin{enumerate}
- \item \emph{The O models performed as well as the TS models and substantially better than the
+ % \begin{enumerate}
+
+\emph{First, the O models performed as well as the TS models and substantially better than the
   TR models.} 
 %There are in fact two salient facts to note here: One is that
  This is a surprising result because, as discussed in chapter~\ref{ch:experi}, 
  the orthography of Hebrew is basically a consonantal; i.e., the alphabet lacks vowels. 
  %it tends not to express vowels. 
-I would not be unreasonable to expect the O dataset to be the least efficacious dataset on the grounds 
-that it lacks the information contributed by vowels, especially since vowel patterns seem to be crucial to Hebrew's 
+It would not be unreasonable to expect the orthographic dataset to be the least efficacious of the three because it
+apparently lacks important information, namely the information contributed by vowels. Vowel patterns seem to be crucial to Hebrew's 
 root-and-pattern morphology. However, the quantitative results in tables~\ref{tab:intr-500} and \ref{tab:intr-1000} 
-show no real difference in performance between O and TS. 
+show no real difference in performance between the models trained on the orthographic words and those trained on the stressed transcriptions. 
 (Their results do differ qualitatively, however, as discussed above in section~{sec:qual}.) 
 This suggests that vowel symbols per se are not necessarily 
-helpful to the task of inducing a model of Hebrew morphology. Indeed, they appear have been more harmful then helpful in this study. It should be noted, however, that there are many possibly ways to encode vowels in features, and there could be feature formats to that encode vowels to better effect than present study's.
+helpful to the task of inducing a model of Hebrew morphology. Indeed, 
+they appear have been more harmful then helpful in this study. It should be 
+noted, however, that there are many possibly ways to encode vowels in features, and 
+there could be feature formats to that encode vowels to better effect than present study's.
 %Perhaps the way in which they were encoded in the features introduced more extraneous, confusing cont
 %learning even one that lacked stress marking, such as TR.  
-\item \emph{The TS models outperformed the TR models by a substantial margin}, indicating that transcriptions containing both stressed and unstressed vowels produce better features than stressless transcriptions. We might infer from this observation that stressed vowels are more informative/useful than non-stressed or stress-neutral vowels. It is important to note, however, that every symbol in the character sets used in this study was encoded an irreducible, atomic unicode symbol. That is, the stressed \textit{\'a}, for example, was not encoded as \textit{a} (\texttt{U+0061}) plus an acute accent mark \texttt{U+0301}, but rather as the single, unified character encoded as {\texttt{U+00E1}. There is no relationship between {\texttt{U+00E1} and \texttt{U+0061}, i.e., \textit{\'a} and \textit{a}; each is atomic and utterly distinct from the other. There is likewise no relationship between \textit{\'a} and another stressed vowel, such as \texit{\'e}, encoded as \texttt{U+00E9}, or \texxit{\`o}, encoded as \texttt{U+00F3}. Nothing in the unicode encodings that relates stressed vowels to one another as members of a stressed-vowel class, nor anything that relates as \textit{\'a} and \textit{a} as members of a single low-back vowel class.
 
-In effect, therefore, the inclusion of ``stress marking," increased the size of the alphabet from 29 to 34 symbols, which
+Second, the TS models outperformed the TR models by a substantial margin. That is, 
+the transcriptions containing both stressed and unstressed vowels engendered better features than  the
+transcriptions that lacked stress information . We might infer from this observation that stressed vowels are more informative and thus more useful than 
+stress-neutral vowels, i.e., vowels whose stress is left unspecified.  It is important to note, however, that the alphabets used in this study were consisted solely of atomic unicode characters. That is, the stressed \textit{\'a}, 
+for example, was not encoded as \textit{a} (\texttt{U+0061}) followed by the acute-accent combining character \texttt{U+0301}, but 
+rather as the single \emph{precomposed} character{\texttt{U+00E1}. The stressed (or accented) vowels \textit{\'e}, \textit{\'o}, and \textit{\'u} were similarly each represented as a single, precomposed unicode character. 
+% as precomptextit{\'e}characters 
+Such atomic symbols are incapable of expressing inter-symbol relationships. For example, \textit{\'a} (\texttt{U+00E1}) and \textit{a} (\texttt{U+0061}) are completely distinct, as (un)related as the characters \textit{a} and \textit{t} as far as the unicode is concerned.
+% this not capable of expressing relationships between characters, and thus That is, relationship between {\texttt{U+00E1} 
+%and \texttt{U+0061}, i.e., \textit{\'a} and \textit{a}; each is atomic and utterly distinct from the other. 
+There is likewise
+no relationship between the characters \texttt{U+00E1} (\textit{\'a}) and  \texttt{U+00E9} (\textit{\'e}) or any other combination of stressed-vowel precomposed characters. There is nothing in these characters represents categorical traits such as ``stressed" or ``unstressed" or ``vowel."  
+%t relates stressed vowels to stressed vowel characters \textit{\'a} and \textit{\'e}, or any other pair of stressed any otheencoded as \texttt{U+00E9}, or 
+%\textit{\'o}, encoded as \texttt{U+00F3}. Nothing in the unicode representations that relates stressed vowels to one 
+%another as members of a stressed-vowel class, nor anything that relates as \textit{\'a} and \textit{a} as members 
+%of a single low-back vowel class.
+
+In effect, therefore, to include``stress marking" was to increase the size of the alphabet from 29 to 34 atomic symbols, which
 in turn resulted in a considerable increase in the number of features, as the number features depended 
-directly on the size of the alphabet (see REF). It is interesting that this increasing in information did not 
-amount to an information overload. On the contrary, it seems to have counteracted the decrease in 
-performance that apparently resulted from the inclusion of non-stressed vowels in TR. %One might %, nor anything, for that matter, that distinguishes vowels for consonants, not in the unicode code points themselves, anyway.
+directly on the size of the alphabet, as discussed in REF. It seems noteworthy that his increase in information did not result in an
+information overload. On the contrary, it led to models that were substantially better than the models trained on the stressless transcriptions.  to have counteracted the decrease in 
+performance that apparently resulted from the inclusion of non-stressed vowels in the stressless transcriptional data. 
+%One might %, nor anything, for that matter, that distinguishes vowels for consonants, not in the unicode code points themselves, anyway.
 
 % non-stressed \[a\] was encoded as <U+0000>. That is, both were encoded as atomic unicode symbols. 
 % Put another way, \'{a} was not encoded as a plus an accent mark, but rather as a completely different symbol. 
@@ -381,54 +425,54 @@ performance that apparently resulted from the inclusion of non-stressed vowels i
 %%\end{tabular}
 %%}
 
-\begin{table}[htb]
-\centering
-\subtable[$s$ averages. \label{subtab:results-avg-s}]{
-\setlength{\extrarowheight}{6pt}
-\begin{tabular}{cc|ccccrr}
-DR & $s$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
-\multirow{ 3}{*}{TS} & 0 & 0.423 & 0.322 & 0.478 & 0.371 & 11639.0 & 154.7 \\
-& 2 & 0.596 & 0.303 & 0.537 & 0.384 & 12087.7 & 220.7 \\
-& 4 & 0.570 & 0.249 & 0.557 & 0.343 & 12166.3 & 274.0 \\
-& 6 & 0.418 & 0.270 & 0.548 & 0.362 & 11972.3 & 75.7 \\ \cline{2-8}
-& Avg: & 0.502 & 0.286 & 0.530 & 0.365 & 11966.3 & 181.3 \\ \hline
-\multirow{ 3}{*}{TR} & 0 & 0.579 & 0.266 & 0.471 & 0.319 & 11940.3 & 227.7 \\
-& 2 & 0.402 & 0.219 & 0.604 & 0.313 & 12187.7 & 148.0 \\
-& 4 & 0.403 & 0.209 & 0.621 & 0.313 & 12170.3 & 176.7 \\
-& 6 & 0.338 & 0.191 & 0.656 & 0.296 & 12172.0 & 116.0 \\ \cline{2-8}
-& Avg: & 0.430 & 0.221 & 0.588 & 0.310 & 12117.6 & 167.1 \\ \hline
-\multirow{ 3}{*}{O} & 0 & 0.436 & 0.256 & 0.260 & 0.248 & 11040.0 & 296.3 \\
-& 2 & 0.572 & 0.360 & 0.649 & 0.462 & 4488.7 & 349.7 \\
-& 4 & 0.395 & 0.272 & 0.639 & 0.377 & 3876.9 & 138.2 \\
-& 6 & 0.367 & 0.268 & 0.651 & 0.379 & 3445.0 & 113.0 \\ \cline{2-8}
-& Avg: & 0.442 & 0.289 & 0.550 & 0.366 & 5712.6 & 224.3 \\ \hline
-\end{tabular}
-}
-\bigskip
-\subtable[$\delta$ averages. \label{subtab:results-avg-delta}]{
-\setlength{\extrarowheight}{6pt}
-\begin{tabular}{cc|ccccrr}
-DR & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
-\multirow{ 3}{*}{TS} & 1 & 0.639 & 0.321 & 0.512 & 0.382 & 11988.3 & 290.8 \\
-& 2 & 0.426 & 0.273 & 0.548 & 0.361 & 12058.0 & 148.5 \\
-& 3 & 0.440 & 0.264 & 0.530 & 0.351 & 11852.8 & 104.5 \\ \cline{2-8}
-& Avg: & 0.502 & 0.286 & 0.530 & 0.365 & 11966.3 & 181.3 \\ \hline
-\multirow{ 3}{*}{TR} & 1 & 0.387 & 0.243 & 0.551 & 0.319 & 12141.3 & 150.3 \\
-& 2 & 0.474 & 0.196 & 0.633 & 0.299 & 12143.8 & 201.8 \\
-& 3 & 0.373 & 0.214 & 0.610 & 0.310 & 12162.3 & 139.3 \\ \cline{2-8}
-& Avg: & 0.411 & 0.217 & 0.598 & 0.309 & 12149.1 & 163.8 \\ \hline
-\multirow{ 3}{*}{O} & 1 & 0.378 & 0.333 & 0.509 & 0.384 & 5586.0 & 219.0 \\
-& 2 & 0.487 & 0.290 & 0.559 & 0.375 & 5621.3 & 224.0 \\
-& 3 & 0.470 & 0.261 & 0.592 & 0.359 & 5606.3 & 201.8 \\ \cline{2-8}
-& Avg: & 0.445 & 0.295 & 0.553 & 0.373 & 5604.5 & 214.9 \\  \hline
-\end{tabular}
-}
-\caption{Marginal averages, $K=500$: Table~\ref{subtab:results-avg-s} shows the average scores for each $s$ value computed over the $\delta$ values. Table~\ref{subtab:results-avg-delta} shows $\delta$ averaged over the $s$ values.} 
-        %$s = \{0,2,4,6\}$. For example, $s = 2$ as a category label stands for 
-%the pairs $(s=2,\delta=1)$, $(s=2,\delta=2)$, and $(s=2,\delta=3)$}.
-%1000$. In the subtable headers, $s$ and $\delta$ are the parameters for positional and precedence features, respectively. \textit{BP} and \textit{BR} stand for ``BCubed Precision" and ``BCubed Recall,'' respectively, and \textit{Cov} is the \textit{coverage}, i.e., the number of words that are active members of at least one cluster} %(Second Pass: Cluster-membership threshold set at 0.8 instead of 0.5.)}
-\label{tab:marginal-avgs-500}
-\end{table}
+%\begin{table}[htb]
+%\centering
+%\subtable[$s$ averages. \label{subtab:results-avg-s}]{
+%\setlength{\extrarowheight}{6pt}
+%\begin{tabular}{cc|ccccrr}
+%DR & $s$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
+%\multirow{ 3}{*}{TS} & 0 & 0.423 & 0.322 & 0.478 & 0.371 & 11639.0 & 154.7 \\
+%& 2 & 0.596 & 0.303 & 0.537 & 0.384 & 12087.7 & 220.7 \\
+%& 4 & 0.570 & 0.249 & 0.557 & 0.343 & 12166.3 & 274.0 \\
+%& 6 & 0.418 & 0.270 & 0.548 & 0.362 & 11972.3 & 75.7 \\ \cline{2-8}
+%& Avg: & 0.502 & 0.286 & 0.530 & 0.365 & 11966.3 & 181.3 \\ \hline
+%\multirow{ 3}{*}{TR} & 0 & 0.579 & 0.266 & 0.471 & 0.319 & 11940.3 & 227.7 \\
+%& 2 & 0.402 & 0.219 & 0.604 & 0.313 & 12187.7 & 148.0 \\
+%& 4 & 0.403 & 0.209 & 0.621 & 0.313 & 12170.3 & 176.7 \\
+%& 6 & 0.338 & 0.191 & 0.656 & 0.296 & 12172.0 & 116.0 \\ \cline{2-8}
+%& Avg: & 0.430 & 0.221 & 0.588 & 0.310 & 12117.6 & 167.1 \\ \hline
+%\multirow{ 3}{*}{O} & 0 & 0.436 & 0.256 & 0.260 & 0.248 & 11040.0 & 296.3 \\
+%& 2 & 0.572 & 0.360 & 0.649 & 0.462 & 4488.7 & 349.7 \\
+%& 4 & 0.395 & 0.272 & 0.639 & 0.377 & 3876.9 & 138.2 \\
+%& 6 & 0.367 & 0.268 & 0.651 & 0.379 & 3445.0 & 113.0 \\ \cline{2-8}
+%& Avg: & 0.442 & 0.289 & 0.550 & 0.366 & 5712.6 & 224.3 \\ \hline
+%\end{tabular}
+%}
+%\bigskip
+%\subtable[$\delta$ averages. \label{subtab:results-avg-delta}]{
+%\setlength{\extrarowheight}{6pt}
+%\begin{tabular}{cc|ccccrr}
+%DR & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
+%\multirow{ 3}{*}{TS} & 1 & 0.639 & 0.321 & 0.512 & 0.382 & 11988.3 & 290.8 \\
+%& 2 & 0.426 & 0.273 & 0.548 & 0.361 & 12058.0 & 148.5 \\
+%& 3 & 0.440 & 0.264 & 0.530 & 0.351 & 11852.8 & 104.5 \\ \cline{2-8}
+%& Avg: & 0.502 & 0.286 & 0.530 & 0.365 & 11966.3 & 181.3 \\ \hline
+%\multirow{ 3}{*}{TR} & 1 & 0.387 & 0.243 & 0.551 & 0.319 & 12141.3 & 150.3 \\
+%& 2 & 0.474 & 0.196 & 0.633 & 0.299 & 12143.8 & 201.8 \\
+%& 3 & 0.373 & 0.214 & 0.610 & 0.310 & 12162.3 & 139.3 \\ \cline{2-8}
+%& Avg: & 0.411 & 0.217 & 0.598 & 0.309 & 12149.1 & 163.8 \\ \hline
+%\multirow{ 3}{*}{O} & 1 & 0.378 & 0.333 & 0.509 & 0.384 & 5586.0 & 219.0 \\
+%& 2 & 0.487 & 0.290 & 0.559 & 0.375 & 5621.3 & 224.0 \\
+%& 3 & 0.470 & 0.261 & 0.592 & 0.359 & 5606.3 & 201.8 \\ \cline{2-8}
+%& Avg: & 0.445 & 0.295 & 0.553 & 0.373 & 5604.5 & 214.9 \\  \hline
+%\end{tabular}
+%}
+%\caption{Marginal averages, $K=500$: Table~\ref{subtab:results-avg-s} shows the average scores for each $s$ value computed over the $\delta$ values. Table~\ref{subtab:results-avg-delta} shows $\delta$ averaged over the $s$ values.} 
+%        %$s = \{0,2,4,6\}$. For example, $s = 2$ as a category label stands for 
+%%the pairs $(s=2,\delta=1)$, $(s=2,\delta=2)$, and $(s=2,\delta=3)$}.
+%%1000$. In the subtable headers, $s$ and $\delta$ are the parameters for positional and precedence features, respectively. \textit{BP} and \textit{BR} stand for ``BCubed Precision" and ``BCubed Recall,'' respectively, and \textit{Cov} is the \textit{coverage}, i.e., the number of words that are active members of at least one cluster} %(Second Pass: Cluster-membership threshold set at 0.8 instead of 0.5.)}
+%\label{tab:marginal-avgs-500}
+%\end{table}
 
 %\begin{table}[htb]
 %\centering
@@ -472,7 +516,7 @@ $s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 6 & 1 & 0.455 & 0.323 & 0.514 & 0.397 & 12101 & 82 \\%500 %TS %6_1_K6000_N12271_basic_180616_13-06_k-500
 6 & 2 & 0.494 & 0.336 & 0.510 & 0.405 & 11958 & 64 \\%500 %TS %6_2_K6000_N12272_basic_180620_02-37_k-500
 6 & 3 & 0.529 & 0.345 & 0.474 & 0.399 & 11858 & 76 \\ \hline \hline%500 %TS %6_3_K6000_N12271_basic_180621_07-59_k-500
- & \textit{Avgs:} & 0.518 & 0.350 & 0.480 & 0.399 & 11966 & 117 \\
+ \multicolumn{2}{r|}{\textit{Avgs:}} & 0.518 & 0.350 & 0.480 & 0.399 & 11966 & 117 \\
 \end{tabular}
 }
 \subtable[Transcriptions, no stress marking (TR), $K=500$ \label{subtab:intr-TR-500}]{
@@ -491,7 +535,7 @@ $s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 6 & 1 & 0.429 & 0.236 & 0.639 & 0.345 & 12191 & 130 \\  %500 %TR %6_1_K6000_N12221_basic_180616_12-58_k-500
 6 & 2 & 0.445 & 0.263 & 0.594 & 0.364 & 12153 & 102 \\
 6 & 3 & 0.432 & 0.268 & 0.576 & 0.366 & 12078 & 66 \\ \hline \hline %500 %TR %6_3_K6000_N12222_basic_180621_01-59_k-500
- & \textit{Avgs:} & 0.446 & 0.276 & 0.547 & 0.359 & 12110 & 105 \\
+ \multicolumn{2}{r|}{\textit{Avgs:}} & 0.446 & 0.276 & 0.547 & 0.359 & 12110 & 105 \\
 \end{tabular}
 }
 \subtable[Orthographic data (O), $K=500$ \label{subtab:intr-O-500}]{
@@ -510,7 +554,7 @@ $s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 3 & 1 & 0.371 & 0.330 & 0.575 & 0.419 & 3447 & 78 \\%500 %O %3_1_K6000_N11166_basic_180727_03-42_k-500
 3 & 2 & 0.396 & 0.303 & 0.582 & 0.399 & 3444 & 113 \\%500 %O %3_2_K6000_N11166_basic_180723_13-19_k-500
 3 & 3 & 0.436 & 0.280 & 0.603 & 0.382 & 3444 & 142 \\ \hline \hline %500 %O %3_3_K6000_N11166_basic_180727_16-15_k-500
- & \textit{Avgs:}& 0.439 & 0.334 & 0.495 & 0.386 & 5605 & 168 \\
+ \multicolumn{2}{r|}{\textit{Avgs:}} & 0.439 & 0.334 & 0.495 & 0.386 & 5605 & 168 \\
 \end{tabular}
 }
 \caption{Intrinsic evaluation results at $K = 500$. In the table headers, $s$ and $\delta$ are the parameters for positional and precedence features, respectively. \textit{BP} and \textit{BR} stand for BCubed Precision and BCubed Recall, respectively, and \textit{Cov} is the \textit{coverage}, i.e., the number of words that are active members of at least one cluster.}
@@ -537,7 +581,7 @@ $s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 6 & 1 & 0.648 & 0.295 & 0.552 & 0.385 & 12139 & 995 \\%1000 %TS %6_1_K6000_N12271_basic_180616_13-06_k-1000
 6 & 2 & 0.655 & 0.333 & 0.499 & 0.400 & 11908 & 1000 \\%1000 %TS %6_2_K6000_N12272_basic_180620_02-37_k-1000
 6 & 3 & 0.703 & 0.333 & 0.497 & 0.399 & 11877 & 999 \\ \hline \hline%1000 %TS %6_3_K1000_N12272_basic_181104_07-21_k-1000
- & \textit{Avgs:} & 0.535 & 0.351 & 0.480 & 0.399 & 11983 & 605 \\
+ \multicolumn{2}{r|}{\textit{Avgs:}} & 0.535 & 0.351 & 0.480 & 0.399 & 11983 & 605 \\
 \end{tabular}
 }
 \subtable[Transcriptions, no stress marking (TR), $K=1000$ \label{subtab:intr-TR-1000}]{
@@ -556,7 +600,7 @@ $s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 6 & 1 & 0.705 & 0.234 & 0.643 & 0.343 & 12189 & 886 \\%1000 %TR %6_1_K6000_N12221_basic_180616_12-58_k-1000
 6 & 2 & 0.431 & 0.253 & 0.597 & 0.356 & 12152 & 114 \\%1000 %TR %6_2_K6000_N12222_basic_180626_17-48_k-1000
 6 & 3 & 0.446 & 0.271 & 0.569 & 0.367 & 12082 & 72 \\ \hline \hline%1000 %TR %6_3_K6000_N12222_basic_180621_01-59_k-1000
- & \textit{Avgs:} & 0.563 & 0.270 & 0.546 & 0.354 & 12133 & 432 \\
+ \multicolumn{2}{r|}{\textit{Avgs:}} & 0.563 & 0.270 & 0.546 & 0.354 & 12133 & 432 \\
 \end{tabular}
 }
 
@@ -576,148 +620,148 @@ $s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 3 & 1 & 0.361 & 0.325 & 0.596 & 0.421 & 3446 & 385 \\
 3 & 2 & 0.389 & 0.317 & 0.617 & 0.418 & 3444 & 101 \\%1000 %O %3_2_K6000_N11166_basic_180727_16-16_k-1000
 3 & 3 & 0.418 & 0.271 & 0.609 & 0.375 & 3443 & 155 \\ \hline \hline%1000 %O %3_3_K6000_N11166_basic_180727_16-15_k-1000
- & \textit{Avgs:} & 0.439 & 0.331 & 0.502 & 0.386 & 5613 & 601 \\
+ \multicolumn{2}{r|}{\textit{Avgs:}} & 0.439 & 0.331 & 0.502 & 0.386 & 5613 & 601 \\
 \end{tabular}
 }
 \caption{Intrinsic evaluation results at $K = 1000$. In the table headers, $s$ and $\delta$ are the parameters for positional and precedence features, respectively. \textit{BP} and \textit{BR} stand for BCubed Precision and BCubed Recall, respectively, and \textit{Cov} is the \textit{coverage}, i.e., the number of words that are active members of at least one cluster.}
 \label{tab:intr-1000}
 \end{table}
 
-
-\begin{table}
-\centering
-\subtable[Transcriptions with stress (TS), $K=500$ \label{subtab:intr-TS-500}]{
-\setlength{\extrarowheight}{6pt}
-\begin{tabular}{cc|ccccrr}
-$s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
-0 & 1 & 0.382 & 0.422 & 0.404 & 0.413 & 11585 & 89 \\
-0 & 2 & 0.464 & 0.265 & 0.558 & 0.347 & 11984 & 300 \\
-0 & 3 & 0.423 & 0.280 & 0.473 & 0.352 & 11348 & 75 \\ \hline
-2 & 1 & 0.902 & 0.363 & 0.490 & 0.417 & 12103 & 490 \\
-2 & 2 & 0.442 & 0.293 & 0.550 & 0.382 & 12076 & 76 \\
-2 & 3 & 0.443 & 0.254 & 0.570 & 0.352 & 12084 & 96 \\ \hline
-4 & 1 & 0.896 & 0.238 & 0.595 & 0.340 & 12164 & 500 \\
-4 & 2 & 0.392 & 0.262 & 0.525 & 0.350 & 12214 & 154 \\
-4 & 3 & 0.421 & 0.246 & 0.550 & 0.338 & 12121 & 168 \\ \hline
-6 & 1 & 0.375 & 0.261 & 0.559 & 0.356 & 12101 & 84 \\
-6 & 2 & 0.406 & 0.272 & 0.559 & 0.366 & 11958 & 64 \\
-6 & 3 & 0.474 & 0.277 & 0.525 & 0.363 & 11858 & 79 \\  \hline\hline
-\multicolumn{2}{c|}{\textit{Avgs:}} & 0.502 & 0.286 & 0.530 & 0.365 & 11966 & 181 \\
-\end{tabular}
-}
-\subtable[Transcriptions, no stress marking (TR), $K=500$ \label{subtab:intr-TR-500}]{
-\setlength{\extrarowheight}{6pt}
-\begin{tabular}{cc|ccccrr}
-$s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
-0 & 1 & 0.407 & 0.327 & 0.389 & 0.351 & 11994 & 110 \\
-0 & 2 & 0.476 & 0.284 & 0.416 & 0.319 & 11748 & 76 \\
-0 & 3 & 0.853 & 0.187 & 0.608 & 0.286 & 12079 & 497 \\ \hline
-2 & 1 & 0.489 & 0.267 & 0.508 & 0.341 & 12182 & 227 \\
-2 & 2 & 0.370 & 0.209 & 0.633 & 0.314 & 12187 & 111 \\
-2 & 3 & 0.346 & 0.180 & 0.670 & 0.284 & 12194 & 106 \\ \hline
-4 & 1 & 0.324 & 0.199 & 0.634 & 0.302 & 12198 & 134 \\
-4 & 2 & 0.537 & 0.217 & 0.613 & 0.320 & 12164 & 294 \\
-4 & 3 & 0.348 & 0.212 & 0.615 & 0.316 & 12149 & 102 \\ \hline
-6 & 1 & 0.326 & 0.179 & 0.673 & 0.283 & 12191 & 130 \\
-6 & 2 & 0.350 & 0.203 & 0.638 & 0.308 & 12153 & 102 \\
-6 & 3 & 0.352 & 0.210 & 0.625 & 0.314 & 12078 & 66 \\ \hline\hline
-\multicolumn{2}{c|}{\textit{Avgs:}} & 0.432 & 0.223 & 0.585 & 0.312 & 12110 & 163 \\
-\end{tabular}
-}
-\subtable[Orthographic data (O), $K=500$ \label{subtab:intr-O-500}]{
-\setlength{\extrarowheight}{6pt}
-\begin{tabular}{cc|ccccrr}
-$s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
-0 & 1 & 0.374 & 0.297 & 0.163 & 0.211 & 10962 & 230 \\
-0 & 2 & 0.354 & 0.241 & 0.266 & 0.253 & 11107 & 293 \\
-0 & 3 & 0.580 & 0.231 & 0.352 & 0.279 & 11051 & 366 \\ \hline
-1 & 1 & 0.431 & 0.413 & 0.639 & 0.502 & 4488 & 500 \\
-1 & 2 & 0.824 & 0.358 & 0.649 & 0.461 & 4493 & 392 \\
-1 & 3 & 0.461 & 0.310 & 0.660 & 0.422 & 4485 & 157 \\ \hline
-2 & 1 & 0.380 & 0.328 & 0.593 & 0.422 & 3447 & 67 \\
-2 & 2 & 0.409 & 0.294 & 0.673 & 0.409 & 3441 & 98 \\
-2 & 3 & 0.426 & 0.261 & 0.690 & 0.378 & 3445 & 137 \\ \hline
-3 & 1 & 0.328 & 0.293 & 0.641 & 0.402 & 3447 & 79 \\
-3 & 2 & 0.360 & 0.267 & 0.648 & 0.378 & 3444 & 113 \\
-3 & 3 & 0.414 & 0.243 & 0.665 & 0.356 & 3444 & 147 \\ \hline\hline
-\multicolumn{2}{c|}{\textit{Avgs:}}  & 0.445 & 0.295 & 0.553 & 0.373 & 5605 & 215 \\
-\end{tabular}
-}
-\caption{Intrinsic evaluation results at $K = 500$. In the table headers, $s$ and $\delta$ are the parameters for positional and precedence features, respectively. \textit{BP} and \textit{BR} stand for BCubed Precision and BCubed Recall, respectively, and \textit{Cov} is the \textit{coverage}, i.e., the number of words that are active members of at least one cluster.}
-\label{tab:intr-500}
-\end{table}
-
-\begin{table}
-\small
-\centering
-\subtable[Transcriptions with stress (TS), $K=1000$ \label{subtab:intr-TS-1000}]{
-\setlength{\extrarowheight}{6pt}
-\begin{tabular}{cc|ccccrr}
-$s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
-0 & 1 & 0.896 & 0.420 & 0.404 & 0.412 & 11613 & 547 \\%1000 %TS
-0 & 2 & 0.861 & 0.331 & 0.483 & 0.393 & 11759 & 455 \\%1000 %TS
-0 & 3 & 0.370 & 0.277 & 0.469 & 0.348 & 11691 & 1000 \\ \hline%1000 %TS
-2 & 1 & 0.641 & 0.353 & 0.496 & 0.413 & 12144 & 1000 \\%1000 %TS
-2 & 2 & 0.458 & 0.290 & 0.559 & 0.381 & 12103 & 1000 \\%1000 %TS
-2 & 3 & 0.899 & 0.253 & 0.570 & 0.350 & 12111 & 617 \\ \hline%1000 %TS
-4 & 1 & 0.917 & 0.236 & 0.585 & 0.336 & 12193 & 803 \\ %1000 %TS
-4 & 2 & 0.624 & 0.301 & 0.501 & 0.376 & 12011 & 995 \\%1000 %TS
-4 & 3 & 0.410 & 0.215 & 0.572 & 0.313 & 12242 & 306 \\ \hline%1000 %TS
-6 & 1 & 0.639 & 0.234 & 0.603 & 0.337 & 12139 & 1000 \\%1000 %TS
-6 & 2 & 0.649 & 0.268 & 0.549 & 0.360 & 11908 & 1000 \\%1000 %TS
-6 & 3 & 0.697 & 0.268 & 0.548 & 0.360 & 11877 & 1000 \\ \hline\hline%1000 %TS
-\multicolumn{2}{r|}{\textit{Avgs:}}  & 0.672 & 0.287 & 0.528 & 0.365 & 11983 & 810\\
-\end{tabular}
-}
-\subtable[Transcriptions, no stress marking (TR), $K=1000$ \label{subtab:intr-TR-1000}]{
-\setlength{\extrarowheight}{6pt}
-\begin{tabular}{cc|ccccrr}
-$s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
-0 & 1 & 0.554 & 0.328 & 0.363 & 0.339 & 11936 & 537 \\%1000 %TR
-0 & 2 & 0.606 & 0.240 & 0.552 & 0.335 & 12041 & 1000 \\%1000 %TR
-0 & 3 & 0.550 & 0.176 & 0.633 & 0.275 & 12168 & 1000 \\ \hline%1000 %TR
-2 & 1 & 0.773 & 0.266 & 0.576 & 0.364 & 12205 & 1000 \\%1000 %TR
-2 & 2 & 0.905 & 0.204 & 0.632 & 0.308 & 12202 & 908 \\%1000 %TR
-2 & 3 & 0.570 & 0.264 & 0.326 & 0.291 & 12111 & 79 \\ \hline %1000 %TR
-4 & 1 & 0.904 & 0.197 & 0.635 & 0.300 & 12203 & 996 \\%1000 %TR
-4 & 2 & 0.340 & 0.198 & 0.648 & 0.303 & 12177 & 109 \\%1000 %TR
-4 & 3 & 0.696 & 0.180 & 0.674 & 0.284 & 12136 & 922 \\ \hline%1000 %TR
-6 & 1 & 0.691 & 0.177 & 0.677 & 0.281 & 12189 & 1000 \\%1000 %TR
-6 & 2 & 0.909 & 0.192 & 0.629 & 0.294 & 12152 & 841 \\%1000 %TR
-6 & 3 & 0.933 & 0.213 & 0.618 & 0.317 & 12082 & 674 \\ \hline\hline%1000 %TR
-%\multicolumn{2}{r|}{\textit{\small{Avgs:}}}  & 0.703 & 0.220 & 0.580 & 0.308 & 12133.5 & 755.5 \\
-\multicolumn{2}{r|}{\textit{Avgs:}}  & 0.703 & 0.220 & 0.580 & 0.308 & 12134 & 756 \\
-\end{tabular}
-}
-\subtable[Orthographic data (O), $K=1000$ \label{subtab:intr-O-1000}]{
-\setlength{\extrarowheight}{6pt}
-\begin{tabular}{cc|ccccrr}
-$s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
-0 & 1 & 0.333 & 0.296 & 0.163 & 0.210 & 11000 & 1000 \\%1000 %O
-0 & 2 & 0.429 & 0.241 & 0.267 & 0.253 & 11113 & 1000 \\%1000 %O
-0 & 3 & 0.250 & 0.228 & 0.354 & 0.277 & 11098 & 1000 \\ \hline %1000 %O
-1 & 1 & 0.325 & 0.406 & 0.642 & 0.497 & 4490 & 1000 \\%1000 %O
-1 & 2 & 0.378 & 0.350 & 0.649 & 0.455 & 4493 & 1000 \\%1000 %O
-1 & 3 & 0.442 & 0.303 & 0.667 & 0.417 & 4489 & 999 \\ \hline %1000 %O
-2 & 1 & 0.278 & 0.320 & 0.604 & 0.418 & 3447 & 1000 \\ %1000 %O
-2 & 2 & 0.599 & 0.292 & 0.672 & 0.407 & 3444 & 1000 \\%1000 %O
-2 & 3 & 0.415 & 0.257 & 0.692 & 0.375 & 3446 & 139 \\ \hline%1000 %O
-%3 & 1 & 0.328  & 0.283 & 0.652 & 0.395 & 3447 & 95 \\%1000 %O
-%3 & 1 & 0.375 & 0.293 & 0.673 & 0.409 & 3444 & 1000 \\%1000 %O
-3 & 1 & 0.352 & 0.288 & 0.663 & 0.402 & 3446 & 548 \\
-3 & 2 & 0.362 & 0.280 & 0.687 & 0.398 & 3444 & 104 \\
-3 & 3 & 0.393 & 0.234 & 0.667 & 0.346 & 3443 & 159 \\ \hline\hline
-\multicolumn{2}{r|}{\textit{Avgs:}} & 0.380 & 0.291 & 0.561 & 0.371 & 5613 & 746 \\
-%\multicolumn{2}{r|}{\textit{\scriptsize{Averages:}}} & 0.380 & 0.291 & 0.561 & 0.371 & 5612.8 & 745.8 \\
-%3 & 1 & 0.372 & 0.288 & 0.663 & 0.409 & 3445.5 & 1000 \\%1000 %O
-%3 & 2 & 0.362 & 0.280 & 0.687 & 0.398 & 3444 & 104 \\%1000 %O
-%3 & 3 & 0.393 & 0.234 & 0.667 & 0.346 & 3443 & 159 \\%1000 %O
-%\multicolumn{2}{c|}{\textit{Avg:}} 0.377 & 0.291 & 0.568 & 0.374 & 5446.0 & 730.5 \\
- \end{tabular}
-}
- \caption{Intrinsic evaluation results at $K = 1000$.}
- \label{tab:intr-1000}
-\end{table}
+%
+%\begin{table}
+%\centering
+%\subtable[Transcriptions with stress (TS), $K=500$ \label{subtab:intr-TS-500}]{
+%\setlength{\extrarowheight}{6pt}
+%\begin{tabular}{cc|ccccrr}
+%$s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
+%0 & 1 & 0.382 & 0.422 & 0.404 & 0.413 & 11585 & 89 \\
+%0 & 2 & 0.464 & 0.265 & 0.558 & 0.347 & 11984 & 300 \\
+%0 & 3 & 0.423 & 0.280 & 0.473 & 0.352 & 11348 & 75 \\ \hline
+%2 & 1 & 0.902 & 0.363 & 0.490 & 0.417 & 12103 & 490 \\
+%2 & 2 & 0.442 & 0.293 & 0.550 & 0.382 & 12076 & 76 \\
+%2 & 3 & 0.443 & 0.254 & 0.570 & 0.352 & 12084 & 96 \\ \hline
+%4 & 1 & 0.896 & 0.238 & 0.595 & 0.340 & 12164 & 500 \\
+%4 & 2 & 0.392 & 0.262 & 0.525 & 0.350 & 12214 & 154 \\
+%4 & 3 & 0.421 & 0.246 & 0.550 & 0.338 & 12121 & 168 \\ \hline
+%6 & 1 & 0.375 & 0.261 & 0.559 & 0.356 & 12101 & 84 \\
+%6 & 2 & 0.406 & 0.272 & 0.559 & 0.366 & 11958 & 64 \\
+%6 & 3 & 0.474 & 0.277 & 0.525 & 0.363 & 11858 & 79 \\  \hline\hline
+%\multicolumn{2}{c|}{\textit{Avgs:}} & 0.502 & 0.286 & 0.530 & 0.365 & 11966 & 181 \\
+%\end{tabular}
+%}
+%\subtable[Transcriptions, no stress marking (TR), $K=500$ \label{subtab:intr-TR-500}]{
+%\setlength{\extrarowheight}{6pt}
+%\begin{tabular}{cc|ccccrr}
+%$s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
+%0 & 1 & 0.407 & 0.327 & 0.389 & 0.351 & 11994 & 110 \\
+%0 & 2 & 0.476 & 0.284 & 0.416 & 0.319 & 11748 & 76 \\
+%0 & 3 & 0.853 & 0.187 & 0.608 & 0.286 & 12079 & 497 \\ \hline
+%2 & 1 & 0.489 & 0.267 & 0.508 & 0.341 & 12182 & 227 \\
+%2 & 2 & 0.370 & 0.209 & 0.633 & 0.314 & 12187 & 111 \\
+%2 & 3 & 0.346 & 0.180 & 0.670 & 0.284 & 12194 & 106 \\ \hline
+%4 & 1 & 0.324 & 0.199 & 0.634 & 0.302 & 12198 & 134 \\
+%4 & 2 & 0.537 & 0.217 & 0.613 & 0.320 & 12164 & 294 \\
+%4 & 3 & 0.348 & 0.212 & 0.615 & 0.316 & 12149 & 102 \\ \hline
+%6 & 1 & 0.326 & 0.179 & 0.673 & 0.283 & 12191 & 130 \\
+%6 & 2 & 0.350 & 0.203 & 0.638 & 0.308 & 12153 & 102 \\
+%6 & 3 & 0.352 & 0.210 & 0.625 & 0.314 & 12078 & 66 \\ \hline\hline
+%\multicolumn{2}{c|}{\textit{Avgs:}} & 0.432 & 0.223 & 0.585 & 0.312 & 12110 & 163 \\
+%\end{tabular}
+%}
+%\subtable[Orthographic data (O), $K=500$ \label{subtab:intr-O-500}]{
+%\setlength{\extrarowheight}{6pt}
+%\begin{tabular}{cc|ccccrr}
+%$s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
+%0 & 1 & 0.374 & 0.297 & 0.163 & 0.211 & 10962 & 230 \\
+%0 & 2 & 0.354 & 0.241 & 0.266 & 0.253 & 11107 & 293 \\
+%0 & 3 & 0.580 & 0.231 & 0.352 & 0.279 & 11051 & 366 \\ \hline
+%1 & 1 & 0.431 & 0.413 & 0.639 & 0.502 & 4488 & 500 \\
+%1 & 2 & 0.824 & 0.358 & 0.649 & 0.461 & 4493 & 392 \\
+%1 & 3 & 0.461 & 0.310 & 0.660 & 0.422 & 4485 & 157 \\ \hline
+%2 & 1 & 0.380 & 0.328 & 0.593 & 0.422 & 3447 & 67 \\
+%2 & 2 & 0.409 & 0.294 & 0.673 & 0.409 & 3441 & 98 \\
+%2 & 3 & 0.426 & 0.261 & 0.690 & 0.378 & 3445 & 137 \\ \hline
+%3 & 1 & 0.328 & 0.293 & 0.641 & 0.402 & 3447 & 79 \\
+%3 & 2 & 0.360 & 0.267 & 0.648 & 0.378 & 3444 & 113 \\
+%3 & 3 & 0.414 & 0.243 & 0.665 & 0.356 & 3444 & 147 \\ \hline\hline
+%\multicolumn{2}{c|}{\textit{Avgs:}}  & 0.445 & 0.295 & 0.553 & 0.373 & 5605 & 215 \\
+%\end{tabular}
+%}
+%\caption{Intrinsic evaluation results at $K = 500$. In the table headers, $s$ and $\delta$ are the parameters for positional and precedence features, respectively. \textit{BP} and \textit{BR} stand for BCubed Precision and BCubed Recall, respectively, and \textit{Cov} is the \textit{coverage}, i.e., the number of words that are active members of at least one cluster.}
+%\label{tab:intr-500}
+%\end{table}
+%
+%\begin{table}
+%\small
+%\centering
+%\subtable[Transcriptions with stress (TS), $K=1000$ \label{subtab:intr-TS-1000}]{
+%\setlength{\extrarowheight}{6pt}
+%\begin{tabular}{cc|ccccrr}
+%$s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
+%0 & 1 & 0.896 & 0.420 & 0.404 & 0.412 & 11613 & 547 \\%1000 %TS
+%0 & 2 & 0.861 & 0.331 & 0.483 & 0.393 & 11759 & 455 \\%1000 %TS
+%0 & 3 & 0.370 & 0.277 & 0.469 & 0.348 & 11691 & 1000 \\ \hline%1000 %TS
+%2 & 1 & 0.641 & 0.353 & 0.496 & 0.413 & 12144 & 1000 \\%1000 %TS
+%2 & 2 & 0.458 & 0.290 & 0.559 & 0.381 & 12103 & 1000 \\%1000 %TS
+%2 & 3 & 0.899 & 0.253 & 0.570 & 0.350 & 12111 & 617 \\ \hline%1000 %TS
+%4 & 1 & 0.917 & 0.236 & 0.585 & 0.336 & 12193 & 803 \\ %1000 %TS
+%4 & 2 & 0.624 & 0.301 & 0.501 & 0.376 & 12011 & 995 \\%1000 %TS
+%4 & 3 & 0.410 & 0.215 & 0.572 & 0.313 & 12242 & 306 \\ \hline%1000 %TS
+%6 & 1 & 0.639 & 0.234 & 0.603 & 0.337 & 12139 & 1000 \\%1000 %TS
+%6 & 2 & 0.649 & 0.268 & 0.549 & 0.360 & 11908 & 1000 \\%1000 %TS
+%6 & 3 & 0.697 & 0.268 & 0.548 & 0.360 & 11877 & 1000 \\ \hline\hline%1000 %TS
+%\multicolumn{2}{r|}{\textit{Avgs:}}  & 0.672 & 0.287 & 0.528 & 0.365 & 11983 & 810\\
+%\end{tabular}
+%}
+%\subtable[Transcriptions, no stress marking (TR), $K=1000$ \label{subtab:intr-TR-1000}]{
+%\setlength{\extrarowheight}{6pt}
+%\begin{tabular}{cc|ccccrr}
+%$s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
+%0 & 1 & 0.554 & 0.328 & 0.363 & 0.339 & 11936 & 537 \\%1000 %TR
+%0 & 2 & 0.606 & 0.240 & 0.552 & 0.335 & 12041 & 1000 \\%1000 %TR
+%0 & 3 & 0.550 & 0.176 & 0.633 & 0.275 & 12168 & 1000 \\ \hline%1000 %TR
+%2 & 1 & 0.773 & 0.266 & 0.576 & 0.364 & 12205 & 1000 \\%1000 %TR
+%2 & 2 & 0.905 & 0.204 & 0.632 & 0.308 & 12202 & 908 \\%1000 %TR
+%2 & 3 & 0.570 & 0.264 & 0.326 & 0.291 & 12111 & 79 \\ \hline %1000 %TR
+%4 & 1 & 0.904 & 0.197 & 0.635 & 0.300 & 12203 & 996 \\%1000 %TR
+%4 & 2 & 0.340 & 0.198 & 0.648 & 0.303 & 12177 & 109 \\%1000 %TR
+%4 & 3 & 0.696 & 0.180 & 0.674 & 0.284 & 12136 & 922 \\ \hline%1000 %TR
+%6 & 1 & 0.691 & 0.177 & 0.677 & 0.281 & 12189 & 1000 \\%1000 %TR
+%6 & 2 & 0.909 & 0.192 & 0.629 & 0.294 & 12152 & 841 \\%1000 %TR
+%6 & 3 & 0.933 & 0.213 & 0.618 & 0.317 & 12082 & 674 \\ \hline\hline%1000 %TR
+%%\multicolumn{2}{r|}{\textit{\small{Avgs:}}}  & 0.703 & 0.220 & 0.580 & 0.308 & 12133.5 & 755.5 \\
+%\multicolumn{2}{r|}{\textit{Avgs:}}  & 0.703 & 0.220 & 0.580 & 0.308 & 12134 & 756 \\
+%\end{tabular}
+%}
+%\subtable[Orthographic data (O), $K=1000$ \label{subtab:intr-O-1000}]{
+%\setlength{\extrarowheight}{6pt}
+%\begin{tabular}{cc|ccccrr}
+%$s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
+%0 & 1 & 0.333 & 0.296 & 0.163 & 0.210 & 11000 & 1000 \\%1000 %O
+%0 & 2 & 0.429 & 0.241 & 0.267 & 0.253 & 11113 & 1000 \\%1000 %O
+%0 & 3 & 0.250 & 0.228 & 0.354 & 0.277 & 11098 & 1000 \\ \hline %1000 %O
+%1 & 1 & 0.325 & 0.406 & 0.642 & 0.497 & 4490 & 1000 \\%1000 %O
+%1 & 2 & 0.378 & 0.350 & 0.649 & 0.455 & 4493 & 1000 \\%1000 %O
+%1 & 3 & 0.442 & 0.303 & 0.667 & 0.417 & 4489 & 999 \\ \hline %1000 %O
+%2 & 1 & 0.278 & 0.320 & 0.604 & 0.418 & 3447 & 1000 \\ %1000 %O
+%2 & 2 & 0.599 & 0.292 & 0.672 & 0.407 & 3444 & 1000 \\%1000 %O
+%2 & 3 & 0.415 & 0.257 & 0.692 & 0.375 & 3446 & 139 \\ \hline%1000 %O
+%%3 & 1 & 0.328  & 0.283 & 0.652 & 0.395 & 3447 & 95 \\%1000 %O
+%%3 & 1 & 0.375 & 0.293 & 0.673 & 0.409 & 3444 & 1000 \\%1000 %O
+%3 & 1 & 0.352 & 0.288 & 0.663 & 0.402 & 3446 & 548 \\
+%3 & 2 & 0.362 & 0.280 & 0.687 & 0.398 & 3444 & 104 \\
+%3 & 3 & 0.393 & 0.234 & 0.667 & 0.346 & 3443 & 159 \\ \hline\hline
+%\multicolumn{2}{r|}{\textit{Avgs:}} & 0.380 & 0.291 & 0.561 & 0.371 & 5613 & 746 \\
+%%\multicolumn{2}{r|}{\textit{\scriptsize{Averages:}}} & 0.380 & 0.291 & 0.561 & 0.371 & 5612.8 & 745.8 \\
+%%3 & 1 & 0.372 & 0.288 & 0.663 & 0.409 & 3445.5 & 1000 \\%1000 %O
+%%3 & 2 & 0.362 & 0.280 & 0.687 & 0.398 & 3444 & 104 \\%1000 %O
+%%3 & 3 & 0.393 & 0.234 & 0.667 & 0.346 & 3443 & 159 \\%1000 %O
+%%\multicolumn{2}{c|}{\textit{Avg:}} 0.377 & 0.291 & 0.568 & 0.374 & 5446.0 & 730.5 \\
+% \end{tabular}
+%}
+% \caption{Intrinsic evaluation results at $K = 1000$.}
+% \label{tab:intr-1000}
+%\end{table}
 %\newcolumntype{g}{>{\columncolor{Gray}}c}
 %\begin{table}[htb]
 %\begin{center}
@@ -905,155 +949,342 @@ $s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 
 \subsection{Extrinsic Results}
 
-The extrinsic evaluation was itself a sort of experiment, one that sought to evaluate Multimorph according to its ability to positively influence a downstream application. It involved a four-stage procedure that is described in chapter~\ref{ch:eval}. Basically, this procedure compressed Multimoprh's input words by substituting original characters with atomic representations of morphs (i.e., morphs represented as single characters). The resulting file was then fed to Morfessor, the idea being to give Morfessor a pre-analyzed (or pre-digested, as it were) list of input words and see if Morfessor was able to do better on the pre-analyzed, i.e., compressed, data than on ordinary input, i.e., the control group, which was in this case the original Hebrew wordlists, untouched by Multimorph.
+The extrinsic evaluation was itself a sort of experiment, one that sought to evaluate Multimorph according to its 
+ability to positively influence a downstream application. It involved a four-stage procedure that is described in 
+chapter~\ref{ch:eval}. 
+Basically, this process compressed Multimoprh's input words by substituting original characters with atomic 
+representations of morphs (i.e., morphs represented as single characters). The resulting file was then fed to 
+Morfessor, the idea being to give Morfessor a pre-analyzed (or pre-digested, as it were) list of input words and
+ see if Morfessor was able to do better on the pre-analyzed, i.e., compressed, data than on ordinary input, i.e., 
+ the control group, which was in this case the original Hebrew wordlists, untouched by Multimorph.
+%
+The reader may have noticed that table
+~\ref{tab:extr-results-500} and \ref{tab:extr-results-1000} 
+contain the 
+	results of many control datasets, one for each experimental model, in fact. This may seem strange 
+	because the parameters $s$ and $\delta$ were irrelevant to the control data, untouched as it was 
+	by Multimorph. This is indeed true, but the actual reason for the many control models is actually 
+	that each experimental model yielded a different word coverage. The control datasets were made 
+	to have same words as their corresponding models covered. 
 
-	The reader may have noticed that table~\ref{tab:extr-500} and \ref{tab:extr-1000} contain the results of many control datasets, one for each experimental model, in fact. This may seem strange because the parameters $s$ and $\delta$ were irrelevant to the control data, untouched as it was by Multimorph. This is indeed true, but the actual reason for the many control models is actually that each experimental model yielded a different word coverage. The control datasets were made to have same words as their corresponding models covered. 
-
-	As is plainly evident in tables~\ref{tab:extr:500} and \ref{tab:extr:1000}, Morfessor did not perform better on the pre-analyzed material. The control results are always better than the corresponding experimental results. Still, though, the experimental and control results are comparable, with experimental group coming quite close to matching the control result at times. Compare, for example, the experimental F-Score 0.56 for para,($s=6$, $\delta=1$) in table~\ref{tab:extr-500-ts} to 0.67, its corresponding control F-score. The O experiments (table~\ref{tab:extra:500:o}) seem to come closest to matching the F-scores of the corresponding control datasets.
-
-
-the \emph{experimental procedure} construe downstream application was M both at $K=500$ and $K=1000$. I was wrong. But was I altogether wrong? What is important here? The important thing here is that it worked a little bit. It wasn't a complete failure. The results of the 4-stage process are somewhat comparable to the results of the control process. 
-Interestingly, the $s=0$ models in table~\ref{tab:extr-1000} ($K=1000$) yield the best results, at least where Precision is concerned. Strangely, the  control results at $s=0$ are vastly better than the other control results.  
-
+	As is plainly evident in tables~\ref{tab:extr-results-500} and \ref{tab:extr-results-1000}, Morfessor did not perform 
+	better on the pre-analyzed material. The control results are always better than the corresponding 
+	experimental results. Still, though, the experimental and control results are comparable, with 
+	experimental group coming quite close to matching the control result at times. Compare, for 
+	example, the experimental F-Score 0.56 for para,($s=6$, $\delta=1$) in table~\ref{subtab:extr-500-ts} 
+	to 0.67, its corresponding control F-score. The O experiments (table~\ref{subtab:extr-500-o}) seem 
+	to come closest to matching the F-scores of the corresponding control datasets.
+%
+%
+%%the \emph{experimental procedure} construe downstream application was M both at $K=500$ and $K=1000$. I was wrong. But was I altogether wrong? What is important here? The important thing here is that it worked a little bit. It wasn't a complete failure. The results of the 4-stage process are somewhat comparable to the results of the control process. 
+%%Interestingly, the $s=0$ models in table~\ref{tab:extr-results-1000} ($K=1000$) yield the best results, at least where Precision is concerned. Strangely, the  control results at $s=0$ are vastly better than the other control results.  
+%
+%%\begin{table}[htb]
+%%%s\centering
+%%\subtable[Transcriptions with stress (TS), $K = 500$ \label{subtab:extr-500-ts}]{
+%%\small 
+%%\setlength{\extrarowheight}{6pt}
+%%\begin{tabular}{cc|ccc|ccc}
+%%\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
+%%\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
+%%$s$ & $\delta$ & Prc & R & F& Prc & R & F\\ \hline\hline
+%%0 & 1 & 0.40 & 0.37 & 0.38 & 0.76 & 0.61 & \textbf{0.68} \\
+%%0 & 2 & 0.50 & 0.45 & 0.47 & 0.77 & 0.60 & 0.67 \\
+%%0 & 3 & 0.48 & 0.39 & 0.43 & 0.76 & 0.60 & 0.67 \\ \hline
+%%2 & 1 & 0.43 & 0.40 & 0.42 & 0.77 & 0.59 & 0.67 \\
+%%2 & 2 & 0.48 & 0.45 & 0.46 & 0.78 & 0.60 & \textbf{0.68} \\
+%%2 & 3 & 0.44 & 0.41 & 0.42 & 0.78 & 0.59 & 0.67 \\ \hline
+%%%4 & 0 & 0.55 & 0.51 & 0.53 & 0.78 & 0.60 & 0.68 \\
+%%4 & 1 & 0.55 & 0.50 & 0.52 & 0.78 & 0.59 & 0.67 \\
+%%4 & 2 & 0.49 & 0.44 & 0.46 & 0.77 & 0.59 & 0.67 \\
+%%4 & 3 & 0.45 & 0.40 & 0.42 & 0.78 & 0.59 & 0.67 \\ \hline
+%%%6 & 0 & 0.55 & 0.51 & 0.53 & 0.78 & 0.59 & 0.67 \\
+%%6 & 1 & 0.59 & 0.54 & \textbf{0.56} & 0.77 & 0.59 & 0.67 \\
+%%6 & 2 & 0.60 & 0.48 & 0.53 & 0.78 & 0.60 & \textbf{0.68} \\
+%%6 & 3 & 0.48 & 0.43 & 0.45 & 0.77 & 0.60 & \textbf{0.68} \\
+%%\end{tabular}
+%%} \bigskip
+%%\subtable[Transcriptions without stress (TR), $K = 500$ \label{subtab:extr-500-tr}]{
+%%\small 
+%%\setlength{\extrarowheight}{6pt}
+%%\begin{tabular}{cc|ccc|ccc}
+%%\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
+%%\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
+%%$s$ & $\delta$ & Prc & R & F& Prc & R & F\\ \hline\hline
+%%0 & 1 & 0.40 & 0.46 & 0.42 & 0.67 & 0.67 & 0.65 \\
+%%0 & 2 & 0.40 & 0.53 & 0.44 & 0.60 & 0.68 & 0.61 \\
+%%0 & 3 & 0.43 & 0.39 & 0.41 & 0.80 & 0.63 & 0.71 \\ \hline
+%%2 & 1 & 0.46 & 0.49 & 0.47 & 0.70 & 0.66 & 0.66 \\
+%%2 & 2 & 0.47 & 0.41 & 0.44 & 0.80 & 0.64 & 0.71 \\
+%%2 & 3 & 0.44 & 0.41 & 0.42 & 0.80 & 0.64 & 0.71 \\ \hline
+%%4 & 1 & 0.50 & 0.46 & 0.48 & 0.80 & 0.64 & 0.71 \\
+%%4 & 2 & 0.46 & 0.41 & 0.44 & 0.80 & 0.64 & 0.71 \\
+%%4 & 3 & 0.46 & 0.42 & 0.44 & 0.81 & 0.65 & \textbf{0.72} \\ \hline
+%%6 & 1 & 0.56 & 0.52 & \textbf{0.54} & 0.80 & 0.64 & 0.71 \\
+%%6 & 2 & 0.51 & 0.46 & 0.48 & 0.80 & 0.64 & 0.71 \\
+%%6 & 3 & 0.56 & 0.48 & 0.52 & 0.80 & 0.64 & 0.71 \\
+%%\end{tabular}
+%%} \bigskip
+%%\subtable[Orthographic data (O), $K = 500$ \label{subtab:extr-500-o}]{
+%%\small
+%%%\setlength{\extrarowheight}{5pt}
+%%\setlength{\extrarowheight}{6pt}
+%%\begin{tabular}{cc|ccc|ccc}
+%%\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
+%%\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
+%%%\setlength{\extrarowheight}{7pt}
+%%$s$ & $\delta$ & Prc & R & F & Prc & R & F\\ \hline\hline
+%%0 & 1 & 0.71 & 0.42 & 0.53 & 0.83 & 0.67 & 0.74 \\
+%%0 & 2 & 0.68 & 0.32 & 0.43 & 0.84 & 0.69 & \textbf{0.75} \\
+%%0 & 3 & 0.67 & 0.32 & 0.43 & 0.83 & 0.67 & 0.74 \\ \hline
+%%1 & 1 & 0.45 & 0.56 & 0.50 & 0.58 & 0.64 & 0.61 \\
+%%1 & 2 & 0.46 & 0.50 & 0.48 & 0.60 & 0.63 & 0.61 \\
+%%1 & 3 & 0.50 & 0.49 & 0.50 & 0.58 & 0.64 & 0.61 \\ \hline
+%%2 & 1 & 0.48 & 0.64 & \textbf{0.55} & 0.59 & 0.74 & 0.66 \\
+%%2 & 2 & 0.48 & 0.60 & 0.53 & 0.60 & 0.68 & 0.64 \\
+%%2 & 3 & 0.50 & 0.57 & 0.53 & 0.59 & 0.74 & 0.65 \\ \hline
+%%3 & 1 & 0.45 & 0.59 & 0.51 & 0.58 & 0.72 & 0.64 \\
+%%3 & 2 & 0.43 & 0.58 & 0.49 & 0.58 & 0.74 & 0.65 \\
+%%3 & 3 & 0.47 & 0.56 & 0.51 & 0.58 & 0.73 & 0.65 \\
+%%\end{tabular}
+%%}
+%%\caption{Extrinsic evaluation results at $K = 500$.}
+%%\label{tab:extr-results-500}
+%%\end{table}
+%%
+%%\begin{table}[htb]
+%%\centering
+%%\subtable[Transcriptions with stress (TS), $K = 1000$ \label{subtab:extr-1000-ts}]{
+%%\small
+%%\setlength{\extrarowheight}{6pt}
+%%\begin{tabular}{cc|ccc|ccc}
+%%\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
+%%\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
+%%$s$ & $\delta$ & Prc & R & F &  Prc & R & F \\ \hline\hline
+%%0 & 1 & 0.39 & 0.37 & 0.38 & 0.77 & 0.61 & \textbf{0.68} \\
+%%0 & 2 & 0.37 & 0.36 & 0.36 & 0.76 & 0.59 & 0.66 \\
+%%0 & 3 & 0.48 & 0.41 & 0.44 & 0.76 & 0.59 & 0.67 \\ \hline
+%%2 & 1 & 0.51 & 0.48 & 0.49 & 0.77 & 0.59 & 0.67 \\
+%%2 & 2 & 0.41 & 0.40 & 0.41 & 0.77 & 0.60 & 0.67 \\
+%%2 & 3 & 0.44 & 0.40 & 0.42 & 0.77 & 0.59 & 0.67 \\ \hline
+%%4 & 1 & 0.53 & 0.48 & 0.50 & 0.77 & 0.59 & 0.67 \\
+%%4 & 2 & 0.55 & 0.47 & 0.51 & 0.78 & 0.60 & \textbf{0.68} \\
+%%4 & 3 & 0.38 & 0.33 & 0.35 & 0.77 & 0.59 & 0.67 \\ \hline
+%%6 & 1 & 0.55 & 0.50 & 0.52 & 0.77 & 0.60 & 0.67 \\
+%%6 & 2 & 0.57 & 0.49 & \textbf{0.53} & 0.78 & 0.59 & 0.67 \\
+%%\end{tabular}
+%%} \bigskip
+%%\subtable[Transcriptions without stress (TR), $K = 1000$ \label{subtab:extr-1000-tr}]{
+%%\small
+%%\setlength{\extrarowheight}{6pt}
+%%\begin{tabular}{cc|ccc|ccc}
+%%\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
+%%\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
+%%$s$ & $\delta$ & Prc & R & F &  Prc & R & F \\ \hline\hline
+%%0 & 1 & 0.41 & 0.37 & 0.39 & 0.79 & 0.64 & 0.71 \\
+%%0 & 2 & 0.45 & 0.41 & 0.43 & 0.80 & 0.64 & 0.71 \\
+%%0 & 3 & 0.43 & 0.34 & 0.38 & 0.80 & 0.64 & 0.71 \\ \hline
+%%2 & 1 & 0.50 & 0.46 & 0.48 & 0.80 & 0.64 & 0.71 \\
+%%2 & 2 & 0.44 & 0.40 & 0.42 & 0.81 & 0.66 & \textbf{0.72} \\
+%%2 & 3 & 0.31 & 0.55 & 0.40 & 0.39 & 0.70 & 0.50 \\ \hline
+%%4 & 1 & 0.52 & 0.48 & 0.50 & 0.81 & 0.64 & 0.71 \\
+%%4 & 2 & 0.45 & 0.42 & 0.44 & 0.80 & 0.64 & 0.71 \\
+%%4 & 3 & 0.46 & 0.42 & 0.44 & 0.80 & 0.64 & 0.71 \\ \hline
+%%6 & 1 & 0.53 & 0.49 & 0.51 & 0.80 & 0.65 & 0.71 \\
+%%6 & 2 & 0.51 & 0.45 & 0.48 & 0.80 & 0.63 & 0.71 \\
+%%6 & 3 & 0.58 & 0.49 & \textbf{0.53} & 0.79 & 0.63 & 0.70 \\
+%%\end{tabular}
+%%} \bigskip
+%%\subtable[Orthographic (O), $K = 1000$ \label{subtab:extr-1000-o}]{
+%%\small
+%%\setlength{\extrarowheight}{6pt}
+%%\begin{tabular}{cc|ccc|ccc}
+%%%\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
+%%%\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
+%%\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{} \\
+%%$s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
+%%0 & 1 & 0.71 & 0.41 & 0.52 & 0.83 & 0.67 & 0.74 \\
+%%0 & 2 & 0.66 & 0.31 & 0.42 & 0.84 & 0.68 & \textbf{0.75} \\
+%%0 & 3 & 0.67 & 0.29 & 0.41 & 0.84 & 0.67 & 0.75 \\ \hline
+%%1 & 1 & 0.49 & 0.55 & 0.52 & 0.58 & 0.62 & 0.60 \\
+%%1 & 2 & 0.54 & 0.49 & 0.51 & 0.58 & 0.62 & 0.60 \\
+%%1 & 3 & 0.57 & 0.43 & 0.49 & 0.59 & 0.62 & 0.61 \\ \hline
+%%2 & 1 & 0.46 & 0.62 & 0.53 & 0.59 & 0.73 & 0.65 \\
+%%2 & 2 & 0.46 & 0.57 & 0.51 & 0.58 & 0.73 & 0.65 \\
+%%2 & 3 & 0.50 & 0.58 & \textbf{0.54} & 0.58 & 0.74 & 0.65 \\ \hline
+%%3 & 1 & 0.46 & 0.59 & 0.51 & 0.58 & 0.73 & 0.64 \\
+%%3 & 2 & 0.45 & 0.58 & 0.50 & 0.58 & 0.71 & 0.64 \\
+%%3 & 3 & 0.47 & 0.56 & 0.51 & 0.59 & 0.74 & 0.66 \\
+%%\end{tabular}
+%%}
+%%\caption{Extrinsic evaluation results at $K = 1000$.}%(Second Pass: Cluster-membership threshold set at 0.8 instead of 0.5.)}
+%%\label{tab:extr-results-1000}
+%%\end{table}
+%
 \begin{table}[htb]
-%s\centering
+\centering
 \subtable[Transcriptions with stress (TS), $K = 500$ \label{subtab:extr-500-ts}]{
-\small 
+\scriptsize
 \setlength{\extrarowheight}{6pt}
 \begin{tabular}{cc|ccc|ccc}
-\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
-\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{mapping}} & \multicolumn{3}{c}{Control} \\
-$s$ & $\delta$ & Prc & R & F& Prc & R & F\\ \hline\hline
-0 & 1 & 0.40 & 0.37 & 0.38 & 0.76 & 0.61 & \textbf{0.68} \\
+%\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
+\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
+$s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
+0 & 1 & 0.40 & 0.37 & 0.38 & 0.76 & 0.61 & 0.68 \\
 0 & 2 & 0.50 & 0.45 & 0.47 & 0.77 & 0.60 & 0.67 \\
 0 & 3 & 0.48 & 0.39 & 0.43 & 0.76 & 0.60 & 0.67 \\ \hline
 2 & 1 & 0.43 & 0.40 & 0.42 & 0.77 & 0.59 & 0.67 \\
-2 & 2 & 0.48 & 0.45 & 0.46 & 0.78 & 0.60 & \textbf{0.68} \\
+2 & 2 & 0.48 & 0.45 & 0.46 & 0.78 & 0.60 & 0.68 \\
 2 & 3 & 0.44 & 0.41 & 0.42 & 0.78 & 0.59 & 0.67 \\ \hline
-%4 & 0 & 0.55 & 0.51 & 0.53 & 0.78 & 0.60 & 0.68 \\
 4 & 1 & 0.55 & 0.50 & 0.52 & 0.78 & 0.59 & 0.67 \\
 4 & 2 & 0.49 & 0.44 & 0.46 & 0.77 & 0.59 & 0.67 \\
 4 & 3 & 0.45 & 0.40 & 0.42 & 0.78 & 0.59 & 0.67 \\ \hline
-%6 & 0 & 0.55 & 0.51 & 0.53 & 0.78 & 0.59 & 0.67 \\
-6 & 1 & 0.59 & 0.54 & \textbf{0.56} & 0.77 & 0.59 & 0.67 \\
-6 & 2 & 0.60 & 0.48 & 0.53 & 0.78 & 0.60 & \textbf{0.68} \\
-6 & 3 & 0.48 & 0.43 & 0.45 & 0.77 & 0.60 & \textbf{0.68} \\
+6 & 1 & 0.59 & 0.54 & 0.56 & 0.77 & 0.59 & 0.67 \\
+6 & 2 & 0.60 & 0.48 & 0.53 & 0.78 & 0.60 & 0.68 \\
+6 & 3 & 0.48 & 0.43 & 0.45 & 0.77 & 0.60 & 0.68 \\ \hline\hline
+ \multicolumn{2}{r|}{\textit{Avgs:}} & 0.49 & 0.44 & 0.46 & 0.77 & 0.60 & 0.67 \\
 \end{tabular}
-} \bigskip
-\subtable[Transcriptions without stress (TR), $K = 500$ \label{subtab:extr-500-tr}]{
-\small 
+}  \subtable[Transcriptions without stress (TR), $K = 500$ \label{subtab:extr-500-tr}]{
+\scriptsize
 \setlength{\extrarowheight}{6pt}
 \begin{tabular}{cc|ccc|ccc}
-\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
-\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{mapping}} & \multicolumn{3}{c}{Control} \\
+%5\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
+\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
 $s$ & $\delta$ & Prc & R & F& Prc & R & F\\ \hline\hline
 0 & 1 & 0.40 & 0.46 & 0.42 & 0.67 & 0.67 & 0.65 \\
 0 & 2 & 0.40 & 0.53 & 0.44 & 0.60 & 0.68 & 0.61 \\
 0 & 3 & 0.43 & 0.39 & 0.41 & 0.80 & 0.63 & 0.71 \\ \hline
-2 & 1 & 0.46 & 0.49 & 0.47 & 0.70 & 0.66 & 0.66 \\
+2 & 1 & 0.46 & 0.49 & 0.47 & 0.70 & 0.66 & 0.66 \\ 
 2 & 2 & 0.47 & 0.41 & 0.44 & 0.80 & 0.64 & 0.71 \\
 2 & 3 & 0.44 & 0.41 & 0.42 & 0.80 & 0.64 & 0.71 \\ \hline
-4 & 1 & 0.50 & 0.46 & 0.48 & 0.80 & 0.64 & 0.71 \\
+4 & 1 & 0.50 & 0.46 & 0.48 & 0.80 & 0.64 & 0.71 \\ 
 4 & 2 & 0.46 & 0.41 & 0.44 & 0.80 & 0.64 & 0.71 \\
-4 & 3 & 0.46 & 0.42 & 0.44 & 0.81 & 0.65 & \textbf{0.72} \\ \hline
-6 & 1 & 0.56 & 0.52 & \textbf{0.54} & 0.80 & 0.64 & 0.71 \\
+4 & 3 & 0.46 & 0.42 & 0.44 & 0.81 & 0.65 & 0.72 \\ \hline
+6 & 1 & 0.56 & 0.52 & 0.54 & 0.80 & 0.64 & 0.71 \\
 6 & 2 & 0.51 & 0.46 & 0.48 & 0.80 & 0.64 & 0.71 \\
-6 & 3 & 0.56 & 0.48 & 0.52 & 0.80 & 0.64 & 0.71 \\
+6 & 3 & 0.56 & 0.48 & 0.52 & 0.80 & 0.64 & 0.71 \\ \hline\hline
+ \multicolumn{2}{r|}{\textit{Avgs:}}  & 0.47 & 0.45 & 0.46 & 0.77 & 0.65 & 0.69 \\
 \end{tabular}
-} \bigskip
-\subtable[Orthographic data (O), $K = 500$ \label{subtab:extr-500-o}]{
-\small
-%\setlength{\extrarowheight}{5pt}
+} 
+\bigskip
+\subtable[Orthographic (O), $K = 500$ \label{subtab:extr-500-o}]{
+\scriptsize
 \setlength{\extrarowheight}{6pt}
 \begin{tabular}{cc|ccc|ccc}
-\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
-\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{mapping}} & \multicolumn{3}{c}{Control} \\
-%\setlength{\extrarowheight}{7pt}
-$s$ & $\delta$ & Prc & R & F & Prc & R & F\\ \hline\hline
+%\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
+%\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
+\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
+$s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
 0 & 1 & 0.71 & 0.42 & 0.53 & 0.83 & 0.67 & 0.74 \\
-0 & 2 & 0.68 & 0.32 & 0.43 & 0.84 & 0.69 & \textbf{0.75} \\
+0 & 2 & 0.68 & 0.32 & 0.43 & 0.84 & 0.69 & 0.75 \\
 0 & 3 & 0.67 & 0.32 & 0.43 & 0.83 & 0.67 & 0.74 \\ \hline
 1 & 1 & 0.45 & 0.56 & 0.50 & 0.58 & 0.64 & 0.61 \\
 1 & 2 & 0.46 & 0.50 & 0.48 & 0.60 & 0.63 & 0.61 \\
 1 & 3 & 0.50 & 0.49 & 0.50 & 0.58 & 0.64 & 0.61 \\ \hline
-2 & 1 & 0.48 & 0.64 & \textbf{0.55} & 0.59 & 0.74 & 0.66 \\
+2 & 1 & 0.48 & 0.64 & 0.55 & 0.59 & 0.74 & 0.66 \\ 
 2 & 2 & 0.48 & 0.60 & 0.53 & 0.60 & 0.68 & 0.64 \\
 2 & 3 & 0.50 & 0.57 & 0.53 & 0.59 & 0.74 & 0.65 \\ \hline
 3 & 1 & 0.45 & 0.59 & 0.51 & 0.58 & 0.72 & 0.64 \\
 3 & 2 & 0.43 & 0.58 & 0.49 & 0.58 & 0.74 & 0.65 \\
-3 & 3 & 0.47 & 0.56 & 0.51 & 0.58 & 0.73 & 0.65 \\
+3 & 3 & 0.47 & 0.56 & 0.51 & 0.58 & 0.73 & 0.65 \\ \hline\hline
+ \multicolumn{2}{r|}{\textit{Avgs:}} & 0.52 & 0.51 & 0.50 & 0.65 & 0.69 & 0.66 \\
 \end{tabular}
 }
 \caption{Extrinsic evaluation results at $K = 500$.}
 \label{tab:extr-results-500}
 \end{table}
 
+%\begin{table}[htb]
+%\centering
 \begin{table}[htb]
-\centering
-\subtable[Transcriptions with stress (TS), $K = 1000$ \label{subtab:extr-1000-ts}]{
+%\subtable[Transcriptions with stress (TS), $K = 1000$ \label{subtab:extr-1000-ts}]{
+%\subtable[Transcriptions with stress (TS)]{
+%%\small
+%%\setlength{\extrarowheight}{6pt}
+%\begin{tabular}{cc|ccc|ccc}
+%%%\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
+%%\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
+%%$s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
+%0 & 1 & 0.39 & 0.37 & 0.38 & 0.77 & 0.61 & 0.68 \\
+%0 & 2 & 0.37 & 0.36 & 0.36 & 0.76 & 0.59 & 0.66 \\
+%%0 & 3 & 0.48 & 0.41 & 0.44 & 0.76 & 0.59 & 0.67 \\
+%%2 & 1 & 0.51 & 0.48 & 0.49 & 0.77 & 0.59 & 0.67 \\
+%%2 & 2 & 0.41 & 0.40 & 0.41 & 0.77 & 0.60 & 0.67 \\
+%%2 & 3 & 0.44 & 0.40 & 0.42 & 0.77 & 0.59 & 0.67 \\
+%%4 & 1 & 0.53 & 0.48 & 0.50 & 0.77 & 0.59 & 0.67 \\
+%%4 & 2 & 0.55 & 0.47 & 0.51 & 0.78 & 0.60 & 0.68 \\
+%%4 & 3 & 0.38 & 0.33 & 0.35 & 0.77 & 0.59 & 0.67 \\
+%%6 & 1 & 0.55 & 0.50 & 0.52 & 0.77 & 0.60 & 0.67 \\
+%%6 & 2 & 0.57 & 0.49 & 0.53 & 0.78 & 0.59 & 0.67 \\
+%%\multicolumn{2}{r|}{\textit{Avgs:}} & 0.47 & 0.43 & 0.45 & 0.77 & 0.59 & 0.67 \\
+%} 
+\subtable[Transcriptions with stress (TS), $K = 1000$\label{subtab:extr-1000-ts}]{
 \small
 \setlength{\extrarowheight}{6pt}
 \begin{tabular}{cc|ccc|ccc}
-\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
-\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{mapping}} & \multicolumn{3}{c}{Control} \\
-$s$ & $\delta$ & Prc & R & F &  Prc & R & F \\ \hline\hline
-0 & 1 & 0.39 & 0.37 & 0.38 & 0.77 & 0.61 & \textbf{0.68} \\
+\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
+$s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
+0 & 1 & 0.39 & 0.37 & 0.38 & 0.77 & 0.61 & 0.68 \\
 0 & 2 & 0.37 & 0.36 & 0.36 & 0.76 & 0.59 & 0.66 \\
 0 & 3 & 0.48 & 0.41 & 0.44 & 0.76 & 0.59 & 0.67 \\ \hline
 2 & 1 & 0.51 & 0.48 & 0.49 & 0.77 & 0.59 & 0.67 \\
 2 & 2 & 0.41 & 0.40 & 0.41 & 0.77 & 0.60 & 0.67 \\
 2 & 3 & 0.44 & 0.40 & 0.42 & 0.77 & 0.59 & 0.67 \\ \hline
 4 & 1 & 0.53 & 0.48 & 0.50 & 0.77 & 0.59 & 0.67 \\
-4 & 2 & 0.55 & 0.47 & 0.51 & 0.78 & 0.60 & \textbf{0.68} \\
+4 & 2 & 0.55 & 0.47 & 0.51 & 0.78 & 0.60 & 0.68 \\
 4 & 3 & 0.38 & 0.33 & 0.35 & 0.77 & 0.59 & 0.67 \\ \hline
 6 & 1 & 0.55 & 0.50 & 0.52 & 0.77 & 0.60 & 0.67 \\
-6 & 2 & 0.57 & 0.49 & \textbf{0.53} & 0.78 & 0.59 & 0.67 \\
+6 & 2 & 0.57 & 0.49 & 0.53 & 0.78 & 0.59 & 0.67 \\ \hline\hline
+\multicolumn{2}{r|}{\textit{Avgs:}} & 0.47 & 0.43 & 0.45 & 0.77 & 0.59 & 0.67 \\
 \end{tabular}
-} \bigskip
+}
+\bigskip
 \subtable[Transcriptions without stress (TR), $K = 1000$ \label{subtab:extr-1000-tr}]{
 \small
 \setlength{\extrarowheight}{6pt}
 \begin{tabular}{cc|ccc|ccc}
-\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
-\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{mapping}} & \multicolumn{3}{c}{Control} \\
-$s$ & $\delta$ & Prc & R & F &  Prc & R & F \\ \hline\hline
+%\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
+\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
+$s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
 0 & 1 & 0.41 & 0.37 & 0.39 & 0.79 & 0.64 & 0.71 \\
 0 & 2 & 0.45 & 0.41 & 0.43 & 0.80 & 0.64 & 0.71 \\
 0 & 3 & 0.43 & 0.34 & 0.38 & 0.80 & 0.64 & 0.71 \\ \hline
 2 & 1 & 0.50 & 0.46 & 0.48 & 0.80 & 0.64 & 0.71 \\
-2 & 2 & 0.44 & 0.40 & 0.42 & 0.81 & 0.66 & \textbf{0.72} \\
+2 & 2 & 0.44 & 0.40 & 0.42 & 0.81 & 0.66 & 0.72 \\
 2 & 3 & 0.31 & 0.55 & 0.40 & 0.39 & 0.70 & 0.50 \\ \hline
 4 & 1 & 0.52 & 0.48 & 0.50 & 0.81 & 0.64 & 0.71 \\
 4 & 2 & 0.45 & 0.42 & 0.44 & 0.80 & 0.64 & 0.71 \\
 4 & 3 & 0.46 & 0.42 & 0.44 & 0.80 & 0.64 & 0.71 \\ \hline
 6 & 1 & 0.53 & 0.49 & 0.51 & 0.80 & 0.65 & 0.71 \\
-6 & 2 & 0.51 & 0.45 & 0.48 & 0.80 & 0.63 & 0.71 \\
-6 & 3 & 0.58 & 0.49 & \textbf{0.53} & 0.79 & 0.63 & 0.70 \\
+6 & 2 & 0.51 & 0.45 & 0.48 & 0.80 & 0.63 & 0.71 \\ 
+6 & 3 & 0.58 & 0.49 & 0.53 & 0.79 & 0.63 & 0.70 \\ \hline \hline
+\multicolumn{2}{r|}{\textit{Avgs:}}  & 0.47 & 0.44 & 0.45 & 0.77 & 0.65 & 0.69 \\
 \end{tabular}
-} \bigskip
+}
+%\bigskip
 \subtable[Orthographic (O), $K = 1000$ \label{subtab:extr-1000-o}]{
 \small
 \setlength{\extrarowheight}{6pt}
 \begin{tabular}{cc|ccc|ccc}
 %\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
-%\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{mapping}} & \multicolumn{3}{c}{Control} \\
-\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{} \\
+%\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
+\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
 $s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
 0 & 1 & 0.71 & 0.41 & 0.52 & 0.83 & 0.67 & 0.74 \\
-0 & 2 & 0.66 & 0.31 & 0.42 & 0.84 & 0.68 & \textbf{0.75} \\
+0 & 2 & 0.66 & 0.31 & 0.42 & 0.84 & 0.68 & 0.75 \\
 0 & 3 & 0.67 & 0.29 & 0.41 & 0.84 & 0.67 & 0.75 \\ \hline
 1 & 1 & 0.49 & 0.55 & 0.52 & 0.58 & 0.62 & 0.60 \\
 1 & 2 & 0.54 & 0.49 & 0.51 & 0.58 & 0.62 & 0.60 \\
 1 & 3 & 0.57 & 0.43 & 0.49 & 0.59 & 0.62 & 0.61 \\ \hline
 2 & 1 & 0.46 & 0.62 & 0.53 & 0.59 & 0.73 & 0.65 \\
 2 & 2 & 0.46 & 0.57 & 0.51 & 0.58 & 0.73 & 0.65 \\
-2 & 3 & 0.50 & 0.58 & \textbf{0.54} & 0.58 & 0.74 & 0.65 \\ \hline
+2 & 3 & 0.50 & 0.58 & 0.54 & 0.58 & 0.74 & 0.65 \\ \hline
 3 & 1 & 0.46 & 0.59 & 0.51 & 0.58 & 0.73 & 0.64 \\
 3 & 2 & 0.45 & 0.58 & 0.50 & 0.58 & 0.71 & 0.64 \\
-3 & 3 & 0.47 & 0.56 & 0.51 & 0.59 & 0.74 & 0.66 \\
+3 & 3 & 0.47 & 0.56 & 0.51 & 0.59 & 0.74 & 0.66 \\ \hline\hline
+ \multicolumn{2}{r|}{\textit{Avgs:}}  & 0.54 & 0.50 & 0.50 & 0.65 & 0.69 & 0.66 \\
 \end{tabular}
 }
 \caption{Extrinsic evaluation results at $K = 1000$.}%(Second Pass: Cluster-membership threshold set at 0.8 instead of 0.5.)}
 \label{tab:extr-results-1000}
 \end{table}
-
