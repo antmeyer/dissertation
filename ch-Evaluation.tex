@@ -187,6 +187,7 @@ In other words,
 The problem for our purposes is that this version of purity assumes that each datapoint belongs to exactly only one gold-standard category. In fact, it requires that this be so, for if any data point should belong to more than one cluster belong to more than one cluster, the numerator in \eqref{eq:pur1} would be greater than than 1, and thus the resulting purity would exceed 1.
 In the present study, each data point is a word, and the categories are morphological categories. In natural languages, words frequently belong to multiple morphological categories at once.
 %however, which contains multi-category examples, this assumption can yield purities greater than 1. 
+
 To avoid purities that exceed 1, we modify equation \eqref{eq:pur1} as follows: 
 \begin{equation} \label{eq:pur2}
 \text{purity}_{\text{avg}}(U, V) =  \frac{1}{K} \sum_{k \in K} max_{j \in J} |u_k \cap v_j|
@@ -244,6 +245,9 @@ Its purpose is to evaluate the embedded system, but it does so by evaluating the
 system. If the outer system scores highly,
 the embedded system, i.e., the system under evaluation, scores highly.
 An extrinsic evaluation makes sense for my system for two reasons:
+
+tic\.{t}ar\.{k}\'{i} %c:\[2\] 8:\[4,5\] 43:\[5,7\] \UTF{1E6D}:\[3\] \UTF{1E33}:\[6\] 22:\[0,1\]
+
 \begin{enumerate}
 \item Multimorph is essentially an embedded system by nature: It learns morphs, which are intermediate units, intended to facilitate the learning of morphemes. %My system is thus meant to be an embedded component of a larger process. 
 \item While it would be very difficult to come up with gold-standard morphs, gold-standard morphemes are relatively easy to produce, since morphemes, in contrast to morphs, are already well-defined. 
