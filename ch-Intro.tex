@@ -1,64 +1,70 @@
 \chapter{Introduction}\label{ch:intro}
 
-The purpose of this initial chapter will be two-fold: (1) to 
-introduce certain key concepts, such as non-concatenative morphology 
-and the unsupervised learning of morphology, 
-and (2) to state and motivate my research objectives. 
-
-\section{Preliminaries} 
-Linguists come to understand morphological 
-systems, i.e., systems of word formation, through 
-\emph{morphological analysis}, a process of isolating the fundamental units
-(traditionally, \emph{morphemes}) of which words are constructed. 
-The unsupervised learning of morphology (ULM) is the problem of devising an 
-algorithm or computational system that
-automatically induces such an analysis from raw, unannotated text.
-
-There are different categories of word-formation processes.
-One is \emph{concatenation}, whereby one morpheme is attached 
-to either the beginning or the end of another morpheme, as in the 
-English word \textit{en}$|$\textit{large}$|$\textit{s}. 
-The morphologies of many languages, including English, 
-are almost entirely concatenative. Semitic languages, however, are 
-famous for their \emph{non-concatenative} processes, whereby 
-morphemes are interleaved rather than simply concatenated.
+%The purpose of this initial chapter will be two-fold: (1) to 
+%introduce certain key concepts, such as non-concatenative morphology 
+%and the unsupervised learning of morphology, 
+%and (2) to state and motivate my research objectives. 
+%
+%\section{Preliminaries} 
+%Linguists come to understand morphological 
+%systems, i.e., systems of word formation, through 
+%\emph{morphological analysis}, a process of isolating the fundamental units
+%(traditionally, \emph{morphemes}) of which words are constructed. 
+%The unsupervised learning of morphology (ULM) is the problem of devising an 
+%algorithm or computational system that
+%automatically induces such an analysis from raw, unannotated text.
+%
+%There are different categories of word-formation processes.
+%One is \emph{concatenation}, whereby one morpheme is attached 
+%to either the beginning or the end of another morpheme, as in the 
+%English word \textit{en}$|$\textit{large}$|$\textit{s}. 
+%The morphologies of many languages, including English, 
+%are almost entirely concatenative. Semitic languages, however, are 
+%famous for their \emph{non-concatenative} processes, whereby 
+%morphemes are interleaved rather than simply concatenated.
 % i.e., attached edge to edge. 
 
-Consider, for example, the Hebrew word 
-\textit{magdil} `he/it enlarges'. While the prefix \textit{ma-} is 
-concatenated to the stem \textit{gdil}, the stem itself is 
-non-concatenative, formed from the consonantal root \textit{g.d.l} 
-(meaning essentially `big'), and the pattern morpheme \textit{i}, meaning 
-%`cause to be \uline{\hspace{0.7cm}}'. 
-`cause to be $x$.'
-The latter is inserted 
-\textit{between} the root's second and third consonants 
-to yield a stem meaning `cause to be big' (or `enlarge').
+%Consider the Hebrew word 
+%\textit{magdil} `he/it enlarges'. While the prefix \textit{ma-} is 
+%concatenated to the stem \textit{gdil}, the stem itself is 
+%non-concatenative, formed from the consonantal root \textit{g.d.l} 
+%(meaning essentially `big'), and the pattern morpheme \textit{i}, meaning 
+%%`cause to be \uline{\hspace{0.7cm}}'. 
+%`cause to be $x$.'
+%The latter is inserted 
+%\textit{between} the root's second and third consonants 
+%to yield a stem meaning `cause to be big' (or `enlarge').
 
 % Explain why the unsupervised learning of \emph{non-concatenative} 
 %morphology is hard: 
-Non-concatenative processes pose a particular challenge to 
-ULM because, 
-compared to concatenative ones, 
-they imply many more ways of dividing up a word into morphemes. 
-That is, they engender many more potential (or candidate) morphemes.   
-Thus, while a few works in ULM have addressed non-concatenative 
-morphology 
-\citep[e.g.,][]{rodrigues-and-cavar:2005, botha:blunsom:13}, 
-the vast majority 
-of work has dealt solely with concatenation.
-Moreover, ULM systems tend 
-to be designed either for concatenative or for non-concatenative morphology, 
-but not for both, a clear gap in ULM.
+%Non-concatenative processes such as this one pose a particular challenge to 
+%ULM. One problem is that it can 
+%they imply many more ways of dividing up a word into morphemes. 
+%That is, they engender many more potential (or candidate) morphemes.   
+%Thus, while a few works in ULM have addressed non-concatenative 
+%morphology 
+%\citep[e.g.,][]{rodrigues-and-cavar:2005, botha:blunsom:13}, 
+%the vast majority 
+%of work has dealt solely with concatenation.
+%Moreover, ULM systems tend 
+%to be designed either for concatenative or for nonconcatenative morphology, 
+%but generally not for both, and if they are designed  clear gap in ULM.
+%The systems that do handle nonconcatenative morphology often devise different processes, one type of process to
+%handle concatenative and another to handle nonconcatenative morphology.
+%to be designed either for concatenative or for nonconcatenative morphology, 
+%but generally not for both, and if they are designed  clear gap in ULM.
 
-I shall argue that this gap is largely due to a lack of attention paid to 
-theoretical linguistic work such as
-autosegmental morphological theory \citep{mccarthy:1981}.
-\cite{mccarthy:1981} has already provided a unified \emph{theoretical} 
-treatment of concatenative 
-and non-concatenative processes by taking autosegmental phonology's 
-\emph{multilinear} framework and adapting it for morphology. 
 
+This thesis presents an approach to the unsupervised learning of morphology that 
+that marries autosegmental theory \citep{mccarthy:1981} and graphical computing methods. The novelty of this approach as well as its contribution lies in its simplicity and generality. It is equally applicable both to concatenative and nonconcatenative morphologies, as well as to any language in theory. We will autosegmental theory, once it is distilled down to its essential properties, connects quite naturally to graph theory, and hence to graphical approaches to machine learning. I will show that bipartite graphical model in particular, because of its a layer of hidden nodes, exhibits the same multilinear properties that are behind the effectiveness of autosegmental morphology. 
+
+%The power of autosegmental morphological theory \citep{mccarthy:1981}.
+%lies in its \emph{multilinear} framework. 
+%
+%and adapting it for morphology. 
+%has already provided a unified \emph{theoretical} 
+%treatment of concatenative 
+%and non-concatenative processes by taking autosegmental phonology's
 %Even so, \cite{mccarthy:1981} has already provided a unified \emph{theoretical} 
 %treatment of concatenative 
 %and non-concatenative processes by taking autosegmental phonology's 
@@ -89,12 +95,14 @@ and non-concatenative processes by taking autosegmental phonology's
 % \item Introduce McCarthyism. Explain how McCarthy's autosegmental 
 % morphology is able to deal with non-concatenative morphology.
 
-\section{Autosegmental morphology}
-\label{sec:autoseg-morph}
+%\section{Autosegmental morphology}
+%\label{sec:autoseg-morph}
 %[Identity the property that enables it to handle discontinuous morphemes. 
 %(This property is its multi-linear architecture.)]
-The most important component of autosegmental theory \citep{mccarthy:1981}
-is its multi-linear architecture, i.e., its
+The power and versatility of autosegmental morphological theory \citep{mccarthy:1981}.
+lies in its \emph{multilinear} architecture, i.e., its
+%The most important component of autosegmental theory \citep{mccarthy:1981}
+%is its multi-linear architecture, i.e., its
 use of a \emph{segmental tier} along with many \emph{autosegmental tiers} to account for morphological structure. The segmental tier is
 a series of placeholders for consonants and vowels, often called the
 \emph{CV skeleton}. The other tiers each represent a particular
@@ -103,7 +111,7 @@ skeleton. The other three, labeled $\mu_1$, $\mu_2$, and $\mu_3$, are
 morphemes, or units of morphological structure.
 %\footnote{Even though McCarthy uses the term \emph{morpheme} rather than \emph{morphome}, the same principles apply.}
 
-\begin{figure}[htb]
+\begin{figure}[t]
 %\begin{figure}{R}{0.50\textwidth}
 %\vspace{-20pt}
 \centering
@@ -202,12 +210,12 @@ A model of morphology can handle nonconcatenative morphology if and only if it s
 %\xe
 % \ex this is one 
 %\marginpar{or multilinear}
-These criteria, or essential properties,
-%\textsc{nonlinear} and \textsc{nonsequential} 
-are basically binary variables; each \emph{must} be either True or False, and each can \emph{only} be True or False.  Each variable thus has two possible values,
-giving us four possible combinations of (non)linearity and (non)sequentiality: 
-\textbf{nonlinear nonsequential} (NLNS), \textbf{linear nonsequential} (LNS), 
-\textbf{nonlinear sequential} (NLS), and \textbf{linear sequential} (LS).
+%These criteria, or essential properties,
+%%\textsc{nonlinear} and \textsc{nonsequential} 
+%are basically binary variables; each \emph{must} be either True or False, and each can \emph{only} be True or False.  Each variable thus has two possible values,
+%giving us four possible combinations of (non)linearity and (non)sequentiality: 
+%\textbf{nonlinear nonsequential} (NLNS), \textbf{linear nonsequential} (LNS), 
+%\textbf{nonlinear sequential} (NLS), and \textbf{linear sequential} (LS).
 
 %[We should note that autosegmental morphology has other properties to
 %constrain morphological structure, e.g., the well-formedness
@@ -215,29 +223,32 @@ giving us four possible combinations of (non)linearity and (non)sequentiality:
 %of autosegmental morphology, but instead in building a generic system
 %to which one can later add linguistically motivated constraints.]
 
-\section{Research objectives}
+\section{Research Questions and Objectives}
 %State primary research objective: 
-\subsection{Primary research objective}
-In particular, I intend to show 
+%\subsection{Primary research objective}
+This dissertation's main idea can be expressed in three points:
 %that the crucial components of autosegmental theory, i.e., 
 %those components that allow it to handle non-concatenative morphology, 
-argue both that (1) the properties of nonlinearity and nonsequentiality are crucial for dealing with non-conocatenative
+First, the properties of nonlinearity and nonsequentiality are absolutely essential for dealing with nonconcatenative morphology.
+Second, these properties are equivalent to the formal mathematical properties that define bipartite graphs. And third, this equivalence provides a foundation for graphical learning models to be used for the purpose of morphological learning. This study uses a graphical learning framework known as the Multiple Cause Mixture Model (MCMM) \citep{saund:1994}.
+
+are a natural choices for  that this equivalence allows graphical learning models can  
 morphology, and (2) that these properties can 
 be implemented in the form of 
-an \ac{MCMM}, 
+an Multiple Cause Mixture Model (MCMM), 
 %which is 
 %a general unsupervised learning framework developed by \cite{saund:94}. 
-a general unsupervised learning framework developed by \cite{saund:94}. 
-This dissertation therefore presents \textbf{Multimorph}, an unsupervised morphology-learning system that is driven by an MCMM.
-Its input data will consist of \ac{MH} words represented as feature vectors. 
-The present study focuses on the learning of \ac{MH}, since \ac{MH}
-exhibits both concatenative and non-concatenative morphological processes 
-and thus provides a good test of the method's generality.
+The experimental component of the dissertation involves the development and evaluation of\textbf{Multimorph}, a novel unsupervised morphology-learning system that is driven by an MCMM and embodies the three points stated above.
 
-\subsection{Secondary research objectives}
-\label{sec:secondary-objectives}
-My secondary research objectives are outlined below. %They are largely concerned with matters of implementation. 
-	 \paragraph{Features.} There is a great deal of information tacitly present in a string of alphabetic symbols.
+%The input data consisted of Modern Hebrew words represented as feature vectors. 
+%The present study focuses on the learning of Modern Hebrew, since Modern Hebrew
+%exhibits both concatenative and non-concatenative morphological processes 
+%and thus provides a good test of the method's generality.
+
+%\subsection{Secondary research objectives}
+%\label{sec:secondary-objectives}
+%My secondary research objectives are outlined below. %They are largely concerned with matters of implementation. 
+	 \subsection{The Question of Features.} There is a great deal of information tacitly present in a string of alphabetic symbols.
 	 This is true regardless of whether the string is written, in which case the symbols are graphemes, or spoken,
 	 in which case they are phonemes. In either case, the symbols are each drawn from an alphabet of size $N$ and arranged along a single axis (say, the $x$ axis).
 Consider the string of graphemes printed below.
@@ -350,23 +361,31 @@ are significant to computer vision, with an eye to adapting them for the purpose
 We shall focus in particular on \emph{invariant} and \emph{variant} features.
 The distinction between these two feature types is a highly significant one in
 computer vision and its various subfields. In the present dissertation, we hypothesize that this distinction is
-also relevant to ULM. 
+also relevant to unsupervised morphological learning. 
 
 
-\paragraph{Data Representation.} 
+\subsection{Input Data Representation.} 
  %emph{representation} of the input data,
-By \emph{representation} we refer mainlyto the alphabet---the
-particular set of symbols---that compose the strings (i.e., words) of the input wordlist.
-In the present work, three data representations were tested: two were transcriptional representations---one with stress markings and the other without stress ($\text{T}^{S}$ and $\text{T}^{R}$, respectively); The third was \emph{orthographic}, comprising the letters of the standard Hebrew alphabet mapped onto ASCII characters.
-%(\textbf{\text{T}^{S}); another transcriptional, but without stress (\textbf{\text{T}^{R}), and the third orthographic (\textbf{O})ransliterated to ASCII characters in the Hebrew Treebank \citep{simaan-et-al:2001}
-$\text{T}^{S}$ is the BLC's transcriptional system, and $\text{T}^{S}$ is that same system with the stress markings removed. 
-%Its alphabet is thus BLC's 
-%transcriptional system, which we discussed above in section. % \ref{sec:transcription}.
-The information contained in O is differs both qualitatively and quantitatively from information contained in the T datasets  
-Arguably, T contains more information than O,
-since T represents each of \ac{MH}'s five vowels in such a way that each vowel sound not only has a symbol, but its own
-has its own exclusive symbol 
-exclusive symbol.
+By \emph{representation} we refer mainly to the alphabet---the
+particular set of symbols---from which the strings (i.e., words) of the input wordlist are composed.
+In the present work, three manners of data representations were tested, each presenting different information. The matter of how the input data should represented is a particularly important and difficult question in morphological learning because there are often many ways to represent linguistic data in text form. Some modes of representation are more transcriptional, and others lean toward the orthographic. Some might go to great lengths to capture every phonological and morphophonemic alternation, while others might not express any alternations. Still others might express graphemic alterations; for example, some scripts have different shapes for some letters when the occur word-finally. Some scripts might represent some phonological alternations, but not others, perhaps because speakers for some person perceive those alternations to be more salient than others. 
+
+The three modes of representation tested in this dissertation were (1) transcriptions with stress markings, (2) transcriptions without stress markings, and (3) standard orthography. The third category because standard Hebrew orthography for the most part lacks vowels. Its alphabet consists of only consonants. I initially hypothesized that the models that were induced from the orthographic data would produce the worst-performing models. The reasoning behind this hypothesis consisted of two main points: (1) any system that lacks vowels has to be information deficient, and (2), vowels must be particularly important to Hebrew because its derivational morphology consists in interleaving consonantal roots and vowel patterns. The results, however, proved to be somewhat surprising, as we shall see in chapter~\ref{ch:results}.
+% morphology consist missing out on a great deal of valuable information  It seemed that a vowel-less spelling system would since it seems so obvious that by lacking vowels, it is lacking set wi particularly note this study is noteworthy because the Hebrew alphabet has no vowelsinv take on a different shape word-finally. to a great   to a greater e  The question of data representation determines the raw material from which features are constructed, touches on a number concern the role of the input data in morphological learning, the distinction between information quantity and quality in the input data, as well the influence of 
+
+%transcriptional representations. These differed only in that one marked stress and the other did not. (i.e., all vowels of the t (TS and TR, respectively); The third was \emph{orthographic}, comprising 
+%the letters of the standard Hebrew alphabet mapped onto ASCII characters.
+%%(\textbf{\text{T}^{S}); another transcriptional, but without stress (\textbf{\text{T}^{R}), and the third orthographic (\textbf{O})ransliterated to ASCII characters in the Hebrew Treebank \citep{simaan-et-al:2001}
+%TS is the Berman Longitudinal Corpus's transcriptional system, 
+%and TS is that same system with the stress markings removed. 
+%%Its alphabet is thus BLC's 
+%%transcriptional system, which we discussed above in section. % \ref{sec:transcription}.
+%The information contained in O is differs both qualitatively and quantitatively from information contained in the T datasets  
+%Arguably, T contains more information than O,
+%since T represents each of Modern Hebrew's five vowels in such a way that each 
+%vowel sound not only has a symbol, but its own
+%has its own exclusive symbol 
+%exclusive symbol.
 
 %The features are extracted from raw-text data, wherein Hebrew words are represented as strings of alphabetic symbols, and the symbols are drawn from a particular alphabet. Now, it so happens that we have more than one alphabet at our disposal, and thus more than one way to represent the input data. These alphabets are the following:
 %	\begin{enumerate}
@@ -377,12 +396,12 @@ exclusive symbol.
 %	\end{enumerate}
 %	%The phonemic transcriptions amount to 12,494 words.
 %	The question is which mode of representation yields better feature vectors. This is equivalent to asking which mode delivers the largest quantity of useful information and/or the smallest quantity of irrelevant information.
-	\paragraph{Mixing and Objective Functions.} The \textbf{mixing function} 
-is essentially a voting rule \citep{saund:94}. It prescribes the method whereby the 
-``votes" of  hidden units are combined to turn a particular feature (i.e., surface unit) \textsc{on} or \textsc{off} (see section~\ref{sec:mixing-function}. The \textbf{objective function} measures the discrepancy---or, alternatively, similarity---between the surface units' activities and their target activities. 
-It thus drives the model's learning by way of trial and error. Objective functions can 
-be either positive or negative. Positive objective functions measure similarity and thus 
-need to be maximized. Negative objective functions measure error and thus need to be minimized (see section~\ref{sec:mcmm-learning}).
+%	\paragraph{Mixing and Objective Functions.} The \textbf{mixing function} 
+%is essentially a voting rule \citep{saund:94}. It prescribes the method whereby the 
+%``votes" of  hidden units are combined to turn a particular feature (i.e., surface unit) \textsc{on} or \textsc{off} (see section~\ref{sec:mixing-function}. The \textbf{objective function} measures the discrepancy---or, alternatively, similarity---between the surface units' activities and their target activities. 
+%It thus drives the model's learning by way of trial and error. Objective functions can 
+%be either positive or negative. Positive objective functions measure similarity and thus 
+%need to be maximized. Negative objective functions measure error and thus need to be minimized (see section~\ref{sec:mcmm-learning}).
 
 %I intend to experimented with two radically different mixing functions, 
 %viz. one that combines hidden-unit activities linearly and one that combines them nonlinearly.
@@ -396,16 +415,18 @@ need to be maximized. Negative objective functions measure error and thus need t
 %If there were no objective function, there could be no learning. Learning proceeds by trial and error. 
 %The objective function supplies the error.
 
-\paragraph{Evaluation.} The system described in this proposal is an unsupervised learning system and is thus inherently difficult to evaluate, as one goal of unsupervised learning is to discover previously unknown categories \citep{parsons:2004}.
-The previously unknown categories in this case are going to be morphological units of some kind.
-However, these units will not be conventional morphemes or morphosyntactic categories. 
+\paragraph{The Problem of Evaluation}  One goal of unsupervised learning is to discover previously unknown categories \citep{parsons:2004}. This is especially true for the present study. Chapter~\ref{autonomous} argues that unsupervised morphological learners by nature learn \emph{autonomous} morphological units, units that reside between phonology and syntax within their own independent layer. They have no meaning in of themselves, as they exist independently of syntax and semantics. It is difficult to know going into an experiment what these categories should look like. What makes such units of intermediate structure correct or incorrect? 
 
-Instead, MCMM-generated clusters will correspond roughly to Aronoff's 
-\emph{morphomes} \citep{aronoff:1994}, which can be described as \emph{pre-morphosyntactic} units, i.e.,
-units that have been assembled from phonemes, but have not yet been assigned 
-a syntactic or semantic meaning. I shall use the term \emph{morph} instead of 
-\emph{morphome}, however, since MCMM-generated clusters may not correspond 
-precisely to morphomes in every case (see section~\ref{sec:targets}).
+%going
+%The previously unknown categories in this case are going to be morphological units of some kind.
+%However, these units will not be conventional morphemes or morphosyntactic categories. 
+%
+%Instead, MCMM-generated clusters will correspond roughly to Aronoff's 
+%\emph{morphomes} \citep{aronoff:1994}, which can be described as \emph{pre-morphosyntactic} units, i.e.,
+%units that have been assembled from phonemes, but have not yet been assigned 
+%a syntactic or semantic meaning. I shall use the term \emph{morph} instead of 
+%\emph{morphome}, however, since MCMM-generated clusters may not correspond 
+%precisely to morphomes in every case (see section~\ref{sec:targets}).
 
 Thus, the evaluation itself presents an important research question, namely the question of how to evaluate the output of an unsupervised morphological clustering algorithm, particularly one that considers only features of \emph{word-internal form}, having no access to word-external morphosyntactic features, e.g., the person, number, and gender of  surrounding words.
 

@@ -1,13 +1,17 @@
 % !TEX encoding = UTF-8 Unicode
-% !TEX program = XeLaTeX
-
 \documentclass{iuphd}
-\usepackage{CJKutf8}
+\usepackage{listings}
+%\usepackage[UTF8]{ctex}
+\usepackage[utf8]{inputenc}
+%\usepackage{xeCJK}
+%\usepackage{CJKutf8}
+%\setCJKmainfont{SimSun}
+%\usepackage{CJKutf8}
 %\usepackage[CJK,English]{babel}
 %\setCJKmainfont[BoldFont=STHeiti,ItalicFont=STKaiti]{STSong}
 %\setCJKsansfont[BoldFont=STHeiti]{STXihei}
 %\setCJKmonofont{STFangsong}
-\usepackage[utf8]{inputenc}
+
 %\usepackage{cite}
 \usepackage{array}
 
@@ -19,7 +23,7 @@
 %\usepackage[font=normal,skip=0pt]{caption}
 %\usepackage{natbib}
 \usepackage[toc,page]{appendix}
-\usepackage{lmodern}
+%\usepackage{lmodern}
 %\usepackage[sfdefault]{ClearSans}
 \usepackage{times}
 %\usepackage{tipx}
@@ -41,7 +45,7 @@
 %\usepackage[hebrew,english]{babel}
 %\usepackage{CJKutf8}
 
-%\usepackage[T1]{fontenc}
+\usepackage[T1]{fontenc}
 \usepackage{amsthm}
 \usepackage{amsmath}
 \newtheorem*{remark}{Remark}
@@ -86,7 +90,7 @@
 %\usepackage[T1, T2A]{fontenc}
 %\usepackage{subcaption}
 %\usepackage{dcolumn}
-%\usepackage[utf8x]{inputenc}
+
 \usepackage{url}
 \usepackage{array}
 \usepackage{threeparttable}
@@ -119,7 +123,7 @@
 %\usepackage[normalem]{ulem}
 %\usepackage{nomencl}
 % Uncomment this to make sure marginpars are removed before submission:
-%\includeonly{ch-Results}
+%\includeonly{ch-Evaluation}
 \renewcommand{\marginpar}[1]{}
 
 \begin{document}
@@ -142,8 +146,7 @@
 \committeeMember{Co-Chair, PhD}
 \committeeMember{3rd Reader, PhD}
 \committeeMember{4th Reader, PhD}
-\committeeMember{5th Reader, PhD}
-\defensedate{Defense Date}
+\defensedate{November 29, 2018}
 %data for Copyright Page
 \cryear{2018}
 
@@ -186,8 +189,8 @@
 %\end{preface}
 
 \begin{abstract}
-In this dissertation, I present a multilinear approach to the %\ac{ULM}
-unsupervised learning of morphology (ULM), i.e., an approach derived from the multi-tiered (or multilinear) architecture of autosegmental morphological and phonological theory. In motivating this presentation, I isolate the fundamental properties that make the autosegmental formalism so conducive to modeling non-concatenative morphology. I show that these properties are essentially the properties of graph-theoretic terms, an observation that allows me to recast the autosegmental formalism as a graphical model for unsupervised learning, namely the Multiple Cause Mixture Model (MCMM), a bipartite model that is related to the Restricted Boltzmann Machine. The dissertation presents experimental results that support the soundness of this approach. 
+This dissertation presents a multilinear approach to the unsupervised learning of morphology (ULM), i.e., an approach based on the multi-tiered (or multilinear) architecture that enables autosegmental theory to handle both concatenate and non-concatenative morphological phenomena in a general way. This dissertation reformulates autosegmental theory in graph-theoretic terms. That is, it identifies the essential properties that make autosegmental theory so conducive to modeling non-concatenative morphology and shows that these properties are equivalent to the mathematical properties of a bipartite graph. This observation makes it possible to recast the autosegmental formalism as a graphical machine-learning model, namely the Multiple Cause Mixture Model (MCMM), a bipartite graphical model related to the Restricted Boltzmann Machine. The dissertation's experimental component consists of the development and evaluation of Multimorph, an MCMM-driven ULM system. The evaluation method takes a “dual-paradigm” approach, comprising both intrinsic and extrinsic components. The latter evaluates the system as a component of a larger chain of processes. This in line with lexeme-based theories of morphology, i.e., theories that regard morphology as a distinct but mediating layer of linguistic organization situated between phonology and syntax/semantics. The results of the experiments demonstrate the soundness and promise of a multilinear approach to the Unsupervised Learning of Morphology.
+Outline of Current Studies Educational 
 
 
 %demonstrating the fundamental equivalence between the autosegmental formalism and bipartite graphs. I

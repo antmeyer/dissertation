@@ -56,7 +56,7 @@ In this chapter, we present the results of this multi-faceted evaluation.
 %the manner, which the original data was represented, i.e., whether it was transcribed with stress, transcribed without stress,
 %or orthographic (standard Hebrew orthography).
 
-As a final preliminary matter for this chapter, recall from chapter~\ref{}  that Multimorph begins with a single cluster ($K = 1$) 
+As a final preliminary matter for this chapter, recall from chapter~\ref{ch:MCMM}  that Multimorph begins with a single cluster ($K = 1$) 
 and incrementally adds a cluster (by splitting the worst cluster) until the global error can no longer be reduced. 
 % it is important to note that  $K$ to denote the number of clusters produced in a given experimental trial. 
 In theory, Multimorph should create just enough clusters to reduce the error
@@ -75,7 +75,7 @@ report results both at $K = 500$ and $K = 1000$.
 The value of quantitative methods lies in their systematicity and objectivity, but
 %make them very valuable
 %to the task of evaluating a system's performance,  %inidiscussed later in this chapter lies in their highly objective and systematic nature, but 
-	they are by no Avgs guaranteed to capture every salient fact regarding a system's output. 
+	they are by no means guaranteed to capture every salient fact regarding a system's output. 
 	especially when the system in question is an unsupervised learning system. 
 	% in which case the learning targets are unknown. Quantitative methods are usually 
 	%devised before any output data is seen; their focus is on treating every output result in the same (pre-established) way in order to minimize bias. There is thus a certain blindness to quantitative methods. 
@@ -958,22 +958,34 @@ Morfessor, the idea being to give Morfessor a pre-analyzed (or pre-digested, as 
  see if Morfessor was able to do better on the pre-analyzed, i.e., compressed, data than on ordinary input, i.e., 
  the control group, which was in this case the original Hebrew wordlists, untouched by Multimorph.
 %
-The reader may have noticed that table
-~\ref{tab:extr-results-500} and \ref{tab:extr-results-1000} 
-contain the 
+
+%~\ref{tab:extr-results-500} and 
+Table~\ref{tab:extr-results-1000} shows the results of the extrinsic evaluation at $K=1000$. 
+Morfessor clearly did not perform 
+	better on the data material that was preprocessed by Multimorph, as the control 
+	results are always better than the corresponding 
+	experimental results. Still, though, the experimental and control results are 
+	comparable. Interestingly, the scores of the orthographic (O) models come closest to matching the control results.
+	experimental group coming quite close to matching the control result at times. 
+%	Compare, for 
+%	example, the experimental F-Score 0.56 for para,($s=6$, $\delta=1$) in table~\ref{subtab:extr-500-ts} 
+%	to 0.67, its corresponding control F-score. The O experiments (table~\ref{subtab:extr-500-o}) seem 
+%	to come closest to matching the F-scores of the corresponding control datasets.
+	The reader may have noticed that table contains the 
 	results of many control datasets, one for each experimental model, in fact. This may seem strange 
 	because the parameters $s$ and $\delta$ were irrelevant to the control data, untouched as it was 
-	by Multimorph. This is indeed true, but the actual reason for the many control models is actually 
+	by Multimorph. This is indeed true, but the actual reason for the many control models is 
 	that each experimental model yielded a different word coverage. The control datasets were made 
 	to have same words as their corresponding models covered. 
 
-	As is plainly evident in tables~\ref{tab:extr-results-500} and \ref{tab:extr-results-1000}, Morfessor did not perform 
-	better on the pre-analyzed material. The control results are always better than the corresponding 
-	experimental results. Still, though, the experimental and control results are comparable, with 
-	experimental group coming quite close to matching the control result at times. Compare, for 
-	example, the experimental F-Score 0.56 for para,($s=6$, $\delta=1$) in table~\ref{subtab:extr-500-ts} 
-	to 0.67, its corresponding control F-score. The O experiments (table~\ref{subtab:extr-500-o}) seem 
-	to come closest to matching the F-scores of the corresponding control datasets.
+%	%As is plainly evident in tables~\ref{tab:extr-results-500} and 
+%	\ref{tab:extr-results-1000}, Morfessor did not perform 
+%	better on the pre-analyzed material. The control results are always better than the corresponding 
+%	experimental results. Still, though, the experimental and control results are comparable, with 
+%	experimental group coming quite close to matching the control result at times. Compare, for 
+%	example, the experimental F-Score 0.56 for para,($s=6$, $\delta=1$) in table~\ref{subtab:extr-500-ts} 
+%	to 0.67, its corresponding control F-score. The O experiments (table~\ref{subtab:extr-500-o}) seem 
+%	to come closest to matching the F-scores of the corresponding control datasets.
 %
 %
 %%the \emph{experimental procedure} construe downstream application was M both at $K=500$ and $K=1000$. I was wrong. But was I altogether wrong? What is important here? The important thing here is that it worked a little bit. It wasn't a complete failure. The results of the 4-stage process are somewhat comparable to the results of the control process. 
@@ -1121,82 +1133,82 @@ contain the
 %%\label{tab:extr-results-1000}
 %%\end{table}
 %
-\begin{table}[htb]
-\centering
-\subtable[Transcriptions with stress (TS), $K = 500$ \label{subtab:extr-500-ts}]{
-\scriptsize
-\setlength{\extrarowheight}{6pt}
-\begin{tabular}{cc|ccc|ccc}
-%\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
-\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
-$s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
-0 & 1 & 0.40 & 0.37 & 0.38 & 0.76 & 0.61 & 0.68 \\
-0 & 2 & 0.50 & 0.45 & 0.47 & 0.77 & 0.60 & 0.67 \\
-0 & 3 & 0.48 & 0.39 & 0.43 & 0.76 & 0.60 & 0.67 \\ \hline
-2 & 1 & 0.43 & 0.40 & 0.42 & 0.77 & 0.59 & 0.67 \\
-2 & 2 & 0.48 & 0.45 & 0.46 & 0.78 & 0.60 & 0.68 \\
-2 & 3 & 0.44 & 0.41 & 0.42 & 0.78 & 0.59 & 0.67 \\ \hline
-4 & 1 & 0.55 & 0.50 & 0.52 & 0.78 & 0.59 & 0.67 \\
-4 & 2 & 0.49 & 0.44 & 0.46 & 0.77 & 0.59 & 0.67 \\
-4 & 3 & 0.45 & 0.40 & 0.42 & 0.78 & 0.59 & 0.67 \\ \hline
-6 & 1 & 0.59 & 0.54 & 0.56 & 0.77 & 0.59 & 0.67 \\
-6 & 2 & 0.60 & 0.48 & 0.53 & 0.78 & 0.60 & 0.68 \\
-6 & 3 & 0.48 & 0.43 & 0.45 & 0.77 & 0.60 & 0.68 \\ \hline\hline
- \multicolumn{2}{r|}{\textit{Avgs:}} & 0.49 & 0.44 & 0.46 & 0.77 & 0.60 & 0.67 \\
-\end{tabular}
-}  \subtable[Transcriptions without stress (TR), $K = 500$ \label{subtab:extr-500-tr}]{
-\scriptsize
-\setlength{\extrarowheight}{6pt}
-\begin{tabular}{cc|ccc|ccc}
-%5\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
-\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
-$s$ & $\delta$ & Prc & R & F& Prc & R & F\\ \hline\hline
-0 & 1 & 0.40 & 0.46 & 0.42 & 0.67 & 0.67 & 0.65 \\
-0 & 2 & 0.40 & 0.53 & 0.44 & 0.60 & 0.68 & 0.61 \\
-0 & 3 & 0.43 & 0.39 & 0.41 & 0.80 & 0.63 & 0.71 \\ \hline
-2 & 1 & 0.46 & 0.49 & 0.47 & 0.70 & 0.66 & 0.66 \\ 
-2 & 2 & 0.47 & 0.41 & 0.44 & 0.80 & 0.64 & 0.71 \\
-2 & 3 & 0.44 & 0.41 & 0.42 & 0.80 & 0.64 & 0.71 \\ \hline
-4 & 1 & 0.50 & 0.46 & 0.48 & 0.80 & 0.64 & 0.71 \\ 
-4 & 2 & 0.46 & 0.41 & 0.44 & 0.80 & 0.64 & 0.71 \\
-4 & 3 & 0.46 & 0.42 & 0.44 & 0.81 & 0.65 & 0.72 \\ \hline
-6 & 1 & 0.56 & 0.52 & 0.54 & 0.80 & 0.64 & 0.71 \\
-6 & 2 & 0.51 & 0.46 & 0.48 & 0.80 & 0.64 & 0.71 \\
-6 & 3 & 0.56 & 0.48 & 0.52 & 0.80 & 0.64 & 0.71 \\ \hline\hline
- \multicolumn{2}{r|}{\textit{Avgs:}}  & 0.47 & 0.45 & 0.46 & 0.77 & 0.65 & 0.69 \\
-\end{tabular}
-} 
-\bigskip
-\subtable[Orthographic (O), $K = 500$ \label{subtab:extr-500-o}]{
-\scriptsize
-\setlength{\extrarowheight}{6pt}
-\begin{tabular}{cc|ccc|ccc}
-%\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
+%\begin{table}[htb]
+%\centering
+%\subtable[Transcriptions with stress (TS), $K = 500$ \label{subtab:extr-500-ts}]{
+%\scriptsize
+%\setlength{\extrarowheight}{6pt}
+%\begin{tabular}{cc|ccc|ccc}
+%%\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
 %\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
-\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
-$s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
-0 & 1 & 0.71 & 0.42 & 0.53 & 0.83 & 0.67 & 0.74 \\
-0 & 2 & 0.68 & 0.32 & 0.43 & 0.84 & 0.69 & 0.75 \\
-0 & 3 & 0.67 & 0.32 & 0.43 & 0.83 & 0.67 & 0.74 \\ \hline
-1 & 1 & 0.45 & 0.56 & 0.50 & 0.58 & 0.64 & 0.61 \\
-1 & 2 & 0.46 & 0.50 & 0.48 & 0.60 & 0.63 & 0.61 \\
-1 & 3 & 0.50 & 0.49 & 0.50 & 0.58 & 0.64 & 0.61 \\ \hline
-2 & 1 & 0.48 & 0.64 & 0.55 & 0.59 & 0.74 & 0.66 \\ 
-2 & 2 & 0.48 & 0.60 & 0.53 & 0.60 & 0.68 & 0.64 \\
-2 & 3 & 0.50 & 0.57 & 0.53 & 0.59 & 0.74 & 0.65 \\ \hline
-3 & 1 & 0.45 & 0.59 & 0.51 & 0.58 & 0.72 & 0.64 \\
-3 & 2 & 0.43 & 0.58 & 0.49 & 0.58 & 0.74 & 0.65 \\
-3 & 3 & 0.47 & 0.56 & 0.51 & 0.58 & 0.73 & 0.65 \\ \hline\hline
- \multicolumn{2}{r|}{\textit{Avgs:}} & 0.52 & 0.51 & 0.50 & 0.65 & 0.69 & 0.66 \\
-\end{tabular}
-}
-\caption{Extrinsic evaluation results at $K = 500$.}
-\label{tab:extr-results-500}
-\end{table}
+%$s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
+%0 & 1 & 0.40 & 0.37 & 0.38 & 0.76 & 0.61 & 0.68 \\
+%0 & 2 & 0.50 & 0.45 & 0.47 & 0.77 & 0.60 & 0.67 \\
+%0 & 3 & 0.48 & 0.39 & 0.43 & 0.76 & 0.60 & 0.67 \\ \hline
+%2 & 1 & 0.43 & 0.40 & 0.42 & 0.77 & 0.59 & 0.67 \\
+%2 & 2 & 0.48 & 0.45 & 0.46 & 0.78 & 0.60 & 0.68 \\
+%2 & 3 & 0.44 & 0.41 & 0.42 & 0.78 & 0.59 & 0.67 \\ \hline
+%4 & 1 & 0.55 & 0.50 & 0.52 & 0.78 & 0.59 & 0.67 \\
+%4 & 2 & 0.49 & 0.44 & 0.46 & 0.77 & 0.59 & 0.67 \\
+%4 & 3 & 0.45 & 0.40 & 0.42 & 0.78 & 0.59 & 0.67 \\ \hline
+%6 & 1 & 0.59 & 0.54 & 0.56 & 0.77 & 0.59 & 0.67 \\
+%6 & 2 & 0.60 & 0.48 & 0.53 & 0.78 & 0.60 & 0.68 \\
+%6 & 3 & 0.48 & 0.43 & 0.45 & 0.77 & 0.60 & 0.68 \\ \hline\hline
+% \multicolumn{2}{r|}{\textit{Avgs:}} & 0.49 & 0.44 & 0.46 & 0.77 & 0.60 & 0.67 \\
+%\end{tabular}
+%}  \subtable[Transcriptions without stress (TR), $K = 500$ \label{subtab:extr-500-tr}]{
+%\scriptsize
+%\setlength{\extrarowheight}{6pt}
+%\begin{tabular}{cc|ccc|ccc}
+%%5\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
+%\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
+%$s$ & $\delta$ & Prc & R & F& Prc & R & F\\ \hline\hline
+%0 & 1 & 0.40 & 0.46 & 0.42 & 0.67 & 0.67 & 0.65 \\
+%0 & 2 & 0.40 & 0.53 & 0.44 & 0.60 & 0.68 & 0.61 \\
+%0 & 3 & 0.43 & 0.39 & 0.41 & 0.80 & 0.63 & 0.71 \\ \hline
+%2 & 1 & 0.46 & 0.49 & 0.47 & 0.70 & 0.66 & 0.66 \\ 
+%2 & 2 & 0.47 & 0.41 & 0.44 & 0.80 & 0.64 & 0.71 \\
+%2 & 3 & 0.44 & 0.41 & 0.42 & 0.80 & 0.64 & 0.71 \\ \hline
+%4 & 1 & 0.50 & 0.46 & 0.48 & 0.80 & 0.64 & 0.71 \\ 
+%4 & 2 & 0.46 & 0.41 & 0.44 & 0.80 & 0.64 & 0.71 \\
+%4 & 3 & 0.46 & 0.42 & 0.44 & 0.81 & 0.65 & 0.72 \\ \hline
+%6 & 1 & 0.56 & 0.52 & 0.54 & 0.80 & 0.64 & 0.71 \\
+%6 & 2 & 0.51 & 0.46 & 0.48 & 0.80 & 0.64 & 0.71 \\
+%6 & 3 & 0.56 & 0.48 & 0.52 & 0.80 & 0.64 & 0.71 \\ \hline\hline
+% \multicolumn{2}{r|}{\textit{Avgs:}}  & 0.47 & 0.45 & 0.46 & 0.77 & 0.65 & 0.69 \\
+%\end{tabular}
+%} 
+%\bigskip
+%\subtable[Orthographic (O), $K = 500$ \label{subtab:extr-500-o}]{
+%\scriptsize
+%\setlength{\extrarowheight}{6pt}
+%\begin{tabular}{cc|ccc|ccc}
+%%\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
+%%\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
+%\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
+%$s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
+%0 & 1 & 0.71 & 0.42 & 0.53 & 0.83 & 0.67 & 0.74 \\
+%0 & 2 & 0.68 & 0.32 & 0.43 & 0.84 & 0.69 & 0.75 \\
+%0 & 3 & 0.67 & 0.32 & 0.43 & 0.83 & 0.67 & 0.74 \\ \hline
+%1 & 1 & 0.45 & 0.56 & 0.50 & 0.58 & 0.64 & 0.61 \\
+%1 & 2 & 0.46 & 0.50 & 0.48 & 0.60 & 0.63 & 0.61 \\
+%1 & 3 & 0.50 & 0.49 & 0.50 & 0.58 & 0.64 & 0.61 \\ \hline
+%2 & 1 & 0.48 & 0.64 & 0.55 & 0.59 & 0.74 & 0.66 \\ 
+%2 & 2 & 0.48 & 0.60 & 0.53 & 0.60 & 0.68 & 0.64 \\
+%2 & 3 & 0.50 & 0.57 & 0.53 & 0.59 & 0.74 & 0.65 \\ \hline
+%3 & 1 & 0.45 & 0.59 & 0.51 & 0.58 & 0.72 & 0.64 \\
+%3 & 2 & 0.43 & 0.58 & 0.49 & 0.58 & 0.74 & 0.65 \\
+%3 & 3 & 0.47 & 0.56 & 0.51 & 0.58 & 0.73 & 0.65 \\ \hline\hline
+% \multicolumn{2}{r|}{\textit{Avgs:}} & 0.52 & 0.51 & 0.50 & 0.65 & 0.69 & 0.66 \\
+%\end{tabular}
+%}
+%\caption{Extrinsic evaluation results at $K = 500$.}
+%\label{tab:extr-results-500}
+%\end{table}
 
 %\begin{table}[htb]
 %\centering
-\begin{table}[htb]
+%\begin{table}[htb]
 %\subtable[Transcriptions with stress (TS), $K = 1000$ \label{subtab:extr-1000-ts}]{
 %\subtable[Transcriptions with stress (TS)]{
 %%\small
@@ -1218,71 +1230,137 @@ $s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
 %%6 & 2 & 0.57 & 0.49 & 0.53 & 0.78 & 0.59 & 0.67 \\
 %%\multicolumn{2}{r|}{\textit{Avgs:}} & 0.47 & 0.43 & 0.45 & 0.77 & 0.59 & 0.67 \\
 %} 
+%\subtable[Transcriptions with stress (TS), $K = 1000$\label{subtab:extr-1000-ts}]{
+%\small
+%\setlength{\extrarowheight}{6pt}
+%\begin{tabular}{cc|ccc|ccc}
+%\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
+%$s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
+%0 & 1 & 0.39 & 0.37 & 0.38 & 0.77 & 0.61 & 0.68 \\
+%0 & 2 & 0.37 & 0.36 & 0.36 & 0.76 & 0.59 & 0.66 \\
+%0 & 3 & 0.48 & 0.41 & 0.44 & 0.76 & 0.59 & 0.67 \\ \hline
+%2 & 1 & 0.51 & 0.48 & 0.49 & 0.77 & 0.59 & 0.67 \\
+%2 & 2 & 0.41 & 0.40 & 0.41 & 0.77 & 0.60 & 0.67 \\
+%2 & 3 & 0.44 & 0.40 & 0.42 & 0.77 & 0.59 & 0.67 \\ \hline
+%4 & 1 & 0.53 & 0.48 & 0.50 & 0.77 & 0.59 & 0.67 \\
+%4 & 2 & 0.55 & 0.47 & 0.51 & 0.78 & 0.60 & 0.68 \\
+%4 & 3 & 0.38 & 0.33 & 0.35 & 0.77 & 0.59 & 0.67 \\ \hline
+%6 & 1 & 0.55 & 0.50 & 0.52 & 0.77 & 0.60 & 0.67 \\
+%6 & 2 & 0.57 & 0.49 & 0.53 & 0.78 & 0.59 & 0.67 \\ \hline\hline
+%\multicolumn{2}{r|}{\textit{Avgs:}} & 0.47 & 0.43 & 0.45 & 0.77 & 0.59 & 0.67 \\
+%\end{tabular}
+%}
+%\bigskip
+%\subtable[Transcriptions without stress (TR), $K = 1000$ \label{subtab:extr-1000-tr}]{
+%\small
+%\setlength{\extrarowheight}{6pt}
+%\begin{tabular}{cc|ccc|ccc}
+%%\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
+%\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
+%$s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
+%0 & 1 & 0.41 & 0.37 & 0.39 & 0.79 & 0.64 & 0.71 \\
+%0 & 2 & 0.45 & 0.41 & 0.43 & 0.80 & 0.64 & 0.71 \\
+%0 & 3 & 0.43 & 0.34 & 0.38 & 0.80 & 0.64 & 0.71 \\ \hline
+%2 & 1 & 0.50 & 0.46 & 0.48 & 0.80 & 0.64 & 0.71 \\
+%2 & 2 & 0.44 & 0.40 & 0.42 & 0.81 & 0.66 & 0.72 \\
+%2 & 3 & 0.31 & 0.55 & 0.40 & 0.39 & 0.70 & 0.50 \\ \hline
+%4 & 1 & 0.52 & 0.48 & 0.50 & 0.81 & 0.64 & 0.71 \\
+%4 & 2 & 0.45 & 0.42 & 0.44 & 0.80 & 0.64 & 0.71 \\
+%4 & 3 & 0.46 & 0.42 & 0.44 & 0.80 & 0.64 & 0.71 \\ \hline
+%6 & 1 & 0.53 & 0.49 & 0.51 & 0.80 & 0.65 & 0.71 \\
+%6 & 2 & 0.51 & 0.45 & 0.48 & 0.80 & 0.63 & 0.71 \\ 
+%6 & 3 & 0.58 & 0.49 & 0.53 & 0.79 & 0.63 & 0.70 \\ \hline \hline
+%\multicolumn{2}{r|}{\textit{Avgs:}}  & 0.47 & 0.44 & 0.45 & 0.77 & 0.65 & 0.69 \\
+%\end{tabular}
+%}
+%%\bigskip
+%\subtable[Orthographic (O), $K = 1000$ \label{subtab:extr-1000-o}]{
+%\small
+%\setlength{\extrarowheight}{6pt}
+%\begin{tabular}{cc|ccc|ccc}
+%%\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
+%%\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
+%\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
+%$s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
+%0 & 1 & 0.71 & 0.41 & 0.52 & 0.83 & 0.67 & 0.74 \\
+%0 & 2 & 0.66 & 0.31 & 0.42 & 0.84 & 0.68 & 0.75 \\
+%0 & 3 & 0.67 & 0.29 & 0.41 & 0.84 & 0.67 & 0.75 \\ \hline
+%1 & 1 & 0.49 & 0.55 & 0.52 & 0.58 & 0.62 & 0.60 \\
+%1 & 2 & 0.54 & 0.49 & 0.51 & 0.58 & 0.62 & 0.60 \\
+%1 & 3 & 0.57 & 0.43 & 0.49 & 0.59 & 0.62 & 0.61 \\ \hline
+%2 & 1 & 0.46 & 0.62 & 0.53 & 0.59 & 0.73 & 0.65 \\
+%2 & 2 & 0.46 & 0.57 & 0.51 & 0.58 & 0.73 & 0.65 \\
+%2 & 3 & 0.50 & 0.58 & 0.54 & 0.58 & 0.74 & 0.65 \\ \hline
+%3 & 1 & 0.46 & 0.59 & 0.51 & 0.58 & 0.73 & 0.64 \\
+%3 & 2 & 0.45 & 0.58 & 0.50 & 0.58 & 0.71 & 0.64 \\
+%3 & 3 & 0.47 & 0.56 & 0.51 & 0.59 & 0.74 & 0.66 \\ \hline\hline
+% \multicolumn{2}{r|}{\textit{Avgs:}}  & 0.54 & 0.50 & 0.50 & 0.65 & 0.69 & 0.66 \\
+%\end{tabular}
+%}
+%\caption{Extrinsic evaluation results at $K = 1000$.}%(Second Pass: Cluster-membership threshold set at 0.8 instead of 0.5.)}
+%\label{tab:extr-results-1000}
+%\end{table}
+
+\begin{table}[htb]
 \subtable[Transcriptions with stress (TS), $K = 1000$\label{subtab:extr-1000-ts}]{
 \small
 \setlength{\extrarowheight}{6pt}
 \begin{tabular}{cc|ccc|ccc}
 \multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
-$s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
-0 & 1 & 0.39 & 0.37 & 0.38 & 0.77 & 0.61 & 0.68 \\
-0 & 2 & 0.37 & 0.36 & 0.36 & 0.76 & 0.59 & 0.66 \\
-0 & 3 & 0.48 & 0.41 & 0.44 & 0.76 & 0.59 & 0.67 \\ \hline
-2 & 1 & 0.51 & 0.48 & 0.49 & 0.77 & 0.59 & 0.67 \\
-2 & 2 & 0.41 & 0.40 & 0.41 & 0.77 & 0.60 & 0.67 \\
-2 & 3 & 0.44 & 0.40 & 0.42 & 0.77 & 0.59 & 0.67 \\ \hline
-4 & 1 & 0.53 & 0.48 & 0.50 & 0.77 & 0.59 & 0.67 \\
-4 & 2 & 0.55 & 0.47 & 0.51 & 0.78 & 0.60 & 0.68 \\
-4 & 3 & 0.38 & 0.33 & 0.35 & 0.77 & 0.59 & 0.67 \\ \hline
-6 & 1 & 0.55 & 0.50 & 0.52 & 0.77 & 0.60 & 0.67 \\
-6 & 2 & 0.57 & 0.49 & 0.53 & 0.78 & 0.59 & 0.67 \\ \hline\hline
-\multicolumn{2}{r|}{\textit{Avgs:}} & 0.47 & 0.43 & 0.45 & 0.77 & 0.59 & 0.67 \\
+0 & 1 & 0.40 & 0.37 & 0.39 & 0.78 & 0.60 & 0.68 \\
+0 & 2 & 0.37 & 0.35 & 0.36 & 0.77 & 0.60 & 0.68 \\
+0 & 3 & 0.50 & 0.39 & 0.44 & 0.77 & 0.60 & 0.67 \\\hline
+2 & 1 & 0.50 & 0.48 & 0.49 & 0.77 & 0.60 & 0.67 \\
+2 & 2 & 0.40 & 0.40 & 0.40 & 0.78 & 0.59 & 0.67 \\
+2 & 3 & 0.46 & 0.42 & 0.44 & 0.78 & 0.59 & 0.67 \\\hline
+4 & 1 & 0.54 & 0.48 & 0.51 & 0.78 & 0.59 & 0.67 \\
+4 & 2 & 0.54 & 0.46 & 0.50 & 0.79 & 0.61 & 0.68 \\
+4 & 3 & 0.48 & 0.38 & 0.42 & 0.78 & 0.59 & 0.68 \\ \hline
+6 & 1 & 0.55 & 0.50 & 0.52 & 0.78 & 0.60 & 0.68 \\
+6 & 2 & 0.58 & 0.49 & 0.53 & 0.77 & 0.59 & 0.67 \\ \hline\hline
+\multicolumn{2}{r|}{\textit{Avgs:}} & 0.48 & 0.43 & 0.45 & 0.78 & 0.60 & 0.67 \\
+\end{tabular}
+}
+\subtable[Transcriptions with stress (TR), $K = 1000$\label{subtab:extr-1000-tr}]{
+\small
+\setlength{\extrarowheight}{6pt}
+\begin{tabular}{cc|ccc|ccc}
+\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
+0 & 1 & 0.36 & 0.47 & 0.40 & 0.61 & 0.68 & 0.62 \\
+0 & 2 & 0.46 & 0.41 & 0.43 & 0.79 & 0.63 & 0.70 \\
+0 & 3 & 0.50 & 0.37 & 0.43 & 0.80 & 0.64 & 0.71 \\ \hline
+2 & 1 & 0.50 & 0.46 & 0.48 & 0.81 & 0.65 & 0.72 \\
+2 & 2 & 0.44 & 0.40 & 0.42 & 0.81 & 0.64 & 0.71 \\
+2 & 3 & 0.31 & 0.56 & 0.40 & 0.40 & 0.73 & 0.52 \\ \hline
+4 & 1 & 0.51 & 0.47 & 0.49 & 0.80 & 0.65 & 0.72 \\
+4 & 2 & 0.46 & 0.42 & 0.44 & 0.80 & 0.64 & 0.71 \\
+4 & 3 & 0.47 & 0.43 & 0.45 & 0.79 & 0.63 & 0.71 \\ \hline
+6 & 1 & 0.53 & 0.49 & 0.51 & 0.81 & 0.64 & 0.72 \\
+6 & 2 & 0.51 & 0.43 & 0.47 & 0.81 & 0.64 & 0.71 \\
+6 & 3 & 0.59 & 0.46 & 0.52 & 0.79 & 0.64 & 0.71 \\ \hline\hline
+ \multicolumn{2}{r|}{\textit{Avgs:}} & 0.48 & 0.44 & 0.46 & 0.76 & 0.65 & 0.69 \\
 \end{tabular}
 }
 \bigskip
-\subtable[Transcriptions without stress (TR), $K = 1000$ \label{subtab:extr-1000-tr}]{
+\subtable[Orthographic (O), $K = 1000$ \label{subtab:extr-1000-0}]{
 \small
 \setlength{\extrarowheight}{6pt}
 \begin{tabular}{cc|ccc|ccc}
-%\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
 \multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
 $s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
-0 & 1 & 0.41 & 0.37 & 0.39 & 0.79 & 0.64 & 0.71 \\
-0 & 2 & 0.45 & 0.41 & 0.43 & 0.80 & 0.64 & 0.71 \\
-0 & 3 & 0.43 & 0.34 & 0.38 & 0.80 & 0.64 & 0.71 \\ \hline
-2 & 1 & 0.50 & 0.46 & 0.48 & 0.80 & 0.64 & 0.71 \\
-2 & 2 & 0.44 & 0.40 & 0.42 & 0.81 & 0.66 & 0.72 \\
-2 & 3 & 0.31 & 0.55 & 0.40 & 0.39 & 0.70 & 0.50 \\ \hline
-4 & 1 & 0.52 & 0.48 & 0.50 & 0.81 & 0.64 & 0.71 \\
-4 & 2 & 0.45 & 0.42 & 0.44 & 0.80 & 0.64 & 0.71 \\
-4 & 3 & 0.46 & 0.42 & 0.44 & 0.80 & 0.64 & 0.71 \\ \hline
-6 & 1 & 0.53 & 0.49 & 0.51 & 0.80 & 0.65 & 0.71 \\
-6 & 2 & 0.51 & 0.45 & 0.48 & 0.80 & 0.63 & 0.71 \\ 
-6 & 3 & 0.58 & 0.49 & 0.53 & 0.79 & 0.63 & 0.70 \\ \hline \hline
-\multicolumn{2}{r|}{\textit{Avgs:}}  & 0.47 & 0.44 & 0.45 & 0.77 & 0.65 & 0.69 \\
-\end{tabular}
-}
-%\bigskip
-\subtable[Orthographic (O), $K = 1000$ \label{subtab:extr-1000-o}]{
-\small
-\setlength{\extrarowheight}{6pt}
-\begin{tabular}{cc|ccc|ccc}
-%\multicolumn{2}{c}{} & \multicolumn{3}{c}{\footnotesize{Intermediate}} & \multicolumn{3}{c}{} \\
-%\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
-\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
-$s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
-0 & 1 & 0.71 & 0.41 & 0.52 & 0.83 & 0.67 & 0.74 \\
-0 & 2 & 0.66 & 0.31 & 0.42 & 0.84 & 0.68 & 0.75 \\
-0 & 3 & 0.67 & 0.29 & 0.41 & 0.84 & 0.67 & 0.75 \\ \hline
-1 & 1 & 0.49 & 0.55 & 0.52 & 0.58 & 0.62 & 0.60 \\
-1 & 2 & 0.54 & 0.49 & 0.51 & 0.58 & 0.62 & 0.60 \\
-1 & 3 & 0.57 & 0.43 & 0.49 & 0.59 & 0.62 & 0.61 \\ \hline
-2 & 1 & 0.46 & 0.62 & 0.53 & 0.59 & 0.73 & 0.65 \\
-2 & 2 & 0.46 & 0.57 & 0.51 & 0.58 & 0.73 & 0.65 \\
-2 & 3 & 0.50 & 0.58 & 0.54 & 0.58 & 0.74 & 0.65 \\ \hline
-3 & 1 & 0.46 & 0.59 & 0.51 & 0.58 & 0.73 & 0.64 \\
-3 & 2 & 0.45 & 0.58 & 0.50 & 0.58 & 0.71 & 0.64 \\
-3 & 3 & 0.47 & 0.56 & 0.51 & 0.59 & 0.74 & 0.66 \\ \hline\hline
- \multicolumn{2}{r|}{\textit{Avgs:}}  & 0.54 & 0.50 & 0.50 & 0.65 & 0.69 & 0.66 \\
+0 & 1 & 0.69 & 0.42 & 0.52 & 0.83 & 0.67 & 0.75 \\
+0 & 2 & 0.67 & 0.31 & 0.42 & 0.84 & 0.68 & 0.75 \\
+0 & 3 & 0.67 & 0.28 & 0.39 & 0.83 & 0.68 & 0.75 \\ \hline
+1 & 1 & 0.49 & 0.56 & 0.52 & 0.59 & 0.64 & 0.61 \\
+1 & 2 & 0.53 & 0.48 & 0.51 & 0.60 & 0.64 & 0.62 \\
+1 & 3 & 0.72 & 0.30 & 0.42 & 0.59 & 0.64 & 0.61 \\ \hline
+2 & 1 & 0.47 & 0.62 & 0.53 & 0.57 & 0.71 & 0.63 \\
+2 & 2 & 0.46 & 0.59 & 0.52 & 0.58 & 0.72 & 0.64 \\
+2 & 3 & 0.55 & 0.56 & 0.56 & 0.59 & 0.73 & 0.65 \\ \hline
+3 & 1 & 0.46 & 0.59 & 0.51 & 0.58 & 0.73 & 0.65 \\
+3 & 2 & 0.43 & 0.56 & 0.49 & 0.60 & 0.70 & 0.65 \\
+3 & 3 & 0.49 & 0.58 & 0.53 & 0.58 & 0.74 & 0.65 \\ \hline\hline
+ \multicolumn{2}{r|}{\textit{Avgs:}} & 0.55 & 0.49 & 0.49 & 0.65 & 0.69 & 0.66 \\
 \end{tabular}
 }
 \caption{Extrinsic evaluation results at $K = 1000$.}%(Second Pass: Cluster-membership threshold set at 0.8 instead of 0.5.)}
