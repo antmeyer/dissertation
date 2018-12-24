@@ -54,9 +54,16 @@
 %to be designed either for concatenative or for nonconcatenative morphology, 
 %but generally not for both, and if they are designed  clear gap in ULM.
 
-
-This thesis presents an approach to the unsupervised learning of morphology that 
-that marries autosegmental theory \citep{mccarthy:1981} and graphical computing methods. The novelty of this approach as well as its contribution lies in its simplicity and generality. It is equally applicable both to concatenative and nonconcatenative morphologies, as well as to any language in theory. We will autosegmental theory, once it is distilled down to its essential properties, connects quite naturally to graph theory, and hence to graphical approaches to machine learning. I will show that bipartite graphical model in particular, because of its a layer of hidden nodes, exhibits the same multilinear properties that are behind the effectiveness of autosegmental morphology. 
+This thesis presents an approach to the unsupervised learning of morphology \ac{ULM} that 
+that marries autosegmental theory \citep{mccarthy:1981} and graphical 
+computing methods. The novelty of this approach as well %as its contribution to the field 
+lies in its simplicity and generality. It is equally applicable both to concatenative and 
+nonconcatenative morphology, as well as to any language in theory. We will see that
+autosegmental theory, once it is distilled down to its essential properties, 
+connects quite naturally to graph theory, and hence to graphical approaches 
+to machine learning. I will show that a bipartite graphical model in particular, 
+because of its a layer of hidden nodes, exhibits the same multilinear properties 
+that are behind the effectiveness of autosegmental morphology. 
 
 %The power of autosegmental morphological theory \citep{mccarthy:1981}.
 %lies in its \emph{multilinear} framework. 
@@ -99,16 +106,25 @@ that marries autosegmental theory \citep{mccarthy:1981} and graphical computing 
 %\label{sec:autoseg-morph}
 %[Identity the property that enables it to handle discontinuous morphemes. 
 %(This property is its multi-linear architecture.)]
-The power and versatility of autosegmental morphological theory \citep{mccarthy:1981}.
-lies in its \emph{multilinear} architecture, i.e., its
+The power and versatility of autosegmental morphological theory \citep{mccarthy:1981}
+stem from its \emph{multilinear} architecture, i.e., its
 %The most important component of autosegmental theory \citep{mccarthy:1981}
 %is its multi-linear architecture, i.e., its
-use of a \emph{segmental tier} along with many \emph{autosegmental tiers} to account for morphological structure. The segmental tier is
+use of a \emph{segmental tier} along with many \emph{autosegmental tiers} 
+to account for morphological structure. The segmental tier is
 a series of placeholders for consonants and vowels, often called the
-\emph{CV skeleton}. The other tiers each represent a particular
-morpheme. Fig.~\ref{subfig:nonlinear} shows four tiers. One is the CV
-skeleton. The other three, labeled $\mu_1$, $\mu_2$, and $\mu_3$, are
-morphemes, or units of morphological structure.
+\emph{CV skeleton}. The other tiers each represent a particular \emph{morph}, i.e., unit of morphological structure.\footnote{Our choice of \emph{morph} over another term, such as \emph{morpheme}, is a deliberate  one. The question of what to call the fundamental units of morphological structure is non-trivial, since it is, practically speaking, tantamount to the question of what these fundamental units \emph{are}, i.e., what their nature is. It is thus also very pertinent to the question of what sorts of units can be induced by ULM systems. We will address these questions (as well as motivate our usage of \emph{morph}) in chapter~\ref{autonomous}.}
+ 
+ Figure~\ref{fig:nonlinear} contrasts an autosegmental (or nonlinear) morphological analysis  with a linear one, both with respect to the Hebrew word \textit{magdil} `to make large, magnify.' 
+%The autosegmental analysis for the Hebrew word \emph{magdil} `to make large, magnify.' 
+In the autosegmental analysis (subfigure~\ref{subfig:nonlinear}), the morphological structure of \textit{magdil} is represented by four distinct tiers: One is the CV
+skeleton, and the other three, labeled $\mu_1$, $\mu_2$, and $\mu_3$, correspond to morphs. Each morph is basically shorthand for a particular subsequence of phonemes (or graphemes). Thus, when a morph connects with a particular C (or V) in the segmental tier, the C (or V) inherits the identity one of the morph's phonemes. For example,  in subfigure~\ref{subfig:nonlinear}, $\mu_2$ claims the third phonological segment, which thus takes on the identity of  $\mu_2$'s first phoneme, namely /g/. The fourth phonological segment likewise belongs to $\mu_2$, so it manifests $\mu_2$'s second phoneme, namely /d/. Now, $\mu_2$ does not claim the fifth phonological segment, as it happens, and thus skips over it, so to speak. It does claim the sixth phonological segment, however, which thus becomes, in effect, $\mu_2$'s third phoneme, namely /l/. 
+Note that $\mu_2$'s phonemes are mapped to phonological segments in order---i.e., the /g/ in $\mu_2$ is assigned before the /d/, and the C that is associated with /g/ must precede the C associated with /d/, etc. At the same, however, these \textit{C}s could be separated by any number of \textit{C}s or \textit{V}s, and the mapping of the morph's to phonological segments would still work. This is an important consequence of the nonlinear (autosegmental) architecture in subfigure~\ref{subfig:nonlinear}. 
+%Each morph is essentially an independent data structure  both the ordering of its phonemes as well as 
+
+%In an autosegmental framework, therefore, morphs do not depend on the particular arrangement of phonemes within the segmental string.  of phonological segments.
+
+%morph, or units of morphological structure.
 %\footnote{Even though McCarthy uses the term \emph{morpheme} rather than \emph{morphome}, the same principles apply.}
 
 \begin{figure}[t]
@@ -180,19 +196,20 @@ morphemes, or units of morphological structure.
 	\end{tikzpicture}
 \label{subfig:linear}
 }
+\label{fig:nonlinear}
 \caption{Multiple tiers vs. a single tier}
-\label{fig:linear}
 %\vspace{-20pt}
 %\vspace{1pt}
 \end{figure}
 
-Notice that $\mu_2$, the consonantal root, is discontinuous; it is
-interrupted by $\mu_3$. If a model should have only one tier, as in
+%Notice that $\mu_2$, the consonantal root, is discontinuous; it is
+%interrupted by $\mu_3$. 
+%This autosegmental account of the 
+By contrast, the analysis in subfigure~\ref{subfig:linear} is the \emph{linear} counterpart to the autosegmental  (or nonlinear) analysis in fig.~\ref{subfig:nonlinear}
+If a model should have only one tier, as in 
 fig.~\ref{subfig:linear}, there would be no way of representing the
 unity of $\mu_2$, i.e., the fact that \textit{g}, \textit{d}, and \textit{l}
-all belong to the same morphological unit. Multiple tiers are thus crucial. With this multi-tier aspect of
-autosegmental morphology in mind, we can state two fundamental criteria for any
-model of non-concatenative morphology:
+all belong to the same morphological unit. Observations such these motivate this thesis's two principal concepts: \emph{nonlinearity} and \emph{nonsequentiality}. We will define these concepts now and revisit them further in subsequent chapters. 
 
 	\begin{definition}\label{def:nl}{\textsc{Nonlinearity}}: %A model is \emph{nonlinear} 
 	Morphs must be separate from the phonological tier. \end{definition}
@@ -201,6 +218,7 @@ model of non-concatenative morphology:
 	%---i.e., independent of---all other morph tiers. 
 	Each morph tier must be orthogonal to all other morph tiers.
 	\end{definition}
+I propose that these two properties are the essential properties that enable autosegmental morphology to handle nonconcatenative morphology. The main idea of this thesis is that these two properties must be present in any model in order for it to be capable of handling (or learning) nonconcatenative morphology.  We will also revisit this idea later (see in particular section~\ref{}).
 \begin{proposition}\label{prop:nlns}
 A model of morphology can handle nonconcatenative morphology if and only if it satisfies both \textbf{nonlinearity} and \textbf{nonsequentiality}. %  the modeling of nonconcatenative morphology.}
 \end{proposition}
@@ -226,33 +244,33 @@ A model of morphology can handle nonconcatenative morphology if and only if it s
 \section{Research Questions and Objectives}
 %State primary research objective: 
 %\subsection{Primary research objective}
-This dissertation's main idea can be expressed in three points:
+The primary objective of this thesis is to demonstrate the idea expressed above as proposition \ref{prop:nlns} through a combination of rational argument and experimentation.
 %that the crucial components of autosegmental theory, i.e., 
 %those components that allow it to handle non-concatenative morphology, 
+%This will be accomplished both through rational argument and experimentation.
+The rational argument will consist in three main points.
 First, the properties of nonlinearity and nonsequentiality are absolutely essential for dealing with nonconcatenative morphology.
-Second, these properties are equivalent to the formal mathematical properties that define bipartite graphs. And third, this equivalence provides a foundation for graphical learning models to be used for the purpose of morphological learning. This study uses a graphical learning framework known as the Multiple Cause Mixture Model (MCMM) \citep{saund:1994}.
-
-are a natural choices for  that this equivalence allows graphical learning models can  
-morphology, and (2) that these properties can 
-be implemented in the form of 
-an Multiple Cause Mixture Model (MCMM), 
-%which is 
-%a general unsupervised learning framework developed by \cite{saund:94}. 
-The experimental component of the dissertation involves the development and evaluation of\textbf{Multimorph}, a novel unsupervised morphology-learning system that is driven by an MCMM and embodies the three points stated above.
-
+Second, these properties are equivalent to the formal mathematical properties that define bipartite graphs. And third, this equivalence provides a foundation for the use of graphical learning models for the purpose of morphological learning. 
+%The present study uses a graphical learning framework known as the Multiple Cause Mixture Model (MCMM) \citep{saund:94}. 
+These points will be further fleshed out in chapters \ref{ch:lit-review}, \ref{ch:graph}, and\ref{ch:MCMM}. 
+The experimental component of the dissertation consists of the development and evaluation of
+ \textbf{Multimorph}, a novel unsupervised morphology-learning system that is driven by an MCMM and embodies the three points stated above.
 %The input data consisted of Modern Hebrew words represented as feature vectors. 
 %The present study focuses on the learning of Modern Hebrew, since Modern Hebrew
 %exhibits both concatenative and non-concatenative morphological processes 
 %and thus provides a good test of the method's generality.
-
 %\subsection{Secondary research objectives}
 %\label{sec:secondary-objectives}
 %My secondary research objectives are outlined below. %They are largely concerned with matters of implementation. 
-	 \subsection{The Question of Features.} There is a great deal of information tacitly present in a string of alphabetic symbols.
+	
+	 \subsection{The Question of Features} There is a great deal of information tacitly present in a string of alphabetic symbols.
 	 This is true regardless of whether the string is written, in which case the symbols are graphemes, or spoken,
-	 in which case they are phonemes. In either case, the symbols are each drawn from an alphabet of size $N$ and arranged along a single axis (say, the $x$ axis).
-Consider the string of graphemes printed below.
+	 in which case they are phonemes. In either case, the symbols are each drawn from an alphabet of size $N$ and arranged along a single axis. % (say, the $x$ axis).
+%Consider the string of graphemes printed below.
+By way of illustration, consider again the Hebrew word \textit{magdil}, but now specifically as a \emph{string of graphemes}: 
+%from figure~\ref{fig:nonlinear}, but now we think of it specifically as the \emph{string of graphemes}.
 \begin{figure}[h]
+\vspace{12pt}
 	\centering
 	\begin{tikzpicture}[shorten >=2pt,shorten <=3pt, draw=black!100]
 	\Large
@@ -264,8 +282,7 @@ Consider the string of graphemes printed below.
 	%\node[r-node] 	(r0)	at (0cm,\rowoneht)		{s t o p};
 	%\node[r-node] 	(r0)	at (0cm,\rowtwoht)		{p o t s};
 	\end{tikzpicture}
-\end{figure}
-
+\end{figure} \\
 %This row of six graphemes contains a vast amount of tacit information. For instance, suppose we had to represent the string \textit{magdil} not as sequence of alphabetic symbols, but as a series of simple declarative statements. We might come up with statements like the following: 
 %%These statements might say that a certain character is present in the string, that one character precedes another character, that a particular character occurs at a particular position in the string, and so on, as in the following examples.
 %\begin{itemize}
@@ -283,16 +300,18 @@ Consider the string of graphemes printed below.
 %Statements like these are essentially what we call \emph{features}.
 %Each statement can be either true or false, which is to say that each feature is \emph{binary}, drawn from an alphabet of size $N = 2$.  
 %Many machine learning models require that each input object or \emph{learning instance} (in our case, each \emph{word}) be represented as a vector of binary features, not alphabetic features. Moreover, all input objects (learning instances) must be described by the same feature set, and all feature vectors must be of the same length.
-
-One cannot, of course, have an infinite number of features, as feature vectors must be finite in length.
-Now, let $F$ be the infinite set of all possible features. In keeping with the spirit of my primary research objective, we shall assume that there exists at least one $\phi$ such that that $\phi \subset F$, $\phi$ is finite, and $\phi$ allows an ULM system to learn a multilinear model of morphology. The objective here is to confirm this assumption, i.e., to find such a subset.
-
-There is a great deal of information tacitly present in a string of alphabetic symbols.
-	 This is true regardless of whether the string is written, in which case the 
-	 symbols are graphemes, or spoken, in which case they are phonemes. In either 
-	 case, the symbols are each drawn from an alphabet of size $N$ and arranged 
-	 along a single axis (say, the $x$ axis).
-Consider the string of graphemes printed at the top of figure~\ref{fig:many-feats}
+%One cannot, of course, have an infinite number of features, as feature vectors must be finite in length.
+%Now, let $F$ be the infinite set of all possible features. In keeping with the spirit of my primary research objective, we shall assume that there exists at least one $\phi$ such that $\phi \subset F$, $\phi$ is finite, and $\phi$ allows a \ac{ULM} system to learn a multilinear model of morphology. The objective here is to confirm this assumption, i.e., to find such a subset.
+%There is a great deal of information tacitly present in a string of alphabetic symbols.
+%This is true regardless of whether the string is written, in which case the symbols 
+%are graphemes, or spoken, in which case they are phonemes. In either case, 
+%the symbols are each drawn from an alphabet of size $N$ and arranged along 
+%a single axis. % (say, the $x$ axis).
+%By way of illustration, consider again the Hebrew word \textit{magdil}, but now specifically as a \emph{string of graphemes}.  In  
+%from figure~\ref{fig:nonlinear}, but now we think of it specifically as the \emph{string of graphemes} 
+%printed at the top of figure~\ref{fig:many-feats}. 
+%By way of illustration, consider the string of graphemes
+%displayed at the top of figure~\ref{fig:many-feats}.
 %\begin{figure}[h]
 %	\centering
 %	\begin{tikzpicture}[shorten >=2pt,shorten <=3pt, draw=black!100]
@@ -306,22 +325,18 @@ Consider the string of graphemes printed at the top of figure~\ref{fig:many-feat
 %	%\node[r-node] 	(r0)	at (0cm,\rowtwoht)		{p o t s};
 %	\end{tikzpicture}
 %\end{figure}
-This row of six graphemes contains a vast amount of tacit information. For instance, 
+This six-grapheme string contains a vast amount of tacit information. For instance, 
 suppose we had to represent the string \textit{magdil} not as sequence of alphabetic 
 symbols, but as a series of simple declarative statements. We might come up with 
-statements like the ones listed below the string \textit{magdil} in figure~\ref{fig:many-feats}. All of these
-facts and many more are tacitly present in the six-symbol string \textit{magdil}.
-
-\begin{figure}[ht]
-\caption{Innumerable possible features.}
-%\begin{tikzpicture}
-\label{fig:many-feats}
-%\hline\hline
-%These statements might say that a certain character is present in the string, that one character precedes another character, that a particular character occurs at a particular position in the string, and so on, as in the following examples.
-\begin{center}
-\Large{magdil}
-\end{center}
-%\smallskip
+statements like the following: 
+%in in figure~\ref{fig:many-feats}
+%\begin{figure}[h]
+%%line\hline
+%%These statements might say that a certain character is present in the string, that one character precedes another character, that a particular character occurs at a particular position in the string, and so on, as in the following examples.
+%\begin{center}
+%\Large{magdil}
+%\end{center}
+%%\smallskip
 \begin{itemize}
   \item \textit{a} immediately follows \textit{m}, \textit{g} immediately follows \textit{a}, \textit{d} immediately follows \textit{g}, and so on. 
   \item \textit{i} immediately precedes \textit{l}, \textit{d} immediately precedes \textit{i}, and so on. %What's more, we know that
@@ -334,43 +349,85 @@ facts and many more are tacitly present in the six-symbol string \textit{magdil}
 \end{itemize}
 %\hline
 %\end{tikzpicture}
-\end{figure}
+%\caption{Innumerable possible features.}
+%\begin{tikzpicture}
+%\label{fig:many-feats}
+%\end{figure}
 %A string like \textit{magdil} tacitly conveys all of these facts and many more---perhaps 
 %infinitely more. 
+All of these statements, as well as many others,
+are tacitly expressed in the string \textit{magdil}.
 
-What we call \emph{features} are essentially true-or-false statements like the ones in figure~\ref{fig:many-feats} are essentially 
+What we call \emph{features} are essentially true-or-false statements like those listed above.
+% ones in figure~\ref{fig:many-feats}.
 %Each statement can be either true or false, which is to say that each feature is \emph{binary}, 
 %drawn from an alphabet of size $N = 2$.  
 Many machine learning models require that each input object or \emph{learning instance} 
 (in our case, each \emph{word}) be represented as a vector of binary features, not alphabetic 
 features. Moreover, all input objects (learning instances) must be described by the same feature 
 set, and all feature vectors must be of the same length.
-One cannot, of course, have an infinite number of features. Feature vectors must be finite in length.
-One must therefore choose a particular subset. The problem of choosing a likely subset constitutes one of
-this dissertation's main research questions. 
+One cannot, of course, have an infinite number of features, since feature vectors must have a definite length.
+One must therefore choose a particular subset of all possible features. The problem of choosing a likely subset constitutes one of
+this dissertation's main research questions, and we
 %In \ref{ch:intro}, we mentioned the problem of choosing one finite subset of features from an infinite number of possible features.
-We will address this question further in chapter~\ref{ch:experi} in part by gleaning some insight
-from the field of computer vision. That is, we will consider feature categories that 
-are significant to computer vision, with an eye to adapting them for the purposes of ULM. 
+address it further in chapter~\ref{ch:experi}, where we will glean some insight 
+by considering feature categories that 
+are significant to computer vision, particularly \emph{invariant} and \emph{variant} features. I will argue that the distinction between these two categories is also important to the unsupervised learning of morphology.
+% with an eye to better understanding the sort of features that are valuable to the unsupervised learning of morphology. 
 %The idea is that 
 %the task of clustering objects, i.e., discerning what makes two objects similar and what makes them different,
 %and figuring out which objects to group together and which to separate, is a very general problem. And thus the
 %same types of features should apply to different types of objects.
 %These categories are \textit{variant} features and \textit{invariant} features. 
 %>>>
-We shall focus in particular on \emph{invariant} and \emph{variant} features.
-The distinction between these two feature types is a highly significant one in
-computer vision and its various subfields. In the present dissertation, we hypothesize that this distinction is
-also relevant to unsupervised morphological learning. 
+%We will focus in particular on \emph{invariant} and \emph{variant} features. The distinction between these two categories is highly significant in
+%computer vision and its various subfields. For the purposes of this dissertation, we hypothesize that this distinction is
+%also important to unsupervised morphological learning. 
 
 
-\subsection{Input Data Representation.} 
+\subsection{The Question of Data Representation} 
  %emph{representation} of the input data,
-By \emph{representation} we refer mainly to the alphabet---the
-particular set of symbols---from which the strings (i.e., words) of the input wordlist are composed.
-In the present work, three manners of data representations were tested, each presenting different information. The matter of how the input data should represented is a particularly important and difficult question in morphological learning because there are often many ways to represent linguistic data in text form. Some modes of representation are more transcriptional, and others lean toward the orthographic. Some might go to great lengths to capture every phonological and morphophonemic alternation, while others might not express any alternations. Still others might express graphemic alterations; for example, some scripts have different shapes for some letters when the occur word-finally. Some scripts might represent some phonological alternations, but not others, perhaps because speakers for some person perceive those alternations to be more salient than others. 
+In extracting features from the original data, i.e., a list of words, one is of altering the dataset. Different feature categories emphasize different kinds of information. But the raw material for feature extraction is any case the original word list, and thus the way in which the words represented in the original dataset plays its own role in shaping features. 
+By \emph{representation}, we refer mainly to the alphabet---the
+particular set of symbols---from which the strings (i.e., words) of the input wordlist 
+are composed.  A word is fundamentally something spoken, i.e., a sequence of sounds, and thus in order to write the word down, one must devise a way to represent the spoken phenomenon on paper. Like feature-set design, this is a means of emphasizing some information at the expense of other information. All else being equal---i.e., even if the feature categories are the same---different modes of data representation will produce different features.  
+In the present work, three manners of data representations were tested, each presenting 
+different information. 
 
-The three modes of representation tested in this dissertation were (1) transcriptions with stress markings, (2) transcriptions without stress markings, and (3) standard orthography. The third category because standard Hebrew orthography for the most part lacks vowels. Its alphabet consists of only consonants. I initially hypothesized that the models that were induced from the orthographic data would produce the worst-performing models. The reasoning behind this hypothesis consisted of two main points: (1) any system that lacks vowels has to be information deficient, and (2), vowels must be particularly important to Hebrew because its derivational morphology consists in interleaving consonantal roots and vowel patterns. The results, however, proved to be somewhat surprising, as we shall see in chapter~\ref{ch:results}.
+The question of how the input data should be represented is an important one in morphological learning because there are often 
+a variety ways to represent linguistic data in text form. 
+For instance, Japanese can be written in written in \textit{kanji} or 
+\textit{kana} characters. The former are entirely logographic, as they 
+have been borrowed directly from the Chinese \textit{Han} script, 
+and as such, they are not connected to speech sounds in any way. The latter, by contrast,
+represent syllables of spoken Japanese. That is, each single \textit{kana} 
+character represents both a consonant and a vowel.  (Japanese syllables consist of a consonant onset and a vowel nucleus.)  Japanese can also be represented via alphabetic systems, which including several systems of Romanization as well as scientific phonetic transcription systems such as the International Phonetic Alphabet (IPA).  One might reasonably ask how these various ways of representing Japanese as text might influence the unsupervised learning of Japanese morphology.
+
+%There are indefinitely many ways to represent any language. 
+%combination of this two. \textit{Kanji} are logographic characters borrowed directly from the Chinese \texit{Han} script, whereas \textit tAs logographic characters, they are not connected to speech sounds. Japananese   characters and ar chaSome modes of representation 
+%are more transcriptional, 
+%and others lean toward the orthographic. Some might go to great lengths to capture every phonological and morphophonemic alternation, while others might not express 
+%any alternations. Still others might express graphemic alterations; for example, 
+%some scripts have different shapes for some letters when the occur word-finally. 
+%Some scripts might represent some phonological alternations, but not others, 
+%perhaps because those alternations are perceived as more salient than others.
+Like that of Japanese, the orthography of Hebrew has a long and rich history. Unlike Japanese, however, Hebrew has never been represented in a non-alphabetic script. Indeed, the ancient Hebrew alphabet was essentially the Phoenician alphabet, the world's first alphabetic writing system and the progenitor of all the alphabets that would in emerge in Europe and the Near East. Still, Hebrew orthography is by no means a straightforward matter, as we shall see in chapter~\ref{ch:experi}.
+This dissertation tests three different modes of representing Hebrew as text:
+\begin{enumerate}
+\item Transcriptions that mark the primary stress in words
+\item Transcriptions without stress markings 
+\item Standard Hebrew orthography 
+\end{enumerate} 
+The third category---the standard orthography---is significant because standard Hebrew 
+orthography lacks symbols reserved for vowels. Its alphabet consists only of consonants.\footnote{Some consonants can be used to represent vowels, namely the Hebrew equivalents of \textit{w} (pronounced as [v] in Modern Hebrew), \textit{y}, and \textit{h}. Even so, these symbols are still fundamentally consonants. This and other matters of Hebrew orthography will be discussed in chapter~\ref{ch:experi}.}
+
+I initially hypothesized that models induced from the orthographic 
+data would produce the worst-performing models. The reasoning behind this 
+hypothesis was that, first, any system that lacks vowels has 
+to be information- deficient, and second, vowels must be particularly important to 
+Hebrew because its derivational morphology consists of interleaving consonantal 
+roots and vowel patterns. The results, however, proved to be somewhat surprising, 
+as we shall see in chapter~\ref{ch:results}.
 % morphology consist missing out on a great deal of valuable information  It seemed that a vowel-less spelling system would since it seems so obvious that by lacking vowels, it is lacking set wi particularly note this study is noteworthy because the Hebrew alphabet has no vowelsinv take on a different shape word-finally. to a great   to a greater e  The question of data representation determines the raw material from which features are constructed, touches on a number concern the role of the input data in morphological learning, the distinction between information quantity and quality in the input data, as well the influence of 
 
 %transcriptional representations. These differed only in that one marked stress and the other did not. (i.e., all vowels of the t (TS and TR, respectively); The third was \emph{orthographic}, comprising 
@@ -398,7 +455,7 @@ The three modes of representation tested in this dissertation were (1) transcrip
 %	The question is which mode of representation yields better feature vectors. This is equivalent to asking which mode delivers the largest quantity of useful information and/or the smallest quantity of irrelevant information.
 %	\paragraph{Mixing and Objective Functions.} The \textbf{mixing function} 
 %is essentially a voting rule \citep{saund:94}. It prescribes the method whereby the 
-%``votes" of  hidden units are combined to turn a particular feature (i.e., surface unit) \textsc{on} or \textsc{off} (see section~\ref{sec:mixing-function}. The \textbf{objective function} measures the discrepancy---or, alternatively, similarity---between the surface units' activities and their target activities. 
+%``votes'' of  hidden units are combined to turn a particular feature (i.e., surface unit) \textsc{on} or \textsc{off} (see section~\ref{sec:mixing-function}. The \textbf{objective function} measures the discrepancy---or, alternatively, similarity---between the surface units' activities and their target activities. 
 %It thus drives the model's learning by way of trial and error. Objective functions can 
 %be either positive or negative. Positive objective functions measure similarity and thus 
 %need to be maximized. Negative objective functions measure error and thus need to be minimized (see section~\ref{sec:mcmm-learning}).
@@ -415,7 +472,7 @@ The three modes of representation tested in this dissertation were (1) transcrip
 %If there were no objective function, there could be no learning. Learning proceeds by trial and error. 
 %The objective function supplies the error.
 
-\paragraph{The Problem of Evaluation}  One goal of unsupervised learning is to discover previously unknown categories \citep{parsons:2004}. This is especially true for the present study. Chapter~\ref{autonomous} argues that unsupervised morphological learners by nature learn \emph{autonomous} morphological units, units that reside between phonology and syntax within their own independent layer. They have no meaning in of themselves, as they exist independently of syntax and semantics. It is difficult to know going into an experiment what these categories should look like. What makes such units of intermediate structure correct or incorrect? 
+\subsection{The Problem of Evaluation}  One goal of unsupervised learning is to discover previously unknown categories \citep{parsons:2004}. This is especially true where the present study is concerned. Chapter~\ref{autonomous} argues that unsupervised morphological learners by nature learn \emph{autonomous} morphological units, i.e., units that reside in an independent between phonology and syntax. Such units have no meaning in and of themselves, as they exist independently of syntax and semantics. It is difficult to know going into an experiment what these categories should look like, i.e., what would make such units of intermediate structure correct or incorrect. 
 
 %going
 %The previously unknown categories in this case are going to be morphological units of some kind.
@@ -428,7 +485,7 @@ The three modes of representation tested in this dissertation were (1) transcrip
 %\emph{morphome}, however, since MCMM-generated clusters may not correspond 
 %precisely to morphomes in every case (see section~\ref{sec:targets}).
 
-Thus, the evaluation itself presents an important research question, namely the question of how to evaluate the output of an unsupervised morphological clustering algorithm, particularly one that considers only features of \emph{word-internal form}, having no access to word-external morphosyntactic features, e.g., the person, number, and gender of  surrounding words.
+Thus, the evaluation itself presents an important research question, namely the question of how to evaluate the output of an unsupervised morphological clustering algorithm, particularly one that considers only features of \emph{word-internal form}, having no access to word-external morphosyntactic features, e.g., the person, number, and gender of surrounding words. 
 
 %Thus, my system will not require morphological building blocks to have particular
 %meanings. Instead, it 
@@ -443,8 +500,13 @@ Thus, the evaluation itself presents an important research question, namely the 
 %(see section~\ref{sec:paradigms}).
 %\emph{morphs}. \marginpar{I have yet to introduce morphs, tho} We do not know 
 %beforehand \emph{exactly} what these morphs ought to look like. Since we cannot know 
-%the ``right answers" before the experiments are run, there can be no clear gold 
+%the ``right answers'' before the experiments are run, there can be no clear gold 
 %standard against which to evaluate the MCMM's output. 
 %
 %Thus, the evaluation itself presents an important research question, namely the question of how to evaluate the output of an unsupervised morphological clustering algorithm, particularly one that considers only features of \emph{word-internal form}, having no access to word-external morphosyntactic features, e.g., the person, number, and gender of  surrounding words. Such an algorithm will inevitably produce clusters that do not correspond to abstract morphosyntactic categories or conventional morphemes.
-%which are fundamentally morphosyntactic in nature even though the correspondence between morphemes and abstract, or ``atomic," morphosyntactic categories is not always one-to-one.
+%which are fundamentally morphosyntactic in nature even though the correspondence between morphemes and abstract, or ``atomic,'' morphosyntactic categories is not always one-to-one.
+
+\section{Organization}
+The remainder of this thesis is organized as follows: In chapter~\ref{ch:lit-review}, I present a new framework for thinking about the unsupervised learning of morphology. This framework is original to this thesis and stems from the concepts of nonsequentiality and nonlinearity, introduced above as the essential prerequisites for modeling nonconcatenative morphology. Chapter~\ref{ch:graph} establishes the relationship between autosegmental morphology and graph theory, particularly \emph{bipartite} graphs. Chapter~\ref{ch:MCMM} then introduces and describes a particular bipartite graphical learning model, namely the Multiple Cause Mixture Model (MCMM). As mentioned above, this is the learning model I have chosen to drive Multimorph, the system developed in this dissertation. The first four chapters thus establish a logical chain linking autosegmental morphological theory to a particular unsupervised learning model, namely the MCMM, which serves Multimorph's learning model. 
+
+The remaining five chapters (chapters \ref{autonomous} through \ref{ch:conclusion}) are concerned with the evaluation of Multimorph. Chapter~\ref{autonomous} addresses the question of the sort of categories that Multimorph and other unsupervised morphological should be expected to learn, i.e., the sort of categories that one should look for in evaluating such systems. This is part of the ``question of evaluation'' introduced above. Chapter~\ref{ch:experi} describes the experimental setup; i.e., it describes the collection and preparation of the datasets and the experimental variables, including the three modes of data representation and the parameters for the feature sets. Chapter~\ref{ch:eval} completes this thesis's response to the ``question of evaluation.'' It describes a dual-paradigm evaluation method consisting of both an intrinsic and extrinsic component. The extrinsic component in particular may be of interest to other \ac{ULM} researchers as an alternative to conventional evaluation methods. Finally, chapter~\ref{ch:conclusion} offers concluding remarks. 

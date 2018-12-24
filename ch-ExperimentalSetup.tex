@@ -479,7 +479,7 @@ case of suffixes, as in the following:
 \begin{exe}
 \ex \begin{tabbing} \label{ex:pre:v:suf}
 \hspace{0.6in} \= \hspace{5.5in} \kill
-\textsf{*Classical HebrewI:} \> \textsf{tirt\a'{u} .} \\
+\textsf{*CHI:} \> \textsf{tirt\a'{u} .} \\
 \textsf{\%mor:} \> \textbf{\textsf{ti}\#}\textsf{v|ra\textipa{P}\a'{a}\&root:r\textipa{P}y\&ptn:qal\&tense:fut\&pers:2\&
 \textbf{gen:unsp\&num:pl-\a'{u}}=see}
 \end{tabbing}
@@ -543,11 +543,11 @@ if it is present, regardless of what $\tau$ is.
 \ex \begin{xlist} 
    \ex\label{ex:repl1} \begin{tabbing}  
 	\hspace{0.6in} \= \hspace{5.5in} \kill
-	\textsf{*Classical HebrewI:} \> \textsf{po ye\v{s} patux@c \textbf{[: pat\a'{u}ax]} d\a'{e}let .}
+	\textsf{*CHI:} \> \textsf{po ye\v{s} patux@c \textbf{[: pat\a'{u}ax]} d\a'{e}let .}
 	\end{tabbing}
      \ex\label{ex:repl2} \begin{tabbing}
 	\hspace{0.6in} \= \hspace{5.5in} \kill
-	\textsf{*Classical HebrewI:} \> \textsf{tikri \,\textbf{[: tiqre\textipa{P}\a'{i}]}\, \textbf{[*]}\, 
+	\textsf{*CHI:} \> \textsf{tikri \,\textbf{[: tiqre\textipa{P}\a'{i}]}\, \textbf{[*]}\, 
 	sip\a'{u}r\, d\a'{o}da\, Orly .} \\
 	\textsf{\%mor:} \> \textsf{ti\#v|qar\a'{a}\textipa{P}\&root:qr\textipa{P}\&ptn:qal\&tense:fut\&pers:2\&gen:fm\&num:sg-\a'{i}=read} \\
                     \> \textsf{n|sip\a'{u}r\&gen:ms\&num:sg\&stat:unsp } \\
@@ -577,7 +577,7 @@ several times consecutively. As in (\ref{ex:redundant}), in which the prefixal c
 repeated several times, no special annotation is to mark or correct the repetition. Notice that morphological analysis for
 for \textit{we\#} is also repeated, so that each \textit{we\#} in the main tier has its ``own'' copy of the morphological analysis.
 \begin{exe} \label{ex:redundant}
-\ex \textsf{*Classical Hebrew I:\quad we\# we\# we\# we\#\, nigm\textipa{\'a}r } \\
+\ex \textsf{*CHI:\quad we\# we\# we\# we\#\, nigm\textipa{\'a}r } \\
    \textsf{\%mor:\quad conj|we=and\, conj|we=and\, conj|we=and\, conj|we=and} \\
    \textsf{v|nigm\'ar\&root:gmr\&ptn:nifal\&tense:past\&pers:3\&gen:ms\&num:sg=be\_finished }
 \end{exe}
@@ -645,11 +645,11 @@ word to the immediate left of the left bracket (\textsf{[:})). The
 \begin{exe}\label{ex:replace}
 	\ex Replacing anomalous forms with their bracket-enclosed corrections
 	\begin{xlist}
-	   \ex \textsf{*Classical HebrewI:}\quad\textsf{po\, ye\v{s}\, \textbf{patux@c\, [: pat\'{u}ax ]}\, d\'{e}let} $\quad\to\quad$
+	   \ex \textsf{*CHI:}\quad\textsf{po\, ye\v{s}\, \textbf{patux@c\, [: pat\'{u}ax ]}\, d\'{e}let} $\quad\to\quad$
 	   \textsf{po ye\v{s} \textbf{pat\'{u}ax} d\'{e}let}
 %	   \textsf{\%mor:}\quad\textsf{adv|po=here exs|ye\v{s}=there\_is} \, \textsf{adj|pat\'uax\&root:ptx\&ptn:qatul\&gen:ms\& \\ num:sg\&src:deverb=open\,  
 %	n|d\'elet\&root:dlt\&ptn:qetel\&gen:fm\&num:sg\&stat:unsp} 
-	   \ex \textsf{*Classical HebrewI:}\quad\textsf{\textglotstop\'{o}\textsubdot{t}o\, \textbf{micpacef@c}\, \textbf{[: mecafc\'ef ]\, [*]}} $\quad\to\quad$ \textsf{\textglotstop\'o\textsubdot{t}o\, \textbf{mecafc\'ef}}
+	   \ex \textsf{*CHI:}\quad\textsf{\textglotstop\'{o}\textsubdot{t}o\, \textbf{micpacef@c}\, \textbf{[: mecafc\'ef ]\, [*]}} $\quad\to\quad$ \textsf{\textglotstop\'o\textsubdot{t}o\, \textbf{mecafc\'ef}}
 %\textsf{\%mor:}\quad\textsf{n|\textipa{P\'o\.*t}\&gen:ms\&num:sg\&stat:unsp=car\, cifc\'ef\&root:cpcp\&ptn:piel\&gen:ms\&num:sg=twitter/beep/ignore} 
 	\end{xlist}
 \end{exe} 
@@ -936,10 +936,25 @@ through normalization, and ratios are a means of normalization.
 
 A global feature for ULM could be the number 
 of characters in a given word, which could be binned. Another 
-could be the consonant to vowel ratio in a word. The question, however, is 
+could be the consonant-to-vowel ratio in a word. The question, however, is 
 whether such properties are relevant and beneficial to Multimorph's task,
-which is to group together words that share components. 
-However, global features are not conducive to bipartite graphical learning frameworks.
+which is to group together words that share rather specific formal (i.e. form-based) components. 
+
+The main problem with global features where the present study is concerned is that
+words tend to be complex objects, often composed of 
+multiple morphological units, which are 
+generally orthogonal. That is, a plural suffix can 
+appear with wide variety of stems, for example, and a 
+given stem may occur with a wide variety of suffixes.
+Two words can share a single morphological component and 
+differ in the rest their of their components. Indeed,
+they can be more different than they are alike from a cumulative, 
+quantitative point of view. Nevertheless,
+as far as that one shared component is concerned, these two are 
+\emph{the same} and thus co-members of a morphological
+class. 
+
+Moreover, gobal features do not really fi the bipartite learning framework.
 Recall from chapter~\ref{ch:graph} that an MCMM is a bipartite graph and thus 
 satisfies the following:
 \begin{enumerate}
@@ -951,27 +966,15 @@ In an MCMM, the two partitions are the vectors $\textbf{m}_{i}$
 and $\textbf{r}_{i}$ (for each word $i$). The former is the vector of 
 cluster activities, and the latter
 is the \emph{reconstruction} of word $i$'s original 
-feature-vector representation of word. (Recall from chapter~\ref{ch:MCMM}, 
-specifically section~\ref{sec:architecture}, that $\textbf{r}_i$ is a working
-reconstruction of $\textbf{x}_i$, the original and target feature vector for word $i$.)
+feature-vector representation of word. Recall from chapter~\ref{ch:MCMM}, 
+specifically section~\ref{sec:architecture}, that $\textbf{r}_i$ is the (working)
+reconstruction of $\textbf{x}_i$, which is both original and the target feature vector for word $i$ (i.e., since the goal is to reconstruct the original words given the (working) hidden-unit vector for each word,
 By the definition of \emph{bipartite}, \emph{every} feature in $\textbf{r}_i$ is independent,
 and thus every feature is local. 
 
-Moreover, words tend to be complex objects, often composed of 
-multiple morphological units.These morphological units are 
-generally to some extent orthogonal. That is, a plural suffix can 
-appear with wide variety of stems, for example, and a 
-given stem may occur with a wide variety of suffixes.
-Two words can share a single morphological component and 
-differ in the rest their of their components. Indeed,
-they can be more different than they are alike from a cumulative, 
-quantitative point of view. Nevertheless,
-as far as that one shared component is concerned, these two are 
-\emph{the same} and thus co-members of a morphological
-class. Global features do not seem well-suited to represent this 
+Global features do not seem well-suited to represent this 
 kind of modular similarity. For these reasons, global features were 
 not tested in this dissertation. All features were local. 
-
 On the other hand, the invariant vs. variant distinction 
 was a focal point in this study.
 The kind of invariance at issue was \emph{affixation-invariance}; 

@@ -1,27 +1,62 @@
-\chapter{LITERATURE REVIEW}
+\chapter{A CONCEPTUAL FRAMEWORK FOR UNSUPERVISED MORPHOLOGICAL LEARNING}
 \label{ch:lit-review}
 
 \section{Introduction}
 
-\cite{mccarthy:1981} points out a fundamental flaw in linear, concatenative approaches to morphological analysis: 
-Such approaches acknowledge only a single level of representation, namely that of the \emph{segmental string}, i.e., the level of minimal phonological segments (essentially phonemes).\footnote{McCarthy uses the term \emph{segment} in the phonological sense, i.e., a minimal unit of sound. 
-Research in \ac{ULM}, however, general use the word to 
+\cite{mccarthy:1981} points out a fundamental flaw in linear, 
+concatenative approaches to morphological analysis: 
+Such approaches acknowledge only a single level of representation, 
+namely that of the \emph{segmental string}, i.e., the level of minimal 
+phonological segments (essentially phonemes).\footnote{McCarthy uses
+ the term \emph{segment} in the phonological sense, i.e., a minimal unit of sound. 
+Researchers in \ac{ULM}, however, generally use the word to 
 refer to minimal morphological units, 
-as in \textit{the problem of morphological segmentation}, for example.} 
-Because the are restricted to this single layer, the can only represent 
-morphological groupings in one way, and that is to insert delimiters of 
+as in \textit{the problem of morphological segmentation}, for example.}  \marginpar{Strange footnote.}
+Because they are restricted to this single layer, they can only represent 
+morphological groupings in one way, namely to insert delimiters of 
 some sort 
 into the very string under analysis. At any given
 insertion point, 
-moreover, such an approach can only see only the two segments (or phonemes) immediately to the left and right. It thus
+moreover, such an approach can see only the two segments 
+(i.e., phonological segments) immediately to the left and right. It thus
 has no way to identify morphs that are made up of discontiguous phonemes.
 
-\cite{mccarthy:1981} offers an alternative \emph{nonlinear} approach to grouping segments into morphs.  that liberates the representation of morphs from the segmental tier. McCarthy's formalism, known as \emph{autosegmental morphology} is based on the theory of autosegmental phonology, developed by \citep{goldsmith:1976} to account for nonlinear phenomena in phonology. One such phenomenon, for instance, is tone spreading, whereby the tone on one vowel spreads to other vowels, leapfrogging any intervening consonants. 
-Goldsmith's solution was to introduce \emph{autosegmental} tiers (or planes) of representation that were independent of and external to the segmental tier---tiers that could thus ``see" and access any vowel(s) in the segmental tier, and indeed any subsequence of segments, contiguous or discontiguous. The key was the nonlinearity (or multilinearity)\footnote{The terms nonlinear and multilinear interchangeably in this work, as they both mean, essentially, ``not linear."} introduced by the multiple tiers and their separation both from each other and the segmental tier. 
+\cite{mccarthy:1981} offers an alternative \emph{nonlinear} 
+approach to grouping segments into morphs, one that liberates the representation of morphs from the segmental tier. McCarthy's formalism, \emph{autosegmental morphology}, is an extension of the autosegmental approach to phonology developed by \citep{goldsmith:1976} to account for nonlinear phonological phenomena. One such phenomenon, for instance, is \emph{tone spreading}, whereby the tone on one vowel spreads to other vowels, leapfrogging any intervening consonants. 
+Goldsmith's solution was to introduce \emph{autosegmental} tiers (or planes) of representation that were independent of and external to the segmental tier---tiers that could thus ``see'' and access any phonological segment in the segmental tier, as well as any subsequence of segments, contiguous or discontiguous. The key was the nonlinearity (or multilinearity)\footnote{The terms nonlinear and multilinear interchangeably in this work, as they both mean, essentially, ``not linear."} introduced by the multiple tiers and their separation both from each other and the segmental tier. 
 McCarthy's insight was that this same nonlinear architecture could be applied to the problem of nonconcatenative morphology, particularly the root-and-pattern morphology of Semitic languages. 
 
-The remainder of this chapter with present a novel framework for comparing and 
-classifying previous approaches to ULM . 
+In this chapter, I propose a framework for comparing and 
+classifying previous approaches to %\ac{ULM}. 
+the unsupervised learning of morphology. This framework consists of four categories derived the concepts \emph{nonlinearity} and 
+\emph{nonsequentiality} defined in chapter~\ref{ch:intro} (definitions \ref{def:ns} and \ref{def:nl).  We can think of the terms \emph{nonlinear} and \emph{nonsequential} as labels 
+for basic categories of models, namely the those that have the property \emph{nonlinearity} and those that have the property \emph{nonsequentiality}, respectively. Recall proposition \ref{prop:nlns}, which posits that \emph{both} nonlinearity and nonsequentiality must be present in a model if it is to be able to handle nonconcatenative morphology. In other words, a model must belong to the \emph{intersection} of the nonlinear and nonsequential models; i.e., it must be a \textbf{nonlinear nonsequential} model.  And indeed, ``nonlinear-nonsequential'' is one of the categories of our four-category framework.  The other three are derived similarly:
+ 
+
+In particular, the ``negative'' properties \emph{nonlinearity} and \emph{nonsequentiality} 
+imply the existence of their ``positive'' counterparts, namely  \emph{linearity} and \emph{sequentiality}, respectively, which correspond to the basic-category labels \emph{linear} and \emph{sequential}. We thus define
+\emph{linearity} and \emph{sequentiality} as the opposites of \emph{nonlinearity} and \emph{nonsequentiality}, respectively.
+
+	\begin{definition}\label{def:l}{\textsc{Linearity}}: %A model is \emph{nonlinear} 
+	Morphs are \emph{not} separate from the phonological tier. \end{definition}
+	\begin{definition}\label{def:s}{\textsc{Sequentiality}}:
+	Not all morph tiers are orthogonal to the other morph tiers
+	\end{definition}
+ Proposition \ref{prop:nlns} states that \textbf{nonlinear nonsequential} needs to be one of framework's categories, and it is obtained by taking the intersection of the basic categories \emph{nonlinear} and \emph{nonsequential}. We derive the other categories by taking analogous intersections of basic categories, as follows:
+\begin{itemize}
+\item \textbf{Nonlinear-nonsequential} $=$ nonlinear $\cap$ nonsequential
+\item \textbf{Nonlinear-sequential} $=$ nonlinear $\cap$ sequential
+\item \textbf{Linear-nonsequential} $=$ linear $\cap$ nonsequential
+\item \textbf{{Linear-sequential} $=$ linear $\cap$ sequential
+\end{itemize}
+The linear-sequential category is the intersection of the linear and sequential basic categories; the nonlinear-sequential category is 
+
+This one of the four categories that constitute this framework. The other three 
+
+We can view We can view the properties nonlinear models and nonsequential models. The intersection of these categories is the set of nonlinear nonsequential models. 
+
+y  proposed these two properties were necessary proposition~\ref{prop:nlns} 
+ In particular, \dots
 This framework consists of two orthogonal axes. Each axis represents a binary distinction, i.e., 
 a pair of opposing categories, one of which must be selected over the other. One axis represents 
 the distinction ``linear vs. nonlinear," while the other represents ``sequential vs. nonsequential." 
@@ -40,9 +75,13 @@ to categorizing existing approaches in ULM.
 %Following McCarthy, we 
 %distinguish ``linear vs. nonlinear" conceptual framework to categorize existing approaches in ULM.
 
-The following sections will discuss each of these categories in turn, citing examples  sections will use the term
-\textbf{nonlinear} (NL) to refer to learning models (or algorithms) one
-or more hidden layers to encode the morphological structure.
+The following sections will discuss each of these categories
+in turn, citing examples 
+sections will use the term
+\textbf{nonlinear} (NL) to refer to learning
+models (or algorithms) one
+or more hidden layers to encode the
+morphological structure.
 % in the
 %surface layer, whereas 
 %, the layer of the graphemes/phonemes.

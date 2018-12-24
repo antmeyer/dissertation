@@ -295,38 +295,38 @@ $0 \ge i < I$, and $I$ is the total number of data points (original and reconstr
 %in the four-stage extrinsic evaluation process is 
 to make the clusters relatable to strings. In particular, each cluster is a regular expression that is derived from the active features of its centroid. A morph's regular expression is built up from ``atomic" regular expressions derived from its individual active features. 
 
-%The form of such an expression depends on the type of the feature 
-%upon which it is based. For example, a positional feature such as 
-%\texttt{a@1} manifests simply as \texttt{(a)}. (The parentheses 
-%are important for \textsc{stage 2}, in particular, for retrieving 
-%matching characters if morph's regular expression can be matched 
-%to a word.) The regular expressions of precedence features take the 
-%form \texttt{(x)(.?)}$\times (\delta-1)$\texttt{(y)}; i.e., the number 
-%of \texttt{.?}s depends on the value of the parameter $\delta$; in 
-%particular the number of \texttt{?} is equal to $\delta- 1$. Thus, 
-%$\delta$ values of 1, 2, and 3 correspond to 0, 1, and 2 \texttt{.?}s,
-% respectively. 
+The form of such an expression depends on the type of the feature 
+upon which it is based. For example, a positional feature such as 
+\texttt{a@1} manifests simply as \texttt{(a)}. (The parentheses 
+are important for \textsc{stage 2}, in particular, for retrieving 
+matching characters if morph's regular expression can be matched 
+to a word.) The regular expressions of precedence features take the 
+form \texttt{(x)(.?)}$\times (\delta-1)$\texttt{(y)}; i.e., the number 
+of \texttt{.?}s depends on the value of the parameter $\delta$; in 
+particular the number of \texttt{?} is equal to $\delta- 1$. Thus, 
+$\delta$ values of 1, 2, and 3 correspond to 0, 1, and 2 \texttt{.?}s,
+ respectively. 
 
-%If a cluster's centroid has more than one active feature, an 
-%atomic regular expression is derived from each such feature, 
-%and if the features are compatible, the atomic regular expressions 
-%are combined to create a composite expression. For example, the 
-%positional features are compatible if the indices are consecutive, 
-%as in \texttt{h@\[0\]} are \texttt{a@\[1\]}. would be combined 
-%to form the composite expression \texttt{(h)(a)}. Precedence features 
-%can also create composite regular expressions. For example, the 
-%features \texttt{d<b} and \texttt{b<r} would together yield the 
-%composite expression \texttt{(d).?(b).?(r)}, that is, if $\delta = 2$. 
-%In general, two precedence features \texttt{a<b} and \texttt{c<d} 
-%merge if $b=c$.
+If a cluster's centroid has more than one active feature, an 
+atomic regular expression is derived from each such feature, 
+and if the features are compatible, the atomic regular expressions 
+are combined to create a composite expression. For example, the 
+positional features are compatible if the indices are consecutive, 
+as in \texttt{h@[0]} are \texttt{a@[1]}. would be combined 
+to form the composite expression \texttt{(h)(a)}. Precedence features 
+can also create composite regular expressions. For example, the 
+features \texttt{d<b} and \texttt{b<r} would together yield the 
+composite expression \texttt{(d).?(b).?(r)}, that is, if $\delta = 2$. 
+In general, two precedence features \texttt{a<b} and \texttt{c<d} 
+merge if $b=c$.
 
-%The output of Stage 1 is ultimately an array of \emph{morph objects}.
-% Each morph object specifies values for certain attributes, the main ones 
-% being a morph ID (i.e., a unique integer) and a regular expression derived 
-% from the features of a particular cluster centroid. Stage 1 is thus
-%  concerned the clusters in and of themselves and their interpretation. 
-%  Stage 2, to which we turn next, is concerned with mapping clusters, i.e., 
-%  morphs, to the characters of actual words. 
+The output of Stage 1 is ultimately an array of \emph{morph objects}.
+ Each morph object specifies values for certain attributes, the main ones 
+ being a morph ID (i.e., a unique integer) and a regular expression derived 
+ from the features of a particular cluster centroid. Stage 1 is thus
+  concerned the clusters in and of themselves and their interpretation. 
+  Stage 2, to which we turn next, is concerned with mapping clusters, i.e., 
+  morphs, to the characters of actual words. 
 
 %\begin{figure}[t]
 %\centering
