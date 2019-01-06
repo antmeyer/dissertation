@@ -118,8 +118,25 @@ a series of placeholders for consonants and vowels, often called the
  Figure~\ref{fig:nonlinear} contrasts an autosegmental (or nonlinear) morphological analysis  with a linear one, both with respect to the Hebrew word \textit{magdil} `to make large, magnify.' 
 %The autosegmental analysis for the Hebrew word \emph{magdil} `to make large, magnify.' 
 In the autosegmental analysis (subfigure~\ref{subfig:nonlinear}), the morphological structure of \textit{magdil} is represented by four distinct tiers: One is the CV
-skeleton, and the other three, labeled $\mu_1$, $\mu_2$, and $\mu_3$, correspond to morphs. Each morph is basically shorthand for a particular subsequence of phonemes (or graphemes). Thus, when a morph connects with a particular C (or V) in the segmental tier, the C (or V) inherits the identity one of the morph's phonemes. For example,  in subfigure~\ref{subfig:nonlinear}, $\mu_2$ claims the third phonological segment, which thus takes on the identity of  $\mu_2$'s first phoneme, namely /g/. The fourth phonological segment likewise belongs to $\mu_2$, so it manifests $\mu_2$'s second phoneme, namely /d/. Now, $\mu_2$ does not claim the fifth phonological segment, as it happens, and thus skips over it, so to speak. It does claim the sixth phonological segment, however, which thus becomes, in effect, $\mu_2$'s third phoneme, namely /l/. 
-Note that $\mu_2$'s phonemes are mapped to phonological segments in order---i.e., the /g/ in $\mu_2$ is assigned before the /d/, and the C that is associated with /g/ must precede the C associated with /d/, etc. At the same, however, these \textit{C}s could be separated by any number of \textit{C}s or \textit{V}s, and the mapping of the morph's to phonological segments would still work. This is an important consequence of the nonlinear (autosegmental) architecture in subfigure~\ref{subfig:nonlinear}. 
+skeleton, and the other three, labeled $\mu_1$, $\mu_2$, and $\mu_3$, 
+correspond to morphs. Each morph is basically shorthand for a particular 
+subsequence of phonemes (or graphemes). Thus, when a morph connects 
+with a particular C (or V) in the segmental tier, the C (or V) inherits the 
+identity one of the morph's phonemes. For example,  in 
+subfigure~\ref{subfig:nonlinear}, $\mu_2$ claims the third phonological 
+segment, which thus takes on the identity of  $\mu_2$'s first phoneme, 
+namely /g/. The fourth phonological segment likewise belongs to $\mu_2$, 
+so it manifests $\mu_2$'s second phoneme, namely /d/. Now, $\mu_2$ 
+does not claim the fifth phonological segment, as it happens, and thus skips 
+over it, so to speak. It does claim the sixth phonological segment, however, 
+which thus becomes, in effect, $\mu_2$'s third phoneme, namely /l/. 
+Note that $\mu_2$'s phonemes are mapped to phonological segments in 
+order---i.e., the /g/ in $\mu_2$ is assigned before the /d/, and the C that 
+is associated with /g/ must precede the C associated with /d/, etc. At the 
+same, however, these \textit{C}s could be separated by any number of 
+\textit{C}s or \textit{V}s, and the mapping of the morph's to phonological 
+segments would still work. This is an important consequence of the nonlinear 
+(autosegmental) architecture in subfigure~\ref{subfig:nonlinear}. 
 %Each morph is essentially an independent data structure  both the ordering of its phonemes as well as 
 
 %In an autosegmental framework, therefore, morphs do not depend on the particular arrangement of phonemes within the segmental string.  of phonological segments.
@@ -214,11 +231,12 @@ all belong to the same morphological unit. Observations such these motivate this
 	\begin{definition}\label{def:nl}{\textsc{Nonlinearity}}: %A model is \emph{nonlinear} 
 	A model is \textbf{nonlinear} if each of its morphs occupies a tier that is \emph{not} the phonological tier.
 	%Morphs, i.e., units of morphological structure, must be separate from the surface (or phonological) tier. \end{definition} %, i.e., as residing on tiers distinct from the phonological tier. %eparately for m  as being separate from (or outside of) the the phonological (or segmental) tier.  % is a property wherein morphs are represented as being separate from the segmental tier.
+	\end{definition}
 	\begin{definition}\label{def:ns}{\textsc{Nonsequentiality}}: %is a property such that each morph tier (or node) is orthogonal to all other morph tiers.
 	%---i.e., independent of---all other morph tiers. 
 	A model is \textbf{nonsequential} if \textbf{no two morphs} occupy the \emph{same} tier. This is to say that all morphs are independent, i.e., that there are no morph-to-morph connections.
 	\end{definition}
-I propose that these two properties are the essential properties that enable autosegmental morphology to handle nonconcatenative morphology. The main idea of this thesis is that these two properties must be present in any model in order for it to be capable of handling (or learning) nonconcatenative morphology.  We will also revisit this idea later (see in particular section~\ref{}).
+I propose that these two properties are the essential properties that enable autosegmental morphology to handle nonconcatenative morphology. The main idea of this thesis is that these two properties must be present in any model in order for it to be capable of handling (or learning) nonconcatenative morphology.  We will also revisit this idea later (see in particular section~\ref{sec:framework-intro}).
 \begin{proposition}\label{prop:nlns}
 A model of morphology can handle nonconcatenative morphology if and only if it satisfies both \textbf{nonlinearity} and \textbf{nonsequentiality}. %  the modeling of nonconcatenative morphology.}
 \end{proposition}

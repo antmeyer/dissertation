@@ -3,77 +3,163 @@
 
 \section{Introduction}
 \label{sec:mcmm:intro}
-This chapter will focus on Multimorph's learning model, i.e., the principles and mechanisms which
-enable it to learn. By \emph{model}, 
+%This chapter is essentially about Multimorph's learning process. 
+%This chapter will address such questions as what exactly \emph{learning} means 
+%in the case of Multimorph (i.e., what means when we say that Multimorph has 
+%``learned'' something), as well how this learning takes place. 
+Multimorph, as an unsupervised learning system, must be 
+driven by an unsupervised learning algorithm, that is, 
+a procedure for inducing categories from raw, unlabeled data.
+%This thesis's preceding chapters have established the basic requirements for Multimorph's learning
+%algorithm.
+It is Multimorph's learning algorithm that is this chapter's focus. In particular, this chapter motivates the choice of the Multiple Cause Mixture Model \citep{saund:94}; it explains the nature, structure, and function of MCMMs, and why an MCMM is an appropriate learning mechanism for Multimorph. 
+
+This chapter is a culmination of the arguments of the preceding three chapters. 
+In chapters~\ref{ch:intro} and \ref{ch:lit-review}, we saw that it is precisely 
+the set of \emph{nonlinear-nonsequential} models that are capable of representing 
+nonconcatenative morphological structure, and that it is the properties nonlinearity 
+and nonsequentiality that give rise to this capacity.
+Chapter~\ref{ch:graph} then 
+demonstrated the equivalence between nonlinearity and 
+nonsequentiality and the mathematical properties of 
+bipartite graphs, thereby showing that bipartite graphs are 
+intrinsically nonlinear and nonsequential. It follows that bipartite graphs are 
+well-suited to represent nonconcatenative structure, and moreover, that bipartite graphical learning models are thus intrinsically well-suited to serve as learning algorithm for a ULM system. For Multimorph, I chose a particular kind of bipartite learning model called the Multiple Cause Mixture Model (MCMM), developed by \citet{saund:1994}.
+
+MCMMs are conducive to ULM, particularly to the UL of NCM, mainly because they are bipartite graphs, since it is their bipartiteness that makes them nonlinear and nonsequential. The bipartiteness of MCMMs is evident in Section~\ref{sec:architecture} (see in particular figure~\ref{fig:mcmm}), which elucidates the architecture
+of an MCMM. But while their bipartiteness is most significant for our purposes, MCMMs have other attractive properties. [which we shall discuss in this chapter.] For example, an MCMM is neither sum nor a product of experts, 
+
+%In this chapter, therefore, we thus present a particular bipartite graphical model,  as Multimorph's core learning algorithm. In particular, I chose the bipartite graphical model known as the MCMM. 
+Section~\ref{sec:architecture} demonstrates the bipartite nature of an MCMM; compare figure~\ref{fig:mcmm} in section~\ref{sec:architecture} to the canonical bipartite structure shown in figure \ref{fig:gt-bipartite} in chapter~\ref{ch:graph}. whose bipartiteness becomes clearly evident in section~\ref{sec:architecture} Section~\ref{sec:architecture} also breaks the architecture of an MCMM, describing its basic components and how they relate to each other. hen delves deeper into the nature the MCMM, comparing and contrasting it to related learning algorithms, such as the Restricted Boltzmann Machine (RBM). Finally, section~\ref{sec:mcmm-learning} discusses the particular means by which Multimorph's MCMM learns.
+
+% learning process itself in detail. The following section then describesSection~ fact that will become plainly evident in section~{sec:architecture}  reasoning to motivate the use of bipartite graphical learning model, specifically the MCMM, as Multimorph's algorithm.  takes this this line of argumentation to its logical conclusion i  a bipartite graphical model, namely the MCMM, tononconcatenative morphology, and thus a bipartite graphical learning algorithm is going to be at least furthermore, a bipartite archict
+%In this chapter, we pre 
+%From  that bipartite graphs intrinsically nonlinear and nonsequential, and that bipartite graphical learning models are 
+%Thus, a bipartite architecture implies both nonlinearity and nonsequentiality and hence a capacity for representing both nonconcatenative and concatenative morphological structure. 
+%
+%Proposition x thus motivates the choice of bipartite graphical model to serve as Multimorph's learning suitable for learning  have the capacity to represent both nonconcatenative and concatentative morphological struThis brings us to the primary concern of the present the chapter: the choice of Multimorph's core learning algorithm. Motivated by the results of the previous chaptersparticular, the preceding chapters motivate and thus capable of representing nonconcatenative morphology. All of this is Multimorph's learning algorithm
+
+%I chose the Multiple Cause 
+%Mixture Model (MCMM) proposed by \citet{saund:94} to fill this role. The present chapter motivates this decision, and in doing so, provides a detailed exposition of the MCMM. Section~\ref{sec:architecture} first provides an overview of an MCMM's architecture, i.e., a description of its major components and the relationships between these components. Section~\ref{sec:architecture} then delves deeper into the nature the MCMM, comparing and contrasting it to related learning algorithms, such as the Restricted Boltzmann Machine (RBM).   comparing it to other including a description of their architecture in detail. describes the will be motivated in the present present chapter.  The present chapter will describe   primary objective of this chapter  motivate this decision; first of all, it will show in section~{sec:architecture}that it is a bipartite graph and thus qualifies as a nonlinear-nonsequential algorithm. \citet{saund:94}  nonlinear-nonsequential models are argued that nonlinearity and nonsequentiality were essential properties learning nonconcatenative
+%morphology must be   
+%Multimorph's learning algorithm is an instance of an Multiple Cause 
+%Mixture Model (MCMM) proposed by \citet{saund:94}, and thus MCMMs
+%is a major focus of this chapter.
+
+By \emph{model}, 
 we mean a set of assumptions about how the world works. Where Multimorph is concerned, 
 the ``world" is the morphology of natural languages, which, significantly, includes \emph{non-concatenative} morphology. 
-%That is, is handle concatenative and non-concatenative morphology together, 
-%in a unified a way, as does
 autosegmental morphology \citep{mccarthy:1981}. 
 In chapter~\ref{ch:graph}, we argued
 that in order
-for a model to be able to deal with non-concatenative morphology, it must be both \textbf{nonlinear} \textbf{and|}
- \textbf{nonsequential},i.e., satisfy both the \textsc{Nonlinearity} and the \textbf{Nonsequentiality} 
- criteria; 
- see definitions (\ref{def:nl}, \ref{def:ns}) and 
- proposition (\ref{prop:nlns}). We also saw in chapter~\ref{graph} that these two conditions correspond to the two
- parts of the definition of biparteness. It follows that 
- \begin{proposition}
-% In order for a model to be able to handle non-concatenative morphology, it must be a bipartite graph.
-% \end{proposition}
-  \label{prop:bipart}
-If a model is a bipartite graph, it can handle non-concatenative morphology.
- \end{proposition}
-  (see chapter REF). That is, in order for a model to be able to handle non-concatenative morphology, it must be a bipartite graph.  
- of nonlinearity and nonsequentiality mean a model bust be a bipart that if a model is to be able to handle nonconcatenative
- morphology, it must not only be a graph, but a \emph{bipartite} graph (i.e., a bipartite graphical model) %.od e graph is necessary.
- %call for a bipartite graph, since they are essentially equivalent to
- The Multiple Cause Mixture Model (MCMM) is a general 
- framework for unsupervised learning developed by \cite{saund:94}. Section~\ref{sec:architecture} in this chapter will describe the architecture of an MCMM, i.e., its key components and the relationships between these components. It will become clear in this section that MCMMs are bipartite graphs and thus, by proposition~\ref{prop:bipartite}, an MCMM is capable of learning nonconcatenative morphology. 
- %serve as Multimorph's core learning framework.
+for a model to be able to deal with nonconcatenative morphology,
+ it must be both \textbf{nonlinear} \textbf{and}
+ \textbf{nonsequential},
+ i.e., satisfy both the \textsc{Nonlinearity} criterion and the \textbf{Nonsequentiality} criterion; 
+ see definitions (\ref{def:nl}) and (\ref{def:ns}) and 
+ proposition (\ref{prop:nlns}). We also saw in chapter~\ref{ch:graph} that these two conditions are equivalent to the two parts of the definition of biparteness. In particular, \dots.
  
- %  In this chapter, we shall first demonstrate an MCMM qualifies as a bipartite graph.  
+% Therefore, if a model is a bipartite graphical model, then it is both nonlinear and nonsequential, which means
+% that it has the capacity to model nonconcatenative morphology:
+%  \begin{proposition}
+%% In order for a model to be able to handle non-concatenative morphology, it must be a bipartite graph.
+%% \end{proposition}
+%  \label{prop:bipartite}
+%If a model is a bipartite graph, it can handle nonconcatenative morphology. Moreover, if it can handle nonconcatenative morphology, it can handle concatenative morphology.
+% \end{proposition}
+ 
+%if a model is a bipartite graph, 
+%it has the capacity to deal with nonconcatenative morphology.
+%% of morphology are treated as the same basic phenomenon; the capacity to model nonconcatenative morphology is actually the more general capacity, since a concatenative process is essentially a nonconcatenative process with zero interdigitation. 
+%That is, if there were such a thing as a ``morph discontiguity factor,'' that is, a some sort of measure of the degree to which the phonemes of different morphs tend to be interleaved (i.e., the tendency of morphs to be discontinuous), 
+%%separation between phonemes of the same morpheme discontiguous the  phonemes of the same morph separated by intervening phonemes (from another morph) by those of other morphs), 
+%then this metric would be zero for ``strictly concatenative'' morphological processes, and some number greater than zero for ``nonconcatenative" ones. The point is that there no categorical difference between concatenative and nonconcatenative processes. Fundamentally, the two type of processes are in fact one and the same  process.  Thus, the capacity to model noncatenative morphology implies the capacity to model concatenative morphology. 
+%Noncatenative morphology can thus be regarded as the more general case.
+% \begin{proposition}
+%% In order for a model to be able to handle non-concatenative morphology, it must be a bipartite graph.
+%% \end{proposition}
+%  \label{prop:bipartite}
+%If a model is a bipartite graph, it can handle nonconcatenative morphology. Moreover, if it can handle nonconcatenative morphology, it can handle concatenative morphology.
+% \end{proposition}
 
-%In addition to demonstrating the bipartite \emph{bona fides} of MCMMs, this chapter will also, in section~\ref{sec:architecture}, discuss the architecture of an \ac{MCMM},
+ %call for a bipartite graph, since they are essentially equivalent to
+% The Multiple Cause Mixture Model (MCMM) is a general 
+% framework for unsupervised learning developed by \cite{saund:94}. 
+% Section~\ref{sec:architecture} in this chapter will describe the architecture 
+% of an MCMM, i.e., its key components and the relationships between these 
+% components. It will become clear in this section that MCMMs are bipartite 
+% graphs and thus, by proposition~\ref{prop:bipartite}, an MCMM is capable 
+% of learning nonconcatenative morphology. 
+ %serve as Multimorph's core learning framework.
+ %  In this chapter, we shall first demonstrate an MCMM qualifies as a bipartite graph.  
+%In addition to demonstrating the bipartite \emph{bona fides} of MCMMs, this chapter will, in section~\ref{sec:architecture}, discuss the architecture of an \ac{MCMM},
 %i.e., is key components and the relationships between these components. 
 This chapter will also, in 
-sections~\emph{mixing function} and \ref{sec:mcmm:learning}, describe how
-an \ac{MCMM} works as a learning algorithm. 
+sections~\ref{sec:mixing-function} and \ref{sec:mcmm-learning}, describe how
+an \ac{MCMM} functions as a learning algorithm. 
 
 \section{Architecture}
 \label{sec:architecture}
+\citet{saund:94} uses the term \emph{multiple cause mixture model} to refer not to a single, fully specified algorithm, but rather to a\emph{unsupervised learning framework}.
+does not refer to a single, fully specified algorithm, but rather to a family of algorithms, 
+i.e., a \emph{framework} consisting of components that are only loosely rather fully 
+specified, thus allowing for a range of options as long as they satisfy certain criteria. 
+For example, one essentially component of an MCMM is the \emph{mixing function}.
+
 An MCMM is a graphical model consisting of two layers of nodes (or units): a layer 
 of \emph{surface} or \emph{visible} units 
 and a layer of \emph{hidden} units. 
-This is illustrated in fig~\ref{fig:mcmm}, where $\mathbf{m}$ 
-is the vector of hidden units. The vector $\mathbf{x}_i$ is the original vector of surface units\footnote{Saund uses $\mathbf{d}$ rather than $\mathbf{x}$ to denote this vector}; it is the observed, real-world data. 
-The vector $\mathbf{r}_i$ is the ``working" reconstruction of $\mathbf{x}_i$. It is dynamic; it evolves as the learning process progresses, hopefully becoming more and more similar to $\mathbf{x}_i$. This is the essence of the learning process and will be discussed more fully in section~\ref{sec:mcmm-learning}).
-that $\mathbf{x}_i$ is not directly connected to either $\mathbf{r}_i$ or $\mathbf{m}_i$. It is not an integrated component of the graphical model. Its role is to as a target for the reconstruction $\mathbf{r}_i$. The goal of the system as a learning model is to get $\mathbf{r}_i$ to match $\mathbf{x}_i$, i.e., to reconstruct $\mathbf{x}_i$ in $\mathbf{r}_i$ (as discussed in section~\ref{sec:mcmm-learning}).
+This is illustrated in figure~\ref{fig:mcmm}, where $\mathbf{m}$ 
+is the vector of hidden units. The vector $\mathbf{x}_i$ is the 
+original vector of surface units\footnote{Saund uses $\mathbf{d}$ 
+rather than $\mathbf{x}$ to denote this vector}; it is the observed, 
+real-world data. The vector $\mathbf{r}_i$ is the ``working" 
+reconstruction of $\mathbf{x}_i$. It is dynamic; 
+it evolves as the learning process progresses, hopefully 
+becoming more and more similar to $\mathbf{x}_i$. 
+This is the essence of the learning process and will be 
+discussed more fully in section~\ref{sec:mcmm-learning}).
+that $\mathbf{x}_i$ is not directly connected to either $\mathbf{r}_i$ 
+or $\mathbf{m}_i$. It is not an integrated component of the graphical 
+model. Its role is to as a target for the reconstruction $\mathbf{r}_i$. 
+The goal of the system as a learning model is to get $\mathbf{r}_i$ to 
+match $\mathbf{x}_i$, i.e., to reconstruct $\mathbf{x}_i$ in 
+$\mathbf{r}_i$ (as discussed in section~\ref{sec:mcmm-learning}).
 % shall discuss this reconstruction process in more detail in section REF.
 
-The vector $\mathbf{x}_i$ is but one of the $I$ rows the constitute the whole input corpus, the data matrix $X$. Each row contains $J$ columns. Similarly, $\mathbf{r}_i$, the reconstruction of $\mathbf{x}_i$, is the $i$th row in the $I \times J$ matrix $\mathbf{R}$. The subscript on the hidden-unit vector $\mathbf{m}_i$ indicates that it is related to $\mathbf{x}_i$ and $\mathbf{r}_i$. Each $J$ corresponds to a particular surface unit, i.e., feature. The hidden-unit vector is a row in the larger $I \times K$ matrix $\mathbf{M}$. Each of $\mathbf{M}$'s $K$ corresponds to a particular \emph{cluster}, and thus, the activity of each $m_{i,k}$ indicates whether the $i$th datapoint $\mathbf{x}_i$ (via its reconstruction $\mathbf{r}_i$) is a member of the $k$th cluster.  columns contains $I$, each the particular vector of hidden causes for the $i$th surface vector. $\mathbf{}$ has $K$ columns
+The vector $\mathbf{x}_i$ is but one of the $I$ rows the constitute the whole 
+input corpus, the data matrix $X$. Each row contains $J$ columns. Similarly, 
+$\mathbf{r}_i$, the reconstruction of $\mathbf{x}_i$, is the $i$th row in the 
+$I \times J$ matrix $\mathbf{R}$. The subscript on the hidden-unit vector 
+$\mathbf{m}_i$ indicates that it is related to $\mathbf{x}_i$ and $\mathbf{r}_i$. 
+Each $J$ corresponds to a particular surface unit, i.e., feature. 
+The hidden-unit vector is a row in the larger $I \times K$ matrix 
+$\mathbf{M}$. Each of $\mathbf{M}$'s $K$ corresponds to a particular 
+\emph{cluster}, and thus, the activity of each $m_{i,k}$ indicates whether the $i$th 
+datapoint $\mathbf{x}_i$ (via its reconstruction $\mathbf{r}_i$) is a member of the 
+$k$th cluster.  columns contains $I$, each the particular vector of hidden causes for 
+the $i$th surface vector. $\mathbf{}$ has $K$ columns.
 
- is compared. 
-
-the vector of surface units; however, t
-The vector $\mathbf{x}_i$ is the original data vector, i.e., the original surface units
-
-Saund describes the hidden units in
-$\mathbf{m}_i$ as \textit{causes}; that is, the hidden units in an MCMM are presumed to hidden causes behind the particular arrangement of \textsc{on} and \textsc{off}) units in the original data vector $\mathbf{x}_i$. 
-
-\textsc{on} surface vectors
+% is compared. 
+%
+%the vector of surface units; however, t
+%The vector $\mathbf{x}_i$ is the original data vector, i.e., the original surface units
+%
+%Saund describes the hidden units in
+%$\mathbf{m}_i$ as \textit{causes}; that is, the hidden units in an MCMM are presumed to hidden causes behind the particular arrangement of \textsc{on} and \textsc{off}) units in the original data vector $\mathbf{x}_i$. 
+%
+%\textsc{on} surface vectors
 The hidden units are connected to surface units by a matrix of weights $\mathbf{C}$. 
-Each individual arc $c_{j,k}$ has a value in $[0,1]$ that represents the weight on the connection between
-$m_k$ and $r_j$.
+Each individual arc $c_{j,k}$ has a value in the interval $[0,1]$. This value 
+represents the weight on the connection between $m_{i,k}$ and $r_{i,j}$.
 Each node, i.e., each hidden unit and each surface unit, has an activity value in $[0,1]$ that
-%Each hidden unit has an activity value in $[0,1]$ 
 indicates whether it is \textsc{on} (active) or \textsc{off} (inactive).
-The activity of $r_j$ is determined by a \emph{mixing function}, which takes as inputs the 
+The activity of $r_{i,j}$ is determined by a \emph{mixing function}, which takes as inputs the 
 hidden-unit activities $\mathbf{m}$ and their respective weights $\mathbf{c}_j$
 (section~\ref{sec:mixing-function}).
 
 \begin{figure}[tb]
-%\begin{minipage}{.3\textwidth}
+%%\begin{minipage}{.3\textwidth}
 \begin{center}
 \small
 \begin{tikzpicture}[shorten >=1pt,->,draw=black!100]
@@ -216,7 +302,7 @@ a dataset.
 
 \begin{figure}[htb]
 \begin{center}
-\small
+%\small
 \begin{tikzpicture}[shorten >=1pt,->,draw=black!100]
 	\def \rowtwoht{4.25cm}
 	\def \weightlevel{2.75cm}
@@ -394,38 +480,105 @@ input ``votes'' to a single output decision.  The output decision is
 an activity value for a particular surface-layer node. We will call the input votes
 \emph{causes}. 
 
-In terms of architecture, the \ac{MCMM} bears a striking resemblance to the Restricted Boltzmann Machine (RBM) \citep{smolensky:1986}.
-Both the \ac{MCMM} and the \ac{RBM} are bipartite graphs. That is both have two layers of nodes, with no connections between nodes of the same layer (as described in chapter~\ref{graph}).  In a RBM, as in an \ac{MCMM}, one of these node layers functions as a hidden layer, and the other as the visible (or surface) layer \citep[see, e.g.,][]{mohamed-and-hinton:2010}. One difference between the two, however, is that an RBM acts as a \emph{product} of experts, while an \ac{MCMM} acts as a kind of hybrid between a \emph{mixture of experts}, i.e., a (standard) mixture model, and a product of experts. To be clear, though, an \ac{MCMM} itself appears to be neither a sum nor a product of experts, not at least as these terms are usually construed. 
+In its architecture, the \ac{MCMM} bears a striking resemblance to the 
+Restricted Boltzmann Machine (RBM) \citep{smolensky:1986}.
+Both the \ac{MCMM} and the \ac{RBM} are bipartite graphs. 
+That is both have two layers of nodes, with no connections between nodes of the 
+same layer (as described in chapter~\ref{ch:graph}).  In a RBM, as in an \ac{MCMM}, 
+one of these node layers functions as a hidden layer, and the other as the visible 
+(or surface) layer \citep[see, e.g.,][]{mohamed-and-hinton:2010}. One difference between 
+the two, however, is that an RBM acts as a \emph{product} of experts, while an \ac{MCMM} 
+acts as a kind of hybrid between a \emph{mixture of experts}, i.e., a (standard) mixture model, 
+and a product of experts. To be clear, though, an \ac{MCMM} itself appears to be neither
+ a sum nor a product of experts, not at least as these terms are usually construed. 
 
 The ``experts" here 
-%The RBM's equivalent of the MCMM's mixing function is a  \emph{product of experts}\citep{hinton:1999, hinton:2002}, where the ``experts" 
+%The RBM's equivalent of an MCMM's mixing function is a  \emph{product of experts}\citep{hinton:1999, hinton:2002}, where the ``experts" 
 are the hidden units (along with their
-respective weights). A product of experts is, as its name suggests, a multiplication, namely the product of all hidden-unit values, whereas a mixture of experts is a summation of these same values. In both MCMMs and RBMs, every expert casts a vote concerning whether a given surface node is to be \textsc{on} or \textsc{off} (i.e., 1 or 0). In an RBM, the votes are all multiplied together, so that if one vote is 0, the collective vote will be 0. In other words, in order for a given surface unit to be 1, \emph{every} hidden unit must vote 1.\footnote{If the values are continuous, i.e., in the interval $[0,1]$, every hidden unit must be very close to 1 in order for the surface unit to be close to 1.}
-In an MCMM, by contrast, every expert save one could cast a 0 vote, and the surface unit's value would still be nonzero. As long as \emph{at least} one of the hidden-unit votes is 1, the surface unit in question will be 1. On the other hand, if multiple experts vote 1, the surface unit's value is still 1. It will not exceed one even if all hidden units vote 1. Thus, the \ac{MCMM}'s method of combining expert votes behaves like a summation in some ways and product in others.  
+respective weights). A product of experts is, as its name suggests, a multiplication, 
+namely the product of all hidden-unit values, whereas a mixture of experts is a 
+summation of these same values. In both MCMMs and RBMs, every expert casts 
+a vote concerning whether a given surface node is to be \textsc{on} or \textsc{off} 
+(i.e., 1 or 0). In an RBM, the votes are all multiplied together, so that if one vote is 0, 
+the collective vote will be 0. In other words, in order for a given surface unit to be 1, 
+\emph{every} hidden unit must vote 1.\footnote{If the values are continuous, i.e., in 
+the interval $[0,1]$, every hidden unit must be very close to 1 in order for the surface 
+unit to be close to 1.}
 
-Because an \ac{MCMM} is not a true mixture of experts, it cannot be a true mixture model. In a true mixture model, the expert votes must always sum to 1, and each surface unit's value is a \emph{weighted sum} of the votes from the hidden units. As the number of votes increases, the potency of each vote tends to decrease, unless most votes have weights that are close to zero. Mixture-of-experts models perform best when each surface unit's value is caused by a single expert, namely the best expert for that surface unit. Otherwise, the best expert's vote will be dampened. (CITE?). By contrast, in an \ac{MCMM}, a particular surface unit can be caused by one expert, all experts, or any number in between (where, again, the experts are hidden units).
-An \ac{MCMM} is in this way similar to an \emph{admixture} model like Latent Dirichlet Allocation (LDA) \citep{blei-et-al:2003}; e.g., 
-when used in document classification, LDA %are applied to topic modeling, an individual word %(a surface unit) 
-%can be 
-can attribute a single word to multiple topics, %(hidden units).
-which is to say that the word in question is \emph{caused} by multiple topics at once.
-That is, a given word, %e.g., %\emph{restaurant} 
-can be \emph{caused} by more than one topic, 
-where each topic is a cluster of words.
+In an MCMM, by contrast, every expert save one could cast a 0 vote, and the surface 
+unit's value would still be nonzero. As long as \emph{at least} one of the hidden-unit 
+votes is 1, the surface unit in question will be 1. On the other hand, if multiple experts 
+vote 1, the surface unit's value is still 1. It will not exceed one even if all hidden units 
+vote 1. Thus, the \ac{MCMM}'s method of combining expert votes behaves like a 
+summation in some ways and product in others.  
+
+Because an \ac{MCMM} is not a true mixture of experts, it cannot be a true mixture model. 
+In a true mixture model, the expert votes must always sum to 1, and each surface unit's value 
+is a \emph{weighted sum} of the votes from the hidden units. As the number of votes increases, 
+the potency of each vote tends to decrease, unless most votes have weights that are close to zero. 
+Mixture-of-experts models perform best when each surface unit's value is caused by a single 
+expert, namely the best expert for that surface unit. Otherwise, the best expert's vote will be 
+dampened. \marginpar{CITE?}
+
+By contrast, in an \ac{MCMM}, a particular feature (i.e., surface unit) can be caused 
+by one expert, all experts, or any number in between (where, again, the experts are hidden units).
+An \ac{MCMM} is in this way similar to a \emph{mixed-membership} or \emph{admixture} model like 
+Latent Dirichlet Allocation (LDA) \citep{blei-et-al:2003}. For example, 
+when used in document clustering, LDA and other mixed-membership models
+can assign a single document to multiple topics, which is to say a single document can be caused by multiple topics. If we replace \emph{document} and \emph{topics} with their equivalent terms in ULM, this statement becomes, `` 
+A single \emph{word} can be caused by multiple \emph{morphs}.'' This is certainly true of Multimorph's MCMM, where words are represented as the feacture vectors $\textbf{r}_i$, and morphs are the hidden units, i.e., the components of the vectors $\textbf{m}_i$.
+%In LDA, each document is associated with a distribution of topics, and each topic with a probabilistic distribution of words. Each is document is generated by randomly selecting a topic from the document's then randomly  A topic is randomly selected from the document's set of topicswherein
+%the product of a process wherein the
+Mixed-membership models can also attribute a single word to multiple topics, which is to say that a single word can be \emph{caused} by multiple topics. This statement's translation into morphological learning terms is,
+%That is, a word, %e.g., %\emph{restaurant} 
+%can be \emph{caused} by more than one topic.
+%where each topic is a cluster of words. 
+%In terms of morphological learning, the equivalent statement is, 
+``A single \wmph{word-internal feature (or character, etc.)} can be caused by more than one \emph{morph} at once,'' which is also true of Multimorph's MCMM (see section~\ref{sec:mixing-function} for more details).
+Taken at face value, both of these statements (i.e., the ULM translations) are true of Multimorph's MCMM: the 
+vectors $\textbf{r}_i$, which represent words, can certainly be caused by more than one morph (i.e., hidden unit), and moreover, an individual feature within $\textbf{r}_i$ can also be caused by more than one morph (see section~\ref{sec:mixing-function}). However, there is an importance difference here: 
+ %and a word can be caused by more than one morph.'' 
+ For the sake of clarity, table~\ref{tab:tm-to-ulm} gives topic-modeling terms alongside their equivalents in the unsupervised learning of morphology.
+% Thus, a \emph{word} in topic-modeling is is equivalent to \emph{character}, a \emph{word-internal feature} in ULM (or perhaps \emph{character}, \emph{phoneme}, etc., depending on how words are represented in a given ULM approach).
+\begin{table}{h}
+\centering
+\begin{tabular}{ccc}
+Topic-Modeling & & ULM \\
+document & $\to$ & word \\ %(i.e, feature-vector representing a word) \\
+topic & $\to$ & morph/morpheme \\
+word & $\to$ & word-internal feature or character \\
+\end{tabular}
+\caption{Some topic-modeling terms and their ULM equivalents. That is, for instance, \emph{documents}
+in the context of topic modeling are equivalent to \emph{words} in the context of the unsupervised learning
+of morphology.}
+\label{tab:tm-to-ulm}
+\end{table}
+%in unsu\emph{words} in the case of topic modeling are analogous to
+%to \emph{surface-level features} (or surface units) in the case of Multimorph and morphological learning. Likewise,
+%\emph{topics} in topic modeling correspond to morphs in morphological learning, and 
+However, according to \citet[][p. 4]{airoldi-et-al:2014}, ``[M]ixed membership models assume that individuals or observational units [i.e., words] may only partly belong to population mixture categories [i.e., topics] \dots. The degree of membership then is a vector of continuous, non-negative latent variables [i.e., hidden units] that add up to 1 (in mixture models, membership is a binary indicator).''
+ Thus, an MCMM is not mixed-membership model, either, for in an MCMM, many individual latent variables (or hidden units) can be 1, which means that in an MCMM, a whole vector of hidden-unit activities can sum to a value greater than 1.
+
 %\citep[e.g.,][]{miller-et-al:2016} 
 %(and each cluster is represented as shared connections to a particular hidden unit). %The clusters would  \emph{food}, \emph{business}, and \emph{hospitality}, simultaneously.
 
-Like LDA, MCMMs can been applied to document classification; \cite{sahami-et-al:96} use an \ac{MCMM} to group $I$ documents into $K$ clusters. Each Documents are represented as vectors $\mathbf{x}_i$ of $J$ features. The features, i.e. surface units, each indicate the absence or presence of a particular word (cf. the $\mathbf{x}$ vector in figure~\ref{fig:mcmm}). The topics in \cite{sahami-et-al:96} are represented as the MCMM's hidden units $\mathbf{m}_i$. Documents are grouped into topic clusters by the learning process described below in section~\label{sec:mcmm:learning}.
+Like latent Dirichlet allocation, MCMMs have also been applied to document classification; \cite{sahami-et-al:96} 
+use an \ac{MCMM} to group $I$ documents into $K$ clusters.  Documents are 
+represented as vectors $\mathbf{x}_i$ of $J$ features. The features, i.e. surface units, 
+each indicate the absence or presence of a particular word (cf. the $\mathbf{x}$ 
+vector in figure~\ref{fig:mcmm}). The topics in \cite{sahami-et-al:96} are represented 
+as the MCMM's hidden units $\mathbf{m}_i$. Documents are grouped into topic 
+clusters by the learning process described below in section~\ref{sec:mcmm-learning}.
 % are analogous to the morphological clusters in the present work; i.e., they each correspond to a hidden unit in $\mathbf{m}$. In particular, each hidden unit in$\mathbf{m}_i$ is the activity of a particular cluster for the $i$th datapoint--i.e., the $i$th document in the case of \cite{sahami-et-al:96}, and the $i$th word in the present work. 
 
 %work hidden nodes in the vectors $  in the hidden-unit vectors $ were represented as $K$-length hidden-unit vectors $\mathbf{}$ document vector is thus analagous  wordsthe express purpose of mapping 
 %particularly to map individual documents 
 %each to multiple categories at once \cite{sahami-et-al:96}. %apply the \ac{MCMM} to 
-By contrast, a true mixture model, such as \dots, is constrained to assigning each surface unit to a \emph{single} cause. In the case of 
+By contrast, a true mixture model, such as \dots, is constrained to assigning each surface 
+unit to a \emph{single} cause. In the case of 
 document classification, this would mean each word (surface unit) could be attribute to no more than
-one topic (or hidden unit). One might therefore describe any standard (i.e., true) 
+one topic (or hidden unit). One might therefore describe any true
 mixture model as a \emph{single-cause} mixture model. 
-
 
 Each cause is a product of the form $m_{i,k} c_{j,k}$ for $k \in K$.
 There are thus a total of $K$ distinct causes for a given surface node $r_{i,j}$. 
@@ -440,22 +593,29 @@ threshold, then $m_{i,h} c_{j,h}$ is an active cause.
 %to an activity value for $r_{i,j}$ can in theory serve as a mixing function. 
 %There are thus an infinite number of theoretically possible mixing functions.
 
-%Following \cite{saund:94}, we use the 
-%There are perhaps an infinite number of possible mixing functions. 
-%Any function that maps from a set of votes 
-%(and their respective weights) to a single output decision will suffice.
-One possibility is the \textbf{Noisy-OR} function:
- \begin{equation}\label{eq:noisy-or}
-  r_{i,j} = 1 - \prod\limits_{k} (1 - m_{i,k} c_{j,k})
- \end{equation}
+Following \cite{saund:94}, we use the Noisy-OR function \citep{pearl:1988}.
+There are perhaps an infinite number of possible mixing functions. 
+Any function that maps from a set of votes 
+(and their respective weights) to a single output decision will suffice.
+One possibility is the \textbf{Noisy-OR} function \citep{pearl:1988}:
+ 
+\begin{equation}\label{eq:noisy-or}
+r_{i,j} = 1 - \prod\limits_{k} (1 - m_{i,k} c_{j,k})
+\end{equation}
 % We will call the inputs to the Noisy-OR function \emph{causes}. Each cause is a product of the form $m_{i,k} c_{j,k}$. 
- The Noisy-OR function acts as a kind of \textit{OR} gate, or, to put it another way, an``at-least-one" gate. That is, the surface node $r_{i,j}$ is $1$ as long as \emph{at least one} cause is active.
+ The Noisy-OR function acts as a kind of \textit{OR} gate, or, to put it another way, 
+ an``at-least-one" gate. That is, the surface node $r_{i,j}$ is $1$ as long as 
+ \emph{at least one} cause is active.
  % (i.e., $m_{i,k} c_{j,k} = 1$ for at least one $k$ in $K$). 
  If two or more causes are active,
 %$1$ (or $\ge$ than a threshold), 
-$r_{i,j}$ is still going to be $1$. The output of Noisy-OR does not change as the number of active causes change, as long as there is at least one active cause.
+$r_{i,j}$ is still going to be $1$. The output of Noisy-OR does not change 
+as the number of active causes change, as long as there is at least one active cause.
 
-Another possible mixing function is the \textbf{sigmoidal weighted sum}, the composition of the sigmoid function $S$ and the function $t_{i,j}$, which computes a weighted sum, i.e., the inner product of the cluster-activity vector $\mathbf{m}_i$ and the weight vector $\mathbf{c}_j$:
+Another possible mixing function is the \textbf{sigmoidal weighted sum}, 
+the composition of the sigmoid function $S$ and the function $t_{i,j}$, 
+which computes a weighted sum, i.e., the inner product of the cluster-activity 
+vector $\mathbf{m}_i$ and the weight vector $\mathbf{c}_j$:
 
 	\begin{align} %\label{eq:sigws}
 	\label{eq:sig}
@@ -464,37 +624,166 @@ Another possible mixing function is the \textbf{sigmoidal weighted sum}, the com
 	\text{where} \quad t_{i,j} = \sum_k m_{i,k} c_{j,k}
 	\end{align}
 This is the mixing (or activation) function that is typically used in classical autoencoders. 
-Whereas the output of Noisy-OR is independent of the number of active causes (as long as there is at least one), the output of \eqref{eq:sig} DOES change with the number of active causes: The value $t_{i,j} = \sum_k m_{i,k} c_{j,k}$ is clearly going to increase as the number of active clusters increases.
+Whereas the output of Noisy-OR is independent of the number of active 
+causes (as long as there is at least one), the output of \eqref{eq:sig} does
+change with the number of active causes: The value $t_{i,j} = \sum_k m_{i,k} c_{j,k}$ 
+is clearly going to increase as the number of active clusters increases.
 %(i.e., products of the form $m_{i,k} c_{j,k}$ that equal $1$ or are greater than some threshold) 
 As $t_{i,j}$ increases, $S(t_{i,j})$ will get closer to $1$; as %it
-$t_{i,j}$ 
-decreases, $S(t_{i,j})$ will get closer to $0$.
+$t_{i,j}$ decreases, $S(t_{i,j})$ will get closer to $0$.
 
+% What is the purpose of this section? To explain how an MCMM learns
+% How should I present this information?
+% Well, how does an MCMM learn?
+%% The main idea is this: An MCMM learns by iteratively updating its parameters, the M and C matrices, so that
+%% each update reduces the model's error.
+%% What is the error? How is it measured?
+%% How are the updates determined? 
+%  OR THIS: An MCMM learns via numerical optimization. 
+%% What is numerical optimization in general?
+%% That is, what is a numerical optimization algorithm, and how does such an algorithm work (in general terms)?
+%% What does Multimorph need in a numopt method? 
+%% 
+In choosing a numerical optimization method for Multimorph, we have to bear in mind two
+facts about its MCMM: 
+\begin{enumerate}
+\item \textbf{It must be a \emph{bound constrained} method.} An MCMM's variables (i.e., the values 
+in its M and C matrices)
+%are bound by the values 0 and 1, 
+%which is to say that the minimization of the MCMM's error function is 
+have to stay
+within the interval $[0,1]$, i.e., that they are \emph{bound} by 0 and 1.  \marginpar{Why?}. 
+The problem of minimizing an MCMM's error function is thus a bound-constrained problem. 
+That is, the problem is the subject to constraints, and these constraints take the form of 
+lower and upper bounds (namely, 0 and 1) for each variable.
+\item \textbf{It must be a \emph{nonlinear} optimization method.}
+%  Multimorph's objective function is an error function, namely, the sum of squared error (SSE) (see equation \eqref{eq:sse}).  \emph{objective function}) is \emph{nonlinear}. 
+Multimorph's objective function is a composition of functions, namely the composition of the sum-of-squared-error function \eqref{eq:sse} and the noisy-or mixing function \eqref{eq:noisy-or}, both of which are nonlinear; i.e., \emph{nonlinear} in the sense that their graphs are not straight lines. \footnote{Note that this sense of nonlinear is somewhat different from the sense employed in previous chapters, as in, e.g., the term \emph{nonlinear-nonsequential}.} We thus need an optimization technique that can handle nonlinear functions.
+\end{enumerate} 
+
+In short, Multimorph's learning process---the process of adjusting M and C in the direction of error reduction---is one of \emph{numerical optimization}. In particular, it employs the method proposed by
+\citet{cheng-and-li:2012}, an \emph{active set} method conducive to \emph{bound-constrained} and \emph{nonlinear} problems. These are important attributes for our purposes because \dots.
 
 \section{Learning}
-\label{sec:mcmm:learning}
+\label{sec:mcmm-learning}
 %\label{autoencoder-learning}
-
 % A data compression scheme is useful only to the extent that it allows
 % for the recovery of the source data from the compressed
 % representations. In autoencoder terms, this means that 
 
+\subsection{General Process}\label{sec:general}
+
+The variables in an MCMM are the values in the $\mathbf{M}$ and $\mathbf{C}$ matrices. 
+These values determine the 
+reconstruction vectors in $\mathbf{R}$ via the Noisy-OR mixing function (\eqref{eq:noisy-or}). 
+The MCMM's error is the discrepancy between  
+$\mathbf{R}$ and the actual data $\mathbf{X}$. Learning occurs when the values in $\mathbf{M}$
+and $\mathbf{C}$ are updated so as to to reduce this error. 
+ 
+%reconstructions that are closer to the actual data (and thus a reduce 
 %The reconstruction layer attempts to
 %decode the hidden layer's representations and
-In both the classical autoencoder and the MCMM, learning occurs as a
-result of the algorithm's search for an optimal valuation of key variables (e.g., weights), 
-i.e., a valuation that minimizes %or maximizes an the
+In both the classical autoencoder and the MCMM, learning is the result of a search for an optimal valuation of the system's variables (or parameters), 
+i.e., a valuation that minimizes 
 %\emph{reconstruction error} $E$, 
 the discrepancy between
-reconstructed and original data points.  The search is conducted
+reconstructed and original data points. That is, we want to find parameter 
+values that minimize an error function. The search is conducted
 via %some method of 
-numerical optimization; we use the nonlinear conjugate gradient method.
+numerical optimization; 
+we use a nonlinear conjugate gradient method.
+Nonlinear conjugate gradient methods are a subcategory 
+of numerical optimization methods, which are methods of 
+optimizing an objective function $f$ by iteratively adjusting its parameters. 
+Suppose the parameters to $f$ are the components of the vector $\mathbf{u} = [u_0,u_1, \dots, u_N]$.
+ 
+If $f$ is an error function $E$ (as it is in our case), the optimization process is one of minimization, 
+particularly one of finding the (global) minimum in $E(\mathbf{u}$), the curve of $E$ 
+plotted against different valuations of $\mathbf{u}$.
+The curve $E(\mathbf{u})$ is higher at some parameter valuations than others. 
+%The optimization task is to find the parameter values that yield the minimal error (which is ideally zero). 
+The basic approach to reduce the error by incrementally adjusting, or updating, the parameter vector $\mathbf{u}$. 
+
+These updates are made component-wise over multiple iterations.
+Each update is a ``step" with two distinct components, namely a step \emph{direction} $\mathbf{d}$ 
+and a step \emph{size} 
+%(or \emph{length} or \emph{magnitude}) 
+$\alpha$, which is a scalar. The direction $\mathbf{d}$ is an array (or vector) 
+of the same length as the parameter array $\mathbf{u}$, so that there is a 
+dedicated direction component for each parameter component. 
+The direction component of the update is supposed to ensure that error curve 
+is descended rather than ascended. The step size $\alpha$ is meant to scale 
+the update so that it is neither too small nor too large. That is, the update must 
+be large enough to make a difference, but not so large that it overshoots the minimum. 
+At iteration $t$, therefore, the parameter vector $\mathbf{u}$ is updated according 
+to the following rule: 
+\begin{equation}\label{eq:gen-update}
+\mathbf{u}_{t+1} = \mathbf{u}_{t} + \alpha_t\mathbf{d}_{t}
+\end{equation}
+
+\begin{equation}\label{eq:mod-d-update}
+\textbf{d}_{t} = -\textbf{g}_{t}  + \beta_{t} d_{t-1} - \theta_{t} \textbf{y}_{t-1}
+\end{equation}
+%(and thus each direction component vector is ``tailored'' to suit its corresponding parameter component). 
+
+%tailoredparameter component is updated according to a tailored  vector the step must be such that the error curve is descended rather than ascended. The step must be sufficiently large that it makes a difference, but not so large that it overshoots the minimum. 
+As for computing $\alpha_t$ and $\mathbf{d}_{t}$, there are various methods, and different combinations of these methods define different optimization algorithms. 
+
+
+ for computing likely step directions and lengths. Conjugate gradient 
+ methods incorporate a special scalar $\beta$ in computing the step direction. \citet{hager:2006} 
+\citet{hager:2006}
+In general, at iteration $t$, $\beta_{t+1}$ is updated, and the direction is then 
+
+
+% as twwith two components, namely \emph{direction}  incremental adjustments 
+% to the parameters so as to decrease the error, i.e., to descend the error curve by 
+% manipulating the error function's parameters.  
+ %falls in response to different paramenteone whose output rises and falls  param said to \emph{descend} the 
+
+In general, different types of numerical optimization methods are distinguished 
+by the way they choose the search direction.
+Conjugate gradient (CG) methods come 
+in both linear and nonlinear varieties. The former are designed to optimize 
+linear objective functions; the latter are variants of linear methods, modified 
+to handle nonlinear objective functions. 
+
+%are variant of the latter distinct from linear conjugate gradient methods in that they are used to 
+
+%The term \emph{optimization} in the context of numerical optimization can mean either minimization or maximization, depending on the nature of $f$. In our case, $f$ is an error function, and of course, error is something to be minimized. 
+
+ iterative procedures that minimize an \emph{objective} function (also called an error function---by adjusting a set of variables. At each iteration $t$, the process adjusts each variable by adding a certain quantity to it. This quantity is computed differently in optimization methods. adjust by adding a cert comprises two factors: (1) a direction (i.e., positive or negative), and (2), a step length. consists of the following components:
+\begin{enumerate}
+\item $\mathbf{x}$: an array of variables $[x_0, x_1, ..., x_n, ..., x_N]$ to be updated
+\item $f$: an objective function to be optimized (in our case, minimized).
+\item $\nabla f$: the gradient of the objective function with respect to the variables $\mathbf{x}$.
+\item $\beta$: a parameter used to compute the search direction $p$
+\item $p$: the search direction
+\item $\alpha$ Length of the step to taken along the search direction
+\end{enumerate}
+
+\subsection{Optimization}
+%Compute \alpha_t and set xk+1  xk + \alpha_k p_k;
+%Evaluate \nabla f_{k+1};
+%\beta_{k+1}
+%
+%\nabla f^{T}
+%k+1
+%\nabla f_{k+1}
+%\nabla f_{k}^{T} \nabla f_k
+%
+%p_{k+1}\leftarrow \nabla  f_{k+ 1 } + \beta_{k + 1} p_k 
+%k \leftarrow k + 1
+
+\cite{cheng-and-li:2012}
 %gradient-based technique, e.g., gradient descent or
 %the conjugate gradient method.
 %
-Our objective function is a simple error function, namely the
-normalized sum of squares error:
-\begin{equation}
+
+
+For the objective function, I used normalized \emph{``sum-of-squares'' error} (SSE), 
+shown in equation \eqref{eq:sse}.
+\begin{equation} \label{eq:sse}
 E = \frac{1}{I \times J} \sum_{i} \sum_{j} {(r_{i,j} - d_{i,j})}^2
 \end{equation}
  where $I \times J$ is the total number of features in the dataset.
@@ -518,9 +807,39 @@ encodes the weights between $\mathbf{m}_i$ and $\mathbf{r}_i$ for every $i \in I
 % \end{align*}
 % %\marginpar{Rationale for normalized SSE?} 
 % which is minimized.
-% rather than maximized.  
+% rather than maximized. 
+Active set methods classify indices. But to what end?
+How is the concept \emph{stationary point} related to this question? 
+ According to Wikipedia,
+ ``A stationary point of a differentiable function of one variable is a 
+ point on the graph of the function where the function's derivative is zero. 
+ Informally, it is a point where the function stops increasing or decreasing 
+ (hence the name).'' However, in a case of bound constrained optimization, 
+ wherein each variable's value is constrained by a lower bound and an upper 
+ bound, the derivative may \emph{not} be zero with respect to \emph{every} variable. 
+ In such a case, therefore, a stationary point is more accurately defined as follows:
+ \begin{equation}
+  D_{it} =
+    \begin{cases}
+      1 & \text{if bank $i$ issues ABs at time $t$}\\
+      2 & \text{if bank $i$ issues CBs at time $t$}\\
+      0 & \text{otherwise}
+    \end{cases}       
+\end{equation}
 
+What is a nonlinear conjugate gradient method?
 
+\begin{equation}
+p_k = -B_{k-1}\nabla f_k
+\end{equation}
+
+The \emph{size} (or \emph{length}) of each step was determined by the 
+Armijo technique (CITE).  But maybe backtracking. Check.
+
+%The basic idea is that we want 
+%\begin{equation}
+%\phi(\alpha)  f (x_k + \alpha p_k), \alpha >0
+%\end{equation}
 %; our techniques are described in section~\ref{subsec:objfunc}.
 % There are a number of possibilities regarding the particular error
 % function and gradient-based technique. We describe our choices in
@@ -627,7 +946,15 @@ encodes the weights between $\mathbf{m}_i$ and $\mathbf{r}_i$ for every $i \in I
 The MCMM's learning process is similar to Expectation Maximization
 (EM) in that at any given time it holds one set of variables 
 fixed while optimizing the other set. We thus have two functions, \textsc{Optimize-M}
-and \textsc{Optimize-C}, which take turns optimizing their respective matrices.
+and \textsc{Optimize-C}, which take turns optimizing their respective matrices $\mathbf{M}$ 
+\and $\mathbf{C}$:
+While \textsc{Optimize-M} is optimizing $\mathbf{M}$, the weights $\mathbf{C}$ are treated as constants. Then, the cluster-membership vectors $\mathbf{m}_i$ in $\mathbf{M}$ is held fixed so that \textsc{Optimize-C} can optimize $\mathbf{C}$. The basic optimization algorithm within both \textsc{Optimize-M} and \textsc{Optimize-C} was 
+The optimization algorithm itself was the
+modified Polak--Ribi\'{e}re--Polyak method devised by \citet{cheng-and-li:2012}. This is method is conducive to the present case for two reasons: (1) While it is similar to the conjugate-gradient method, in particular, the version of the conjugate-gradient that employs the Polak--Ribi\'{e}re--Polyak update rule for $\beta$,  it is designed for non-linear optimization problems. 
+\textit{non-linear bound-constrained} optimization.
+for Large-Scale Nonlinear Bound Constrained
+Optimization
+Bound-constrained optimization. 
 % However, if the algorithm is to optimize $\mathbf{M}$, it must first
 % know $\mathbf{C}$, and vice versa.  Therefore, the algorithm can only
 % focus on matrix at time, optimizing the one while holding the other
@@ -643,14 +970,16 @@ and \textsc{Optimize-C}, which take turns optimizing their respective matrices.
 % $\mathbf{C}$.
 %\end{description}
 
-The function \textsc{Optimize-M} visits each of the $I$ cluster-activity vectors $\mathbf{m}_i$ in
-$\mathbf{M}$, optimizing each one separately.
+
+The function \textsc{Optimize-M} loops over the $I$ cluster-activity vectors $\mathbf{m}_i$ in
+$\mathbf{M}$, optimizing each one separately.  The optimization process itself is detailed in \cite{cheng-and-li:2012}.
 %, one at a time.
 %in $\mathbf{M}$, 
 For each $\mathbf{m}_i$, \textsc{Optimize-M} enters an optimization 
 loop over its $K$ components, adjusting each 
 $m_{i,k}$ by a
-quantity proportional to the negative gradient of $E$ at $m_{i,k}$. \marginpar{How is this proportion determined?} 
+quantity proportional to the negative gradient of $E$ at $m_{i,k}$. 
+\marginpar{How is this proportion determined?} 
 This loop repeats until $E$
 ceases to decrease significantly,
 whereupon \textsc{Optimize-M} proceeds to the next $\mathbf{m}_i$.  

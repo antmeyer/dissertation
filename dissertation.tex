@@ -14,7 +14,9 @@
 
 %\usepackage{cite}
 \usepackage{array}
-
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\usepackage[]{algorithm2e}
 %\documentclass[UTF8,nofonts]{ctexart}
 %\usepackage{pdfpages}
 %\documentclass{iuphd}
@@ -52,6 +54,7 @@
 \newtheorem{definition}{Definition}
 \newtheorem{criterion}{Criterion}
 \newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
 %\DeclareFontFamily{T3}{ClearSans-LF}{}
 %\DeclareFontShape{T3}{ClearSans-LF}{m}{n}
 % {<-> ssub * cmss/m/n }{}
@@ -65,7 +68,6 @@
 \bibliographystyle{abbrvnat}
 \setcitestyle{authoryear}
 %\bibliographystyle{plainnat}
-%\usepackage{cite}
 %\usepackage{makecell}
 % removing ACL style package
 %\usepackage{styles/acl2016}
@@ -117,14 +119,13 @@
 \usepackage{gb4e}
 \definecolor{LightGray}{gray}{0.8}
 \definecolor{LightGray2}{gray}{0.9}
-%\usepackage[printonlyused,withpage]{acronym}
-%\usepackage{expex}
-%\input expex
 %\usepackage[normalem]{ulem}
 %\usepackage{nomencl}
+
 % Uncomment this to make sure marginpars are removed before submission:
-\includeonly{ch-Intro}
-\renewcommand{\marginpar}[1]{}
+%\renewcommand{\marginpar}[1]{}
+\includeonly{ch-MCMM}
+
 
 \begin{document}
 %\renewcommand{\theequation}{\roman{equation}}
