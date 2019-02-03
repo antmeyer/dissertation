@@ -3,34 +3,40 @@
 
 \section{Introduction}
 \label{sec:mcmm:intro}
-%This chapter is essentially about Multimorph's learning process. 
-%This chapter will address such questions as what exactly \emph{learning} means 
-%in the case of Multimorph (i.e., what means when we say that Multimorph has 
-%``learned'' something), as well how this learning takes place. 
 Multimorph, as an unsupervised learning system, must be 
 driven by an unsupervised learning algorithm, that is, 
 a procedure for inducing categories from raw, unlabeled data.
 %This thesis's preceding chapters have established the basic requirements for Multimorph's learning
 %algorithm.
-It is Multimorph's learning algorithm that is this chapter's focus. In particular, this chapter motivates the choice of the Multiple Cause Mixture Model \citep{saund:94}; it explains the nature, structure, and function of MCMMs, and why an MCMM is an appropriate learning mechanism for Multimorph. 
+This chapter focuses on Multimorph's core learning algorithm, the Multiple Cause Mixture Model (MCMM). In particular, it motivates the choice of the MCMM \citep{saund:94}. In doing so, it explains the nature, structure, and function of MCMMs, and why an MCMM is an appropriate learning mechanism for Multimorph. 
 
-This chapter is a culmination of the arguments of the preceding three chapters. 
-In chapters~\ref{ch:intro} and \ref{ch:lit-review}, we saw that it is precisely 
-the set of \emph{nonlinear-nonsequential} models that are capable of representing 
-nonconcatenative morphological structure, and that it is the properties nonlinearity 
-and nonsequentiality that give rise to this capacity.
-Chapter~\ref{ch:graph} then 
-demonstrated the equivalence between nonlinearity and 
-nonsequentiality and the mathematical properties of 
-bipartite graphs, thereby showing that bipartite graphs are 
-intrinsically nonlinear and nonsequential. It follows that bipartite graphs are 
-well-suited to represent nonconcatenative structure, and moreover, that bipartite graphical learning models are thus intrinsically well-suited to serve as learning algorithm for a ULM system. For Multimorph, I chose a particular kind of bipartite learning model called the Multiple Cause Mixture Model (MCMM), developed by \citet{saund:1994}.
+This chapter is a culmination of the argumentation of the preceding three chapters. 
+In chapters~\ref{ch:intro} and \ref{ch:lit-review}, we saw that it was precisely 
+the set of \emph{nonlinear-nonsequential} models that were capable of representing 
+nonconcatenative morphological structure, and that it was the properties \emph{nonlinearity}
+and \emph{nonsequentiality} that give rise to this capacity. Furthermore, we in 
+chapter~\ref{ch:graph} that bipartite graphs (or bipartite graphical algorithms) were a subset of NLNS algorithms. In fact, the bipartite structure of such graphs turned out to be a particularly coherent way to capture nonlinearity and nonsequentiality (REF).
+%ince its relationship to the autosegmental architecture is straightforward.  
+%demonstrated the equivalence between nonlinearity and 
+%nonsequentiality and the mathematical properties of 
+%bipartite graphs, thereby showing that bipartite graphs are 
+%intrinsically nonlinear and nonsequential. It follows that bipartite graphs are 
+%well-suited to represent nonconcatenative structure, and moreover, that bipartite graphical learning models are thus intrinsically well-suited to serve as learning algorithm for a ULM system. 
+The present chapter homes in on a particular kind of bipartite learning algorithm, namely the MCMM. The preceding chapters provide the chain of reasoning that leads to our choice of the MCMM.
 
-MCMMs are conducive to ULM, particularly to the UL of NCM, mainly because they are bipartite graphs, since it is their bipartiteness that makes them nonlinear and nonsequential. The bipartiteness of MCMMs is evident in Section~\ref{sec:architecture} (see in particular figure~\ref{fig:mcmm}), which elucidates the architecture
-of an MCMM. But while their bipartiteness is most significant for our purposes, MCMMs have other attractive properties. [which we shall discuss in this chapter.] For example, an MCMM is neither sum nor a product of experts, 
+%For Multimorph, I chose a particular kind of bipartite learning model called the Multiple Cause Mixture Model (MCMM), developed by \citet{saund:94}.
 
-%In this chapter, therefore, we thus present a particular bipartite graphical model,  as Multimorph's core learning algorithm. In particular, I chose the bipartite graphical model known as the MCMM. 
-Section~\ref{sec:architecture} demonstrates the bipartite nature of an MCMM; compare figure~\ref{fig:mcmm} in section~\ref{sec:architecture} to the canonical bipartite structure shown in figure \ref{fig:gt-bipartite} in chapter~\ref{ch:graph}. whose bipartiteness becomes clearly evident in section~\ref{sec:architecture} Section~\ref{sec:architecture} also breaks the architecture of an MCMM, describing its basic components and how they relate to each other. hen delves deeper into the nature the MCMM, comparing and contrasting it to related learning algorithms, such as the Restricted Boltzmann Machine (RBM). Finally, section~\ref{sec:mcmm-learning} discusses the particular means by which Multimorph's MCMM learns.
+%MCMMs are conducive to ULM, particularly to the UL of non-concatenative morphology, mainly because they are bipartite graphs, since it is their bipartiteness that makes them nonlinear and nonsequential. The bipartiteness of MCMMs is evident in Section~\ref{sec:architecture} (see in particular figure~\ref{fig:mcmm}), which elucidates the architecture
+%of an MCMM. But while their bipartiteness is most significant for our purposes, MCMMs have other attractive properties. [which we shall discuss in this chapter.] For example, an MCMM is neither sum nor a product of experts, 
+
+%In this chapter, therefore, we thus present a particular bipartite graphical model,  as Multimorph's core learning algorithm. In particular, I chose the bipartite graphical model known as the MCMM.
+The chapter is organized as follows: Section first lays out the key components of an MCMM's structure, i.e., the attributes that all MCMMs share. Section~\ref{sec:context} then proceeds to place MCMMs in a larger of unsupervised learning algorithms, demonstrating 
+%In doing so, it will break down the structure of MCMMs, demonstrating 
+the similarities and differences between MCMMs and other types of learning algorithms such as Restricted Boltzmann Machines (RBM) and Latent Dirichlet Allocation (LDA). Section~\ref{mixing-function} focuses a particularly important component of an MCMM, namely its \emph{mixing function}, which is a type of activation function, i.e., a function that determines the activities of nodes in neural networks.  
+%Section~\ref{sec:architecture} describes the architecture of MCMMs. 
+Finally, section~\ref{sec:mcmm-learning} discusses the means by which MCMMs learns, paying particular attention to Multimorph's MCMM.
+
+%demonstrates the bipartite nature of an MCMM; compare figure~\ref{fig:mcmm} in section~\ref{sec:architecture} to the canonical bipartite structure shown in figure \ref{fig:gt-bipartite} in chapter~\ref{ch:graph}. whose bipartiteness becomes clearly evident in section~\ref{sec:architecture} Section~\ref{sec:architecture} also breaks the architecture of an MCMM, describing its basic components and how they relate to each other. hen delves deeper into the nature the MCMM, comparing and contrasting it to related learning algorithms, such as the Restricted Boltzmann Machine (RBM). Finally, section~\ref{sec:mcmm-learning} discusses the particular means by which Multimorph's MCMM learns.
 
 % learning process itself in detail. The following section then describesSection~ fact that will become plainly evident in section~{sec:architecture}  reasoning to motivate the use of bipartite graphical learning model, specifically the MCMM, as Multimorph's algorithm.  takes this this line of argumentation to its logical conclusion i  a bipartite graphical model, namely the MCMM, tononconcatenative morphology, and thus a bipartite graphical learning algorithm is going to be at least furthermore, a bipartite archict
 %In this chapter, we pre 
@@ -46,19 +52,22 @@ Section~\ref{sec:architecture} demonstrates the bipartite nature of an MCMM; com
 %Mixture Model (MCMM) proposed by \citet{saund:94}, and thus MCMMs
 %is a major focus of this chapter.
 
-By \emph{model}, 
-we mean a set of assumptions about how the world works. Where Multimorph is concerned, 
-the ``world" is the morphology of natural languages, which, significantly, includes \emph{non-concatenative} morphology. 
-autosegmental morphology \citep{mccarthy:1981}. 
-In chapter~\ref{ch:graph}, we argued
-that in order
-for a model to be able to deal with nonconcatenative morphology,
- it must be both \textbf{nonlinear} \textbf{and}
- \textbf{nonsequential},
- i.e., satisfy both the \textsc{Nonlinearity} criterion and the \textbf{Nonsequentiality} criterion; 
- see definitions (\ref{def:nl}) and (\ref{def:ns}) and 
- proposition (\ref{prop:nlns}). We also saw in chapter~\ref{ch:graph} that these two conditions are equivalent to the two parts of the definition of biparteness. In particular, \dots.
+%By \emph{model}, 
+%we mean a set of assumptions about how the world works. Where Multimorph is concerned, 
+%the ``world" is the morphology of natural languages, which, significantly, includes \emph{non-concatenative} morphology. 
+%autosegmental morphology \citep{mccarthy:1981}. 
+%In chapter~\ref{ch:graph}, we argued
+%that in order
+%for a model to be able to deal with nonconcatenative morphology,
+% it must be both \textbf{nonlinear} \textbf{and}
+% \textbf{nonsequential},
+% i.e., satisfy both the \textsc{Nonlinearity} criterion and the \textbf{Nonsequentiality} criterion; 
+% see definitions (\ref{def:nl}) and (\ref{def:ns}) and 
+% proposition (\ref{prop:nlns}). We also saw in chapter~\ref{ch:graph} that these two conditions are equivalent to the two parts of the definition of biparteness. In particular, \dots.
  
+
+
+
 % Therefore, if a model is a bipartite graphical model, then it is both nonlinear and nonsequential, which means
 % that it has the capacity to model nonconcatenative morphology:
 %  \begin{proposition}
@@ -94,17 +103,51 @@ for a model to be able to deal with nonconcatenative morphology,
  %  In this chapter, we shall first demonstrate an MCMM qualifies as a bipartite graph.  
 %In addition to demonstrating the bipartite \emph{bona fides} of MCMMs, this chapter will, in section~\ref{sec:architecture}, discuss the architecture of an \ac{MCMM},
 %i.e., is key components and the relationships between these components. 
-This chapter will also, in 
-sections~\ref{sec:mixing-function} and \ref{sec:mcmm-learning}, describe how
-an \ac{MCMM} functions as a learning algorithm. 
+%This chapter will also, in 
+%sections~\ref{sec:mixing-function} and \ref{sec:mcmm-learning}, describe the process whereby
+%an \ac{MCMM} learns. 
 
-\section{Architecture}
+\section{Basic MCMM Architecture}
 \label{sec:architecture}
-\citet{saund:94} uses the term \emph{multiple cause mixture model} to refer not to a single, fully specified algorithm, but rather to a\emph{unsupervised learning framework}.
-does not refer to a single, fully specified algorithm, but rather to a family of algorithms, 
-i.e., a \emph{framework} consisting of components that are only loosely rather fully 
-specified, thus allowing for a range of options as long as they satisfy certain criteria. 
-For example, one essentially component of an MCMM is the \emph{mixing function}.
+
+In \citet{saund:94}, the term \emph{multiple cause mixture model} does to refer a single, 
+specific algorithm, but rather to a family of algorithms, i.e., a general framework for unsupervised learning.  Since MCMMs constitute a definite category of algorithms, all MCMMs share certain key attributes. %These components and the relationships between them are the subject of this section. 
+These attributes are in large part the subject of this section. 
+%These are described in section~\ref{sec:architecture}. 
+%so every MCMM must have certain key
+%key attributes in order to qualify as an MCMM. 
+%For instance, all MCMMs bipartite graphs, as illustrated in figure~\ref{fig:mcmm}. That is, for instance, 
+%However, there is also room for variation among MCMMs. In particular, MCMMs may vary in their \emph{mixing function}.
+%
+%All MCMMs are 
+%All have a the same in certain crucial ways.
+%All share g There can thus be different kinds of MCMMs. 
+%does not refer to a single, fully specified algorithm, but rather to a family of algorithms, 
+%i.e., a \emph{framework} consisting of components that are only loosely rather fully 
+%specified, thus allowing for a range of options as long as they satisfy certain criteria. 
+%For example, one essential component of an MCMM is the \emph{mixing function}.
+
+
+%\begin{tikzpicture}[scale=1.25]%,cap=round,>=latex]
+%\coordinate [label=left:$A$] (A) at (-2cm,-1.cm);
+%\coordinate [label=right:$C$] (C) at (2.2cm,-1.0cm);
+%\coordinate [label=above:$B$] (B) at (1cm,1.0cm);
+%\draw (A) -- node[sloped,above] {c} (B) -- node[sloped,above,] {a} (C) -- node[below] {b} (A);
+%\draw[dashed] (B) -- (A-|B) ;
+%\end{tikzpicture}
+
+%\begin{figure}[ht]
+%\begin{tikzpicture}
+%\node[draw,circle] (A) at (90:3) {A};
+%\node[draw,circle] (B) at (210:3) {B};
+%\node[draw,circle] (C) at (330:3) {C};
+%\draw[latex'-latex',double] (A) -- node[label=150:A-B,label=330:B-A] {} (B);
+%\draw[latex'-latex',double] (A) -- node[label=30:A-C,label=210:C-A] {} (C);
+%\draw[latex'-latex',double] (B) -- node[label=90:B-C,label=270:C-B] {} (C);
+%\end{tikzpicture}
+%\label{fig:alg-types}
+%\caption{Relationship between the terms \emph{autoencoder}, \emph{MCMM}, and \emph{RBM}}
+%\end{figure}
 
 An MCMM is a graphical model consisting of two layers of nodes (or units): a layer 
 of \emph{surface} or \emph{visible} units 
@@ -127,6 +170,85 @@ match $\mathbf{x}_i$, i.e., to reconstruct $\mathbf{x}_i$ in
 $\mathbf{r}_i$ (as discussed in section~\ref{sec:mcmm-learning}).
 % shall discuss this reconstruction process in more detail in section REF.
 
+\begin{figure}[htb]
+\begin{center}
+%\small
+\begin{tikzpicture}[shorten >=1pt,->,draw=black!100]
+	\def \rowtwoht{4.25cm}
+	\def \weightlevel{2.75cm}
+	\def \rowoneht{1.25cm}
+	\def \basement{0cm}
+	\tikzstyle{m-node}=[circle,draw=black!100,thick,inner sep=0pt,minimum size=7mm]
+	\tikzstyle{r-node}=[circle,draw=black!100,thick,inner sep=0pt,minimum size=7mm]
+	\tikzstyle{d-node}=[circle,draw=black!100,fill=gray!45,thick,inner sep=0pt,minimum size=7mm]
+	\tikzstyle{dots}=[text width=5ex, text centered]
+	\tikzstyle{annot}=[text width=17ex, text centered]
+	% labels
+	\node[annot] (hidden-layer) at (0cm,\rowtwoht) {hidden units ($\mathbf{m}$)};
+	\node[annot] (weights) at (0cm,\weightlevel) {weights ($\mathbf{C}$)};
+	\node[annot] (r-layer) at (0cm,\rowoneht) {predicted units ($\mathbf{r}$)};
+	\node[annot] (d-layer) at (0cm,\basement) {observed units ($\mathbf{d}$)};
+	
+	\node[dots] 	(m3)	at (7.75cm,\rowtwoht)	 	{. . .};
+	\node[dots] 	(r4) 	at (8.5cm,\rowoneht)   		{. . .};
+	\node[dots] 	(d4) 	at (8.5cm,\basement)   		{. . .};
+	
+	\footnotesize
+	% hidden layer
+	\node[m-node] 	(m0)	at (3.25cm,\rowtwoht)		{$m_1$};
+	\node[m-node] 	(m1)	at (4.75cm,\rowtwoht)		{$m_2$};
+	\node[m-node] 	(m2)	at (6.25cm,\rowtwoht)	 	{$m_k$};
+	\node[m-node] 	(m4)	at (9.25cm,\rowtwoht)	 	{$m_K$};
+	
+	% reconstructed vector
+	\node[r-node] 	(r0)	at (2.5cm,\rowoneht)		{$r_1$};
+	\node[r-node] 	(r1)	at (4cm,\rowoneht)		{$r_2$};
+	\node[r-node] 	(r2)	at (5.5cm,\rowoneht)	 	{$r_3$};
+	\node[r-node] 	(r3)	at (7cm,\rowoneht) 		{$r_j$};
+	\node[r-node] 	(r5) 	at (10cm,\rowoneht)   		{$r_J$};
+	%\node[r-node] 	(r6) 	at (9.75cm,\rowoneht)   	{$r_J$};
+	
+	% data vector
+	\node[d-node] 	(d0)	at (2.5cm,\basement)		{$d_1$};
+	\node[d-node] 	(d1)	at (4cm,\basement)		{$d_2$};
+	\node[d-node] 	(d2)	at (5.5cm,\basement)	 	{$d_3$};
+	\node[d-node] 	(d3)	at (7cm,\basement) 		{$d_j$};
+	\node[d-node] 	(d5) 	at (10cm,\basement)   		{$d_J$};
+	%\node[d-node] 	(d6) 	at (9.75cm,\basement)   	{$d_J$};
+	
+	\path 
+		(m0)	edge	node	{}	(r0)
+		(m0)	edge	node	{}	(r1)
+		(m0)	edge	node	{}	(r2)
+		(m0)	edge	node	{}	(r3)
+		(m0)	edge	node	{}	(r5)
+		
+		(m1)	edge	node	{}	(r0)
+		(m1)	edge	node	{}	(r1)
+		(m1)	edge	node	{}	(r2)
+		(m1)	edge	node	{}	(r3)
+		(m1)	edge	node	{}	(r5)
+		
+		(m2)	edge	node	{}	(r0)
+		(m2)	edge	node	{}	(r1)
+		(m2)	edge	node	{}	(r2)
+		(m2)	edge	node	{}	(r3)
+		(m2)	edge	node	{}	(r5)
+		(m3)	edge	node[right=1mm]	{$c_{j,k}$}	(r4)
+		%	
+		(m4)	edge	node	{}	(r0)
+		(m4)	edge	node	{}	(r1)
+		(m4)	edge	node	{}	(r2)
+		(m4)	edge	node	{}	(r3)
+		(m4)	edge	node	{}	(r5);
+		
+\end{tikzpicture}
+\end{center}
+\caption{Architecture of a Multiple Cause Mixture Model (MCMM)} 
+\label{fig:mcmm}
+\end{figure}
+
+'
 The vector $\mathbf{x}_i$ is but one of the $I$ rows the constitute the whole 
 input corpus, the data matrix $X$. Each row contains $J$ columns. Similarly, 
 $\mathbf{r}_i$, the reconstruction of $\mathbf{x}_i$, is the $i$th row in the 
@@ -157,6 +279,224 @@ indicates whether it is \textsc{on} (active) or \textsc{off} (inactive).
 The activity of $r_{i,j}$ is determined by a \emph{mixing function}, which takes as inputs the 
 hidden-unit activities $\mathbf{m}$ and their respective weights $\mathbf{c}_j$
 (section~\ref{sec:mixing-function}).
+
+
+
+\section{Relationship to Other Unsupervised Learning Frameworks}
+\label{sec:context}
+
+In this section, we relate multiple cause mixture models to other frameworks for unsupervised learning. 
+Multiple cause mixture models simultaneously belong to two distinct unsupervised-learning contexts. 
+On the one hand, they are neural networks, or, more specifically,\emph{autoencoders} \citep{dayan-and-zemel:95}, 
+i.e., neural networks that learn without learning. On the other hand, the name 
+\emph{multiple cause mixture model} 
+contains the term \emph{mixture model}, which itself denotes a large class of unsupervised learning models. 
+This section is therefore divided into two subsections: First, section~\ref{sec:autoencoders} considers MCMMs as neural networks, i.e., autoencoders, using neural-network terms to relate them to other autoencoders. Second, Section~\ref{sec:autoencoders} then considers MCMMs from a \emph{mixture-model} perspective, discussing their relationship to standard mixture models as well as \emph{mixed-membership} (or \emph{admixture}) models. 
+
+%neural-network context.  them to other autoeneural network context. Second, section~\ref{sec:autoencoders} places perspective, i.e., in which case they can be described as autoencoders and compared to other instances of the autoencoder approach to learning. This is what we do in \ref{sec:autoencoders} i.e., a neural-network used for unsupervised learning.  in a  to three other learning frameworks: the classical autoencoder, the Restricted Boltzman Machine (RBM), and Latent Dirichlet Analysis (LDA). MCMMs, classical autoencoders, and Restrict Boltzmann Machines all belong to the (general) autoencoder (or unsupervised neural-network) family and thus closely related both in form and function. This LDA is not a neural-network approach, but it is similar to the MCMM in its intended purpose, namely to find multiple latent causes for single data instances.
+
+\subsection{sec:autoencoders}
+\label{sec:autoencoders}
+% So-and-so classifies Saund's MCMM as a kind of autoencoder. 
+%He considered a form of autoencoder network in which the hidden units signal features and the hidden-output weights describethe way in which  features generate predictions  of the inputs. 
+\citet[][p. 2]{dayan-and-zemel:95} describe the MCMM as a ``form of autoencoder network.'' 
+They are using the term \emph{autoencoder} in a general sense, as a class that encompasses several subtypes.  
+In this general sense, an \emph{autoencoder} is any unsupervised graphical algorithm that
+ learns a compressed encoding of its input data. 
+% The compressed encoding from which the original can be generated, or \emph{reconstructed} which through a \emph{generative} process, i.e., a process of learning to generate its input data. To do this, it must construct an internal theory, so to speak, of its input data's structure. This theory takes the form of a compressed encoding of the input data, and in particular, a compressed encoding from which the original data can be generated, or \emph{reconstructed}.  
+The learning process is essentially one of trial and error; the autoencoder iteratively tests and revises its encoding.  
+%thereby improving it with each iteration. The autoencoder tests the suitability of a working encoding through \emph{reconstruction}, i.e., by attempting to recover or reconstruct the original data from the working encoding.
+%Thus, at the beginning of each iteration, the autoencoder has 
+The autoencoder begins each iteration with a working encoding of the input data. It tests the fitness of the encoding by attempting reconstruct each input data vector from its encoded form and measuring the \emph{reconstruction error}, i.e., the discrepancy between the reconstructed and original data vectors.  It then makes adjustments to its encoding to reduce this error, yielding a slightly improved encoding for the next iteration. 
+%These adjustments, which mark the end of the current iteration, should result in a slightly better internal representation for next iteration.  
+
+\subsubsection{Classical Autoencoder}
+\label{sec:classical-auto}
+%Whereas the MCMM has two layers of nodes ($\textbf{m}$ and $\textbf{r}$), 
+ The ``classical'' autoencoder,
+shown in figure~\ref{fig:autoencoder} has three layers (or vectors) of nodes:
+%, as 
+%illustrated in
+%in figure~\ref{fig:autoencoder}. 
+\begin{enumerate}
+\item The \textbf{input} vector $\textbf{d}$
+\item The \textbf{hidden} vector $\textbf{m}$
+\item The \textbf{output} vector \textbf{reconstruction} layer $\textbf{r}$ 
+\end{enumerate}
+
+ Each of these vectors has a counterpart in an MCMM: \textbf{input} vector $\textbf{d}$, $\textbf{m}$, and $\textbf{r}$ vectors are analogous to the vectors of the same name in the MCMM diagram in figure \ref{fig:mcmm}.
+However, there are important differences between these two types of autoencoders. The main differences pertain to form (or general architecture), node activation, i.e., the means of computing node activities, and the \emph{optimization procedure}, i.e., method for  minimizing the model's error.
+
+\paragraph{Form.} 
+In an MCMM, 
+%the oriThe most conspicuous difference is that MCMMs bipartite graph, having just two layers of nodes, namely \textbf{m}$ and \textbf{r}$. Recall that in an MCMM, 
+the original data vectors $\textbf{d}$ is actually not part of the graph itself, since it is not connected by weights to either  $\textbf{m}$ or  $\textbf{r}$. In a classical autoencoder, by contrast
+%namely the original data vector $\textbf{d}$, the hidden-node vector $\textbf{m}$, and reconstruction vector $\textbf{r}$. These vectors are also present in the MCMM in \ref{fig:mcmm}. One key difference between an MCMM and a classical autoencoder, however, is that the the original data vector 
+%$\textbf{d}$ is not a true layer in MCMM, since there are no connecting 
+%weights weights between it and $\textbf{m}$ or $\textbf{r}$. This is not 
+%the case in a classical encoder, where 
+$\textbf{d}$ functions as the network's 
+\textit{input layer}. Each input vector enters the network at $\textbf{d}$, is compressed 
+at $\textbf{m}$, and reconstructed at $\textbf{r}$. Because there are three layers 
+of nodes in an autoencoder, there must be two layers of weights, labeled 
+$\textbf{A}$ and $\textbf{B}$ 
+in \ref{fig:autoencoder}. The reconstruction error is computed at $\textbf{r}$, and the appropriate updates are 
+\emph{backpropagated} to the $\textbf{B}$ and then $\textbf{A}$ weights.
+
+%Because an MCMM has no distinct input layer, it is not a directed graph in the same way a 
+%that classical autoencoder is a directed graph\footnote{There is a sort of conceptional directionality in an MCMM in that hidden nodes are regarded as ``causing'' the surface units' activities. } 
+An MCMM has no designated input layer. The classical autoencoder, by contrast, has distinct input and output layers. Classical autoencoders thus function as a supervised feed-forward neural network. In fact, the only difference between a classical autoencoder and a supervised feed-forward network is that a classical autoencoder's target vectors are its input vectors.
+
+\paragraph{Node Activation.} In a classical autoencoder, the activity of each node 
+both in the hidden layer $\textbf{m}$ and the reconstruction layer $\textbf{r}$ is 
+computed as a \emph{sigmoidal weighted sum}, which is the composition of the 
+composition of a linear weighted sum and the nonlinear sigmoid function $\sigma$ \eqref{eq:sig}. 
+The latter maps any real number (no matter how large or small) to a number within $[0,1]$.
+The former is the inner product of the preceding layer's activities and the 
+weight vector connecting preceding layer to the current node in the 
+current layer, as in \eqref{eq:sum-m} and \eqref{eq:sum-r}.
+%composition of the sigmoid function $S$ and the function $t_{i,j}$, 
+%which computes a weighted sum, i.e., the inner product of the cluster-activity 
+%vector $\mathbf{m}_i$ and the weight vector $\mathbf{c}_j$:
+
+	\begin{equation} %\label{eq:sigws}
+	\label{eq:sig}
+	r_{i,j} =\sigma(t_{i,j}) = \frac{1}{1 + e^{-t_{i,j}}} 
+	%\quad %\\   %\qquad \text{where} \quad
+	%\label{eq:ws}
+	\end{equation} %\label{eq:sigws}
+	
+	\begin{align} %\label{eq:sigws}
+	\label{eq:sig-m}
+	m_{i,k} =\sigma(t_{i,k}) &= \frac{1}{1 + e^{-t_{i,k}}} \\
+	\label{eq:sum-r}
+	\text{where} \quad t_{i,k} &= \sum_{j} x_{i,j} a_{k,j}  
+	\end{align}
+	
+	\begin{align} %\label{eq:sigws}
+	\label{eq:sig-r}
+	r_{i,j} =\sigma(t_{i,j}) &= \frac{1}{1 + e^{-t_{i,j}}} \\ %\\   %\qquad \text{where} \quad
+	%\label{eq:ws}
+	\label{eq:sum-r}
+	\text{where} \quad t_{i,j} &= \sum_{k} m_{i,k} b_{k,j} 
+	\end{align}
+	
+For example, to compute the activity of the hidden node $m_{i,4}$ (i.e., $k = 4$), 
+we would first compute the sum $\sum_{j} x_{i,j} a_{4,j}$
+%, which is the equivalent to the inner product \textbf{x}_i \cdot \textbf{c}^{T}_4$ 
+and then feed the result to the sigmoid function. For nodes in the reconstruction 
+layer $\textbf{r}$, the input activities are hidden-node activities, and the weights 
+are a particular column in the $\textbf{B}$ matrix. Thus, for node, say, 
+$r_{i,6}$ (i.e., $j=6$), the summation becomes
+%we would sum over the $K$ hidden-unit activities (each multiplied by its respective weight in 
+%$\textbf{b}^{T}_{6}$: 
+$\sum_{k} m_{i,k} b_{k,6}$.  That is, we sum over the $K$ hidden-unit activities, with each activity multiplied by its respective weight in the column (or row?) $\textbf{B}_{:,6}$). 
+We again feed the sum to the sigmoid function, as we do for every node. 
+The sigmoid function keeps node activities in the interval $[0,1]$.
+%$\textbf{b}^{T}_{6}
+% we in the reconstruction vector, specifically The latter takes the output of the linear sum, which could be any real number, possibly much less than 0 or much greater than 1, and maps it onto a number in $[0,1]$.
+
+The sigmoidal weighted sum is a standard activation function in neural networks, 
+but it is not the only way to compute the activity of a node. Any activation function, to borrow
+the analogy of \citet{saund:94}, is essentially a voting rule, i.e.,  a ``policy'' for combining the node activities of one layer to yield an activity of a particular node in next/other layer. In graphical models, node activities are generally weighted, and so each vote is actually $h_{k} w_{k,j} $, where $h_{k}$ is a node activity, and $w_{k,j}$ is its weight. 
+
+The weighted sum $\sum_{k} h_{k} w_{k,j}$ is one way of combining a set of such votes to yield a single output. The output of the weighted sum, however, can be any real number, as it grows (and shrinks) in direct proportion to the quantity and sizes of its input values. Since most applications require that node activities stay within a certain interval, usually $[0,1]$ or $-1,1]$, the weighted sum's output must be fed to a nonlinear ``squashing'' function such as the logistic sigmoid, which enforces this constraint.
+
+The sigmoidal weighted sum is in effect a sort of average. In any average, the magnitudes of the individual input values themselves are unimportant. All of the values are combined in a single melting pot, as it were. An average thus tends to obscure the influence of individual inputs and minority subsets of inputs.
+%For example, a given month's average temperature cannot be attributed to a few days in that month.  particular inputs as well as minority subsets of inputs.  All input values contribute to the final result, and no individual value is dominant (or such is the assumption in taking an average).
+Moreover, 
+%Thus, sigmoidal weighted sum is, due to its averaging effect, already an unstructured means of combining votes---unstructured in the sense that 
+%For instance, suppose one wanted to know the average temperature for the month of July in a certain place. 
+
+The weighted sum is an extremely flexible method of combining votes. In the classical autoencoder (as well as most neural networks), weights range from $-1$ to $1$. A negative weight can be paired with a positive hidden-unit activity to produce what is in effect a ``negative" vote, allowing votes to cancel each other. The weighted sum is already can thus be configured so that votes cancel one another. votes can be used to They can thus be configured so that votes can cancel one another,   Moreover, \citet{saund:94} points out that this c
+
+However, because it is linear, its output is proportional to the quantity and respective sizes of its inputs and thus can be its ou However,  \emph{linear} means of combining the votes of $K$ causal units. \citet{saund:94} argues this summation within the typical sigmoidal update rule can cause a system to learn incoherent weights, that is, weiSuppose for instance that h = [1,0,1] and let $w^1 = [1000,0,-990]$ and $w^2  = [0,0,10]$. Because summation allows arbitrarily large values of opposite signs to counteract each other,
+these to vastly different weight vectors lead the same weighted sum:
+
+\begin{align}
+\sum_{k} h_{k} w^{1}_{k} &= 1000 \times 1  + 0 \times 0 + 1 \times -990 = 10 \\ 
+\sum_{k} h_{k} w^{2}_{k} &= 1 \times 0 + 0 \times 0 +  1 \times 10 = 10
+\end{align}
+
+\cite{saund:94} points out that this behavior obscures the contributions of individual votes. Moreover, the sigmoid function does nothing to remedy this problem; it merely maps large numbers to 1.0 and small numbers to 0 (or values close to 1 and 0, respectively.)
+
+% help the situation. If anything, it further obscures the roles of individual votes. Suppose, for instance, $w^1 = [1000,0,-500]$ 
+%and $w^2 = [0,0,100]$, and $h = [1,0,1]$. Then
+%\begin{align*}
+%\sigma(\sum_{k} h_{k} w^{1}_k}) &= \sigma(500) =  1.0 \\ 
+%\sigma(\sum_{k} h_{k} w^{2}_k}) &= \sigma(10) = 1.0
+%\end{align*}
+
+As an alternative to the sigmoidal weighted sum and related activation functions, \cite{saund:94} proposes for the MCMM a special class of activations that he calls \emph{mixing functions}. We shall discuss distinguishing properties of mixing function in section~\ref{sec:mixing-function}.
+
+%\cite{saund:94} likens the contribution of each hidden node
+%to 
+%
+%One disadvantage of the sigmoidal weighted sum is
+%that it obscures the responsibilities 
+%The weighted sum is 
+%The MCMM, b	
+%This is the mixing (or activation) function that is typically used in classical autoencoders. 
+%Whereas the output of Noisy-OR is independent of the number of active 
+%causes (as long as there is at least one), the output of \eqref{eq:sig} does
+%change with the number of active causes: The value $t_{i,j} = \sum_k m_{i,k} c_{j,k}$ 
+%is clearly going to increase as the number of active clusters increases.
+%
+%%(i.e., products of the form $m_{i,k} c_{j,k}$ that equal $1$ or are greater than some threshold) 
+%As $t$ increases, $S(t)$ will get closer to $1$; as %it
+%$t_{i,j}$ decreases, $S(t)$ will get closer to $0$.
+
+\paragraph{Optimization procedure.}  In a classical autoencoder, the two layers of 
+weights---first $\textbf{B}$ and then $\textbf{A}$---are directly updated via back-propagation. 
+However, the values of the hidden units are not directly updated; rather, the hidden-unit values 
+\emph{depend} on the weights $\textbf{A}$ (along with values in the input vector). 
+That is, in a classical autoencoder, the values of the hidden units change only as a 
+consequence of the updates applied to the weights. In an MCMM, by contrast, both $\textbf{m}_i$ and $\textbf{C}$ are \emph{directly} updated. That is, an MCMM requires two complimentary process, \textsc{Optimize-M} and \textsc{Optimize-C} (see \ref{}), each directly manipulating the values in its respective matrix. By contrast,
+
+
+%MCMM's hidden units are adjusted directly.
+
+ %two layers of weights are updated via back-propagation. 
+
+
+%Most of the differences between a classical autoencoder and an MCMM stem from the fact that an MCMM is a bipartite graph, whereas a classical autoencoder is not. For instance, because an MCMM has three layers of nodes instead of two,
+%it must have two layers of weights.
+%Whereas 
+%Recall the MCMM, being a bipartite graph, has two 
+%layers of nodes, namely the hidden layer \textbf{m}$ and the reconstruction layer 
+%$\textbf{r}$ (see figure~\ref{fig:mcmm}. The original data vector 
+%$\textbf{d}$ is not a true layer in an MCMM because there are no connections (weights) between it and either \textbf{m}$ 
+%or $\textbf{r}$. By contrast, the classical autoencoder has three layers of nodes, as is illustrated in 
+%figure~\ref{fig:autoencoder}; these include not only $\textbf{m}$ and $\textbf{r}$, which are analogues to the MCMM's $\textbf{m}$ and $\textbf{r}$ layers), but the original data vector $\textbf{d}$, which is the input layer in a classical autoencoder. Input data vectors are fed to the network via 
+
+% is a true layer in an autoencoder; in particular, it is the input layer.
+%: differs from the MCMM in 
+%a number of respects. 
+%A cursory comparison of the MCMM in figure~\ref{fig:mcmm} and the classical auto-encoder in 
+%figure~\ref{fig:autoencoder} reveals clear structural differences, the most immediately apparent 
+%of which is that whereas MCMM has one layer of connecting weights, labeled $\textbf{C}$ in 
+%figure~\ref{fig:mcmm}, the classical autoencoder as 
+%two. These are labeled $\textbf{A}$ and $\textbf{B}$ in figure~\ref{fig:autoencoder}.
+%
+%First, notice in figure~\ref{fig:autoencoder}, that a classical autoencoder has two whereas an MCMM has a single layer of connecting weights, labeled $\textbf{C}$ in figure~\ref{fig:mcmm}, a classical autoencoder has two
+
+%Under this general definition of \emph{autoencoder}, the ``classical'' autoencoder is a particular subtype of autoencoder. 
+%should reduce the reconstruction error then measures the This   That is, an algorithm that seeks to learn a compressed representation a its input data such that the original input data can be \emph{reconstructed} from the compressed representation.   an internal model of the input data from which  wherein the autoencoder learn a compressed representation of its input data that  and then tests this representation by trying to generate of the data by attempting to generate (or \emph{reconstruct}) the original input data from it and then measuring of the error between the reconstructed and original data points. The autoencoder's internal A single iteration in an autoencoder's learning process consists of the following general steps: 
+%\begin{enumerate}
+%\item compression
+%\end{enumerate}
+%(1) compression, (2) reconstruction, (3) error calculation, (4) adjustment measurement step, i.e., of the \emph{reconstruction error}, the discrepancy between the reconstructed data and the original data. 
+
+
+%f titeratively positing such an encoding and then trying to reconstruct the input data vectors from it. If there is \emph{reconstruction error}, it makes appropriate adjustments to the encoding, computes new reconstructions, and so on, until the discrepancy between the original and reconstructed data vectors is minimized.
+%
+%In addition to the MCMM, one autoencoder subtype is of course the ``classical'' autoencoder, 
+%depicted in figure~\ref{fig:autoencoder}. This is the canonical autoencoder, and we thus consider its structure first in order to set up our discussion of the MCMM's structure. Later in this section, we will discuss yet another
+%autoencoder subtype, the Restricted Boltzmann Machine (RBM). By contrasting the MCMM with these two other
+%autoencoders, we will cast the MCMM's structure into sharper relief.
+%
+%
+%i.e., a compressed representation of its input data---a model of its latent structure---that generates its input data. That hidden structure of its input data by iteratively positing a model of the (or model, theory, etc.) of its input data from which its original input data from which the input 
 
 \begin{figure}[tb]
 %%\begin{minipage}{.3\textwidth}
@@ -265,12 +605,13 @@ hidden-unit activities $\mathbf{m}$ and their respective weights $\mathbf{c}_j$
 		
 \end{tikzpicture}
 \end{center}
-\caption{many-to-many}
+\caption{The ``classical'' autoencoder, one member of the general autoencoder family}
 %: an input layer ($\mathbf{d}$), a hidden layer ($\mathbf{m}$), and an output layer
 \label{fig:autoencoder}
 \end{figure}
 
-
+% First, there is a generic autoencoder concept
+% The generic autoencoder concept has several subtypes.
 
 %Both hidden nodes and surface nodes have activity values, i.e., values in $[0,1]$ that
 %indicate whether a node is \textsc{on} (active) or \textsc{off} (inactive). Each surface-node activity 
@@ -283,11 +624,11 @@ hidden-unit activities $\mathbf{m}$ and their respective weights $\mathbf{c}_j$
 %\subsection{Architecture}
 %\label{subsec:architecture}
 
-An MCMM can be viewed as a variant of the classical autoencoder
-network \citep{dayan-and-zemel:95}, a type of neural network used for
-unsupervised learning.  In autoencoders, a hidden layer is forced to
-learn a compression scheme, i.e., a lower-dimensional encoding, for
-a dataset.
+%An MCMM can be viewed as a variant of the classical autoencoder
+%network \citep{dayan-and-zemel:95}, a type of neural network used for
+%unsupervised learning.  In autoencoders, a hidden layer is forced to
+%learn a compression scheme, i.e., a lower-dimensional encoding, for
+%a dataset.
  
 %MCMMs are called \emph{Multiple Cause} Mixture Models because more
 %than one hidden unit can take part in the activation of a surface
@@ -300,83 +641,6 @@ a dataset.
 %The activity of $r_j$ is determined by a mixing function 
 %(section~\ref{sec:mixing-function}).
 
-\begin{figure}[htb]
-\begin{center}
-%\small
-\begin{tikzpicture}[shorten >=1pt,->,draw=black!100]
-	\def \rowtwoht{4.25cm}
-	\def \weightlevel{2.75cm}
-	\def \rowoneht{1.25cm}
-	\def \basement{0cm}
-	\tikzstyle{m-node}=[circle,draw=black!100,thick,inner sep=0pt,minimum size=7mm]
-	\tikzstyle{r-node}=[circle,draw=black!100,thick,inner sep=0pt,minimum size=7mm]
-	\tikzstyle{d-node}=[circle,draw=black!100,fill=gray!45,thick,inner sep=0pt,minimum size=7mm]
-	\tikzstyle{dots}=[text width=5ex, text centered]
-	\tikzstyle{annot}=[text width=17ex, text centered]
-	% labels
-	\node[annot] (hidden-layer) at (0cm,\rowtwoht) {hidden units ($\mathbf{m}$)};
-	\node[annot] (weights) at (0cm,\weightlevel) {weights ($\mathbf{C}$)};
-	\node[annot] (r-layer) at (0cm,\rowoneht) {predicted units ($\mathbf{r}$)};
-	\node[annot] (d-layer) at (0cm,\basement) {observed units ($\mathbf{d}$)};
-	
-	\node[dots] 	(m3)	at (7.75cm,\rowtwoht)	 	{. . .};
-	\node[dots] 	(r4) 	at (8.5cm,\rowoneht)   		{. . .};
-	\node[dots] 	(d4) 	at (8.5cm,\basement)   		{. . .};
-	
-	\footnotesize
-	% hidden layer
-	\node[m-node] 	(m0)	at (3.25cm,\rowtwoht)		{$m_1$};
-	\node[m-node] 	(m1)	at (4.75cm,\rowtwoht)		{$m_2$};
-	\node[m-node] 	(m2)	at (6.25cm,\rowtwoht)	 	{$m_k$};
-	\node[m-node] 	(m4)	at (9.25cm,\rowtwoht)	 	{$m_K$};
-	
-	% reconstructed vector
-	\node[r-node] 	(r0)	at (2.5cm,\rowoneht)		{$r_1$};
-	\node[r-node] 	(r1)	at (4cm,\rowoneht)		{$r_2$};
-	\node[r-node] 	(r2)	at (5.5cm,\rowoneht)	 	{$r_3$};
-	\node[r-node] 	(r3)	at (7cm,\rowoneht) 		{$r_j$};
-	\node[r-node] 	(r5) 	at (10cm,\rowoneht)   		{$r_J$};
-	%\node[r-node] 	(r6) 	at (9.75cm,\rowoneht)   	{$r_J$};
-	
-	% data vector
-	\node[d-node] 	(d0)	at (2.5cm,\basement)		{$d_1$};
-	\node[d-node] 	(d1)	at (4cm,\basement)		{$d_2$};
-	\node[d-node] 	(d2)	at (5.5cm,\basement)	 	{$d_3$};
-	\node[d-node] 	(d3)	at (7cm,\basement) 		{$d_j$};
-	\node[d-node] 	(d5) 	at (10cm,\basement)   		{$d_J$};
-	%\node[d-node] 	(d6) 	at (9.75cm,\basement)   	{$d_J$};
-	
-	\path 
-		(m0)	edge	node	{}	(r0)
-		(m0)	edge	node	{}	(r1)
-		(m0)	edge	node	{}	(r2)
-		(m0)	edge	node	{}	(r3)
-		(m0)	edge	node	{}	(r5)
-		
-		(m1)	edge	node	{}	(r0)
-		(m1)	edge	node	{}	(r1)
-		(m1)	edge	node	{}	(r2)
-		(m1)	edge	node	{}	(r3)
-		(m1)	edge	node	{}	(r5)
-		
-		(m2)	edge	node	{}	(r0)
-		(m2)	edge	node	{}	(r1)
-		(m2)	edge	node	{}	(r2)
-		(m2)	edge	node	{}	(r3)
-		(m2)	edge	node	{}	(r5)
-		(m3)	edge	node[right=1mm]	{$c_{j,k}$}	(r4)
-		%	
-		(m4)	edge	node	{}	(r0)
-		(m4)	edge	node	{}	(r1)
-		(m4)	edge	node	{}	(r2)
-		(m4)	edge	node	{}	(r3)
-		(m4)	edge	node	{}	(r5);
-		
-\end{tikzpicture}
-\end{center}
-\caption{Architecture of a Multiple Cause Mixture Model (MCMM)} 
-\label{fig:mcmm}
-\end{figure}
 
 
 \begin{figure}[htb]
@@ -442,14 +706,14 @@ a dataset.
 \label{fig:voting}
 \end{figure}
 
-%From source: "One  can  qualitatively  understand  the  difference  between  mixtures  and  products  by  observing  that  amixture distribution can have high probability for eventxwhen only a single expert assigns high probabilityto that event.  In contrast, a product can only have high probability for an eventxwhen all experts assignhigh probability to that event.  Hence, metaphorically speaking, a single expert in a mixture has the powerto pass a bill while a single expert in a product has the power to veto it.Put another way, each component in a product represents a softconstraint, while each expert in a mixturerepresents a soft template or prototype. For an event to be likely under a product model, all constraints must1
-%be (approximately) satisfied, while an event is likely under a mixture model if it (approximately) matcheswith  a  single  template."
+%From source: "One  can  qualitatively  understand  the  difference  between  mixtures  and  products  by  observing  that  admixture distribution can have high probability for events when only a single expert assigns high probability to that event.  In contrast, a product can only have high probability for an events when all experts assign high probability to that event.  Hence, metaphorically speaking, a single expert in a mixture has the power to pass a bill while a single expert in a product has the power to veto it.Put another way, each component in a product represents a soft constraint, while each expert in a mixture represents a soft template or prototype. For an event to be likely under a product model, all constraints must1
+%be (approximately) satisfied, while an event is likely under a mixture model if it (approximately) matches with  a  single  template."
 
-%Bishop: "One approach is to apply gradient-based optimization techniques (Fletcher, 1987;Nocedal and Wright, 1999; Bishop and Nabney, 2008). Although gradient-basedtechniques are feasible, and indeed will play an important role when we discussmixture density networks in Chapter 5, we now consider an alternative approachknown as the EM algorithm which has broad applicability and which will lay thefoundations for a discussion of variational inference techniques in Chapter 10." p. 435
+%Bishop: "One approach is to apply gradient-based optimization techniques (Fletcher, 1987;Nocedal and Wright, 1999; Bishop and Nabney, 2008). Although gradient-based techniques are feasible, and indeed will play an important role when we discuss mixture density networks in Chapter 5, we now consider an alternative approach known as the EM algorithm which has broad applicability and which will lay the foundations for a discussion of variational inference techniques in Chapter 10." p. 435
 
 %% Quora: "LDA is not a mixture model.  It is an admixture model or a mixed-membership model.
 %Mixture models have a single latent variable that denotes which cluster they're in.  This is often written as an indicator variable z.  
-%LDA is a model over documents (a bag of words), and has a latent variable for topic assignments for every token:  z1…zN
+%LDA is a model over documents (a bag of words), and has a latent variable for topic assignments for every token:  z1?zN
 %Thus, words can belong to different clusters.  This intuitively makes sense because documents can be about more than one thing.  I.e., about both technology and business.  This often results in better models of real text than pure mixture models."
 
 %The MCMM learns by comparing the reconstructed vector $\mathbf{r}_i$ 
@@ -481,16 +745,53 @@ an activity value for a particular surface-layer node. We will call the input vo
 \emph{causes}. 
 
 In its architecture, the \ac{MCMM} bears a striking resemblance to the 
-Restricted Boltzmann Machine (RBM) \citep{smolensky:1986}.
-Both the \ac{MCMM} and the \ac{RBM} are bipartite graphs. 
-That is both have two layers of nodes, with no connections between nodes of the 
+Restricted Boltzmann Machine (RBM) \citep{smolensky:1986}. 
+In particular, both the \ac{MCMM} and the \ac{RBM} are bipartite graphs. That is,
+like an MCMM, an RBM has two layers of nodes with connections only between nodes of different layers, as described in chapter~\ref{ch:graph}). In addition, the RBM literature typically uses the terms \emph{hidden} and \emph{visible} to refer to these two layers, where \emph{visible} is analogous to (and essentially synonymous with) our term \emph{surface}. Moreover, learning in both MCMMs and RBMs is the result of an effort to reconstruct the actual data vectors in the surface (or visible) layer.
+
+ one of the RBM layers is typical called the \emph{visible} layer,  hiddenas eter has a layer of hidden nodes and a layer of surface (or \emph{visible}) nodes. In the RBM literature, the surface layer is usually called the ``visible'' layer, but the two terms are synonymous. \footnote{In the RBM literature, authors typically the symbols $\textbf{h}$ and $\textbf{v}$ to refer to the hidden and visible (or surface) layers, respectively, whereas we are using $\textbf{m}$ and $\textbf{r}$, respectively, to refer the MCMM's hidden and surface layers.} 
+%To make clear the correspondence between RBMs and MCMMs, let us apply the same set symbolfigure~\ref{fig:mcmm} to refer an RBM's components: 
+%That is, in both, there are two layers of nodes---a hidden layer and a surface (or visible) layer, and there are no connections between nodes of the 
+%same layer, as described in chapter~\ref{ch:graph}).
+%Like an MCMM, an RBM is a bipartite graph. 
+There are important differences, however. 
+
+Both the \ac{MCMM} and the \ac{RBM} are bipartite graphs.
+That is, both have two layers of nodes, with no connections between nodes of the 
 same layer (as described in chapter~\ref{ch:graph}).  In a RBM, as in an \ac{MCMM}, 
 one of these node layers functions as a hidden layer, and the other as the visible 
-(or surface) layer \citep[see, e.g.,][]{mohamed-and-hinton:2010}. One difference between 
+(or surface) layer \citep[see, e.g.,][]{mohamed-and-hinton:2010}. 
+Consider \eqref{eq:rbm-prob-v} and \eqref{eq:rbm-prob-h}.
+\begin{equation}\label{rbm:act-v}
+r_j = \sigma\big(\sum_{k} c_{j,k} m_{k}\big)
+\end{equation}
+\begin{equation}\label{rbm:act-h}
+m_k =\sigma\big(\sum_{j} c_{j,k} r_{j}\big)
+\end{equation}
+$p_i =\sigma(a_{i})$
+where $\sigma(x)=frac{1}{1+\text{exp}(-x)}$ is the logistic function. 
+\begin{align}
+P(v|h) &= \prod_{i=1}^m P(v_i|h)  \label{eq:rbm-prob-v}\\
+P(h|v) &= \prod_{j=1}^n P(h_j|v) \label{eq:rbm-prob-h}
+\end{align}
+
+
+
+%\begin{equation} \label{eq:rbm-prob-v}
+%P(v|h) = \prod_{i=1}^m P(v_i|h)
+%\end{equation}
+%\begin{equation}  \label{eq:rbm-prob-h}
+%P(h|v) &= \prod_{j=1}^n P(h_j|v)
+%\end{equation}
+ 
+
+********
+One difference between 
 the two, however, is that an RBM acts as a \emph{product} of experts, while an \ac{MCMM} 
 acts as a kind of hybrid between a \emph{mixture of experts}, i.e., a (standard) mixture model, 
 and a product of experts. To be clear, though, an \ac{MCMM} itself appears to be neither
  a sum nor a product of experts, not at least as these terms are usually construed. 
+
 
 The ``experts" here 
 %The RBM's equivalent of an MCMM's mixing function is a  \emph{product of experts}\citep{hinton:1999, hinton:2002}, where the ``experts" 
@@ -504,6 +805,8 @@ the collective vote will be 0. In other words, in order for a given surface unit
 \emph{every} hidden unit must vote 1.\footnote{If the values are continuous, i.e., in 
 the interval $[0,1]$, every hidden unit must be very close to 1 in order for the surface 
 unit to be close to 1.}
+
+*******
 
 In an MCMM, by contrast, every expert save one could cast a 0 vote, and the surface 
 unit's value would still be nonzero. As long as \emph{at least} one of the hidden-unit 
@@ -525,7 +828,7 @@ by one expert, all experts, or any number in between (where, again, the experts 
 An \ac{MCMM} is in this way similar to a \emph{mixed-membership} or \emph{admixture} model like 
 Latent Dirichlet Allocation (LDA) \citep{blei-et-al:2003}. For example, 
 when used in document clustering, LDA and other mixed-membership models
-can assign a single document to multiple topics, which is to say a single document can be caused by multiple topics. If we replace \emph{document} and \emph{topics} with their equivalent terms in ULM, this statement becomes, `` 
+can (and generally do) assign a single document to multiple topics, which is to say a single document can be caused by multiple topics. If we replace \emph{document} and \emph{topics} with their equivalent terms in ULM, this statement becomes, `` 
 A single \emph{word} can be caused by multiple \emph{morphs}.'' This is certainly true of Multimorph's MCMM, where words are represented as the feacture vectors $\textbf{r}_i$, and morphs are the hidden units, i.e., the components of the vectors $\textbf{m}_i$.
 %In LDA, each document is associated with a distribution of topics, and each topic with a probabilistic distribution of words. Each is document is generated by randomly selecting a topic from the document's then randomly  A topic is randomly selected from the document's set of topicswherein
 %the product of a process wherein the
@@ -534,7 +837,7 @@ Mixed-membership models can also attribute a single word to multiple topics, whi
 %can be \emph{caused} by more than one topic.
 %where each topic is a cluster of words. 
 %In terms of morphological learning, the equivalent statement is, 
-``A single \wmph{word-internal feature (or character, etc.)} can be caused by more than one \emph{morph} at once,'' which is also true of Multimorph's MCMM (see section~\ref{sec:mixing-function} for more details).
+``A single \emph{word-internal feature (or character, etc.)} can be caused by more than one \emph{morph} at once,'' which is also true of Multimorph's MCMM (see section~\ref{sec:mixing-function} for more details).
 Taken at face value, both of these statements (i.e., the ULM translations) are true of Multimorph's MCMM: the 
 vectors $\textbf{r}_i$, which represent words, can certainly be caused by more than one morph (i.e., hidden unit), and moreover, an individual feature within $\textbf{r}_i$ can also be caused by more than one morph (see section~\ref{sec:mixing-function}). However, there is an importance difference here: 
  %and a word can be caused by more than one morph.'' 
@@ -562,7 +865,9 @@ However, according to \citet[][p. 4]{airoldi-et-al:2014}, ``[M]ixed membership m
 %\citep[e.g.,][]{miller-et-al:2016} 
 %(and each cluster is represented as shared connections to a particular hidden unit). %The clusters would  \emph{food}, \emph{business}, and \emph{hospitality}, simultaneously.
 
-Like latent Dirichlet allocation, MCMMs have also been applied to document classification; \cite{sahami-et-al:96} 
+Like latent Dirichlet allocation, MCMMs have
+%also
+been applied to document classification; \cite{sahami-et-al:96} 
 use an \ac{MCMM} to group $I$ documents into $K$ clusters.  Documents are 
 represented as vectors $\mathbf{x}_i$ of $J$ features. The features, i.e. surface units, 
 each indicate the absence or presence of a particular word (cf. the $\mathbf{x}$ 
@@ -628,7 +933,7 @@ Whereas the output of Noisy-OR is independent of the number of active
 causes (as long as there is at least one), the output of \eqref{eq:sig} does
 change with the number of active causes: The value $t_{i,j} = \sum_k m_{i,k} c_{j,k}$ 
 is clearly going to increase as the number of active clusters increases.
-%(i.e., products of the form $m_{i,k} c_{j,k}$ that equal $1$ or are greater than some threshold) 
+(i.e., products of the form $m_{i,k} c_{j,k}$ that equal $1$ or are greater than some threshold) 
 As $t_{i,j}$ increases, $S(t_{i,j})$ will get closer to $1$; as %it
 $t_{i,j}$ decreases, $S(t_{i,j})$ will get closer to $0$.
 
