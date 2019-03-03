@@ -682,7 +682,10 @@ One of the simplest possible activation functions is the sum $\sum_{k} h_{k} w_{
 
 The sigmoidal weighted sum is in effect a sort of average. To take an average over a set of values is to put them them all in melting pot, so to speak. An average thus tends to obscure the influence of minority subsets of inputs.
 %For example, a given month's average temperature cannot be attributed to a few days in that month.  particular inputs as well as minority subsets of inputs.  All input values contribute to the final result, and no individual value is dominant (or such is the assumption in taking an average).
-Moreover, the weights in the classical autoencoder range from $-1$ to $1$. A negative weight can thus be paired with a positive hidden-unit activity to produce a negative vote. The presence of both positive and negative votes means that votes can counteract each other and even cancel each other out. 
+Moreover, the weights in the classical autoencoder range from $-1$ to $1$. 
+A negative weight can thus be paired with a positive hidden-unit activity to produce 
+a negative vote. The presence of both positive and negative votes means that votes 
+can counteract each other and even cancel each other out. 
 
 These properties of the sigmoidal weighted sum allow innumerable possible configurations to produce the same node activity.  \citet{saund:94} argues that this extreme flexibility can be inappropriate when one wants to isolate the particular votes that are responsible for a given surface unit's activity. 
 %Thus, sigmoidal weighted sum is, due to its averaging effect, already an unstructured means of combining votes---unstructured in the sense that 
@@ -884,7 +887,20 @@ that they decompose each data object into many elemental objects and allow diffe
 
 Like mixed-membership models, multiple-cause mixture models (MCMMs) allow multiple causes to take part in accounting for a single data point. That is, as in mixed-membership models, MCMMs provide a means for different causes to take responsibility for different parts of data point. Thus, both MCMMs and mixed-membership models transcend standard mixture models and their assumption that each data point ultimately has only one cause. % (with or without uncertainty)
 
-MCMMs differ from mixed-membership models in that MCMMs do not deal in percentages; that is, in MCMMs, a cause (or cluster) cannot be, for instance, 40 percent responsible for a (complex) data object. Rather, in MCMMs, cluster membership is binary: either True or False---100 percent or 0 percent, as it were. This behavior is a consequence of MCMMs' mixing functions (see section~\ref{sec:mixing-function}). It is true than MCMMs allow individual clusters to claim responsibility for particular features (i.e., individual components within data points). This is in fact a key property of MCMMs. The difference between MCMMs and mixed-membership models stems from the both the neural nature and the mixing functions MCMMs: An MCMM's mixing function requires a hidden unit's activity to be 1 in order for it count as an ``\textsc{on}'' vote for a particular surface unit, and 0 to be an ``\textsc{off}'' vote. Of course, during learning, many hidden-unit activities will be between 0 and 1, but the learning process pushes them ever closer to one of these two values. Activity values between 0 and 1 can be interpreted as``almost off" and ``almost on," but not as real percentages as in mixed-membership models. 
+MCMMs differ from mixed-membership models in that MCMMs do not deal in 
+percentages; that is, in MCMMs, a cause (or cluster) cannot be, for instance, 
+40 percent responsible for a (complex) data object. Rather, in MCMMs, 
+cluster membership is binary: either True or False---100 percent or 0 percent, as it were. 
+This behavior is a consequence of MCMMs' mixing functions (see section~\ref{sec:mixing-function}). 
+MCMMs do allow individual clusters to claim responsibility for particular features (i.e., individual components within data points). This is in fact a key property of MCMMs. 
+The difference between MCMMs and mixed-membership models stems from 
+both the neural nature and the mixing functions MCMMs: An MCMM's mixing 
+function requires a hidden unit's activity to be 1 in order for it count as an 
+``\textsc{on}'' vote for a particular surface unit, and 0 to be an ``\textsc{off}'' vote. 
+Of course, during learning, many hidden-unit activities will be between 0 and 1, 
+but the learning process pushes them ever closer to one of these two values. 
+Activity values between 0 and 1 can be interpreted as``almost off" and ``almost on," 
+but not as real percentages as in mixed-membership models. 
 
 This binary treatment of causes in MCMMs is arguably more suitable for morphological learning than a framework that assigns `` ownership percentages'' to causes.  We generally do not think of words' morphological compositions in terms of percentages.  That is, we tend not to say things like, ``60 percent of this word belongs to this morphological category, and 40 percent belongs to that category." Of course, such a statement would be particularly incoherent if we were speaking in terms of morphosyntactic categories, such as past tense. But it is also problematic in the case of form-based categories. Proportions of characters (or form-describing binary features) simply do not have a meaning in morphology, not one comparable to the that of word proportions in topic modeling, at any rate. In morphology, it is the presence/absence of a morphological unit that is important, not the proportion of characters or features it claims within the word
 Moreover, the percentages of mixed-membership models can be interpreted as degrees of membership:  
@@ -929,9 +945,15 @@ specially tailored to serve the needs MCMMs. These needs are essentially as foll
 must be interpretable as binary indicators of cluster membership, where $1$ 
 indicates membership, and $0$ non-membership. Thus, a given word belongs to the 
 $k$th cluster if its $k$th hidden-unit activity is $1$.
-\item The $j$th vector of weights $\textbf{c}_j$ (i.e., the $j$th row of the weight matrix $\textbf{C}$) must be interpretable as the centroid (i.e., the ``average" vector) of the $k$th cluster. 
+\item The $j$th vector of weights $\textbf{c}_j$ (i.e., the $j$th row 
+of the weight matrix $\textbf{C}$) must be interpretable as the centroid 
+(i.e., the ``average" vector) of the $k$th cluster. 
 \end{enumerate}
-In short, both the hidden-unit values and weights must have coherent interpretations. Recall from section~\ref{sec:context} that the sigmoidal weighted sum is an activation function that does not satisfy these criteria. It does not encourage a network to learn interpretable valuations for parameters. It therefore is not mixing function. All mixing functions
+In short, both the hidden-unit values and weights must have coherent interpretations. 
+Recall from section~\ref{sec:context} that the sigmoidal weighted sum is 
+an activation function that does not satisfy these criteria. It does not encourage 
+a network to learn interpretable valuations for parameters. It therefore is 
+not mixing function. All mixing functions
 are activation functions, but not all activation functions are mixing functions.
 %That is, mixing functions are a special class of activation function
 
@@ -975,12 +997,42 @@ The \textsc{write-white-or-black} domain differs from \textsc{write-white-or-bla
 %& \text{predictions: $-1 \leq  r_{i,j} \leq  1$} 
 %\end{cases}
  \end{align}
-where $c_{j,k} \leq 1$, $0 \leq  m_{i,k} \leq  1$,  $-1 \leq  r_{i,j} \leq  1$, and the components $x_{i,j}$ of the original data points
-are each either $1$ or  $-1$. Note the absolute value in the denominator of the expression $\frac{\sum_{k} m_{i,k} c_{j,k}}{\sum_{k} m_{i,k} |c_{j,k}|}$. This absolute value allows the numerator and denominator to differ in sign so that the output $r_{i,j}$ can be either positive or negative and thus match components of the original data points.
+where $c_{j,k} \leq 1$, $0 \leq  m_{i,k} \leq  1$,  $-1 \leq  r_{i,j} \leq  1$, 
+and the components $x_{i,j}$ of the original data points
+are each either $1$ or  $-1$. Note the absolute value in the denominator 
+of the expression $\frac{\sum_{k} m_{i,k} c_{j,k}}{\sum_{k} m_{i,k} |c_{j,k}|}$. 
+This absolute value allows the numerator and denominator to differ in sign so that 
+the output $r_{i,j}$ can be either positive or negative and thus match components of the original data points.
 
- Interestingly, \eqref{eq:wwb} contains the same weighted sum as the sigmoidal weighted sum. There are, however, important differences between \eqref{eq:wwb} and the sigmoidal weighted sum. First, there is no logistic sigmoid in \eqref{eq:wwb}; it is the denominator $\sum_{k} m_{i,k} |c_{j,k}|$ that constrains output of \eqref{eq:wwb} to the interval $[-1,1]$. The other difference is the nonlinearity arises from the conditions on the output \eqref{eq:wwb}; to avoid division by zero, it is necessary to stipulate that $r_{i,j}=0$ if $\sum_{k} m_{i,k} |c_{j,k}| = 0$, a result that occurs only if every vote is 0, in which case no cluster can claim responsibility for the value of $r_{i,j}$. But because $0$ never occurs in the original data points in the \textsc{write-white-or-black} domain, the learning process would tend drive activities of the reconstruction nodes away from $0$. That is, because the learning process seeks to minimize the discrepancy between $\textbf{r}_i$ and $\textbf{x}_i$, $0$ cannot a valid final value for any $r_{i,j}$.  Thus, the weights and the hidden-unit vectors will be shaped to produce surface-node activities that are either $-1$ or $1$ in accordance with the component values of the original data points. 
+ Interestingly, \eqref{eq:wwb} contains the same weighted sum 
+ as the sigmoidal weighted sum. There are, however, important differences 
+ between \eqref{eq:wwb} and the sigmoidal weighted sum. First, there is 
+ no logistic sigmoid in \eqref{eq:wwb}; it is the denominator $\sum_{k} m_{i,k} |c_{j,k}|$ 
+ that constrains output of \eqref{eq:wwb} to the interval $[-1,1]$. The other 
+ difference is the nonlinearity arises from the conditions on the output \eqref{eq:wwb}; 
+ to avoid division by zero, it is necessary to stipulate that $r_{i,j}=0$ if 
+ $\sum_{k} m_{i,k} |c_{j,k}| = 0$, a result that occurs only if every vote is 0, 
+ in which case no cluster can claim responsibility for the value of $r_{i,j}$. But 
+ because $0$ never occurs in the original data points in the \textsc{write-white-or-black} 
+ domain, the learning process would tend drive activities of the reconstruction nodes 
+ away from $0$. That is, because the learning process seeks to minimize the discrepancy 
+ between $\textbf{r}_i$ and $\textbf{x}_i$, $0$ cannot a valid final value for any $r_{i,j}$.  
+ Thus, the weights and the hidden-unit vectors will be shaped to produce surface-node 
+ activities that are either $-1$ or $1$ in accordance with the component values of 
+ the original data points. 
 
-To ensure that the activity of $r_{i,j}$ is either $-1$ or $1$, at least one hidden unit $m_{i,k}$ must have an activity of 1, and the weight associated with this hidden unit, namely $c_{j,k}$, must be either $-1$ or $1$. This would tie the surface unit $r_{i,j}$ to at least one cluster. Ultimately, the mixing function \eqref{eq:wwb} encourages hidden-unit activities to move  toward either $0$ or $1$ and the weights toward either $-1$ and $1$. These are values with clear cluster-oriented interpretations: The $1$'s and $0$'s of the hidden-unit activities indicate cluster membership and nonmembership, respectively, while the weights adopt the same pair of values present in the original data points. This is important, since, as noted above, an MCMM's weight vectors have to be interpretable as cluster centers, i.e., the composite or average of that cluster's member data points. %take on the same values-1 and 1 as weight values correspond to the component values of the original data points, 
+To ensure that the activity of $r_{i,j}$ is either $-1$ or $1$, at least one hidden 
+unit $m_{i,k}$ must have an activity of 1, and the weight associated with this 
+hidden unit, namely $c_{j,k}$, must be either $-1$ or $1$. This would tie 
+the surface unit $r_{i,j}$ to at least one cluster. Ultimately, the mixing 
+function \eqref{eq:wwb} encourages hidden-unit activities to move  toward 
+either $0$ or $1$ and the weights toward either $-1$ and $1$. These are 
+values with clear cluster-oriented interpretations: The $1$'s and $0$'s of the 
+hidden-unit activities indicate cluster membership and nonmembership, respectively, 
+while the weights adopt the same pair of values present in the original data points. 
+This is important, since, as noted above, an MCMM's weight vectors have to be 
+interpretable as cluster centers, i.e., the composite or average of that cluster's 
+member data points. %take on the same values-1 and 1 as weight values correspond to the component values of the original data points, 
 %each vote will ultimately be pushed toward $1$ or $-1$, meaning that each hidden unit activity $m_{i,k}$ will be pushed toward either 0 
 %an  $m_{i,k}c_{j,k}$
 %is actually a class of All mixing functions
@@ -990,10 +1042,24 @@ To ensure that the activity of $r_{i,j}$ is either $-1$ or $1$, at least one hid
 %$m_{i,k}c_{j,k}$ for $k \in K$) and combines them to yield a 
 %\emph{weighted} activity values $outputs the values of the reconstruction (surface) nodes $\mathbf{r}$. In particular, 
 
-In preliminary experiments for the present work, I tried both Noisy-OR and the \textsc{Write-White-or-Black} mixing function. The latter did not work well; in fact, under the \textsc{Write-White-or-Black}, the system was unable to make progress toward learning to reconstruct the original data points. This may have been due to the sparseness of the data points in this study. This studies data points are feature-vector representations of words. There are hundreds of features, and each there is a slot for each feature in each feature. If the feature is present in the word in question, its slot (We will discuss these features in detail in chapter~\ref{ch:experi}.)
-in fact, it seemed to be fundamentally ill-suited to the present study's learning task. proved not to work well given for the purposes of the present study,  particularly the nature of this study's data points. Recall this study's data points are feature-vector representations of words, and that these feature vectors are sparse. That is, for any given word, most features are not present. In a \textsc{Write-Black} formulation, absent features have the value $0$, but in the write-white-or-black formulation, they are $-1$. Therefore, in a sparse feature vector under the write-white-or-black formulation, the vast majority of features are $-1$. The cumulative effect of all these negatives in \eqref{eq:wwb} seemed to drown out the few positive positive features, making it impossible to reproduce the original data vectors. 
+In preliminary experiments for the present work, I tried both the Noisy-OR 
+and the \textsc{Write-White-or-Black} mixing functions. The latter did 
+not work well; in fact, under the \textsc{Write-White-or-Black}, the system 
+was unable to make progress toward learning to reconstruct the original 
+data points. This may have been due to the sparseness of the data points 
+in this study; each data point is vector of hundreds of feature slots, but 
+only a handful have the value $1$. are feature-vector representations of words. 
+There are hundreds of features, and each there is a slot for each feature in each 
+feature. If the feature is present in the word in question, its slot 
+(We will discuss these features in detail in chapter~\ref{ch:experi}.)
 
-Noisy-OR, on the other hand, did allow learning to take place; that is, the system was able to reduce its error with Noisy-OR as its mixing function. Apparently, this study's sparse feature vectors (i.e., data points) are more aptly placed in the \textsc{Write-Black} domain than the \textsc{Write-White-or-Black} domain.
+%in fact, it seemed to be fundamentally ill-suited to the present study's learning task. proved not to work well given for the purposes of the present study,  particularly the nature of this study's data points. Recall this study's data points are feature-vector representations of words, and that these feature vectors are sparse. That is, for any given word, most features are not present. 
+In a \textsc{Write-Black} formulation, absent features have the value $0$, but in the write-white-or-black formulation, they are $-1$. Therefore, in a sparse feature vector under the write-white-or-black formulation, the vast majority of features are $-1$. The cumulative effect of all these negatives in \eqref{eq:wwb} seemed to drown out the few positive positive features, making it impossible to reproduce the original data vectors. 
+
+Noisy-OR, on the other hand, did allow learning to take place; that is, 
+the system was able to reduce its error with Noisy-OR as its mixing function. 
+Apparently, this study's sparse feature vectors (i.e., data points) are more aptly 
+placed in the \textsc{Write-Black} domain than the \textsc{Write-White-or-Black} domain.
 %proved to more amenable the present study's learning task, including to allow learning. amenable to sparse feature vectors as well as other aspects of this study approach to morphological learning. I therefore adopted Noisy-Or as the mixing function for Multimorph's MCMM. 
 
 %that detewhich is a kind of activation function to the  perhaps the most significant component 
@@ -1357,7 +1423,14 @@ Each hidden unit casts a \emph{weighted vote}, so to speak, to decide the activi
 %Multimorph's objective function is a composition of functions, namely the composition of the sum-of-squared-error function \eqref{eq:sse} and the noisy-or mixing function \eqref{eq:noisy-or}, both of which are nonlinear; i.e., \emph{nonlinear} in the sense that their graphs are not straight lines. \footnote{Note that this sense of nonlinear is somewhat different from the sense employed in previous chapters, as in, e.g., the term \emph{nonlinear-nonsequential}.} We thus need an optimization technique that can handle nonlinear functions.
 %\end{enumerate} 
 
-In general terms, Multimorph learns through \emph{numerical optimization}, a process whereby an objective function is either maximized or minimized by making incremental adjustments to the objective function's parameters. The update to any given parameter component depends largely on the gradient of the objective function at this component, the idea being to descend/ascend the slope of the objective function toward a minimum/maximum, depending on whether the object function is negatively or positively defined. In the former case, it is generally called an \emph{error} function. 
+In general terms, Multimorph learns through \emph{numerical optimization}, 
+a process whereby an objective function is either maximized or minimized by 
+making incremental adjustments to the objective function's parameters. The 
+update to any given parameter component depends largely on the gradient 
+of the objective function at this component, the idea being to descend/ascend 
+the slope of the objective function toward a minimum/maximum, depending 
+on whether the object function is negatively or positively defined. In the former case, 
+it is generally called an \emph{error} function. 
 
 %determined in part by calculating the gradient of the whereby where is one of making incremental adjustments to  
 %$\textbf{M}$ and $\textbf{C}$ in the direction of error reduction---is one of \emph{numerical optimization}. 
@@ -1383,17 +1456,32 @@ These constraints ensure that the reconstruction (surface) activities stay in th
 \item Multimorph's objective function (which contains the Noisy-Or mixing function) is nonlinear. Therefore, Multimorph requires a nonlinear optimization method. the method of \citet{cheng-and-li:2012} is conducive to nonlinear optimization problems. \footnote{Here, we mean \emph{nonlinear} in the standard mathematical sense, i.e., to describe functions whose graphs are not straight lines.} %disproportionality between the output of a function and its input.}
 \end{enumerate}
 
-The method of \citet{cheng-and-li:2012} satisfies the first criterion because it is an \emph{active set} method, and thus is designed to handle it problems with bound constraints. It classifies each parameter component in an active or an inactive set, depending on where it lies in the interval $[0,1]$. If it is at the boundaries $0$ or $1$, the sign of the error gradient at this component must also be considered. For example, if $m_{i,k} = 0$ and the gradient of $E$ with respect to $m_{i,k}$ were positive, then $m_{i,k}$ could not be updated, since the update in this case would push $m_{i,k}$ below $0$.  The constraint \eqref{eq:bounds-m} is thus said to be ``active" at this component. But suppose the gradient were \emph{negative} at $m_{i,k}$ when $m_{i,k} = 0$. This would indicate that one could further reduce $E$ by moving $m_{i,k}$ away from o in the positive direction. In these circumstances, therefore, $m_{i,k}$  would be in the \emph{inactive} set.
-The method of \citet{cheng-and-li:2012} satisfies the second criterion as well, since it belongs to the nonlinear conjugate-gradient family of methods (see below).
+The method of \citet{cheng-and-li:2012} satisfies the first criterion 
+because it is an \emph{active set} method, and thus is designed to handle 
+it problems with bound constraints. It classifies each parameter component 
+in an active or an inactive set, depending on where it lies in the interval $[0,1]$. 
+If it is at the boundaries $0$ or $1$, the sign of the error gradient at this component 
+must also be considered. For example, if $m_{i,k} = 0$ and the gradient of $E$ 
+with respect to $m_{i,k}$ were positive, then $m_{i,k}$ could not be updated, 
+since such an update in this case would push $m_{i,k}$ below $0$.  
+The constraint \eqref{eq:bounds-m} is thus said to be ``active" at this component. 
+But suppose the gradient were \emph{negative} at $m_{i,k}$ when $m_{i,k} = 0$. 
+This would indicate that one could further reduce $E$ by moving $m_{i,k}$ away 
+from o in the positive direction. In these circumstances, therefore, $m_{i,k}$ 
+would be in the \emph{inactive} set.
+The method of \citet{cheng-and-li:2012} satisfies the second criterion as well, 
+since it belongs to the nonlinear conjugate-gradient family of methods (see below).
 
-The variables in an MCMM are the values in the $\mathbf{M}$ and $\mathbf{C}$ matrices. 
+The variables in an MCMM are the values in the $\mathbf{M}$ and 
+$\mathbf{C}$ matrices. 
 These values determine the 
-reconstruction vectors in $\mathbf{R}$ via the Noisy-OR mixing function (\eqref{eq:noisy-or}). 
+reconstruction vectors in $\mathbf{R}$ via the Noisy-OR mixing 
+function (\eqref{eq:noisy-or}). 
 The MCMM's error is the discrepancy between  
-$\mathbf{R}$ and the actual data $\mathbf{X}$. Learning occurs when the values in $\mathbf{M}$
+$\mathbf{R}$ and the actual data $\mathbf{X}$. Learning occurs 
+when the values in $\mathbf{M}$
 and $\mathbf{C}$ are updated so as to to reduce this error. 
  
-%reconstructions that are closer to the actual data (and thus a reduce 
 %The reconstruction layer attempts to
 %decode the hidden layer's representations and
 %In MCMMs, as in RBMs and classical autoencoders, learning is the result of 
@@ -1404,7 +1492,8 @@ and $\mathbf{C}$ are updated so as to to reduce this error.
 %reconstructed and original data points. 
 %That is, we want to find parameter 
 %values that minimize an error function.
-As mentioned above in section~\ref{} (and in subsequent sections), an MCMM has two types of parameters:
+As mentioned above in section~\ref{sec:architecture} (and in subsequent sections), 
+an MCMM has two types of parameters:
 (1) the hidden-unit activities in $\textbf{M}$ and (2) the weights in $\textbf{C}$. (Recall that this 
 distinguishes MCMMs from other types of autoencoders, which do not treat hidden-unit activities as parameters.  
 The search for optimal $\textbf{M}$ and $\textbf{C}$ values is conducted
@@ -1419,13 +1508,22 @@ For the sake discussion, let us assume a single one type of parameter
 For the sake of discussion, let us consider a simple sort of model with a single type of parameters.
 to optimize, namely the weights $\textbf{W}$ connecting two layers of nodes. 
 %This is the typical case in neural-network approaches to learning. 
-As discussed in section~\ref{},
+As discussed in section~\ref{sec:architecture},
 %(and in subsequent sections), 
-an MCMM actually has two types of parameters, namely the weights in $\textbf{C}$ and the hidden-unit activities in $\textbf{M}$. We shall fully examine the workings of this dual-parameter framework in \ref{} below.
-If there are $I$ nodes in one layer and $J$ nodes in the other, there are $I \times J$ individual node-to-node weights.
+an MCMM actually has two types of parameters, namely
+the weights in $\textbf{C}$ and the hidden-unit activities in $\textbf{M}$. 
+We shall fully examine the workings of this dual-parameter framework in \ref{} below.
+If there are $I$ nodes in one layer and $J$ nodes in the other, there are $I \times J$ 
+individual node-to-node weights.
 
-An objective function can be positive, in which case the goal is to maximize it, or negative, in which case it is
-called an \emph{error function} and is to minimized. Autoencoders typically employ an error function, although the two approaches are not necessarily at odds with each other. \citet{saund:94} proposes a positive log-likelihood objective function to accompany the Noisy-Or mixing function, but I found this function function to be ineffective where the present study's sparse, high-dimensional data points were concerned. It led to unstable, overly dramatic leaps in the learning process. 
+An objective function can be positive, in which case the goal is to maximize it, or negative, 
+in which case it is
+called an \emph{error function} and is to minimized. Autoencoders typically 
+employ an error function, although the two approaches are not necessarily at odds 
+with each other. \citet{saund:94} proposes a positive log-likelihood objective function 
+to accompany the Noisy-Or mixing function, but I found this function function to be 
+ineffective where the present study's sparse, high-dimensional data points were concerned. 
+It led to unstable, overly dramatic leaps in the learning process. 
 I therefore used \emph{sum-of-squared-errors} (SSE)  function, normalized by the total number of features across
 all data points ($I \times J$).
 \begin{equation} \label{eq:sse}
@@ -1453,13 +1551,10 @@ plotted against different valuations of $\mathbf{W}$.
 %The $E(\mathbf{u})$ is higher at some parameter valuations than others. 
 %The optimization task is to find the parameter values that yield the minimal error (which is ideally zero). 
 The goal, then, is to find a valuation for $\mathbf{W}$ that minimizes  $E(\mathbf{W})$. 
-
-
 %and thus improving
 %the model. 
 %The search process consists of incremental updates to the parameter matrix, or \emph{steps}, each of which has a particular direction $\textbf{D}$ and magnitude. The latter is determined by a scaling factor $\alpha$. Crucially, $\textbf{D}$ must be a decent direction--- i.e., it must follow the negative slope $E(\mathbf{u})$
 %and thus lead to a smaller $E(\mathbf{u})$).
-
 The search process consists of a series of incremental updates to the parameter components. Each update can be thought of as a ``step" composed of both a direction $\textbf{D}$ and magnitude. The latter is determined by a scaling factor $\alpha$.
 Each parameter component is thus updated according to the rule
 \begin{equation}\label{eq:gen-update}
@@ -1474,17 +1569,21 @@ particular subclass of numerical optimization. The conjugate-gradient subtype,
 for instance, is a class of methods wherein $\textbf{D}$ is a function 
 of a special ratio called $\beta$, as in \eqref{eq:basic-d}. 
 \begin{equation}\label{eq:basic-d}
-\textbf{D}_{t} = -\textbf{G}_{t}  + \beta_{t} D_{t-1} 
+\textbf{D}_{t} = -\textbf{G}_{t}  + \beta_{t} \textbf{D}_{t-1} 
 \end{equation}
 where \textbf{G} is the gradient of the error function with respect to the parameter matrix $\textbf{W}$.
-Conjugate-gradient methods are further subdivided according to the particular manner in which they calculate $\beta$ (\citet[for an overview of the available options, see][]{hager:2006}). One example is the Polak--Ribi\'{e}re--Polyak (PRP) formula:
+Conjugate-gradient methods are further subdivided according to the particular manner in which they calculate $\beta$ \citet[For an overview of the available options, see][]{hager:2006}. One example is the Polak--Ribi\'{e}re--Polyak (PRP) formula:
 \begin{equation}\label{eq:PRP}
-\beta_{t}^{PRP} = \frac{(\textbf{G_{t})^{T}{\textbf{Y}_{t-1}}}{{||(\textbf{G}_{t-1})||}^2}
+\beta_{t}^{PRP} = \frac{(\textbf{G}_{t})^{T}{\textbf{Y}_{t-1}}}{{||(\textbf{G}_{t-1})||}^2}
 \end{equation}
-where $\textbf{Y}_{t-1} = \textbf{G}_{t} - \textbf{G}_{t-1}$. 
+where
+\begin{equation}\label{eq:y}
+\textbf{Y}_{t-1} = \textbf{G}_{t} - \textbf{G}_{t-1} 
+\end{equation}
+%where $\textbf{Y}_{t-1} = \textbf{G}_{t} - \textbf{G}_{t-1}$. 
 method of \citet{cheng-and-li:2012} use a modified the Polak--Ribi\'{e}re--Polyak method proposed by \citet{zhang-et-al:2006}, which introduces another term to the formula \eqref{eq:basic-d}:
 \begin{equation}\label{eq:mod-d-update}
-\textbf{d}^{t} = -\textbf{g}^{t}  + \beta^{t} d^{t-1} - \eta^{t} \textbf{Y}^{t-1}
+\textbf{D}^{t} = -\textbf{G}^{t}  + \beta^{t} D^{t-1} - \eta^{t} \textbf{Y}^{t-1}
 \end{equation}
 where 
 \begin{equation}
@@ -1549,12 +1648,13 @@ where
 %\mathbf{u}^{t+1} = \mathbf{u}^{t} + \alpha_t\mathbf{d}_{t}
 %\end{equation}
 
-In the first iteration (at $t = 0$), the search direction vector $\mathbf{d}$ is set to the negative gradient:
-$\mathbf{d}^{o} = - \textbf{g}^{0}$.  The negative gradient is simply the negative of the error curve's slope,
+In the first iteration ($t = 0$), the search direction vector $\textbf{D}$ is set to the negative gradient:
+$\textbf{D}^{o} = - \textbf{G}^{0}$.  The negative gradient is simply the negative of the error curve's slope,
 and thus is a descent direction.
 In the conjugant gradient method, 
-In subsequent iterations, updates to $\mathbf{d}$ incorporate information from the preceding iteration $\text{d}^{t}
-is informed by from the previous iteration's direction and gradient are taken into account in$t-1$, as in equation \eqref{eq:mod-d-update}
+In subsequent iterations, updates to $\textbf{D}$ incorporate information from 
+the preceding iteration $\textbf{D}^{t}$
+is informed by from the previous iteration's direction and gradient are taken into account in iteration $t-1$, as in equation \eqref{eq:mod-d-update}
 
 %\begin{equation}\label{eq:mod-d-update}
 %\textbf{d}^{t} = -\textbf{g}^{t}  + \beta^{t} d^{t-1} - \eta^{t} \textbf{y}^{t-1}
@@ -1563,7 +1663,7 @@ is informed by from the previous iteration's direction and gradient are taken in
  
 where $\beta$^{t} and $\eta$ are scalars. They are computed as follows:
 
-\textbf{g}_{t} is the gradient of the error function, i.e., the (partial) derivative of $E$ with respect to each component
+$\textbf{G}_{t}$ is the gradient of the error function, i.e., the (partial) derivative of $E$ with respect to each component
 of the parameter vector. (The gradient thus has the same number of components as the parameter vector.)
 
 % \textbf{d}_{t}. 
@@ -1817,7 +1917,7 @@ Bound-constrained optimization.
 
 
 The function \textsc{Optimize-M} loops over the $I$ cluster-activity vectors $\mathbf{m}_i$ in
-$\mathbf{M}$, optimizing each one separately.  The optimization process itself is detailed in \cite{cheng-and-li:2012}.
+$\mathbf{M}$, optimizing each one separately.  The optimization algorithm itself is detailed in \cite{cheng-and-li:2012}.
 %, one at a time.
 %in $\mathbf{M}$, 
 For each $\mathbf{m}_i$, \textsc{Optimize-M} enters an optimization 
