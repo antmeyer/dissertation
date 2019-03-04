@@ -1472,15 +1472,15 @@ would be in the \emph{inactive} set.
 The method of \citet{cheng-and-li:2012} satisfies the second criterion as well, 
 since it belongs to the nonlinear conjugate-gradient family of methods (see below).
 
-The variables in an MCMM are the values in the $\mathbf{M}$ and 
-$\mathbf{C}$ matrices. 
-These values determine the 
-reconstruction vectors in $\mathbf{R}$ via the Noisy-OR mixing 
-function (\eqref{eq:noisy-or}). 
-The MCMM's error is the discrepancy between  
-$\mathbf{R}$ and the actual data $\mathbf{X}$. Learning occurs 
-when the values in $\mathbf{M}$
-and $\mathbf{C}$ are updated so as to to reduce this error. 
+%The variables in an MCMM are the values in the $\mathbf{M}$ and 
+%$\mathbf{C}$ matrices. 
+%These values determine the 
+%reconstruction vectors in $\mathbf{R}$ via the Noisy-OR mixing 
+%function (\eqref{eq:noisy-or}). 
+%The MCMM's error is the discrepancy between  
+%$\mathbf{R}$ and the actual data $\mathbf{X}$. Learning occurs 
+%when the values in $\mathbf{M}$
+%and $\mathbf{C}$ are updated so as to to reduce this error. 
  
 %The reconstruction layer attempts to
 %decode the hidden layer's representations and
@@ -1555,16 +1555,18 @@ The goal, then, is to find a valuation for $\mathbf{W}$ that minimizes  $E(\math
 %the model. 
 %The search process consists of incremental updates to the parameter matrix, or \emph{steps}, each of which has a particular direction $\textbf{D}$ and magnitude. The latter is determined by a scaling factor $\alpha$. Crucially, $\textbf{D}$ must be a decent direction--- i.e., it must follow the negative slope $E(\mathbf{u})$
 %and thus lead to a smaller $E(\mathbf{u})$).
-The search process consists of a series of incremental updates to the parameter components. Each update can be thought of as a ``step" composed of both a direction $\textbf{D}$ and magnitude. The latter is determined by a scaling factor $\alpha$.
-Each parameter component is thus updated according to the rule
+The search process consists of a series of incremental updates to the parameter components. Each update can be thought of as a ``step" composed of both a direction $\textbf{D}$ and a magnitude. The latter is determined by a scaling factor $\alpha$. The size of a step is conditioned upon the step's direction $\textbf{D}$; that is, a step's direction $\textbf{D}$ is computed first, and then maximum distance than can be traveled in this direction while maintaining a descent of the error curve. 
+% (i.e., the longest distance $\alpha$ is computed to maximize the size of the s
+Each parameter component is thus updated according to a rule that incorporates both $\textbf{D}$ and $\alpha$. This rule is as follows:
 \begin{equation}\label{eq:gen-update}
-%w^{t+1}_{i,j} = \textbf{u}^{t}_{i,j} + \alpha^{t}\textbf{d}^{t}_{i,j}
-w^{t+1}_{i,j} = w^{t}_{i,j} + \alpha^{t}d^{t}_{i,j}
+%w^{t+1}_{j,k} = \textbf{u}^{t}_{i,j} + \alpha^{t}\textbf{d}^{t}_{i,j}
+w^{t+1}_{j,k} = w^{t}_{j,k} + \alpha^{t}d^{t}_{j,k}
 \end{equation},
-where $t$ indicates the current iteration, and $t+1$ the next iteration, $\alpha^{t}$ is the scaling factor for iteration $t$,  and $d^{t}_{i,j}$ is the component of the current iteration's direction matrix corresponding to $w^{t}{i,j}$. 
+where the superscripts $t$ and $t+1$ indicate the current and next iterations, respectively. Thus, this rule computes the parameter component $w_{j,k}$ for the \emph{next} iteration. The scaling factor \alpha^{t} and the direction matrix $\textbf{D}$ must be recomputed at each iteration d^{t}_{j,k}. Note that for each parameter component $w_{j,k}$, there is a particular direction component $d_{j,k}$. The direction matrix $\textbf{D}$ thus has the same dimensions as the parameter matrix. 
+%$ is the scaling factor for iteration $t$,  and $d^{t}_{j,k}$ is the component of the current iteration's direction matrix corresponding to $w^{t}{j,k}$. 
 
 % Just as important, $\alpha$ must be large enough that the step makes difference, but not so large that the step overshoots the minimum.
-There are various ways to compute $\textbf{D}$, and each way corresponds to a 
+There are various ways to compute $\textbf{D}$, and each corresponds to a 
 particular subclass of numerical optimization. The conjugate-gradient subtype, 
 for instance, is a class of methods wherein $\textbf{D}$ is a function 
 of a special ratio called $\beta$, as in \eqref{eq:basic-d}. 
@@ -1581,17 +1583,15 @@ where
 \textbf{Y}_{t-1} = \textbf{G}_{t} - \textbf{G}_{t-1} 
 \end{equation}
 %where $\textbf{Y}_{t-1} = \textbf{G}_{t} - \textbf{G}_{t-1}$. 
-method of \citet{cheng-and-li:2012} use a modified the Polak--Ribi\'{e}re--Polyak method proposed by \citet{zhang-et-al:2006}, which introduces another term to the formula \eqref{eq:basic-d}:
+\citet{cheng-and-li:2012} use a modified version of the original Polak--Ribi\'{e}re--Polyak method. The modified version, first poroposed by \citet{zhang-et-al:2006} introduces a third term to the direction-updating formula \eqref{eq:basic-d}:
 \begin{equation}\label{eq:mod-d-update}
 \textbf{D}^{t} = -\textbf{G}^{t}  + \beta^{t} D^{t-1} - \eta^{t} \textbf{Y}^{t-1}
 \end{equation}
 where 
 \begin{equation}
 \label{eq:eta}
-\eta_{t} = \frac{(\textbf{g}_{t})^{T}{\textbf{d}_{t-1}}}{{||\textbf{g}_{t-1})||}^2}
+\eta_{t} = \frac{(\textbf{G}_{t})^{\textsf{T}}{\textbf{G}_{t-1}}}{{||\textbf{G}_{t-1})||}^2}
 \end{equation}
-%belongs to the \emph{conjugate gradient} family because in calculates   
-%The different types of numerical optimization are each defined by a different methods of computing $\textbf{d}$ each define a numerical optimization are defined by different methods of computing $\textbf{d}$. The algorithm of \citet{cheng-and-li:2012} is a member of the conjugate-gradient family of numerical optimization methods, wherein 
 
 %First the direction is computed, and then a suitable $\alpha$ is computed given this direction. appropriate scaling factor determine the direction and secoand se vector and then to determine a suitable step size given this direction. 
 %suitable $\alpha$ given to determine the step's size  Once 
@@ -1648,20 +1648,19 @@ where
 %\mathbf{u}^{t+1} = \mathbf{u}^{t} + \alpha_t\mathbf{d}_{t}
 %\end{equation}
 
-In the first iteration ($t = 0$), the search direction vector $\textbf{D}$ is set to the negative gradient:
-$\textbf{D}^{o} = - \textbf{G}^{0}$.  The negative gradient is simply the negative of the error curve's slope,
-and thus is a descent direction.
-In the conjugant gradient method, 
-In subsequent iterations, updates to $\textbf{D}$ incorporate information from 
-the preceding iteration $\textbf{D}^{t}$
-is informed by from the previous iteration's direction and gradient are taken into account in iteration $t-1$, as in equation \eqref{eq:mod-d-update}
+In the first iteration (i.e., $t = 0$), the search direction vector $\textbf{D}$ is set to the negative gradient of the error function"
+$\textbf{D}^{o} = - \textbf{G}^{0}$.  The negative gradient is simply the negative of the error curve's slope. It is thus  a descent direction.
+In subsequent iterations, the components of the current iteration's gradient and direction matrices are taken into account in determining the next iteration's gradient and direction components.
+%incorporate information from 
+%the preceding iteration $\textbf{D}^{t}$
+%is informed by from the previous iteration's direction and gradient are taken into account in iteration $t-1$, as in equation \eqref{eq:mod-d-update}
 
 %\begin{equation}\label{eq:mod-d-update}
 %\textbf{d}^{t} = -\textbf{g}^{t}  + \beta^{t} d^{t-1} - \eta^{t} \textbf{y}^{t-1}
 %\end{equation}
 %(and thus each direction component vector is ``tailored'' to suit its corresponding parameter component).
  
-where $\beta$^{t} and $\eta$ are scalars. They are computed as follows:
+%where $\beta$^{t} and $\eta$ are scalars. They are computed as follows:
 
 $\textbf{G}_{t}$ is the gradient of the error function, i.e., the (partial) derivative of $E$ with respect to each component
 of the parameter vector. (The gradient thus has the same number of components as the parameter vector.)
@@ -1676,7 +1675,7 @@ of the parameter vector. (The gradient thus has the same number of components as
 %\end{align}
 
 %tailoredparameter component is updated according to a tailored  vector the step must be such that the error curve is descended rather than ascended. The step must be sufficiently large that it makes a difference, but not so large that it overshoots the minimum. 
-As for computing $\alpha_t$ and $\mathbf{d}_{t}$, there are various methods, and different combinations of these methods define different optimization algorithms. 
+%As for computing $\alpha_t$ and $\mathbf{d}_{t}$, there are various methods, and different combinations of these methods define different optimization algorithms. 
 
 
 % for computing likely step directions and lengths. Conjugate gradient 
@@ -1731,7 +1730,7 @@ As for computing $\alpha_t$ and $\mathbf{d}_{t}$, there are various methods, and
 %
 
 
-For the objective function, I used normalized \emph{sum-of-squared error} (SSE), 
+For the objective function, I used the normalized \emph{sum-of-squared error} (SSE), 
 shown in equation \eqref{eq:sse}.
 \begin{equation} \label{eq:sse}
 E = \frac{1}{I \times J} \sum_{i} \sum_{j} {(r_{i,j} - d_{i,j})}^2
@@ -1745,7 +1744,7 @@ $\mathbf{M}$ is the $I \times K$ matrix that
 encodes each data point's cluster-activity vector, 
 and $\mathbf{C}$ is the $J \times K$ matrix that
 %, of dimensions $J \times K$, 
-encodes the weights between $\mathbf{m}_i$ and $\mathbf{r}_i$ for every $i \in I$ (see fig.~\ref{fig:example}). 
+encodes the weights connecting $\mathbf{m}_i$ to $\mathbf{r}_i$ for every data point (i.e., for every index $i \in I$) (see fig.~\ref{fig:example}). 
 %$\mathbf{C}$ can also be interpreted as encoding the cluster centroids 
 %(the clusters' ``average'' data points).
 %Each column in $\mathbf{C}$ is in effect a feature vector; the $k^{\text{th}}$ column is 
@@ -1776,7 +1775,7 @@ What is a nonlinear conjugate gradient method?
 p_k = -B_{k-1}\nabla f_k
 \end{equation}
 
-The \emph{size} (or \emph{length}) of each step was determined by the 
+The \emph{size} (or \emph{length}) of each step was determined via a backtracking line search
 Armijo technique (CITE).  But maybe backtracking. Check.
 
 %The basic idea is that we want 
@@ -1885,7 +1884,7 @@ Armijo technique (CITE).  But maybe backtracking. Check.
 %  in previous figures we use $\mathbf{m}$.  Also, why is it sometimes
 %  $\mathbf{m_k}$ and sometimes $\mathbf{m_{i,k}}$?  ($i$ refers to the
 %  $i^{\text{th}}$ word?)}
-
+\subsection{Two optimization problems in one}
 The MCMM's learning process is similar to Expectation Maximization
 (EM) in that at any given time it holds one set of variables 
 fixed while optimizing the other set. We thus have two functions, \textsc{Optimize-M}
