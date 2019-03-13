@@ -6,44 +6,25 @@
 %\end{CJK}
 
 \section{Introduction}
-%We use $K$ to denote the number of clusters produced in a given experimental
-%trial. In theory, Multimorph should create just enough clusters to reduce the error
-%to 0. In turned out, however, that Multimorph never reduced its error all the to zero. Instead,
-%every trial, Multimorph's error decreased steadily to a point greater than 0, whereupon it reversed direction, starting to 
-%increase, and continued to increase until the experiment was stopped at $K = 3000$ or $4000$.  The error minimum generally occurred when $K$ was between 400 and 1200. 
-%The average $K$ was 589.36 for TS (transcriptions with stress markings), 833.00 for T, and 742.92 for O. I thus 
-%report results both at $K = 500$ and $K = 1000$.
-
-%The experimental variables in question here are the feature type, i.e.,  positional vs. precedence ($s$ vs. $\delta$),
-%the manner, which the original data was represented, i.e., whether it was transcribed with stress, transcribed without stress,
-%or orthographic (standard Hebrew orthography).
-%we set different values of $s$ (positional) and $\delta$ (precedence), in
-%various combinations.
-%(section~\ref{subsec:features}).  
-%Results are given in table~\ref{tab:results}, where * refers to an
-%unbounded $\delta$.
 %\begin{CJK}{Bg5}{fs}
 %我很喜歡吃中國飯。
 %\end{CJK}
 
-%without regret \\
-%they fall and scatter\ldots \\
-%cherry blossoms
-
-
-As discussed in chapter~\ref{ch:MCMM}, Multimorph's \ac{MCMM} in effect groups its input words into morphological clusters. 
-During the course of learning, a particular set of hidden-unit values (namely, the vector $\mathbf{m}_{i}$) is induced for each or word $i$. 
+As discussed in chapter~\ref{ch:MCMM}, Multimorph's \ac{MCMM} 
+in effect groups its input words into morphological clusters. 
+During the course of learning, a particular set of hidden-unit values 
+(namely, the vector $\mathbf{m}_{i}$) is induced for each or word $i$. 
 The vector $\mathbf{m}_{i}$ consists of $K$ elements, each a real number on the interval $[0,1]$. 
-Each of these elements corresponds to a particular cluster $k$ and indicates the extent to which word $i$ is a member that cluster.
-%$\mathbf{m}_{ik} for $k \in K$, so that the and each $\mathbf{m}_{ik}
-The threshold for cluster membership is $\theta$. That is, if hidden unit $\mathbf{m}_{ik}$ has a value equal to or greater than 
+Each of these elements corresponds to a particular cluster $k$ and indicates 
+the extent to which word $i$ is a member that cluster.
+The threshold for cluster membership is $\theta$. That is, if hidden unit 
+$\mathbf{m}_{ik}$ has a value equal to or greater than 
 $\theta$, then word $i$ is a member of cluster $k$. Otherwise, it is not a member of cluster $k$. 
 For example, suppose that word $i$ had the hidden-unit vector $\mathbf{m}_{i} = [0.2, 0.0,0.9,0.1,0.8]$, 
 wherein $\mathbf{m}_{i,2}$ and $\mathbf{m}_{i,4}$, at 0.9 and 0.8, respectively, exceed the cluster-membership 
 threshold, while the other three values
 are well below it. Thus, of the five clusters in this hypothetical model, word $i$ is a member of clusters 
 2 and 4 (i.e. the 3rd and 5th clusters).
-
 
 In this way, the $I \times K$ $\mathbf{M}$ matrix (i.e., the collection of all hidden-unit vectors $\mathbf{m}_i$ for $i \in I$) 
 defines a disjunctive clustering of the $I$ input words into $K$ clusters. Multimorph produced such a clustering for 
@@ -52,13 +33,8 @@ we motivated and outlined a multi-faceted approach to evaluating Multimorph's ou
 both qualitative and quantitative components as well as both intrinsic and extrinsic components. 
 In this chapter, we present the results of this multi-faceted evaluation. 
 
-%Recall that the primary experimental variables in question here are the feature type, i.e.,  positional vs. precedence ($s$ vs. $\delta$),
-%the manner, which the original data was represented, i.e., whether it was transcribed with stress, transcribed without stress,
-%or orthographic (standard Hebrew orthography).
-
 As a final preliminary matter for this chapter, recall from chapter~\ref{ch:MCMM}  that Multimorph begins with a single cluster ($K = 1$) 
-and incrementally adds a cluster (by splitting the worst cluster) until the global error can no longer be reduced. 
-% it is important to note that  $K$ to denote the number of clusters produced in a given experimental trial. 
+and incrementally adds a cluster (by splitting the worst cluster) until the global error can no longer be reduced.  
 In theory, Multimorph should create just enough clusters to reduce the error
 to 0. In practice, however, i.e., in the course of this dissertation's experiments,
  Multimorph did not actually reduce its error all the to zero in any of the experimental trials. 
@@ -73,54 +49,13 @@ report results both at $K = 500$ and $K = 1000$.
 \section{Qualitative Analysis}
 \label{sec:qual}
 The value of quantitative methods lies in their systematicity and objectivity, but
-%make them very valuable
-%to the task of evaluating a system's performance,  %inidiscussed later in this chapter lies in their highly objective and systematic nature, but 
-	they are by no means guaranteed to capture every salient fact regarding a system's output. 
-	especially when the system in question is an unsupervised learning system. 
-	% in which case the learning targets are unknown. Quantitative methods are usually 
-	%devised before any output data is seen; their focus is on treating every output result in the same (pre-established) way in order to minimize bias. There is thus a certain blindness to quantitative methods. 
-	 This dissertation thus incorporates a qualitative analysis of Multimorph's output to supplement the  
-	 %analysis of Multimorph's output to supplement the
-	 quantitative results presented later in this chapter.
-	This qualitative analysis consists primarily in a ``manual" inspection the MCMM's clusters.
-	% i.e., the clusters of words defined by each experimental run's $\mathbf{M}$ matrix.
-	
-	%We shall in addition make some qualitative observations regarding intermediate results from the four-stage extrinsic evaluation process.
-	%When the morphIDs are converted to symbols in stage 3...
+they are by no means guaranteed to capture every salient fact regarding a system's output. 
+especially when the system in question is an unsupervised learning system. 
+ This dissertation thus incorporates a qualitative analysis of Multimorph's output to supplement the  
+quantitative results presented later in this chapter.
+This qualitative analysis consists primarily in a ``manual" inspection the MCMM's clusters.
+
 \subsection{``Hand-Inspection" of Clusters}
-
-
-%Among the ``exclusive" settings, i.e., the settings that exclude either precedence or positional features, note that exclusive precedence features yield much higher purity values than exclusive positional features, at least when $\delta \ge 2$.
-%This can likely be attributed, at least in part, to lesser coverage.
-% The exclusive precedence features at $\delta = 1$ and $\delta = 0$ yield perfect recall, but this is only because the precision at these settings is close to 0. The algorithm was essentially unable to make distinctions at these settings, and the result was 50 nearly identical clusters. It is not entirely clear at present why these settings produced such uniquely bad results, but it likely has something to do with information scarcity, i.e., the diminishing amounts of information available to the MCMM when $s$ is nonexistent and $\delta$ approaches 0. Notice that when $s$ is n/a and $\delta = 1$, all features are bigrams.
-
-%The best purity occurs at ($s=3$, $\delta=*$), the best precision at ($s=5$, $\delta=*$), the (second) best recall at ($s=4$, $\delta=$ n/a) (see above), and the best coverage at ($s=4$, $\delta=$ n/a). However, the setting ($s=4$, $\delta=*$) arguably yielded the best combination of results. In general, the best results tend to come from the richest features sets, that is, feature sets with the greatest variety, e.g., ($s=3$, $\delta=*$), ($s=3$, $\delta=*$), and ($s=5$, $\delta=*$).
-%precision and recall values (with high purity) use the richest set of
-%features ($s=4$, $\delta=*$).  
-%This suggests not only that our approach
-%can handle diverse feature sets, but that it thrives on them.
-
-%In the combined feature sets (i.e., the settings with no \textit{n/a}), performance improves slightly as $s$ goes from 3 to 4, but the increase from 4 to 5 seems to cause neither a decline in performance nor an improvement.
-%However, recall that the average word length in our dataset is only 5.4, and so in many words, the amount of overlap between the first $s$ and final $s$ positions becomes significant at $s > 3$. At $s = 5$, in many words, the first $s$ positions alone consume every character in the word, rendering the final $s$ positions entirely redundant.
-%and since $s$ actually refers both to the first $s$ positions \emph{and} the final $s$ positions, the amount of overlap between between the first so it makes sense that $s$ value of 5 would not yield new informati word-initial and word-final patterns 
-%from increasing $s$ (the number of positions for positional features) 
-%seems to drop off at $s=4$. There is virtually no difference between the results $s=4$ and $s=5$.
-
-%Every value in the initial $\mathbf{M}$ matrix is set to 0.5, and the values of the $\mathbf{C}$ matrix are initialized randomly. These initial $\mathbf{M}$ and $\mathbf{C}$ matrices yield an initial reconstruction matrix $\mathbf{R}$, which in turn yields an initial $Err$.
-%and the discrepancy between this initial $\mathbf{R}$ and the actual data $\mathbf{D}$ yields an initial $Err$. 
-%The column in table~\ref{tab:results}, labeled \textit{\% Err Reduc'n} (i.e., \% Err Reduction) gives the percentage of the original error (see section~\ref{mcmm-learning}) that the algorithm was able to eliminate before it reached its stopping point (at $K = 50$). 
-%It is computed as follows:
-%\begin{equation*}
-%\% Err Reduc'n = \frac{{Err}_{original} - {Err}_{final}}{{Err}_{original}} \times 100.0
-%\end{equation*}
-%Notice that at nearly every setting, the algorithm was able to reduce $Err$ by a substantial proportion. The largest reduction of 90.2\% was achieved at ($s=3$, $\delta=0$). However, this setting produced some of the poorer results for purity, BP, and BR.
-%Indeed, the largest reductions in $Err$ do not coincide with the best results in the other measures. Note that in the sections of table~\ref{tab:results} concerned with combined feature sets, \% Err Reduction decreases as $\delta$ increases, even as purity, BP, and BR improve. Thus, a dramatic decrease in $Err$ does not necessarily mean that linguistically meaningful clusters are being formed.
-
-%Every activity in the initial $I \times 1$ $\mathbf{M}$ matrix is set to 0.5, and the weights in the initial $1 \times J$ $\mathbf{C}$ matrix are set to random values.
-%These 
-%The values of the $\mathbf{C}$ matrix are initialized randomly. Every cluster activity in the initial $I \times 1$ for the single initial cluster$\mathbf{R}$ matrix is then computed from these random $\mathbf{M}$ and $\mathbf{C}$ values. $$
-
-
 Hand-inspection reveals linguistically-interpretable clusters. For example, Figure~\ref{cl-fem} displays a group 
 of 60 words have been randomly selected from a 1632-word cluster produced by Multimorph’s MCMM. This group 
 is intended as an abridgment of its superset, which is too large to display here. This cluster was produced by the 
@@ -141,7 +76,7 @@ ha\v{s}amenet \> hiclaxt \> laxalalit \> meha\textsubdot{s}aqit \> nimce\textipa
 hahit\textipa{P}amlut \> labanot \> mela\textsubdot{k}le\textsubdot{k}et \> safart \> xada\v{s}ot \> \textipa{P}acuvot\\
 bakisa\textipa{P}ot \> madregot \> melu\textsubdot{k}la\textsubdot{k}ot \> melu\textsubdot{k}le\textsubdot{k}et \> mit\textipa{P}aqe\v{s}et \> \textipa{P}orot
 \end{tabbing}
-\caption{Sixty words randomly selected from a 1632-word cluster generated by Multimorph's MCMM (at $s = 3$, and $\delta = 2$). The endings on these words are the feminine endings discussed in section~\ref{sec:heb-example} of chapter~\ref{autonomous}.} %, namely \textit{-ut}, \textit{-ot}, \textit{-t}, \textit{-eCet}, \textit{-it}, \textit{-(i)yot}, and \textit{-uyot}
+\caption{Sixty words randomly selected from a 1632-word cluster generated by Multimorph's MCMM (at $s = 3$, and $\delta = 2$). The endings on these words are the feminine endings discussed in section~\ref{sec:heb-example} of chapter~\ref{autonomous}.} 
 \label{fig:cl-fem}
 \end{figure}
 
@@ -151,7 +86,8 @@ involve combinations of {-u}, {-i}, and {-t}. Notice that all of the endings in 
 [Here, I intend to look consult another document output by Multimorph, namely a document that those 
 the top ten most active features in each each cluster,
 which would elucidate the contributing factors to this cluster. Perhaps, for example, 
-the feature \texttt{t@[-1]} is (among) the most active, but perhaps others contribute significantly as well. 
+the feature \texttt{t@[-1]} is (among) the most active, but perhaps others 
+contribute significantly as well. 
 
 Another cluster, consisting of 60 words randomly selected from a 426-word cluster, is displayed 
 in figure~\ref{fig:cl-hit}. This cluster represents a \emph{binyan}, which, in Hebrew and other Semitic 
@@ -192,49 +128,40 @@ continuous substrings that contain both \textit{a} and \textit{e}.
 The quantitative results stem from the dual-paradigm evaluation method outlined in chapter~\ref{ch:eval}. 
 There are thus two distinct bodies of quantitative results, one from the \emph{intrinsic} component, and 
 the other from the \emph{extrinsic}. We turn first to the intrinsic results.
-%The two components of dual-paradigm evaluation outlined in chapter~\ref{ch:eval), namely the intrinsic and extrinsic components, each yielded its own distinct body of results. We now turn to these results. 
-%discutwo bodies of quantitative results, namely a body of intrinsic results and a body of extrinsic results. The quantitative the there are two categories quantitative results 
-%While I have already run every experiment for this thesis and have the output, I have lately had some problems with my evaluation scripts, i.e. the scripts that perform the procedures outlined in chapter~{ch-Evaluation}. These are procedures to performed on the output to obtain quantitative measures. (Again, the output itself is already computed; otherwise, I would not have been able to perform the qualitative evaluation.) 
-%Thus, this draft will not be presenting the actual numbers that my evaluation scripts will compute. The qualitative scores are meant to complement the qualitative analysis. 
-	Whereas the qualitative analysis discussed in section~\ref{sec:qual} was performed 
-	``manually," the quantitative evaluation was performed computationally, i.e. algorithmically. 
-	While human eyes can be beneficial to evaluating the results of unsupervised learning, 
-	a human may be less effective at judging overall consistency. 
-	%For example, the qualitative discussion of section~\ref{sec:qual} presented in identified a cluster representating a non-concatenative morphological unit. This example proves the system's ability to identity nonconcatenative morphs at least to some extent. The quantitative evaluation will show the consistency of the system's ability.
+Whereas the qualitative analysis discussed in section~\ref{sec:qual} was performed 
+``manually," the quantitative evaluation was performed computationally, i.e. algorithmically. 
+While human eyes can be beneficial to evaluating the results of unsupervised learning, 
+a human may be less effective at judging overall consistency. 
+
 \subsection{Intrinsic Results}
-	The intrinsic results are displayed in tables~\ref{tab:results-500} and \ref{tab:results-1000}. 
-	These are the ``master" tables, so to speak, for the intrinsic results, wherein each row %in these tables 
-	represents the intrinsic evaluation of a \emph{model}. %the clustering associated with specified values 
-%	for $s$ and $\delta$, the parameters for the positional and precedence features, respectively (see REF for an explanation of these parameters). Each row thus represents a particular 
-	Each \emph{model} is distinguished by its input data type (TS, TR, or O), its feature set, which depends 
-	on the values of $s$ and $\delta$, and the number of clusters of clusters it was permitted to accumulate. 
-	The evaluation metrics, discussed in chapter~\ref{ch:eval}, are \textbf{average cluster-wise purity} (Purity), 
-	\textbf{BCubed precision} (BP), \textbf{BCubed Recall} (BR), 
-	and the \textbf{F1-score} (F), i.e., the harmonic mean of BP and BR.  The tables also state the \emph{coverage} 
-	(Cov.) of each clustering, which is the number of words belonging to at least one cluster, and $K^{\prime}$, 
-	which the set of \emph{active} clusters, i.e., the clusters with at least one member. 
-	%(cluster membership threshold $\theta=0.5$. 
-	Each table  is associated with a $K$ cutoff value, either 500 or 1000, and each divided into three subtables, 
-	one for each of the three types of input data representation (DR).
+The intrinsic results are displayed in tables~\ref{tab:results-500} and \ref{tab:results-1000}. 
+These are the ``master" tables, so to speak, for the intrinsic results, wherein each row 
+represents the intrinsic evaluation of a \emph{model}. 
+Each \emph{model} is distinguished by its input data type (TS, TR, or O), its feature set, which depends 
+on the values of $s$ and $\delta$, and the number of clusters of clusters it was permitted to accumulate. 
+The evaluation metrics, discussed in chapter~\ref{ch:eval}, are \textbf{average cluster-wise purity} (Purity), 
+\textbf{BCubed precision} (BP), \textbf{BCubed Recall} (BR), 
+and the \textbf{F1-score} (F), i.e., the harmonic mean of BP and BR.  The tables also state the \emph{coverage} 
+(Cov.) of each clustering, which is the number of words belonging to at least one cluster, and $K^{\prime}$, 
+which the set of \emph{active} clusters, i.e., the clusters with at least one member. 
+Each table  is associated with a $K$ cutoff value, either 500 or 1000, and each divided into three subtables, 
+one for each of the three types of input data representation (DR).
 
 One of the most salient observations regarding tables~\ref{tab:intr-500} and \ref{tab:intr-1000}
  is that the models trained on O, the orthographic data, performed just as well as as those trained on TS
   (the transcriptional datasets with stress marking), if not \emph{slightly better}. The average F-score for all O models 
  at $K=1000$ was 0.371. (Note that this is the average F-score computed over \emph{all} valuations of $s$
-   and $\delta$, i.e., all rows in table~\ref{subtab:intr-1000-o}.) %The same average O models at $K=1000$ was 0.371. 
+   and $\delta$, i.e., all rows in table~\ref{subtab:intr-1000-o}.) 
    The average TS F-score at $K=1000$ was 0.365. 
-   0.365 %both at $K=500$ and $K=1000$. 
+   0.365  
    These are substantially higher that average F-score of the TR models at $K=1000$, namely 0.308.
-  %0.308 at $K=500$ and $K=1000$, respectively. 
   Two important points emerge from this observation: 
- % \begin{enumerate}
+
 
 \emph{First, the O models performed as well as the TS models and substantially better than the
   TR models.} 
-%There are in fact two salient facts to note here: One is that
  This is a surprising result because, as discussed in chapter~\ref{ch:experi}, 
  the orthography of Hebrew is basically a consonantal; i.e., the alphabet lacks vowels. 
- %it tends not to express vowels. 
 It would not be unreasonable to expect the orthographic dataset to be the least efficacious of the three because it
 apparently lacks important information, namely the information contributed by vowels. Vowel patterns seem to be crucial to Hebrew's 
 root-and-pattern morphology. However, the quantitative results in tables~\ref{tab:intr-500} and \ref{tab:intr-1000} 
@@ -245,8 +172,6 @@ helpful to the task of inducing a model of Hebrew morphology. Indeed,
 they appear have been more harmful then helpful in this study. It should be 
 noted, however, that there are many possibly ways to encode vowels in features, and 
 there could be feature formats to that encode vowels to better effect than present study's.
-%Perhaps the way in which they were encoded in the features introduced more extraneous, confusing cont
-%learning even one that lacked stress marking, such as TR.  
 
 Second, the TS models outperformed the TR models by a substantial margin. That is, 
 the transcriptions containing both stressed and unstressed vowels engendered better features than  the
@@ -254,30 +179,20 @@ transcriptions that lacked stress information . We might infer from this observa
 stress-neutral vowels, i.e., vowels whose stress is left unspecified.  It is important to note, however, that the alphabets used in this study were consisted solely of atomic unicode characters. That is, the stressed \textit{\'a}, 
 for example, was not encoded as \textit{a} (\texttt{U+0061}) followed by the acute-accent combining character \texttt{U+0301}, but 
 rather as the single \emph{precomposed} character{\texttt{U+00E1}. The stressed (or accented) vowels \textit{\'e}, \textit{\'o}, and \textit{\'u} were similarly each represented as a single, precomposed unicode character. 
-% as precomptextit{\'e}characters 
 Such atomic symbols are incapable of expressing inter-symbol relationships. For example, \textit{\'a} (\texttt{U+00E1}) and \textit{a} (\texttt{U+0061}) are completely distinct, as (un)related as the characters \textit{a} and \textit{t} as far as the unicode is concerned.
-% this not capable of expressing relationships between characters, and thus That is, relationship between {\texttt{U+00E1} 
-%and \texttt{U+0061}, i.e., \textit{\'a} and \textit{a}; each is atomic and utterly distinct from the other. 
 There is likewise
-no relationship between the characters \texttt{U+00E1} (\textit{\'a}) and  \texttt{U+00E9} (\textit{\'e}) or any other combination of stressed-vowel precomposed characters. There is nothing in these characters represents categorical traits such as ``stressed" or ``unstressed" or ``vowel."  
-%t relates stressed vowels to stressed vowel characters \textit{\'a} and \textit{\'e}, or any other pair of stressed any otheencoded as \texttt{U+00E9}, or 
-%\textit{\'o}, encoded as \texttt{U+00F3}. Nothing in the unicode representations that relates stressed vowels to one 
-%another as members of a stressed-vowel class, nor anything that relates as \textit{\'a} and \textit{a} as members 
-%of a single low-back vowel class.
+no relationship between the characters \texttt{U+00E1} (\textit{\'a}) and  
+\texttt{U+00E9} (\textit{\'e}) or any other combination of stressed-vowel 
+precomposed characters. There is nothing in these characters represents 
+categorical traits such as ``stressed" or ``unstressed" or ``vowel."  
 
-In effect, therefore, to include``stress marking" was to increase the size of the alphabet from 29 to 34 atomic symbols, which
+In effect, therefore, to include``stress marking" was to increase the size of the 
+alphabet from 29 to 34 atomic symbols, which
 in turn resulted in a considerable increase in the number of features, as the number features depended 
 directly on the size of the alphabet, as discussed in REF. It seems noteworthy that his increase in information did not result in an
-information overload. On the contrary, it led to models that were substantially better than the models trained on the stressless transcriptions.  to have counteracted the decrease in 
+information overload. On the contrary, it led to models that were substantially 
+better than the models trained on the stressless transcriptions.  to have counteracted the decrease in 
 performance that apparently resulted from the inclusion of non-stressed vowels in the stressless transcriptional data. 
-%One might %, nor anything, for that matter, that distinguishes vowels for consonants, not in the unicode code points themselves, anyway.
-
-% non-stressed \[a\] was encoded as <U+0000>. That is, both were encoded as atomic unicode symbols. 
-% Put another way, \'{a} was not encoded as a plus an accent mark, but rather as a completely different symbol. 
-% In fact, [\'a] could have been 
-%
-%TS consists of transcriptions that consist  useful than press That is, if symbols representing The fact that O models outperformed the 
-%TR models reinforces the previous point that 
 
 
 
@@ -289,15 +204,8 @@ performance that apparently resulted from the inclusion of non-stressed vowels i
 
 
 
-%So far, our discussion has focused on the F-score, which is derived from BP and BR. 
-%There is also the purity metric, which tends to be higher in the TS and TR results than in the O results.
-%One must keep in mind, however, that purity can (in effect) be biased toward clusterings with many small clusters. That is,
-%because purity is essentially a ratio and thus normalized, it is insensitive to scale. 
-%purity is inherently normalized and hence insensitive to scale. Consider, for instance, two hypothetical clusterings: One consists of 50 singleton clusters, each with 1 out of 1 correct members. The other has 1 cluster with 50 out of 50 correct members. Both would be assigned purities of 1.0 (or 100 percent).
-%This scale insensitivity seems to be at least partially responsible for the exceptionally high purity scores in tables~\ref{tab:intr-500} and \ref{tab:intr-1000}, 
-%Clusters can become repetitive during the latter stages of learning; the learning algorithm can become 
-%entrenched and hence less likely to change direction dramatically. 
-%Increasingly small and repetitive clusters therefore naturally lead to high purity scores. [EXAMPLE]
+
+
 
 
 
@@ -455,6 +363,8 @@ performance that apparently resulted from the inclusion of non-stressed vowels i
 %DR & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 %\multirow{ 3}{*}{TS} & 1 & 0.639 & 0.321 & 0.512 & 0.382 & 11988.3 & 290.8 \\
 %& 2 & 0.426 & 0.273 & 0.548 & 0.361 & 12058.0 & 148.5 \\
+
+%---
 %& 3 & 0.440 & 0.264 & 0.530 & 0.351 & 11852.8 & 104.5 \\ \cline{2-8}
 %& Avg: & 0.502 & 0.286 & 0.530 & 0.365 & 11966.3 & 181.3 \\ \hline
 %\multirow{ 3}{*}{TR} & 1 & 0.387 & 0.243 & 0.551 & 0.319 & 12141.3 & 150.3 \\
