@@ -3,9 +3,12 @@
 
 \section{Introduction}
 
-\paragraph{Evaluation.} Unsupervised learning systems like Multimorph are inherently difficult to evaluate. This is because, unlike supervised learning, the correct answers--e.g., the correct
-categories for the input examples are basically unknown. They are not supplied to the learner as  any rate. The learner thus has no externally-provided learning targets. 
-Arguably, the main advantage of unsupervised learning is that it can discover novel and potentially useful categories and associations \citep{parsons:2004}. On the other hand, it is very difficult to evaluate previously unknown categories according to precision and recall and other such measures that rely ``answer keys." 
+%\paragraph{Evaluation.} 
+Unsupervised learning systems like Multimorph are inherently difficult to evaluate. 
+%This is because, supervised learning, the correct answers--e.g., the correct
+%categories for the input examples are basically unknown. They are not supplied to the learner, at any rate. 
+%This is because an unsupervised learning system is not provided with explicit learning targets.
+Arguably, the main advantage of unsupervised learning is that it can discover novel and potentially useful categories and associations \citep{parsons:2004}. On the other hand, it is very difficult to evaluate previously unknown categories according to precision and recall. % and other measures that rely ``answer keys." 
 The previously unknown categories in the present study were to be morphological 
 categories that were perhaps going to embody in some way Aronoff's notion of the morphome \citep{aronoff:1994}.  But we did not know the precise form these categories would take. 
 
@@ -14,12 +17,11 @@ categories that were perhaps going to embody in some way Aronoff's notion of the
 
 %Instead, MCMM-generated clusters corresponded roughly to Aronoff's 
 %\emph{morphomes} \citep{aronoff:1994}, 
-
 which can be described as 
 \emph{pre-morphosyntactic} units, i.e., units that have been assembled from 
 phonemes, but have not yet been assigned 
-a syntactic or semantic meaning. However,  I use the term \emph{morph} in what follows, since it is a less loaded term than either
-either morpheme or morphome.
+a syntactic or semantic meaning. I use the term \emph{morph} to refer to such units in what follows, since it is a less loaded term than either
+either \emph{morpheme} or \emph{morphome}.
 %\emph{morphome}, since MCMM-generated clusters may not correspond 
 %precisely to morphomes in every case (see section REF). %~\ref{sec:targets}).
 
@@ -50,38 +52,1171 @@ The qualitative component of the evaluation consisted mainly in directly (or ``m
 
 \section{Quantitative Evaluation}
 \subsection{Intrinsic Evaluation}
-An \emph{intrinsic} evaluation regards a system as a stand-alone system and its output as an end unto itself. That is, an intrinsic evaluation thus evaluates a system directly, on its on terms; any other system is irrelevant. 
+An \emph{intrinsic} evaluation regards a system as a stand-alone system and its output as an end unto itself. An intrinsic evaluation thus judges a system's output directly as opposed to indirectly via the performance of a downstream system. However, intrinsic evaluations still require some \emph{externally-generated} standard against which to measure a system's performance. Such a standard is called a \emph{gold standard} and generally consists of a set of ``correct answers'' that humans have had some part in creating.
+%That is, an intrinsic evaluation thus evaluates a system directly, on its on terms; any other system is irrelevant. 
 %disregards 
 % as independent and isolated from other systems, examining its 
 %output directly. That is, the system is evaluated as a stand-alone application, on its
 %on terms, as it were,
 %not as one embedded in a larger system.
 
-The intrinsic component of the evaluation compares an MCMM-generated clustering to a 
-\emph{gold-standard categorization}.\footnote{By convention, 
-gold-standard clusters are not actually called clusters, 
-but (gold-standard) \emph{categories}.} 
+The present study's intrinsic evaluation component thus required a \emph{gold-standard categorization} against which to evaluate Multimorph's clusterings,\footnote{Note the use of the word {categorization} instead of \emph{clustering} in the term \emph{gold-standard categorization}. 
+By convention, gold-standard clusters are not actually called clusters, but rather 
+but (gold-standard) \emph{categories}}, and thus measure the precision and recall of Multimorph clusterings. 
+%We thus compare system-generated clusterings to a gold-standard categorization.}
+
+In supervised learning, the training process requires that each learning example (or data point) by a target label, i.e., the ``correct answer,'' as it were. %old-standard (or target) category. Supervised systems need the target labels to learn.
+ These target labels later serve as the gold-standard labels evaluating the trained model. In supervised learning, therefore, it is trivial to obtain a gold-standard for evaluation; if a model was trained at all, then the gold standard already exists. By contrast, in unsupervised learning, obtaining a gold-standard dataset can be much less straightforward. One problem, as mentioned above, is that unsupervised learning is by nature open-ended; it is supposed result in the discovery of categories and relationships.  
+
+Another difficulty (where obtaining a gold standard is concerned) is the 
+form-centric nature of Multimorph's learning domain. Multimorph learns morphs, 
+which are autonomous morphological categories, as discussed in chapter~\ref{autonomous}. 
+They mediate between phonology and morphosyntax, but are at the same time independent 
+of both of these levels of structure. It is thus not always clear what the morphs are in a 
+given data set. In As intermediate units that are unconstrained by meaning, they tend 
+to be whatever they need to be in order to bridge the gap between phonological units 
+and meaning (syntax and semantics).  There are thus not many morphomic lexicons 
+or corpora wherein autonomous morphological units are annotated. There are no 
+such resources for Hebrew.
+
+There is in fact no ideal choice for a gold-standard dataset for Multimorph, 
+not at the present time, at any rate. One of motivating factors behind this 
+thesis is that not much is currently know about the autonomous morphologies 
+of particular languages, and that unsupervised learning can contribute to the 
+process of discovering autonomous morphological categories. At the same time, 
+however, this means that gold-standard datasets are not going to be forthcoming. 
+I chose to include this intrinsic evaluation component largely as means 
+to supplement and support the highly experimental extrinsic evaluation 
+component.  It was an exercise in maximizing the utility of less-than-ideal data, data that was not really
+suitable to the present study.
+
+As described in chapter~\ref{ch:experi}, the source of Multimorph's input words was the 
+Berman Longitudinal Corpus. Each word in this corpus is both (quasi-)phonetically transcribed as well as morphologically annotated, as described in chapter~\ref{ch:experi} (see in particular section~\ref{sec:morph-annotation}).
+%i.e., labeled with morphological categories. 
+%Each word thus comes with a 
+%morphological analysis consisting of one or more morphological categories (see \ref{sec:morph-annotation}).
+The first step in 
+building the gold-standard data was to extract each word's morphological analysis 
+or analyses (section~\ref{sec:extr}). 
+
+\begin{figure}[t]
+\begin{mdframed}
+\begin{tabbing}
+\hspace{1in} \= \hspace{5.5in} \kill
+hes\a'{i}gu \> pos:v\&root:nsg\&ptn:hifil\&tense:past\&pers:3\&gen:unsp\&num:pl \\
+hev\a'{a}nt \> pos:v\&root:byn\&ptn:hifil\&tense:past\&pers:2\&gen:fm\&num:sg \\
+hev\a'{a}nti \> pos:v\&root:byn\&ptn:hifil\&tense:past\&pers:1\&gen:unsp\&num:sg \\
+hev\a'{e}\textipa{P}nu \> pos:v\&root:bw\textipa{P}\&ptn:hifil\&tense:past\&pers:1\&gen:unsp\&num:pl \\
+hev\a'{e}\textipa{P}t \> pos:v\&root:bw\textipa{P}\&ptn:hifil\&tense:past\&pers:2\&gen:fm\&num:sg \\
+hev\a'{e}\textipa{P}ta \> pos:v\&root:bw\textipa{P}\&ptn:hifil\&tense:past\&pers:2\&gen:ms\&num:sg \\
+hev\a'{e}\textipa{P}tem \> pos:v\&root:bw\textipa{P}\&ptn:hifil\&tense:past\&pers:2\&gen:ms\&num:pl \\
+hev\a'{e}\textipa{P}ti \> pos:v\&root:bw\textipa{P}\&ptn:hifil\&tense:past\&pers:1\&gen:unsp\&num:sg \\
+hev\a'{i}n \> pos:v\&root:byn\&ptn:hifil\&tense:past\&pers:3\&gen:ms\&num:sg \\
+hev\a'{i}na \> pos:v\&root:byn\&ptn:hifil\&tense:past\&pers:3\&gen:fm\&num:sg \\
+\vdots \> \vdots \\
+\end{tabbing}
+\caption{Morphological analyses extracted from the Berman Longitudinal Corpus.}
+\label{fig:analyses}
+\end{mdframed}
+\end{figure}
+
+%I stated in chapter~\ref{autonomous}
+%The intrinsic component of this study's evaluation compares an MCMM-generated clustering to a 
+%\emph{gold-standard categorization},  computing its precision and recall according to the extent to which it matches the gold-standard categorization. 
+
 An MCMM's output consists of 
 %Given the final valuations in the MCMM matrices $\mathbf{M}$ and $\mathbf{C}$,
-the final values in the matrices $\mathbf{M}$ and $\mathbf{C}$.
-Given these values, one can derive a list of word-to-cluster mappings; 
-each mapping, or item, in this list
-consists of a word followed by a list of cluster labels, i.e., labels pointing to
-the clusters in which the word has membership, 
+the matrices $\mathbf{M}$ and $\mathbf{C}$. As described in chapter~\ref{sec:MCMM}, the $\mathbf{M}$ contains a cluster-membership vector for each data point (i.e., word), while the matrix $\mathbf{C}$ contains each cluster's average vector, i.e., a vector whose active features are the active features across all of the cluster's members have in common. Put another way, a cluster is a set of data points, each of which can be described as a set of active features. Though this set differs from data point to data point, even with a cluster, co-members share some active features; that is, there is a non-empty intersection.  A cluster's centroid is the intersection of the active feature sets among a cluster's members.
+(See the example in section~\ref{subsec:example}.) 
+
+A cluster's centroid thus concisely expresses the relationship between the cluster's members, which is, ultimately, the cluster's very meaning. Cluster centroids can therefore be used as cluster labels. In our case, of course, a centroid is a vector consisting of $J$ feature activities, each in the interval $[0,1]$. The $J$ features in centroids correspond to the $J$ features in the data points, and each activity is of course a number, particular one in the interval $[0,1]$. 
+A number of steps are necessary to convert a numerical, multi-dimensional centroid vector to a unit of morphological structure. This process is described in section REF.
+
+%        self.clusters_justWords = []
+%        self.Rv = Rv
+%        self.Mv = Mv
+%        self.Cv = Cv
+%        cdef INT i, k, j, n
+%        cdef INT I = self.Rv.shape[0]
+%        cdef INT K = self.Mv.shape[1]
+%        cdef INT J = self.Cv.shape[0]
+%        #cdef object clusters_m, clusters_mr, clusters_mc, clusters_mcr
+%        #clusters_m = [[] for k in range(K)]
+%        #clusters_mr = [[] for k in range(K)]
+%        clusters_mc = [[] for k in range(K)]
+%        #clusters_mcr = [[] for k in range(K)]
+%        self.clusters_justWords = [[] for k in range(K)]
+%        cdef bint membership = 0
+%        cdef object word_and_val
+%        cdef FLOAT mc = 0.0
+%        # "wordList" is a list of the text-formatted words corresponding to the datapoints (feature vectors).
+%        # the activations matrix M contains I rows (# of data points) and K columns (# of clusters).
+%        # the k-th column in M corresponds to the k-th column in C.
+%        for i in range(I):
+%            # Iterate over the row M[i], which is a row of k elements
+%            # Each k represents a cluster
+%            for k in range(K):
+%                # for each index k, find the kth column in the
+%                # J x K matrix C.
+%                # Then proceed down the j row indices in this column
+%                # until a [j,k] cell is found that meets the membership
+%                # criteria. Only one such cell is needed.
+%
+%                # if self.Mv[i,k] >= thresh:
+%                #     word_and_val = (wordList[i], "{:.4f}".format(self.Mv[i,k]))
+%                #     if word_and_val in clusters_m[k]:
+%                #         pass
+%                #     else:
+%                #         clusters_mcr[k].append(word_and_val)
+%                #     if wordList[i] in self.clusters_justWords[k]:
+%                #         pass
+%                #     else:
+%                #         self.clusters_justWords[k].append(wordList[i])
+%
+%                # if self.Mv[i,k] >= thresh:
+%                #     for j in range(J):
+%                #         if (self.Rv[i,j] >= 0.5):
+%                #             membership = 1
+%                #             break
+%                # if membership == 1:
+%                #     membership = 0
+%                #     word_and_val = (wordList[i], "{:.4f}".format(self.Mv[i,k]))
+%                #     if word_and_val in clusters_mr[k]:
+%                #         pass
+%                #     else:
+%                #         clusters_mr[k].append(word_and_val)
+%                #     if wordList[i] in self.clusters_justWords[k]:
+%                #         pass
+%                #     else:
+%                #         self.clusters_justWords[k].append(wordList[i])
+%
+%                mc = 0.0
+%                for $ \gets j in range(J):
+%                    mc = self.Mv[i,k]*self.Cv[j,k]
+%                    if (mc >= thresh):
+%                        membership = 1
+%                        break
+%                if membership == 1:
+%                    membership = 0
+%                    word_and_val = (wordList[i], "{:.4f}".format(mc))
+%                    if word_and_val in clusters_mc[k]:
+%                        pass
+%                    else:
+%                        clusters_mc[k].append(word_and_val)
+%                    if wordList[i] in self.clusters_justWords[k]:
+%                        pass
+%                    else:
+%                        self.clusters_justWords[k].append(wordList[i])
+\begin{algorithm}
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead 
+\KwIn{$\mathbf{M}$,  $\mathbf{C}$, input words $\mathbf{w}$, \text{threshold} $\theta$, $I$ $J$,$K$} 
+\KwOut{$\mathbf{U}$, a list of $K$ cluster member lists, i.e., $\{\mathbf{u}_k$ for $k \in K\}$, where each $\mathbf{u}_k$ is the list of the $k$th cluster's (active) member words}
+%
+%belong to that cluster.
+%$\text{clusters} \gets \big[\,[\,\,]_0, [\,\,]_1, [\,\,]_2, \,\dots, \, [\,\,]_K \,\big]$\;
+Initialize cluster member lists: $\mathbf{U} = \{\mathbf{u}_0, \mathbf{u}_1, \mathbf{u}_2,\ldots, \mathbf{u}_K\}$ where each $\mathbf{u}_k \gets \emptyset$\;
+\For {$ i \gets 0$ \textbf{to} $I$}{
+	%$w \gets \text{words}[i]$\;
+	\For {$ k  \gets 0$ \textbf{to} $K$}{
+	%$\text{Clusters}[k] \gets \emptyset_k$\;
+	%$\text{vote}_{k,j} \gets 0$\;
+	$j \gets 0$\;
+	%$\text{threshold-met} \gets \textbf{False}$\;
+		%\# Make sure there is at least one $c_{j,k}$ such that $m_{i,k}c_{j,k}\geq \theta$,\;
+		%\# where $\text{vote}_{k,j} = m_{i,k}c_{j,k}$\;
+		%\While {$m_{i,k}c_{j,k} < \theta$ \textbf{and} $j < \textsc{Number-of-Rows}(\textbf{C})$}{
+		\While {$m_{i,k}c_{j,k} < \theta$ \textbf{and} $j < J$}{  \label{line:vote-thresh}
+		%\While {$m_{i,k}c_{j,k} < \theta$ \textbf{and} $j < \textsc{length}({\textbf{C}_{(\bullet,k)})$}{
+		%{$\text{vote}_{k,j} < \theta$ \textbf{and} $j < \textsc{Number-of-Rows}(\textbf{C})$}{  
+			%$\text{vote}_{k,j} \gets m_{i,k}c_{j,k}$\;
+			$j \gets j + 1$\;
+			%$\text{threshold-met} \gets \textbf{True}$\;
+		}
+	%\If{$\text{threshold-met}$}{
+	\If{$m_{i,k}c_{j,k} \geq \theta$}{
+		%$\text{threshold-met} \gets \textbf{False}$\;
+		%$\text{Clusters}[k] \gets \text{Clusters}[k] \cup w_i$\;
+		$\mathbf{u}_k \gets \mathbf{u}_k \cup w_i$\; \label{line:append}
+	}
+	}
+}
+\Return $\mathbf{U}$\;
+\caption{\textsc{Clusters-and-Members}}
+\label{alg:members}
+\end{algorithm}
+
+The purpose of the while loop beginning on line~\ref{line:vote-thresh} is to impose the following constraint on cluster membership: In order for a word to be a member of a given cluster, the cluster must be responsible for at least one active surface unit in the word's reconstruction vector.
+ Recall from chapter~\ref{ch:MCMM} that \emph{votes} in an MCMM are products of the form $m_{i,k}c_{j,k}$, and that the Noisy-OR mixing function requires at least one `\textsc{yes}' vote in order to activate a given reconstruction unit. For Multimorph's purposes, a vote is treated as a `\textsc{yes}' vote as long as it satisfies the criterion 
+ \begin{equation}\label{eq:vote-criterion}
+ m_{i,k}c_{j,k} \geq \theta_{\text{mc}}
+ \end{equation}
+ where $\theta_{\text{mc}}$ is a threshold. 
+ The while loop on \ref{line:vote-thresh} always begins with a particular $k$ index supplied 
+ by the loop within which it is nested. We will call this $k$ the index of the current cluster. 
+ The while loop proceeds to increment the index $j$ and thus descend the cells of the ($k$th) 
+ column in $\mathbf{C}$ (i.e., the current cluster's centroid vector). Each new $j$ corresponds 
+ to a different cell, i.e., a different  $c_{j,k}$, and thus a different vote $m_{i,k}c_{j,k}$. 
+ The procedure visits each cell in turn until it finds a `\textsc{yes}' vote, i.e., a $c_{j,k}$ 
+ such that the vote $m_{i,k}c_{j,k}$ exceeds the threshold $\theta_{\text{mc}}$. The 
+ procedure only needs to find one `\textsc{yes}' to verify that there is at least one \emph{active}
+ surface unit associated with the current cluster. Thus, the while loop terminates upon finding 
+ such a vote, whereupon
+the current ($i$th) word is appended to the active members of the current cluster (line~\ref{line:append}). 
+The procedure iterates through the entire input wordlist and appends words to clusters member lists 
+whenever criterion \eqref{eq:vote-criterion} is satisfied. It outputs each cluster's list of active member words.
+ 
+ 
+% \theta$ $1$ (or close to $1$) for at least one $k \in K$ in order for $r_{i,j}$ to be $1$ (or close to $1$). The constraint imposed on line~\ref{line:vote-thresh} thus ensures that 
+%\begin{algorithm}
+%\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead 
+%\KwIn{A set $C = \{c_1, c_2, \ldots, c_r\}$ of denominations of coins, where $c_i > c_2 > \ldots > c_r$ and a positive number $n$}
+%\KwOut{A list of coins $d_1,d_2,\ldots,d_k$, such that $\sum_{i=1}^k d_i = n$ and $k$ is minimized}
+%$C \gets \emptyset$\;
+%\For{$i \gets 1$ \textbf{to} $r$}{
+%  \While{$n \geq c_i$} {
+%    $C \gets C \cup \{c_i\}$\;
+%    $n \gets n - c_i$\;
+%  }
+%}
+%\Return{$C$}\;
+%\caption{{\sc Change} Makes change using the smallest number of coins}
+%\label{algo:change}
+%\end{algorithm}
+
+In this way, the $\mathbf{M}$ and $\mathbf{C}$ matrices together provide all the information necessary 
+to derive a list of word-to-cluster mappings: The $\mathbf{M}$ 
+matrix tells us the indices of the clusters to which a given data point (or word) 
+belongs, and the $\mathbf{C}$ matrix provides a meaningful cluster label for each 
+cluster index. Each word-to-cluster mapping thus 
+consists of a word followed by a list of cluster labels.  
 as in ``runs: run, -s,"  where \textit{runs} is the word, and \textit{run} and \textit{-s} 
 are the labels of the clusters to which \textit{runs} belongs. These labels also represent 
 morphs. That is, e.g., \emph{-s} represents a cluster whose words end with the morph 
-\emph{-s}.
+\emph{-s}. 
 
-To evaluate a list of mappings like ``runs: run, -s," we need an analogous 
-gold-standard list, one that supplies, for each word, a list of gold-standard \emph{categories}.
-%(i.e., the categories to which the word belongs). 
-This is to say that we need a gold-standard morphological analysis for each word. 
-We needed different gold standard lists for the orthographic and transcribed datasets, 
-since these datasets come from different sources, and their respective gold standards must 
-be obtained through separate means.
+%To evaluate a list of mappings like ``runs: run, -s," we need an analogous 
+%gold-standard list, one that supplies, for each word, a list of gold-standard \emph{categories}.
+%This is to say that we need a gold-standard morphological analysis for each word. 
+%We needed different gold standard lists for the orthographic and transcribed datasets, 
+%since these datasets come from different sources, and their respective gold standards must 
+%be obtained through separate means.
+
+\subsection{Gold Standard Categories}
+
+\subsubsection{Verbs} 
+
+\begin{figure}[tb!]
+ \begin{center}
+ %\footnotesize
+ \setlength{\extrarowheight}{8pt}
+ \begin{tabular}{lcccc}
+ \toprule
+    & \multicolumn{2}{c}{Past} & \multicolumn{2}{c}{Future} \\
+    & \textit{Sg} & \textit{Pl} & \textit{Sg} & \textit{Pl} \\
+\cmidrule{2-3}  \cmidrule{4-5}
+   \textit{1.m/f} & hi-tx\'{i}l-ti & hitx\'{i}l-nu & \textipa{P}etx\'{i}l & na-tx\'{i}l\\
+   \hline
+   \textit{2.m} &  hitx\'{i}l-ta & hitx\'{i}l-tem  &  ta-tx\'{i}l & \\
+   \textit{2.f} & hitx\'{i}l-t & hitx\'{i}l-ten &  ta-txil\'{i} & \raisebox{1.5ex}[0pt]{ta-txil-\'{u}}\\
+   \hline
+   \textit{3.m} & hi-tx\'{i}l &   &  ya-tx\'{i}l &\\
+   \textit{3.f} & hi-txil-\'{a} & \raisebox{1.5ex}[0pt]{hi-txil-\'{u}} &  ta-tx\'{i}l & \raisebox{1.5ex}[0pt]{ya-txil-\'{u}} \\
+   \bottomrule
+ \end{tabular}
+ \caption{Past and future-tense paradigms for the root \textit{t.x.l} in the \textit{Hif'il} binyan.}
+ \label{fig:paradigms}
+ \end{center}
+ \end{figure}
+ 
+% \begin{figure}[tb!]
+% \begin{center}
+% %\footnotesize
+% \begin{tabular}{lcccc}
+% \toprule
+%    & \multicolumn{2}{c}{Past} & \multicolumn{2}{c}{Future} \\
+%    \cmidrule{2-3}  \cmidrule{4-5}
+%    & \textit{Sg.} & \textit{Pl.} & \textit{Sg.} & \textit{Pl.} \\
+%\cmidrule{2-3}  \cmidrule{4-5}
+%   \textit{1.m/f} & gam\'ar-ti & garm\'ar-nu & \textipa{P}etx\'{i}l & na-tx\'{i}l\\
+%   \hline
+%   \textit{2.m} & gam\'ar-ta & gam\'ar-tem  &  tigm\'{o}r & \\
+%   \textit{2.f} & \raisebox{1.5ex}[0pt]{htxil-t} & htxil-tn &  ta-txil\'{i} & \raisebox{1.5ex}[0pt]{ta-txil-\'{u}\\
+%   \hline
+%   \textit{3.m} & gam\'ar &   &  yi-gm\'{o}r & yi-gmer\'{u} \\
+%   %\cline{1-2}
+%   \textit{3.f} & gamr-\'{a} & \raisebox{1.5ex}[0pt]{gamr-\'{u}} &  ta-tx\'{i}l & \raisebox{1.5ex}[0pt]{ya-txil-\'{u}} \\
+%   \bottomrule
+% \end{tabular}
+% \caption{Past and future-tense paradigms for the root \textit{t.x.l} in the \textit{Hif'il} binyan.}
+% \label{fig:paradigms}
+% \end{center}
+% \end{figure}
+ The BLC uses the traditional conjugational categories for verbs, i.e., categories corresponding to the cells in a conjugation paradigm.
+ % %For every cell in figure~\ref{fig:paradigms}, there is a 
+% \textsc{mila-ma} represents verbal inflections for person, number, and gender in %composite 
+% \texttt{person/gender/number} (or \texttt{PGN}) features taking values like \texttt{3p/F/Sg} and \texttt{2p/M/Sg}. However, there is not always a one-to-one correspondence between such category labels and the actual distinctions in form. Consider, for example, the verb \textit{ttxil} `she/you will begin'. In the absence of context, this form is entirely ambiguous; it can be either \textsc{2.m.sg} or \textsc{3.f.sg}. \textsc{mila-ma} produces a separate analysis for each possibility, giving rise to two distinct \texttt{PGN} categories, namely \texttt{PGN:2/M/Sg} and \texttt{PGN:3/F/Sg}, where only one form exists. This is similar to the problem of negative and unmarked categories: an MCCM has no means of making a distinction where none exists in the feature representations.
+
+\texttt{fut\%(2\%M)|(23\%F)}
+\texttt{hifil\%prefix\_stem}
+\texttt{past\%2\%M\%Sg}
+\texttt{fut\%1\%Sg}
+\texttt{qal\%prefix\_stem}
+\texttt{nifal\%suffix\_stem}
+\texttt{fut\%3\%M}
+\texttt{past\%3\%F\%Sg}
+\texttt{fut\%3\%M}
+\texttt{past\%2\%M\%Sg}
+\texttt{past\%3\%Pl}
+\texttt{past\%2\%F\%Sg}
+\texttt{past\%1\%Sg}
+\texttt{past\%2\%F\%Sg}
+\texttt{(past\%3\%Pl)|(fut\%23\%Pl)}
+
+      \begin{table}[h!]
+      \small
+      \begin{center}
+      \begin{tabular}{ccc}
+      %\multicolumn{3}{c}{\textit{mzkir}  `he reminds'} \\
+      \toprule
+       & \texttt{sg} & \texttt{pl} \\
+      \midrule
+      \texttt{m} & ma-zk\'{i}r & ma-zkir-\'{i}m \\
+      \hline
+      \texttt{f} & ma-zk\'{i}r-\'{a} & ma-zkir-\'{o}t \\
+      \bottomrule
+      \end{tabular}
+      \end{center}
+      \label{tab:hifil-part}
+      \caption{Inflections of {\textit{mzkir}  `he reminds'}}
+    \end{table}
+    
 
 
+%A_{m,n} = 
+% \begin{pmatrix}
+%  a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
+%  a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\
+%  \vdots  & \vdots  & \ddots & \vdots  \\
+%  a_{m,1} & a_{m,2} & \cdots & a_{m,n} 
+% \end{pmatrix}
+ 
+ 
+\subsubsection{Nominals}
+
+Figure~
+\begin{figure}{ht!}
+\begin{mdframed}
+\begin{tabbing}
+\hspace{1in} \= \hspace{5.5in} \kill
+pas \> pos:n\&gen:ms\&num:sg\&stat:u\\
+pas\a'{e}y \> pos:n\&gen:ms\&num:pl\&stat:cstr pos:n\&gen:ms\&num:pl\&stat:cstr\\
+pas\a'{i}m \> pos:n\&\&gen:ms\&num:pl\&stat:abs\\
+%qi\v{s}q\a'{u}\v{s} \> pos:n\&gen:ms\&num:sg\&stat:u\\
+%qi\v{s}u\textipa{P}\a'{i}m \> pos:n\&root:q\v{s}	extipa{P}\&ptn:CiCuC\&gen:ms\&num:pl\&stat:abs\\
+%qi\v{s}u\UTF{1E6D}\a'{i}m \> pos:n\&root:q\v{s}\UTF{1E6D}\&ptn:CiCuC\&gen:ms\&num:pl\&stat:abs\\
+%qi\v{s}\a'{u}\textipa{P} \> pos:n\&root:q\v{s}\textipa{P}\&ptn:CiCuC\&gen:ms\&num:sg\&stat:u\\
+%qi\v{s}\a'{u}\UTF{1E6D} \> pos:n\&root:q\v{s}\UTF{1E6D}\&ptn:CiCuC\&gen:ms\&num:sg\&stat:u\\
+qvuc\a'{a} \> pos:n\&root:qbc\&ptn:CCuCa\&gen:fm\&num:sg\&stat:u\\
+qvuc\a'{o}t \> pos:n\&root:qbc\&ptn:CCuCa\&gen:fm\&num:pl\&stat:u \\
+zriq\a'{a} \> pos:n\&root:zrq\&ptn:CCiCa\&gen:fm\&num:sg\&stat:u \\
+zriq\a'{a}t	 \> pos:n\&root:zrq\&ptn:CCiCa\&gen:fm\&num:sg\&stat:cstr \\
+%qlaf \> pos:n\&root:qlp\&ptn:CCaC\&gen:ms\&num:sg\&stat:u\\
+%qlaf\a'{i}m \> pos:n\&root:qlp\&ptn:CCaC\&gen:ms\&num:pl\&stat:abs\\
+%siman\a'{i}m \> pos:n\&root:sym\&ptn:CiCan\&gen:ms\&num:pl\&stat:abs\\
+%sim\a'{a}n \> pos:n\&root:sym\&ptn:CiCan\&gen:ms\&num:sg\&stat:u\\
+%sin\a'{a}r \> pos:n\&root:snr\&ptn:CiCaC\&gen:ms\&num:sg\&stat:u\\
+%sin\a'{o}r \> pos:n\&root:snr\&ptn:CiCoC\&gen:ms\&num:sg\&stat:u\\
+%sipr\a'{a} \> pos:v\&root:spr\&ptn:piel\&tense:past\&pers:3\&gen:fm\&num:sg\\
+%sipr\a'{u} \> pos:v\&root:spr\&ptn:piel\&tense:past\&pers:3\&gen:unsp\&num:pl\\
+%sipur\a'{e}y \> pos:n\&root:spr\&ptn:CiCuC\&gen:ms\&num:pl\&stat:cstr\\
+%sipur\a'{i}m \> pos:n\&root:spr\&ptn:CiCuC\&gen:ms\&num:pl\&stat:abs\\
+%sip\a'{a}rnu \> pos:v\&root:spr\&ptn:piel\&tense:past\&pers:1\&gen:unsp\&num:pl\\
+%sip\a'{a}rt \> pos:v\&root:spr\&ptn:piel\&tense:past\&pers:2\&gen:fm\&num:sg\\
+%sip\a'{a}rta \> pos:v\&root:spr\&ptn:piel\&tense:past\&pers:2\&gen:ms\&num:sg\\
+%sip\a'{a}rti \> pos:v\&root:spr\&ptn:piel\&tense:past\&pers:1\&gen:unsp\&num:sg\\
+%sip\a'{e}r \> pos:v\&root:spr\&ptn:piel\&tense:past\&pers:3\&gen:ms\&num:sg\\
+%wilon\a'{o}t \> pos:n\&root:wln\&ptn:CiCoCa\&gen:fem\&num:pl\&stat:u\\
+%wil\a'{o}n \> pos:n\&root:wyl\&ptn:CiCon\&gen:ms\&num:sg\&stat:u\\
+%tmun\a'{a} \> pos:n\&root:mnh\&ptn:CCuCa\&gen:fm\&num:sg\&stat:u\\
+%tmun\a'{o}t \> pos:n\&root:mnh\&ptn:CCuCa\&gen:fm\&num:pl\&stat:u\\
+\end{tabbing}
+\caption{BLC morphological analyses for nouns}
+\label{fig:blc-nouns}
+\end{mdframed}
+\end{figure}
+
+Hebrew nominals, i.e., adjectives and nouns, inflect for gender and number. However, as discussed in chapter~\ref{autonomous}, particularly section~\ref{sec:heb-example}, the Hebrew inflectional endings for nominals are \emph{fusional}; it is impossible to separate the  masculine plural suffix \textit{-im} into 
+distinct singular and plural components. The same is true of the feminine plural suffix \textit{-ot}. (See section~\ref{sec:heb-example} for the full argument.)  Thus,\dots
+We modify the BLC's atomic categories so that they better reflect Hebrew's fusional suffixes. That is, we merge \texttt{masculine} and \texttt{plural} into the single category \texttt{M\%Pl}. Likewise, \texttt{feminine} and \texttt{plural} become \texttt{F\%Pl}, and \texttt{feminine} and \texttt{singular} become \texttt{F\%Sg}.
+
+The forms of Hebrew nouns also depend on whether they are in the \emph{absolute state} or the \emph{construct state}, as illustrated in table~\ref{tab:cstr-endings}. The absolute state is the canonical state, the state of a noun in isolation, whereas the construct state is the state that licenses a noun to link up to another noun and form a compound, as in \textit{pas\'{e}y raq\'{e}vet} `ribbons-of train' or `train tracks'. The noun \textit{pas\'{e}y} exhibits the construct ending for masculine plural nouns, namely \textit{-\'{e}y}. 
+In table~\ref{tab:cstr-endings}, we see that the \textit{-\'{e}y} construct ending corresponds to the absolute ending -\textit{-\'{i}m}. Similarly, the ending \textit{-\'{a}t} feminine singular construct endingcorresponds to the absolute \textit{-\'{a}}. 
+%However, the  Thewith another noun to form a compound noun. When isolated, nouns are in the \emph{absolute} state. For example, \dots
+%\begin{exe}
+%noun(construct)  noun(absolute)
+%\end{exe}
+%\dots Table~\ref{tab:cstr-endings} shows the absolute and construct forms for both masculine noun and a feminine %noun. 
+However, the other two inflectional categories, namely the masculine singular and the feminine plural, have identical absolute and construct forms. Or, to put it another way, the construct state has no identifiable exponent in these two categories
+
+
+%   \begin{table}[h!]
+%      \small
+%      \centering
+%      \begin{tabular}{ccccc} 
+% \toprule
+% &  \multicolumn{2}{|c|}{masc. noun} & \multicolumn{2}{|c|}{fem. noun}
+% &  sg. & pl.\\
+% \cmidrule(lr){2-3} \cmidrule(lr){4-5}
+%masc. & pas & pasim \\
+%  fem. &	qvuc\'{a}	& qvuc\'ot \\	
+%    \bottomrule
+%    \end{tabular}
+%    \label{tab:cstr-endings}
+%    \caption{Fusional noun endings.}
+%    \end{table}
+    
+ 
+   \begin{table}[h!]
+      \small
+      \centering
+      \setlength{\extrarowheight}{8pt}
+      \begin{tabular}{ccccc} 
+ \toprule
+ &  \multicolumn{2}{c}{masc. noun} & \multicolumn{2}{c}{fem. noun} \\
+ &  sg. & pl. & sg. & pl. \\
+ \cmidrule(lr){2-3} \cmidrule(lr){4-5}
+    absolute & pas & pasim  & qvuc\'{a}	& qvuc\'{o}t \\
+    construct & pas & pasey	& qvuc\'{a}t	& qvuc\'{o}t\\
+    \bottomrule
+    \end{tabular}
+    \label{tab:cstr-endings}
+    \caption{Masculine and feminine construct forms.}
+    \end{table}
+    
+%\textipa{Q}alul\a'{a} \> pos:adj\&root:\textipa{Q}ll\&ptn:CaCuC\&gen:fm\&num:sg\&src:deverb\\
+%\textipa{Q}alul\a'{i}m \> pos:adj\&root:\textipa{Q}ll\&ptn:CaCuC\&gen:ms\&num:pl\&src:deverb\\
+
+\begin{figure}[t]
+\begin{mdframed}
+\begin{tabbing}
+\hspace{1in} \= \hspace{5.5in} \kill
+nexmad\a'{a} \> pos:adj\&root:xmd\&ptn:niCCaC\&gen:fm\&num:sg\&src:deverb\\
+nexmad\a'{i}m \> pos:adj\&root:xmd\&ptn:niCCaC\&gen:ms\&num:pl\&src:deverb\\
+nexmad\a'{o}t \> pos:adj\&root:xmd\&ptn:niCCaC\&gen:fm\&num:pl\&src:deverb\\
+nexm\a'{a}d \> pos:adj\&root:xmd\&ptn:niCCaC\&gen:ms\&num:sg\&src:deverb\\
+\end{tabbing}
+\caption{Morphological analyses extracted from the Berman Longitudinal Corpus. These entries are the inflections
+of the adjective \textit{nexmad} `pleasant.'}
+\label{fig:analyses}
+\end{mdframed}
+\end{figure}
+
+   \begin{table}[h!]
+      \small
+      \centering
+       \setlength{\extrarowheight}{8pt}
+      \begin{tabular}{ccc} 
+ \toprule
+ & sg. & pl. \\
+\cmidrule{2-3}
+    masc. & nexmad & nexmad-\'{i}m \\
+    fem. &  nexmad-\'{i} & nexmad-\'{o}t \\
+    \bottomrule
+    \end{tabular}
+    \label{tab:cstr-endings}
+    \caption{Inflections of the adjective \textit{nexmad} `pleasant'}
+    \end{table}
+
+%\begin{table}[ht]
+%\begin{center}
+%\subtable[maqomi `local' \label{subtab:fusion:1}]{
+%\setlength{\extrarowheight}{8pt}
+%{\begin{tabular}{lcc}
+%\  & masc & fem  \\
+%\hline 
+%sg & maqom-i & meqom-i-t  \\
+%pl & meqom-iy-im & meqom-iy-ot  \\
+%\end{tabular}}
+%}
+%\subtable[gadol `big' \label{subtab:fusion:2}]{
+%\setlength{\extrarowheight}{8pt}
+%{\begin{tabular}{lcc}
+%\  & masc & fem  \\
+%\hline 
+%sg & gadol & gdol-a  \\
+%pl & gdol-im & gdol-ot  \\
+%\end{tabular}}
+%}
+%\label{tab:fusion}
+%\caption{Fusional suffixes in Hebrew nominals}
+%\end{center}
+%\end{table}
+
+\begin{table}[ht]
+\centering
+\setlength{\extrarowheight}{8pt}
+\begin{tabular}{lcc}
+\toprule
+& sg. & pl.  \\
+\cmidrule(lr){2-3}
+masc. & maqom-i &  meqom-iy-im\\
+fem. & meqom-i-t  & meqom-iy-ot  \\
+\bottomrule
+\end{tabular}
+\label{tab:der-adjs}
+\caption{Inflections of the derivational adjective \textit{maqom\'{i}} `local,' derived from the noun for \textit{maqom} `place'}
+\end{table}
+
+%\texttt{cstr\%f\%mass}
+%\texttt{cstr\%f\%sg}
+%\texttt{cstr\%m\%mass}
+%\texttt{cstr\%m\%pl}
+%\texttt{cstr\%m\%sg}
+%\textit{state} \% \textit{gender} \% \textit{number}
+%\textit{adj}\%\textit{m}\%\textit{sg}
+
+%\begin{exe}
+%\ex \label{ex:cstr:pasey}
+%	\textsf{pas\'{e}y+ha+rak\textipa{\'{e}}vet} \\
+%	\textsf{n:det|+n|pas\&gen:ms\&num:pl\&stat:comp-\'{e}y+det|ha+n|rak\textipa{\'{e}}vet}
+%\ex \label{ex:cstr:shaat} 
+%	\textsf{\v{s}\textglotstop{at}+sip\'{u}r .} \\
+%	\textsf{n|+n|\v{s}a\textipa{Q}\'a\&gen:fm\&num:sg\&stat:comp-\'at+n|sip\'ur .}
+%\ex \label{ex:cstr:bdiqat} 
+%	\textsf{bdiq\'{a}t+\textipa{P}ozn\'{a}yim} \\ 
+%	\textsf{n|bdiq\'{a}\&root:tbd\&ptn:tbd\&gen:fm\&num:sg\&stat:bound-\'{a}t}
+%\end{exe}
+
+\paragraph{Participles.}
+All binyanim except the qal and nifal use the prefix stem to form the participle. To deal with the qal and nifal participles, we add the constraints qal:participle and nifal:participle.
+%def analysisFilter(analyses_str):
+%	new_analyses = list()
+%	analyses=analyses_str.split()
+%	if "pos:part" in analyses_str:
+%		####print "**",analyses_str
+%		for analysis in analyses:
+%			if "pos:v" in analysis:
+%				continue
+%			elif "pos:adj" in analysis:
+%				continue
+%			elif "pos:n" in analysis:
+%				continue
+%			else: new_analyses.append(analysis)
+%		return new_analyses
+%	else:
+%		return analyses
+%	elif pos == "part":
+%		#pat = ur"(ptn:)([a-zC]+)(&tense:)(past)(&pers:3&gen:f&num:sg)(&|$)"
+%		#pat = ur"(pos:)(part)(&[^\s]*)(&ptn:)([a-zC]*)(&[^\s]*)(&gen:)([mfu])(&num:)([sgplundoma]+)(&|$)"
+%		#pat = ur"(pos:)(part)(&root:[^\s]+&ptn:)([a-zC]*)(&[^\s]*)(gen:)([mascfemunsp]+)(&num:)([sgplundoma]+)(&|$)"
+%		pat = ur"(pos:)(part)([^\s]*&root:[^\s]+)(&ptn:)([a-zC]*)(&[^\s]*)(gen:)([mascfemunsp]+)(&num:)([sgplundoma]+)(&|$)"
+%		re_part = re.compile(pat, re.UNICODE)
+%		#analysis = re_part.sub(ur"\5%prefix_stem&\8%\10\11\6", analysis)
+%		if ptn == "qal":
+%			#1 (pos:)
+%			#2 (part)
+%			#3 ([^\s]*&ptn:)
+%			#4 ([a-zC]*) the actual pattern
+%			#5 (&[^\s]*)
+%			#6 (gen:) 
+%			#7 ([mascfemunsp]+)  # gender val
+%			#8 (&num:)
+%			#9 ([sgplundoma]+)    # number val
+%			#10(&|$)
+%			analysis = re_part.sub(ur"\3&\5%participle&\8%\10\6", analysis)
+%			# stemFeature = binyan + "%participle"
+%			# processedFeatures.append(stemFeature)
+%		elif ptn == "nifal":
+%			analysis = re_part.sub(ur"\3&\5%suffix_stem&\8%\10\6", analysis)
+%			# stemFeature = binyan + "%suffix_stem"
+%			# processedFeatures.append(stemFeature)
+%		else:
+%			analysis = re_part.sub(ur"\3&\5%prefix_stem&\8%\10\6", analysis)
+			
+			
+\subsubsection{Pronominals}
+
+\begin{table}[ht]
+\centering
+\setlength{\extrarowheight}{8pt}
+\begin{tabular}{llcc}
+\toprule
+     & & sg. & pl. \\
+     \midrule
+    1 & m/f &  \textipa{P}an\'{i} & \textipa{P}an\'{a}xnu / \textipa{P}\'{a}nu \\
+    \midrule
+   & masc &  \textipa{P}at\'{a}  &  \textipa{P}at\'{e}m\\
+   \raisebox{1.5ex}[0pt]{2} & fem & \textipa{P}at  &  \textipa{P}at\'{e}n\\
+   \midrule
+   & masc & hu\textipa{P}  & hem\\    
+   \raisebox{1.5ex}[0pt]{3} & fem  & hi\textipa{P} &  hen \\
+    \bottomrule
+\end{tabular}
+\label{tab:pers-pronouns}
+\caption{Personal pronouns}
+\end{table}
+
+
+%\begin{tabbing}
+%\hspace{1in} \= \hspace{5.5in} \kill
+%\v{s}ehem \> pre:sh\&pre:sh\&pos:pro\_person\&pers:3\&gen:ms\&num:pl pre:sh\&pos:pro\_person\&pers:3\&gen:ms\&num:pl\\
+%\v{s}ehen \> pre:sh\&pre:sh\&pos:pro\_person\&pers:3\&gen:fm\&num:pl\\
+%\v{s}e\textipa{P}an\a'{i} \> pre:sh\&pos:pro\_person\&pers:1\&num:sg pre:sh\&pos:pro\_person\&pers:1\&num:sg pre:sh\&pos:pro\_person\&pers:1\&num:sg pre:sh\&pre:sh\&pos:pro\_person\&pers:1\&num:sg\\
+%\v{s}e\textipa{P}at\UTF{00E1} \> pre:sh\&root:\textipa{P}yt\&ptn:CaCa\&pre:sh\&pos:pro\_person\&pers:2\&gen:ms\&num:sg\\
+%\v{s}e\textipa{P}at\UTF{00E9}m \> pre:sh\&root:\textipa{P}ty\&ptn:CaCy\&pre:sh\&pos:pro\_person\&pers:2\&gen:ms\&num:pl\\
+%\textipa{P}an\UTF{00E1}xnu \> pos:pro\_person\&pers:1\&num:pl\\
+%\textipa{P}an\a'{i} \> pos:pro\_person\&pers:1\&num:sg\\
+%\textipa{P}at\UTF{00E9}m \> pos:pro\_person\&pers:2\&gen:ms\&num:pl\\
+%\textipa{P}at\UTF{00E9}n \> pos:pro\_person\&pers:2\&gen:fm\&num:pl\\
+%hu\textipa{P} \> pos:pro\_person\&pers:3\&gen:ms\&num:sg \\
+%hi\textipa{P} \> pos:pro\_person\&pers:3\&gen:fm\&num:sg \\
+%\end{tabbing}
+%
+%		pat = ur"(\t|&)(pos:)([^\s]*pro[^\s]*)(&[^\s]*pers:)([123]+)(&gen:)([fsemunsp]+)(&num:)([sgplduoun]+)(&|$)"
+%		re_pro = re.compile(pat, re.UNICODE)
+%		# 1. (\t|&)
+%		# 2. (pos:)
+%		# 3. ([^\s]*pro[^\s]*)
+%		# 4. (&[^\s]*pers:)
+%		# 5. ([123]+) ACTUAL PERSON
+%		# 6. (&gen:)
+%		# 7. ([fsemunsp]+) ACTUAL GENDER
+%		# 8. (&num:)
+%		# 9. ([sgplduoun]+) ACTUAL NUMBER
+%		# 10. (&|$)
+%		analysis = re_pro.sub(ur"\1\3\%\5\%\7\&\3\%\5\%\7\%\9\10", analysis)
+%		*pro*\%[pers]\%[gen]  \&    *pro*\%[pers]\%[gen]\%[num]
+	
+%	pat = ur"(^.*)(pro:)([^&]+)(&|$)((?:&[^\s]*$)|$)"
+%	re_protype = re.compile(pat, re.UNICODE)
+%	if re_protype.search(analysis) != None and re_protype.search(analysis) != "":
+%		pro\_type = re\_protype.sub(ur"\3", analysis)
+%	analysis = analysis.replace("xxxxxxxxxx:", "pro\_suf\_state&pro\_suf:")
+	
+%\textipa{Q}al\a'{a}yw \> root:\textipa{Q}yl\&ptn:CaC\&pos:prep:pro\&pers:3\&gen:ms\&num:sg pos:n\&gen:ms\&num:pl\&poss:3mascSG\\
+%\textipa{Q}al\a'{e} \> pos:n\&gen:ms\&num:sg\&stat:u\\
+%\textipa{Q}al\a'{e}yha \> root:\textipa{Q}yl\&ptn:CaC\&pos:prep:pro\&pers:3\&gen:fm\&num:sg pos:n\&gen:ms\&num:pl\&poss:3femSG\\
+%\textipa{Q}al\a'{e}ynu \> pos:n\&gen:ms\&num:pl\&poss:1PL\\
+%\textipa{Q}al\a'{e}y\textsubdot{k}a \> root:\textipa{Q}yl\&ptn:CaC\&pos:prep:pro\&pers:2\&gen:ms\&num:sg pos:n\&gen:ms\&num:pl\&poss:2mascSG\\
+\begin{figure}
+\begin{tabbing}
+\hspace{1in} \= \hspace{5.5in} \kill
+\textipa{P}ot\a'{a}h \> pos:acc+pro\&pers:3\&gen:fm\&num:sg\\
+\textipa{P}ot\a'{a}m \> pos:acc+pro\&pers:3\&gen:ms\&num:pl\\
+\textipa{P}ot\a'{a}n \> pos:acc+pro\&pers:3\&gen:fm\&num:pl\\
+\textipa{P}ot\a'{a}nu \> pos:acc+pro\&pers:1\&gen:unsp\&num:pl\\
+\textipa{P}ot\a'{a}\textsubdot{k} \> pos:acc+pro\&pers:2\&gen:fm\&num:sg\\
+\textipa{P}ot\a'{i} \> pos:acc+pro\&pers:1\&gen:unsp\&num:sg\\
+\end{tabbing}
+\caption{The marker of definite-direct objects \textipa{P}et combines with pronominal suffixes
+to create (in effect) accusative pronouns}
+\label{fig:acc-examples}
+\end{figure}
+
+	prep+pro\%1             
+	prep+pro\%1\%pl          
+	prep+pro\%1\%sg          
+	prep+pro\%2\%f           
+	prep+pro\%2\%f\%sg        
+	prep+pro\%2\%m           
+	prep+pro\%2\%m\%pl        
+	prep+pro\%2\%m\%sg        
+	prep+pro\%3\%f           
+	prep+pro\%3\%f\%pl        
+	prep+pro\%3\%f\%sg        
+	prep+pro\%3\%m           
+	prep+pro\%3\%m\%pl        
+	prep+pro\%3\%m\%sg
+
+	
+%\begin{tabbing}
+%\hspace{1in} \= \hspace{5.5in} \kill
+%hazo\textipa{P}t \> pre:ha\&pro_dem\&pers:3\&gen:fm\&num:sg\\
+%hem \> pos:cop\&tense:present\&pers:3\&gen:ms\&num:pl pos:pro_person\&pers:1\&num:sg pos:pro_person\&pers:3\&gen:ms\&num:pl pos:part\&root:rcy\&ptn:qal\&gen:ms\&num:pl\\
+%hem\v{s}\a'{e}\textsubdot{k} \> pos:n\&num:sg\&stat:u\\
+%hen \> pos:cop\&tense:present\&pers:3\&gen:fm\&num:pl pos:pro_person\&pers:3\&gen:fm\&num:pl\\
+%\textipa{P}\a'{a}nu \> pro_person\&pers:1\&num:pl 
+%haze \> pre:ha\&pro\_dem\&pers:3\&gen:ms\&num:sg\\
+%\v{s}em\a'{a}\v{s}ehu \> pre:sh\&root:m\v{s}h\&ptn:CaCeC\&pre:sh\&pro\_indef\&gen:ms\&num:sg\\
+%\v{s}em\a'{i}\v{s}ehu \> pre:sh\&root:m\v{s}h\&ptn:CiCeC\&pre:sh\&pro\_indef\&pers:3\&gen:ms\&num:sg\\
+%\end{tabbing}			
+
+\subsubsection{Particles}
+A distinct gold-standard category was created for each atomic prefixal particle, as well as three additional categories for the composite
+prefixes \textit{la-} (`to the'), \textit{ba-} (`in the'), and \textit{ka-} (`as the'), which result from the blending of the prefixal prepositions \textit{le-} (`to'),\textit{be-} (`in'), and \textit{ke-} (`as') with the definite-article prefix \textit{ha-}.
+and \text{be-} `in'. 
+
+\begin{table}[t]
+\begin{tabular}{ccc}
+\toprule
+Prefix & Gloss & Gold-Std Category \\
+\midrule
+\textit{be-} & `in'	& pre:be   \\                    
+\textit{ba-}	& & pre:be\~pre:ha    \\                              
+\textit{ke-}	&`as'  & pre:ke \\                
+\textit{ka-}	& `as the'& pre:ke\~pre:ha \\          
+\textit{le-}	& `to' & pre:le  \\               
+\textit{la-}	& `to the' & pre:le\~pre:ha \\
+\textit{ha-}	& `the' & pre:ha  \\      
+\textit{mi(n)-} & & pre:mi  \\               
+\textit{\v{s}e)-}	& & pre:sh \\
+\textit{we)-} & `and' & pre:we \\
+\bottomrule
+\end{tabular}
+\end{table}
+%		pat = ur"(pos:)(adj)([^\s]*)(\&gen:)([a-z+])(\&num:)([a-z:]+)(\&stat:)(cstr)"
+%		re_cstr = re.compile(pat, re.UNICODE)
+%			
+%		if gen == "f" and num == "pl":
+%			analysis=re_cstr.sub(ur"\2\&\5\%\7\3", analysis)
+%			analysis=re_cstr.sub(ur"\2\&\5\%\7\3", analysis)
+%		else:
+%			analysis=re_cstr.sub(ur"\2\&\9\%\5\%\7\3", analysis)
+%			adj\&cstr%[gen]%[num]
+%			analysis=re_cstr.sub(ur"\2\&\9\%\5\%\7\3", analysis)
+%		1 (pos:)
+%		2 (adj)
+%		3 ([^\s]*)
+%		4 (&gen:)
+%		5 ([a-z+])
+%		6 (&num:)
+%		7 ([a-z:]+)
+%		8 (&stat:)
+%		9 (cstr)
+%		
+%		pat = ur"(pos:)(n)([^\s]*)(\&gen:)([a-z])(\&num:)([a-z:]+)(\&stat:)(cstr)"
+%		re_cstr = re.compile(pat, re.UNICODE)
+%		
+%		if gen == "f" and num == "pl":
+%			analysis=re_cstr.sub(ur"\5\%\7\3", analysis)
+%			analysis=re_cstr.sub(ur"\5%\7\3", analysis)
+%		gen([a-z+])
+%		num([a-z:]+)
+%		([^\s]*)
+%		else:
+%			analysis=re_cstr.sub(ur"\9\%\5\%\7\3", analysis)
+%			analysis=re_cstr.sub(ur"\9\%\5\%\7\3", analysis)
+%		(cstr)	
+%		gen([a-z+])
+%		num([a-z:]+)
+%		([^\s]*)
+%
+%		pat = ur"(pos:)(n)([^\s]*)(&gen:)([a-z]+)(&num:)([a-z:]+)(&stat:u)?"
+%		# 1: (pos:)
+%		# 2: (n)
+%		# 3: ([^\s]*)
+%		# 4: (&gen:)
+%		# 5: ([a-z]+)
+%		# 6: (&num:)
+%		# 7: ([a-z:]+)
+%		# 8: (&stat:u)?
+%		re_abs = re.compile(pat, re.UNICODE)
+%		analysis=re_abs.sub(ur"\5%\7\3", analysis)
+%		gen([a-z:]+)num([a-z:]+)([^\s]*)
+%		
+%		#print "analysis nominal", 2, ": ", analysis
+%		pat = ur"(pos:)(adj)([^\s]*)(&gen:)([fmunsp]+)(&num:)([a-z:]+)(&stat:u)?"
+%		# 1: (pos:)
+%		# 2: (adj)
+%		# 3: ([^\s]*)
+%		# 4: (&gen:)
+%		# 5: ([fmunsp]+)
+%		# 6: (&num:)
+%		# 7: ([a-z:]+)
+%		# 8: (&stat:u)
+%		re_abs = re.compile(pat, re.UNICODE)
+%		#analysis=re_abs.sub(ur"\2&\5\%\7\3", analysis)
+%		analysis=re_abs.sub(ur"\2&\5\%\7\3", analysis)
+%		adj&[gen]\%[num]([^\s]*)	
+To measure precision and recall, one needs a gold standard. Supervised
+%% learners train on a body of human-labeled examples, and thus come with
+%% a ready made gold standard, namely some subset of the human-labeled
+%% examples themselves. But unsupervised learning algorithms like the
+%% MCMM do not train on pre-labeled data, and so they come with no
+%% obvious gold standard against which their output can be extrinsically
+%% evaluated.
+%
+%% \marginpar{MD: Should we mention transliterating Hebrew into Latin?
+%%   It doesn't really affect the algorithm, though.}
+%
+%Our data is the same Hebrew word list used by \cite{daya-et-al:2008}
+%in their study of automatic root identification.
+%This list comprises 6888 unique words with an average length of 5.4 characters. About two-thirds are derived from consonantal roots.
+%The dataset gives root annotations for the words that have roots, but specifies no other morphological information. 
+%
+%We thus use the output of an automatic
+%finite-state morphological analyzer, namely the MILA Morphological
+%Analysis tool (\textsc{mila-ma}) \citep{hebrew-resources:2008}.
+%% \textsc{mila-ma} is in essence a finite-state transducer, a variation
+%% of the finite-state automaton. 
+%Because its morphological knowledge has been manually coded and its
+%output is deterministic, \textsc{mila-ma} provides a fairly close
+%approximation to human annotation. This is especially true in the case of the present study. That is, because we consider only the absolute, context-independent analyses of \emph{word
+%types}, the problem of disambiguation, the usual source of uncertainty, does not arise.
+%
+%%group together features from different analyses.
+%
+%To obtain the the gold-standard dataset for a given experiment, 
+%we run \textsc{mila-ma} on every word in the MCMM's output. 
+%\textsc{mila-ma} gives
+%at least one analysis for each word, and more than one for ambiguous words.
+%For example, the form \textit{mniyim} can be
+%a \textit{Hif`il} participle (`motivating'), a noun (`motivation'), or a noun bearing the prefixal preposition
+%\textit{m-} (`from movement').
+%% For each word, \textsc{mila-ma} produced at least one analysis, and
+%% multiple analyses if the word in question is morphologically
+%% ambiguous.
+%\textsc{mila-ma} outputs a separate analysis for each of these possibilities; the analysis corresponding to the third possibility is displayed in 
+%% possibilities;
+%figure~\ref{fig:mila-output}, with brackets delimiting features and values.
+%% .  As illustrated, a \textsc{mila-ma} analysis is string of categories
+%% delimited by \texttt{[+}.  Each category in turn consists of a feature
+%% and value delimited by \texttt{]}. 
+%
+%Then, in our evaluation of the MCMM's output, we examine each cluster that contains \textit{mniyim} (if any). In each case, we compare \textit{mniyim}'s \textsc{mila-ma} analyses with those of the other words in its cluster to determine the extent to which \textit{mniyim} has been grouped with similar words. Each cluster should correspond to a single predominant property. Therefore, the ideal case, at least according to our gold-standard, is that \textit{mniyim} should appear in three distinct clusters, one for each of the three \textsc{mila-ma} analyses for\textit{mniyim}.
+%%other masculine plural nouns, for example, other words that begin
+%%prepositional prefixes, other \textit{Hif'il} participles, or it appears in With some modifications (described next),
+%%these feature-value pairs become our gold categories.
+%%mniyim	[	+participle][+id]205[+undotted]hniy
+%%  [+transliterated]hniy[+root]nwy[+binyan]+Hif'il
+%%  [+register]+formal[+tense]+beinoni[+person]+any
+%%  [+gender]+masculine[+number]+plural
+%%  [+construct]+false[+definiteness]+false
+%\begin{figure}[htb!]
+%\footnotesize
+%\begin{verbatim}
+%mniyim	[+preposition]m[+noun][+id]7888
+%  [+undotted]niy[+transliterated]niy
+%  [+gender]+masculine[+number]+plural
+%  [+definiteness]+false[+register]+formal
+%  [+construct]+false
+%\end{verbatim}
+%%	mniyim	[	+noun][+id]6406[+undotted]mniy[+transliterated]mniy[+gender]+masculine[+number]+plural[+definiteness]+false[+register]+formal[+construct]+false
+%%	mniyim	[+preposition]m[+noun][+id]7888[+undotted]niy[+transliterated]niy[+gender]+masculine[+number]+plural[+definiteness]+false[+register]+formal[+construct]+false
+%\caption{One of the three analyses that \textsc{mila-ma} outputs for the word \textit{mniyim}}
+%\label{fig:mila-output}
+%\end{figure}
+%
+%\subsection{Category Mappings}
+%\label{subsec:mappings}
+%\textsc{mila-ma} outputs 22 possible feature labels. Four of these
+%(\texttt{id}, \texttt{undotted}, \texttt{transliterated},
+%\texttt{register}) are irrelevant to the present study and are thus discarded.  Each of the
+%18 remaining features has at least two values,
+%%(\textsc{true} and \textsc{false}), 
+%and some have many more.  
+%Each feature-value combination is a distinct gold-standard category.
+%% Since \textsc{mila-ma} is run on the MCMM's output to obtain the gold
+%% standard categories, the size of the gold standard varies with number
+%% of words that the MCMM manages to cluster in a given experiment. 
+%For a sense of the number of categories involved, consider that in one experiment, 
+%our model assigned 4244 of the 6888 words to one or more clusters.
+%%one or more clusters.
+%Not counting the four irrelevant features mentioned above,
+%\textsc{mila-ma}'s 
+% output for these 4244 words contained 778 distinct feature-value
+%combinations, i.e., categories.
+%
+%However, many of these original \textsc{mila-ma} categories are
+%ill-suited to the purpose of evaluating an MCMM. 
+%%We provide a sketch here
+%%of our modifications to \textsc{mila-ma}'s category set.  
+%%Space precludes a complete discussion, but it should be noted that 
+%%while some mappings make the task easier, 
+%%It should be noted that these linguistically-motivated mappings make the evaluation more rigorous:
+%%By removing very broad categories, such as \texttt{verb} or
+%%\texttt{construct:false}, we decrease the chances of receiving credit
+%%for accidental clusterings.
+% For example, \textsc{mila-ma}'s output contains negative categories
+% like \texttt{definiteness:false} and \texttt{construct:false},
+% %and \texttt{person/number/gender:-},
+% but an MCMM is only capable of recognizing
+% positive attributes, i.e., attributes that are actually present in
+% forms. 
+%% In other words, an MCMM can group together marked forms on the
+%% grounds that they share a marker, but there would simply be no 
+%% grounds for grouping forms that are not united by a common marker.
+% %unmarked forms, since unmarked forms by definition have no formal
+% %element in common. 
+% Thus, while an MCMM might succeed in grouping
+% \texttt{definiteness:true} forms on the basis of their shared
+% definite prefix \textit{h-}, it would have no means of discovering 
+% a category like
+% \texttt{definiteness:false}, whose members would have no common marker.
+% %for which there is no marker.
+% %because the forms tha since there is no positive
+% %attribute that unites them.
+% 
+% We thus modify \textsc{mila-ma}'s category set in certain ways. 
+% The following is a summary of our modifications.
+% It should be noted that in most cases these linguistically-motivated mappings make the evaluation more rigorous:
+%By removing very broad categories, such as \texttt{verb} or
+%\texttt{construct:false}, we decrease the chances of receiving credit
+%for accidental clusterings.  
+%% %For example, Hebrew makes words
+%% %definite by attaching the prefix "h-". Thus, any word that has this prefix will belong to the 
+%% %"definiteness:true" category, and likewise all words in the "definiteness:true" will begin with an "h-". Now, it is possible for the mcmm to cluster together all words that begin with "h-", for this is a positive formal property. But what about the "definiteness:false" words? These words all lack the definite marker, so there will be nothing that is the same across all "definiteness:false", and there will thus be no grounds for grouping them together. Note also: having negative categories inflates the results.
+%% Other morphological categories may not seem at first glance seem to be negatively defined, but are nonetheless unmarked. For example, Hebrew \textsc{3.m.sg} verb forms are ``distinguished," as it were, by the absence of a marker (see the paradigm in figure \ref{fig:paradigms}).
+%
+%% \begin{itemize}
+%% \itemsep0em
+%%\item 
+%%For POS labels, we retain \texttt{adverb}s, \texttt{adjective}s,
+%%and \texttt{numeral}s, ignoring other categories because they are super-categories (e.g.,
+%%\texttt{verb} covers seven \texttt{binyan} categories (verb classes))
+%%or lack systematic marking (e.g., \texttt{preposition}).
+%%%\item 
+%%Atomic categories are combined where appropriate, to capture
+%%  fusional morphology (e.g., \texttt{masculine} +
+%%  \texttt{plural} $\mapsto$ \texttt{M\%Pl}).
+%%%\item
+%%Verb inflections are mapped to composite categories 
+%%%based on overlapping prefixes and suffixes 
+%%(cf. non-3rd-singular verbs in English).
+%%  % (e.g., \texttt{{future\%(2\%M)\textbar(2\textbar3\%F)}}), akin to
+%%  % non-3rd-singular verbs in English.
+%%%\item 
+%%For verb stems, the \texttt{binyan} and
+%%  \texttt{tense} features are mapped from 21 combinations into 15
+%%  features 
+%%  %encoding \texttt{binyan} and 
+%%  incorporating \texttt{stem\_type}.
+%%%\item 
+%%For participles, adjective and noun analyses are discarded
+%%  (cf. \textit{-ing} forms in English).
+%%%\item 
+%%We use \texttt{rootless:Nominal} 
+%%%  and \texttt{rootless}, 
+%%  to capture the regularities of loan words.
+%%%  (e.g., use of vowel letters)
+%%%  , more frequent usage of \textit{v} (\textit{tet})).
+%%%\item 
+%%Negative categories (e.g., \texttt{construct:false}) and
+%%  unmarked forms (e.g., \texttt{M/Sg} in nominals) are discarded.
+%%%\end{itemize}
+%
+% \paragraph{POS labels.}
+% Of \textsc{mila-ma}'s POS labels, we retain only \texttt{adverb}, \texttt{adjective}, and \texttt{numeral} (including cardinal and ordinal subtypes), which often bear distinctive markers. We discard each of the other POS categories for one of the following reasons: 
+% \begin{itemize}
+%   \item The category is a super-category of other categories and is therefore redundant. For example, \texttt{verb} is a super-category of the seven \textit{binyan} categories (verb classes). If a word is a member of any binyan, it is necessarily also a member of the \texttt{verb} category.
+%   \item The category lacks a distinctive form (i.e., it is not systematically marked). Examples include \texttt{preposition} and \texttt{properName}.
+%   \item The category is associated with many marginally systematic markers, but it has no predominant marker; e.g., there are many patterns by which nouns are derived, but no predominant pattern.
+%%   \item The category does exhibit systematic marking, but its markers coincide with those of another category. For example, numerals bear the same markings as found on nouns and adjectives. 
+% \end{itemize}
+%
+% \paragraph{Negative categories and unmarked forms.} 
+% %As discussed above \dots
+%
+% As mentioned above, an MCMM can only recognize the presence of attributes, not their absence.
+% We thus discard negatively defined categories such as \texttt{definiteness:false} and \texttt{construct:false}, as such categories tend to indicate the \emph{absence} of some specific marker. 
+% Note again that we do not make the evaluation easier by discarding such categories because in most cases, given a positive and a negative category, the majority of words will trivially belong to the negative category.
+% 
+% A category does not have to negative to be unmarked, however. The \texttt{M/Sg} in nominals and \texttt{3/M/Sg} in verbs, for example, are unmarked forms. In general, we discard any category that is not associated with an overt marker. 
+%
+% % . In other words, an MCMM can group together marked forms on the basis
+% % of some shared marker, but 
+%% [it has no basis for grouping together unmarked forms, since unmarked
+%% forms have no formal element in common.  Thus, while the MCMM might
+%% succeed in grouping \texttt{definiteness:true} forms together on the
+%% basis of the shared prefix \textit{h-}, it has no means to group
+%% together \texttt{definiteness:false} words, since no positive
+%% attribute unites them.]
+% %
+%% In general, we discard categories that are not associated with an overt
+%% marker. These include \texttt{M/Sg} in nominals, the \texttt{M/Sg} and
+%% \texttt{F/Pl} nominal construct states,
+%% % (in that they are, in the absence of context, indistinguishable from
+%% % their absolute-state counterparts),
+%% and \texttt{3/M/Sg} in verbs.
+%
+%% % %We thus mapped the raw categories to a modified category set better suited to the present study.
+% \begin{figure}[tb!]
+% \begin{center}
+% %\footnotesize
+% \begin{tabular}{lcccc}
+%    & \multicolumn{2}{c}{Past} & \multicolumn{2}{c}{Future} \\
+%    & \textit{Sg} & \textit{Pl} & \textit{Sg} & \textit{Pl} \\
+%   \hline
+%   \textit{1.m/f} & htxil-ti & htxil-nw & a-txil & n-txil\\
+%   \hline
+%   \textit{2.m} & & htxil-tm  &  t-txil & \\
+%   \textit{2.f} & \raisebox{1.5ex}[0pt]{htxil-t} & htxil-tn &  t-txil-i & \raisebox{1.5ex}[0pt]{t-txil-w}\\
+%   \hline
+%   \textit{3.m} & htxil &   &  itxil &\\
+%   %\cline{1-2}
+%   \textit{3.f} & htxil-h & \raisebox{1.5ex}[0pt]{htxil-w} &  t-txil & \raisebox{1.5ex}[0pt]{i-txil-w} \\
+% \end{tabular}
+% \caption{Past and future-tense paradigms for the root \textit{t.x.l} in the \textit{Hif'il} binyan.}
+% \label{fig:paradigms}
+% \end{center}
+% \end{figure}
+%
+% \paragraph{Atomic categories.} 
+% %For verbs, \textsc{mila-ma} combines person, number, and gender into a composite \texttt{person/gender/number} feature taking values such as \texttt{3/F/Sg}. However, 
+% For nouns, adjectives, and participles, \textsc{mila-ma} expresses gender and number as separate atomic categories, e.g. \texttt{gender:masculine} and \texttt{number:plural}, even though Hebrew is fusional in its gender/number
+% markings (see section~\ref{sec:intro}). Most masculine singular nominal forms are unmarked in Hebrew, while most masculine 
+% nominals take the ending \textit{-im}. 
+% On the other hand, most feminine plurals take the ending \textit{-wt}. 
+% Since the masculine plural \textit{-im} has nothing in common with either the masculine singular or the feminine plural forms, it cannot be split into distinct masculine and plural components. We modify \textsc{mila-ma}'s atomic categories so that they better reflect Hebrew's fusional suffixes. That is, we merge \texttt{masculine} and \texttt{plural} into the single category \texttt{M\%Pl}. Likewise, \texttt{feminine} and \texttt{plural} become \texttt{F\%Pl}, and \texttt{feminine} and \texttt{singular} become \texttt{F\%Sg}.
+%
+%
+% \paragraph{Verb Inflections.}
+% %For every cell in figure~\ref{fig:paradigms}, there is a 
+% \textsc{mila-ma} represents verbal inflections for person, number, and gender in %composite 
+% \texttt{person/gender/number} (or \texttt{PGN}) features taking values like \texttt{3p/F/Sg} and \texttt{2p/M/Sg}. However, there is not always a one-to-one correspondence between such category labels and the actual distinctions in form. Consider, for example, the verb \textit{ttxil} `she/you will begin'. In the absence of context, this form is entirely ambiguous; it can be either \textsc{2.m.sg} or \textsc{3.f.sg}. \textsc{mila-ma} produces a separate analysis for each possibility, giving rise to two distinct \texttt{PGN} categories, namely \texttt{PGN:2/M/Sg} and \texttt{PGN:3/F/Sg}, where only one form exists. This is similar to the problem of negative and unmarked categories: an MCCM has no means of making a distinction where none exists in the feature representations.
+% %The strictly word-internal feature sets that we use in our experiments provide the MCMM with no means of mapping a single form to more than one category.
+% 
+% We thus map \textsc{mila-ma}'s verb-inflection categories to composite categories based on overlapping prefixes and suffixes. For example, compare the future-tense forms \textit{t-txil-i} (\textsc{2.f.sg}) and \textit{t-txil} (\textsc{2.m.sg}/\textsc{3.f.sg}) (see figure~\ref{fig:paradigms}). Except for the addition of the \textit{-i} suffix, the \textsc{2.f.sg} form is identical to the \textsc{2.m.sg}/\textsc{3.f.sg} form. Noting both the overlap in prefixes and the difference in suffixes (i.e., \textit{-i} vs. $\emptyset$), we create the categories \texttt{future\%(2\%M)\textbar(2\textbar3\%F)} and \texttt{future\%2\%F\%Sg)}\footnote{
+%The \texttt{\%} sign delimits tense, person, gender, and number, and the symbol \texttt{\textbar} means `or'.}
+%The former corresponds to the prefix \textit{t-} and the latter to the suffix \textit{-i}. Both are thus necessary to represent the 
+%\textsc{2.f.sg} future.
+%% We define both past and future-tense inflectional features because past tense and future tense differ systematically in form.
+%% In the past tense, \textsc{2.m.sg}, \textsc{3.f.sg}, and \textsc{2.f.sg} each map to a separate category, 
+%% namely, \texttt{past\%2\%F\%Sg}, \texttt{past\%2\%M\%Sg}, and \texttt{past\%3\%F\%Sg}, respectively. 
+%% \marginpar{Note that the 2ms and 2fs past-tense forms are orthographically identical, so
+%% they should be combined in our category set. I overlooked this.}
+%% We similarly derive the following categories:
+%% %the \textsc{mila-ma} categories
+%% \begin{itemize}
+%% \item \texttt{past\%3\%F\%Sg} and \texttt{future\%3\%Sg} (We define no feature for the 3.m.sg past tense, since it is the unmarked form.)
+%% \item \texttt{past\%1\%Sg}, \texttt{past\%1\%Pl}, \texttt{future\%1\%Sg}, and \texttt{future\%1\%Pl}
+%% \item \texttt{past:2\%F\%Sg}, \texttt{past:2\%M\%Sg}
+%% \marginpar{We still need past:2\%M\%Pl and past:2\%F\%Pl}
+%% \item \texttt{(past\%3\%Pl)\textbar(future\%2\textbar3\%Pl)}
+%% \end{itemize}
+%% %\texttt{3p/MF/Pl}, \texttt{PGN:3p/MF/Pl}, \texttt{PGN:2p/MF/Pl}, \texttt{tense:past}, \texttt{tense:future} $\to$ 
+%% %\texttt{(past\%3\%Pl)\textbar(future\%(2|3)\%Pl}
+%% %\begin{itemize}
+%% %\item 
+%% %\item
+%% %\item
+%% %\end{itemize}
+%% %\texttt{future:1p/MF/Sg}
+%% %\texttt{future:1p/MF/Pl}
+%% %\texttt{future:2p/F/Sg}
+%% %\texttt{future:2p/MF/Pl}
+%% %\texttt{future:} 
+%% %\texttt{participle_prefix}
+%% %	future:(2%M)|(2|3%F)
+%% %	future:1%Pl
+%% %	future:1%Sg
+%% %	future:2%Sg
+%% %	future:3%M
+%% %	participle_prefix
+%% %	past:1%Pl
+%% %	past:1%Sg
+%% %	past:2%F%Sg
+%% %	past:2%M%Sg
+%% %	past:3%F%Sg
+%% %	past|future:2|3%Pl
+%	
+% \paragraph{Verb stems.}
+% The forms of Hebrew verb stems vary along two dimensions:
+% \begin{description}
+% \item \textit{binyan:} There are seven \textit{binyanim}, or verb classes, each having a certain vowel pattern and taking a particular set of inflectional affixes (although person-gender-number markings are to some extent consistent across the binyanim).
+% \item \textit{stem type:} Each binyan has a ``suffix stem" and a ``prefix stem." The former appears in paradigms dominated by suffixes (mainly the past tense), and the latter in paradigms dominated by prefixes (e.g., the future tense and (in most binyanim) the participle).
+% \end{description} 
+%% (1) There are the seven binyanim, and 
+%% (2) each binyan generally has both a ``suffix" stem and a ``prefix" stem. 
+%% The former is used
+%% in the past tense, which has suffixes but no prefixes.
+%% The latter is used in the future tenses, which takes prefixes in addition to suffixes.
+% The suffix and prefix stems of the \textit{Hif'il} binyan are evident in figure \ref{fig:paradigms}; respectively, these are 
+% %\verb*|h  i | 
+% $h\Box \Box i \Box$
+% (in the past tense) 
+% and 
+% %\verb*|  i | 
+% $\Box \Box i \Box$
+% (in the future tense).
+%% \textit{h\underline{\hspace{1.5ex}} \underline{\hspace{1.5ex}} i \underline{\hspace{1.5ex}}} and \textit{\_\_i\_}, respectively.
+% In every binyan except the \textit{Pa'al} and \textit{Nif'al}, the prefix stem is also used in the participle (i.e., present tense). The \textit{Pa'al} participle has its own unique stem, 
+% and the \textit{Nif'al} participle uses the \textit{Nif'al} suffix stem.
+% 
+% The main idea is that tenses are in part identified by their stems; each tense uses a particular type of stem. 
+% However, the shapes of these stem types depend on the binyan.
+% \textsc{mila-ma} has separate \texttt{binyan} and \texttt{tense} feature types. 
+% The former takes seven values, and the latter three.
+% Since stem shape depends on \texttt{binyan} and \texttt{tense} jointly, we first combined these feature types, yielding 21 composite 
+% textit{binyan}\texttt{:}\textit{tense} categories. However, noting that the future tense and participle often share the same stem type,
+% we mapped these 21 categories to 15 \textit{binyan}\texttt{:}\textit{stem\_type} categories. (There are 15 instead of 14 because an additional category is necessary for the unique \textit{Pa'al} participle stem.) 
+%
+%%\footnotesize
+%%\begin{tabular}{lccc}
+%%	\textit{Pa'al} & \texttt{Pa'al:prefix\_stem} &
+%%	\texttt{Pa'al:suffix\_stem} &
+%%	\texttt{Pa'al:participle} \\
+%%	\textit{Nif'al} & \texttt{Nif'al:prefix\_stem} &
+%%	\texttt{Nif'al:suffix\_stem} & \\
+%%	\textit{Pi'el} & \texttt{Pi'el:prefix\_stem} &
+%%	\texttt{Pi'el:suffix\_stem} & \\
+%%	\textit{Pu'al} & \texttt{Pu'al:prefix\_stem} &
+%%	\texttt{Pu'al:suffix\_stem} & \\
+%%	\textit{Hif'al} & \texttt{Hif'il:prefix\_stem} &
+%%	\texttt{Hif'il:suffix\_stem} & \\
+%%	\textit{Huf'al} & \texttt{Huf'al:prefix\_stem} &
+%%	\texttt{Huf'al:suffix\_stem} & \\
+%%	\textit{Hitpa'el} & \texttt{Hitpa'el:prefix\_stem} &
+%%	\texttt{Hitpa'el:suffix\_stem} & \\
+%%\end{tabular}	
+%
+% \paragraph{Participles.}
+% In Hebrew, a participle, can function as a noun, an adjective, or as a participle/present-tense verb. Thus, whenever a word is a participle, \textsc{mila-ma} outputs not just a participle analysis, but also a noun analysis and an adjective analysis.
+% %at least three separate analyses---one for each of these possibilities.
+%%  whenever a word is a participle: one for the noun reading, one for the adjective reading, and one for participle/present-tense verb reading. However, we cannot expect the MCMM to find three distinct categories in a single form in the absence of the necessary contextual evidence for these categories.
+% Moreover, we note that if word \textit{w} is a participle, then it is also (at least potentially) an adjective and a noun. But the converse is not true; that is, \textit{w} may be an adjective or a noun without also being a participle.
+% Thus, whenever \textsc{mila-ma} gives participle, adjective, and noun analyses for a word, we discard the adjective and noun analyses---i.e., the \emph{entire} analyses, not just the \texttt{adjective} and \texttt{noun} categories, but all categories composing these analyses---because the participle analysis implies the other two.   
+% %If a word w is a participle, then it is also an adjective. But the converse is not true. Consider the words bwgd, awhl, lwmd. These are all participles, but they are also all adjectives. But if there are two categories here, there should also be two clusters. And yet we cannot expect the algorithm to produce two identical clusters, one denoting 
+% %"adjective" and the other "participle". This would be redundant, whereas the mcmm is seeking to compress the original data.
+%
+%\paragraph{Roots.}
+%
+%  \textsc{mila-ma} provides roots only for verbs, even though
+%  nouns, adjectives, and adverbs often
+%  contain roots. 
+%  We retain \textsc{mila-ma}'s root categories, but union them with
+%  the annotations
+%%accompanying our data, i.e., the annotations of
+%of \cite{daya-et-al:2008}. 
+%
+%% Root categories are thus the union of these two sets of word-to-root
+%% mappings.
+%
+%\paragraph{Rootless words.} 
+% There are two classes of words in Hebrew that generally lack roots: function words and loan words. The latter are usually nominals, e.g. \textit{svwdnt} `student' and \textit{ainvlqvwali} `intellectual'.
+% Loan words are to some extent marked orthographically:
+% \begin{itemize} 
+% \item Whenever a pair of letters is homophonous, loan words systematically prefer one letter over the other. 
+% \item For instance, loan words always use \textit{v} (\textit{tet}) 
+% instead of \textit{t} (\textit{tav}) for the sound /t/, \textit{s} 
+% (\textit{samex}) instead of \textit{e} (\textit{sin}) for the sound /s/, 
+% and \textit{q} instead of \textit{k} for the sound /k/. 
+%\item Most loan words are of English origin, and thus, due to the phonotactic patterns of English, certain character sequences such as \textit{sv} (i.e., /st/) occur over and over again. 
+%\item %Moreover, 
+%Loan words use the so-called \textit{vowel letters} to represent vowels more frequently and regularly than do native words, and unlike native words, they regularly use the letter \textit{a} (\textit{alef}, historically a glottal stop) to demarcate vowel-initial syllables, which were unknown in past forms of Hebrew. 
+% \item %Finally, 
+% Loan words tend to be longer than native words.
+% \end{itemize}
+%Function words, in contrast, such as particles and prepositions, are native to Hebrew and thus do not exhibit these distinctive orthographic patterns.
+% To see if the MCMM is able to recognize any of the regularities observed in borrowed nominals, we introduce the category \texttt{rootless:Nominal}. 
+% %We introduce the category \texttt{rootless} for all other rootless words.
+%
+%\paragraph{Definite prefix.}
+%When the definite article prefix \textit{h-} follows the prefixal prepositions \textit{b-} (`in'), \textit{l-} (`to'), or \textit{k-} (`as, like'), it is deleted. Consequently, definite and indefinite forms are indistinguishable when they begin with any of these three prefixal prepositions. For example, 
+%\texttt{bbit} can be `in the house' or `in a house' (because underlying \textit{b-h-bit} $\to$ \textit{bbit}). Because of this ambiguity,
+%\textsc{mila-ma} outputs both the \texttt{definiteness:true} and \texttt{definiteness:false} analyses in such cases.
+%We discard \texttt{definiteness:true} in these cases, since the deletion of the definite marker makes \texttt{definiteness:true} an unmarked category.
+%The category \texttt{definiteness:false} is also discarded, since we discard all negative categories (as discussed above). 
+%%The remaining categories in these two analyses may be discarded, modified, or left intact.
+%% although the word in question remains definite. 
+%
+%\paragraph{Compound prefixes.}
+%Modern Hebrew grammars and language-eduation textbooks often treat the prefix \textit{ke-} `when, while' as a single unanalyzable unit (cf. English words like \textit{into} and \textit{whenever}, which, while not prefixed clitics, are nonetheless compound function morphemes). 
+%This is indeed the treatment adopted by \textsc{mila-ma}. However, the more traditional treatment is that \textit{ke-} is composed of the ``atomic" prefixal clitics \textit{k-} `as' and \text{e-} `that'. Without features pertaining to syntactic context, an MCMM would lack the evidence for merging \textit{k-} and \text{e-} into a single morpheme. We thus map the feature \texttt{temporalSubConj:ke} to the features 
+%\texttt{prefix:k} and \texttt{prefix:e} wherever \texttt{temporalSubConj:ke} occurs in an analysis. We handle other compound prefixes similarly.
+
+
+%\texttt{prefix:ke} $\mapsto$ \texttt{prefix:k} and \texttt{prefix:e}.
 % (Notice that a lot of properties are packed into the suffix \textit{-s}).
 % Let us consider  
 % briefly the nature of an MCMM's output. One can represent a 
@@ -167,7 +1302,7 @@ be obtained through separate means.
 
 \subsubsection{Transcribed data.} Gold-standard category mappings for the 
 transcribed words were obtained by extracting morphological analyses from the Berman 
-longitudinal corpus. Recall that for each utterance in the Berman longitudinal corpus, 
+Longitudinal Corpus (BLC). Recall that for each utterance in the BLC, 
 there is a transcription tier and a morphological-analysis tier. The latter provides a 
 morphological analysis for each word in the utterance, including roots for the words 
 that have roots. I extracted the morphological analyses and used them to create a list of 
@@ -178,7 +1313,12 @@ We evaluate the intrinsic results according to three metrics: \textbf{average pu
  \textbf{BCubed} recall. For the purpose of describing these metrics,
  let $U$ denote the set of $K$ clusters discovered by a system, $V$ the set of $J$ gold-standard categories, and $X$ is the set of data points to be clusters. The cardinality of $X$ is $N$; i.e., there are a total of $N$ individual data points that have been clustered.
 \paragraph{Average purity}
-The standard purity metric seeks to calculate the global correctness of a given clustering by determining the proportion of data points that have assigned to the correct cluster. Each individual data point has at some point been associated with a gold-standard \emph{category} label. Thus, in any given cluster, there are in effect as many gold-standard category labels as there are data points. Standard purity assumes that most frequent 
+The standard purity metric seeks to calculate the global correctness of a 
+given clustering by determining the proportion of data points that have 
+assigned to the correct cluster. Each individual data point has at some 
+point been associated with a gold-standard \emph{category} label. Thus, 
+in any given cluster, there are in effect as many gold-standard category 
+labels as there are data points. Standard purity assumes that most frequent 
  gold-standard category in a given cluster $u_k$ is the gold-standard label for the entire cluster. The number of correctly clustered data points in $u_k$ is thus equal to the frequency of  $v_j$ in cluster $u_k$. Standard purity sums up the correctly clustered data points over all clusters, and divides this sum by $N$, the total number of distinct data points in the clustering
  %The reason $v_j$ is the most frequent category in $u_k$ is that it is associated with more of $u_k$'s members than any other data point .in the cluster is the same as the frequency of data points that bear the label. 
 % Thus, the frequency of the most common gold-standard category in a cluster $U_k$  is deemed the number of correctly clustered items in $U_k$ x$ instances of this category label in the cluster, there are also $x$ data points associated the course equal to the number of data points associated with this category. data points he purity of this particular is thi
@@ -202,17 +1342,17 @@ when clusters overlap, it retains the well-known bias of the purity metric towar
 \paragraph{BCubed precision and recall}
 The metrics \emph{BCubed precision} (BP) and \emph{BCubed recall} (BR) \citep{bagga-and-baldwin:1998} evaluate a clustering by checking one 
 pair of data points at a time, comparing the relationships that the algorithm has posited for each pair against their 
-gold-standard relationships. These metrics are well-suited to cases of overlapping clusters \citep{amigo-et-al:2009}. 
+gold-standard relationships. These metrics are well-suited to cases of overlapping 
+clusters \citep{amigo-et-al:2009}. 
 In such cases, it is possible for two data points $x$ and $y$ to overlap both in their algorithm-assigned clusters and their 
-gold-standard categories. Suppose that $x$ and $y$ overlap in m clusters and n categories. Ideally, $m$ would 
-equal $n$; 
-i.e. there would be a one-to-one correspondence between clusters and gold-standard categories. 
-In most cases, however, either $m$ will be less than $n$ or vice versa. BCubed precision essentially 
-measures the extent to which $m \leq n$; for if $m>n$, then the algorithm has posited at least one 
-spurious relationship be.tween $x$ and $y$. BCubed precision thus penalizes spurious cluster assignments. 
-On the other hand, BCubed recall measures the extent to which $m \geq n$; for if $n<m$, then the algorithm 
+gold-standard categories. Suppose that $x$ and $y$ overlap in $m$ clusters and $n$ categories. Ideally, $m$ would 
+equal $n$, in which case there would be a one-to-one correspondence between clusters and gold-standard categories. 
+In imperfect cases, however, either $m$ will be less than $n$ or vice versa. BCubed precision essentially 
+measures the extent to which $m \leq n$; for if $m>n$---i.e., if $x$ and $y$ co-occur in more clusters than gold-standard categories, then the algorithm has posited at least one 
+spurious relationship between $x$ and $y$. BCubed precision thus penalizes false co-memberships between pairs of data points. 
+By contrast, BCubed recall measures the extent to which $m \geq n$; for if $n<m$, then the algorithm 
 has missed at least one gold-standard relationship between $x$ and $y$. BCubed recall thus 
-penalizes absent cluster assignments (i.e., overlooked gold-standard relationships). 
+penalizes missing co-memberships. % (i.e., missed gold-standard relationships). 
 At the core of BCubed precision is the measure multiplicity precision ($MultiP$):
 %\begin{equation}
 %MultiP(x,y) = \frac{min|U(x) \cap U(y)|, |V(x) \cap V (y)|}{|U(x) \cap U(y)|}

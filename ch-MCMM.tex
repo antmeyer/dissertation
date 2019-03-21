@@ -150,7 +150,7 @@ the vector $\mathbf{r}_i$. The process that achieves this reconstruction is the 
 \begin{figure}[htb]
 \begin{center}
 %\small
-\begin{tikzpicture}[shorten >=1pt,->,draw=black!100]
+\begin{tikzpicture}[shorten <=1pt,->,draw=black!100]
 	\def \rowtwoht{4.25cm}
 	\def \weightlevel{2.75cm}
 	\def \rowoneht{1.25cm}
@@ -327,7 +327,7 @@ and the MCMM. We compare them across three dimensions: \emph{form}, \emph{node a
 %%\begin{minipage}{.3\textwidth}
 \begin{center}
 \small
-\begin{tikzpicture}[shorten >=1pt,->,draw=black!100]
+\begin{tikzpicture}[shorten <=1pt,->,draw=black!100]
 	\def \rowtwoht{5cm}
 	\def \weightstwo{3.75cm}
 	\def \rowoneht{2.5cm}
@@ -437,7 +437,7 @@ and the MCMM. We compare them across three dimensions: \emph{form}, \emph{node a
 \begin{figure}[t]
 \begin{center}
 %\small
-\begin{tikzpicture}[shorten >=1pt,<->,draw=black!100]
+\begin{tikzpicture}[shorten <=1pt,<->,draw=black!100]
 	\def \rowtwoht{4.25cm}
 	\def \weightlevel{2.75cm}
 	\def \rowoneht{1.25cm}
@@ -1017,7 +1017,7 @@ placed in the \textsc{Write-Black} domain than the \textsc{write-white-and-black
 
 \begin{figure}[htb]
 \begin{center}
-\begin{tikzpicture}[shorten >=1pt,->,draw=black!100]
+\begin{tikzpicture}[shorten <=1pt,->,draw=black!100]
 	\def \rowtwoht{4.25cm}
 	\def \weightlevel{2.75cm}
 	\def \rowoneht{1.25cm}
@@ -1499,7 +1499,7 @@ since each cluster-membership vector must be optimized separately.
 Thus, \textsc{Optimize-M} is essentially a loop that iteratively calls 
 \textsc{Active-Set-Modified-PRP-for-M} $I$ times, once for each row index $i$ in 
 the matrix $\textbf{M}$, as shown in algorithm~\ref{alg:opt-M}.
-\textsc{Optimize-C}, by contrast, calls \textsc{Active-Set-Modified-PRP-for-C} just once; no loop is necessary. 
+\textsc{Optimize-C}, by contrast, calls \textsc{Active-Set-Modified-PRP-for-C} and does so just once; no loop is necessary. 
 Rather, it feeds the \emph{entire} matrix $\textbf{C}$ to 
 \textsc{Active-Set-Modified-PRP-for-C}. The matrix $\textbf{C}$ optimized 
 as a whole rather than according to a row-by-row basis.
@@ -1507,6 +1507,37 @@ because it applies to all data points universally,
 whereas any given cluster-membership vector $\textbf{m}_i$ is relevant only to one 
 data point (namely, the $i$th data point).
 
+\begin{algorithm}[ht]
+\KwData{\textbf{D}, \textbf{G}, \textbf{w}}
+\KwResult{Constrained \textbf{D}}
+	\For{$n \in N$}{
+		% in the case of descent to toward minimum, is the Grad positive or negative?
+		% --> We want gTd to be negative, and d = -Grad initially. That is, d and Grad
+		% point in opposing directions. When this is no longer true, the model
+		% is moving away from its target.
+		% However, d is not always going to be negative; its sign just needs to oppose
+		%the Gradient's sign.
+		\If {$l < \textsf{vec}(\textbf{C})[n] < u$}{
+			$\textsf{vec}(\textbf{D})[n] = -\textsf{vec}(\textbf{G})[n]$\;
+		}
+		\If {$\textsf{vec}(\textbf{C}[n]) = l$}{
+			\eIf {$\textsf{vec}(\textbf{G})[n] \geq 0$}{
+				$\textsf{vec}(\textbf{D})[n] = 0$\;
+			}{
+				$\textsf{vec}(\textbf{D})[n] = -\textsf{vec}(\textbf{G})[n]$\;
+			}
+		}
+		\If {$\textsf{vec}(\textbf{C})[n] = u$} { 
+			\eIf {$\textsf{vec}(\textbf{G})[n] \geq 0$}{
+				 $\textsf{vec}(\textbf{D})[n] = 0$\;
+			}{
+				$\textsf{vec}(\textbf{D})[n] = -\textsf{vec}(\textbf{G})[n]$\;
+			}
+		}
+	}
+\caption{This procedure identifies and sets to zero any direction component that is going to cause its corresponding parameter component either to fall below the lower bound $l$ or exceed the upper bound $u$. It thus in effect cancels the update to this parameter component.}
+\label{alg:constrained-d}
+\end{algorithm}
 %\textsc{Optimize-C} follows exactly the process outlined in section~\ref{sec:num-opt}, 
 %except with  $\textbf{C}$ taking the place of the generic matrix $\textbf{W}$. 
 %\textsc{Optimize-M} is a somewhat different case in that it is divided 
@@ -1723,7 +1754,7 @@ Evaluate $E = \frac{1}{I\times J} \frac{1}{2} \sum_i \sum_j (r_{i,j} - x_{i,j})^
 \subsection{A Simple MCMM Example}
 \label{subsec:example}
 
-Figure~\ref{fig:example-1} shows a simple MCMM at two distinct stages. Subfigure~\ref{fig:example-subfig1-1} shows the MCMM before convergence, while learning is still in progress. The surface and hidden-unit activities at this stage are still greater than $0$ and less than $1$, though they are on their way to either $0$ or $1$. Subfigure~\ref{fig:example-subfig2-1}, on the other hand, shows the MCMM after it has converged, when the learning process is complete.
+Figure~\ref{fig:example-1} shows a simple MCMM at two distinct stages. Subfigure~\ref{fig:example:subfig1-1} shows the MCMM before convergence, while learning is still in progress. The surface and hidden-unit activities at this stage are still greater than $0$ and less than $1$, though they are on their way to either $0$ or $1$. Subfigure~\ref{fig:example:subfig2-1}, on the other hand, shows the MCMM after it has converged, when the learning process is complete.
 
 The input data matrix for the MCMM in figure~\ref{fig:example-1} consists of three data points (i.e., $I = 3$).
 The hidden cluster activities $\mathbf{M}$, the weights $\mathbf{C}$, the surface-unit vectors $\mathbf{R}$,
@@ -1734,16 +1765,20 @@ The nodes $m_{i,k}$ are the hidden units and represent cluster-membership activi
 These cluster-membership vectors make more sense when we consider the this MCMM's $J \times K$ ($3 \times 2$) weight matrix $\textbf{C}$. The two column-vectors $\textbf{c}_0 = [0,1,0]$ and $\textbf{c}_1 = [1,0,1]$ are the \emph{centroids} of the first and second clusters, respectively. A cluster's centroid is a sort of average or composite of the cluster's member vectors; it represents the feature values that a cluster's members have in common and can thus serve as a label for a cluster. The first data point $\textbf{x}_0 = [0,1,0]$ is thus clearly a the cluster whose centroid  $[0,1,0]$. Similarly, the second data point $\textbf{x}_1 = [1,0,1]$ is clearly of the member of the cluster whose centroid is $[1,0,1]$. But just as clearly, the influence of both clusters is evident in the third data point $\textbf{x}_2 = [1,1,1]$.
 
 Table~\ref{tab:cl-members} shows the members as well as the centroids of each of the two clusters: Notice that the active components in each cluster centroid correspond to the shared component values among the cluster's members.
-\begin{table}[h]
+
+\begin{table}[b]
+\begin{mdframed}
 \centering
-\begin{tabular}{ccc}
-Cluster index ($k$) & Member Data Points & Cluster Centroid \\ \hline
- $0$ &  $[0,\mathbf{1},0]$, $[1,\mathbf{1},1]$ & $[0,1,0]$\\
+\setlength{\extrarowheight}{4pt}
+\begin{tabular}{ccc} 
+Cluster index ($k$) & Member Data Points & Cluster Centroid \\ \hline\hline
+ $0$ &  $[0,\mathbf{1},0]$, $[1,\mathbf{1},1]$ & $[0,1,0]$\\ \hline
  $1$  & $[\mathbf{1},0,\mathbf{1}]$, $[\mathbf{1},1,\mathbf{1}]$ & $[1,0,1]$\\
  \end{tabular}
 \label{tab:cl-members}
-\caption{The shared feature values among co-member data points appear in bold face. Notice that these correspond to the active features in the cluster centroids.
+\caption{\emph{Clusters from Figure~\ref{fig:example} and their Centroids.} The active features in each cluster's centroid are the \emph{shared} active features among the cluster's members.}
 reflected in the centroids.}
+\end{mdframed}
 \end{table}	
 
 
@@ -1772,7 +1807,7 @@ reflected in the centroids.}
 %%\begin{minipage}{.3\textwidth}
 %\begin{center}
 %%\subfigure[Learning in Progress]{
-%\begin{tikzpicture}[shorten >=1pt,->,draw=black!100, scale=0.85]
+%\begin{tikzpicture}[shorten <=1pt,->,draw=black!100, scale=0.85]
 %	\footnotesize
 %%	\def \attic{5.95cm}
 %%	\def \rowtwoht{5.4cm}
@@ -1886,7 +1921,7 @@ reflected in the centroids.}
 %\usetikzlibrary{positioning}
 %\begin{center}
 %\subfigure[Observed Data]{
-%\begin{tikzpicture}[shorten >=1pt,->,draw=black!100, scale=0.85]
+%\begin{tikzpicture}[shorten <=1pt,->,draw=black!100, scale=0.85]
 %	\scriptsize
 %	\tikzstyle{label}=[text width=3em, text centered]
 %	\tikzstyle{annot}=[text width=2.5em]
@@ -1933,7 +1968,7 @@ reflected in the centroids.}
 %%\begin{minipage}{.3\textwidth}
 %\begin{center}
 %\subfigure[Learning in Progress]{
-%\begin{tikzpicture}[shorten >=1pt,->,draw=black!100, scale=0.85]
+%\begin{tikzpicture}[shorten <=1pt,->,draw=black!100, scale=0.85]
 %	\footnotesize
 %%	\def \attic{5.95cm}
 %%	\def \rowtwoht{5.4cm}
@@ -2032,7 +2067,7 @@ reflected in the centroids.}
 %}
 %\subfigure[Convergence]{
 %
-%\begin{tikzpicture}[shorten >=1pt,->,draw=black!100, scale=0.85]
+%\begin{tikzpicture}[shorten <=1pt,->,draw=black!100, scale=0.85]
 %	\small
 %%	\def \attic{5.95cm}
 %%	\def \rowtwoht{5.4cm}
@@ -2175,7 +2210,7 @@ $m_{i,k}c_{j,k} = 1$ (and $0$ otherwise).
  %\usetikzlibrary{positioning}
  \begin{center}
  \subfigure[Observed Data]{
- \begin{tikzpicture}[shorten >=1pt,->,draw=black!100]
+ \begin{tikzpicture}[shorten <=1pt,->,draw=black!100]
  	\scriptsize
  	\tikzstyle{label}=[text width=3em, text centered]
  	\tikzstyle{annot}=[text width=2.5em]
@@ -2222,7 +2257,7 @@ $m_{i,k}c_{j,k} = 1$ (and $0$ otherwise).
  %\begin{minipage}{.3\textwidth}
  \begin{center}
  \subfigure[Learning in Progress]{
- \begin{tikzpicture}[shorten >=1pt,->,draw=black!100]
+ \begin{tikzpicture}[shorten <=1pt,->,draw=black!100]
  	\footnotesize
  	\def \attic{5.95cm}
  	\def \rowtwoht{5.4cm}
@@ -2322,7 +2357,7 @@ $m_{i,k}c_{j,k} = 1$ (and $0$ otherwise).
  }
  \subfigure[Convergence]{
 
- \begin{tikzpicture}[shorten >=1pt,->,draw=black!100]
+ \begin{tikzpicture}[shorten <=1pt,->,draw=black!100]
  	\footnotesize
  	\def \attic{5.95cm}
  	\def \rowtwoht{5.4cm}
