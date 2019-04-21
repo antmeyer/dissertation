@@ -1307,11 +1307,9 @@ The pseudocode for the \textsc{modified-PRP} method is shown in algorithm~\ref{a
    Stop\;
    }
    Save gradient: $\textbf{g}_{\text{old}} := \textbf{g}$\;
-   Save direction: $\textbf{d}_{\text{old}} := \textbf{d}$ ;
-  % $\textbf{y}_{\text{old}} := \textbf{y}$\;
+   Save direction: $\textbf{d}_{\text{old}} := \textbf{d}$ \;
   Update gradient $\textbf{g} := \nabla f(\textbf{w})$\;
   Update $\textbf{y} := \textbf{g} - \textbf{g}_{\text{old}}$\;
-  %$\beta^{PRP}  := \frac{\textbf{g}^\textsf{T} \textbf{g} }{}$
   Compute $\beta^{PRP} := \frac{\textbf{g}^{\textsf{T}}{\textbf{y}}}{{||\textbf{g}_{\text{old}}||}^2}$\;
   Update direction: $\textbf{d} := -\textbf{g} + \beta^{PRP} \textbf{d}_{\text{old}} - \eta \textbf{y}$\;   \label{line:d-update-2}
    %Update $t := t + 1$\;

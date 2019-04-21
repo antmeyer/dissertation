@@ -11,10 +11,11 @@
 %\setCJKmainfont[BoldFont=STHeiti,ItalicFont=STKaiti]{STSong}
 %\setCJKsansfont[BoldFont=STHeiti]{STXihei}
 %\setCJKmonofont{STFangsong}
-
 %\usepackage{cite}
-\usepackage{array}
 \usepackage{graphicx}
+\usepackage{blindtext}
+%\usepackage{showframe}
+\usepackage{array}
 \usepackage[export]{adjustbox}
 %\usepackage[]{algorithm2e}
 \usepackage[ruled,linesnumbered]{algorithm2e}
@@ -49,8 +50,11 @@
 %    }
 %\usepackage[hebrew,english]{babel}
 %\usepackage{CJKutf8}
-
+\renewcommand*\ttdefault{cmvtt}
+%\renewcommand*\familydefault{\ttdefault} %% Only if the base font of the document is to be typewriter style
 \usepackage[T1]{fontenc}
+%\usepackage[scaled=.83]{beramono}
+%\usepackage{lipsum}
 \usepackage{amsthm}
 \usepackage{amsmath}
 \newtheorem*{remark}{Remark}
@@ -96,7 +100,7 @@
 %\usepackage[T1, T2A]{fontenc}
 %\usepackage{subcaption}
 %\usepackage{dcolumn}
-
+\usepackage{tabto}
 \usepackage{url}
 \usepackage{array}
 \usepackage{threeparttable}
@@ -122,6 +126,12 @@
 \usepackage{multicol}
 \usepackage{color, colortbl}
 \usepackage{gb4e}
+\usepackage{etoolbox}
+
+\makeatletter
+\apptocmd{\@exe}{\singlespacing}{}{}
+\makeatother
+
 \definecolor{LightGray}{gray}{0.8}
 \definecolor{LightGray2}{gray}{0.9}
 %\usepackage[normalem]{ulem}
