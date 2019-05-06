@@ -232,9 +232,10 @@ The $J$ columns in  $\textbf{X}$ each represent a particular feature.
 The identical subscript on $\mathbf{x}_i$ 
 and $\mathbf{r}_i$ means that these vectors correspond to the same data 
 point, and thus ultimately the same word. Notice that the hidden 
-layer $\textbf{m}_i$ bears this same index and is thus also tied to the $i$th word. In particular, it 
-is the $i$th word's 
-\emph{cluster-membership vector}. That is, it is the $i$th row in the row 
+layer $\textbf{m}_i$ bears this same index and is thus also tied to the $i$th word. The index $i$
+means that it 
+is the 
+\emph{cluster-membership vector} of the $i$th word; that is, it is the $i$th row in the row 
 in the $I \times K$ matrix 
 $\mathbf{M}$, and each of $\mathbf{M}$'s $K$ columns corresponds to a particular 
 \emph{cluster}. Thus, the activity of each cell $m_{i,k}$ indicates whether or not the $i$th 

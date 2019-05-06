@@ -14,22 +14,23 @@ Arguably, the main advantage of unsupervised learning is that it can discover no
 On the other hand, it is very difficult to evaluate previously unknown 
 categories according to precision and recall. % and other measures that rely ``answer keys." 
 The previously unknown categories in this study were morphological 
-categories that were perhaps going to embody in some way Aronoff's notion of the morphome \citep{aronoff:1994}.  But we did not know the precise form these categories would take. 
+categories that would perhaps embody Aronoff's notion of the morphome \citep{aronoff:1994}.  
+However, we did not know the precise form these categories would take. 
 
 %---recall from REF that we use the term morph to avoid suggesting equivalence with he were unknown because we had  units were not conventional morphemes 
 %or morphosyntactic categories. 
 
 %Instead, MCMM-generated clusters corresponded roughly to Aronoff's 
 %\emph{morphomes} \citep{aronoff:1994}, 
-which can be described as 
-\emph{pre-morphosyntactic} units, i.e., units that have been assembled from 
-phonemes, but have not yet been assigned 
-a syntactic or semantic meaning. I use the term \emph{morph} to refer to such units in what follows, since it is a less loaded term than either
-either \emph{morpheme} or \emph{morphome}.
+%which can be described as 
+%\emph{pre-morphosyntactic} units, i.e., units that have been assembled from 
+%phonemes, but have not yet been assigned 
+%a syntactic or semantic meaning. I use the term \emph{morph} to refer to such units in what follows, since it is a less loaded term than either
+%either \emph{morpheme} or \emph{morphome}.
 %\emph{morphome}, since MCMM-generated clusters may not correspond 
 %precisely to morphomes in every case (see section REF). %~\ref{sec:targets}).
 
-Thus, the evaluation itself presents an important research question, namely the question 
+Thus, the evaluation itself presented an important research question, namely the question 
 of how to evaluate the output of an unsupervised morphological clustering algorithm, 
 particularly one that considers only features of \emph{word-internal form}, having no 
 access to morphosyntactic features that exist outside of the word, e.g., person, gender, and 
@@ -42,11 +43,10 @@ number of surrounding words.
 I thus devised a dual-paradigm method for evaluating Multimorph's output, i.e., an approach consisting of two complementary methods, %I would thus rather not rely on a single method.
 %not only because is it an unsupervised learning system, which are notoriously challenging to evaluate,  it learns unconventional morphological units, namely morphs. Indeed, it would be very difficult to come up with a gold standard for the morphs because we do not know what the morphs are supposed to look like; i.e., the ``right answers" are not obvious at the outset. 
 %In particular, I will use 
-one \emph{intrinsic} and one \emph{extrinsic}. We shall discuss these two components in what follows.
-
-Finally, the evaluation also included a \emph{qualitative} component, which served to complement the quantitative 
+one \emph{intrinsic} and one \emph{extrinsic}. 
+The evaluation also included a \emph{qualitative} component, which served to complement the quantitative 
 %utput of the MCMM was evaluated \emph{qualitatively}. The  which is intended to complement the quantitative
- intrinsic an extrinsic methods.
+ intrinsic an extrinsic methods. We will discuss each of these components in what follows.
 
 
 \section{Qualitative Evaluation} \label{sec:qualitative}
@@ -65,12 +65,23 @@ An \emph{intrinsic} evaluation regards a system as a stand-alone system and its 
 %on terms, as it were,
 %not as one embedded in a larger system.
 
-The present study's intrinsic evaluation component thus required a \emph{gold-standard categorization} against which to evaluate Multimorph's clusterings,\footnote{Note the use of the word {categorization} instead of \emph{clustering} in the term \emph{gold-standard categorization}. 
+The evaluation's intrinsic component thus required a 
+\emph{gold-standard categorization} against which to evaluate 
+Multimorph's clusterings,\footnote{Note the use of the word {categorization} 
+instead of \emph{clustering} in the term \emph{gold-standard categorization}. 
 By convention, gold-standard clusters are not actually called clusters, but rather 
-but (gold-standard) \emph{categories}}, and thus measure the precision and recall of Multimorph's clusterings. 
+but (gold-standard) \emph{categories}}, and thus measure the precision 
+and recall of Multimorph's clusterings. 
 
-In supervised learning, the training process requires that each learning example (or data point) by a target label, i.e., the ``correct answer,'' as it were. %old-standard (or target) category. Supervised systems need the target labels to learn.
- These target labels later serve as the gold-standard labels evaluating the trained model. In supervised learning, therefore, it is trivial to obtain a gold-standard for evaluation; if a model was trained at all, then the gold standard already exists. By contrast, in unsupervised learning, obtaining a gold-standard dataset can be much less straightforward. One problem, as mentioned above, is that unsupervised learning is by nature open-ended; it is supposed result in the discovery of categories and relationships.  
+In supervised learning, the training process requires that each learning example 
+(or data point) have a target label, i.e., the ``correct answer.'' The target labels 
+later serve as the gold-standard labels during the evaluation the trained model. 
+In supervised learning, therefore, it is trivial to obtain a gold-standard 
+for evaluation; if a model was trained at all, then the gold standard 
+already exists. By contrast, in unsupervised learning, obtaining a gold-standard 
+dataset can be much less straightforward. One problem, as mentioned above, 
+is that unsupervised learning is by nature open-ended; it is 
+supposed result in the discovery of categories and relationships.  
 
 Another difficulty (where obtaining a gold standard is concerned) is the 
 form-centric nature of Multimorph's learning domain. Multimorph learns morphs, 
@@ -95,7 +106,9 @@ component.  It was an exercise in maximizing the utility of less-than-ideal data
 suitable to the present study.
 
 As described in chapter~\ref{ch:experi}, the source of Multimorph's input words was the 
-Berman Longitudinal Corpus. Each word in this corpus is both (quasi-)phonetically transcribed as well as morphologically annotated, as described in chapter~\ref{ch:experi} (see in particular section~\ref{sec:morph-annotation}).
+Berman Longitudinal Corpus. Each word in this corpus is both (quasi-)phonetically 
+transcribed as well as morphologically annotated, as described in chapter~\ref{ch:experi} 
+(see in particular section~\ref{sec:morph-annotation}).
 %i.e., labeled with morphological categories. 
 %Each word thus comes with a 
 %morphological analysis consisting of one or more morphological categories (see \ref{sec:morph-annotation}).
@@ -120,8 +133,8 @@ hev\a'{i}n \> pos:v\&root:byn\&ptn:hifil\&tense:past\&pers:3\&gen:ms\&num:sg \\
 hev\a'{i}na \> pos:v\&root:byn\&ptn:hifil\&tense:past\&pers:3\&gen:fm\&num:sg \\
 \vdots \> \vdots \\
 \end{tabbing}
-\caption{Morphological analyses extracted from the Berman Longitudinal Corpus.}
 \label{fig:analyses}
+\caption{Morphological analyses extracted from the Berman Longitudinal Corpus.}
 \end{mdframed}
 \end{figure}
 
@@ -129,13 +142,8 @@ hev\a'{i}na \> pos:v\&root:byn\&ptn:hifil\&tense:past\&pers:3\&gen:fm\&num:sg \\
 %The intrinsic component of this study's evaluation compares an MCMM-generated clustering to a 
 %\emph{gold-standard categorization},  computing its precision and recall according to the extent to which it matches the gold-standard categorization. 
 
-An MCMM's output consists of 
-%Given the final valuations in the MCMM matrices $\mathbf{M}$ and $\mathbf{C}$,
-the matrices $\mathbf{M}$ and $\mathbf{C}$. As described in chapter~\ref{sec:MCMM}, the $\mathbf{M}$ contains a cluster-membership vector for each data point (i.e., word), while the matrix $\mathbf{C}$ contains each cluster's average vector, i.e., a vector whose active features are the active features across all of the cluster's members have in common. Put another way, a cluster is a set of data points, each of which can be described as a set of active features. Though this set differs from data point to data point, even with a cluster, co-members share some active features; that is, there is a non-empty intersection.  A cluster's centroid is the intersection of the active feature sets among a cluster's members.
-(See the example in section~\ref{subsec:example}.) 
 
-A cluster's centroid thus concisely expresses the relationship between the cluster's members, which is, ultimately, the cluster's very meaning. Cluster centroids can therefore be used as cluster labels. In our case, of course, a centroid is a vector consisting of $J$ feature activities, each in the interval $[0,1]$. The $J$ features in centroids correspond to the $J$ features in the data points, and each activity is of course a number, particular one in the interval $[0,1]$. 
-A number of steps are necessary to convert a numerical, multi-dimensional centroid vector to a unit of morphological structure. This process is described in section REF.
+
 
 %        self.clusters_justWords = []
 %        self.Rv = Rv
@@ -215,7 +223,8 @@ A number of steps are necessary to convert a numerical, multi-dimensional centro
 \begin{algorithm}
 \DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead 
 \KwIn{$\mathbf{M}$,  $\mathbf{C}$, input words $\mathbf{w}$, \text{threshold} $\theta$, $I$ $J$,$K$} 
-\KwOut{$\mathbf{U}$, a list of $K$ cluster member lists, i.e., $\{\mathbf{u}_k$ for $k \in K\}$, where each $\mathbf{u}_k$ is the list of the $k$th cluster's (active) member words}
+\KwOut{$\mathbf{U}$, a list of \emph{clusters}, in which each cluster is a list of words. Let $\{\mathbf{u}_k$ denote the $k$th cluster, i.e., the list of words composing the $k$th cluster.}
+ %$k \in K\}$, where each $\mathbf{u}_k$ is the list of the $k$th cluster's (active) member words}
 %
 %belong to that cluster.
 %$\text{clusters} \gets \big[\,[\,\,]_0, [\,\,]_1, [\,\,]_2, \,\dots, \, [\,\,]_K \,\big]$\;
@@ -326,7 +335,7 @@ morphs. That is, e.g., \emph{-s} represents a cluster whose words end with the m
 
 \subsubsection{Verbs} 
 
-\begin{table}[tb!]
+\begin{table}[tb]
 \centering
  %\footnotesize
  \subtable[Tensed verb forms\label{subtab:hifil-tensed}]{
@@ -360,8 +369,8 @@ morphs. That is, e.g., \emph{-s} represents a cluster whose words end with the m
       \bottomrule
       \end{tabular}
  }
+  \label{fig:paradigms}
  \caption{Past and future-tense paradigms for the root \textit{t.x.l} in the \textit{Hif`il} binyan.}
- \label{fig:paradigms}
  \end{table}
  
  \begin{table}[tb!]
@@ -399,8 +408,8 @@ morphs. That is, e.g., \emph{-s} represents a cluster whose words end with the m
       \bottomrule
       \end{tabular}
  }
+  \label{tab:paradigms}
  \caption{Past and future-tense paradigms for the root \textit{g.m.r} in the \textit{Qal} binyan.}
- \label{tab:paradigms}
  \end{table}
  
 % \begin{figure}[tb!]
@@ -432,7 +441,7 @@ morphs. That is, e.g., \emph{-s} represents a cluster whose words end with the m
 % \texttt{person/gender/number} (or \texttt{PGN}) features taking values like \texttt{3p/F/Sg} and \texttt{2p/M/Sg}. However, there is not always a one-to-one correspondence between such category labels and the actual distinctions in form. Consider, for example, the verb \textit{ttxil} `she/you will begin'. In the absence of context, this form is entirely ambiguous; it can be either \textsc{2.m.sg} or \textsc{3.f.sg}. \textsc{mila-ma} produces a separate analysis for each possibility, giving rise to two distinct \texttt{PGN} categories, namely \texttt{PGN:2/M/Sg} and \texttt{PGN:3/F/Sg}, where only one form exists. This is similar to the problem of negative and unmarked categories: an MCCM has no means of making a distinction where none exists in the feature representations.
 
 
-\begin{table}[tb!]
+\begin{table}[tb]
 \centering
 \subtable[One-to-one mappings from paradigm cells to categories\label{subtab:cats-one-to-one}]{
  \setlength{\extrarowheight}{6pt}
@@ -457,21 +466,21 @@ future-tense, 1st-person plural & $\to$  & \texttt{fut\%1\%Pl}\\
 Paradigm Cells & &  Gold-Standard Category \\
 \midrule
 past-tense, 3rd-person plural & \multirow{4}{*}{$\to$} & \multirow{4}{*}{\texttt{(past\%3\%Pl)|(fut\%23\%Pl)}} \\
-future-tense, 2rd-person masc. plural & & \\
-future-tense, 2rd-person fem. plural & & \\
+future-tense, 2rd-person masc plural & & \\
+future-tense, 2rd-person fem plural & & \\
 future-tense, 3rd-person plural & &\\
 \hline
 future-tense, 2rd-person masc. singular & \multirow{6}{*}{$\to$} & \multirow{6}{*}{\texttt{fut\%(2\%M)|(23\%F)}} \\
-future-tense, 2rd-person masc. plural &   & \\
-future-tense, 2rd-person fem. singular & &  \\
-future-tense, 2rd-person fem. plural & & \\
-future-tense, 3rd-person fem. singular & & \\
-future-tense, 3rd-person fem. plural & &\\
+future-tense, 2rd-person masc plural &   & \\
+future-tense, 2rd-person fem singular & &  \\
+future-tense, 2rd-person fem plural & & \\
+future-tense, 3rd-person fem singular & & \\
+future-tense, 3rd-person fem plural & &\\
 \bottomrule
 \end{tabular}
 }
-\caption{Mappings from conventional paradigm cells (see table~\ref{tab:paradigms}) to gold-standard categories for Multimorph's intrinsic evaluation}
 \label{tab:verb-cat-descriptions}
+\caption{Mappings from conventional paradigm cells (see table~\ref{tab:paradigms}) to gold-standard categories for Multimorph's intrinsic evaluation}
 \end{table}
 
 %\texttt{fut\%(2\%M)|(23\%F)}
@@ -527,7 +536,7 @@ particularly section~\ref{sec:heb-example}, the Hebrew inflectional endings
 for nominals are \emph{fusional}; it is impossible to separate the  masculine plural suffix \textit{-im} into 
 distinct singular and plural components.
 
-\begin{figure}[ht]
+\begin{figure}[t]\label{fig:blc-nouns}
 \begin{mdframed}
 \begin{tabbing}
 \hspace{1in} \= \hspace{5.5in} \kill
@@ -564,11 +573,10 @@ zriq\a'{a}t	 \> pos:n\&root:zrq\&ptn:CCiCa\&gen:fm\&num:sg\&stat:cstr \\
 %tmun\a'{o}t \> pos:n\&root:mnh\&ptn:CCuCa\&gen:fm\&num:pl\&stat:u\\
 \end{tabbing}
 \caption{BLC morphological analyses for nouns}
-\label{fig:blc-nouns}
 \end{mdframed}
 \end{figure}
    
-   \begin{table}[ht]
+   \begin{table}[t]
       \small
       \centering
        \setlength{\extrarowheight}{6pt}
@@ -576,7 +584,7 @@ zriq\a'{a}t	 \> pos:n\&root:zrq\&ptn:CCiCa\&gen:fm\&num:sg\&stat:cstr \\
  \toprule
  %&  \multicolumn{2}{|c|}{masc. noun} & \multicolumn{2}{|c|}{fem. noun}
  &  \textsc{sg} & \textsc{pl}\\
-\cmidrule(lr){2-3} 
+\cmidrule{2-3} 
 \textsc{m} & pas & pas\'{i}m \\
 \textsc{f}  &	qvuc\'{a}	& qvuc\'ot \\	
     \bottomrule
@@ -595,10 +603,21 @@ and \texttt{singular} become \texttt{F\%Sg}.
 We discard the part-of-speech category \emph{noun} because of vagueness; it corresponds to many different morphological exponents, but no \emph{particular} exponent.
 
 \item[Construct State.]
-The forms in table~\ref{tab:abs-only} are \emph{absolute} or \emph{free} forms. Nouns can also take \emph{construct} forms. Examples~\ref{ex:free-state} and \ref{ex:construct-phrase} illustrate the difference between the absolute and \emph{construct} state. In \ref{construct-phrase}. In the former, the noun\textit{pas-\'{i}m} is an independent noun phrase and thus appears in the absolute phrase. In the latter, however, it acts as the head of a \emph{construct phrase} and thus takes the construct form \emph{pas-\'{e}y}. The construct state is characterized by certain changes in form. All of the four nominal inflectional categories are subject to destressing and consequent vowel deletion, but only two of the four, namely the masculine plural and feminine singular, take distinctly construct suffixes, as shown in table~\ref{tab:cstr-endings}. 
+The forms in table~\ref{tab:abs-only} are \emph{absolute} or \emph{free} forms. 
+Nouns can also take \emph{construct} forms, i.e., the form used to create compound 
+nouns and express genitive relationships. The construct state is characterized by 
+certain changes in form with respect to the absolute forms. 
+Examples~(\ref{ex:free-state}) and (\ref{ex:construct-phrase})
+illustrate these changes.
+In example~(\ref{ex:free-state}) , the masculine plural form \textit{pas-\'{i}m} is an independent noun phrase 
+and thus takes the absolute state. In example~(\ref{ex:construct-phrase}), however, it is the head 
+of a \emph{construct phrase} and thus takes the construct form \emph{pas-\'{e}y}. 
+All of the four nominal inflectional categories are subject to primary-stress loss and consequent 
+vowel deletion, but only two of the four, namely the masculine plural and feminine singular, 
+take distinctly construct suffixes, as shown in table~\ref{tab:cstr-endings}. 
 
 \begin{exe}
-\label{ex:abs-v-cstr}
+%\label{ex:abs-v-cstr}
 \ex \textit{pas\'{i}m \quad weharaq\'{e}vet} \\ \label{ex:free-state}
 pas-\'{i}m \quad we-ha-raq\'{e}vet \\
 stripe-\textsc{pl} \quad and-the-train \\
@@ -609,29 +628,41 @@ stripe-\textsc{cstr.pl} \quad \textsc{def}-train \\
 `the train tracks'
 \end{exe}
 
-   \begin{table}[h!]
-      \small
+   \begin{table}[t]
       \centering
       \setlength{\extrarowheight}{8pt}
+         \small
       \begin{tabular}{ccccc} 
  \toprule
  &  \multicolumn{2}{c}{masculine} & \multicolumn{2}{c}{feminine} \\
  &  \textsc{sg} & \textsc{pl} & \textsc{sg} & \textsc{pl} \\
- \cmidrule(lr){2-3} \cmidrule(lr){4-5}
-   \textsc{absolute} & \textbf{pas} & pas\'{i}m  & qvuc\'{a}	& qvuc\'{o}t \\
-     \textsc{construct} &\textbf{pas} & pas\'{e}y& qvuc\'{a}t	& qvuc\'{o}t\\
+ \cmidrule{2-3} \cmidrule{4-5}
+   \textsc{absolute} & pas & pas\'{i}m  & qvuc\'{a}	& qvuc\'{o}t \\
+     \textsc{construct} & pas & pas\'{e}y & qvuc\'{a}t	& qvuc\'{o}t\\
     \bottomrule
     \end{tabular}
-    \label{tab:cstr-endings}
-    \caption{Masculine and feminine construct forms.}
+          \label{tab:cstr-endings}
+     \caption{Masculine and feminine construct forms.}
     \end{table}
     
 %The formal difference between construct and absolute states is not always apparent 
-In the other two categories, the masculine singular and feminine plural, the construct and absolute states are not always morphologically distinguished. Because there are no distinct construct suffixes for these categories, any formal distinction must be provided by vowel reduction/deletion. However, in Modern Hebrew, vowels are not uniformly subject to reduction and deletion, a consequence of the persistent influence of Biblical Hebrew prosody. For instance, some vowels are protected from deletion because their Biblical Hebrew antecedents were intrinsically (and thus unchangeably) long. Other vowels are protected from if they occur in a closed syllable.\footnote{Sometimes a vowel in an open syllable is protected because the syllable \emph{would have been} closed in Biblical Hebrew, which recognized double consonants as two moras. For instance \dots EXAMPLE HERE.} 
+In the other two categories, the masculine singular and feminine plural, the construct and absolute states are not always morphologically distinguished. Because these categories lack distinct construct suffixes, any formal distinction must be provided by vowel reduction/deletion. However, in Modern Hebrew, vowels are not uniformly subject to reduction and deletion, a consequence of the persistent influence of Biblical Hebrew prosody \citep{morag:1959, bolozky:1997, ravid-and-shlesinger:2001}. 
+For instance, some vowels are protected from deletion because their 
+Biblical Hebrew antecedents were intrinsically (and thus unchangeably) long. 
+Other vowels are protected if they occur in a closed syllable.\footnote{Sometimes 
+a vowel in an open syllable is protected because the syllable \emph{would have been} 
+closed in Biblical Hebrew, which recognized geminate consonants as a sequence of two 
+moras. For instance, the word \textit{tabbax} `cook, chef', is pronounced [tabax] in Modern Hebrew---without the geminate /b/. Nevertheless, historical geminate \textit{b} protects the initial /a/ from deletion in the construct phrase [tabax  mi\v{s}k\'an] `resident chef' \citep[see][p. 43]{bolozky-and-schwarzwald:1990}.}
 
-Thus, in the transcriptional data (both with and without stress marking), there is sometimes no formal construct marker (or exponent) in the masculine singular and feminine plural categories. Moreover, in the orthographic data, there is \emph{never} a distinction between the absolute and construct states in these two categories, since the vowels that are subject to deletion are not represented in the orthographic data.
+Thus, in the transcriptional data (both with and without stress marking), there 
+is sometimes no formal construct marker (or exponent) in the masculine singular 
+and feminine plural categories. 
+Moreover, in the orthographic data, there is \emph{never} a distinction between 
+the absolute and construct states in these 
+two categories, since the vowels that are subject to deletion are not represented in the 
+orthographic data in the first place.
 %difference  since the orthographic data does not the represent vowels that are subject to deletion.
-Therefore, when the BLC category \textit{stat:bound}  is associated with a masculine singular or feminine plural nominal, we discard it, as in examples~{ex:cstr:m-sg} and {ex:cstr:f-pl}. Otherwise, we fuse it to the \textsc{gender}\%\textsc{number} categories as \textit{cstr}, as in examples~{ex:cstr:m-pl} and {ex:cstr:f-sg}.
+Therefore, when the BLC category \textit{stat:bound}  is associated with a masculine singular or feminine plural nominal, we discard it, as in examples~\ref{ex:cstr:m-sg} and \ref{ex:cstr:f-pl}. Otherwise, we fuse it to the \textsc{gender}\%\textsc{number} categories as \textit{cstr}, as in examples~\ref{ex:cstr:m-pl} and \ref{ex:cstr:f-sg}.
 %\begin{exe}
 %\ex \begin{xlist}
 %		\ex gen:ms\&num:sg \quad $\to$ \quad m\%sg
@@ -651,13 +682,15 @@ Therefore, when the BLC category \textit{stat:bound}  is associated with a mascu
 %\end{xlist}
 %\end{exe}
 \begin{exe}
-\ex \begin{xlist}
+\ex \label{ex:cstr-cats} 
+\begin{xlist}
 		\ex gen:ms\&num:sg \&stat:bound \quad $\to$ \quad \texttt{m\%sg} \label{ex:cstr:m-sg}
 		\ex gen:ms\&num:pl\&stat:bound \quad $\to$ \quad \texttt{cstr\%m\%sg} \label{ex:cstr:m-pl}
 		\ex gen:fm\&num:sg\&stat:bound  \quad $\to$ \quad \texttt{f\%pl} \label{ex:cstr:f-sg}
 		\ex gen:fm\&num:pl\&stat:bound \quad $\to$ \quad \texttt{cstr\%f\%pl} \label{ex:cstr:f-pl}
 	\end{xlist}
-\ex \label{ex:adj-cats} \begin{xlist}
+\ex \label{ex:adj-cats} 
+\begin{xlist}
 		\ex pos:adj\&gen:ms\&num:sg \quad $\to$ \quad \texttt{adj\&m\%sg} \label{ex:adj:m-sg}
 		\ex pos:adj\&gen:ms\&num:pl \quad $\to$ \quad \texttt{adj\&m\%pl} \label{ex:adj:m-pl}
 		\ex pos:adj\&gen:fm\&num:sg \quad $\to$ \quad \texttt{adj\&f\%sg} \label{ex:adj:f-sg}
@@ -719,7 +752,7 @@ to a noun. Thus, unlike nouns, many adjectives have a formal exponent, i.e., a p
 %---has a formal 
 %exponent in the suffix \texit{-i}.
 We therefore retain\emph{adjective} 
-\texttt{pos:adj} (\textit{part-of-speech: adjective}) as a gold-standard category.
+\texttt{pos:adj} (i.e., \textit{part-of-speech: adjective}) as a gold-standard category.
 Recall that we discarded the \emph{noun} category because it lacked particular formal exponent. 
 This universal treatment of adjectives, however, is imperfect, since many adjectives, such as
 \textit{nexm\'{a}d} `pleasant' (see table~\ref{tab:non-y-adjs}),
@@ -736,13 +769,13 @@ nexmad\a'{i}m \> pos:adj\&root:xmd\&ptn:niCCaC\&gen:ms\&num:pl\&src:deverb\\
 nexmad\a'{o}t \> pos:adj\&root:xmd\&ptn:niCCaC\&gen:fm\&num:pl\&src:deverb\\
 nexm\a'{a}d \> pos:adj\&root:xmd\&ptn:niCCaC\&gen:ms\&num:sg\&src:deverb\\
 \end{tabbing}
+\label{fig:analyses}
 \caption{Morphological analyses extracted from the Berman Longitudinal Corpus. These entries are the inflections
 of the adjective \textit{nexmad} `pleasant.'}
-\label{fig:analyses}
 \end{mdframed}
 \end{figure}
 
-   \begin{table}[h!]
+   \begin{table}[t]
       \small
       \centering
        \setlength{\extrarowheight}{8pt}
@@ -783,7 +816,7 @@ of the adjective \textit{nexmad} `pleasant.'}
 %\end{center}
 %\end{table}
 
-\begin{table}[ht]
+\begin{table}[bt]
 \centering
 \small
 \setlength{\extrarowheight}{8pt}
@@ -823,8 +856,13 @@ of the adjective \textit{nexmad} `pleasant.'}
 
 \item[Participles.]
 As in English, participles in Hebrew can function as nouns and adjectives.
-All binyanim except the \textit{Qal} and \textit{Nif`al} use the prefix stem to form the participle. The \textit{Nif`al} uses the prefix stem, and the \textit{Qal} uses a different set of stems altogether to form the participle.\footnote{The participle functions as the present-tense verb form in modern Hebrew, but it inflects as a nominal as a nominal category.}
-\textit{Qal} and \textit{Nif`al} participles, we add the categories \texttt{qal:participle} and \texttt{nifal:suffix\_stem}.  In general, the BLC category \texttt{pos:part} is combined with the fusional gender and number endings to categories like \texttt{part\%m\%sg}.
+All binyanim except the \textit{Qal} and \textit{Nif`al} use 
+the prefix stem to form the participle. The \textit{Nif`al} uses the prefix stem, 
+and the \textit{Qal} uses a different set of stems altogether to form the 
+participle.\footnote{The participle functions as the present-tense verb form in modern Hebrew, but it inflects as a nominal category.}
+\textit{Qal} and \textit{Nif`al} participles, we add the categories \texttt{qal:participle} 
+and \texttt{nifal:suffix\_stem}.  In general, the BLC category \texttt{pos:part} 
+is combined with the fusional gender and number endings to categories like \texttt{part\%m\%sg}.
 
 %def analysisFilter(analyses_str):
 %	new_analyses = list()
@@ -889,7 +927,7 @@ into a single class, e.g., \texttt{pro:pers\%2\%m} (2nd-person $\land$ masculine
 and another combining person, gender, and number, 
 e.g., \texttt{pro:pers\%2\%m\%sg} (2nd-person $\land$ masculine $\land$ singular). 
 The former type of gold-standard class
-thus corresponds to a particular row in table~\ref{tab:pers:pronouns}, 
+thus corresponds to a particular row in table~\ref{tab:pers-pronouns}, 
 while the latter corresponds to a particular \emph{cell} in this table.
 
 %person and gender categories, e.g., $\textsc{person:2} \land \textsc{gender:m}$, 
@@ -898,7 +936,7 @@ while the latter corresponds to a particular \emph{cell} in this table.
 %to the two gold-standard categories 
 %\texttt{pro:pers\%2\%m} and \texttt{pro:pers\%2\%m\%sg}.
 
-\begin{table}[ht!]
+\begin{table}[tb]\label{tab:pers-pronouns}
 \centering
 %[Personal pronouns\label{tab:pers-pronouns}]{
 \setlength{\extrarowheight}{6pt}
@@ -918,22 +956,20 @@ while the latter corresponds to a particular \emph{cell} in this table.
     \bottomrule
 \end{tabular}
 \caption{Personal pronouns}
-\label{tab:pers-pronouns}
 \end{table}
 
-\begin{table}[ht!]
+\begin{table}[tb]  \label{tab:dem-pronouns}
 \setlength{\extrarowheight}{6pt}
 \centering
 \begin{tabular}{lcc}
 \toprule
-\setlength{\extrarowheight}{6pt}
+ & \textsc{sg} & \textsc{pl} \\
+  \cmidrule{2-3}   
  \textsc{m} & ze & {\textglotstop}\'{e}le \\ 
- \cmidrule{2-3}   
    %\raisebox{1.5ex}[0pt]{3} & fem  & hi\textipa{P} &  hen \\
-   \textsc{f} & \{ zo, zo\textipa{P}t \}  &  {\textglotstop}\'{e}lu \\
+\textsc{f} & \{ zo, zo\textipa{P}t \}  &  {\textglotstop}\'{e}lu \\
    \bottomrule
   \end{tabular}
-  \label{tab:dem-pronouns}
 \caption{Demonstrative pronouns}
   \end{table}
   
@@ -948,7 +984,7 @@ while the latter corresponds to a particular \emph{cell} in this table.
 %	\end{xlist}
 %\end{exe}
 
-  \begin{figure}[ht!]
+  \begin{figure}[t]\label{fig:pers-pronouns}
   \begin{mdframed}
  \begin{tabbing}
 \hspace{1in} \= \hspace{5.5in} \kill
@@ -964,9 +1000,8 @@ while the latter corresponds to a particular \emph{cell} in this table.
 hu\textipa{P} \> pos:pro:person\&pers:3\&gen:ms\&num:sg \\
 hi\textipa{P} \> pos:pro:person\&pers:3\&gen:fm\&num:sg \\
 \end{tabbing}
-\end{mdframed}
-\label{fig:pers-pronouns}
 \caption{Personal-pronoun analyses extracted from the BLC}
+\end{mdframed}
 \end{figure}
 
 
@@ -1234,29 +1269,37 @@ prep:pro|\textipa{Q}al\&pers:3\&gen:ms\&num:sg-\'{a}yw=on
 %\label{fig:acc-examples}
 %\end{figure}
 
-\begin{table}[tb]
-\centering
-\begin{tabular}{lll}
-	\toprule
-	BLC Category & & Gold-Std Category \\
-	\midrule
-	\texttt{poss:1SG} & $\to$ & \texttt{pos:prep:pro\%1\%sg}  \\
-	\bottomrule  
-\end {tabular}
-\end{table}
+%\begin{table}[tb]
+%\centering
+%\begin{tabular}{lll}
+%	\toprule
+%	BLC Category & & Gold-Std Category \\
+%	\midrule
+%	\texttt{poss:1SG} & $\to$ & \texttt{pos:prep:pro\%1\%sg}  \\
+%	\bottomrule  
+%\end {tabular}
+%\end{table}
     
 %\item \textit{Pronominal suffixes}
 \item[Pronominal suffixes] can attach to both nouns and prepositions. When attached to nouns, they function as genitive---or possessive---pronouns, as in \textit{\textsubdot{t}ipot-\'{a}y} `my drops' (cf. \textsubdot{t}ip\'{o}t `drops').
-In the latter case, they serve as the NP compliment (i.e., the object) of the preposition in question, as in, for instance \textit{\textipa{Q}al-\'{a}y} `on me' (cf. \textipa{Q}al `on').
+In the latter case, they serve as the NP compliment (i.e., the object) of the preposition 
+in question, as in, for instance \textit{\textipa{Q}al-\'{a}y} `on me' (cf. \textipa{Q}al `on').
 There are two sets
-of pronominal suffixes: one set for singular noun stems and another for plural noun stems. That is, the members of the first set, presented in table~\ref{subtab:pron-suf-sg}, attach to singular nouns, while the members of the second set, shown in table~\ref{subtab:pron-suf-pl} attach to plural nouns. 
+of pronominal suffixes: one set for singular noun stems and another for plural noun stems. 
+That is, the members of the first set, presented in table~\ref{subtab:pron-suf-sg}, 
+attach to singular nouns, while the members of the second set, shown in table~\ref{subtab:pron-suf-pl} 
+attach to plural nouns. 
 Even though prepositions themselves have no number (nor person or gender). 
-Nevertheless, some prepositions, e.g., the prefixal preposition \textit{le-}, take singular-stem pronominal suffixes, while others, e.g., \textit{\textipa{Q}al} `on,'
+Nevertheless, some prepositions, e.g., the prefixal preposition \textit{le-}, 
+take singular-stem pronominal suffixes, while others, e.g., \textit{\textipa{Q}al} `on,'
 take plural-stem-attaching suffixes. Thus, in example~\ref{ex:prep-pro-to}, 
 \textit{le-} takes 1st-person singular pronominal suffix for \emph{singular} stems, 
 while \textit{\textipa{Q}al} in example~\ref{ex:prep-pro-on} takes the 1st-person 
-for \emph{plural} nouns. In both of these examples, the person and number of the suffix is the same: 1st-person singular. (The gender common in the first person.)
-The only functional difference between these two suffixes is that the former attaches to singular nouns (and certain prepositions), whereas the latter attaches to the plural nouns (and the other prepositions). 
+for \emph{plural} nouns. In both of these examples, the person and number of 
+the suffix is the same: 1st-person singular. (The gender common in the first person.)
+The only functional difference between these two suffixes is that the former 
+attaches to singular nouns (and certain prepositions), whereas the latter 
+attaches to the plural nouns (and the other prepositions). 
 %Note that the BLC does not indicate this difference in a distinct morphosyntactic feature. 
 
 When a noun bears a pronominal suffix, both the noun and the suffix have their 
@@ -1264,9 +1307,9 @@ own distinct gender and number features. In addition, the suffix has a person fe
 In such cases, the BLC treats the noun's gender and number as separate, atomic
 categories in the usual way. To avoid additional and possibly conflicting gender 
 and number features in the same
-analysis, the BLC combines the suffix's person, gender, number categories into 
+analysis, the BLC combines the suffix's person, gender, and number categories into 
 a single composite category labeled \texttt{poss} for \textit{possessive}, as in 
-examples~\ref{ex:prosuf-3ms} and \ref{ex:prosuf-3mpl}.
+examples~(\ref{ex:prosuf-3ms}) and (\ref{ex:prosuf-3mpl}).
 
 On the other hand, when a preposition bears a pronominal suffix, there is no gender 
 or number associated with the stem, and thus the BLC treats the gender and 
@@ -1280,13 +1323,15 @@ In our category mappings, therefore, we treat the analyses of suffix-bearing
 prepositions as do those 
 of personal pronouns. That is, we map person and gender onto a person-and-gender gold-standard
 category, and then person, gender, and number onto another gold-standard category.
-Thus, the BLC analysis for \textit{\textipa{Q}al-\'{a}yi\textsubdot{k}}, which consists of the categories \texttt{prep:pro}, \texttt{pers:2}, \texttt{gen:m}, and \texttt{num:3}, is mapped onto the two gold-standard classes \texttt{prep:pro\%2\%m} and 
+Thus, the BLC analysis for \textit{\textipa{Q}al-\'{a}yi\textsubdot{k}}, 
+which consists of the categories \texttt{prep:pro}, \texttt{pers:2}, \texttt{gen:m}, and \texttt{num:3}, 
+is mapped onto the two gold-standard classes \texttt{prep:pro\%2\%m} and 
 \texttt{prep:pro\%2\%m\%sg}.
 
 We retain the BLC's possessive person-number-gender feature, so that \texttt{poss:3mascSG},
-for example, became \texttt{[pro\_suf:3mascSG}. \footnote{The replacement of \texttt{poss:} with 
+for example, became \texttt{[pro\_suf:3mascSG}.\footnote{The replacement of \texttt{poss:} with 
 \texttt{pro\_suf:3mascSG} was merely aesthetic and thus had no real effect.}
-no real effect.) We additionally introduced the gold-standard class \texttt{pro\_suf\_state}, a class that applies to
+We additionally introduced the gold-standard class \texttt{pro\_suf\_state}, a class that applies to
 all nouns bearing a pronominal suffix, regardless of the suffix's particular
 %person, gender, and number 
 morphosyntactic features. 
@@ -1294,11 +1339,6 @@ morphosyntactic features.
 \ex \label{ex:mapping-pron-suf}
 \texttt{poss:3mascSG}  $\,\,\to\,\,$ \texttt{pro\_suf\_state\&pro\_suf:3mascSG}, 
 \end{exe}
-
-
-
-
-
 
 %In the BLC analyses of nouns bearing a pronominal suffix, the noun stem has gender and number features
 %attach to singular the noun it selects for. One set attaches to singular nouns;
@@ -1329,8 +1369,11 @@ morphosyntactic features.
 
 \item[Particles.]
 A distinct gold-standard category was created for each formally distinct prefixal particle, as well as three additional categories for the composite
-prefixes \textit{la-} (`to the'), \textit{ba-} (`in the'), and \textit{ka-} (`as the'), which result from the blending of the prefixal prepositions \textit{le-} (`to'),\textit{be-} (`in'), and \textit{ke-} (`as') with the definite-article prefix \textit{ha-}.
+prefixes \textit{la-} (`to the'), \textit{ba-} (`in the'), and \textit{ka-} (`as the'), 
+which result from the blending of the prefixal prepositions \textit{le-} (`to'), 
+\textit{be-} (`in'), and \textit{ke-} (`as') with the definite-article prefix \textit{ha-}.
 and \text{be-} `in'. 
+\end{description}
 
 \begin{table}[t]
 \centering
@@ -1340,11 +1383,11 @@ and \text{be-} `in'.
 Prefix & Gloss & Gold-Std Category \\
 \midrule
 \textit{be-} & `in'	& \texttt{pre:be}   \\                    
-\textit{ba-}	&`in the' & \texttt{pre:be\~pre:ha}    \\                              
+\textit{ba-}	&`in the' &  \texttt{pre:be\raisebox{-1.2mm}{\textasciitilde}pre:ha}   \\                              
 \textit{ke-}	&`as'  & \texttt{pre:ke} \\                
-\textit{ka-}	& `as the' & \texttt{pre:ke\~pre:ha} \\          
+\textit{ka-}	& `as the' & \texttt{pre:ke\raisebox{-1.2mm}{\textasciitilde}pre:ha} \\          
 \textit{le-}	& `to' & \texttt{pre:le}  \\               
-\textit{la-}	& `to the' & \texttt{pre:le\~pre:ha} \\
+\textit{la-}	& `to the' & \texttt{pre:le\raisebox{-1.2mm}{\textasciitilde}pre:ha} \\
 \textit{ha-}	& `the' & \texttt{pre:ha}  \\      
 \textit{mi(n)-} &`from' & \texttt{pre:mi}  \\               
 \textit{\v{s}e-}	& `that, which' & \texttt{pre:sh} \\
@@ -1416,9 +1459,9 @@ Prefix & Gloss & Gold-Std Category \\
 %		#analysis=re_abs.sub(ur"\2&\5\%\7\3", analysis)
 %		analysis=re_abs.sub(ur"\2&\5\%\7\3", analysis)
 %		adj&[gen]\%[num]([^\s]*)
-\end{description}
+%\end{description}
 	
-To measure precision and recall, one needs a gold standard. Supervised
+%To measure precision and recall, one needs a gold standard. Supervised
 %% learners train on a body of human-labeled examples, and thus come with
 %% a ready made gold standard, namely some subset of the human-labeled
 %% examples themselves. But unsupervised learning algorithms like the
@@ -1857,7 +1900,7 @@ To measure precision and recall, one needs a gold standard. Supervised
 %Morphs like \emph{run} and \emph{-s} are essentially cluster labels. 
 %That is, \emph{-s} represents a cluster whose words predominantly end in  \emph{-s}.
 
-\subsubsection{Orthographic data.}
+%\subsubsection{Orthographic data.}
 
 %To obtain morphological analyses for the wordlist O, I will use the 
 %MILA Morphological Analysis tool (\textsc{mila-ma}) \citep{hebrew-resources:2008}.
@@ -1890,21 +1933,26 @@ To measure precision and recall, one needs a gold standard. Supervised
 %because they are specifically designed for cases of overlapping clusters 
 %\citep{amigo-et-al:2009}.
 
-\subsubsection{Transcribed data.} Gold-standard category mappings for the 
-transcribed words were obtained by extracting morphological analyses from the Berman 
-Longitudinal Corpus (BLC). Recall that for each utterance in the BLC, 
-there is a transcription tier and a morphological-analysis tier. The latter provides a 
-morphological analysis for each word in the utterance, including roots for the words 
-that have roots. I extracted the morphological analyses and used them to create a list of 
-word-to-category mappings. % resembling created from \textsc{mila-ma}'s analyses.
+%\subsubsection{Transcribed data.} Gold-standard category mappings for the 
+%transcribed words were obtained by extracting morphological analyses from the Berman 
+%Longitudinal Corpus (BLC). Recall that for each utterance in the BLC, 
+%there is a transcription tier and a morphological-analysis tier. The latter provides a 
+%morphological analysis for each word in the utterance, including roots for the words 
+%that have roots. I extracted the morphological analyses and used them to create a list of 
+%word-to-category mappings. % resembling created from \textsc{mila-ma}'s analyses.
+
 \subsubsection{Evaluation Metrics} 
 \label{sec:metrics}
 We evaluate the intrinsic results according to three metrics: \textbf{average purity}, \textbf{BCubed precision}, and
  \textbf{BCubed} recall. For the purpose of describing these metrics,
- let $U$ denote the set of $K$ clusters discovered by a system, 
- $V$ the set of $J$ gold-standard categories, and $X$ is the set of data points 
- to be clusters. The cardinality of $X$ is $N$; i.e., there are a total of $N$ 
- individual data points that have been clustered.
+ let $\mathbf{U}$ denote a \emph{clustering}, i.e., the complete set of $K$ clusters $\mathbf{u}_k$
+ discovered by an unsupervised clustering system. Let
+ $\mathbf{V}$ denote the set of $J$ gold-standard categories and $X$ the set of $N$ data points 
+ that supplies the clusters in $\mathbf{U}$ with their members. 
+% 
+% There are a total 
+% of $N$ data points in $X$. 
+% individual data points that have been clustered.
 \paragraph{Average purity.}
 The standard purity metric seeks to calculate the global correctness of a 
 given clustering by determining the proportion of data points that have 
@@ -1912,12 +1960,12 @@ assigned to the correct cluster. Each individual data point has at some
 point been associated with a gold-standard \emph{category} label. Thus, 
 in any given cluster, there are in effect as many gold-standard category 
 labels as there are data points. Standard purity assumes that most frequent 
- gold-standard category in a given cluster $u_k$ is the gold-standard label for the entire cluster. The number of correctly clustered data points in $u_k$ is thus equal to the frequency of  $v_j$ in cluster $u_k$. Standard purity sums up the correctly clustered data points over all clusters, and divides this sum by $N$, the total number of distinct data points in the clustering
+ gold-standard category in a given cluster $\mathbf{u}_k$ is the gold-standard label for the entire cluster. The number of correctly clustered data points in $\mathbf{u}_k$ is thus equal to the frequency of  $\mathbf{v}_j$ in cluster $\mathbf{u}_k$. Standard purity sums up the correctly clustered data points over all clusters, and divides this sum by $N$, the total number of distinct data points in the clustering
  %The reason $v_j$ is the most frequent category in $u_k$ is that it is associated with more of $u_k$'s members than any other data point .in the cluster is the same as the frequency of data points that bear the label. 
 % Thus, the frequency of the most common gold-standard category in a cluster $U_k$  is deemed the number of correctly clustered items in $U_k$ x$ instances of this category label in the cluster, there are also $x$ data points associated the course equal to the number of data points associated with this category. data points he purity of this particular is thi
  The standard version of purity is computed as 
 \begin{equation} \label{eq:pur1}
-\text{purity}(U, V) = \frac{1}{N} \sum_{k \in K} \text{max}_{j \in J} |u_k \cap v_j|
+\text{purity}(\mathbf{U}, \mathbf{V}) = \frac{1}{N} \sum_{k \in K} \text{max}_{j \in J} |\mathbf{u}_k \cap \mathbf{v}_j|
 \end{equation}
 In other words, 
 The problem for our purposes is that this version of purity assumes that each datapoint belongs to exactly only one gold-standard category. In fact, it requires that this be so, for if any data point should belong to more than one cluster belong to more than one cluster, the numerator in \eqref{eq:pur1} would be greater than than 1, and thus the resulting purity would exceed 1.
@@ -1926,11 +1974,12 @@ In the present study, each data point is a word, and the categories are morpholo
 
 To avoid purities that exceed 1, we modify equation \eqref{eq:pur1} as follows: 
 \begin{equation} \label{eq:pur2}
-\text{purity}_{\text{avg}}(U, V) =  \frac{1}{K} \sum_{k \in K} max_{j \in J} |u_k \cap v_j|
+\text{purity}_{\text{avg}}(\mathbf{U}, \mathbf{V}) =  \frac{1}{K} \sum_{k \in K} max_{j \in J} |\mathbf{u}_k \cap \mathbf{v}_j|
 \end{equation}
 This new equation represents an \emph{average cluster-wise purity}; i.e., it computes each cluster's internal purity and then averages over these purities. %the mean of the $K$ clusters’ internal purities. 
 While this equation yields purities within $[0, 1]$, even 
-when clusters overlap, it retains the well-known bias of the purity metric toward small clusters. We thus incorporate other metrics. 
+when clusters overlap, it retains %the well-known bias of the 
+purity metric's bias toward small clusters. We thus incorporate other metrics. 
 
 \paragraph{BCubed precision and recall}
 The metrics \emph{BCubed precision} (BP) and \emph{BCubed recall} (BR) \citep{bagga-and-baldwin:1998} evaluate a clustering by checking one 
@@ -1941,62 +1990,74 @@ In such cases, it is possible for two data points $x$ and $y$ to overlap both in
 gold-standard categories. Suppose that $x$ and $y$ overlap in $m$ clusters and $n$ categories. Ideally, $m$ would 
 equal $n$, in which case there would be a one-to-one correspondence between clusters and gold-standard categories. 
 In imperfect cases, however, either $m$ will be less than $n$ or vice versa. BCubed precision essentially 
-measures the extent to which $m \leq n$; for if $m>n$---i.e., if $x$ and $y$ co-occur in more clusters than gold-standard categories, then the algorithm has posited at least one 
-spurious relationship between $x$ and $y$. BCubed precision thus penalizes false co-memberships between pairs of data points. 
+measures the extent to which $m \leq n$; for if $m>n$, i.e., if $x$ and $y$ co-occur in more clusters than gold-standard categories, then the algorithm has posited at least one 
+spurious relationship between $x$ and $y$. BCubed precision thus penalizes false co-memberships between pairs of data points.
+
 By contrast, BCubed recall measures the extent to which $m \geq n$; for if $n<m$, then the algorithm 
 has missed at least one gold-standard relationship between $x$ and $y$. BCubed recall thus 
 penalizes missing co-memberships. % (i.e., missed gold-standard relationships). 
-At the core of BCubed precision is the measure multiplicity precision ($MultiP$):
-%\begin{equation}
-%MultiP(x,y) = \frac{min|U(x) \cap U(y)|, |V(x) \cap V (y)|}{|U(x) \cap U(y)|}
-%\end{equation}
-\begin{equation}
-\text{MultiP}(x,y) = \frac{\text{min}(|U(x)\cap U(y)|, |V(x) \cap V(y)|)}{|U(x) \cap U(y)|}
+At the core of BCubed precision is the measure multiplicity precision ($\text{MultiP}$):
+
+\begin{equation}\label{eq:multi-p}
+\text{MultiP}(x,y) = \frac{\text{min}(|\mathbf{U}(x) \cap \mathbf{U}(y)|, |\mathbf{V}(x) \cap \mathbf{V}(y)|)}{|\mathbf{U}(x) \cap \mathbf{U}(y)|}
 \end{equation}
-where $x$ and $y$ are data points in $X$; $U(x)$ is the set the clusters that contain $x$, 
-and $U(y)$ is the set of clusters containing $y$.
+where $x$ and $y$ are data points in $X$; $\mathbf{U}(x)$ is the set the clusters that contain $x$, 
+and $\mathbf{U}(y)$ is the set of clusters containing $y$.
 Finally, 
-$V(x)$ and $V(y)$ are the sets of gold-standard categories for $x$ and $y$. 
-Notice that $MultiP(x,y)$ is a comparison of two items $x$ and $y$, neither of which is the 
-particular focus of the measure. $MultiP(x,y)$ is thus a joint description $x$ and $y$. 
-To obtain a precision value that describes $x$ alone, one must compute $Avg_{y}(MultiP (x,y))$, the 
-average $MultiP(x,y)$ over $y \in X$, by computing $MultiP(x,y)$ for every $y$ that shares a cluster with $x$ 
+$\mathbf{V}(x)$ and $\mathbf{V}(y)$ are the sets of gold-standard categories for $x$ and $y$. 
+Notice that $\text{MultiP}(x,y)$ is a comparison of two items $x$ and $y$, neither of which is the 
+particular focus of the measure. $\text{MultiP}(x,y)$ is thus a joint description $x$ and $y$. 
+To obtain a precision value that describes $x$ alone, one must compute $\text{Avg}_{y}(\text{MultiP} (x,y))$, the 
+average $\text{MultiP}(x,y)$ over $y \in X$, by computing $\text{MultiP}(x,y)$ for every $y$ that shares a cluster with $x$ 
 and averaging the resulting values. To obtain a precision value that describes the whole dataset (not just a single $x$), 
-one must compute $Avg_y(\text{MultiP}(x,y))$ for every $x$ in $X$ and then take the average of these averages. 
+one must compute $\text{Avg}_y(\text{MultiP}(x,y))$ for every $x$ in $X$ and then take the average of these averages. 
 This average of averages is BCubed Precision. 
-%\begin{equation}
-%BP=Avg_x [ Avg_{y.U(x) \cap U(y)\neq \emptyset}(MultiP(x,y))]
-%\end{equation}
-\begin{equation}
-BP=Avg_x [Avg_{y.U(x) \cap U(y) \neq \emptyset}(\text{MultiP}(x,y))]
+
+\begin{equation}\label{eq:bp}
+\text{BP}=\text{Avg}_x [\text{Avg}_{y.\mathbf{U}(x) \cap \mathbf{U}(y) \neq \emptyset}(\text{MultiP}(x,y))]
 \end{equation}
-The measures multiplicity recall(MultiR) and BCubed recall (BR) are analogous to multiplicity precision and
- BCubed precision. The computation of MultiR is identical to that of MultiP 
+The measures multiplicity recall (MultiR) and BCubed recall (BR) are analogous to multiplicity precision and
+ BCubed precision. The computation of MultiR is identical to that of MultiP \eqref{eq:multi-p}
  except that gold-standard categories replace clusters in the denominator: 
-\begin{equation}
-MultiR(x,y) = \frac{min(|U(x) \cap U(y)|, |V(x) \cap V (y)|)}{|V(x) \cap V(y)|}
+\begin{equation}\label{eq:multi-r}
+\text{MultiR}(x,y) = \frac{\text{min}(|\mathbf{U}(x) \cap \mathbf{U}(y)|, |\mathbf{V}(x) \cap V (y)|)}{|\mathbf{V}(x) \cap \mathbf{V}(y)|}
 \end{equation}
-Likewise, BCubed recall is is nearly identical to BCubed precision except that MultiR replaces MultiP, and the set V replaces U in the $\text{Avg}$ subscript expression:
-\begin{equation} 
-\textrm{BR} = \textrm{Avg}_x [\textrm{Avg}_{y.V(x) \cap V(y) \neq \emptyset}(\text{MultiR}(x,y))]
+Likewise, BCubed recall is is nearly identical to BCubed precision \eqref{eq:bp}, except that MultiR replaces MultiP, 
+and the set $\mathbf{V}$ replaces $\mathbf{U}$ in the $\text{Avg}$ function's subscripted expression.
+\begin{equation}\label{eq:br}
+\textrm{BR} = \textrm{Avg}_x [\textrm{Avg}_{y.\mathbf{V}(x) \cap \mathbf{V}(y) \neq \emptyset}(\text{MultiR}(x,y))]
 \end{equation}
 
 \subsection{Extrinsic Evaluation} \label{sec:eval-extrinsic} An \emph{extrinsic evaluation} 
-views a system as a component of a larger, or outer, system. 
-Its purpose is to evaluate the embedded system, but it does so by evaluating the outer 
-system. If the outer system scores highly,
-the embedded system, i.e., the system under evaluation, scores highly.
-An extrinsic evaluation makes sense for my system for two reasons:
+views a system as an embedded component of a larger system, i.e., as an ``upstream'' system that feeds a ``downstream''
+system. An extrinsic evaluation makes sense in the case Multimorph because it learns autonomous morphological units---i.e., \emph{morphs}---which are intermediate by nature (see chapter~\ref{autonomous}).
+Multimorph is thus naturally conducive to functioning as an embedded system---as an intermediate step in a larger process
+
+Even though the ultimate purpose of an extrinsic evaluation is to evaluate the embedded---or upstream---system,
+ but it does so by evaluating the downstream' system, since the
+ performance of the downstream system depends on that of the upstream system. 
+ The assumption is thus that an evaluation of the downstream system is tantamount to an evaluation of the upstream system.
+% the upstream system performs poorly, and 
+%an extrinsic evaluation  if the downstream system scores highly,
+%the upstream system (the system under evaluation), 
+%scores highly. 
+%Multimorph learns morphs, which which are intermediate nature (see \ref{autonomous}).
+%Multimorph is thus naturally conducive to functioning as an embedded system, as an intermediate step in a larger process.
+In this study, the upstream system was Multimorph. The downstream system was
+ Morfessor
+\citep{creutz:2003, creutz-and-lagus:2005, creutz-et-al:2006, creutz-and-lagus:2007}, an 
+unsupervised morphological segmentation 
+system takes takes a list of words, induces a lexicon of morphs 
+for these words, and divides each input word into its component morphs. % for each word. 
 %tic\.{t}ar\.{k}\'{i} %c:\[2\] 8:\[4,5\] 43:\[5,7\] \UTF{1E6D}:\[3\] \UTF{1E33}:\[6\] 22:\[0,1\]
-\begin{enumerate}
-\item 
-larger process. Because it learns morphs, which are intermediate units by nature, Multimorph is naturally conducive to functioning as an embedded system, as an intermediate step in a larger process
+%\begin{enumerate}
+%\item 
+%Multimorph learns autonomous morphological units---i.e., \emph{morphs}---which are intermediate nature (see \ref{autonomous}). Multimorph is thus naturally conducive to functioning as an embedded system---as an intermediate step in a larger process
 %facilitate the learning of morphemes. %My system is thus meant to be an embedded component of a larger process. 
-\item While it would be very difficult to come up with gold-standard morphs, gold-standard morphemes are relatively easy to produce, since morphemes, in contrast to morphs, are already well-defined. 
+%\item It is very difficult to come up with gold-standard morphs, but gold-standard morphemes are relatively easy to produce, since morphemes, in contrast to morphs, are already well-defined. 
 %As intermediate units, the value of morphs lies in their utility, i.e., in their capacity for yielding correct morphemes. What they look like is not important as long as they are effective. is evaluate \emph{morphemes} that have been induced from morphs. 
 %On the other hand, it is relatively easy to come up with gold-standard morphemes, since morphemes, in contrast to morphs, are well-defined. 
-\end{enumerate}
-
+%\end{enumerate}
 %The extrinsic evaluation consisted of the four stages described in the 
 %Stages 1 to 3 prepare the output of an MCMM to be fed to Morfessor in Stage 4. 
 %To obtain the gold-standard datasets for Morfessor, I manually segmented 
@@ -2005,7 +2066,6 @@ larger process. Because it learns morphs, which are intermediate units by nature
 %stem-external, concatenative morphology. This is because Stage 3 effectively removes 
 %interdigitation. Morfessor is not even capable of handling interdigitation, since it is 
 %a sequential algorithm.
-
 %But how is one to assess the output's quality? How do we tell 
 %how \emph{good} it is? I need a way to evaluate the clusters produced by the MCMM.
 %But a cluster is just a group of words that Multimorph has seen fit to put together according to criteria of its own devising.
@@ -2014,54 +2074,82 @@ larger process. Because it learns morphs, which are intermediate units by nature
 %the workings of morphology or human language. 
 %Thus, the \emph{meaning} of one of Multimorph's 
 %clusters may not be immediately obvious.
- 
- 
 %\subsection{} \label{sec:paradigms}
 %\subsection{Four-stage process.} 
 %\label{sec:four-stage-process}
 %\label{sec:extrinsic}
-
 %The complete extrinsic-evaluation process required a substantial 
 %The extrinsic evaluation of
 %Multimorph's output required some post-processing; that is, it had to be prepared to be fed to
 %the downstream application Morfessor. The complete 
 %The complete extrinsic-evaluation process---beginning with Multimorph's raw output (i.e., the MCMM's clustering) and culminating in Morfessor's output and (crucially) the evaluation of this output---can be broken down into four stages. Basi
-
-
-The extrinsic evaluation is a process that begins with Multimorph's raw output, which, through a succession of post-processing\emph{stages}, fed to Morfessor as \emph{input}. Morfessor, an unsupervised morphological segmentation system, takes a list of words as input and induces a morphological segmentation for each word. The hypothesis underlying the present study's extrinsic evaluation component is the following:
-
+%The extrinsic evaluation is a process that takes as input the raw \emph{output} of Multimorph, i.e., the clustering
+%encoded in the 
+%%raw output is the cluster 
+%MCMM's $\mathbf{M}$ and $\mathbf{C}$ matrices. Each experimental trial produced such a
+%clustering. 
+%The extrinsic evaluation took each experiment's clustering, and through
+%through a succession of post-processing \emph{stages}, molded it into a format acceptable to Morfessor and then fed to Morfessor as \emph{input}. Morfessor \citep{creutz:2003, creutz-and-lagus:2005, creutz-and-lagus:2007} thus served as the ``downstream" application in extrinsic evaluation. was an unsupervised morphological segmentation system, takes a list of words as input and induces a morphological segmentation for each word. \
+The extrinsic evaluation in this study was thus intended to test the following hypothesis:
 \begin{quotation}\noindent
-Multimorph can aid Morfessor's task by \emph{pre-digesting}, as it were, a wordlist---that is, by identifying intermediate morphological units and thus producing an \emph{intermediate wordlist} of reduced complexity, a wordlist that Morfessor can analyze more easily and effectively than the original wordlist.
+Multimorph finds \emph{useful} intermediate morphological units, i.e., units that reduce the
+complexity of an input wordlist in a way that could be helpful to a downstream process.
 \end{quotation}
+where the downstream process was Morfessor in our case.
+The central assumption here was that ``helpfulness to a downstream process''  would manifest as an improved performance in the downstream process (i.e., Morfessor). %the downstream system, namely in our case. 
+% systMorfessor's task by \emph{pre-processing} its input wordlist---that is, by identifying intermediate morphological units and thus producing a less complex \emph{intermediate wordlist} that will be easieMorfessor to n analyze for can analyze more easily and effectively than the original wordlist.
+%\end{quotation}
+%The purpose of the extrinsic evaluation was essentially to test this hypothesis. 
 
-The purpose of the extrinsic evaluation was essentially to test this hypothesis. 
-The extrinsic evaluation thus had to include a process for taking Multimorph's output and deriving from it
-intermediate, reduced forms of the original input words. The resulting intermediate
-wordlist could then be fed to Morfessor. Each such 
-intermediate---or \emph{experimental}---wordlist was accompanied a \emph{control} 
-wordlist, i.e., an unaltered version of itself. 
-Morfessor processed both the experimental and control wordlists, thus inducing two distinct unsupervised segmentation 
-models,one experimental and one control. 
+The extrinsic evaluation thus had to include a process for taking Multimorph's raw output---the MCMM's
+$\textbf{M}$ and $\textbf{C}$ matrices, deriving from it an intermediate wordlist---i.e.,
+a list of intermediate strings corresponding to the original input words---that could %The resulting intermediate
+%wordlist could 
+then be fed to Morfessor. 
+This intermediate wordlist was the experimental wordlist for its experimental trial
+and was thus accompanied by a \emph{control wordlist}, i.e., an unaltered wordlist.
+Because the different experimental trials---i.e., 
+the different combinations $\delta$ and $s$---covered
+different sets of input words, a particular pair of experimental and control wordlists had to be created for each
+experimental trial.
+%this had to done for Each experimental trial; that is, 
+%intermediate---or \emph{experimental}---wordlist was accompanied by a \emph{control} 
+%wordlist, i.e., an unaltered version of itself. 
+Morfessor processed both the experimental and control wordlists, 
+thus inducing two distinct unsupervised segmentation 
+models, one experimental and one control. 
+%Each experimental trial---i.e., each combination of $\delta$ and $\s$--- 
+%Because the different experimental trials---i.e., the different combinations $\delta$ and $\s$---covered
+%different sets of input words, a particular pair of experimental and control wordlists had to be created for each
+%experimental trial.
+%---i.e., each combination of $\delta$ and $\s$, since the
+%various trials had different word coverages. 
 %to Morfessora \emph{control} wordlist ---i.e., a wordlist that Multimorph 
 %had not touched,  %---to serve as \emph{control}. Morfessor had to be run on both
 %then run on both 
 %experimental and control files,  inducing two unsupervised segmentation 
 %models---one experimental and one control. 
-Finally, both models were tested on the same test wordlist and the resulting segmentations evaluated against the same gold-standard dataset. The process can be broken down into four stages, namely
+These two models were evaluated
+%; that is, both models were tested on the same test set and the resulting segmentations evaluated 
+against the same gold-standard dataset. 
+
+
+The extrinsic evaluation process can be broken down into four main stages, namely
 \begin{enumerate}
 \item Interpret clusters as morphs
 \item Match morphs to words
 \item Compress and encode
 \item Decompress and evaluate
 \end{enumerate}
-Stages 1 to 3 prepare the output of an MCMM to be fed to Morfessor in Stage 4. 
+Stages 1 to 3 prepared the output of an MCMM to be fed to Morfessor in Stage 4. 
 %To obtain the gold-standard datasets for Morfessor, I manually segmented 
 %$\frac{1}{10}$ of the original, unprocessed wordlists, i.e., both the transcribed 
 %and orthographic wordlists.
-Note that this four-stage extrinsic evaluation only considers 
-stem-external, concatenative morphology. This is because Stage 3 effectively removes 
-interdigitation. Morfessor is not capable of handling interdigitation, since it is 
-a sequential algorithm.
+%Note that this four-stage extrinsic evaluation only considers 
+%stem-external, concatenative morphology. This is because Stage 3 effectively removes 
+%interdigitation. Morfessor is not capable of handling interdigitation, since it is 
+%a sequential algorithm.
+It what follows we discuss these four stages in
  greater detail, describing each in turn.
 %input 
 %wordlists from Multimorph's raw output, i.e., from MCMM clusterings. 
@@ -2075,17 +2163,28 @@ a sequential algorithm.
 %to create control wordlists 
 %Multimorph's output is an MCMM
 % In then induces a It culminates with Morfessor's output and, crucially, the evaluation of this output. The central 
-As discussed in chapter~\ref{ch:MCMM}, particularly section~\ref{subsec:example}, Multimorph's raw output consists of the matrices $\mathbf{M}$ and $\mathbf{C}$, the former comprising cluster-membership vectors, and the latter cluster centroids. 
-%\mathbf{M}$. 
-Together, these matrices encode a clustering. 
-Before it can be fed to Morfessor, such a clustering must be molded 
-into the prescribed format for a Morfessor training file. This means 
-Multimorph's clustering of input words generated must be 
-converted into a set of word \emph{segmentations}.
-%, i.e., a segmentation for each input word. 
-The complete process comprises
-four major stages. The first three are concerned with preparing the training and test files for Morfessor: First, the MCMM's clusters, by way of the cluster centroids in $\mathbf{C}$, must be converted into explicit morph, i.e., into a form that can be searched for within a string. These morphs then must matched to words and aligned with the characters within each word to yield ultimately a morphological segmentations for each word. 
- each word to compute the segmentations on which Morfessor is trained.  In Stage 3, the morphs in the word \textit{hicl\'{a}xti} are replaced by atomic CJK characters.
+%As discussed in chapter~\ref{ch:MCMM}, particularly 
+%section~\ref{subsec:example}, Multimorph's raw output consists of the matrices $\mathbf{M}$ and $\mathbf{C}$, the 
+%former comprising cluster-membership vectors, and the latter cluster centroids. 
+%%\mathbf{M}$. 
+%Together, these matrices encode a clustering. 
+%Before it can be fed to Morfessor, such a clustering must be molded 
+%into the prescribed format for a Morfessor training file. This means 
+%Multimorph's clustering of input words generated must be 
+%converted into a set of word \emph{segmentations}.
+%%, i.e., a segmentation for each input word. 
+%The complete process comprises
+%four major stages. The first three are concerned with 
+%preparing the training and test files for Morfessor: 
+%First, each of the MCMM's clusters, by way of the cluster centroids 
+%in $\mathbf{C}$, must be converted into an explicit morph, 
+%i.e., into a form that can be searched for within a string. 
+%These morphs then must matched to words and aligned 
+%with the characters within each word to yield ultimately a 
+%morphological segmentations for each word. 
+% each word to compute the segmentations on which Morfessor is trained.  
+% In Stage 3, the morphs in the word \textit{hicl\'{a}xti} are replaced 
+% by atomic CJK characters.
  %ultimately give rise to segmentations and ultimately 
 %including the training and testing of Morfessor models, comprises four major stages. 
 %substantial amount of preprocessing; it must be molded   ---can be broken down into four stages. Basi
@@ -2150,7 +2249,7 @@ four major stages. The first three are concerned with preparing the training and
 %$\mathbf{x}_{i}$ as well as each reconstructed data points $\mathbf{r}_{i}$, where 
 %$0 \ge i < I$, and $I$ is the total number of data points (original and reconstructed).
 
-\subsubsection{\textsc{Stage 1:} Interpret clusters as morphs.} 
+\subsubsection{\textsc{Stage 1:} Interpret clusters as morphs} 
 %Each cluster 
 %%ultimately represents a morphological equivalence class, that is, 
 %is a set of words that Multimorph's MCMM has grouped together because their feature-vector representations share certain features. That is,
@@ -2188,9 +2287,24 @@ four major stages. The first three are concerned with preparing the training and
 %The purpose of Stage 1 was to interpret clusters as 
 %%concrete 
 %morphs. That is, while 
-Each cluster implicitly represents a morph, but the task of morphological segmentations requires \emph{explicit} morph representations
+
+
+An MCMM's output consists of 
+the matrices $\mathbf{M}$ and $\mathbf{C}$. As described in chapter~\ref{sec:MCMM}, the $\mathbf{M}$ contains a cluster-membership vector for each data point (i.e., word), while the matrix $\mathbf{C}$ contains each cluster's ``average'' vector or \emph{centroid}, i.e., the intersection of its members active features (See the example in section~\ref{subsec:example}.)
+%cluster's centroid gives the active features that its member data points have
+%That is, a cluster is a set of data points, and 
+%each data point is vector containing some active features and some inactive features. 
+%%each of which can be described as a set of active features. 
+%The co-members within a cluster all share some active features; this is the reason they are in the same cluster. share some active features; that is, there is a non-empty intersection. A cluster's centroid is the intersection of the active feature sets among a cluster's members.
+%(See the example in section~\ref{subsec:example}.) 
+A cluster's centroid thus concisely expresses the relationship between the cluster's members, which, ultimately, is the cluster's meaning. 
+Cluster centroids can therefore be used as cluster labels. In our case, however, a centroid is a vector of $J$ feature activities, each of which is a number in the interval $[0,1]$. 
+%The $J$ features in a centroid correspond to the $J$ features in a data point, and each activity is a number in the interval $[0,1]$. 
+The goal of Stage 1 was to convert each centroid---a numerical, multi-dimensional vector---to a textual unit of morphological structure.
+
+Each cluster implicitly represents a morph, but the task of morphological segmentation requires \emph{explicit} morph representations.
  %for purposes of morphological segmentation. 
- That is, one needs concrete, string-based representations that can be recognized as substrings or subsequences withing strings of characters (i.e., words). 
+ That is, one needs concrete, string-based representations that can be recognized as subsequences within larger strings of characters (i.e., words). 
 %an implicit representation in a string needs a more concrete explicit representation in order to recognize the cluster/morph in a string. 
 The purpose of Stage 1 was therefore to derive string-relatable morphs from the cluster centroids in $\mathbf{C}$.
 %to map each cluster centroid in $\mathbf{C}$ to a string-based representation, in particular a regular expression. 
@@ -2211,17 +2325,16 @@ the \texttt{a} and \texttt{b}, whereas the literal string \texttt{ab} can of cou
 %unit of morphological organization, i.e., a morph. But as a 
 %cluster, it is too abstract to be directly relatable to actual words, i.e., to strings consisting 
 %of characters. 
-
 %The first stage is therefore
 %%in the four-stage extrinsic evaluation process is 
 %to make the clusters relatable to strings. 
 In particular, each 
-cluster is a regular expression that is derived from the active 
+cluster was equated with a regular expression that is derived from the active 
 features of its centroid. A morph's regular expression is built 
 up from ``atomic" regular expressions derived from its 
 individual active features. 
-
 %The form of an atomic expression depends on the type of its source feature; that is,
+
 Each of the two feature types---positional and precedence---is mapped to a different form of
 atomic regular expression. Recall from chapter~\ref{ch:experi} that positional features take 
 %upon which it is based. 
@@ -2243,7 +2356,7 @@ expressions. %for positional features.
 Thus, the mapping from a positional feature to an atomic regular expression always takes the form
 %mapped onto an atomic regular expression of expressions corresponding to positional features 
 \begin{equation} \label{eq:positional-to-regex}
-\alpha\text{@}i \qquad \to \qquad \texttt{(}\alpha\texttt{)}
+\alpha\text{@}i \qquad \mapsto \qquad \texttt{(}\alpha\texttt{)}
 \end{equation}
 The parentheses encompassing $\alpha$ are important for Stage 2; they define 
 \emph{groups} of matching characters within a matching
@@ -2253,11 +2366,19 @@ The following examples show five fully-specified instantiations of the mapping r
 \begin{exe}
 \ex \label{ex:positional-morphs}
 \begin{xlist}
-	\ex \texttt{e}\textrm{@}\texttt{[1]}\qquad  $\to$ \qquad    \texttt{(e)}
-	\ex \texttt{h}\textrm{@}\texttt{[0]}  \qquad $\to$ \qquad     \texttt{(h)}
-	\ex \texttt{t}\textrm{@}\texttt{[2]}   \qquad  $\to$   \qquad       \texttt{(t)}
-	\ex \texttt{t}@\texttt{[-1]} \qquad  $\to$   \qquad  \texttt{(t)}
-	\ex \texttt{u}\textrm{@}\texttt{[-3]} \qquad  $\to$   \qquad  \texttt{(u)}
+\begin{tabbing}
+\hspace{0.7in} \= \hspace{0.5in} \=  \hspace{4.5in} \kill
+ \texttt{e}\textrm{@}\texttt{[1]} \> $\to$ \>   \texttt{(e)} \\
+ \texttt{h}\textrm{@}\texttt{[0]}  \>$\to$ \>     \texttt{(h)} \\
+ \texttt{t}\textrm{@}\texttt{[2]}  \> $\to$   \>       \texttt{(t)} \\
+ \texttt{t}@\texttt{[-1]}  \>  $\to$   \>    \texttt{(t)} \\
+ \texttt{u}\textrm{@}\texttt{[-3]} \>   $\to$   \>   \texttt{(u)} \\
+\end{tabbing}
+%	\ex \texttt{e}\textrm{@}\texttt{[1]}\qquad  $\to$ \qquad    \texttt{(e)}
+%	\ex \texttt{h}\textrm{@}\texttt{[0]}  \qquad $\to$ \qquad     \texttt{(h)}
+%	\ex \texttt{t}\textrm{@}\texttt{[2]}   \qquad  $\to$   \qquad       \texttt{(t)}
+%	\ex \texttt{t}@\texttt{[-1]} \qquad  $\to$   \qquad  \texttt{(t)}
+%	\ex \texttt{u}\textrm{@}\texttt{[-3]} \qquad  $\to$   \qquad  \texttt{(u)}
 \end{xlist}
 %\ex \label{ex:positional-morphs-back}
 %\begin{xlist}
@@ -2286,24 +2407,49 @@ Precedence features, as discussed in chapter~\ref{ch:experi}, take the form
 That is, ``$\alpha$ precedes $\beta$ within $\delta$ characters,'' where $\delta$ is 
 a parameter set once for an entire experimental trial, and thus within a given trial, all precedence features
 have the same $\delta$.  In particular, $\delta$ is the difference between the 
-index of $\beta$ and the index of $\alpha$ (see section~\ref{}).
+index of $\beta$ and the index of $\alpha$ (see section~\ref{sec:invariant-features}).
 Each precedence feature is mapped onto an atomic regular expression composed of the following parts:
-the character $\alpha$ in parentheses, zero or more instances of the sequence \texttt{.?}, and, finally,
-the character $\beta$ in parentheses. In regular expressions, the symbol \texttt{.} is the wildcard character and \texttt{?} means ``zero or one instance of the preceding symbol,'  and thus,\texttt{.?} means ``zero or one instance
-of any character."
+the character $\alpha$ in parentheses, zero or more instances of the sequence \texttt{.?},  and finally
+the character $\beta$ in parentheses. In regular expressions, the symbol \, \texttt{.} \,means ``any character," and 
+\, the symbol \texttt{?} \, means ``up to one (i.e., zero or one) instance of the preceding symbol. The sequence \, \texttt{.?} \, 
+thus means``zero or one instances of some unspecified character.'' These definitions are summarized in figure~\ref{fig:regex-defs}.
+\begin{figure}[ht]
+\begin{mdframed}
+\begin{tabbing}
+ \hspace{1in}  \=  \hspace{5.5in} \kill
+\texttt{.} \> any character\\
+\texttt{?} \> up to 1 (i.e., 0 or 1) instance(s) of the preceding symbol \\
+\texttt{.?} \> up to 1 instance of \emph{any} character\\
+%\>\texttt{.?} \> means \> ``0 or 1 instance(s) of \emph{any character}'' \\
+\texttt{i.?u}  \>\texttt{i} followed by \emph{up to 1} unspecified character(s), followed by \texttt{u}\\
+\texttt{i.?.?u}  \>\texttt{i} followed by \emph{up to 2} unspecified characters, followed by \texttt{u}\\
+\texttt{i.?.?.?u}  \>\texttt{i} followed by \emph{up to 3} unspecified characters, followed by \texttt{u}\\
+\end{tabbing}
+\label{fig:regex-defs}
+\caption{Regular-expression building blocks for atomic precedent features. Note that in these definitions, an \emph{unspecified
+character} is simply a ``nonspecific'' character and is thus synonymous with ``any character.'' }
+\end{mdframed}
+\end{figure}
+%of any character," and \texttt{i.?u} (for example) means
+%``\textit{i} followed by \emph{up to one} instance of \emph{any} character, followed by \textit{u}.
 
-For example, the regular expression \texttt{i.?u}
-The number of instances of \texttt{.?} is equal to $\delta - 1$. Thus, if $\delta = 2$, for example, all atomic
-features derived from precedence features would have $\delta - 1 = 1$ 
-instances of {.?}, and would thus follow the template $\alpha$\texttt{.?}$\beta$. 
-Similarly, if $\delta = 4$, all such features would have $\delta - 1 = 3$ instances 
-of {.?}, yielding the template $\alpha$\texttt{.?}\texttt{.?}\texttt{.?}$\beta$. 
+The number of \texttt{.?} sequences is always $\delta - 1$. Thus, if $\delta = 2$, for example, all atomic
+features derived from precedence features would have $\delta - 1 \mathbf{= 1}$ 
+instance of \texttt{.?}, as in the expression  \,\texttt{i.?u}.
+%\begin{equation*}
+%\texttt{i.?u}
+%\end{equation*}
+ % e.g.,  and would thus follow the template $\alpha$\texttt{.?}$\beta$. 
+Similarly, if $\delta = 4$, there would be $\delta - 1 \mathbf{= 3}$ instances 
+of {.?}, as in the expression \,\texttt{i.?.?.?u}. %yielding the template $\alpha$\texttt{.?}\texttt{.?}\texttt{.?}$\beta$. 
 In general, therefore, the mapping of precedence features onto atomic regular expressions 
 follows the rule
-\begin{equation}
-\alpha\text{<}\beta \qquad \to \qquad \texttt{(}\alpha \texttt{)}\,\, {\{\texttt{.?}\}}^{\delta-1} \,\, \texttt{(} \beta \texttt{)}
+\begin{equation}\label{precedence-to-regex}
+\alpha\text{<}\beta \qquad \mapsto \qquad \texttt{(}\alpha \texttt{)}\,\, {\{\texttt{.?}\}}^{\delta-1} \,\, \texttt{(} \beta \texttt{)}
 \end{equation}
-where ${\{\texttt{.?}\}}^{\delta-1}$ denotes ${\delta-1} $ instances of ``\texttt{.?},'' as described above. 
+where ${\{\texttt{.?}\}}^{\delta-1}$ denotes ${\delta-1}$ instances of the literal regular expression ``\texttt{.?},'' as described above. 
+The lefthand side of rule \eqref{precedence-to-regex} represents the feature itself, while the righthand side is a general regular-expression template, similar to the template for positional atomic features in rule \eqref{eq:positional-to-regex} above.
+ %${\{\texttt{.?}\}}^{\delta-1}$ denotes ${\delta-1}$ instances of ``\texttt{.?},'' as described above. 
 %\begin{equation*}
 %\texttt{(}\alpha \texttt{)}\,\, {\texttt{.?}}^{\delta-1} \,\, \texttt{(} \beta \texttt{)}
 %\end{equation*}
@@ -2332,30 +2478,41 @@ However, if two atomic regular expressions are compatible with each other, %they
 they are combined to create a composite expression. For instance, two 
 positional features are compatible if their indices are consecutive, 
 as they are in the pair \texttt{h@[0]} and \texttt{a@[1]}. These two features would be
-merged
-to form the composite expression \texttt{(h)(a)}. Precedence features 
+merged as follows: 
+\begin{centering}
+\texttt{h@[0]}, \texttt{a@[1]} $\quad \mapsto \quad$ \texttt{(h)(a)}
+\end{centering}
+%to form the composite expression \, \texttt{(h)(a)} \,. 
+Precedence features 
 can also create composite regular expressions. For example, the 
-features \texttt{d<b} and \texttt{b<r} would together yield the 
-composite expression \texttt{(d).?(b).?(r)} (that is, if $\delta = 2$). 
-In general, two precedence features \texttt{a<b} and \texttt{c<d} 
-merge if $b=c$.
+features \, \texttt{d<b}\,  and \, \texttt{b<r} \, would together yield the 
+composite expression \, \texttt{(d).?(b).?(r)} \, (that is, if $\delta = 2$). 
+In general, two precedence features $\alpha$<$\beta$ and $\gamma$<$\delta$
+merge if $\gamma=\delta$.
 \begin{equation}
-\alpha\texttt{<} \beta \, ,\,\, \gamma \texttt{<} \eta  \quad \to \quad \texttt{(} \alpha \texttt{)}  \,\, 
+\alpha\texttt{<} \beta \, ,\,\, \gamma \texttt{<} \eta  \quad \mapsto \quad \texttt{(} \alpha \texttt{)}  \,\, 
 {\{\texttt{.?}\}}^{\delta-1} \,\, \texttt{(}\beta \texttt{)} \,\,{\{\texttt{.?}\}}^{\delta-1} \, \, \texttt{(} \eta \texttt{)} \qquad \quad \text{if $\beta = \gamma$} 
 \end{equation}
 
 Each morph is represented in the four-stage process as a complex object. Here 
-we mean \emph{object} in the object-oriented-programming sense, i.e., an instantiation of a \emph{class} with multiple \emph{attributes}.
-In the four-stage process, a morph has two main attributes: (1) a unique \emph{morph ID} and (2) a regular expression built up through the process described above. The morph ID is an integer and the regular is a string. 
-The output of Stage 1 is thus ultimately a mapping from cluster IDs (i.e., cluster indices) to \emph{morph objects}.
+we mean \emph{object} in the object-oriented-programming sense, i.e., an instantiation of a \emph{class} with a certain set \emph{attributes}.
+In the four-stage process, the morph class had two main attributes:
+\begin{enumerate}
+\item A unique \emph{morph ID}.
+\item A regular expression built up through the process described above
+\end{enumerate}
+The morph ID was an integer, and the regular expression was a string.
+
+The output of Stage 1 was ultimately a mapping from cluster IDs (i.e., cluster indices) to \emph{morph objects}.
 Stage 1 is thus concerned only with clusters and their representation as morphs, not with words. That is,
 it does not address the morphological segmentation of individual words, which can
-be described as a mapping from word characters to morphs.
+be described as a mapping from word characters to morphs. This mapping is the purview of Stage 2,
+to which we now turn.
 % Each morph object specifies values for certain attributes, the main ones 
 % being a morph ID (i.e., a unique integer) and a regular expression derived 
 % from the features of a particular cluster centroid. Stage 1 is thus
 %  concerned the clusters in and of themselves and their interpretation. 
-  Stage 2, to which we turn next, is concerned with precisely this sort of mapping.
+  %Stage 2, to which we turn next, is concerned with precisely this sort of mapping.
 %  mapping clusters, i.e., 
 %  morphs, to the characters of actual words. 
 
@@ -2368,7 +2525,7 @@ be described as a mapping from word characters to morphs.
 %3 & \texttt{(u)} \\
 %31 &  \texttt{(f)} \\
 %64 &  \texttt{(h).?.?(i)}  \\
-%84 & morph ptn: \texttt{(\UTF{017E})}  \\
+%84 & morph ptn: \texttt{(\v{z})}  \\
 %95 &  \texttt{(l).?.?(v)}  \\
 %148 &   \texttt{(c).?.?(\'{a})} \\
 %151  &  \texttt{(i).?.?(l)} \\
@@ -2410,45 +2567,351 @@ be described as a mapping from word characters to morphs.
 %\end{subfigure}
 %\end{figure}
 
-\subsubsection{Stage 2. Match morphs to words.}
+\subsubsection{Stage 2. Match morphs to words}
  
 %Each of the \emph{covered} words in an MCMM clustering is a member of at least 
 %one and possibly many clusters. 
-Stage 1 derived a regular expression for each cluster. In Stage 2, the for each regular expression derived in Stage 1. 
-In particular, 
+The objective of Stage 2 is to map each character of each input word to a morph. % characters of input words.
+Given an input word, the first step within Stage 2 was to consult its cluster-membership vector in the matrix $\mathbf{M}$ 
+and thus assign to it preliminary list 
+of clusters (i.e., cluster indices).  
+%to each input word by consulting the word's
+%cluster-membership vector within the matrix $\mathbf{M}$; 
+%a list of the clusters of which the given word is a member. 
+%This was accomplished by consulting the word's cluster-membership vector in the  matrix $\mathbf{M}$. 
+Stage 2 then consulted the cluster-to-morph mapping computed in Stage 1 to convert each such list to a list of morph objects. %o obtain the \emph{morph object} corresponding to each cluster. 
+For example, for the word \textit{hicl\'{a}xti},
+this initial step produced the morphs (i.e., pairs of morph IDs and regular expressions)  listed in 
+figure~\ref{fig:morph-regex}. In the cluster-membership vector associated with 
+\textit{hicl\'{a}xti}, there were seven \emph{active} units, each corresponding to a cluster, and each cluster (via Stage 1) corresponded to a morph object and hence
+a morph's regular expression. 
+%yielded a total of seven candidate morphs, all of which are listed in figure~\ref{fig:morph-regex}. 
 
-[As noted earlier in section~\ref{sec:intrinsic}), in order for the $i$th word in the input wordlist to be considered a member of the $k$th cluster, there must be at least one feature 
-index $j \in J$ such that $m_{i,k}c_{i,j} \geq \theta_{\textrm{mc}}$, 
-where $m_{i,k}c_{i,j}$ is the weighted vote of the $k$th cluster (or hidden unit) 
-regarding the activity of the $j$th surface unit (or feature), namely $r_{i,j}$. 
-Thus, in order for the $i$th word to be a member of \emph{any} cluster, it 
-must have at least one active surface unit, i.e., at least one vote  $m_{i,k}c_{i,j}$ 
-(for some $k\in K$, $j \in J$) must be greater or equal to $\theta_{\text{mc}}$. 
-Sometimes there are no such votes for a given word, in which case it is not a 
-member of \emph{any} cluster. We say that such a word is not 
-not \emph{covered} by the clustering.]
+
+Stage 2 next tried to match each morph's regular expression to a subsequence of
+literal characters within the word in question, 
+illustrated in figure~\ref{fig:morph-regex} %llustrates the regular-expression searches 
+in the case of \textit{hicl\'{a}xti}.
+% These regular expression searches are also
+%illustrated in figure~\ref{fig:morph-regex}. 
+Notice that some of the regular expressions in figure~\ref{fig:morph-regex}---for example,
+\texttt{(f)}, \texttt{(\v{z})}, and \texttt{(i).?.?(l)}---do not
+match \emph{any} portion of \textit{hicl\'{a}xti}.\footnote{One might ask why such morphs were present at all among the 
+candidate morphs for \textit{hicl\'{a}xti}.  Their presence was in large part a consequence of the MCMM's failure to converge, i.e., to reduce its error all the way to zero (or a number very close to zero). Because Multimorph in these experiments always terminated with some error remaining, its clusters were necessarily noisy to some extent. See chapter~\ref{ch:results} for further discussion.}
+%Morphs whose regular expressions regular 
+%This was due to noise in the MCMM's clustering. 
+Stage 2 discarded any morph whose regular expression found no matching subsequence within the word in question to yield an initial pruning of mapping.  Figure~\ref{fig:char-indices-to-morph-IDs} thus exhibits a shortened list of morphs.
+% producing somewhat more concise mappings like the one in figure~\ref{} The result  as illustrated by the strikethrough marks in figure~\ref{fig:morph-regex}.
+%%the struck-through morph IDs and regular expressions found no matching subsequences in \textit{hicl\'{a}xti}
+%%and were thus discarded. 
+%% For each word in the input wordlist, an initial candidate set of morphs was obtained and reduced in the same % manner, producing a mapping from characters morphs (i.e., morph IDs) 
+%The result was 
+
+\begin{figure}[t]
+\centering
+%\subfigure[Aligning morphs to characters via morph regular expressions\label{fig:morph-regex}]{
+%\centering
+\setlength{\extrarowheight}{6pt}
+ \begin{tabular}{clc}
+\toprule
+\raisebox{0pt}[0pt]{Morph ID} & \raisebox{0pt}[0pt]{Regular Expression} & Match in \textit{hicl\'{a}xti}? \\
+ \midrule
+                \sout{\texttt{3}} & \sout{\texttt{(u)}} & \\
+                \sout{\texttt{31}} &  \sout{\texttt{(f)}} &  \\
+                \texttt{64} &  \texttt{(h).?.?(i)} & \textbf{\underline{h}\,\underline{i}\,}c\,l\,\'{a}\,x\,t\,i  \\
+               \sout{\texttt{84}} &  \sout{\texttt{(\v{z})}} &  \\
+                \sout{\texttt{95}} &  \sout{\texttt{(l).?.?(v)}} & \\ %h\,i\,\textbf{\underline{c}\,\underline{l}\,}\'{a}\,x\,t\,i \\
+                \texttt{148} &   \texttt{(c).?.?(\'{a}\,)} & h\,i\,\textbf{\underline{c}}\,l\,\textbf{\underline{\'{a}}}\,x\,t\,i \\
+                \sout{\texttt{151}}  &  \sout{\texttt{(i).?.?(l)}} &  \\
+                \texttt{202} &  \texttt{(i).?.?(\'{a}\,)} & h\,\textbf{\underline{i}}\,c\,l\,\textbf{\underline{\'{a}}}\,x\,t\,i \\
+                \texttt{264} &  \texttt{(c).?.?(l).?.?(x).?.?(t)}  & h\,i\,\textbf{\underline{c}}\,\textbf{\underline{l}}\,\'{a}\,\textbf{\underline{x}}\,\textbf{\underline{t}}\,i \\
+                \texttt{284} &  \texttt{(l).?.?(t)} & h\,i\,c\,\textbf{\underline{l}}\,\'{a}\,x\,\textbf{\underline{t}}\,i  \\
+                \sout{\texttt{360}} &  \sout{\texttt{(r)}} & \\
+       \bottomrule
+ \end{tabular}
+ \label{fig:morph-regex}
+ \caption{Aligning morphs to characters via morph regular expressions}\label{fig:morph-regex}
+ %} \\ \vspace{5pt}
+%\subfigure[Mappings after the elimination of morphs that failed to match a regular expression.\label{fig:char-indices-to-morph-IDs}]{
+%\centering
+%\setlength{\extrarowheight}{5pt}
+%\begin{tabular}{lcc}
+%\toprule
+%\text{Word} & \text{Morph ID} & \text{Character Indices} \\
+%\midrule 
+% \texttt{hicl\'{a}xti:} & & \\
+%& \texttt{64:} & \texttt{[0,1]} \\
+% & \texttt{95:} & \texttt{[3,4]} \\
+%  & \texttt{148:} & \texttt{[2,4]} \\
+%   & \texttt{151:} &  \texttt{[1,3]} \\
+%    & \texttt{202:} &  \texttt{[1,4]} \\
+% & \texttt{264:} &  \texttt{[2,3,5,6]} \\
+% & \texttt{284:} & \texttt{[3,6]} \\
+% & \texttt{i:} & \texttt{[7]} \\
+%\bottomrule
+%\end{tabular}
+%}
+%\label{fig:computing-mappings}
+%\caption{The mapping from morph IDs to the characters (i.e., character indices) of the word
+%\textit{hicl\'{a}xti} following the elimination of morphs the did not match with a regular expression}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\setlength{\extrarowheight}{6pt}
+\begin{tabular}{ccl}
+\toprule
+Word & Character Index & Morph IDs\\
+\midrule
+\texttt{hicl\'{a}xti:} & &\\
+&  \texttt{0:} & \texttt{[64]} \\
+& \texttt{1:} & \texttt{[64, 151, 202]} \\
+& \texttt{2:} & \texttt{[148, 264]} \\
+& \texttt{3:} & \texttt{[95, 151, 264, 284]} \\
+& \texttt{4:} & \texttt{[95, 148, 202]} \\
+& \texttt{5:} & \texttt{[264]} \\
+& \texttt{6:} & \texttt{[264, 284]} \\
+& \texttt{7:} & \texttt{i} \\
+\bottomrule
+\end{tabular}
+\label{fig:chars-to-morphs-tab}
+\caption{Mapping from characters of the word \textit{hicl\'{a}xti} to morphs (i.e., morph IDs). The characters are represented by their indices within the word. Since index 7 has not been matched to any morph, it has been assigned the literal character at index 7, namely \textit{i}.} % instead of a morph ID.}
+\end{figure}
+%\begin{figure}[t]
+%\centering
+%\subfigure[Aligning morphs to characters via morph regular expressions\label{fig:morph-regex}]{
+%\centering
+%\setlength{\extrarowheight}{6pt}
+% \begin{tabular}{clc}
+%\toprule
+%\raisebox{0pt}[0pt]{Morph ID} & \raisebox{0pt}[0pt]{Regular Expression} & Match in \textit{hicl\'{a}xti}? \\
+% \midrule
+%                \sout{\texttt{3}} & \sout{\texttt{(u)}} & \\
+%                \sout{\texttt{31}} &  \sout{\texttt{(f)}} &  \\
+%                \texttt{64} &  \texttt{(h).?.?(i)} & \textbf{\underline{h}\,\underline{i}\,}c\,l\,\'{a}\,x\,t\,i  \\
+%               \sout{\texttt{84}} &  \sout{\texttt{(\v{z})}} &  \\
+%                \sout{\texttt{95}} &  \sout{\texttt{(l).?.?(v)}} & \\ %h\,i\,\textbf{\underline{c}\,\underline{l}\,}\'{a}\,x\,t\,i \\
+%                \texttt{148} &   \texttt{(c).?.?(\'{a}\,)} & h\,i\,\textbf{\underline{c}}\,l\,\textbf{\underline{\'{a}}}\,x\,t\,i \\
+%                \sout{\texttt{151}}  &  \sout{\texttt{(i).?.?(l)}} &  \\
+%                \texttt{202} &  \texttt{(i).?.?(\'{a}\,)} & h\,\textbf{\underline{i}}\,c\,l\,\textbf{\underline{\'{a}}}\,x\,t\,i \\
+%                \texttt{264} &  \texttt{(c).?.?(l).?.?(x).?.?(t)}  & h\,i\,\textbf{\underline{c}}\,\textbf{\underline{l}}\,\'{a}\,\textbf{\underline{x}}\,\textbf{\underline{t}}\,i \\
+%                \texttt{284} &  \texttt{(l).?.?(t)} & h\,i\,c\,\textbf{\underline{l}}\,\'{a}\,x\,\textbf{\underline{t}}\,i  \\
+%                \sout{\texttt{360}} &  \sout{\texttt{(r)}} & \\
+%       \bottomrule
+% \end{tabular}
+% } \\ \vspace{5pt}
+%\subfigure[Mappings after the elimination of morphs that failed to match a regular expression.\label{fig:char-indices-to-morph-IDs}]{
+%\centering
+%\setlength{\extrarowheight}{5pt}
+%\begin{tabular}{lcc}
+%\toprule
+%\text{Word} & \text{Morph ID} & \text{Character Indices} \\
+%\midrule 
+% \texttt{hicl\'{a}xti:} & & \\
+%& \texttt{64:} & \texttt{[0,1]} \\
+% & \texttt{95:} & \texttt{[3,4]} \\
+%  & \texttt{148:} & \texttt{[2,4]} \\
+%   & \texttt{151:} &  \texttt{[1,3]} \\
+%    & \texttt{202:} &  \texttt{[1,4]} \\
+% & \texttt{264:} &  \texttt{[2,3,5,6]} \\
+% & \texttt{284:} & \texttt{[3,6]} \\
+% & \texttt{i:} & \texttt{[7]} \\
+%\bottomrule
+%\end{tabular}
+%}
+%\label{fig:computing-mappings}
+%\caption{The mapping from morph IDs to the characters (i.e., character indices) of the word
+%\textit{hicl\'{a}xti} following the elimination of morphs the did not match with a regular expression}
+%\end{figure}
+%  \label{fig:morph-regex}
+% \caption{Searching for matching subsequences in \texttt{hicl\'{a}xti}}
+% %\caption{Searching for matching subsequences in \texttt{hicl\'{a}xti}}
+%% \textit{\textsc{Stage 1}}: A regular expression is derived from each cluster's centroid vector. Each cluster corresponds to a morph, and the regular expression is thus a representation of the morph's form.}
+%%  The are  is assign to each\textit{hicl\`{a}xti} is a member are \emph{Morphs detected in the word} hicl\'{a}xti. Each morph identified by a unique \emph{morph ID}. The regular expression next to each morph ID represents the morph's form.}
+% \end{table}
+The morph-to-character alignment depicted figure~\ref{fig:morph-regex} yielded
+a mapping from character indices to morphs (i.e., morph IDs), exemplified in 
+figure~\ref{fig:chars-to-morphs-tab} for \textit{hicl\'{a}xti}. Note that some characters are mapped to more than one morph. 
+Stage 3 addressed the problem of simplifying complex sequences of mappings like that displayed in figure~\ref{fig:chars-to-morphs-tab}.
+
+
+%one-to-many mappings to a coherent and compact sequence characters and morphs to one-to-one mappings.  to a compact morph sequence. 
+
+% from morphs 
+%(i.e., morph IDs) to characters (i.e., character indices), as shown in figure~\ref{fig:char-indices-to-morph-IDs}.
+%Note the final \textit{i} at the bottom of figure~\ref{fig:char-indices-to-morph-IDs}. This is an ``orphan" alphabetic character, that is, a character that could not be matched to a morph.
+%% associated with a morph. 
+%Such stranded characters occurred from time to time in the output of Stage 2. 
+%I decided to retain them, in effect treating them as another kind of morph. 
+%%retained so that every character would be accounted for in subsequent stages. 
+%It is also important to note
+%that some of the morphs in %figure~\ref{fig:char-indices-to-morph-IDs} 
+%figure~\ref{fig:chars-to-morphs-tab} 
+%\emph{overlap}; that is, some share one or more character indices. 
+%For example, 
+%We will revisit the problem of overlapping morphs in our discussion of Stage 3.
+
+
+Stage 2 ultimately computed mappings like the ones in figure~\ref{fig:m2c-for-each-word} 
+%for each word in the input wordlist. An excerpt from these mappings is shown in figure~\ref{fig:m2c-for-each-word}. 
+Notice the orphan characters in the mappings for \textit{bia\'a\v{s}ta}, \textit{naxa\v{s}\'{i}}, etc. Overlapping morphs are also evident in figure~\ref{fig:m2c-for-each-word}; for example, in the entry for \textit{bab\'{e}\textsubdot{t}en}, four different morphs, namely those with the IDs 98, 40, 13, and 48, take responsibility for the character with index 1 (i.e., the \textit{a}).
+
+
+%Stage 2 must take such a list and establish from it a 
+%mapping from word characters to morphs. To this end, 
+%it considers each candidate morph's regular expression, 
+%attempting to match it with the word in question. If there 
+%is no match, the morph is discarded. For example, the 
+%expressions \texttt{(\v{z})} and \texttt{(f)} fail to 
+%match \texttt{hicl\'{a}xti}. 
+\begin{figure}[t]
+\small
+\begin{mdframed}
+\begin{tabbing}
+\hspace{1in} \= \hspace{5.5in} \kill
+ \vdots \> \\
+ \texttt{ba\textipa{Q}\a'{e}rev} \> \texttt{131:[5,6], 198:[1,3], 135:[1,4], 75:[5], 13:[0,1], 90:[1,2], 59:[3,5]} \\
+\texttt{biq\a'{a}\v{s}ta} \> \texttt{229:[2], 103:[3,6], 202:[1,3], 140:[1,2], 113:[1,4], 274:[0,1], t:[5], 170:[ 2,3]} \\
+\texttt{\v{s}el\a'{o}} \> \texttt{9:[0,1], 57:[1,2], 169:[3], 271:[2]} \\
+\texttt{hahagig\a'{i}m} \> \texttt{64:[2,5], 1:[0,3], 4:[7,8], g:[6], 28:[1,4], 17:[1,3], 56:[3,5], 252:[7]} \\
+\texttt{k\v{s}e\textsubdot{s}ix\a'{a}qt} \> \texttt{202:[4,6], 43:[0,1,2], 140:[4,7], 337:[1,4], 243:[5,6], 55:[3,5,7], 61:[6,8], 414:[2,5]} \\
+\texttt{bab\a'{e}\textsubdot{t}en} \> \texttt{198:[1,3], 40:[1,4], 75:[5], 13:[0,1], n:[6], 48:[1,2], 276:[2,5], 59:[5]} \\
+\texttt{naxa\v{s}\a'{i}} \> \texttt{\v{s}:[4], 163:[0,3], 147:[2,3], 227:[2,5], 17:[1,3], 19:[2]} \\
+\texttt{habanq} \> \texttt{48:[1,2], 1:[0,3], 71:[1,4], 69:[3,5], 17:[3]} \\
+\texttt{q\a'{a}qa\textipa{P}im} \> \texttt{96:[4], 100:[0,3], 263:[1,3], 265:[2,5], 170:[0,1], 41:[3,6], 56:[3,5], 63:[4]} \\
+%\textipa{P}etp\a'{o}r \> 283:3,5 297:2,5 \a'{o}:4 51:1 335:0,2\\
+%lebdiq\a'{a} \> 6:1,4 170:5,6 140:4,5 l:0 274:2,4 86:1,3 153:3,6 185:1,2\\
+%gur\a'{e}yha \> 132:2,3 h:5 394:3,6 203:0,2 u:1 y:4\\
+%ba\textipa{Q}\a'{e}rev \> 131:5,6 198:1,3 135:1,4 75:5 13:0,1 90:1,2 59:3,5\\
+%biq\a'{a}\v{s}ta \> 229:2 103:3,6 202:1,3 140:1,2 113:1,4 274:0,1 t:5 170:2,3\\
+%\v{s}el\a'{o} \> 9:0,1 57:1,2 169:3 271:0,2\\
+%hahagig\a'{i}m \> 64:2,5 1:0,3 4:7,8 g:6 28:1,4 17:1,3 56:3,5 252:5,7\\
+%k\v{s}e\textsubdot{s}ix\a'{a}qt \> 202:4,6 43:0,1,2 140:4,7 337:1,4 243:5,6 55:3,5,7 61:6,8 414:2,5\\
+%bab\a'{e}\textsubdot{t}en \> 198:1,3 40:1,4 75:5 13:0,1 n:6 48:1,2 276:2,5 59:3,5\\
+%naxa\v{s}\a'{i} \> \v{s}:4 163:0,3 147:2,3 227:2,5 17:1,3 19:1,2\\
+%habanq \> 48:1,2 1:0,3 71:1,4 69:3,5 17:1,3\\
+%q\a'{a}qa\textipa{P}im \> 96:4 100:0,3 263:1,3 265:2,5 170:0,1 41:3,6 56:3,5 63:3,4\\
+%\v{s}elift\a'{o}ax \> 133:2,3 6:1,3 72:3,6 9:0,1 271:0,2 337:0,3 19:7,8 22:3,5,7 57:1,2 284:2,5 221:1,4\\
+%wet\a'{u}ki \> i:5 121:3 18:0,1 t:2 k:4\\
+%hay\a'{a}yin \> 1:0,1 101:1,4 65:1,3 237:5,6 15:3,5 336:0,3 126:2,3\\
+%qer\a'{a}vti \> 131:1,4 229:0 359:2,5 136:1,3 170:0,3 112:2,3 i:6 106:1,2 223:4,5\\
+%mecayr\a'{i}m \> 2:1,3 162:5,6 101:3,4 135:3,5 c:2 10:0,1 34:0 45:3,6 177:0,3 4:6,7 27:1,4\\
+%\v{s}a\textsubdot{k}\a'{a}xnu \> 160:0,3 65:1,3 152:1,2 19:1,4 36:3,5,6\\
+%car \> c:0 135:1,2\\
+%ni\v{s}pe\textsubdot{k}\a'{u} \> 113:1,2 331:4,5 60:0,1 157:1,3 \a'{u}:6\\
+%mibad \> 177:0,3 123:0,1 b:2 35:3,4\\
+%\textipa{P}amr\a'{u} \> 41:1,2 135:1,3 261:2,3 \textipa{P}:0 53:1,4\\
+%garb\a'{e}y \> 132:2,4 198:1,4 135:1,2 203:0,2 48:1,3 y:5 220:0,1\\
+ \vdots \> \\
+\end{tabbing}
+\vspace{-0.4cm}
+%\end{mdframed}
+\label{fig:m2c-for-each-word}
+\caption{Output of Stage 2: Morph-to-character mappings for each word}
+\end{mdframed}
+\end{figure}
+%This was done by searching the word for each morph object's regular expression. 
+ 
+%This was accomplished by way of the cluster-membership vectors in the matrix $\mathbf{M}$; that is, each word's cluster-
+%Stage 2 took the morph objects derived in Stage 1 and searched for their regular expressions in the input words. This illustrated in figure~\ref{fig:morph-regex}, where the word in question is \texttt{hicl\'{a}xti}. and, noting matches between morphs and characters. It stored such matches as mappings from morph IDs to character indices in a data structure as illustrated in table~\ref{tab:char-indices-to-morph-IDs}. For example, the row
+%\begin{quotation}
+%\qquad \texttt{64:} \quad \texttt{[0,1]}
+%\end{quotation}
+%denotes a mapping between the morph with ID \texttt{64} and the first two characters (indices 0 and 1) of the word
+%\textit{ hicl\'{a}xti}.
+% between morphs and characters, or, more 
+%\begin{table}[h]
+%\centering
+%\setlength{\extrarowheight}{5pt}
+%\begin{tabular}{lcc}
+%\toprule
+%\textit{Word} & \textit{Morph ID} & \textit{Char Indices} \\
+%\midrule 
+% hicl\'{a}xti: & & \\
+%& \texttt{64:} & \texttt{[0,1]} \\
+% & \texttt{264:} &  \texttt{[2,3,5,6]} \\
+% & \texttt{202:} &  \texttt{[1,4]} \\
+% & \texttt{148} & \texttt{[2,4]} \\
+% & \texttt{151:} &  \texttt{[1,3]} \\
+% & \texttt{284:} & \texttt{[3,6]} \\
+% & \texttt{95:} & \texttt{[3,4]} \\
+% & \texttt{i:} & \texttt{[7]} \\
+%\bottomrule
+%\end{tabular}
+%\label{fig:char-indices-to-morph-IDs}
+%\caption{The mapping from morph IDs to the characters (i.e., character indices) of the word
+%\textit{hicl\'{a}xti} following the elimination of morphs with unmatched regular expressions}
+%\end{table}
+
+%\begin{figure}[h]
+%\begin{tabbing}
+%\hspace{1in} \= \hspace{0.75in} \=\hspace{4.25in} \kill
+%\textit{word} \> \textit{morph ID} \> \textit{character indices} \\
+% hicl\a'{a}xti: \> \texttt{64:} \> \texttt{[0,1]} \\
+% \> \texttt{64:} \> \texttt{[0,1]} \\
+%\texttt{264: [2,3,5,6]},
+%\texttt{202: [1,4]; i:[7]}, 
+%\texttt{148: [2,4]},
+%\texttt{151: [1,3]},
+%\texttt{284: [3,6]},
+%\texttt{95: [3,4]}}
+%\end{exe}
+%\end{tabbing}
+%\end{figure}
+
+%morph IDstored the mappings between word characters and morphs---or more precisely, between \emph{character indices} and \emph{morph IDs}, as in example
+
+% Thus, when a new match was found between a subsequence of characters and regular expression, example 
+
+%When a morph (regular expression) was found to match a word, 
+%its morph ID was assigned was found Stage 2 stored the mapping 
+%between characters and morphs 
+%(or more precisely, between character indices between a morph's 
+%regular expression and a given word. 
+%A data structure mapping character indices to morph IDs stored 
+%the mappings between characters 
+%When a morph's regular expression was found to match a subsequence 
+%of characters within a word, a mapping between the these characters 
+%and morph ID was assigned to these characters (or rather, the indices of these characters). 
+%For example, 
+%in one experiment (namely the one with parameter-settings $s = 4$ and $\delta = 3$), 
+%Stage 2 found that one morph object
+%matched the first two characters  
+
+%[As noted earlier in section~\ref{sec:intrinsic}), in order for the $i$th word in the input wordlist to be considered a member of the $k$th cluster, there must be at least one feature 
+%index $j \in J$ such that $m_{i,k}c_{i,j} \geq \theta_{\textrm{mc}}$, 
+%where $m_{i,k}c_{i,j}$ is the weighted vote of the $k$th cluster (or hidden unit) 
+%regarding the activity of the $j$th surface unit (or feature), namely $r_{i,j}$. 
+%Thus, in order for the $i$th word to be a member of \emph{any} cluster, it 
+%must have at least one active surface unit, i.e., at least one vote  $m_{i,k}c_{i,j}$ 
+%(for some $k\in K$, $j \in J$) must be greater or equal to $\theta_{\text{mc}}$. 
+%Sometimes there are no such votes for a given word, in which case it is not a 
+%member of \emph{any} cluster. We say that such a word is not 
+%not \emph{covered} by the clustering.]
 
  %A \emph{covered} word is thus a word for w
 %f a word threshold $\theta_{\text{mc}}$ i An MCMM clustering does not necessarily include every word; that is, some words may not be an \emph{active} member of any cluster in the clustering.]
-In any case, the point is that ... In any given clustering, most clusters are likely to be noisy to some 
-extent. 
-
-Some words belong to many clusters, and sometimes 
-the relationships between a cluster and its member words are not especially
-clear. Specially care 
-%In any given clustering, most clusters are likely to be noisy to some 
+%In any case, the point is that ... In any given clustering, most clusters are likely to be noisy to some 
 %extent. 
-Sometimes the active features of a cluster do not seem match the a particular member word's 
-characters.
-%Table~\ref{tab:morph-regex}} lists the morphs; i.e., their morph IDs 
-For example, one 
-%and regular expressions, which one 
-experiment ($s = 4,\delta = 3$) associated 
-word \textit{hicl\'{a}xti} with the clusters listed in table~\ref{tab:morph-regex}. Note that each cluster in this table is represented by two pieces of information: a morph ID, which ensures a unique 
-identity for each morph, and a regular expression, which represents the form of the morph in question. 
 
-By ``associated," we mean that the word \textit{hicl\'{a}xti} 
-was member of the clusters from which these morphs were derived.
+%Some words belong to many clusters, and sometimes 
+%the relationships between a cluster and its member words are not especially
+%clear. %Specially care 
+%%In any given clustering, most clusters are likely to be noisy to some 
+%%extent. 
+%Sometimes the active features of a cluster do not seem match the a particular member word's 
+%characters.
+%%Table~\ref{tab:morph-regex}} lists the morphs; i.e., their morph IDs 
+%For example, one 
+%%and regular expressions, which one 
+%experiment ($s = 4,\delta = 3$) associated the
+%word \textit{hicl\'{a}xti} with the clusters listed in table~\ref{tab:morph-regex}. 
+%Note that each cluster in this table is represented by two pieces of information: 
+%a morph ID, which ensures a unique 
+%identity for each morph, and a regular expression, which represents the form of the morph in question. 
+
+%By ``associated," we mean that the word \textit{hicl\'{a}xti} 
+%was member of the clusters from which these morphs were derived.
 %4_3_K1000_N12272_basic_181015_00-21_k-1000.M2C_map
 %4_3_K1000_N12272_basic_181015_00-21_k-1000.original_order
 %2_2_K6000_N12272_basic_180621_21-24_k-1000.chinese
@@ -2471,11 +2934,11 @@ was member of the clusters from which these morphs were derived.
 %                360 \>  \texttt{(r)} \\
 %	\end{tabbing}
 %\end{exe}	
-Stage 2 must take such a list and establish from it a mapping from word characters to morphs. To this end, it considers each candidate morph's regular expression, attempting to match it with the word in question. If there is no match, the morph is discarded. For example, the expressions \texttt{(\v{z})} and \texttt{(l).?.?(t)} fail to match \texttt{hicl\'{a}xti}. 
+%Stage 2 must take such a list and establish from it a mapping from word characters to morphs. To this end, it considers each candidate morph's regular expression, attempting to match it with the word in question. If there is no match, the morph is discarded. For example, the expressions \texttt{(\v{z})} and \texttt{(f)} fail to match \texttt{hicl\'{a}xti}. 
 
-The end result 
+%The end result 
 %of this process 
-is a mapping from morphs (i.e., morph IDs) to characters (i.e. character indices, as follows:
+%is a mapping from morphs (i.e., morph IDs) to characters (i.e. character indices, as follows:
 %\begin{exe}
 %\ex \label{ex:noise-clusters}
 %	\begin{tabbing}
@@ -2496,43 +2959,7 @@ is a mapping from morphs (i.e., morph IDs) to characters (i.e. character indices
 %\end{exe}
 %\begin{exe} \ex \label{ex:mapping} hicl\'{a}xti \quad \texttt{64:[0,1]; 264:[2,3,5,6]; 202:[1,4]; i:[7]; 148:[2,4]; 151:[1,3]; 284:[3,6]; 95:[3,4]}
 %\end{exe}
-\begin{figure}[t]
-\small
-\begin{mdframed}
-\begin{tabbing}
-\hspace{1in} \= \hspace{5.5in} \kill
- \vdots \> \\
-\textipa{P}etp\a'{o}r \> 283:3,5 297:2,5 \a'{o}:4 51:1 335:0,2\\
-lebdiq\a'{a} \> 6:1,4 170:5,6 140:4,5 l:0 274:2,4 86:1,3 153:3,6 185:1,2\\
-gur\a'{e}yha \> 132:2,3 h:5 394:3,6 203:0,2 u:1 y:4\\
-ba\textipa{Q}\a'{e}rev \> 131:5,6 198:1,3 135:1,4 75:5 13:0,1 90:1,2 59:3,5\\
-biq\a'{a}\v{s}ta \> 229:2 103:3,6 202:1,3 140:1,2 113:1,4 274:0,1 t:5 170:2,3\\
-\v{s}el\a'{o} \> 9:0,1 57:1,2 169:3 271:0,2\\
-hahagig\a'{i}m \> 64:2,5 1:0,3 4:7,8 g:6 28:1,4 17:1,3 56:3,5 252:5,7\\
-k\v{s}e\textsubdot{s}ix\a'{a}qt \> 202:4,6 43:0,1,2 140:4,7 337:1,4 243:5,6 55:3,5,7 61:6,8 414:2,5\\
-bab\a'{e}\textsubdot{t}en \> 198:1,3 40:1,4 75:5 13:0,1 n:6 48:1,2 276:2,5 59:3,5\\
-naxa\v{s}\a'{i} \> \v{s}:4 163:0,3 147:2,3 227:2,5 17:1,3 19:1,2\\
-habanq \> 48:1,2 1:0,3 71:1,4 69:3,5 17:1,3\\
-q\a'{a}qa\textipa{P}im \> 96:4 100:0,3 263:1,3 265:2,5 170:0,1 41:3,6 56:3,5 63:3,4\\
-\v{s}elift\a'{o}ax \> 133:2,3 6:1,3 72:3,6 9:0,1 271:0,2 337:0,3 19:7,8 22:3,5,7 57:1,2 284:2,5 221:1,4\\
-wet\a'{u}ki \> i:5 121:3 18:0,1 t:2 k:4\\
-hay\a'{a}yin \> 1:0,1 101:1,4 65:1,3 237:5,6 15:3,5 336:0,3 126:2,3\\
-qer\a'{a}vti \> 131:1,4 229:0 359:2,5 136:1,3 170:0,3 112:2,3 i:6 106:1,2 223:4,5\\
-mecayr\a'{i}m \> 2:1,3 162:5,6 101:3,4 135:3,5 c:2 10:0,1 34:0 45:3,6 177:0,3 4:6,7 27:1,4\\
-\v{s}a\textsubdot{k}\a'{a}xnu \> 160:0,3 65:1,3 152:1,2 19:1,4 36:3,5,6\\
-%car \> c:0 135:1,2\\
-%ni\v{s}pe\textsubdot{k}\a'{u} \> 113:1,2 331:4,5 60:0,1 157:1,3 \a'{u}:6\\
-%mibad \> 177:0,3 123:0,1 b:2 35:3,4\\
-%\textipa{P}amr\a'{u} \> 41:1,2 135:1,3 261:2,3 \textipa{P}:0 53:1,4\\
-%garb\a'{e}y \> 132:2,4 198:1,4 135:1,2 203:0,2 48:1,3 y:5 220:0,1\\
- \vdots \> \\
-\end{tabbing}
-\vspace{-0.4cm}
-%\end{mdframed}
-\label{tab:m2c}
-\caption{Stage 2, Step 1: Morph-to-character mapping}
-\end{mdframed}
-\end{figure}
+
 %\begin{table}[t]
 %\centering
 %%\setlength{\extrarowheight}{8pt}
@@ -2576,84 +3003,386 @@ mecayr\a'{i}m \> 2:1,3 162:5,6 101:3,4 135:3,5 c:2 10:0,1 34:0 45:3,6 177:0,3 4:
 %       \bottomrule
 % \end{tabular}
 % }
-
-\begin{table}[t]
-\centering
-\setlength{\extrarowheight}{8pt}
- \begin{tabular}{clc}
-\toprule
-\raisebox{0pt}[0pt]{Morph ID} & \raisebox{0pt}[0pt]{Regular Expression} & Match in \texttt{hicl\'{a}xti}? \\
- \midrule
-                3 & \texttt{(u)} & \\
-                31 &  \texttt{(f)} &  \\
-                64 &  \texttt{(h).?.?(i)} & \textbf{\underline{h}\,\underline{i}\,}c\,l\,\'{a}\,x\,t\,i  \\
-                84 &  \texttt{(\v{z})} &  \\
-                95 &  \texttt{(l).?.?(v)} & h\,i\,\textbf{\underline{c}\,\underline{l}\,}\'{a}\,x\,t\,i \\
-                148 &   \texttt{(c).?.?(\'{a}\,)} & h\,i\,\textbf{\underline{c}}\,l\,\textbf{\underline{\'{a}}}\,x\,t\,i \\
-                151  &  \texttt{(i).?.?(l)} &  \\
-                202 &  \texttt{(i).?.?(\'{a}\,)} & h\,\textbf{\underline{i}}\,c\,l\,\textbf{\underline{\'{a}}}\,x\,t\,i \\
-                264 &  \texttt{(c).?.?(l).?.?(x).?.?(t)}  & h\,i\,\textbf{\underline{c}}\,\textbf{\underline{l}}\,\'{a}\,\textbf{\underline{x}}\,\textbf{\underline{t}}\,i \\
-                284 &  \texttt{(l).?.?(t)} & h\,i\,c\,\textbf{\underline{l}}\,\'{a}\,x\,\textbf{\underline{t}}\,i  \\
-                360 &  \texttt{(r)} & \\
-       \bottomrule
- \end{tabular}
- \label{tab:morph-regex}
- \caption{Searching for matching subsequences in \texttt{hicl\'{a}xti}}
-% \textit{\textsc{Stage 1}}: A regular expression is derived from each cluster's centroid vector. Each cluster corresponds to a morph, and the regular expression is thus a representation of the morph's form.}
-%  The are  is assign to each\textit{hicl\`{a}xti} is a member are \emph{Morphs detected in the word} hicl\'{a}xti. Each morph identified by a unique \emph{morph ID}. The regular expression next to each morph ID represents the morph's form.}
- \end{table}
  
- \begin{exe} \ex \label{ex:mapping} hicl\'{a}xti \quad \texttt{64:[0,1]; 264:[2,3,5,6]; 202:[1,4]; i:[7]; 148:[2,4]; 151:[1,3]; 284:[3,6]; 95:[3,4]}
-\end{exe}               
+% \begin{exe} \ex \label{ex:mapping} hicl\'{a}xti \quad \texttt{64:[0,1]; 264:[2,3,5,6]; 202:[1,4]; i:[7]; 148:[2,4]; 151:[1,3]; 284:[3,6]; 95:[3,4]}
+%\end{exe}               
 %Map the Morph object’s regular expression onto the characters of the word itself. This is done primarily through the matching of a regex to an input string. This will produce a lattice of potential morphID sequences, etc. 
 
-\subsubsection{\textsc{stage 3:} Compress and Encode.} In stage 3,
-A single, optimal path through the [each] word [in question] is computed from Stage 2's mapping. In the case of (\ref{ex:mapping}), for example,-->  
-some morphs can be eliminated because they share character indices with other morphs. In fact, redundant, overlapping morphs
-\emph{must} be reduced as much as possible. Where two 
- After eliminating morphs \texttt{151}, \texttt{202}, \texttt{284}, 
-we arrive at the following compressed sequence of morph IDs computed at the end of Stage 2
-is optimized and compressed to yield a single best path through the word. 
- the best sequence or ``path" and then compress it. 
- %That is, remove repeated instances of the same morphID. 
-\begin{exe} \ex \label{ex:comp-with-indices} 
-hicl\'{a}xti \quad \texttt{64:[0,1], 148:[2,4], 264:[2,3,5,6], i}
-\ex %\includegraphics[width=.3\linewidth]{cjk-mappings-0}
-\includegraphics[scale=.3]{cjk-mappings-0}
-\end{exe}
-
-\begin{figure}[h]
+\subsubsection{\textsc{Stage 3:} Compress and encode}
+%In stage 3, a single, optimal path through each word is computed from Stage 2's mapping. 
+%Overlapping clusters we mentioned/introduced the problem in our discussion of Stage 2. Ideally, 
+%every.
+%While it is true that MCMMs are capable of attributing a single feature to more than one cause (i.e., morph),
+%it is also true that overlapping morphs within the same analysis are not conducive 
+%to the task of morphological segmentation. 
+%Moreover, as noted earlier in this chapter, Multimorph's clusterings 
+%were not without noise, and thus some overlapping or redundant 
+%morph-to-character mappings for any given word are likely to be
+%spurious. % figure~{fig:m2c-for-each-word} 
+\begin{figure}[t]
+\begin{mdframed}
 \centering
-%\includegraphics[width=.3\linewidth]{example-image}\quad
-\subfigure[Segmentation: Morphs and their constituent characters]{ 
-\centering
-\includegraphics[width=.3\linewidth]{cjk-mappings-0}
-} \\[\baselineskip]
-\subfigure[Morphs mapped to CJK characters]{ 
-\centering
-\qquad \qquad \includegraphics[width=.3\linewidth]{cjk-mappings-2}
-%\quad\includegraphics[width=.3\linewidth]{example-image-b}
-%\\[\baselineskip]% adds vertical line spacing
-%\includegraphics[width=.3\linewidth]{example-image}\quad\includegraphics[width=.3\linewidth]{example-image-a}\quad\includegraphics[width=.3\linewidth]{example-image-b}
-}
-\label{tab:morphs-chinese}
-\caption{hhh}
+% Define block styles
+%\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+%    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+%\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+%    text width=10em, text centered, rounded corners, minimum height=4em]
+%\tikzstyle{line} = [draw, -latex']
+%\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+%    minimum height=2em]
+%\tikzstyle{decision} = [diamond, draw, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\begin{tikzpicture}[node distance=1.55cm, auto, >=stealth]
+%	\def \rowtwoht{4.25cm}
+%	\def \weightlevel{2.75cm}
+%	\def \rowoneht{1.25cm}
+%	\def \basement{0cm}
+	\tikzstyle{annot}=[text width=15ex]
+	\tikzstyle{reduced}=[text width=3ex]
+	% labels
+\tikzstyle{block} = [rectangle, draw, text width=1em, text centered, rounded corners, minimum height=3em, inner sep=7pt]
+%\begin{tikzpicture}[node distance = 3cm, auto]
+%\begin{tikzpicture}[node distance=1.7cm, auto, >=stealth]
+    % Place nodes
+    	%\node[annot] (hidden-layer) at (0cm,\rowtwoht) {hidden units ($\mathbf{m}_i$)};
+%	\node[annot] (weights) at (0cm,\weightlevel) {weights ($\mathbf{C}$)};
+%	\node[annot] (r-layer) at (0cm,\rowoneht) {reconstructed units ($\mathbf{r}_i$)};
+  \node[annot](annot1) at (-1cm, 0cm){\vspace{3pt}Characters\vspace{3pt}\\Indices};
+  \node[annot,below of=annot1] at (-1cm, -1.5cm)(annot2){Morph IDs};
+    \node [block, right of=annot1] (idx0) {\vspace{3pt}\texttt{h}\vspace{3pt}\\\textsc{\small\textsf{\textbf{0}}}};
+    \node [below of=idx0,node distance=1.35cm] (idx0-1) {64};
+        \node [block,right of=idx0] (idx1) {\vspace{3pt}\texttt{i}\vspace{3pt}\\\textsc{\small\textsf{\textbf{1}}}};
+    \node [below of=idx1,node distance=1.35cm] (idx1-1) {64};
+    \node [below of=idx1-1,node distance=1.2cm] (idx1-2) {151};
+    \node [below of=idx1-2,node distance=1.2cm] (idx1-3) {202};
+            \node [block,right of=idx1] (idx2) {\vspace{3pt}\texttt{c}\vspace{3pt}\\\textsc{\small\textsf{\textbf{2}}}};
+    \node [below of=idx2,node distance=1.35cm] (idx2-1) {148};
+    \node [below of=idx2-1,node distance=1.2cm] (idx2-2) {264};
+                \node [block,right of=idx2] (idx3) {\vspace{3pt}\texttt{l}\vspace{3pt}\\\textsc{\small\textsf{\textbf{3}}}};
+    \node [below of=idx3,node distance=1.35cm] (idx3-1) {95};
+    \node [below of=idx3-1,node distance=1.2cm] (idx3-2) {151};
+    \node [below of=idx3-2,node distance=1.2cm] (idx3-3) {264};
+       \node [below of=idx3-3,node distance=1.2cm] (idx3-4) {284};
+                    \node [block,right of=idx3] (idx4) {\vspace{3pt}\texttt{\'{a}}\vspace{3pt}\\\textsc{\small\textsf{\textbf{4}}}};
+    \node [below of=idx4,node distance=1.35cm] (idx4-1) {95};
+    \node [below of=idx4-1,node distance=1.2cm] (idx4-2) {148};
+    \node [below of=idx4-2,node distance=1.2cm] (idx4-3) {202};
+                        \node [block,right of=idx4] (idx5) {\vspace{3pt}\texttt{x}\vspace{3pt}\\\textsc{\small\textsf{\textbf{5}}}};
+    \node [below of=idx5,node distance=1.35cm] (idx5-1) {264};
+                            \node [block,right of=idx5] (idx6) {\vspace{3pt}\texttt{t}\vspace{3pt}\\\textsc{\small\textsf{\textbf{6}}}};
+    \node [below of=idx6,node distance=1.35cm] (idx6-1) {264};
+    \node [below of=idx6-1,node distance=1.2cm] (idx6-2) {284};
+                                \node [block,right of=idx6] (idx7) {\vspace{3pt}\texttt{i}\vspace{3pt}\\\textsc{\small\textsf{\textbf{7}}}};
+    \node [below of=idx7,node distance=1.35cm] (idx7-1) {i};
+%    \node[annot](red-id-1) at (-1cm, -6cm){Final:};
+%       \node[right of=red-id-1,node distance=2.1cm](red-id-2){64};
+%       \node[right of=red-id-2](red-id-3){148};
+%       \node[right of=red-id-3](red-id-4){264};
+%       \node[right of=red-id-4](red-id-5){i};
+       %\node[reduced,right of=red-id-2](red-id-2) {\vspace{3pt}\texttt{\'{a}}\vspace{3pt};
+%    \node [block, right of=idx0, node distance=2.5cm] (idx1) {\textsc{\small\textsf{\textbf{1}}} \\ 64 \\ 151 \\ 202 };
+%    \node [block, right of=idx1, node distance=2.5cm] (idx2) {\textsc{\small\textsf{\textbf{2}}} \\ 148\\ 264};
+%        \node [block, right of=idx2, node distance=2.5cm] (idx3) {\textsc{\small\textsf{\textbf{3}} \\ 95 \\ 151 \\ 264 \\ 284}; 
+%    \node [block, right of=idx3, node distance=2.5cm] (idx4) {\textsc{\small\textsf{\textbf{4}}} \\ 95 \\ 148 \\ 202};
+%    \node [block, right of=idx4, node distance=2.5cm] (idx5) {\textsc{\small\textsf{\textbf{5}}} \\ 264};
+%    \node [block, right of=idx5, node distance=2.5cm] (idx6) {\textsc{\small\textsf{\textbf{6}}} \\ 264 \\ 284};
+%        \node [block, right of=idx6, node distance=2.5cm] (idx7) {\textsc{\small\textsf{\textbf{7}}} \\ i};
+    %\node [block, below of=identify] (evaluate) {evaluate candidate models};
+%    \node [block, left of=evaluate, node distance=3cm] (update) {update model};
+%    \node [decision, below of=evaluate] (decide) {is best candidate better?};
+%    \node [block, below of=decide, node distance=3cm] (stop) {stop};
+    % Draw edges
+%    \path [line] (stage1) -- (stage2);
+%    \path [line] (stage2) -- (stage3);
+%    \path [line] (stage3) -- (stage4); 
+\draw[->] (idx0-1) -- (idx1-1);
+\draw[->] (idx1-1) -- (idx2-1);
+\draw[->] (idx2-1) -- (idx3-3);
+\draw[->] (idx3-3) -- (idx4-2); 
+\draw[->] (idx4-2) -- (idx5-1); 
+\draw[->] (idx5-1) -- (idx6-1); 
+\draw[->] (idx6-1) -- (idx7-1); 
+   %node[above] {yes} (d);
+%   \draw[->] (c.north) to [out=170,in=45] node[above] {no} (b.north);
+%   \draw[->] (d.south) to [out=210,in=20] (e.north);
+%   \draw[->] (e) -- (f);
+%   \draw[->] (f) -- (g);
+%   \draw[->] (g) -- (h);
+%    \path [line] (decide) -| node [near start] {yes} (update);
+%    \path [line] (update) |- (identify);
+%    \path [line] (decide) -- node {no}(stop);
+%    \path [line,dashed] (expert) -- (init);
+%    \path [line,dashed] (system) -- (init);
+%    \path [line,dashed] (system) |- (evaluate);
+\end{tikzpicture}
+\label{fig:best-paths}
+\caption{Finding the ``optimal path,'' i.e., the optimal morph sequence, through the word \textit{hicl\'{a}xti}, where morphs are represented by their IDs. A \emph{morph sequence} is a mapping from morphs to characters.}
+\end{mdframed}
 \end{figure}
+Figure~\ref{fig:chars-to-morphs-tab} illustrates several one-to-many mappings from 
+characters to morphs. Such mappings are common following Stage 2. 
+One of Stage 3's objectives is to take these mappings and select for each character the single 
+\emph{best} morph. The morph choice for any given character depends on the choices 
+for other characters. For instance, notice in figure~\ref{fig:chars-to-morphs-tab} that the first 
+character of \textit{hicl\'{a}xti} maps to morph 64, and second character maps to 
+morphs  64, 151, and 202. Morph 64 is selected (by default) for the first character, 
+a fact that immediately makes morph 64 the most attractive choice for the second character.
+The task for selecting the best morph for each character is tantamount to selecting the 
+best \emph{path} through the morphs associated with a given word. 
+This is illustrated in figure, in which the set of morph IDs associated with 
+each index is presented as a set of options at that index.
 
-Note the \textit{i} at the end of the sequence. This is an ``orphan" alphabetic character that was never associated with a morph. Such stranded characters were not uncommon. They were retained so that every character would be accounted for.
+These choices are made with an eye to finding the path with the maximal weight. The task 
+was thus essentially a kind of
+\emph{best-first} search \citep{pearl:1984}. The weight of a path was derived from
+ the weights of its morphs, and the weight of each morph is derived from the weights of its component features. 
+%More specifically, each morph's weight is a real number between 0 and 1 derived from the activities of its component features.  is therefore given a numerical weight in the interval $[0,1]$.
+%As described in the discussion of Stage 1 above, each morph is composed of one or more features. 
+%-either precedence features, 
+%positional features, or a combination of these two types. 
+Recall from chapter~\ref{ch:MCMM}, particularly section~\ref{sec:mixing-function}, that each feature corresponds 
+to a particular element $r_{i,j}$ in the \emph{reconstruction} 
+vector $\mathbf{r}_{i}$. Specifically, the element $r_{i,j}$ is the \emph{activity} 
+of the $j$th feature. A feature's activity is a number between 0 and 1 indicating the degree to 
+which the feature is \textsc{off} or \textsc{on}, respectively. Feature activities 
+are thus already ``weights'' of a sort. Since features compose morphs, we compute 
+a morph's weight by taking the average of the activities of its component features. 
+A path's weight is then the average of its morphs' weights. However, to favor 
+sequences of identical morphs, such as the two 64s at the beginning of \textit{hicl\'{a}xti}, 
+we introduce the following exception to the basic average rule: 
+\begin{quote}\noindent
+Given a path of morph IDs, 
+whenever a morph ID is a repeated, and three or fewer character positions 
+separate the two instances, the path's weight is \emph{doubled}; that is, 
+it becomes \emph{two times} the average of the weights of its component morphs.
+\end{quote}
+
+Figure~\ref{fig:best-paths} illustrates the 
+ best path through the morph IDs associated with the word \textit{hicl\'{a}xti}.
+ We restate this optimal morph sequence here:
+\begin{equation}\label{eq:best-path}. 
+\texttt{hicl\'{a}xti} \quad \mapsto \quad \texttt{64, 64, 148, 264, 148, 264, 264, i}
+\end{equation}
+We now come to the second major objective of Stage 3, which is to abstract away from individual characters by eliminated repeated instances of morph IDs. 
+The most straightforward morph sequences to deal with are uninterrupted occurrences of the same morph ID, such as the consecutive 64s in \eqref{best-path}. Stage 3 mapped consecutive instances of a morph ID onto a \emph{single} instance of the same morph ID. Thus,  
+\begin{equation*}
+\texttt{64, 64} \quad \mapsto \quad \texttt{64}
+\end{equation*}
+However, sometimes optimal paths
+exhibit morph interdigitation, as does \eqref{eq:best-path}, in fact, in which morphs 148 and 248 are interleaved. 
+Because Morfessor does not deal 
+with interdigitation, Stage 3 collapsed sequences of interleaved morphs into two adjacent monolithic
+morphs; that is, 
+\begin{equation*}
+\texttt{148, 264, 148, 264, 264} \quad \mapsto \quad \texttt{148, 264}
+\end{equation*}
+Orphaned characters such as the \textit{i} in \eqref{eq:best-path} 
+were retained in place. The abstracted, or compressed, version of path \eqref{eq:best-path} thus turns out to be
+\begin{equation}\label{eq:reduced-best-path}
+\texttt{hicl\'{a}xti} \quad \mapsto \quad \texttt{64, 148, 264, i}
+\end{equation}
+The final step within Stage 3 is to replace the morph IDs in \eqref{eq:reduced-best-path} and other such compressed paths with atomic unicode characters. Each morph ID occurring in the compressed paths was uniquely mapped to a distinct unicode character---in particular, a character 
+from the CJK unicode block. The mappings for morph IDs 64, 148, and 264 
+were as in figure~\ref{tab:morphs-chinese}.
+\begin{figure}[t]
+\setlength{\extrarowheight}{8pt}
+\centering
+\begin{tabular}{ccc}
+\toprule
+Morph ID & & CJK char \\
+\midrule
+64 & $\mapsto$ & \raisebox{-0.13cm}{\includegraphics[scale=.3]{cjk-char-0-2}}\\
+148 & $\mapsto$ & \raisebox{-0.13cm}{\includegraphics[scale=.3]{cjk-char-0-1}} \\
+264 & $\mapsto$ & \raisebox{-0.12cm}{\includegraphics[scale=.3]{cjk-char-0-0}} \\
+%i & $\mapsto$ & i \\
+\bottomrule
+\end{tabular}
+\label{tab:morphs-chinese}
+\caption{Mapping morphs to atomic symbols from the CJK unicode block}
+\end{figure} 
+These CJK characters and the orphaned \textit{i} were then joined together to form a single string as follows:
+%\begin{figure}[h]
+\begin{center}
+\raisebox{-0.1cm}{\includegraphics[scale=0.4]{reduced-morph-IDs}} \quad $\mapsto$ \quad \raisebox{-0.1cm}{\includegraphics[scale=0.4]{cjk-sequence}} \quad $\mapsto$ 
+\quad \raisebox{-0.10cm}{\includegraphics[scale=0.4]{conjoined-cjk-sequence}}
+\end{center}
+The experimental input files to Morfessor consisted of strings like \raisebox{-0.10cm}{\includegraphics[scale=0.4]
+{conjoined-cjk-sequence}}. Figure~\ref{fig:morfessor-input} shows an excerpts from one of these input files.
+%Each morph was thus treated as a single, atomic entity, with no internal structure. 
+%The last step in Stage 3 is to \emph{encode} the morph-ID sequence 
+%in example (\ref{ex:comp-no-indices}) by replacing each
+%ID number with a unique, atomic unicode character---in particular, a character 
+%from the CJK unicode block, as illustrated in figure~\ref{fig:map-and-replace}.
+%The resulting sequence was then joined together to form a single string, as in 
+%subfigure~\ref{subtab:cjk-replacement}.
+%Otherwise, repeated instances the same morph ID were straightforwardly mapped onto a \emph{single} 
+%instance of the morph ID; for example,
+%\begin{equation*}
+%64, 64 \mapsto 64
+%\end{equation*}
+%
+%\begin{equation*}
+%64, 148, 264, i
+%\end{equation*}
+
+%repeated morph ID results in a doubling of the path's weight as long as the morph ID's immediately preceding instance is within three positions of the repeated instances
+%
+% Given a path of morph IDs, if a morph ID is repeated in the path, and if its recurrence is 3 or more  the  same morph ID is recurs within or fewer character positions let $\mu$ be one of morph IDs at index $n$. If $\mu$ is also present at indices $n-3$, $n-2$, or $n-1$ (i.e., within three preceding positions), the weight of this path is \textit{doubled}. That is, it is \emph{two times} the average of its component morphs.
+%
+%and/or positionfeatures weighting to morphs.  in which each feature (i.e., surface unit) was inherently 
+%weighted by its reconstructed activity (see section~\ref{sec:mixing-fiction}), 
+%and each morph's weight was then computed as the average of the activities of its component features.
+%The sequence consists of a list of pairs; eachcharacter in a given word tio the morphs that 
+%def update\_wt(weighted_sequence, morphID):
+%		try: int\_ID = int(morphID)
+%		except TypeError:
+%			morph_obj = morphID
+%			item_wt = 1.0
+%		except ValueError:
+%			morph_obj = morphID
+%			item_wt = 1.0
+%		else:
+%			morph\_obj = morph\_dict[int\_ID][-1]
+%			item\_wt = morph\_obj.get\_weight()
+%		seq\_wt = weighted\_sequence[0]
+%		sequence = weighted\_sequence[-1]
+%		new\_avg = (seq_wt+item\_wt)/2.0
+%		for n in range(1,3):
+%			try: item = sequence[-n]
+%			except IndexError: 
+%				break
+%			else:
+%				if item == morphID:
+%					return 2.0*new\_avg
+%		return new\_avg
+		
+%\begin{figure}[ht]
+%\centering
+%\setlength{\extrarowheight}{8pt}
+%\begin{tabular}{lcc}
+%\toprule
+%\text{Word} & \text{Morph ID} & \text{Char Indices} \\
+%\midrule 
+% \texttt{hicl\'{a}xti:} & & \\
+%& \texttt{64} & \texttt{[0,1]} \\
+%%\texttt{148:[2,4]} \texttt{[2,3,5,6]} \\
+%%\texttt{64:[0,1]} \texttt{151:[1,3]} \texttt{148:[2,4]} \\ \texttt{284:[3,6]} 
+%%\texttt{64:[0,1]} \texttt{2o2:[1,4]} \texttt{264:[2,3,5,6]}
+%%\texttt{64:[0,1]} \texttt{148:[2,4]} \texttt{284:[3,6]}
+% & \texttt{95:} & \texttt{[3,4]} \\
+%  & \texttt{148:} & \texttt{[2,4]} \\
+%   & \texttt{151:} &  \texttt{[1,3]} \\
+%    & \texttt{202:} &  \texttt{[1,4]} \\
+% & \texttt{264:} &  \texttt{[2,3,5,6]} \\
+% & \texttt{284:} & \texttt{[3,6]} \\
+% & \texttt{i:} & \texttt{[7]} \\
+%\bottomrule
+%\end{tabular}
+%\label{fig:computing-mappings}
+%\caption{Finding the optimal morph path.}
+%\end{figure}
+
+
+
+%We did not want overlapping segments within a single analysis; that is, within the same analysis,
+%each character index 
+%\begin{algorithm}[h]
+%\KwData{\textbf{M}, \textbf{C}, \textbf{X}, \textbf{R}}
+%\KwResult{Optimized \textbf{M} and \textbf{C} matrices}
+%def update\_weight(self):
+%		sum\_wt = 0.0
+%		for my\_fwp in self.fwp\_list:
+%			sum_wt += my\_fwp.get\_weight()
+%		%try: self.weight = sum_wt/float(len(self.fwp_list))
+%		%except ZeroDivisionError: self.weight = 0.0
+%\label{alg:update-wt}
+%\caption{The weight of a morph is computed as the average of the activities of its  component features.}
+%\end{algorithm}
+		
+%def avg\_wt(morphID\_list, morph\_dict):
+%	s = 0.0
+%	\#print "avg_wt"
+%	morph_objs = list\_of\_morph\_objs(morphID_list, morph_dict)
+%	for morph_obj in morph_objs:
+%		s += morph\_obj.get\_weight()
+%	try: quotient = s/float(len(morph\_objs))
+%	except ZeroDivisionError: return 0.0
+%	else: return quotient
+
+%STEPS: [(0, [64]), (1, [64, 151, 202]), (2, [148, 264]), (3, [95, 151, 264, 284]), (4, [95, 148, 202]), (5, [264]), (6, [264, 284]), (7, u'i')]
+	
+%In the case of (\ref{ex:mapping}), for example,-->  
+%some morphs can be eliminated because they share character indices with other morphs. 
+%In fact, redundant, overlapping morphs
+%\emph{must} be reduced as much as possible. 
+
+% After eliminating morphs \texttt{151}, \texttt{202}, and \texttt{284}, 
+%we arrive at the following compressed sequence of morph IDs computed at the end of Stage 2
+%is optimized and compressed to yield a single best path through the word. 
+% the best sequence or ``path" and then compress it.
+ %That is, remove repeated instances of the same morphID.
+% \begin{figure}[ht]
+% %\subfigure[(Reduced) mappings from morphs to characters\label{fig:char-indices-to-morph-IDs}]{
+%\centering
+%\setlength{\extrarowheight}{5pt}
+%\begin{tabular}{lcc}
+%\toprule
+%\text{Word} & \text{Morph ID} & \text{Char Indices} \\
+%\midrule 
+% \texttt{hicl\'{a}xti:} & & \\
+%& \texttt{64:} & \texttt{[0,1]} \\
+% & \sout{\texttt{95:}} & \sout{\texttt{[3,4]}} \\
+%  & \texttt{148:} & \texttt{[2,4]} \\
+%   & \sout{\texttt{151:}} &  \sout{\texttt{[1,3]}} \\
+%    & \sout{\texttt{202:}} &  \sout{\texttt{[1,4]}} \\
+% & \texttt{264:} &  \texttt{[2,3,5,6]} \\
+% & \sout{\texttt{284:}} & \sout{\texttt{[3,6]}} \\
+% & \texttt{i:} & \texttt{[7]} \\
+%\bottomrule
+%\end{tabular}
+%%}
+%\label{fig:computing-mappings}
+%\caption{The mapping from morph IDs to the characters (i.e., character indices) of the word
+%\textit{hicl\'{a}xti} following the elimination of unmatched morphs}
+%\end{figure}
+
+%\begin{exe} \ex \label{ex:comp-with-indices} 
+%hicl\'{a}xti \quad \texttt{64:[0,1], 148:[2,4], 264:[2,3,5,6], i}
+%\ex %\includegraphics[width=.3\linewidth]{cjk-mappings-0}
+%\includegraphics[scale=.3]{cjk-mappings-0}
+%\end{exe}
+
+%\begin{figure}[h]
+%\centering
+%%\includegraphics[width=.3\linewidth]{example-image}\quad
+%\subfigure[Segmentation: Morphs and their constituent characters]{ 
+%\centering
+%\includegraphics[width=.3\linewidth]{cjk-mappings-0}
+%} \\[\baselineskip]
+%\subfigure[Morphs mapped to CJK characters]{ 
+%\centering
+%\qquad \qquad \includegraphics[width=.3\linewidth]{cjk-mappings-2}
+%%\quad\includegraphics[width=.3\linewidth]{example-image-b}
+%%\\[\baselineskip]% adds vertical line spacing
+%%\includegraphics[width=.3\linewidth]{example-image}\quad\includegraphics[width=.3\linewidth]{example-image-a}\quad\includegraphics[width=.3\linewidth]{example-image-b}
+%}
+%\label{tab:morphs-chinese}
+%\caption{Mapping morphs to atomic symbols from the CJK block of unicode characters}
+%\end{figure}
+
+%Note the \textit{i} at the end of the sequence. This is an ``orphan" alphabetic character that was never associated with a morph. Such stranded characters were not uncommon. They were retained so that every character would be accounted for.
 %The idea is to abstract away from the individual characters as much as possible and allow morph to be a single, atomic entity, with no internal structure.] 
-The purpose of this stage, however, is to abstract away from the individual characters and treat each morph
-%as much as possible, so that each morph could be treated 
-as a single, atomic entity, with no internal structure.
-Thus, the compressed sequence in (\ref{ex:comp-with-indices}) would be look more like the following:
-\begin{exe} \ex \label{ex:comp-no-indices} 
-hicl\'{a}xti \qquad  $\to$ \qquad \texttt{64, 148, 264, i}
-\end{exe}
-The last step in Stage 3 is to \emph{encode} the morph-ID sequence in example (\ref{ex:comp-no-indices})by replacing each
-ID number with a unique, atomic unicode character---in particular, a character 
-from the CJK unicode block, as illustrated in figure~\ref{fig:map-and-replace}.
-The resulting sequence was then joined together to form a single string, as in 
-subfigure~\ref{subtab:cjk-replacement}.
+%The purpose of this stage, however, is to abstract away from the individual characters and treat each morph
+%%as much as possible, so that each morph could be treated 
+%as a single, atomic entity, with no internal structure.
+%Thus, the compressed sequence in (\ref{ex:comp-with-indices}) would be look more like the following:
+%\begin{exe} \ex \label{ex:comp-no-indices} 
+%hicl\'{a}xti \qquad  $\to$ \qquad \texttt{64, 148, 264, i}
+%\end{exe}
+%The last step in Stage 3 is to \emph{encode} the morph-ID sequence in example (\ref{ex:comp-no-indices})by replacing each
+%ID number with a unique, atomic unicode character---in particular, a character 
+%from the CJK unicode block, as illustrated in figure~\ref{fig:map-and-replace}.
+%The resulting sequence was then joined together to form a single string, as in 
+%subfigure~\ref{subtab:cjk-replacement}.
 
 % and then joining the characters together to form 
 %a string, e.g., a four-character string in the case of (\ref{ex:comp-no-indices}).
@@ -2675,106 +3404,157 @@ subfigure~\ref{subtab:cjk-replacement}.
 %\caption{Replacing morph (i.e., morph IDs) with CJK chars in the word \textit{hicl\'{a}xti}}
 %\end{table}
 
-\begin{figure}[t]
-\centering
-\setlength{\extrarowheight}{6pt}
-\subfigure[Mapping\label{subtab:cjk-mapping}]{
-\centering
-\begin{tabular}{ccc}
-\toprule
-Morph ID & & CJK char \\
-\midrule
-64 & $\to$ & \raisebox{-0.13cm}{\includegraphics[scale=.3]{cjk-char-0-2}}\\
-148 & $\to$ & \raisebox{-0.13cm}{\includegraphics[scale=.3]{cjk-char-0-1}} \\
-264 & $\to$ & \raisebox{-0.12cm}{\includegraphics[scale=.3]{cjk-char-0-0}} \\
-i & $\to$ & i \\
-\bottomrule
-\end{tabular}
-} \\
-%\label{tab-cjk-mapping}
-\subfigure[In Stage 3, the morphs in the word \textit{hicl\'{a}xti} are replaced by atomic CJK characters.\label{subtab:cjk-replacement}]
-{
-\centering
+%\begin{figure}[t]
+%\centering
+%\setlength{\extrarowheight}{6pt}
+%\subfigure[Mapping\label{subtab:cjk-mapping}]{
+%\centering
 %\begin{tabular}{ccc}
 %\toprule
 %Morph ID & & CJK char \\
 %\midrule
-%hicl\'{a}xti & $\to$ & hicl\'{a}xti \\
-\includegraphics[scale=.3]{cjk-mappings-2}
 %64 & $\to$ & \raisebox{-0.13cm}{\includegraphics[scale=.3]{cjk-char-0-2}}\\
 %148 & $\to$ & \raisebox{-0.13cm}{\includegraphics[scale=.3]{cjk-char-0-1}} \\
 %264 & $\to$ & \raisebox{-0.12cm}{\includegraphics[scale=.3]{cjk-char-0-0}} \\
 %i & $\to$ & i \\
 %\bottomrule
 %\end{tabular}
-}
-\label{tab:map-and-replace}
-\caption{Subfigures~\ref{subtab:cjk-mapping} and \ref{subtab:cjk-replacement}, baby!}
-\end{figure}
+%} \\
+%%\label{tab-cjk-mapping}
+%\subfigure[In Stage 3, the morphs in the word \textit{hicl\'{a}xti} are replaced by atomic CJK characters.\label{subtab:cjk-replacement}]
+%{
+%\centering
+%%\begin{tabular}{ccc}
+%%\toprule
+%%Morph ID & & CJK char \\
+%%\midrule
+%%hicl\'{a}xti & $\to$ & hicl\'{a}xti \\
+%\includegraphics[scale=.3]{cjk-mappings-2}
+%%64 & $\to$ & \raisebox{-0.13cm}{\includegraphics[scale=.3]{cjk-char-0-2}}\\
+%%148 & $\to$ & \raisebox{-0.13cm}{\includegraphics[scale=.3]{cjk-char-0-1}} \\
+%%264 & $\to$ & \raisebox{-0.12cm}{\includegraphics[scale=.3]{cjk-char-0-0}} \\
+%%i & $\to$ & i \\
+%%\bottomrule
+%%\end{tabular}
+%}
+%\label{tab:map-and-replace}
+%\caption{Subfigures~\ref{subtab:cjk-mapping} and \ref{subtab:cjk-replacement}, baby!}
+%\end{figure}
+
+%\begin{figure}[t]
+%\centering
+%%\includegraphics[width=.3\linewidth]{example-image}\quad
+%\subfigure[Segmentation: Morphs and their constituent characters]{ 
+%\centering
+%\includegraphics[width=.3\linewidth]{cjk-mappings-0}} \\
+%[\baselineskip]
+%\subfigure[Morphs mapped to CJK characters]{ 
+%\centering
+%\qquad \qquad \includegraphics[width=.3\linewidth]{cjk-mappings-2}}
+%%\quad\includegraphics[width=.3\linewidth]{example-image-b}
+%%\\[\baselineskip]% adds vertical line spacing
+%%\includegraphics[width=.3\linewidth]{example-image}\quad\includegraphics[width=.3\linewidth]{example-image-a}\quad\includegraphics[width=.3\linewidth]{example-image-b}
+%\end{figure}
 
 \begin{figure}[t]
-\centering
-%\includegraphics[width=.3\linewidth]{example-image}\quad
-\subfigure[Segmentation: Morphs and their constituent characters]{ 
-\centering
-\includegraphics[width=.3\linewidth]{cjk-mappings-0}} \\
-[\baselineskip]
-\subfigure[Morphs mapped to CJK characters]{ 
-\centering
-\qquad \qquad \includegraphics[width=.3\linewidth]{cjk-mappings-2}}
-%\quad\includegraphics[width=.3\linewidth]{example-image-b}
-%\\[\baselineskip]% adds vertical line spacing
-%\includegraphics[width=.3\linewidth]{example-image}\quad\includegraphics[width=.3\linewidth]{example-image-a}\quad\includegraphics[width=.3\linewidth]{example-image-b}
-\end{figure}
-
-\begin{figure}[h]
 %\centering
-\includegraphics[scale=0.3]{input-to-morfessor-0.png}
+\begin{mdframed}
+\vdots \vspace{6pt}
+\includegraphics[scale=0.3]{input-to-morfessor-1} \\
+\vdots
 \label{fig:morfessor-input}
-\caption{Excerpt from a Morfessor input file}
+\caption{Excerpt from a Morfessor input file} 
+\end{mdframed}
 \end{figure}
 
-I used the characters of the vast CJK unicode block for this purpose, 
-but in principle any characters could be used, as long as they are atomic and 
-no character is used twice. For the sake of the present discussion, we shall 
-call this compressed and encoded dataset the \emph{experimental} set, as it is 
-the experimental dataset \emph{within} the extrinsic evaluation. That is, it is 
-the experimental input to Morfessor in Stage 4 (see below). 
 
-We must note here that there was a \emph{control} dataset for each experimental 
-dataset (and an experimental dataset for each combination of the $s$ and $\delta$ 
-parameters. Each control set consisted of the same words as its corresponding experimental 
-set, except that the control words were the original, untouched words. Ten percent of the 
-original words had been previously selected at random. These were segmented manually in 
-order to serve as a gold-standard file. 
+
+%I used the characters of the vast CJK unicode block for this purpose, 
+%but in principle any set of characters could be used, as long as they are atomic and there is a distinct symbol for each morph ID. 
+%there is a sufficiently large number of them s
+%no character is used twice. For the sake of the present discussion, we shall 
+%call this compressed and encoded dataset the \emph{experimental} set, as it is 
+%the experimental dataset \emph{within} the extrinsic evaluation. That is, it is 
+%the experimental input to Morfessor in Stage 4 (see below). 
+
+%We must note here that there was a \emph{control} dataset for each experimental 
+%dataset (and an experimental dataset for each combination of the $s$ and $\delta$ 
+%parameters. Each control set consisted of the same words as its corresponding experimental 
+%set, except that the control words were the original, untouched words. Ten percent of the 
+%original words had been previously selected at random. These were segmented manually in 
+%order to serve as a gold-standard file. 
 %  ten percent sample of the data was previous %, having undergone none of the stage 
 
 %< Run morfessor on the control wordlist. This list contains the same words as the compressed dataset, except they are not compressed.>
  
 \subsubsection{\textsc{stage 4:} Decompress and evaluate}
- In Stage 4, the final stage, Morfessor was actually run on both the experimental and control files. 
+ In Stage 4, the final stage, %Morfessor was actually run on 
+ Morfessor was fed both the experimental and control files for each experimental trial---i.e.,
+ each combination of $\delta$ and $s$ values (see chapter~\ref{ch:experi}).
+ %were fed to Morfessor
  %each of these files is in turn fed to Morfessor as input, 
- For each input file, Morfessor outputs a \textit{segmentation-model} file.
- Morfessor thus outputs both an experimental and a control model. 
+Morfessor then output a \textit{segmentation} file for both types of input file; that is, it
+produced both an experimental and a control segmentation for 
+each $\delta$ and $s$ valuation. 
+%i.e. both segmentation model and a control segmentation model. 
+Figure~\ref{fig:morfessor-output} 
+shows an excerpt from an 
+experimental segmentation file. The `+' signs indicate 
+the boundaries between the morphological segments that Morfessor induced. 
+Note that many of the
+Morfessor-induced segments in figure~\ref{fig:morfessor-output} consist of multiple 
+CJK characters. Since each CJK character corresponds to a morph, 
+this means that many of the Morfessor-induced segments consisted of multiple
+MCMM-induced morphs.
+
+\begin{figure}[t]
+%\centering
+\begin{mdframed}
+\vdots \vspace{6pt}
+\includegraphics[scale=0.3]{output-from-morfessor-0} \\
+\vdots
+\label{fig:morfessor-output}
+\caption{Excerpt from a Morfessor output file}
+\end{mdframed}
+\end{figure}
+ %Morfessor then output an experimental and a control model. 
 %  each representing a segmentation model), one control and one experimental, the latter still consisting of encoded words, except that the encoded words are now segmented.
- 
 % original (or ``normal") words, while the other comprised segmentation of the encoded versions of the original words. 
- 
  %Note, however, that even the encoded words of the experimental file had started out as original words, they so altered in their encoded forms that they generally bore no resemblance to their original forms.
- 
 % described  computes a segmentation for each compressed/encoded word in the experimental set. We also run Morfessor on the control dataset, thus obtaining segmentations of the original words. We at this point have two segmented files, but the words in the experimental file are still encoded. 
 %A ten percent sample of the data was previous  10 percent sample of these segmented compressed words and \emph{decompress} them, i.e.,
-
-To evaluate both files against the same gold-standard, the experimental file 
-must now be decoded. To avoid altering  Morfessor’s segmentation decisions, 
-each morfessor-computed segment (which may consist of multiple morphs) was decoded separately. The decoded segments were then reassembled. Morfessor's evaluation utility was used to evaluate each model against the gold standard. 
-
-In the case of our example word \textit{hicl\'{a}xti}, which we have been using 
-throughout this section, Morfessor was given the compressed input in 
-(\ref{ex:comp-no-indices}), which was four symbols long, and output a 
-segmentation consisting of two segments, with the delimiter placed just 
-before the \textit{i}. The first segment thus comprised the three 
-\emph{CJK symbols} corresponding to to the morphs 64, 148, and 264, 
+Both the experimental and control models had to be evaluated against the same gold standard.
+But to make this possible, Stage 4 first had to \emph{decode} (or \emph{decompress}) the strings in the experimental segmentation file; that is, it had to take experimental-string segmentations like the ones in 
+figure~\ref{fig:morfessor-output} and convert the CJK characters back to the original character sequences.
+%an excerpt of such a file is shown in figure~\ref{fig:morfessor-output}. To decode strings like the ones in
+%figure~\ref{fig:morfessor-output}, the 
+%To evaluate both files against the same gold-standard, the experimental file 
+%had to be decoded. 
+To avoid altering Morfessor’s segmentation decisions, 
+each morfessor-induced segment 
+%(consist of multiple morphs) 
+was decoded separately. The decoded segments were then reassembled. 
+Morfessor's built-in evaluation utility was used to evaluate each model against the gold standard. 
+For example, 
+in the case of \textit{hicl\'{a}xti}, our example word throughout this chapter, 
+Morfessor was given the encoded string 
+\begin{center}
+\raisebox{-0.08cm}{\includegraphics[scale=0.4]{conjoined-cjk-sequence}}
+\end{center}
+and output the \emph{segmented} encoded string
+\begin{center}
+\raisebox{-0.08cm}{\includegraphics[scale=0.37]{segmented-encoded-string}}
+\end{center}
+%\raisebox{-0.08cm}{\includegraphics[scale=0.4]{conjoined-cjk-sequence}}
+%\end{center}
+%%\includegraphics[scale=0.4]{conjoined-cjk-sequence}
+%(\ref{fig:morfessor-input}), which was four symbols long, and output a 
+%segmentation consisting of two segments, 
+%with the delimiter placed just 
+%before the \textit{i}. 
+%The first segment thus comprised the three
+The first segment comprised the three  
+CJK symbols corresponding to to the morphs 64, 148, and 264, 
 and the second segment was the \emph{i}. In the final decoding process, 
 the morphs 64, 148, and 264 together map to the substring \textit{hicl\'{a}xt}, 
 and thus Morfessor's segmentation becomes \textit{hicl\'{a}xt + i}.
