@@ -1,150 +1,659 @@
 \chapter{RESULTS}
 \label{ch:results}
 
-%\begin{CJK}{UTF8}
-%工作\UTF{7ECF}\UTF{5386}%
-%\end{CJK}
-
 \section{Introduction}
-%\begin{CJK}{Bg5}{fs}
-%我很喜歡吃中國飯。
-%\end{CJK}
 
-As discussed in chapter~\ref{ch:MCMM}, Multimorph's \ac{MCMM} 
-in effect groups its input words into morphological clusters. 
-During the course of learning, a particular set of hidden-unit values 
-(namely, the vector $\mathbf{m}_{i}$) is induced for each or word $i$. 
-The vector $\mathbf{m}_{i}$ consists of $K$ elements, each a real number on the interval $[0,1]$. 
-Each of these elements corresponds to a particular cluster $k$ and indicates 
-the extent to which word $i$ is a member that cluster.
-The threshold for cluster membership is $\theta$. That is, if hidden unit 
-$\mathbf{m}_{ik}$ has a value equal to or greater than 
-$\theta$, then word $i$ is a member of cluster $k$. Otherwise, it is not a member of cluster $k$. 
-For example, suppose that word $i$ had the hidden-unit vector $\mathbf{m}_{i} = [0.2, 0.0,0.9,0.1,0.8]$, 
-wherein the activities of the third and fifth clusters, 0.9 and 0.8, respectively, 
-%$\mathbf{m}_{i,2}$ and $\mathbf{m}_{i,4}$, at 0.9 and 0.8, respectively, 
-exceed the cluster-membership 
-threshold, while the other three values
-are well below it. Thus, of the five clusters in this hypothetical model, word $i$ is a member of the third and fifth clusters.
-%2 and 4 (i.e., the 3rd and 5th clusters).
+In the preceding chapter, %~\ref{ch:eval}, 
+we motivated and outlined a multi-faceted evaluation program, an approach comprising both
+a qualitative component and a dual-paradigm quantitative component, i.e., a quantitative component with 
+\emph{intrinsic} and \emph{extrinsic} sub-components. 
 
-In this way, the $I \times K$ matrix $\mathbf{M}$, i.e., the collection of all $I$ hidden-unit vectors $\mathbf{m}_i$,
-defines a \emph{disjunctive clustering}, i.e., a clustering in which a single item can 
-%\emph{fully} (not just \emph{partially} or \emph{possibly}) 
-belong to multiple clusters at once \citep{manning-and-schutze:1999}. 
-A disjunctive clustering is thus to be distinguished from soft clusterings 
-%that a standard mixture model would produce as well as the 
-and mixed-membership clusterings (see the discussion of mixture and mixed-membership models 
-in chapter~\ref{ch:MCMM}). Each of the $I$ input words can belong to up to $K$ clusters. 
-Each of the $K$ columns serves as a particular cluster's membership indicator, indicating the membership status of each data point as one moves down the rows of  $\textbf{M}$. Multimorph produced such a clustering for 
-each of the experimental parameter combinations described in chapter~\ref{ch:experi}. In chapter~\ref{ch:eval}, 
-we motivated and outlined a multi-faceted approach to evaluating Multimorph's output, an approach comprising 
-both qualitative and quantitative components as well as both intrinsic and extrinsic components. 
-In this chapter, I present the results of this multi-faceted evaluation. 
+
+Recall that Multimorph's output, in its raw form,
+consists of two matrices, $\mathbf{M}$ and $\mathbf{C}$.\footnote{These 
+matrices are actually by-products of the MCMM's attempt to reconstruct its original 
+data points (see chapter~\ref{ch:MMMM}).} While these are numerical matrices,
+they together encode a \emph{clustering} of words, and they can be converted (or decoded) 
+into such via algorithm~\ref{alg:members}, which we presented in section~\ref{sec:intrinsic} 
+of the preceding chapter. 
+Thus, each experiment described in
+chapter~\ref{ch:experi}---that is, each combination of $\delta$, $s$, and 
+data-representation type---yielded a distinct pair of $\mathbf{M}$ and $\mathbf{C}$ 
+matrices. Each such pair was in turn converted into a clustering of words through 
+algorithm~\ref{alg:members}, and clusterings then evaluated according to the diverse 
+methods described in chapter~\ref{ch:eval}. 
+In this chapter, I present the results of these multi-faceted evaluations. 
+
+%As a preliminary matter, it is worthwhile to review briefly what we are evaluating.
+%The 
+%As discussed in chapter~\ref{ch:MCMM}, Multimorph's MCMM
+%in effect groups its input words into morphological clusters. 
+%During the course of learning, a particular vector of hidden-unit values, 
+%namely, the vector $\mathbf{m}_{i}$, is induced for each word $w_i$ (or, rather, its feature-vector representation  $\mathbf{x}_i$). 
+%The vector $\mathbf{m}_{i}$ consists of $K$ hidden-unit \emph{activities}, each of which is 0, 1, or a number between 0 and 1 (but never less than 0 or greater than 1). Each of these activities
+%%than real number in the interval $[0,1]$.
+%corresponds to a particular cluster and, in particular, indicates the extent to which word $w_i$
+%is a member of this cluster. We thus sometimes call the $\mathbf{m}_{i}$ the \textit{cluster-membership}
+%vector of word $w_i$. % with a particular index $k$, an integer in the range $[0, K)$,
+%%where $K$ is the total number of clusters. % greater than or equal to 0 and less than $K$, the total number of clusters.
+%%Each hidden unit, therefore, indicates the extent to which word $i$ is a member its corresponding cluster.
+%The threshold for cluster membership is $\theta_{\text{mc}}$. That is, if hidden unit 
+%$\mathbf{m}_{i,k}$ has a value equal to or greater than 
+%$\theta_{\text{mc}}$, then word $w_i$ is counted as a member of the cluster indexed $k$, but not otherwise.
+%% Otherwise, it is not a member of cluster $k$. 
+
+%For example, suppose that word $w_i$ had the hidden-unit vector 
+%\begin{center}
+%$\mathbf{m}_{i} = [0.2, 0.0,0.9,0.1,0.8]$
+%\end{center}
+%wherein the activities of the third and fifth clusters, 0.9 and 0.8, respectively, 
+%exceed the cluster-membership 
+%threshold, while the other three values
+%are well below it. Thus, of the five clusters in this hypothetical model, 
+%word $w_i$ is a member of the third and fifth clusters.
+%
+%In this way, the $I \times K$ matrix $\mathbf{M}$, that is, the collection 
+%of all $I$ hidden-unit vectors $\mathbf{m}_i$,
+%defines a \emph{disjunctive clustering}, i.e., a clustering in which a single item can 
+%%\emph{fully} (not just \emph{partially} or \emph{possibly}) 
+%belong to multiple clusters at once \citep{manning-and-schutze:1999}. 
+%Disjunctive clusterings are thus to be distinguished from soft clusterings,
+%%that a standard mixture model would produce as well as the 
+%and mixed-membership clusterings 
+%(see the discussion of mixture and mixed-membership models 
+%in chapter~\ref{ch:MCMM}). 
+%Each of the $I$ input words can belong to up to $K$ clusters. 
+%Each of the $K$ columns contains a particular cluster's 
+%membership indicators, wherein each cell indicates the membership status of a data point (or word). 
+%%data point as one moves down the rows of  $\textbf{M}$. 
+%Multimorph produced such a clustering for 
+%each of the experimental parameter combinations described in 
+%chapter~\ref{ch:experi}. 
 
 As a final preliminary matter for this chapter, recall from 
-section~\ref{sec:mcmm-learning} %chapter~\ref{ch:MCMM} 
+section~\ref{sec:mcmm-learning}
 that Multimorph begins its learning process with a single cluster ($K = 1$) 
 and adds a cluster (by splitting the worst cluster) whenever the 
-global reconstruction can no longer be decreased significantly at the 
-current cluster count. In principle, this incremental addition of clusters is 
-to continue until the global error is sufficiently close to $0$, i.e., falls 
-below a predesignated 
-threshold close to $0$.  In this study, this predesignated threshold $\epsilon$ was
- $0.0001$.
+global reconstruction error can no longer be decreased 
+significantly with the current
+array of clusters. In principle, this incremental addition 
+of clusters is 
+should continue until the global reconstruction falls below a predesignated 
+threshold $\epsilon$, which is close to $0$ (e.g., 0.0001).  For this study, $\epsilon$ was
+ set at $0.0001$, 
 %falls below a threshold $\epsilon$ close to 0, such as $\epsilon = 0.0001$).
-In theory, therefore, Multimorph should create just enough clusters to reduce the error
-below $\epsilon$. 
-However, in practice,
+In theory, therefore, Multimorph should have created just enough clusters to decrease its error to $\epsilon$\footnote{In this study, $\epsilon$ was set to $0.0001$, a valuation that turned out to be moot, however, as Multimorph's error never reached it.}
+%to $\epsilon$ or below it.
+In practice, however,
 % in the course of this dissertation's experiments,
- Multimorph's error never reached this threshold.
+ Multimorph's error never reached this threshold,.
  Rather, in every experimental trial reported in this thesis, Multimorph's 
- error decreased steadily to a point greater than $\epsilon$, 
- whereupon it reversed direction, starting to 
-increase, and continued to increase until the experiment was stopped at $K = 3000$ or $4000$.  
-The error minimum generally occurred when $K$ was between 400 and 1200. 
-The average $K$ was 589.4 for TS (transcriptions with stress markings), 833.0 for 
-TR (transcriptions without stress markings), and 742.9 for O (orthographic data). I thus 
-report results both at $K = 500$ and $K = 1000$.
+ error decreased steadily toward $\epsilon$ for a time, but then stopped at a point greater that  $\epsilon$, 
+ where it reversed direction and started to increase.  
+It continued to increase until the experiment in question was stopped at 3000 or 4000 clusters.  
+The error minimum generally occurred when the cluster count $K$ was between 400 and 1200. 
+For the transcriptional data with stress markings, the average error-minimizing $K$ was 589.4.
+It was
+833.0 for the transcriptional data without stress markings,
+and 742.9 for the orthographic data. Because the error-minimizing $K$ was between 500 and 1000
+for all three data sets, I am reporting results both at $K = 500$ and $K = 1000$.
 
 \section{Qualitative Analysis}
 \label{sec:qual}
-The value of quantitative methods lies in their systematicity and objectivity, but
-they are by no means guaranteed to capture every salient fact regarding a system's output. 
-especially when the system in question is an unsupervised learning system. 
- This dissertation thus incorporates a qualitative analysis of Multimorph's output to supplement the  
-quantitative results presented later in this chapter.
-This qualitative analysis consists primarily in a ``manual" inspection the MCMM's clusters.
 
-\subsection{``Hand-Inspection" of Clusters}
-Hand-inspection reveals linguistically-interpretable clusters. For example, Figure~\ref{cl-fem} displays a group 
-of 60 words have been randomly selected from a 1632-word cluster produced by Multimorph’s MCMM. This group 
-is intended as an abridgment of its superset, which is too large to display here. This cluster was produced by the 
-MCMM at the experimental settings $\delta = 2$, $s = 2$, and $K = 1000$, i.e. it was one of other 1000 clusters 
-that the MCMM produced during this experimental run.
-
-
-\begin{figure}[t]
-\begin{mdframed}
-\begin{tabbing}
-\hspace*{1ex}\= \hspace*{14ex}\= \hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex} \kill
-\> nafalt \> pizart \> webarakevet \> werevi\textipa{P}it \> we\textipa{P}omeret \> \textipa{P}emet\\
-\> bubot \> hakapot \> mexaberet \> wela\textipa{P}alot \> wemakot \>\v{s}ehizmant\\
-\> bamesilot \> bami\v{s}qefet \> fizit \> mistateret \> ye\textsubdot{k}olot \> \textipa{P}o\textsubdot{k}elet\\
-\> be\textipa{P}emet \> kazo\textipa{P}t \> ktumot \> laxalonot \> mat\textipa{P}imot \> \textipa{P}axeret\\
-\> hatmunot \> hawilonot \> ha\textipa{P}otiyot \> li\v{s}tot \> moxeqet \>\v{s}era\textipa{P}it\\
-\> dri\v{s}at \> lanequdot \> maxliqot \> mitxape\textsubdot{s}et \> wexalonot \>\v{s}e\textglotstop{P}amart\\
-\> daqot \> habdiqot \> megare\v{s}et \> ni\textsubdot{k}nast \> pi\textsubdot{t}riyot \>\v{s}ehaxanuyot\\
-\> ha\v{s}amenet \> hiclaxt \> laxalalit \> meha\textsubdot{s}aqit \> nimce\textipa{P}t \>\v{s}lulonet\\
-\> hahit\textipa{P}amlut \> labanot \> mela\textsubdot{k}le\textsubdot{k}et \> safart \> xada\v{s}ot \> \textipa{P}acuvot\\
-\> bakisa\textipa{P}ot \> madregot \> melu\textsubdot{k}la\textsubdot{k}ot \> melu\textsubdot{k}le\textsubdot{k}et \> mit\textipa{P}aqe\v{s}et \> \textipa{P}orot
-\end{tabbing}
-\caption{Sixty words randomly selected from a 1632-word cluster generated by Multimorph's MCMM (at $s = 2$, and $\delta = 2$). The endings on these words are the feminine endings discussed in section~\ref{sec:heb-example} of chapter~\ref{autonomous}.} 
-\label{fig:cl-fem}
-\end{mdframed}
-\end{figure}
-\begin{figure}[tb!]
-\begin{mdframed}
-\begin{tabbing}
-\hspace*{1ex}\= \hspace*{17ex}\= \hspace*{17ex}\=\hspace*{17ex}\=\hspace*{17ex}\=\hspace*{17ex} \kill
-\> \texttt{w@[1]} (1.0000) \> \texttt{r<t} \, (0.0663) \> \texttt{l<t} \, (0.0455) \> \texttt{q<t} \, (0.0392) \> \texttt{v<t} \, (0.0258) \\
-\> \texttt{\textsubdot{k}<t} \, (0.0257) \> \texttt{u<t} \, (0.0240) \> \texttt{d<t} \, (0.0176) \> \texttt{o<t} \, (0.0153) \> \texttt{c<t} \, (0.0143)
-\end{tabbing}
-\label{fig:fem-features}
-\caption{The ten most active features in the cluster represented in figure~\ref{fig:cl-fem}. The feature (surface-unit) activities are included in parentheses.}
-\end{mdframed}
-\end{figure}
-
-This cluster represents feminine endings discussed these words events one of the feminine endings 
-discussed in chapter~{ch:autonomous}, section~\ref{sec:heb-example} namely, the set of suffixes that 
-involve combinations of \textit{-u}, \textit{-i}, and \textit{-t}. Notice that all of the endings in figure~\ref{fig:cl-fem} at least share the \textit{t}. 
-[Here, I intend to consult another of Multimorph's output documents, one that lists
-the top ten most active features for each each cluster. Presumably, these lists would more clearly and
-accurately characterize each cluster.
-Perhaps, for example, 
-the feature \texttt{t@[-1]} is among the most active features underlying the cluster associated with figure~\ref{fig:cl-fem}, but perhaps others 
-contribute significantly as well.] 
-
-Another cluster, consisting of 60 words randomly selected from a 426-word cluster, is displayed 
-in figure~\ref{fig:cl-hit}. This cluster represents a \emph{binyan}, which, in Hebrew and other Semitic 
-languages is a set of verb stems that share the same vowel pattern and combine with the same set 
-of affixes. Vowel patterns are the complements of consonantal roots; i.e., a root and a pattern are 
-interleaved (or interdigitated) to form a stem. 
-Nearly every verb in this cluster is of the \textit{hitpa`el} binyan, which is distinguished by the 
-%\{h,m,t,y,n,\textipa{P}\}itCaCeC 
-$\diamond$itCaCeC 
-pattern, which undergoes some alternations due to inflectional and phonological influences. For instance, the ``$\diamond$'' in $\diamond$itCaCeC  can be occupied by \textit{h}, \textit{m}, \textit{t}, \textit{y}, \textit{n}, or \textit{\textipa{P}}, depending on tense, person, and number. 
-Some of the words in figure~\ref{subfig:cl-hit-sample} are nouns derived from the \textit{hitpa`el} binyan, e.g., \textit{ha-hitna\v{s}m-uy-\a'{o}t }, where \textit{ha-} is the definite-article prefix, \textit{hitna\v{s}em}\footnote{the \textit{e} in the stem \textit{hitna\v{s}em} is deleted when the suffixes \textit{-uy-\a'{o}t} are added.}
-is the \textit{hitpa\textipa{`}el} stem, and \textit{-uy} is the nominalizing suffix \textit{-ut}, whose \textit{t} becomes become \textit{y} when it immediately precedes a stressed vowel, and \textit{-ot} is the feminine plural suffix. 
-%which bears the nominal suffix \textit{-ut} ($\to$ \textit{-uy} before the\textit{o}) and the fem.pl suffix \textit{-ot} 
-
-%words randomly selected from a 426-word cluster generated by Multimorph's MCMM 
-%at $s = 2$, and $\delta = 2$. These words are almost entirely of the \textit{hitpa`el} binyan
-
-
-%\subfigure[60]{
+%\begin{figure}[t]
+%\begin{mdframed}
 %\begin{tabbing}
-%\hspace*{14ex}\= \hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex} \kill
+%\hspace*{13ex}\= \hspace*{13ex}\=\hspace*{13ex}\=\hspace*{13ex}\=\hspace*{13ex}\=\hspace*{13ex} \kill
+%mecalc\a'{e}let \> mehamad\a'{a}f \> mehaw\a'{i}de\textipa{P}o \> bemaq\a'{e}l \> mehamirp\a'{e}set \> meqar\textsubdot{t}\a'{o}n \\
+%wemecaxc\a'{e}ax \> meqa\v{s}q\a'{e}\v{s} \> \v{s}eme\textsubdot{k}as\a'{e} \> mexaq\a'{a} \> milem\a'{a}\textsubdot{t}a \> me\textsubdot{t}ap\a'{e}l \\
+%le\textipa{Q}acme\textsubdot{k}\a'{a} \> me\textsubdot{k}ab\a'{e}y \> hamefaq\a'{e}d \> mehaqlip\a'{o}t \> wema\v{s}\a'{a}\textsubdot{k} \> weme\textipa{P}ax\a'{o}ra \\
+%\v{s}emexak\a'{i}m \> meha\v{s}uq \> mefah\a'{e}qet \> meha\v{s}ulx\a'{a}n \> mehami\textsubdot{t}b\a'{a}x \> \v{s}emaxz\a'{i}q \\
+%megar\a'{e}det \> mehadq\a'{i}m \> mehab\a'{e}rez \> meqa\v{s}\a'{e}ret \> meharof\a'{e}\textipa{P} \> mehab\a'{e}\textsubdot{t}en \\
+%\end{tabbing}
+%\label{fig:cluster-0-0-3}
+%\caption{Thirty words randomly selected from the 680 members of cluster 0 from the settings $s=0,\delta =3$, data representation: TS}
+%\end{mdframed}
+%\end{figure}
+
+\begin{figure}[!t]
+\begin{mdframed}
+\vspace{2pt}
+{\LARGE \textbf{\textipa{P}.k.l}} \,\Large{\text{\,(a.k.l)}} \hfill \large{$s = \mathbf{1}$, $\delta = \mathbf{3}$} \hfill {\normalsize cluster 182}%: \textbf{4}, \textbf{3}} % \rangle$} \large{$s,
+\vspace{3pt}
+\begin{normalsize}
+\begin{tabbing}
+\hspace*{13ex}\= \hspace*{13ex}\=\hspace*{13ex}\=\hspace*{13ex}\=\hspace*{13ex}\=\hspace*{11ex} \kill
+e\textbf{a}\textbf{k}\textbf{l}t \> \textbf{a}w\textbf{k}\textbf{l}t \> blklwkim \> \textbf{a}w\textbf{k}\textbf{l} \> awtkm \> e\textbf{a}w\textbf{k}\textbf{l}t \\
+e\textbf{a}\textbf{k}\textbf{l}tm \> eklblbim \> h\textbf{a}w\textbf{k}\textbf{l} \> elh\textbf{a}\textbf{k}i\textbf{l} \> b\textbf{a}w\textbf{k}\textbf{l} \> enw\textbf{a}\textbf{k}\textbf{l} \\
+hkwl \> hkil \> \textbf{a}\textbf{k}\textbf{l}tm \> blklkh \> hmkxwl \> blklkw \\
+hklim \> cvrk \> ekwlm \> bekl \> \textbf{a}\textbf{k}\textbf{l}ti \> \textbf{a}\textbf{k}\textbf{l} \\
+hmikl \> enstkl \> blklk \> htlklkh \> \textbf{a}st\textbf{k}\textbf{l} \> h\textbf{a}\textbf{k}\textbf{l}t 
+%eaklt \> awklt \> blklwkim \> awkl \> awtkm \> eawklt \\
+%eakltm \> eklblbim \> hawkl \> elhakil \> bawkl \> enwakl \\
+%hkwl \> hkil \> akltm \> blklkh \> hmkxwl \> blklkw \\
+%hklim \> cvrk \> ekwlm \> bekl \> aklti \> akl \\
+%hmikl \> enstkl \> blklk \> htlklkh \> astkl \> haklt 
+\end{tabbing}
+\end{normalsize}
+\vspace{3pt}
+\begin{mdframed}
+\begin{small}
+\textit{Ten most active centroid features:}
+\vspace{-5pt}
+\begin{tabbing}
+\hspace*{6ex}\= \hspace*{10ex}\= \hspace*{6ex}\= \hspace*{10ex} \= \hspace*{5ex} \= \hspace*{9ex} \= \hspace*{5ex}\= \hspace*{9ex} \= \hspace*{6ex} \= \hspace*{10ex}\kill
+%k<l \> (1.0000) \> a<k  \> (0.8271) \> t<k  \> (0.1012) \> w<k  \>  (0.0616) \> s<l  \> (0.0406) \\
+ %k<k \> (0.0388) \> k<m  \> (0.0305) \> s<k  \> (0.0293)\> k<x  \> (0.0213) \> l<k  \> (0.0170) \\
+ \texttt{k<l} \> (1.0000) \> \texttt{a<k} \> (0.8271) \> \texttt{t<k} \> (0.1012) \> \texttt{w<k} \> (0.0616) \> \texttt{s<l} \> (0.0406)\\
+\texttt{k<k} \> (0.0388) \> \texttt{k<m} \> (0.0305) \> \texttt{s<k} \> (0.0293) \> \texttt{k<x} \> (0.0213) \> \texttt{l<k} \> (0.0170)
+\end{tabbing}
+\end{small}
+\end{mdframed}
+\label{fig:cluster-182-1-3-O}
+\vspace{-4pt}
+\caption{Thirty words randomly selected from the 97 members of cluster 182 from the settings $s=1,\delta =3$, data representation: O}
+\end{mdframed}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{mdframed}
+\vspace{2pt}
+{\LARGE \textbf{\textipa{P}.k.l}}\, {\Large\text{(a.k.l)}} \hfill {\large$s = \mathbf{3}$, $\delta = \mathbf{2}$} \hfill {\normalsize cluster 91}
+\vspace{3pt}
+\begin{normalsize}
+\begin{tabbing}
+\hspace*{13ex}\= \hspace*{13ex}\=\hspace*{13ex}\=\hspace*{13ex}\=\hspace*{13ex}\=\hspace*{11ex} \kill
+h\textbf{a}\textbf{k}\textbf{l}ti \> etwkli \> e\textbf{a}w\textbf{k}\textbf{l}im \> e\textbf{a}\textbf{k}\textbf{l}tm \> \textbf{a}\textbf{k}\textbf{l}i \> elh\textbf{a}\textbf{k}i\textbf{l} \\
+blklwkim \> \textbf{a}\textbf{k}\textbf{l}h \> aekib \> e\textbf{a}\textbf{k}\textbf{l}t \> etw\textbf{a}\textbf{k}\textbf{l}i \> e\textbf{a}\textbf{k}\textbf{l} \\
+arkib \> \textbf{a}\textbf{k}\textbf{l}tm \> \textbf{a}\textbf{k}\textbf{l} \> \textbf{a}\textbf{k}\textbf{l}ti \> enw\textbf{a}\textbf{k}\textbf{l} \> \textbf{a}\textbf{k}\textbf{l}t \\
+\textbf{a}w\textbf{k}\textbf{l} \> \textbf{a}\textbf{k}i\textbf{l}h \> ehklb \> e\textbf{a}w\textbf{k}\textbf{l}t \> \textbf{a}e\textbf{k}w\textbf{l} \> \textbf{a}\textbf{k}\textbf{l}w \\
+h\textbf{a}w\textbf{k}\textbf{l} \> ehkwl \> \textbf{a}w\textbf{k}\textbf{l}t \> etw\textbf{a}\textbf{k}\textbf{l} \> b\textbf{a}w\textbf{k}\textbf{l} \> e\textbf{a}w\textbf{k}\textbf{l}
+%haklti \> etwkli \> eawklim \> eakltm \> akli \> elhakil \\
+%blklwkim \> aklh \> aekib \> eaklt \> etwakli \> eakl \\
+%arkib \> akltm \> akl \> aklti \> enwakl \> aklt \\
+%awkl \> akilh \> ehklb \> eawklt \> aekwl \> aklw \\
+%hawkl \> ehkwl \> awklt \> etwakl \> bawkl \> eawkl \\
+\end{tabbing}
+\end{normalsize}
+\vspace{-3pt}
+\begin{small}
+\begin{mdframed}
+\textit{Ten most active centroid features}
+\vspace{-4pt}
+\begin{tabbing}
+\hspace*{6ex}\= \hspace*{10ex}\= \hspace*{6ex}\= \hspace*{10ex} \= \hspace*{6ex} \= \hspace*{10ex} \= \hspace*{6ex}\= \hspace*{10ex} \= \hspace*{6ex} \= \hspace*{10ex}\kill
+%##91akl
+\texttt{k<l} \> (1.0000) \> \texttt{a<k} \> (1.0000) \> \texttt{a<l} \> (0.4196) \> \texttt{k}@\texttt{[-1]} \> (0.4082) \> \texttt{y}@\texttt{[-1]} \> (0.2929)\\
+\texttt{w<k} \> (0.2262) \> \texttt{k<i} \> (0.1747) \> \texttt{l<t} \> (0.1599) \> \texttt{k<t} \> (0.1414) \> \texttt{g}@\texttt{[1]} \> (0.0730)
+\end{tabbing}
+\end{mdframed}
+\end{small}
+\label{fig:cluster-91-3-2-O}
+\vspace{-5pt}
+\caption{Thirty words randomly selected from the 42 members of cluster 91 from the settings $s=3,\delta =2$, data representation: O}
+\end{mdframed}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{mdframed}
+\vspace{2pt}
+{\LARGE \textbf{\textipa{P}.k.l}}\, {\Large\text{\, (a.k.l)}}  \hfill {\large$s = \mathbf{2}$, $\delta = \mathbf{2}$} \hfill {\normalsize cluster 81}
+%\vspace{-3pt}%\hfill {\scriptsize Size: 17}\\
+%{\small \emph{Purity: 1.0}}\\
+\vspace{3pt}
+\begin{normalsize}
+\begin{tabbing}
+\hspace*{14ex}\= \hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{11ex} \kill
+b\textbf{a}w\textbf{k}\textbf{l} \> \textbf{a}w\textbf{k}\textbf{l}t \> \textbf{a}e\textbf{k}w\textbf{l} \> etw\textbf{a}\textbf{k}\textbf{l}i \> etw\textbf{a}\textbf{k}\textbf{l} \> el\textbf{a}\textbf{k}w\textbf{l} \\
+h\textbf{a}w\textbf{k}\textbf{l} \> \textbf{a}\textbf{k}\textbf{l}nw \> e\textbf{a}w\textbf{k}\textbf{l} \> \textbf{a}\textbf{k}\textbf{l}h \> \textbf{a}e\textbf{k}w\textbf{l}im \> \textbf{a}w\textbf{k}\textbf{l} \\
+h\textbf{a}\textbf{k}\textbf{l}ti \> \textbf{a}\textbf{k}\textbf{l}i \> enw\textbf{a}\textbf{k}\textbf{l} \> e\textbf{a}w\textbf{k}\textbf{l}im \> \textbf{a}\textbf{k}\textbf{l}ti \> \textbf{a}\textbf{k}\textbf{l}w \\
+\textbf{a}\textbf{k}\textbf{l}tm \> alk \> \textbf{a}w\textbf{k}\textbf{l}im \> \textbf{a}\textbf{k}\textbf{l} \> e\textbf{a}\textbf{k}\textbf{l}tm \> a\textbf{a}\textbf{k}i\textbf{l} \\
+\textbf{a}\textbf{k}\textbf{l}t \> \textbf{a}\textbf{k}i\textbf{l}h \> eiw\textbf{a}\textbf{k}\textbf{l} \> b\textbf{a}\textbf{k}i\textbf{l}h \> e\textbf{a}\textbf{k}\textbf{l} \> h\textbf{a}\textbf{k}\textbf{l}t
+%bawkl \> awklt \> aekwl \> etwakli \> etwakl \> elakwl \\
+%hawkl \> aklnw \> eawkl \> aklh \> aekwlim \> awkl \\
+%haklti \> akli \> enwakl \> eawklim \> aklti \> aklw \\
+%akltm \> alk \> awklim \> akl \> eakltm \> aakil \\
+%aklt \> akilh \> eiwakl \> bakilh \> eakl \> haklt
+\end{tabbing}
+\end{normalsize}
+%\label{fig:cluster-81-2-2-O}
+%\caption{Thirty words randomly selected from the 35 members of cluster 81 from the settings $s=2,\delta =2$, data representation: O}
+\vspace{-5pt}
+\begin{small}
+\begin{mdframed}
+\textit{Ten most active centroid features}
+\vspace{-5pt}
+\begin{tabbing}
+\hspace*{6ex}\= \hspace*{10ex}\= \hspace*{6ex}\= \hspace*{10ex} \= \hspace*{6ex} \= \hspace*{10ex} \= \hspace*{6ex}\= \hspace*{10ex} \= \hspace*{6ex} \= \hspace*{10ex}\kill
+\texttt{k<l} \> (1.000) \> \texttt{a<l} \> (1.000) \> \texttt{a<k} \> (1.000) \> \texttt{w<k} \> (0.181) \> \texttt{k<t} \> (0.160)\\
+\texttt{k<i} \> (0.139) \> \texttt{i}@\texttt{[0]} \> (0.112) \> \texttt{w<a} \> (0.068) \> \texttt{h<k} \> (0.058) \> \texttt{l<h} \> (0.044)
+\end{tabbing}
+\end{mdframed}
+\end{small}
+\vspace{-5pt}
+\label{fig:cluster-81-2-2-O}
+\caption{Thirty words randomly selected from the 35 members of cluster 81 from the settings $s=2,\delta =2$, data representation: O}
+\end{mdframed}
+\end{figure}
+
+
+\begin{figure}[!ht]
+\begin{mdframed}
+\vspace{2pt}
+{\LARGE \textbf{\textipa{P}.k.l}} \hfill \large{$s = \mathbf{0}$, $\delta = \mathbf{2}$} \hfill {\normalsize cluster 33}
+ \vspace{3pt}
+ \begin{normalsize}
+\begin{tabbing}
+\hspace*{17.5ex}\= \hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14.5ex}\=\hspace*{12.5ex}\=\hspace*{11ex} \kill
+%\v{s}e\textipa{P}o\textsubdot{k}l\a'{i}m \> hat\textsubdot{k}\a'{e}let \> \textipa{Q}a\textsubdot{k}b\a'{a}r \> \v{s}e\textipa{P}a\textsubdot{k}\a'{a}ltem \> webi\textsubdot{k}l\a'{a}l \> ma\textsubdot{k}\a'{i}n \\
+%ta\textipa{P}a\textsubdot{k}\a'{i}li \> hamelu\textsubdot{k}l\a'{a}\textsubdot{k} \> wehal\textsubdot{k}\a'{a} \> hithap\textsubdot{k}\a'{a} \> midra\textsubdot{k}\a'{a} \> xa\textsubdot{k}\a'{a}m \\
+%wehamelu\textsubdot{k}la\textsubdot{k}\a'{i}m \> weme\v{s}u\textsubdot{k}l\a'{a}l \> mitla\textsubdot{k}le\textsubdot{k}\a'{i}m \> \textipa{P}a\textsubdot{k}\a'{a}l \> hamidra\textsubdot{k}\a'{a} \> we\textipa{P}a\textsubdot{k}\a'{a}lt \\
+%la\textipa{Q}a\textsubdot{k}\v{s}\a'{a}yw \> he\textipa{P}e\textsubdot{k}\a'{a}lt \> yela\textsubdot{k}l\a'{e}\textsubdot{k} \> ya\textsubdot{k}\a'{o}lnu \> we\textipa{P}a\textsubdot{k}l\a'{u} \> ya\textsubdot{k}\a'{o}l \\
+%we\textipa{P}a\textsubdot{k}\a'{a}l \> leyad\textsubdot{k}\a'{a} \> na\textsubdot{k}\a'{i}n \> we\textipa{P}a\textsubdot{k}\a'{a}lti \> \v{s}e\textipa{P}a\textsubdot{k}n\a'{i}s \> wena\textsubdot{k}n\a'{i}s \\
+\v{s}e\textbf{\textipa{P}}o\textbf{\textsubdot{k}}\textbf{l}\a'{i}m \> hat\textsubdot{k}\a'{e}let \> \textipa{Q}a\textsubdot{k}b\a'{a}r \> \v{s}e\textbf{\textipa{P}}a\textbf{\textsubdot{k}}\a'{a}\textbf{l}tem \> webi\textsubdot{k}l\a'{a}l \> ma\textsubdot{k}\a'{i}n \\
+ta\textbf{\textipa{P}}a\textbf{\textsubdot{k}}\a'{i}\textbf{l}i \> hamelu\textsubdot{k}l\a'{a}\textsubdot{k} \> wehal\textsubdot{k}\a'{a} \> hithap\textsubdot{k}\a'{a} \> midra\textsubdot{k}\a'{a} \> xa\textsubdot{k}\a'{a}m \\
+wehamelu\textsubdot{k}la\textsubdot{k}\a'{i}m \> weme\v{s}u\textsubdot{k}l\a'{a}l \> mitla\textsubdot{k}le\textsubdot{k}\a'{i}m \> \textbf{\textipa{P}}a\textbf{\textsubdot{k}}\a'{a}\textbf{l} \> hamidra\textsubdot{k}\a'{a} \> we\textbf{\textipa{P}}a\textbf{\textsubdot{k}}\a'{a}\textbf{l}t \\
+la\textipa{Q}a\textsubdot{k}\v{s}\a'{a}yw \> he\textbf{\textipa{P}}e\textbf{\textsubdot{k}}\a'{a}\textbf{l}t \> yela\textsubdot{k}l\a'{e}\textsubdot{k} \> ya\textsubdot{k}\a'{o}lnu \> we\textbf{\textipa{P}}a\textbf{\textsubdot{k}}\textbf{l}\a'{u} \> ya\textsubdot{k}\a'{o}l \\
+we\textbf{\textipa{P}}a\textbf{\textsubdot{k}}\a'{a}\textbf{l} \> leyad\textsubdot{k}\a'{a} \> na\textsubdot{k}\a'{i}n \> we\textbf{\textipa{P}}a\textbf{\textsubdot{k}}\a'{a}\textbf{l}ti \> \v{s}e\textipa{P}a\textsubdot{k}n\a'{i}s \> wena\textsubdot{k}n\a'{i}s 
+\end{tabbing}
+\end{normalsize}
+\vspace{-3pt}
+\begin{mdframed}
+\begin{small}
+\textit{Ten most active centroid features}
+\vspace{-3pt}
+\begin{tabbing}
+\hspace*{6ex}\= \hspace*{11ex}\= \hspace*{6ex}\= \hspace*{11ex} \= \hspace*{6ex} \= \hspace*{11ex} \= \hspace*{6ex}\= \hspace*{11ex} \= \hspace*{6ex} \= \hspace*{9.5ex}\kill
+\texttt{a<\textsubdot{k}} \> (1.0000) \> \texttt{\textsubdot{k}<\a'{a}} \> (0.8585) \> \texttt{\textsubdot{k}<l} \> (0.7588) \> \texttt{\textipa{P}<\textsubdot{k}} \> (0.4984) \> \texttt{\textsubdot{k}<\a'{i}} \> (0.4439)\\
+\texttt{e<\textsubdot{k}} \> (0.3341) \> \texttt{\a'{a}<l} \> (0.3159) \> \texttt{\textsubdot{k}<n} \> (0.2960) \> \texttt{o<\textsubdot{k}} \> (0.2271) \> \texttt{l<\textsubdot{k}} \> (0.2206)
+\end{tabbing}
+\end{small}
+\end{mdframed}
+\label{fig:cluster-33-0-2-TS}
+\caption{Thirty words randomly selected from the 163 members of cluster 33 from the settings $s=0,\delta =2$, data representation: TS}
+\end{mdframed}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{mdframed}
+\vspace{2pt}
+{\LARGE \textbf{d.l.q}} \hfill {\large$s = \mathbf{4}$, $\delta = \mathbf{3}$} \hfill {\normalsize cluster 339}\\ 
+\vspace{-3pt}
+ \begin{normalsize}
+\begin{tabbing}
+\hspace*{13ex}\= \hspace*{13ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex} \kill
+hi\textbf{d}\textbf{l}\a'{i}\textbf{q} \> weleha\textbf{d}\textbf{l}\a'{i}\textbf{q} \> ha\v{s}ehi\textbf{d}\textbf{l}\a'{i}\textbf{q} \> ya\textbf{d}\textbf{l}\a'{i}\textbf{q} \> lehadb\a'{i}q \> wehi\textbf{d}\textbf{l}\a'{i}\textbf{q} \\
+tadb\a'{i}qi \> hi\textbf{d}\textbf{l}\a'{a}\textbf{q}nu \> ta\textbf{d}\textbf{l}\a'{i}\textbf{q} \> welehadb\a'{i}q \> wenadb\a'{i}q \> we\v{s}eyadb\a'{i}q \\
+lagdol\a'{i}m \> wema\textbf{d}\textbf{l}\a'{i}\textbf{q} \> mavdil\a'{i}m \> \textipa{P}a\textbf{d}\textbf{l}\a'{i}\textbf{q} \> hi\textbf{d}\textbf{l}\a'{i}\textbf{q}u \> ta\textbf{d}\textbf{l}\a'{i}\textbf{q}i \\
+basandal\a'{i}m \> ma\textbf{d}\textbf{l}i\textbf{q}\a'{a} \> hi\textbf{d}\textbf{l}\a'{a}\textbf{q}t \> \v{s}etadb\a'{i}qi \> hi\textbf{d}\textbf{l}\a'{a}\textbf{q}ti \> leha\textbf{d}\textbf{l}\a'{i}\textbf{q} \\
+\textbf{d}o\textbf{l}\textbf{q}\a'{i}m \> gdel\a'{i}m \> gdol\a'{i}m \> hasandal\a'{i}m \> ni\textbf{d}\textbf{l}\a'{a}\textbf{q} \> \textbf{d}\textbf{l}u\textbf{q}\a'{a}
+%\hspace*{13ex}\= \hspace*{13ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex} \kill
+%hidl\a'{i}q \> welehadl\a'{i}q \> ha\v{s}ehidl\a'{i}q \> yadl\a'{i}q \> lehadb\a'{i}q \> wehidl\a'{i}q \\
+%tadb\a'{i}qi \> hidl\a'{a}qnu \> tadl\a'{i}q \> welehadb\a'{i}q \> wenadb\a'{i}q \> we\v{s}eyadb\a'{i}q \\
+%lagdol\a'{i}m \> wemadl\a'{i}q \> mavdil\a'{i}m \> \textipa{P}adl\a'{i}q \> hidl\a'{i}qu \> tadl\a'{i}qi \\
+%basandal\a'{i}m \> madliq\a'{a} \> hidl\a'{a}qt \> \v{s}etadb\a'{i}qi \> hidl\a'{a}qti \> lehadl\a'{i}q \\
+%dolq\a'{i}m \> gdel\a'{i}m \> gdol\a'{i}m \> hasandal\a'{i}m \> nidl\a'{a}q \> dluq\a'{a} \\
+\end{tabbing}
+\end{normalsize}
+\vspace{-5pt}
+\begin{mdframed}
+\begin{small}
+\textit{Ten most active centroid features}
+\vspace{-3pt}
+\begin{tabbing}
+\hspace*{6ex}\= \hspace*{10ex}\= \hspace*{6ex}\= \hspace*{10ex} \= \hspace*{7ex} \= \hspace*{11ex} \= \hspace*{7ex}\= \hspace*{11ex} \= \hspace*{7ex} \= \hspace*{9.5ex}\kill
+\texttt{d<\a'{i}} \> (1.000) \> \texttt{d<l} \> (1.000) \> \texttt{l<q} \> (0.853) \> \texttt{d<q} \> (0.798) \> \texttt{\a'{i}<q} \> (0.501)\\
+\texttt{h<d} \> (0.374) \> \texttt{l<\a'{i}} \> (0.162) \> \texttt{g<d} \> (0.157) \> \texttt{\a'{e}}@\texttt{[-1]} \> (0.135) \> \texttt{r}@\texttt{[-2]} \> (0.135)
+%\texttt{d<\a'{i}} \> (1.0000) \> \texttt{d<l} \> (1.0000) \> \texttt{l<q} \> (0.8525) \> \texttt{d<q} \> (0.7975) \> \texttt{\a'{i}<q} \> (0.5013)\\
+%\texttt{h<d} \> (0.3741) \> \texttt{l<\a'{i}} \> (0.1622) \> \texttt{g<d} \> (0.1572) \> \texttt{\a'{e}}@\texttt{[-1]} \> (0.1353) \> \texttt{r}@\texttt{[-2]} \> (0.1347)
+\end{tabbing}
+\end{small}
+\end{mdframed}
+\vspace{-5pt}
+\label{fig:cluster-339-4-3-TS}
+\caption{Thirty words randomly selected from the 59 members of cluster 339 from the settings $s=4,\delta =3$, data representation: TS}
+\end{mdframed}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{mdframed}
+\vspace{2pt}
+{\LARGE\textbf{a.\'{e}}} \hfill {\large$s = \mathbf{2}$, $\delta = \mathbf{3}$} \hfill {\normalsize cluster 19}
+\vspace{3pt}
+\begin{normalsize}
+\begin{tabbing}
+\hspace*{14ex}\= \hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex} \kill
+lexam\a'{e}\v{s} \> taxac\a'{e} \> lexap\a'{e}\textsubdot{s} \> \textipa{P}a\textsubdot{k}as\a'{e} \> \v{s}e\textipa{P}axr\a'{e}y \> mitla\textsubdot{k}l\a'{e}\textsubdot{k} \\
+k\v{s}e\textipa{P}at\a'{e}m \> \textipa{Q}acm\a'{e}nu \> sifr\a'{e}y \> wenexap\a'{e}\textsubdot{s} \> weyot\a'{e}r \> metaqt\a'{e}q \\
+mera\v{s}r\a'{e}\v{s} \> tefaz\a'{e}r \> meyac\a'{e}v \> texab\a'{e}q \> lehizah\a'{e}r \> ne\textsubdot{s}ax\a'{e}q \\
+cam\a'{e}\textipa{P} \> we\textipa{P}ax\a'{e}r \> lehi\v{s}tat\a'{e}f \> teqal\a'{e}f \> \textipa{P}asad\a'{e}r \> mitxal\a'{e}f \\
+haqos\a'{e}m \> \textipa{P}axam\a'{e}m \> meqalq\a'{e}l \> \v{s}emi\v{s}tal\v{s}\a'{e}l \> mitrax\a'{e}c \> teqab\a'{e}l
+\end{tabbing}
+\end{normalsize}
+\vspace{-3pt}
+\begin{mdframed}
+\begin{small}
+\textit{Ten most active centroid features}
+\vspace{-3pt}
+\begin{tabbing}
+\hspace*{6.5ex}\= \hspace*{11ex}\= \hspace*{6.5ex}\= \hspace*{11ex} \= \hspace*{6.5ex} \= \hspace*{11ex} \= \hspace*{6.5ex}\= \hspace*{11ex} \= \hspace*{6.5ex} \= \hspace*{11ex}\kill
+%2_3_cluster_19
+\texttt{a<\a'{e}} \> (1.0000) \> \texttt{\a'{u}}@\texttt{[1]} \> (0.9931) \> \texttt{r<\a'{e}} \> (0.1233) \> \texttt{\a'{e}<r} \> (0.1112) \> \texttt{x<\a'{e}} \> (0.1097)\\
+\texttt{n<\a'{e}} \> (0.0827) \> \texttt{q<\a'{e}} \> (0.0820) \> \texttt{b<\a'{e}} \> (0.0805) \> \texttt{t<\a'{e}} \> (0.0751) \> \texttt{d<\a'{e}} \> (0.0662)
+\end{tabbing}
+\end{small}
+\end{mdframed}
+\vspace{-3pt}
+\label{fig:cluster-19-2-3-TS}
+\caption{Thirty words randomly selected from the 1052 members of cluster 19 from the settings $s=2,\delta =3$, data representation: TS}
+\end{mdframed}
+\end{figure}
+
+The value of quantitative methods lies in their systematicity and objectivity, but
+they are by no means guaranteed to capture every salient fact regarding a system's output,
+especially when the system in question is an unsupervised learning system. 
+ This dissertation thus incorporated a qualitative analysis of Multimorph's output to supplement the  
+quantitative results presented later in this chapter.
+This qualitative analysis basically consisted in manually inspecting the component words of clusters output by Multimorph.\footnote{
+Recall that
+algorithm~\ref{alg:members} (section~\ref{sec:instrinsic}) converted the MCMM's $\mathbf{M}$ and $\mathbf{C}$
+matrices into a list of wordlists, where each wordlist was (or represented) a cluster.} 
+When in inspecting a given cluster, I took into account its centroid vector, particularly the centroid's \emph{most active
+features}, since these features help determine which shared bits of form among a cluster's words can truly be attributed to the MCMM. 
+%That is, sometimes 
+%directly and which are by-products or correlates of the 
+%ten most active features in the centroid vector of the cluster in question. 
+%
+%\item A manual inspection of \emph{ten most active features} in each cluster's centroid vector (see chapter~\ref{sec:mcmm}, particularly sections~\ref{sec:mixing-function} and \ref{subsec:example})
+%\item A 
+%assembled via algorithm~\ref{alg:members} (section~\ref{sec:instrinsic})
+
+The manual inspection revealed many clusters corresponding to morphological categories, including 
+both concatenative and nonconcatenative morphs. In general, the the most prominent morphs, e.g., the plural
+suffixes \textit{-im}
+and \textit{-wt}, corresponded to clusters with low indices, as the MCMM tended to discover these clusters first. The most 
+prominent morphs are generally concatenative affixes and nonconcatenative vowel patterns. Thus, in the 
+$\langle s=4, \delta=3\rangle$ clustering, for instance, the first cluster (i.e., the cluster indexed 0) corresponded to the morph \textit{-\'{e}\_et}, 
+a common feminine ending for participles.
+
+%\begin{center}
+%\textit{-\'{e}\_et} figure here?
+%\end{center}
+There were also some clusters that corresponded to roots, though not
+as many as corresponded to affixes and vowel patterns. 
+%There are a many more unique roots in Hebrew
+%than unique vowel patterns and affixal morphs, since roots are lexical, but individual roots tend to occur at far lower frequencies than 
+%morphs that serve morphosyntactic purposes.
+also tended to occur at higher cluster indices; that is, the 
+MCMM tended to find them later during the learning process. 
+Individual roots to not occur in as many distinct words
+as concatenative morphs and vowel patterns, since roots are entirely lexical in nature. Root clusters thus tend to be among the smallest of clusters.
+
+There were in root clusters
+ in the clusterings of all three data types, but the
+but orthographic clusterings contained the most root clusters. This is perhaps to some degree a result
+of the prevalence of consonants in Hebrew orthography (see chapter~\ref{ch:experi}).
+It does not represent many vowels, and thus the consonants tend to be closer to each other 
+and are often adjacent. Thus, precedence features in the orthographic data can generally 
+take in more consonants at once than in the transcriptional datasets. 
+
+This section provides examples of some of the MCMM's clusters in a series of figures---examples in the form of random samples taken from the original clusters' members. Each of these figures is a box that contains, first, thirty words randomly selected from a particular cluster,
+and, second, the ten most active features in the cluster's centroid. 
+The first four figures all give samples of  clusters corresponding to the root \textit{\textipa{P}.k.l}; 
+
+Figures~\ref{fig:cluster-182-1-3-O} shows a word sample from a cluster corresponding to a root, namely \textit{\textipa{P}.k.l}, which appears in words pertaining to eating, for example, %\textit{\textipa{P}o\textsubdot{k}\'el\} `he/it is eating,'
+\textit{\textipa{P}a\textsubdot{k}\'al} `he/it ate' and \textit{\textipa{P}a\textsubdot{k}il\'a} `eating.' 
+This is cluster $k = 182$,   
+in the clustering $\langle s=1, \delta=3 \rangle$. Its data source was the orthographic data set. Its words are expressed in the (transliterated) orthographic alphabet (see the discussion in chapter~\ref{ch:experi}. Thus, \textit{\textipa{P}.k.l} becomes \textit{a.k.l}, for instance.
+%generated at the parameter settings $\langel s=1$ $\delta=3 \rangle$. 
+In the words that actually contain the root \textit{a.k.l}, the letters \textbf{a}, \textbf{k}, and \textbf{l} appear in boldface.
+Notice that not all of the words have this root.
+
+Figures~\ref{fig:cluster-91-3-2-O} and \ref{fig:cluster-81-2-2-O} correspond to \textit{a.k.l}
+(i.e., \textit{\textipa{P}.k.l}) clusters from other clusterings, namely those generated at
+$\langle s=3, \delta=2 \rangle$ and $\langle s=2, \delta=2 \rangle$, respectively. 
+Notice that each of these clusters is better than the previous one in that each is 
+a \emph{purer} representation of the root \textit{a.k.l} (= \textit{\textipa{P}.k.l}); that is,
+each has a greater proportion of words that actually contain \textit{a.k.l}.
+Furthermore, observe that the two \emph{most} active feature for each of these clusters are
+\begin{center}
+ {\large \texttt{a<k}} \quad  and \quad {\large \texttt{k<l}}
+\end{center}
+This makes sense. Clearly, no other feature, except perhaps \texttt{a<l}, would be as helpful in 
+encoding the nonconcatenative sequence \textit{a.k.l}.
+In figure~\ref{fig:cluster-182-1-3-O}, the activities of \texttt{k<l} and \texttt{a<k} are 1.0 and 0.8271, respectively.
+Figure~\ref{fig:cluster-91-3-2-O}, showing purer cluster, has these features at activities 1.0 and 1.0. It also has \texttt{a<l} among its top ten features, 
+at an activity of 0.4196, a low activity to be sure, but this feature does not appear at all among the top-ten features of the preceding
+cluster. 
+Finally, figure~\ref{fig:cluster-81-2-2-O}, the purest of these three clusters, has all three of the features \texttt{k<l}, \texttt{a<k}, \texttt{a<l} among
+its ten,
+and, moreover, all with a perfect activity of 1.0.
+
+Figure~\ref{fig:cluster-33-0-2-TS} shows yet another cluster corresponding to the root \textit{a.k.l/}\textit{\textipa{P}.k.l}, this one
+having come from the transcriptional dataset with accent-marking. This cluster was generated under the parameter settings $\langle s=0, \delta=2 \rangle$. Recall from chapter~\ref{ch:experi} that an $s$ value of 0 means that were no positional features. 
+%However, this lack would not have hindered the MCMM in finding roots, since precedence features are the better feature type for capturing roots.
+Figure~\ref{fig:cluster-33-0-2-TS} shows partial success in finding the root 
+\textit{\textipa{P}.k.l}, though less than the preceding three figures. This is
+ probably not due to the absence of positional features, however, since positional 
+ features do not seem conducing to representing a nonconcatenative sequence of 
+ symbols such as a Hebrew root. The boldface letters in figure~\ref{fig:cluster-33-0-2-TS} 
+ demonstrate the positional variability of root consonants from word to word. 
+ Positional features are thus likely not to be of much help in representing a root. 
+ The mere addition of a prefixes changes the root characters' positions from \textit{\textbf{\textipa{P}}a\textbf{\textsubdot{k}}\a'{a}\textbf{l}} to \textit{we\textbf{\textipa{P}}a\textbf{\textsubdot{k}}\a'{a}\textbf{l}}. 
+ But the positions of the root consonants relative to each other can also vary, 
+ as does the position of the \textit{l} relative to the \textit{x} in \textit{we\textbf{\textipa{P}}a\textbf{\textsubdot{k}}\a'{a}\textbf{l}} and \textit{we\textbf{\textipa{P}}a\textbf{\textsubdot{k}}\textbf{l}\a'{u}}. 
+%It is not clear exactly why this cluster is not as good as the preceding clusters. What is clear, however, is that this cluster's poorer 
+Let's take a closer look at the features of this bad boy.
+Do we see anything curious?
+This cluster's centroid features are not ideal for the root \textit{\textipa{P}.k.l}. Note the activities of the features 
+{\textipa{P}<\textsubdot{k}} (= orthographic \texttt{a<k}) and \texttt{\textsubdot{k}<l} (= orthographic \texttt{k<l}):  0.4984 and
+ 0.7588, respectively.  Notice that many of the features reference a vowel. 
+%at in figure~\ref{fig:cluster-33-0-2-TS} particularly well with
+% If we could choose features and their activities
+%for representing \textit{\textipa{P}.k.l}, we would certainly not choose  an activity of 0.4984 for {\textipa{P}<\textsubdot{k}},  \ (0.4984) for {\textipa{P}<\textsubdot{k}}
+In fact, the two most active features, namely \texttt{a<\textsubdot{k}} (activity 1.0000) and \texttt{\textsubdot{k}<\'{a}} (activity 0.8585), both reference a vowel. (In the transcriptional datasets, \textsf{a} is a vowel.) References to particular vowels are problematic for roots because the vowels that interleave with a root's consonants vary from word to word. 
+
+Another cluster of transcribed words is shown in figure~\ref{fig:cluster-339-4-3-TS}. 
+This one corresponds to the root \textit{d.l.q} and is considerably purer than the 
+cluster in figure~\ref{fig:cluster-33-0-2-TS}. The activities of the features \texttt{d<l} and \texttt{l<q}  
+at 1.0 and 0.853. We also have the feature \texttt{d<q} with the activity 0.798. Such features spanning 
+the first to the third root consonant are likely to be rarer and/or weaker in the transcriptional domain, 
+since the distance between the first and third root consonants often exceeds $\delta$ when vowels are 
+involved. We again have problematic vowel-referencing features, however, particularly features 
+referencing \textit{i}: \texttt{d<\a'{i}} is especially strong with an activity of 1.0, and \texttt{\a'{i}<q} 
+as a modest activity of 0.501. The \textit{i} in these to features is reflected in frequency of \textit{i} in 
+this cluster's words. It would thus be more accurate to say that this cluster represents subset of the 
+occurrences of root \textit{d.l.q}, namely its co-occurrences with \textit{i}. 
+
+Our last cluster example in this section is the one in figure~\ref{fig:cluster-339-4-3-TS}. It demonstrates 
+Multimorph's capacity to learn vowel patterns. The patten in this case is \textit{a.\'{e}}.
+ It it is a morphological component of \textit{Hitpa`el} binyan, 
+as in \textit{mitrax\a'{e}c},  
+the prefix stem of the \textit{Pi`el},
+e.g., \textit{teqal\a'{e}f}.
+As in the case of roots, precedence features seem to be better suited to capturing vowel patterns than positional features.
+In general, the precedent feature type seems to be essential for representative 
+nonconcatenative phenomena of any kind. 
+Positional features, by contrast, are not essential for representing nonconcatenative morphs, and could be 
+detrimental.
+
+% \texttt{d<q} \> (0.798) \> \texttt{\a'{i}<q} \> (0.501)\\
+%\texttt{h<d} \> (0.374) \> \texttt{l<\a'{i}} \> (0.162) \> \texttt{g<d} \> (0.157) \> \texttt{\a'{e}}@\texttt{[-1]} \> (0.135) \> \texttt{r}@\texttt{[-2]} \> (0.135)
+%\texttt{d<\a'{i}} \> (1.000) \>
+
+%are the better feature type for capturing  better for capturing roots anyone 
+%these clusters' top-ten feature lists that the two most import features for capturing
+%the root \textit{a.k.l} are 
+%Furthermore, notice that 
+
+% figures~\ref{fig:cluster-182-1-3-O}, \ref{fig:cluster-91-3-2-O}, and \ref{fig:cluster-81-2-2-O} are samples from
+%The root \textit{\textipa{P}.k.l} occurs both in the orthographic and transcriptional clusters. This section provides random subsets from some of these 
+%\textit{\textipa{P}.k.l} clusters. Figures~\ref{fig:cluster-182-1-3-O}, \ref{fig:cluster-91-3-2-O}, and \ref{fig:cluster-81-2-2-O} are samples from
+%orthographic  \textit{\textipa{P}.k.l}  
+%present a sample of thirty words
+% 
+% the following information:
+%\begin{enumerate}
+%\item Along the top of the box, from left to right: 
+%	\begin{enumerate}
+%	\item the cluster's equivalent morph in large, boldface type
+%	\item the parameter settings ($s$ and $\delta$ values) under which the cluster was formed
+%	\item the cluster's index within its clustering
+%	\end{enumerate}
+%\item Thirty words randomly selected from a particular cluster. 
+%\item The ten most active features in the cluster's centroid.
+%\end{enumerate}
+%the cluster's equivalent morph in large boldface type, the parameter settings ($s$ and $\delta$ values) of its larger
+%clustering, and the index of the cluster within its cluster
+
+%First, each figure presents thirty words randomly selected from a particular cluster. 
+%Second, these words is another box 
+%containing the ten most active features in the it's
+%centroid vector, along with their activities. In the 
+%upper left corner, the cluster's corresponding morph is represented as string in larger, 
+%boldface type. In the upper right corner,
+%the cluster's index is displayed.  
+
+
+
+%three data types. In this section, we take a look a  \ref{fig:cluster-182-1-3-O}, there is some interesting shit from cluster indexed 182---
+%i.e.,  It it
+%The occurrence of \textit{\textipa{P}.k.l} clusters in different clusterings provides a common ground for examining the effects of 
+%
+%Precedence feats are more useful than pos feats; they can capture all manner of morphs—any morph consisting of at least 2 chars, that is.
+%
+%Positional feats, especially at large s values, seem to tend to introduce noisy features—features that cannot correspond to any morph.
+%
+%There are certain ideal ways to form apples. There are certain ideal shapes, ideal combinations of atomics such as the precedent feature-transitive chain template for roots. Is a third feature important? Hey d 
+%
+%Why are there feats that seemingly don’t do anything?
+%Possible reasons:
+%Noise due to Nonconvergence
+%Very low m vals overall, which might cause high centroid feature values (but so what?)
+%
+%It seems that only a single precedence feature is necessary to capture vowel patterns, as vowel patterns generally consist of no more than two vowels.
+%
+%In general, positional features do not seem to be very useful in capturing nonconcatenative phenomena. But what is the evidence? Well, I haven’t observed an instance of a positional feature making a positive contribution toward capturing a single, coherent nonconcatenative morph. Consider what it would look like if a positional feature were involved in capturing a root—say, d.l.q, for example. 
+
+
+%Among the clusterings generated from the transcriptional datasets, the TS clusterings contained a 10 root clusters with 10 or more members 
+
+
+%It is thus not
+%within a clustering, i.e., wi
+%a wide variety of morphs were represented in the clusterings---both 
+%concatenative and noncocatenative morphs. 
+%Moreover, both concatenative and nonconcatenative morphs were  prenumerous morphological categories including, %-interpretable clusters, including 
+%%clusters corresponding to the morphological categories
+%for example \textit{-{o}t} \> feminine plural   \textit{-\v{s}e} \> (prefixal particle `that/which')
+%\begin{tabular}{ll}
+%
+%\end{tabular}
+%\hspace{1in} \= \hspace{5.5in} \kill
+%\textit{-\a'{o}t} \> feminine plural  \\ %\textit{-ot}, \textit{-wt})
+%\textit{-\a'{i}m} \> masculine plural \\
+%%morph: \textit{-\'nu} (first-person plural marker in past-tense verbs, etc.)
+%\textit{ha-} \> a feminine singular ending, see section~\ref{sec:heb-example} \\
+%\textit{we-} \> conjunctive prefixal particle \\
+%\textit{-\v{s}e} \> prefixal particle 'that/which' complementizer and relativizer
+%\end{tabbing}
+%For example, figure~\ref{fig:cl-fem} displays 
+%a random sample of 60 words from a 1632-word cluster produced by Multimorph’s MCMM. This group 
+%is intended as an abridgment of its superset, which is too large to display here. This cluster was produced by the 
+%MCMM at the experimental settings $\delta = 2$, $s = 2$, and $K = 1000$, i.e. it was one of 
+%%other 
+%1000 clusters that the MCMM produced during this experimental run.
+%
+%
+%\begin{figure}[t]
+%\begin{mdframed}
+%\begin{tabbing}
+%\hspace*{1ex}\= \hspace*{13ex}\= \hspace*{13ex}\=\hspace*{13ex}\=\hspace*{13ex}\=\hspace*{13ex}\=\hspace*{13ex} \kill
+%\> nafalt \> pizart \> webarakevet \> werevi\textipa{P}it \> we\textipa{P}omeret \> \textipa{P}emet\\
+%\> bubot \> hakapot \> mexaberet \> wela\textipa{P}alot \> wemakot \>\v{s}ehizmant\\
+%\> bamesilot \> bami\v{s}qefet \> fizit \> mistateret \> ye\textsubdot{k}olot \> \textipa{P}o\textsubdot{k}elet\\
+%\> be\textipa{P}emet \> kazo\textipa{P}t \> ktumot \> laxalonot \> mat\textipa{P}imot \> \textipa{P}axeret\\
+%\> hatmunot \> hawilonot \> ha\textipa{P}otiyot \> li\v{s}tot \> moxeqet \>\v{s}era\textipa{P}it\\
+%\> dri\v{s}at \> lanequdot \> maxliqot \> mitxape\textsubdot{s}et \> wexalonot \>\v{s}e\textglotstop{P}amart\\
+%\> daqot \> habdiqot \> megare\v{s}et \> ni\textsubdot{k}nast \> pi\textsubdot{t}riyot \>\v{s}ehaxanuyot\\
+%\> ha\v{s}amenet \> hiclaxt \> laxalalit \> meha\textsubdot{s}aqit \> nimce\textipa{P}t \>\v{s}lulonet\\
+%\> hahit\textipa{P}amlut \> labanot \> mela\textsubdot{k}le\textsubdot{k}et \> safart \> xada\v{s}ot \> \textipa{P}acuvot\\
+%\> bakisa\textipa{P}ot \> madregot \> melu\textsubdot{k}la\textsubdot{k}ot \> melu\textsubdot{k}le\textsubdot{k}et \> mit\textipa{P}aqe\v{s}et \> \textipa{P}orot
+%\end{tabbing}
+%\caption{Sixty words randomly selected from a 1632-word cluster generated by Multimorph's MCMM (at $s = 2$, and $\delta = 2$). The endings on these words are the feminine endings discussed in section~\ref{sec:heb-example} of chapter~\ref{autonomous}.} 
+%\label{fig:cl-fem}
+%\end{mdframed}
+%\end{figure}
+%\begin{figure}[tb!]
+%\begin{mdframed}
+%\textit{Ten most active centroid features:}
+%\small
+%\begin{tabbing}
+%\hspace*{1ex}\= \hspace*{17ex}\= \hspace*{17ex}\=\hspace*{17ex}\=\hspace*{17ex}\=\hspace*{17ex} \kill
+%\> \texttt{w@[1]} (1.0000) \> \texttt{r<t} \, (0.0663) \> \texttt{l<t} \, (0.0455) \> \texttt{q<t} \, (0.0392) \> \texttt{v<t} \, (0.0258) \\
+%\> \texttt{\textsubdot{k}<t} \, (0.0257) \> \texttt{u<t} \, (0.0240) \> \texttt{d<t} \, (0.0176) \> \texttt{o<t} \, (0.0153) \> \texttt{c<t} \, (0.0143)
+%\end{tabbing}
+%\label{fig:fem-features}
+%\caption{The ten most active features in the cluster represented in figure~\ref{fig:cl-fem}. The feature (surface-unit) activities are included in parentheses.}
+%\end{mdframed}
+%\end{figure}
+%
+%This cluster appears to correspond almost exactly to the feminine endings 
+%discussed in section~\ref{sec:heb-example}---namely, the set of suffixes that 
+%involve combinations of \textit{-u}, \textit{-i}, and \textit{-t}. 
+%Notice that all of the endings in figure~\ref{fig:cl-fem} at least share the \textit{t}.
+% 
+%%[Here, I intend to consult another of Multimorph's output documents, one that lists
+%%the top ten most active features for each cluster. Presumably, these lists would more clearly and
+%%accurately characterize each cluster.
+%%Perhaps, for example, 
+%%the feature \texttt{t@[-1]} is among the most active features underlying the cluster associated with figure~\ref{fig:cl-fem}, but perhaps others 
+%%contribute significantly as well.] 
+%
+%Another cluster sample, this one consisting of 60 words randomly selected from a 426-word cluster, is displayed 
+%in figure~\ref{fig:cl-hit}. This particular cluster represents a \emph{binyan}, which, in Hebrew and other Semitic 
+%languages is a class of verbs whose stems share the same vowel pattern and combine with the same  
+%of affixes. Vowel patterns are the complements of consonantal roots; that is, both the root and the pattern must be present in order
+%to realize a phonologically viable stem. 
+%%interleaved (or interdigitated) to form a stem. 
+%Nearly every verb in this cluster is of the \textit{Hitpa`el} binyan, which is distinguished by the pattern
+%\begin{center}
+%$\diamond$\,i\,t\,C\,a\,C\,e\,C 
+%\end{center}
+%where $\diamond$ is a place holder that can be filled by 
+%\textit{h}, \textit{m}, \textit{t}, \textit{y}, \textit{n}, or \textit{\textipa{P}}, 
+%depending on tense, person, and number. 
+%Some of the words in % figure~\ref{subfig:cl-hit-sample} 
+%figure~\ref{fig:cl-hit} are nouns derived from the \textit{Hitpa`el} binyan. For instance, \textit{ha-hitna\v{s}m-uy-\a'{o}t } is such a noun, where \textit{ha-} is the definite-article prefix, \textit{hitna\v{s}em}\footnote{the \textit{e} in the stem \textit{hitna\v{s}em} is deleted when the suffixes \textit{-uy-\a'{o}t} are added.}
+%is the \textit{hitpa\textipa{`}el} stem, and \textit{-uy} is the nominalizing suffix \textit{-ut}, whose \textit{t} becomes become \textit{y} when it immediately precedes a stressed vowel, and \textit{-ot} is the feminine plural suffix. 
+%%which bears the nominal suffix \textit{-ut} ($\to$ \textit{-uy} before the\textit{o}) and the fem.pl suffix \textit{-ot} 
+%
+%%words randomly selected from a 426-word cluster generated by Multimorph's MCMM 
+%%at $s = 2$, and $\delta = 2$. These words are almost entirely of the \textit{Hitpa`el} binyan
+%
+%%\subfigure[60]{
+%%\begin{tabbing}
+%%\hspace*{13ex}\= \hspace*{13ex}\=\hspace*{13ex}\=\hspace*{13ex}\=\hspace*{13ex}\=\hspace*{13ex} \kill
+%%hamitnag\v{s}\a'{o}t \> hitgalgel\a'{a} \> hitnadn\a'{e}d \> lehistap\a'{e}r \> welehitra\textipa{P}\a'{o}t \> wemistak\a'{e}l\\
+%%hithap\textsubdot{k}\a'{a} \> mitra\v{s}\a'{e}met \> titnagv\a'{i} \> titxat\a'{e}n \> wemistak\a'{e}let \> yitqalq\a'{e}l\\
+%%hahitna\v{s}muy\a'{o}t \> histak\a'{a}lt \> hit\textipa{P}amc\a'{u} \> hi\v{s}tat\a'{a}ta \> lehit\textipa{Q}as\a'{e}q \> titqa\v{s}r\a'{i}\\
+%%hitgalg\a'{a}lti \> hitragz\a'{u} \> hitwakx\a'{a} \> mitlah\a'{e}vet \> mitmac\a'{e}\textipa{P}t \> mitrag\a'{e}z\\
+%%behitxa\v{s}\a'{e}v \> hit\textipa{Q}orer\a'{a} \> mamtaq\a'{i}m \> mitgal\a'{e}\c{c}et \> mit\textipa{P}am\a'{e}cet \> \v{s}emistarq\a'{i}m\\
+%%hitnah\a'{e}g \> hitpazr\a'{u} \> hitpoc\a'{e}c \> hi\v{s}tan\a'{a} \> lehitxab\a'{e}\textipa{P} \> \v{s}ehitpoc\a'{e}c\\
+%%histar\a'{a}qt \> hitpocec\a'{u} \> hitrag\a'{e}z \> hitya\v{s}\a'{e}v \> lehithap\a'{e}\textsubdot{k} \> titqalx\a'{i}\\
+%%hit\textipa{Q}anyen\a'{a} \> lehit\textipa{Q}acb\a'{e}n \> mitpan\a'{e}qet \> mitqa\v{s}\a'{e}r \> nitgalg\a'{e}l \> tistarq\a'{i}\\
+%%mistak\a'{e}l \> mitno\textipa{Q}\a'{e}a\textipa{Q} \> mitpa\textipa{Q}\a'{e}l \> nitlab\a'{e}\v{s} \> titgalgel\a'{i} \> \v{s}emitkad\a'{e}r\\
+%%hitparq\a'{a} \> lehitqa\v{s}\a'{e}r \> mitpar\a'{e}q \> mit\textipa{Q}aq\a'{e}\v{s}et \> titxal\a'{e}q \> titya\v{s}v\a'{i} \\
+%%\end{tabbing}
+%%\label{subfig:cl-hit-sample}
+%%}
+%
+%\begin{figure}[t]
+%\begin{mdframed}
+%\centering
+%\begin{tabbing}
+%\hspace*{13ex}\= \hspace*{13ex}\=\hspace*{13ex}\=\hspace*{13ex}\=\hspace*{13ex}\=\hspace*{13ex} \kill
 %hamitnag\v{s}\a'{o}t \> hitgalgel\a'{a} \> hitnadn\a'{e}d \> lehistap\a'{e}r \> welehitra\textipa{P}\a'{o}t \> wemistak\a'{e}l\\
 %hithap\textsubdot{k}\a'{a} \> mitra\v{s}\a'{e}met \> titnagv\a'{i} \> titxat\a'{e}n \> wemistak\a'{e}let \> yitqalq\a'{e}l\\
 %hahitna\v{s}muy\a'{o}t \> histak\a'{a}lt \> hit\textipa{P}amc\a'{u} \> hi\v{s}tat\a'{a}ta \> lehit\textipa{Q}as\a'{e}q \> titqa\v{s}r\a'{i}\\
@@ -154,72 +663,32 @@ is the \textit{hitpa\textipa{`}el} stem, and \textit{-uy} is the nominalizing su
 %histar\a'{a}qt \> hitpocec\a'{u} \> hitrag\a'{e}z \> hitya\v{s}\a'{e}v \> lehithap\a'{e}\textsubdot{k} \> titqalx\a'{i}\\
 %hit\textipa{Q}anyen\a'{a} \> lehit\textipa{Q}acb\a'{e}n \> mitpan\a'{e}qet \> mitqa\v{s}\a'{e}r \> nitgalg\a'{e}l \> tistarq\a'{i}\\
 %mistak\a'{e}l \> mitno\textipa{Q}\a'{e}a\textipa{Q} \> mitpa\textipa{Q}\a'{e}l \> nitlab\a'{e}\v{s} \> titgalgel\a'{i} \> \v{s}emitkad\a'{e}r\\
-%hitparq\a'{a} \> lehitqa\v{s}\a'{e}r \> mitpar\a'{e}q \> mit\textipa{Q}aq\a'{e}\v{s}et \> titxal\a'{e}q \> titya\v{s}v\a'{i} \\
+%hitparq\a'{a} \> lehitqa\v{s}\a'{e}r \> mitpar\a'{e}q \> mit\textipa{Q}aq\a'{e}\v{s}et \> titxal\a'{e}q \> titya\v{s}v\a'{i}
 %\end{tabbing}
-%\label{subfig:cl-hit-sample}
-%}
-
-
-\begin{figure}[t]
-\begin{mdframed}
-\centering
-%\subfigure[]{
-\begin{tabbing}
-%\hspace*{14ex}\=\hspace*{14ex} \kill
-%rony  \> tony \\
-%%nice  dice 
+%\label{fig:cl-hit}
+%\caption{60 words randomly selected from a 426-word cluster generated by Multimorph's MCMM 
+%at $s = 2$, and $\delta = 2$. These words are almost entirely of the \textit{Hitpa`el} binyan.}
+%\end{mdframed}
+%\end{figure}
+%
+%\begin{figure}[tb!]
+%\begin{mdframed}
+%\begin{tabbing}
+%\centering
+%\hspace*{17ex}\= \hspace*{17ex}\=\hspace*{17ex}\=\hspace*{17ex}\=\hspace*{17ex} \kill
+%\texttt{a<e} \, (1.0000) \> \texttt{e<a} \, (0.0280) \>  \texttt{b<e} \, (0.0202) \> \texttt{y<e} \, (0.0174) \> \texttt{\v{s}<e} \, (0.0091) \\ 
+%\texttt{m<e} \, (0.0080) \> \texttt{p<e} \, (0.0079) \> \texttt{d<t} \, (0.0065) \>\texttt{e<f} \, (0.0064) \> \texttt{e<h} \, (0.0055) 
 %\end{tabbing}
-%\label{t}
-%} 
-\hspace*{14ex}\= \hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex} \kill
-hamitnag\v{s}\a'{o}t \> hitgalgel\a'{a} \> hitnadn\a'{e}d \> lehistap\a'{e}r \> welehitra\textipa{P}\a'{o}t \> wemistak\a'{e}l\\
-hithap\textsubdot{k}\a'{a} \> mitra\v{s}\a'{e}met \> titnagv\a'{i} \> titxat\a'{e}n \> wemistak\a'{e}let \> yitqalq\a'{e}l\\
-hahitna\v{s}muy\a'{o}t \> histak\a'{a}lt \> hit\textipa{P}amc\a'{u} \> hi\v{s}tat\a'{a}ta \> lehit\textipa{Q}as\a'{e}q \> titqa\v{s}r\a'{i}\\
-hitgalg\a'{a}lti \> hitragz\a'{u} \> hitwakx\a'{a} \> mitlah\a'{e}vet \> mitmac\a'{e}\textipa{P}t \> mitrag\a'{e}z\\
-behitxa\v{s}\a'{e}v \> hit\textipa{Q}orer\a'{a} \> mamtaq\a'{i}m \> mitgal\a'{e}\c{c}et \> mit\textipa{P}am\a'{e}cet \> \v{s}emistarq\a'{i}m\\
-hitnah\a'{e}g \> hitpazr\a'{u} \> hitpoc\a'{e}c \> hi\v{s}tan\a'{a} \> lehitxab\a'{e}\textipa{P} \> \v{s}ehitpoc\a'{e}c\\
-histar\a'{a}qt \> hitpocec\a'{u} \> hitrag\a'{e}z \> hitya\v{s}\a'{e}v \> lehithap\a'{e}\textsubdot{k} \> titqalx\a'{i}\\
-hit\textipa{Q}anyen\a'{a} \> lehit\textipa{Q}acb\a'{e}n \> mitpan\a'{e}qet \> mitqa\v{s}\a'{e}r \> nitgalg\a'{e}l \> tistarq\a'{i}\\
-mistak\a'{e}l \> mitno\textipa{Q}\a'{e}a\textipa{Q} \> mitpa\textipa{Q}\a'{e}l \> nitlab\a'{e}\v{s} \> titgalgel\a'{i} \> \v{s}emitkad\a'{e}r\\
-hitparq\a'{a} \> lehitqa\v{s}\a'{e}r \> mitpar\a'{e}q \> mit\textipa{Q}aq\a'{e}\v{s}et \> titxal\a'{e}q \> titya\v{s}v\a'{i}
-\end{tabbing}
-\label{fig:cl-hit}
-\caption{60 words randomly selected from a 426-word cluster generated by Multimorph's MCMM 
-at $s = 2$, and $\delta = 2$. These words are almost entirely of the \textit{hitpa`el} binyan.}
-\end{mdframed}
-\end{figure}
-\begin{figure}[tb!]
-\begin{mdframed}
-\begin{tabbing}
-\centering
-\hspace*{17ex}\= \hspace*{17ex}\=\hspace*{17ex}\=\hspace*{17ex}\=\hspace*{17ex} \kill
-\texttt{a<e} \, (1.0000) \> \texttt{e<a} \, (0.0280) \>  \texttt{b<e} \, (0.0202) \> \texttt{y<e} \, (0.0174) \> \texttt{\v{s}<e} \, (0.0091) \\ 
-\texttt{m<e} \, (0.0080) \> \texttt{p<e} \, (0.0079) \> \texttt{d<t} \, (0.0065) \>\texttt{e<f} \, (0.0064) \> \texttt{e<h} \, (0.0055) 
-\end{tabbing}
-\label{fig:cl-hit-features}
-\caption{The ten most active features in the cluster represented figure~\ref{fig:cl-hit}. The feature (surface-unit) activities are included in parentheses.}
-\end{mdframed}
-\end{figure}
-%\label{subfig:cl-hit-sample}
-%}
-%\subfigure[The ten most active features in the cluster represented above. The feature (surface-unit) activities are included in parentheses.]{
-%%\hrule 
-%%\vspace{12pt}
-%fff
-%%\vspace{12pt}
-%%\hrule
-%}
-%\end{center}
-
-
-
-
-
-This \textit{hitpa\textipa{`}el} example demonstrates that Multimorph is capable of learning non-concatenative morphology. 
-The \textit{a} and the \textit{e} in CaCeC are separated by a consonant. Among the words in \ref{fig:cl-hit}, 
-the intervening C between the \textit{a} and \textit{e} varies. It follows that Multimorph is not merely recognizing 
-continuous substrings that contain both \textit{a} and \textit{e}.
-
+%\label{fig:cl-hit-features}
+%\caption{The ten most active features in the cluster represented figure~\ref{fig:cl-hit}. The feature (surface-unit) activities are included in parentheses.}
+%\end{mdframed}
+%\end{figure}
+%
+%This \textit{Hitpa\textipa{`}el} example demonstrates that Multimorph 
+%is capable of learning nonconcatenative morphology. 
+%The \textipa{/a/} and the \textipa{/e/} in CaCeC are separated by a consonant. Among the words in \ref{fig:cl-hit}, 
+%the C that occurs \emph{between} the \textipa{/a/} and \textipa{/e/} varies. It follows that Multimorph is not merely recognizing 
+%continuous substrings that contain both \textipa{/a/} and \textipa{/e/}.
 
 \section{Quantitative Results}
 The quantitative results stem from the dual-paradigm evaluation method outlined in chapter~\ref{ch:eval}. 
@@ -235,27 +704,30 @@ a human may be less effective at judging overall consistency.
 The intrinsic results are displayed in tables~\ref{tab:intr-500} and \ref{tab:intr-1000}. 
 These are the ``master" tables, so to speak, for the intrinsic results, wherein each row 
 represents the intrinsic evaluation of a \emph{model}. 
-Each \emph{model} is distinguished by its input data type (TS, TR, or O), its feature set, which depends 
-on the values of $s$ and $\delta$, and the number of clusters of clusters it was permitted to accumulate. 
+Each \emph{model} is distinguished by its input data type (TS, TR, or O) and its feature set, which depends 
+on the values of $s$ and $\delta$.  %and the number of clusters it was permitted to accumulate, i.e., the cutoff point---either $K = 500$ or $K = 1000$.
 The evaluation metrics, discussed in chapter~\ref{ch:eval}, are \textbf{average cluster-wise purity} (Purity), 
 \textbf{BCubed precision} (BP), \textbf{BCubed Recall} (BR), 
-and the \textbf{F1-score} (F), i.e., the harmonic mean of BP and BR.  The tables also state the \emph{coverage} 
-(Cov.) of each clustering, which is the number of words belonging to at least one cluster, and $K^{\prime}$, 
-which the set of \emph{active} clusters, i.e., the clusters with at least one member. 
+and the \textbf{F1-score} (F), that is, the harmonic mean of BP and BR.  The tables also state the \emph{coverage} 
+(Cov.) of each clustering, which is the number of words belonging to at least one cluster (see section~\ref{sec:intrinsic}), 
+and $K^{\prime}$, 
+which the set of \emph{active} clusters, that is, the clusters with at least one member. 
 Each table  is associated with a $K$ cutoff value, either 500 or 1000, and each divided into three subtables, 
 one for each of the three types of input data representation (DR).
 
 One of the most salient observations regarding tables~\ref{tab:intr-500} and \ref{tab:intr-1000}
- is that the models trained on O, the orthographic data, performed just as well as as those trained on TS
-  (the transcriptional datasets with stress marking), if not \emph{slightly better}. The average F-score for all O models 
- at $K=1000$ was 0.371. (Note that this is the average F-score computed over \emph{all} valuations of $s$
-   and $\delta$, i.e., all rows in table~\ref{subtab:intr-O-1000}.) 
-   The average TS F-score at $K=1000$ was 0.365. 
-   These are substantially higher that average F-score of the TR models at $K=1000$, namely 0.308.
+ is that the models trained on O, the orthographic dataset, performed just as well as as those trained on TS, the transcriptional datasets with stress marking, if not \emph{slightly better}. The average F-score for all O 
+ models at $K=1000$ (that is, the average F-score of \emph{all} valuations of $s$
+   and $\delta$ in table~\ref{subtab:intr-O-1000}) was 0.371.
+ % (Note that this is the average F-score computed over \emph{all} valuations of $s$
+   %and $\delta$, i.e., all rows in table~\ref{subtab:intr-O-1000}.) 
+   The average F-score of the TS models %(the transcriptions with stress markings) 
+   at $K=1000$ was 0.365. 
+   These were substantially higher that average F-score of the TR models---the models trained on transcriptions without stress marking---at $K=1000$, which was 0.308.
   Two important points emerge from this observation: 
-
-
-\emph{First, the O models performed surprisingly well.} They performed as well as the TS models and substantially better than the
+  
+\emph{First, the O models performed surprisingly well.} 
+They performed as well as the TS models and substantially better than the
   TR models.
  This is a surprising result because, as discussed in chapter~\ref{ch:experi}, 
  the orthography of Hebrew is basically consonantal; that is, the alphabet lacks vowel symbols. 
@@ -273,24 +745,38 @@ there could be feature formats that encode vowels to better effect than the pres
 \emph{Second, the TS models outperformed the TR models by a substantial margin.} That is, 
 the transcriptions containing both stressed and unstressed vowels engendered better features than  the
 transcriptions that lacked stress information. We might infer from this observation that stressed vowels are more informative and thus more useful than 
-vowels whose stress is not specified.  It is important to note, however, that the alphabets used in this study were consisted solely of atomic unicode characters. That is, the stressed \textit{\'a}, 
-for example, was not encoded as \textit{a} (\texttt{U+0061}) followed by the acute-accent combining character \texttt{U+0301}, but 
-rather as the single \emph{precomposed} character{\texttt{U+00E1}. The stressed (or accented) vowels \textit{\'e}, \textit{\'o}, and \textit{\'u} were similarly each represented as a single, precomposed unicode character. 
+vowels whose stress is not specified.  It is important to note, however, that the 
+alphabets used in this study were consisted solely of atomic unicode characters. 
+That is, the stressed \textsf{\'a}, 
+for example, was not encoded as \textsf{a} (\texttt{U+0061}) followed 
+by the acute-accent combining character \texttt{U+0301}, but 
+rather as the single \emph{precomposed} character{\texttt{U+00E1}. 
+The stressed (or accented) vowels \texttt{\'e}, \textsf{\'o}, and \textsf{\'u} were similarly each represented as a single, precomposed unicode character. 
 Such atomic symbols are incapable of expressing inter-symbol relationships. 
-For example, \textit{\'a} (\texttt{U+00E1}) and \textit{a} (\texttt{U+0061}) are completely distinct, as (un)related as the characters \textit{a} and \textit{t} as far as the unicode is concerned.
+For example, \textsf{\'a} (\texttt{U+00E1}) and \textsf{a} (\texttt{U+0061}) 
+are completely distinct, as (un)related as the characters \textit{a} and \textit{t} as far as the unicode is concerned.
 There is likewise
-no relationship between the characters \texttt{U+00E1} (\textit{\'a}) and  
-\texttt{U+00E9} (\textit{\'e}) or any other combination of stressed-vowel 
+no relationship between the characters \texttt{U+00E1} (\textsf{\'a}) and  
+\texttt{U+00E9} (\textsf{\'e}) or any other combination of stressed-vowel 
 precomposed characters. There is nothing in these characters that represents 
 categorical traits such as ``stressed" or ``unstressed" or ``vowel."  
 
 In effect, therefore, to include stress marking was to increase the size of the 
 alphabet from 29 to 34 atomic symbols, which
 in turn resulted in a considerable increase in the number of features, as the number features depended 
-directly on the size of the alphabet, as discussed in chapter~\ref{ch:experi}. It seems noteworthy 
-that his increase in information apparently did not result in an
-information overload. On the contrary, it led to models that were substantially 
-better than the models trained on the stressless transcriptions.  
+directly on the size of the alphabet, as discussed in chapter~\ref{ch:experi}. 
+
+It seems noteworthy 
+that this increase apparently did not result in an
+information overload---that is, that it did not, it would seem, 
+produce more noise than useful information, as the models trained on stress-marked transcriptions
+performed better than those trained on stressless transcriptions. 
+
+On the other hand, the presence of the all vowels in transcriptional was not always helpful. The 
+transcriptional vowels seems to have added considerable noise and complexity to the task of finding consonantal 
+roots, as explained in section \ref{sec:qual} 
+%to models that were substantially 
+%better than the models trained on the stressless transcriptions. 
 %It thus seems to have counteracted the decrease in performance that apparently 
 %resulted from the inclusion of non-stressed vowels in the stressless transcriptional data. 
 
