@@ -738,9 +738,16 @@ show no real difference in performance between the O and TS models.
 %(Their results do differ qualitatively, however, as discussed above in section~\ref{sec:qual}.) 
 This suggests that vowel symbols \emph{per se} are not necessarily 
 helpful to the task of inducing a model of Hebrew morphology. Indeed, 
-they appear to have been more harmful than helpful in this study. It should be 
-noted, however, that there are many possible ways to encode vowels in features, and 
-there could be feature formats that encode vowels to better effect than the present study's.
+they appear to have been more harmful than helpful in this study,
+particularly where finding roots was concerned. As discussed in section~\ref{sec:qual}, the presence of vowels in precedence features made these features less generalizable. 
+%They seem to have added considerable noise and complexity to the task of finding consonantal 
+%roots, 
+%It should be 
+%noted, however, that there are many possible ways to encode vowels in features. Perhaps there is a way to
+%encode vowels that is flexible---a feature encoding that can be g more general in some cases and more specific in others. 
+%way to encode vowels to better effect, a way perhaps that makes 
+%there could be feature-set formats that problems encountered in the present study
+%to better effect than the present study's.
 
 \emph{Second, the TS models outperformed the TR models by a substantial margin.} That is, 
 the transcriptions containing both stressed and unstressed vowels engendered better features than  the
@@ -765,16 +772,16 @@ In effect, therefore, to include stress marking was to increase the size of the
 alphabet from 29 to 34 atomic symbols, which
 in turn resulted in a considerable increase in the number of features, as the number features depended 
 directly on the size of the alphabet, as discussed in chapter~\ref{ch:experi}. 
-
 It seems noteworthy 
-that this increase apparently did not result in an
-information overload---that is, that it did not, it would seem, 
-produce more noise than useful information, as the models trained on stress-marked transcriptions
-performed better than those trained on stressless transcriptions. 
+that this particular increase apparently did not have a detrimental effect, %result in an
+%information overload---that is, that it did not, it would seem, 
+%produce more noise than useful information, 
+as the models trained on stress-marked transcriptions
+performed better than those trained on stressless transcriptions.  
 
-On the other hand, the presence of the all vowels in transcriptional was not always helpful. The 
-transcriptional vowels seems to have added considerable noise and complexity to the task of finding consonantal 
-roots, as explained in section \ref{sec:qual} 
+%On the other hand, the presence of all of the transcriptional vowels in transcriptional was not always helpful. The 
+%transcriptional vowels seems to have added considerable noise and complexity to the task of finding consonantal 
+%roots, as explained in section \ref{sec:qual}. 
 %to models that were substantially 
 %better than the models trained on the stressless transcriptions. 
 %It thus seems to have counteracted the decrease in performance that apparently 
