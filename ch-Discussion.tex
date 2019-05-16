@@ -1,67 +1,720 @@
 \chapter{DISCUSSION AND CONCLUSION}
 \label{ch:conclusion}
+
+%\begin{mdframed}
+%\begin{figure}
+%\begin{huge}
+%\textit{Summary Here, in this Poopy Box}
+%\begin{enumerate}
+%\item 
+In this thesis, I have proposed a \emph{multilinear} approach to the unsupervised learning of morphology (ULM).
+%(The primary research objective was thus to validate this proposal.)
+%\item %In chapters~\ref{ch:lit-review} and \ref{ch:graph}, 
+In motivating this approach, I introduced, initially in chapter~\ref{ch:intro}, the properties of the \emph{nonlinearity} 
+and \emph{nonsequentiality}. The key point was that they are the 
+essential properties of the autosegmental formalism, the very properties responsible for its
+ability to model nonconcatenative morphology. 
+%It followed that
+%these two properties should be present in an unsupervised morphological learning system if it
+%is to learn nonconcatenative morphology as well as concatenative.
+%\item 
+In chapter~\ref{ch:lit-review}, I further fleshed out the properties of nonlinearity and nonsequentiality
+by proposing a taxonomy for classifying previous approaches to ULM, 
+a taxonomy based on the terms \emph{nonlinearity} 
+and \emph{nonsequentiality} and their respective complements, that is, 
+\emph{linear-sequential}, \emph{linear-nonsequential}, \emph{nonlinear-sequential}, 
+and finally \emph{nonlinear-nonsequential}. 
+We saw that it is precisely the last category that is capable of handling
+noncatenative morphology. 
+%The conclusion of the first two chapters was thus that the properties of nonlinearity and nonsequentiality need to be present in a system meant to learn nonconcatenative morphology. 
+%Put another way, it advanced the hypothesis stated as proposition~\ref{prop:nlns} in chapter~\ref{ch:intro} and restated in subsequent chapters.
+
+%The key to the whole problem was to find a way to realize these two properties computationally.
+%\item 
+In chapter~\ref{ch:graph}, I showed that nonlinearity 
+and nonsequentiality map nicely onto the formal properties of \emph{bipartite} graphs.
+This correspondence between the properties of the autosegmental formalism and the properties of bipartite graphs was crucial because it provided a path for realizing nonlinearity 
+and nonsequentiality in a computational system. The path, in particular, was to use a bipartite graphical learning. I thus chose the bipartite Multiple Cause Mixture Model (MCMM) \citep{saund:94} to serve as the core learning model in an unsupervised morphological learning system called \emph{Multimorph}. Chapter~\ref{ch:MCMM} provided a detailed, multi-perspective discussion of the MCMM. We considered it  in both
+its neural-network and mixture-model contexts. We also discussed its structure, mathematics, and implementation.
+%\item 
+%Essentially, the solution was to choose a bipartite graphical learning algorithm. Enter the bipartite multiple cause mixture model (MCMM), which we explored in depth in chapter~\ref{ch:MCMM}. I thus choose the MCMM to serve as the learning model in the unsupervised morphological learning system called \emph{Multimorph}.
+%hence the connection between the autosegmental formalism and bipartite graphs.
+%\item results
+%\end{enumerate}
+%\end{huge}
+%\end{figure}
+%\end{mdframed}
+
+The first four chapters of this thesis compose a natural group, a Part 1. Its main concern was
+ establishing a logical link from autosegmental theory to a computational ULM system. Chapter~\ref{ch:MCMM}, the MCMM chapter,
+ was this first part's culmination. 
+The second part, %beginning with chapter~\ref{ch:experi},
+comprising chapters~\ref{autonomous} to \ref{ch:results}, was concerned with the \emph{testing} of the hypothesis advanced in the first part, that is, the hypothesis that nonlinearity and nonsequentiality together would enable a system to learn nonconcatenative morphology.
+This testing took the form of developing and evaluating an actual ULM system, namely Multimorph. 
+%However, even though its concerns were in some ways more pragmatic, this second part was by no means devoid of theoretical contribution.
+
+%\begin{enumerate}
+%\item 
+The contribution of chapter~\ref{autonomous} was to show that conventional morphemes cannot be the targets of unsupervised morphological learning, not as the task of ULM is typically construed, at any rate. The nature of ULM is such that ULM systems are constrained to  %, by the very nature of the task of ULM, 
+to level of \emph{automonous} morphological units, that is, %units of pure morphology, 
+units of form without meaning. 
+%The contribution of chapter~\ref{autonomous} was it showed that 
+The natural domain of ULM is thus the intermediate realm between phonology and syntax/semantics. 
+%and that ULM \emph{autonomous} therefore morphological units.
+%similar to Aronoff's morphomes \citep{aronoff:1994} rather than morphemes. 
+%\item 
+Chapters~\ref{ch:experi} and \ref{ch:eval} addressed the secondary research questions first stated in chapter~\ref{ch:intro}, namely the questions of features and input data representation (chapter~\ref{ch:experi}) and the problem of evaluating Multimorph's output (chapter~\ref{ch:results}). While these  questions had a certain air
+of pragmatism, %as their answers (or preliminary answers, at least) were prerequisites to building and testing Multimorph, 
+they were also theoretically important in their own right.
+%\item 
+Chapter~\ref{ch:results} presented the results. %motivated and described in chapter~\ref{ch:experi}.
+
+%We now revisit the questions of features, input data representation, and evaluation in order to offer concluding remarks for each.
+
+In the next three sections, namely sections~\ref{sec:concl-features}, \ref{sec:concl-data-rep}, and \ref{sec:concl-eval}, we revisit each secondary research question in turn and offer concluding remarks. Finally, section~\ref{sec:concl-final} offers a general conclusion. 
+% these questions further to be answered int build and evaluate Multimorph, but 
+%made the prediction that if a ULM system is based on a bipartite graph, then 
+%it would able to identify nonconcatenative morphological
+%units due to its very bipartiteness. 
+% , making 
+% Multimorph is a sort of \emph{proof of concept} for the 
+% computational implementation of autosegmental 
+% theory.
+%\end{enumerate}
+
+\section{The Question of Features}\label{sec:concl-features}
+%The qualitative results show the following bullshit:
+%Prec features are more important than pos where nonconcatenative morphs are concerned.
+%The quantitative results show the following bullshit:
+%What do they say about the importance of positional features?
+%Conclusions about the (differing) roles/significances of precedent features and positional features. 
+
+%\subsection{The role of positional features}
+It is actually rather difficult through manual inspection to find a cluster in which positional clusters make a real contribution. 
+%This is especially
+%true in transcriptional clusters. 
+It was initially hypothesized that positional clusters would play a substantial role in
+finding prefixes and suffixes. However, the qualitative analysis revealed that affixes tended to be captured through 
+precedence features; for example the prefix \textit{-\v{s}e} `that'  was often captured by the feature \texttt{\v{s}<e}. This is illustrated figure~\ref{fig:cluster-9-4-3-TS}, which shows the ten most-active centroid features of a \textit{-\v{e}} cluster.
+ Often, the centroids associated with transcriptional two-character prefixes---i.e., prefixes of the form
+$\alpha\beta$,
+where $\alpha$ is the first character, a consonant, and $\beta$ is the second, a vowel---
+contain one feature of the form 
+\begin{center}
+$\alpha$<$\beta$ 
+\end{center}
+and several of other \emph{low-activity} features
+of the forms 
+\begin{center}
+$\alpha$<$\gamma$ \quad and \quad $\beta$<$\gamma$  
+\end{center}
+where $\gamma$ is a character occurring later in the word within the range of $\delta$. These features apparently serve to reinforce the prefix status of the morph in question, as the characters of a prefix would regularly precede many different characters. It is presently not clear to me, however, why the $\alpha$<$\gamma$ features have such low activities, nor how these low activities (apparently) end up influencing the surface units $r_{i,j}$.
+
+We see the same pattern for suffixes, except that the components of the templates $\alpha$<$\gamma$ and $\beta$<$\gamma$ are flipped, becoming $\gamma$<$\alpha$ and $\gamma$<$\beta$, respectively, and $\gamma$ becomes a character occurring $\emph{earlier}$ in the word. In \ref{fig:cluster-9-4-3-TS}, we see several instances of the $\alpha$<$\gamma$ template, namely, \texttt{\v{s}<h}, \texttt{\v{s}<n}, etc. Figure~\ref{fig:cluster-5-4-3-TS} shows the most active centroid features for a cluster corresponding to the feminine plural suffix \textit{\'{o}t}. It shows examples of both $\gamma$<$\alpha$ and $\gamma$<$\beta$ types.
+
+\begin{figure}[!t] 
+\begin{mdframed}
+{\LARGE \textbf{\v{s}e-}} \hfill \large{$s=\textbf{4}, \delta=\textbf{3}$} \hfill Cluster 9\\
+\vspace{-6pt}
+\begin{normalsize}
+\begin{tabbing}
+\hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \= \hspace{5ex} \= \hspace{10ex} \= \hspace{5ex} \= \hspace{10ex} \= \hspace{5ex} \= \hspace{9ex} \kill
+%4_3_cluster_9 \\
+\texttt{\v{s}<e} \> (1.0000) \> \texttt{d}@\texttt{[3]} \> (1.0000) \> \texttt{v<a} \> (0.4972) \> \texttt{\v{s}<h} \> (0.1047) \> \texttt{\v{s}<n} \> (0.0515) \\ 
+\texttt{\v{s}<t} \> (0.0468) \> \texttt{\v{s}<o} \> (0.0434) \> \texttt{\v{s}<\textipa{P}} \> (0.0406) \> \texttt{\v{s}<y} \> (0.0376) \> \texttt{\v{s}<b} \> (0.0334)
+\end{tabbing}
+\end{normalsize}
+\label{fig:cluster-9-4-3-TS}
+\caption{Ten most active features of cluster $k = 9$ generated at the settings $\langle{s}=4,\delta=3\rangle$, data type: TS}
+\end{mdframed}
+\end{figure}
+
+\begin{figure}[ht] 
+\begin{mdframed}
+{\LARGE \textbf{-\'ot}} \hfill {\large$s=\textbf{4}, \delta=\textbf{3}$} \hfill Cluster 5\\
+%4_3_cluster_5 \\
+\vspace{-10pt}
+\begin{normalsize}
+\begin{tabbing}
+\hspace{6ex} \= \hspace{9.5ex} \= \hspace{7ex} \= \hspace{10ex} \= \hspace{7ex} \= \hspace{10ex} \= \hspace{5ex} \= \hspace{9.5ex} \= \hspace{5ex} \= \hspace{8ex} \kill
+\texttt{\a'{o}<t} \> (1.0000) \> \texttt{x}@\texttt{[0]} \> (1.0000) \> \texttt{\a'{a}}@\texttt{[-4]} \> (0.9624) \> \texttt{n<\a'{o}} \> (0.1189) \> \texttt{r<\a'{o}} \> (0.1001) \\
+ \texttt{l<\a'{o}} \> (0.0671) \> \texttt{q<\a'{o}} \> (0.0561) \> \texttt{o<\a'{o}} \> (0.0472) \> \texttt{q<t} \> (0.0343) \> \texttt{d<\a'{o}} \> (0.0337)
+ \end{tabbing}
+ \end{normalsize}
+\label{fig:cluster-5-4-3-TS}
+\caption{Ten most-active features of cluster $k = 5$ generated at the settings $\langle{s}=4,\delta=3\rangle$, data type: TS}
+\end{mdframed}
+\end{figure}
+Even in the orthographic clusters, positional features rarely play a major role in representing affixes. 
+%Usually, precedence features just in the transcriptional clusters, as in figure~\ref{fig:cluster-0-2-3-O}. 
+This is particularly significant because affixes in the orthographic data often consist of a single character; for example, the prefix \textit{be-} `in' is simply \textit{b-} in the orthographic data. The most active centroid features of a cluster corresponding to this very prefix are shown in figure~\ref{fig:cluster-2-2-2-O}. Figure~\ref{fig:cluster-16-2-3-O} shows a relatively rare instance of an affix cluster being represented by a positional feature, namely  \texttt{h}@\texttt{[0]}.
+\begin{figure}[ht] 
+\begin{mdframed}
+{\LARGE \textbf{-\'{o}t}} {\large\,\,\, (-wt)} \hfill \large{$s=\textbf{2}, \delta=\textbf{3}$} \hfill Cluster 0\\
+\vspace{-10pt}
+\vspace{3pt}
+\begin{normalsize}
+\begin{tabbing}
+%4_3_cluster_0 \\
+\hspace{6ex} \= \hspace{9.5ex} \= \hspace{6ex} \= \hspace{9.5ex} \= \hspace{6ex} \= \hspace{9.5ex} \= \hspace{6ex} \= \hspace{9.5ex} \= \hspace{5ex} \= \hspace{9ex} \kill
+%% 0
+\texttt{w<t} \> (1.0000) \> \texttt{t}@\texttt{[-2]} \> (0.9608) \> \texttt{r<t} \> (0.1149) \> \texttt{n<t} \> (0.0676) \> \texttt{m<t} \> (0.0524) \\
+\texttt{y<t} \> (0.0409) \> \texttt{p<t} \> (0.0360) \> \texttt{x<t} \> (0.0329) \> \texttt{k<t} \> (0.0314) \> \texttt{g<t} \> (0.0283)
+\end{tabbing}
+\label{fig:cluster-0-2-3-O}
+\caption{Ten most-active features of cluster $k = 0$ generated at the settings $\langle{s}=2,\delta=3\rangle$, data type: orthographic}
+\end{normalsize}
+\end{mdframed}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{mdframed}
+{\LARGE \textbf{b-}}  {\large\,\,\, (b-)} \hfill {\large$s=\textbf{2}, \delta=\textbf{2}$} \hfill Cluster 2\\
+\vspace{-10pt}
+\begin{normalsize}
+\begin{tabbing}
+\hspace*{14ex}\= \hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex} \kill
+%bbmqwmi \> bwbh \> blxlb \> blk \> bnkh \> bnq \\
+%bewm \> blicni \> bdea \> bhtxlh \> brz \> byininim \\
+%bqe \> bgn \> bwnwt \> bsbwn \> bgdwl \> bbebi \\
+%blyh \> bpincvh \> bldbr \> badmh \> bqiic \> bsmkh \\
+%bqwbiwt \> bqibwc \> bamcy \> bldpwq \> bplsvr \> biminw \\
+\textbf{b}klwb \> \textbf{b}wwidaw \> \textbf{b}prx \> \textbf{b}lxi \> \textbf{b}aizh \> \textbf{b}erwtim \\
+\textbf{b}qiwn \> \textbf{b}chwb \> \textbf{b}qieqwe \> \textbf{b}msilh \> \textbf{b}lndnd \> \textbf{b}qvlwg \\
+\textbf{b}lkbwd \> \textbf{b}xeml \> brwwz \> \textbf{b}ambviwt \> \text{b}nqi \> \textbf{b}mgirh \\
+\textbf{b}lbn \> \textbf{b}kis \>\textbf{b}mql \> bhlt \> \textbf{b}iwnim \>\textbf{b}cwhwriim \\
+brwrim \> \textbf{b}spinwt \> \textbf{b}la \> bwbwt \> \text{b}yli \> \textbf{b}yer
+\end{tabbing}
+%\label{fig:cluster-2-2-2}
+%\caption{30 words randomly selected from the 1000 members of cluster 2 from the settings $s=2,\delta =2$, data representation: O}
+%\end{mdframed}
+%\end{figure}
+\end{normalsize}
+\vspace{-3pt}
+\begin{mdframed}
+\begin{small}
+\textit{Ten most active centroid features}
+\begin{tabbing}
+%4_3_cluster_0 \\
+\hspace{6ex} \= \hspace{9.5ex} \= \hspace{6ex} \= \hspace{9.5ex} \= \hspace{6ex} \= \hspace{9.5ex} \= \hspace{6ex} \= \hspace{9.5ex} \= \hspace{6ex} \= \hspace{9.5ex} \kill
+%% \> 2 \> s \> = \> 2 \> delta \> = \> 2
+% Most Active
+\texttt{a}@\texttt{[0]} \> (1.0000) \> \texttt{b<b} \> (0.0618) \> \texttt{b<c} \> (0.0214) \> \texttt{b<d} \> (0.0200) \> \texttt{b<g} \> (0.0184) \\
+ \texttt{b<t} \> (0.0174) \> \texttt{b<p} \> (0.0170) \> \texttt{b<x} \> (0.0148) \> \texttt{b<h} \> (0.0140) \> \texttt{b<z} \> (0.0121)
+\end{tabbing}
+\end{small}
+\end{mdframed}
+\vspace{-6pt}
+\label{fig:cluster-2-2-2-O}
+\caption{Thirty words randomly selected from the 1000-member cluster $k = 2$, which was generated at the settings $\langle{s}=2,\delta=2\rangle$, data type: orthographic}
+\end{mdframed}
+\end{figure}
+
+%\begin{figure}[ht] 
+%\begin{mdframed}
+%{\LARGE \textbf{b-}}  {\large\,\,\, (b-)} \hfill {\large$s=\textbf{2},\delta=\textbf{2}$} \hfill Cluster 2\\
+%\vspace{-10pt}
+%\begin{normalsize}
+%\begin{tabbing}
+%%4_3_cluster_0 \\
+%\hspace{6ex} \= \hspace{9.5ex} \= \hspace{6ex} \= \hspace{9.5ex} \= \hspace{6ex} \= \hspace{9.5ex} \= \hspace{6ex} \= \hspace{9.5ex} \= \hspace{6ex} \= \hspace{9.5ex} \kill
+%%% \> 2 \> s \> = \> 2 \> delta \> = \> 2
+%% Most Active
+%\texttt{a}@\texttt{[0]} \> (1.0000) \> \texttt{b<b} \> (0.0618) \> \texttt{b<c} \> (0.0214) \> \texttt{b<d} \> (0.0200) \> \texttt{b<g} \> (0.0184) \\
+% \texttt{b<t} \> (0.0174) \> \texttt{b<p} \> (0.0170) \> \texttt{b<x} \> (0.0148) \> \texttt{b<h} \> (0.0140) \> \texttt{b<z} \> (0.0121)
+%\end{tabbing}
+%\end{normalsize}
+%\label{fig:cluster-2-2-2-O}
+%\caption{Ten most-active features of cluster $k = 2$ generated at the settings $\langle{s}=2,\delta=2\rangle$, data type: orthographic}
+%\end{mdframed}
+%\end{figure}
+
+\begin{figure}[ht] 
+\begin{mdframed}
+{\LARGE \textbf{hi-}} {\large\,\,\, (h-)} \hfill \large{$s=\textbf{2}, \delta=\textbf{3}$} \hfill Cluster 16\\
+\vspace{-6pt}
+\begin{normalsize}
+\begin{tabbing}
+%4_3_cluster_0 \\
+\hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \kill
+%## 16
+%Most Active
+\texttt{h}@\texttt{[0]} \> (1.0000) \> \texttt{h<g} \> (0.9271) \> \texttt{g<i} \> (0.5658) \> \texttt{g<b} \> (0.1659) \> \texttt{g<d} \> (0.1501) \\
+\texttt{g<n} \> (0.1122) \> \texttt{a<g} \> (0.1059) \> \texttt{g<t} \> (0.1056) \> \texttt{g<m} \> (0.0937) \> \texttt{g<y} \> (0.0724)
+\end{tabbing}
+\end{normalsize}
+\label{fig:cluster-16-2-3-O}
+\caption{Ten most-active features of cluster $k = 16$ generated at the settings $\langle s=2,\delta=3 \rangle$, data type: orthographic}
+\end{mdframed}
+\end{figure}
+
+Thus, positional features do not appear to be particularly useful in representing morphs. In most cases, precedence features appear to be the preferred buildings both for nonconcatenative and concatenative morphs. However, see section~\ref{sec:concl-trans-data} for a discussion of some problems involving precedence features.
+%blocMultimorph appears
+%to have preferred precedence features in most cases: In chapter~\ref{ch:results}, we saw how Multimorph used precedence features to represent nonconcatenative morphs, and in the present section, we saw that it also tended to use them to represent concatenative morphs, that is, prefixes and suffixes. Multimorph appears to have found a way to represent most morph varieties through precedence features. 
+
+\section{The Question of Data Representation}\label{sec:concl-data-rep}
+None of the three input-data representations proved to be ideal, as 
+all three proved to have significant disadvantages.
+These disadvantages
+are evident in both the qualitative and quantitative results.
+\subsection{Orthographic Data}
+The orthographic data representation was the standard writing system of Modern Hebrew
+(i.e., Romanized version of this system), which tends not to express vowels,
+as discussed in chapter~\ref{ch:experi}. This lack of dedicated vowel symbols was a disadvantage in some ways, but an an advantage in others. It was a disadvantage in that it
+prevented the orthographic models from discovering many of the vowel patterns that the transcriptional models
+did find. 
+At the same time, however, the orthographic models discovered more root clusters than the transcriptional models, the lack of vowel symbols probably making the consonantal roots more detectable. 
+The quantitative results in chapter~\ref{ch:eval} show that the orthographic models performed 
+as well as the TS models (the models obtained from the transcriptional, stress-marked data) and substantially better than
+than the TR models (those obtained from the stressless transcriptions).
+
+\subsection{Transcriptional Data} \label{sec:concl-trans-data}
+As explained in chapter~\ref{ch:experi}, the transcriptional alphabets were much larger than the orthographic alphabet.
+While the orthographic alphabet had only 22 symbols, the transcriptional alphabets---TR and TS---had 34 and 39 symbols, respectively. 
+%The additional symbols in the and 39 with stress symbols and the transcriptional alphabet with stress marking had 39 symbols the additional symbols included the vowels the five vowels as well as stressed about as in the case of capital T capital s 
+I sought to determine whether the additional symbols in the transcriptional alphabets---primarily the vowels---would benefit or hurt the system's ability to learn morphology.
+
+%The qualitative analysis of the clusterings found transcriptional root clusters to be fewer in number and, in general, of a somewhat poorer quality than the orthographic root clusters. for example, a careful analysis of the BLK cluster---a sample from its component words is presented as an example in the previous chapter---revealed that a large majority of its words contained the letter i. This prevalence of i is direct reflection of the features in this cluster’s centroid vector; in particular, the most active of which was d<i. and this cluster centroid is DD less than I it's activity is a perfect one which is greater even then he activity of the future \texttt{l<q}.
+
+In chapter~\ref{ch:experi}, we saw that the reference to specific vowels in features can hinder an MCMM's ability to generalize. Recall, for instance, the case of the \texttt{d.l.q} cluster from chapter~\ref{ch:experi}. The prevalence 
+of \textit{i} in the sampled words was a direction reflection of the prominence of \textit{i}-referencing features in this cluster's centroid, namely the maximally active \texttt{d<i} and the moderately active \texttt{\'{i}<q} (see figure~\ref{fig:cluster-19-2-3-TS} in section~\ref{sec:qual}).
+
+Even though vowels are can be detrimental, however, they can also be helpful. For example, the transcriptional models would never have found morphs like the nonconcatenative vowel-pattern morph \textit{a\_\'{e}} (see figure~\ref{fig:cluster-0-2-3-TS} in chapter~\ref{ch:results}) or \textit{-\'{e}\_et}, the discontinuous ending of  feminine singular participles, e.g., \textit{medab\'{e}ret} `she is speaking.' The ten most active features for \textit{-\'{e}\_et} are displayed in figure~\ref{fig:cluster-0-4-3-TS} in the present chapter.
+%\footnote{The
+%latter was the \emph{first} cluster generated from the TS data at the settings $s=4,\delta=3$.} 
+%The  is particularly interesting because it involves both vowels and a consonant.
+%Its ten most-active features are shown in figure~\ref{fig:cluster-0-2-3-TS}.
+%and nonconcatenative ending \textit{-\'{e}\_et} of feminine singular participles, e.g., \textit{medab\'{e}ret} `she is speaking.'\footnote{The latter was the \emph{first} cluster generated from the TS data at the settings $s=4,\delta=3$.} The latter case is particularly interesting because it involves both vowels and a consonant.
+
+\begin{figure}[t] 
+\begin{mdframed}
+{\LARGE\textbf{\'{e}\_et}} \large{\hfill $s=\textbf{4},\delta=\textbf{3}$} \hfill cluster 0
+\vspace{3pt}
+\begin{tabbing}
+%4_3_cluster_0 \\
+\hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \kill
+\texttt{\a'{e}<t} \> (1.0000) \> \texttt{e<t} \> (1.0000) \> \texttt{x}@\texttt{[0]} \> (1.0000) \> \texttt{z}@\texttt{[0]} \> (0.9962) \> \texttt{\textipa{Q}}@\texttt{[3]} \> (0.9882) \\
+ \texttt{\a'{e}<e} \> (0.9815) \> \texttt{o<\a'{e}} \> (0.1847) \> \texttt{r<e} \> (0.1098) \> \texttt{v<e} \> (0.0945) \> \texttt{l<e} \> (0.0854)
+\end{tabbing}
+\label{fig:cluster-0-4-3-TS}
+\caption{Ten most-active features of the first cluster (cluster $k = 0$) generated at the settings $\langle{s}=4,\delta=3\rangle$, data type: transcriptional with stress marking}
+\end{mdframed}
+\end{figure}
+
+
+An interesting avenue for future work would be to devise features with more general references to vowels, for instance 
+\begin{center}\texttt{d<V} and \texttt{\'{V}<q}\end{center}
+ where 
+ \texttt{V} would represent the \emph{set} of stressless vowels, and \texttt{\'{V}} the set of stressed vowels. In regular-expression terms, therefore, we would have (in the case that $\delta = 2$)
+ \begin{align}
+ \texttt{d<V} &= \texttt{d.?[aeiou]} \\
+  \texttt{d<\'{V}} &= \texttt{d.?[\'{a}\'{e}\'{i}\'{o}\'{u}]}
+ \end{align}
+ There could be also be a category for both stressed and stressless vowels. In fact, there would be endless possibilities for defining character classes, but the most important character classes where Semitic morphology is concerned would likely consist of either consonants or vowels. 
+ 
+ The challenge in devising such features would be striking the right balance between generality and specificity.
+ For example, with the current features, Multimorph was able to find distinct clusters corresponding to the morphs
+ \textit{-\'{i}t} (feminine singular adjectival suffix) and \textit{-\'{o}t} (feminine plural suffix for nominals in general).
+ Without reference to specific vowels, Multimorph would not have been able to distinguish these two morphs. 
+
+%The quantitative results clearly show the models derived transcriptional data to be the
+%worst-performing models overall.
+
+\section{The Question of Evaluation}\label{sec:concl-eval}
+As explained in chapter~\ref{ch:eval}, because of the inherent difficulties involved in evaluating a system like  Multimorph, I took an approach comprising three different and complementary sub-approaches. These included a qualitative approach, an intrinsic quantitative approach, and an extrinsic quantitative approach. 
+%Chapter presented results from each of these methods. 
+\subsection{Qualitative Evaluation}
+The qualitative observations insection \ref{sec:qual} shed considerable light on the quantitative results, that is, the intrinsic results in tables~\ref{tab:intr-500} and \ref{tab:intr-1000}, and the extrinsic results in table~\ref{tab:extr-results-1000}. For instance, the qualitative analyses of the clusters corresponding to the roots \textit{\textipa{P}.k.l} (or \textit{a.k.l}) and \textit{d.l.q} help explain the relatively high quantitative scores of the orthographic models:
+%The qualitative analysis suggests that 
+Sometimes the additional information provided by transcriptional vowels is irrelevant and thus tantamount to disinformation. 
+
+\subsection{Intrinsic Evaluation}
+%\subsubsection{}
+The very fact that the gold-standard mapping was necessary supports the idea of autonomous morphology and the existence of units like morphomes.
+There is a clear disconnect between BLC's morphosyntactic categories and the form-based categories that Multimorph learned.
+ Section~\ref{sec:gld-std-classes}, in detailing the category mappings, demonstrates the reality of the form paradigm and the gap that separates it from the content paradigm and its morphosyntactic categories. Moreover, they demonstrate that form-based categories exist independently of Multimorph; that is, they are not merely ad-hoc categories invented for the sake of Multimorph. At the very least, the mappings demonstrate a disparity between form and meaning that needs to be explained.
+
+The mappings were by no means perfect, however; while they produced gold-standard classes that were more
+form-based than the original morphosyntactic categories were, they did not constitute a complete transformation
+to autonomous morphological categories. This would have involved deciding the precise identity of each autonomous morphological category, which would have been beyond the scope of this thesis. Moreover, deciding ``correct'' categories ahead of time in any way would have been contrary to the exploratory nature of Multimorph's task. Thus, an intrinsic evaluation in Multimorph's case was never going to be ideal
+
+In this study's intrinsic results, the instrinsic evalutation metrics do sometimes accurately describe what is going on in a given cluster. But in other cases, they do not. Consider, for example, the purity results in table~\ref{tab:best-purities}. The purity scores for the clusters 0 through 4 accurately describe the contents of their respective clusters. This is because the most frequent gold-standard class in each of these cases happened to correspond with the aspect of form that Multimorph's MCMM found to be most salient in that case.
+Cluster 43 presents a different scenario, however. Its purity score is quite low. However, if one manual inspect this cluster's member words, a random sample of which is given in figure~\ref{fig:cluster-43-2-2-TS}, one finds a remarkable degree of coherence. Very nearly all of the words in 
+figure~\ref{fig:cluster-43-2-2-TS}, have \textsf{\'{o}} in the final syllable. These \textsf{\'{o}}'s do not all correspond to the same morphosyntactic category, but they could be the same morphome. The point is that we cannot really say whether or not this is a valid cluster because we cannot say for certain which character subsequences are morphs/morphomes and which are not. In some cases we have a fairly good idea as to whether a given subsequence is morph/morphome, but not in every case at this time.
+
+%it accurately captures  itis thus never going to be 
+%Some of gold-standard classes map follow form more closely than others. correspond to aspects of form than others. actual formal distinctions more faithfully than others. 
+%In some cases, the disparities between content paradigm and form paradigm were entirely
+%eliminated, resulting in  perfect (or nearly perfect) one-to-one correspondences between gold-standard classes and aspects of form. Among these cases was the gold-standard class \texttt{m\%pl}, derived from the original categories \texttt{masculine} and \texttt{plural}. It corresponds uniquely to the ending \textit{-\'{i}m}. Other examples are
+%the prefixal-particle class \texttt{pre:we} (\textit{we-} `and') and \texttt{pre:ha} (\textit{ha-} `the'), which, as it happens are original categories; for the most part, the prefixal particle categories were already form-based and thus required no modification. Gold-standard classes like these---classes that uniquely match a particular aspect of form---are generally the classes associated with the highest Purity scores. This is illustrated in table~\ref{tab:best-purities}.
+%Cluster $k = 0$, for instance, corresponds to the gold-standard class \textit{pre\%we} with a purity of virtually 100 percent. This means that the gold-standard label \texttt{pre\%we} is attached to nearly 100 percent of the words in this
+%cluster. 
+% which shows the purities of a particular clustering's oldest (that is, the first) five clusters.
+% particular clustering. generated at
+%$\langle{s} = 2, \delta = 2\rangle$.
+%   some of the BLC's original categories already matched formal distinctions, and thus required little or no modification. These included the prefixal particle categories such as \textit{we-} `and,' \textit{ha-} `the,' and \textit{\v{s}e-} `that, which,'
+%On the other hand
+%of the original BLC categories already matched morph que the distribution of formal elements, forming 
+%nearly one-to-one correspondences to major formal elements, e.g.,
+%\begin{itemize}
+%\item the prefix \textit{we-} `and'
+%\item the masc. plural suffix \textit{-im}
+%\item the definite article prefix \textit{ha-}
+%\end{itemize}
+\begin{table}[t]
+\centering
+\setlength{\extrarowheight}{6pt}
+\begin{tabular}{cccc}
+\toprule
+$k$ &  Size & Purity & Most Frequent Gold-Std Classes (with frequencies) \\
+\midrule
+0 & 1218 & 0.9992 & \texttt{pre\%we} (1217),\, \texttt{f\%sg} (157), \,\texttt{n\%m\%sg} (154) \\
+1 & 1111 & 0.9388 & \texttt{m\%pl} (1043), \,\texttt{pre:ha} (206), \,\texttt{pre:mi} (160) \\
+2 & 450 & 0.8711 & \texttt{f\%sg} (392), \, \texttt{qal\%particle} (121), \, \texttt{pre:mi} (112) \\
+3 & 1498 & 0.9559 & \texttt{pre:ha} (1432), \, \texttt{f\%sg} (363), \, \texttt{n\%m\%sg} (321) \\
+4 & 1093 & 0.8216 & \texttt{pre:mi} (898), \, \texttt{f\%sg} (312), \, \texttt{pre:ha} (217) \\
+\vdots & \vdots & \vdots & \vdots \\
+43 & 995 & \textbf{0.1822} & \texttt{pre:ha} (174), \, \texttt{f\%pl}  (172), \, \texttt{ptn:CaCoC} (163) \\
+\bottomrule
+\end{tabular}
+\label{tab:best-purities}
+\caption{Purities of the oldest (i.e., first) five clusters in a clustering generated at $\langle{s} = 2, \delta = 2\rangle$ from the TS dataset.}
+\end{table}
+%However, some gold-standard classes fail to a just a straightforward, one-to-one mapping.  %to aspects of form
+%Consider, for example, the purity results in \ref{tab:not-so-good-purities}. 
+
+%\begin{figure}[t]
+%\begin{mdframed}
+%\begin{small}
+%\texttt{Cluster 0043;  size:  955;  Purity: 0.1822;}\qquad\texttt{pre:ha (174), f\%pl (172), ptn:CaCoC (163)}
+%\end{small}
+%\end{mdframed}
+%\vspace{-3pt}
+%\begin{mdframed}
+%\begin{tabbing}
+%\hspace*{14ex}\= \hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex} \kill
+%be\textipa{P}awir\a'{o}n \> hatarneg\a'{o}l \> wehacip\a'{o}r \> yar\a'{o}q \> lic\textipa{Q}\a'{o}q \> ule\v{s}al\a'{o}m \\
+%hari\textipa{P}\v{s}\a'{o}n \> bayar\a'{o}q \> hame\textipa{P}ora\textsubdot{k}\a'{o}t \> we\textipa{P}ecba\textipa{Q}\a'{o}t \> wehayelad\a'{o}t \> \v{s}ax\a'{o}r \\
+%mela\textipa{Q}a\textsubdot{s}\a'{o}t \> be\v{s}al\a'{o}\v{s} \> be\textipa{P}ez\a'{o}r \> kam\a'{o}\textsubdot{k} \> \textipa{P}egz\a'{o}z \> gab\a'{o}t \\
+%ha\textsubdot{s}mal\a'{o}t \> gad\a'{o}l \> hagag\a'{o}t \> weta\textipa{Q}av\a'{o}d \> weha\v{s}a\textipa{Q}\a'{o}n \> ti\textsubdot{k}t\a'{o}v \\
+%\textipa{P}emz\a'{o}g \> ba\textipa{Q}ipar\a'{o}n \> bal\a'{o}nim \> wexal\a'{o}n \> \textipa{P}av\a'{o}\textipa{P} \> ledma\textipa{Q}\a'{o}t 
+%\end{tabbing}
+%%\vspace{-3pt}
+%%\begin{mdframed}
+%%\begin{small}
+%%\textit{Ten most active centroid features}
+%%\begin{tabbing}
+%%%4_3_cluster_0 \\
+%%\hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \kill
+%%\texttt{\v{s}}@\texttt{[-2]} \> (1.0000) \> \texttt{a<\a'{o}} \> (0.8188) \> \texttt{r<\a'{o}} \> (0.1294) \> \texttt{\a'{o}<n} \> (0.1146) \> \texttt{\a'{o}<r} \> (0.1024) \\
+%%\texttt{x<\a'{o}} \> (0.0953) \> \texttt{m<\a'{o}} \> (0.0761) \> \texttt{\a'{o}<m} \> (0.0759) \> \texttt{l<\a'{o}} \> (0.0676) \> \texttt{v<\a'{o}} \> (0.0556)
+%%\end{tabbing}
+%%\end{small}
+%%\end{mdframed}
+%\label{fig:cluster-43-2-2-TS}
+%\caption{30 words randomly selected from the 955 members of cluster 43, generated at the settings $s=2,\delta =2$, data representation: TS}
+%\end{mdframed}
+%\end{figure}
+%
+%
+%\begin{table}[t]
+%\centering
+%\setlength{\extrarowheight}{10pt}
+%\begin{tabular}{cccc}
+%\toprule
+%$k$ & Size & Purity & Most Frequent Gold-Std Classes (with frequencies) \\ 
+%\midrule
+%12 & 632 & 0.5665 & \texttt{qal\%participle} (358), \, \texttt{f\%sg} (165), \, \texttt{part\%m\%sg} (144) \\\hline
+%13 & 1178 & 0.3744 & \texttt{qal\%suffix\_stem} (441),  \, \texttt{f\%sg} (257), \, \texttt{pre:ha} (208) \\\hline
+%20 & 536 & 0.3881 & \texttt{fut\%1\%sg }(208), \, \texttt{qal\%prefix\_stem} (86), \, \texttt{m\%sg} (78) \\\hline
+%24 & 188 & 0.6755 & \texttt{past\%1\%pl} (127), \, \texttt{qal\%suffix\_stem} (76), \, \texttt{pre:sh} (32) \\\hline
+%25 & 492 & 0.6301 & \makecell{\texttt{fut\%(2\%M)|(23\%f)} (310), \, \texttt{fut\%2\%f\%sg} (288), \\ \texttt{qal\%prefix\_stem} (176)} \\
+%\bottomrule
+%\end{tabular}
+%\label{tab:not-so-good-purities}
+%\caption{Selected cluster purities from a clustering generated at $\langle{s} = 2,\delta = 2\rangle$ from the TS dataset.}
+%\end{table}
+
+%\begin{table}
+%\scriptsize
+%\begin{tabular}{cccc}
+%\makecell{Cl. \\ ID} & Size & Purity & Most Frequent Categories \\ \hline
+%12 & 632 & 0.5665 & \makecell{\texttt{qal%particle} (358), \texttt{f\%sg} (165), part:m:sg (144)} \\
+%13 & 1178 & 0.3744 & \makecell{qal:suffix-stem (441), \texttt{f\%sg} (257), \texttt{pre:ha} (208) }\\
+%20 & 536 & 0.3881 & \makecell{fut:1:Sg (208), qal:prefix-stem (86), m:sg (78) }\\
+%24 & 188 & 0.6755 & \makecell{past:1:Pl (127), qal:suffix-stem (76), pre:sh (32)} \\
+%25 & 492 & 0.6301 & \makecell{fut:(2:M)|(23:F) (310), fut:2:\texttt{f\%sg} (288), \\ qal:prefix-stem (176)} \\
+%\end{tabular}
+%\label{tab:not-so-good-purities}
+%\caption{Selected cluster purities from a clustering generated at $\langle{s} = 2,\delta = 2\rangle)$ from the TS dataset.}
+%\end{table}
+
+
+The qualitative analysis presented in section~\ref{sec:qual} seems to suggest that positional features are relatively ineffectual (compared to precedence features, that is). The instrinsic results, however, suggest that they must be doing something. That is, in tables~\ref{tab:intr-500} and \ref{tab:intr-1000}, the Purity and F scores both tend to be higher when $s > 0$ than when $s = 0$. At the same time, however, the \emph{best} scores tend to occur when $s$ is \emph{small}, that is, when $s = 2$ for the transcriptional data and $s=1$ for the orthographic data. A smaller $s$ value means that the reach of positional features is limited to the edges of words. A smaller $s$ value also corresponds to a smaller number of positional features. Therefore, while the intrinsic results indicate that the positional features have some value, they also suggest that this value is limited, as the best scores tend to occur when the influence of positional features is present but small.
+
+% gap between content and form paradigms is real, that form cells are legitimate categories, and that the gap between content and form cells needs to be explained disparity that exists independently of Multimorph. mdescribing the mappings between the BLC's as there often is between morphosyntactic categories and form-based equivalence classes (see section~\ref{}). are based exclusively on similarities
+%in form.
+\subsection{Extrinsic Evaluation}
+The extrinsic evaluation component was motivated by the following hypothesis:
+\begin{quotation}\noindent
+Multimorph will produce useful intermediate morphological units, i.e., units that reduce the
+complexity of an input wordlist in a way that is helpful to a downstream process.
+\end{quotation}
+% that Multimorph could aid a downstream process by preprocessing---pre-digesting, as it were---the downstream process's input. 
+ It would thus function in a way similar to the morphomic layer discussed in chapter~\ref{autonomous}. As stated in chapter~\ref{ch:results}, the results displayed in table~\ref{tab:extr-results-1000} do not support this hypothesis, however, as the control models outperform the experimental ones in every experimental trial. 
+
+However, the contribution of the extrinsic evaluation transcends the numerical results.
+It in fact makes two contributions, both involving the \emph{four-stage process} presented in section~\ref{sec:eval-extrinsic}.
+
+\emph{First, the four-stage process is itself a contribution.}
+We established see chapter~\ref{autonomous} that the output of a ULM system necessarily consists of \emph{autonomous} morphological units.
+% pure form and thus independent of meaning produced by an unsupervised morphological learning system. 
+As explained in chapter~\ref{ch:eval}, the evaluation of such output is problematic: Unsupervised learning algorithms are in general difficult to evaluate to due to a lack of an obvious gold-standard. This difficulty is compounded in the case of ULM due to the hidden, intermediate nature of autonomous morphological units and the still-emerging status of the study of autonomous morphology as a field.  Therefore, the task of the learning algorithm in a ULM system is even especially exploratory, perhaps more so than usual. than is typically the case, %The four-stage process is a procedure for evaluating the autonomous morphological units 
+In presenting the novel four-stage process, this thesis offers a solution to these problems. As an extrinsic method, the four-stage process is well-suited to the intermediate nature of autonomous morphological units. 
+Moreover, it is a fully worked-out, fully functional computer program; it has been coded and successfully executed. The input, internal processing, and output of each stage are described in detail in section~\ref{sec:eval-extrinsic}. Other researchers can regard it as a functional prototype that they can be further develop and modify, either to improve it or adapt it to fit their particular experimental setup (or both).
+
+\textit{Second}, the four-stage process provides a means for transforming a clustering algorithm into an unsupervised morphological segmentation system, that is, a means of converting a clustering into segmentations. % into morphs represented as \emph{strings} and then segmentin% ---initially encoded in the$\textbf{M}$ and $\textbf{C}$ matrices, into morphs represented \emph{strings}, The string representations  can then be used by a downstream application or easily interpreted by a human 
+%In working out the four-stage process and describing it in detail stage by stage, This thesis offers a solution to these problems, an evaluation method tailored to the suit the nature of autonomous morphological units. 
+%%in effect, bypasses the problems mentioned in REF. 
+%The four-stage process is a real computational process, one implemented in computer code and executed; 
+
+One issue that we have not yet addressed is the suitability of Morfessor as the extrinsic evaluation's downstream process. 
+One ostensible downside to using Morfessor is its inability to handle nonconcatenative morphology. However, Stage three, by converting discontinuous morphs into atomic symbols, obliterates interdigitation.  Atomic symbols are monolithic and cannot be interleaved. 
+%Interleaving requires multiple “leaves,” so to speak—i.e., multiple pieces that can be moved around. 
+Therefore, the compression component of Stage 3 \emph{entails} an ``unwinding" of the morphology regardless of the downstream application and its capabilities. Morfessor’s inability to identify nonconcatenative morphs is moot.
+
+%Thus, Morfessor’s inability to model nonconcatenative morphology is moot, since Multimorph’s analyses would have had to be flattened in any case as a basic component of the process, that is, the packaging and shipping of Multimorph’s output to the downstream application (or more generally, the morphosyntactic level of language-processing).
+
+Note that Stage 3 thus makes a tacit theoretical claim. It claims that morphs are hierarchical to some extent; that is, elemental morphs can be composed of smaller morphs, but these morphs fuse together in a way that makes them inaccessible above the level of stem-derivation. Thus, they cannot be accessed at the inflectional level. %Within stems, derivational morphs can combine in a noncatenative manner,  The stem-external realm is the realm of inflection, which is the domain of concatenative morphology. See the discussion of composite morphs in chapter 5.
+
+The other ostensible downside of using Morfessor is that 
+Morfessor is also an unsupervised morphological leaner in the 
+standard sense of the term (see chapter~\ref{ch:experi}), 
+and it thus cannot serve as a true morphosyntactic module.
+Like Multimorph, it takes as input a list of independent word tokens.
+And thus, like Multimorph, it operates at the level of autonomous morphology, 
+Ideally, Multimorph’s downstream process should have been 
+an unsupervised \emph{morphosynactic} learner that requires
+syntactic and semantic context in some way. 
+This would probably involve a more complex pipeline than our current  four-stage process.
+%But Morfessor, in theory 
+%The four stage process is meant to investigate the entropy-reducing 
+%effect of Multi-morph and effectively compress strings of characters 
+%(simulated phonological units) as well as demonstrate a method for 
+%converting Multimorph’s raw output to string form, i.e., 
+%sequences of literal characters that could be used by another process/application.
+
+%In chapter~\ref{ch:eval}, I outlined the intrinsic and extrinsic evaluation procedures that are 
+%designed to evaluate the output of a system whose learning target is expressly 
+%non-morphemic, i.e., something like the morphome.
+
+\section{Conclusion}
+\label{sec:concl-overall}
+%The results presented in chapter~\ref{ch:results} 
+% confirmed proposition~\ref{prop:nlns}. 
+% 
+%In the introductory chapter, we stated that the primary research object of this thesis was to demonstrate the validity---if not the favorability---of a \emph{multilinear} approach to the unsupervised learning of morphology. 
+%In the introductory chapter, 
+%
+%%we stated proposition~\ref{prop:nlns}, which we restate here:
+%\begin{center}
+%A model of morphology can represent nonconcatenative morphology if it is both nonlinear and nonsequential.
+%\end{center}
+%We made this proposition with an eye to motivating a \emph{multilinear} approach to the unsupervised learning of morphology, that is, an approach that was multilinear, or multi-tiered, in the same way that McCarthy's autosegmental morphology was multilinear. 
+
+%Our main purpose in this thesis was to demonstrate the veracity of this proposition. 
+
+In this thesis, I sought to demonstrate the validity as well as the attractiveness of a multilinear approach to ULM. 
+Early in the thesis,
+we equated this task to verifying the proposition
+\begin{quote}\noindent
+A model of morphology can represent nonconcatenative morphology if it is nonlinear and nonsequential.
+\end{quote}
+In other words, \textit{A ULM system can learn nonconcatenative morphology if its learning model is nonlinear and nonsequential.}
+My method was essentially to develop a nonlinear nonsequential system and try it out on nonconcatenative data; if successful, the very fact of its success would confirm the above proposition as well the validity of the multilinear approach.
+The results show that Multimorph was indeed able to learn nonconcatenative morphs, % (in addition to numerous conconcatenative ones), 
+a fact plainly evident in the samples of cluster members presented in chapter~\ref{ch:results},
+particularly those in figures~\ref{fig:cluster-81-2-2-O} and \ref{fig:cluster-339-4-3-TS}. These correspond, respectively, to the orthographic root \textit{a.k.l} (equivalent to \textit{\textipa{P}.k.l} in the transcriptional data) and 
+the transcriptional root \textit{d.l.q}. %through the randomly sampled cluster subsets.
+The nonconcatenative nature of these roots is apparent in many of the words present in these figures. Just a few examples are
+\begin{center}
+\textbf{a}\textbf{k}i\textbf{l}h, \, e\textbf{a}w\textbf{k}\textbf{l}, \, \textbf{a}w\textbf{k}\textbf{l}t 
+\end{center}
+in the case of \textit{a.k.l} (that is, figure~\ref{fig:cluster-81-2-2-O}) and
+\begin{center}
+\vspace{-28pt}
+\ex hi\textbf{d}\textbf{l}\a'{a}\textbf{q}t, \, \textbf{d}\textbf{l}u\textbf{q}\a'{a}, \, ya\textbf{d}\textbf{l}\a'{i}\textbf{q}
+\end{center}
+in the case of \textit{d.l.q} (that is, figure~\ref{fig:cluster-339-4-3-TS}).
+
+%\begin{exe} \label{ex:akl}
+%\ex \textbf{a}\textbf{k}i\textbf{l}h, e\textbf{a}w\textbf{k}\textbf{l}, \textbf{a}w\textbf{k}\textbf{l}t
+%\end{exe}
+%
+%\begin{exe} \label{ex:dlq}
+%\ex hi\textbf{d}\textbf{l}\a'{a}\textbf{q}t, \textbf{d}\textbf{l}u\textbf{q}\a'{a}, ya\textbf{d}\textbf{l}\a'{i}\textbf{q}
+%\end{exe}
+
+%In particular, the words sampled from the clusters corresponding to the roots \textit{a.k.l} (i.e., \textit{\textipa{P}.k.l}} and \textit{d.l.q}
+%For our purposes, we define success as follows:
+%Well, what logically should determine success? Did it find any nonconcatenative morphs?
+%Was it a resounding success? No, not exactly. It was a success, but just barely. Well, fool, what didn't it do well?
+
+%Indeed, there is sufficient evidence in the qualitative results alone to 
+%confirm/verify this proposition. It found roots 
+%Multimorph did produce clusters corresponding to nonconcatenative morphs, a fact that we demonstrated in chapter~\ref{ch:results} by taking random samples of the members of a few of these clusters and then presenting the sample along with the cluster's ten most active
+%centroid features. The subsets sampled from the clusters representing \textit{a.k.l} (i.e., \textit{\textipa{P}.k.l}} and \textit{d.l.q}, in particular, illustrate the purity that many of these root clusters have. The root characters are discontiguous in many of the  is apparent in cluster-member samples, as exemplified in words in (\ref{ex:akl}) and (\ref{ex:dlq}), the former coming from last \textit{a.k.l} example (figure~\ref{fig:cluster-81-2-2-O}) in chapter~\ref{ch:results}, and latter
+%from \textit{d.l.q} example (figure~\ref{fig:cluster-339-4-3-TS}).
+%\begin{exe} 
+%\ex \textbf{a}\textbf{k}i\textbf{l}h, e\textbf{a}w\textbf{k}\textbf{l}, \textbf{a}w\textbf{k}\textbf{l}t
+%\end{exe} 
+%\begin{exe} \label{ex:dlq}
+%\ex hi\textbf{d}\textbf{l}\a'{a}\textbf{q}t, \textbf{d}\textbf{l}u\textbf{q}\a'{a}, ya\textbf{d}\textbf{l}\a'{i}\textbf{q}
+%\end{exe}
+%\begin{exe} 
+%\ex \label{ex:akl}
+%	\begin{xlist}
+%	\ex \textbf{a}\textbf{k}i\textbf{l}h
+%	\ex e\textbf{a}w\textbf{k}\textbf{l}
+%	\ex \textbf{a}w\textbf{k}\textbf{l}t
+%	\end{xlist}
+%\ex \label{ex:dlq}
+%	\begin{xlist}
+%	\ex hi\textbf{d}\textbf{l}\a'{a}\textbf{q}t
+%	\ex \textbf{d}\textbf{l}u\textbf{q}\a'{a}
+%	\ex ya\textbf{d}\textbf{l}\a'{i}\textbf{q} 
+%	\end{xlist}
+%\end{exe}
+
+
+
+
+
+%%4_3_cluster_55.txt 30
+%\begin{figure}[t]
+%\begin{mdframed}
+%\begin{tabbing}
+%\hspace*{14ex}\= \hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex} \kill
+%bale\textsubdot{s}ax\a'{e}q \> \v{s}ete\textsubdot{s}ax\a'{e}q \> k\v{s}e\textsubdot{s}ix\a'{a}qt \> me\textsubdot{s}am\a'{e}ax \> we\textsubdot{s}imx\a'{a} \> \v{s}e\textsubdot{s}ix\a'{a}qta \\
+%\textsubdot{s}ix\a'{a}qnu \> \v{s}e\textsubdot{s}ix\a'{a}qnu \> \v{s}e\textsubdot{s}ox\a'{a} \> \textsubdot{s}ix\a'{a}qtem \> bemi\textsubdot{s}xaq\a'{i}m \> \v{s}eme\textsubdot{s}axq\a'{i}m \\
+%ye\textsubdot{s}axq\a'{u} \> mehami\textsubdot{s}xaq\a'{i}m \> \textsubdot{s}ix\a'{e}q \> wene\textsubdot{s}ax\a'{e}q \> wete\textsubdot{s}axaq\a'{i} \> te\textsubdot{s}axq\a'{i} \\
+%\textsubdot{s}ix\a'{a}qti \> \v{s}eme\textsubdot{s}ax\a'{e}q \> mi\textsubdot{s}xaq\a'{i}m \> ne\textsubdot{s}ax\a'{e}q \> ye\textsubdot{s}ax\a'{e}q \> mi\textsubdot{s}x\a'{a}q \\
+%\textsubdot{s}ix\a'{a}qta \> hami\textsubdot{s}x\a'{a}q \> webami\textsubdot{s}x\a'{a}q \> we\textsubdot{s}ix\a'{a}qnu \> \v{s}e\textsubdot{s}ixaq\a'{u} \> weme\textsubdot{s}axq\a'{i}m \\
+%\end{tabbing}
+%\label{fig:cluster-55-4-3-TS}
+%\caption{30 words randomly selected from the 63 members of the cluster $k=55$ at the settings $s=4,\delta =3$, data representation: TS}
+%\end{mdframed}
+%\end{figure}
+
+%In addition Multimorph also found numerous clusters corresponding to concatenative affixes. The following is just small sample:
+Multimorph found vowel patterns as well. Like roots, vowel patterns are nonconcatenative, since their vowels must interleave with root consonants to form stems. Some examples of the vowel patterns that Multimorph found are shown in table~\ref{tab:vowel-patterns}.
+\begin{table}[!ht]
+\centering
+\setlength{\extrarowheight}{6pt}
+\begin{tabular}{cccc}
+\toprule
+   \makecell{(Possible)\\Morph} & \makecell{Interpretation} &   \makecell{Cluster \\ ($k$)}  & \makecell{Parameter\\Settings } \\
+  \midrule
+  \makecell{\'{e}_et}  &  \makecell{\textsc{f.sg} participle \\ ending} & 0 &$\langle{s}=4$, $\delta=3\rangle$ \\\hline
+  \makecell{a\_\'{e}}   &  \makecell{CaC\'{e}C vowel pattern \\ of the \textit{Pi`el} and \textit{Hitpa`el} \\ suffix stems} & 19 &  $\langle{s}=2$, $\delta=3\rangle$\\\hline
+  \makecell{\'{e}\_e} &   \makecell{C\'{e}CeC vowel pattern \\ of \textit{Segholate} nouns} &  59 & $\langle{s}=4$, $\delta=3\rangle$ \\ \hline
+  \makecell{i\_\'{a}}     &    --- & 23 &  $\langle{s}=4$, $\delta=3\rangle$ \\\hline
+  \makecell{a\_\'{a}}     & ---  &  65 & $\langle{s}=4$, $\delta=3\rangle$  \\
+  \bottomrule
+\end{tabular}
+\label{tab:vowel-patterns}
+\caption{Some of the vowel-patterns discovered by Multimorph}
+\end{table}
+%Why are there dashes in the \textit{Interpretation} column for  \textit{i\_\'{a}} and \textit{a\_\'{a}}?
+The dashes in this table's \textit{Interpretation} column for \textit{i\_\'{a}} and \textit{a\_\'{a}} signify that these patterns occur in a wide variety of morphosyntactic patterns and thus cannot be
+given a single interpretation. The sequence \textit{i\_\'{a}} occurs in nouns as nominal vowel pattern, 
+e.g., \textit{\textipa{Q}iq\'ar},\footnote{Historically, the second consonant in \textit{\textipa{Q}iq\'ar} was doubled.}  %that is, the pattern was  CiCC\'{a}C (or rather CaCC\textipa{"\r{a}}C, with the stressed \textit{a} lengthened and rounded).}
+ but it also occurs in \textit{Pi\'{e}l} verbs, specifically in the \textit{Pi\'{e}l} suffix-stem inflections (see table~\ref{tab:piel-paradigm}).
+The sequence \textit{a\_\'{a}} serves as the CaC\'{a}C vowel pattern of the \textit{Qal} 
+%(also known as the \textit{Pa`al}) 
+binyan's suffix stem, as in \textit{rax\'{a}cti} `I washed' and \textit{hal\'{a}\textsubdot{k}ti} `I walked.'
+\footnote{The \textit{Qal} is also known as the \textit{\textit{Pa`al}} binyan because
+of this pattern.}
+The sequence \textit{a\_\'{a}} also servers as the defining pattern for a class of nouns, e.g., \textit{nag\'{an}} `musician'  \textit{xay\'{a}l}`deer' \textit{\v{s}ar\'{a}t} 'janitor', \textit{\textsubdot{t}ab\'{a}x} `chef, cook.'\footnote{This class primarily consists of words for professions. It is actually related to the \textit{Pi'el} binyan; in past forms of Hebrew, the second root consonant would have doubled, yielding \textit{nagg\'{an}}, \textsubdot{t}abb\'{a}x, etc. The historical pattern was thus CaCC\textipa{"\r{a}}C, the first \textit{a} being short and protected from reduction by the closed syllable.   There is in fact another \textit{a\_\'{a}} noun class---this one related to the \textit{Qal} (or \textit{Pa`al}) binyan. Historically, its pattern was C\textipa{\r{a}}CC\textipa{"\r{a}}C, with an initial long rounded \textit{a} (i.e., \textipa{\r{a}}). Today, these two nominal vowel patterns have the same pronunciation; i.e., both are pronounced CaC\'{a}C.}
+
+\begin{table}[t]
+\centering
+\setlength{\extrarowheight}{6pt}
+\begin{tabular}{lcc}
+\toprule
+& \textsc{sg} & \textsc{pl} \\
+\cmidrule{2-3}
+\textsc{1.m/f} & dib\'{a}rti &  dib\'{a}nu \\
+\textsc{2.m} & dib\'{a}rta & dib\'{a}rtem \\
+\textsc{2.f} & dib\'{a}rt & dib\'{a}rten \\
+\textsc{3.m} & \textbf{dib\'{e}r} & \multirow{2}{*}{dibr\'{u}} \\
+\textsc{3.f} &  dibr\'{a} &  \\
+ \bottomrule
+\end{tabular}
+\label{tab:piel-paradigm}
+\caption{The canonical \textit{i\_\'e} vowel pattern of \textit{Pi`el} past-tense occurs only in 3rd-person masculine singular.}
+\end{table}
+
+Thus, the above proposition is satisfactorily confirmed, and Multimorph passes as a proof of concept for the multilinear approach to ULM.
+
+At the same time, however, there is still plenty of room for improvement. The system is by no means perfect. For instance, some morphs tend to recur in more than one cluster in the same clustering. There are also incoherent clusters in every clustering, clusters that do not seem to correspond to anything specific.
+The features, particularly the precedence features, may be overly specific and thus lacking in their ability to represent generalizations, as we discussed above. We proposed a means of introducing flexibility into the features; in particular, one can try replacing specific vowel symbols with a variable. For example, \texttt{V} could represent any vowel. One could also try doing something similar with consonants, that is, replacing individual consonants with \texttt{C}, for instance, which would represent any consonant. One could also create variables for particular vowel of consonant subsets. %  specificity in the features needs to 
+%The qualitative results alone demonstrate the 
+%viability of the multilinear approach to ULM. 
+%That is, our method was to develop nonlinear nonsequential system and try it out nonconcatenative data.  If successful, the very fact of its success would confirm the above proposition.
+
 %My evaluation scripts have been proving difficult to debug, but once they are ready, I will perform the full evaluation, which 
 %will inform a lot of what I say here. For the time being, however, the evidence yielded through manual inspection of the output shows that
 %MCMMs are quite capable of learning non-concatenative morphology. See the cluster samples displayed in chapter~\ref{ch-Results} as 
 %figures~\label{fig:cl-fem} and \label{fig:cl-hit}.
 
-This dissertation has proposed a multilinear approach to the learning of morphology.
 %, both concatenative and nonconcatenative. 
 %multilinear is 
 %equivalent to nonlinear, i.e., not everything is located in the same line (or in the row). 
 %Rather, both multilinear and nonlinear 
 %mean that there is more than one row in which things can reside, and moreover, that 
 %such rows can interact with each other.  
-This dissertation’s qualitative results alone demonstrate the 
-viability of the multilinear approach to ULM. 
-Even though the quantitative results
-are pending, the qualitative evidence yielded by manual 
-inspection is already sufficient to demonstrate the validity of the 
-multilinear approach to ULM, both for nonconcatenative 
-and concatenative morphology. 
-Some of this qualitative evidence was 
-presented in figure~\ref{fig:cl-hit} in chapter \ref{ch:results}, which 
-showed a sample of a cluster whose were almost entirely forms
-of the \emph{hitpa`el} binyan, which are nonconcatenative by nature. 
 
-%Please note that I have already run 
-%Multimorph on every pairing of $s$ and $\delta$ in table~\ref{tab:results} and have collected to output for each pair.
-%I only need to run to the scripts to carry out the quantitative calculations
+%Even though the quantitative results
+%are pending, the qualitative evidence yielded by manual 
+%inspection is already sufficient to demonstrate the validity of the 
+%multilinear approach to ULM, both for nonconcatenative 
+%and concatenative morphology. 
+%Some of this qualitative evidence 
+%was presented in sec~\ref{sec:cl-qual} in chapter \ref{ch:results}: \dots
+%%showed a sample of a cluster whose were almost entirely forms
+%%of the \emph{Hitpa`el} binyan, which are non-concatenative by nature. 
+%
+%This dissertation establishes a bridge between linguistic theory 
+%on the one hand and computation on the other. 
+%It offers a novel view of autosegmental morphological theory in that
+%it presents the formalism of autosegmental theory
+%as an instance of a more general graphical framework, namely 
+%the bipartite graph. 
+%In so doing, it has shed light on what the autosegmental formalism is in its essence 
+%and why autosegmental analyses work for nonconcatenative morphology.
 
-This dissertation has established a bridge between linguistic theory 
-on the one hand and computation on the other. 
-It offers a novel view of autosegmental morphological theory. 
-In particular, it has presented the formalism of autosegmental theory
-as an instance of a more general graphical framework, namely 
-the bipartite graph. In so doing, it has shed light on what the autosegmental formalism is in 
-its essence and why autosegmental analyses work for 
-cases of nonconcatenative morphology. 
-In chapters~\ref{ch:lit-review} and \ref{ch:graph}, I
-defined and discussed the notions of the \emph{nonlinearity} 
-and \emph{nonsequentiality}, proposing that they were the 
-two essential properties of the autosegmental approach, 
-that is, that they were what enable an autosegmental
-analysis to identify discontinuous morphological units. 
-I proceeded to argue in chapter~\ref{ch:graph} that these
-properties map nicely onto the definition of \emph{bipartite}, 
-hence the connection between the autosegmental formalism and bipartite graphs.
-This mathematical interpretation of autosegmental morphology 
-motivates the approach I have taken in the present project. 
-It predicts that if a ULM system is based on a bipartite graph, then 
-it will able to identify nonconcenative morphological
-units due to its very bipartiteness. The results presented in chapter~\ref{ch-Results} 
- corroborate this prediction, making 
- Multimorph a sort of proof of concept for the 
- computational implementation of autosegmental 
- theory.
 
-In chapter~{autonomous}, I argue that ULM's target of learning should be reassessed; in particular, that ULM by nature
-exists in a realm separate from both phonology and syntax/semantics, and that ULM \emph{autonomous} therefore morphological units similar to Aronoff's morphomes \citep{aronoff:1994} rather than morphemes. ULM systems such as 
-Multimorph thus lend support to the notion of the morphome and other concepts of autonomous 
-morphology. But in order to lend such support, the actual nature of their learning targets must 
-be acknowledged. In chapter~7, I outline intrinsic and extrinsic evaluation procedures that are 
-designed to evaluate the output of a system whose learning target is expressly 
-non-morphemic, i.e., something like the morphome.
+%This mathematical interpretation of autosegmental morphology 
+%motivated the approach I have taken in this project. 
+%It predicted that if a ULM system is based on a bipartite graph, then 
+%it will able to identify nonconcatenative morphological
+%units due to its very bipartiteness. 
+%
+%The results presented in chapter~\ref{ch:results} 
+% corroborate this prediction, making 
+% Multimorph is a sort of \emph{proof of concept} for the 
+% computational implementation of autosegmental 
+% theory.
+
+
+
+%Multimorph lends support to the notion of the morphome 
+%and other concepts of autonomous morphology. 
+%But in order to lend such support, the actual nature of their learning targets must be acknowledged. 
+%In chapter~\ref{ch:eval}, I outlined the intrinsic and extrinsic evaluation procedures that are 
+%designed to evaluate the output of a system whose learning target is expressly 
+%non-morphemic, i.e., something like the morphome.
 
 % and moreover, that it will treat nonconcatenative and concatenative morphological units as the same essential thing, via the same mechanisms and structures. 
 

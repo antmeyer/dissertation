@@ -128,6 +128,12 @@
 \usepackage{color, colortbl}
 \usepackage{gb4e}
 \usepackage{etoolbox}
+\usepackage{makecell}
+
+\renewcommand\theadalign{bc}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}
 
 \makeatletter
 \apptocmd{\@exe}{\singlespacing}{}{}
@@ -140,8 +146,8 @@
 
 % Uncomment this to make sure marginpars are removed before submission:
 %\renewcommand{\marginpar}[1]{}
-\includeonly{ch-Discussion}
-%\includeonly{ch-Intro}
+
+\includeonly{ch-GraphTheoretic}
 
 \begin{document}
 %\renewcommand{\theequation}{\roman{equation}}

@@ -452,7 +452,7 @@ This cluster's centroid features are not ideal for the root \textit{\textipa{P}.
 %at in figure~\ref{fig:cluster-33-0-2-TS} particularly well with
 % If we could choose features and their activities
 %for representing \textit{\textipa{P}.k.l}, we would certainly not choose  an activity of 0.4984 for {\textipa{P}<\textsubdot{k}},  \ (0.4984) for {\textipa{P}<\textsubdot{k}}
-In fact, the two most active features, namely \texttt{a<\textsubdot{k}} (activity 1.0000) and \texttt{\textsubdot{k}<\'{a}} (activity 0.8585), both reference a vowel. (In the transcriptional datasets, \textsf{a} is a vowel.) References to particular vowels are problematic for roots because the vowels that interleave with a root's consonants vary from word to word. 
+In fact, the two most active features, namely \texttt{a<\textsubdot{k}} (activity 1.0) and \texttt{\textsubdot{k}<\'{a}} (activity 0.8585), both reference a vowel. (In the transcriptional datasets, \textsf{a} is a vowel.) References to particular vowels are problematic for roots because the vowels that interleave with a root's consonants vary from word to word. 
 
 Another cluster of transcribed words is shown in figure~\ref{fig:cluster-339-4-3-TS}. 
 This one corresponds to the root \textit{d.l.q} and is considerably purer than the 
@@ -461,14 +461,14 @@ at 1.0 and 0.853. We also have the feature \texttt{d<q} with the activity 0.798.
 the first to the third root consonant are likely to be rarer and/or weaker in the transcriptional domain, 
 since the distance between the first and third root consonants often exceeds $\delta$ when vowels are 
 involved. We again have problematic vowel-referencing features, however, particularly features 
-referencing \textit{i}: \texttt{d<\a'{i}} is especially strong with an activity of 1.0, and \texttt{\a'{i}<q} 
+referencing \textit{i}: \texttt{d<\a'{i}} is especially strong with an activity of 1.0, and \texttt{\'{i}<q} 
 as a modest activity of 0.501. The \textit{i} in these to features is reflected in frequency of \textit{i} in 
 this cluster's words. It would thus be more accurate to say that this cluster represents subset of the 
 occurrences of root \textit{d.l.q}, namely its co-occurrences with \textit{i}. 
 
-Our last cluster example in this section is the one in figure~\ref{fig:cluster-339-4-3-TS}. It demonstrates 
-Multimorph's capacity to learn vowel patterns. The patten in this case is \textit{a.\'{e}}.
- It it is a morphological component of \textit{Hitpa`el} binyan, 
+Our last cluster example in this section is the one in figure~\ref{fig:cluster-19-2-3-TS}. It demonstrates 
+Multimorph's capacity to learn vowel patterns. The pattern in this case is \textit{a.\'{e}}.
+ It is a morphological component of \textit{Hitpa`el} binyan, 
 as in \textit{mitrax\a'{e}c},  
 the prefix stem of the \textit{Pi`el},
 e.g., \textit{teqal\a'{e}f}.
@@ -779,6 +779,31 @@ that this particular increase apparently did not have a detrimental effect, %res
 as the models trained on stress-marked transcriptions
 performed better than those trained on stressless transcriptions.  
 
+%\subsubsection{Regarding the Purity Metric}
+%As mentioned in chapter~\ref{ch:eval}, the purity metric is not designed to evaluate overlapping clusters.
+%Thus, the accuracy of this metric is inversely proportional to the degree to which clusters overlap. If there is no overlap between
+%%The ideal situation where purity is concerned is one such that if two words are different in any way, even if they differ in one feature, they will share no gold-std classes.
+%Cluster 2;  size: 2040;  Purity: 0.2632;   pre:we (537), pre:ha (441), pre:mi (405)
+%Cluster 0011;  size: 1105;  Purity: 0.2262;   piel\%prefix_stem (250), part\%m\%sg (205), ptn:piel (175)
+%Cluster 0043;  size:  191;  Purity: 0.6649;   past%1%Pl (127), qal%suffix_stem (81), pre:sh (34)
+%
+%\begin{table}[t]
+%\centering
+%\setlength{\extrarowheight}{10pt}
+%\begin{tabular}{cccc}
+%\toprule
+%$k$ & Size & Purity & Most Frequent Gold-Std Classes (with frequencies) \\ 
+%\midrule
+%12 & 632 & 0.5665 & \texttt{qal\%participle} (358), \, \texttt{f\%sg} (165), \, \texttt{part\%m\%sg} (144) \\\hline
+%13 & 1178 & 0.3744 & \texttt{qal\%suffix\_stem} (441),  \, \texttt{f\%sg} (257), \, \texttt{pre:ha} (208) \\\hline
+%20 & 536 & 0.3881 & \texttt{fut\%1\%sg }(208), \, \texttt{qal\%prefix\_stem} (86), \, \texttt{m\%sg} (78) \\\hline
+%24 & 188 & 0.6755 & \texttt{past\%1\%pl} (127), \, \texttt{qal\%suffix\_stem} (76), \, \texttt{pre:sh} (32) \\\hline
+%25 & 492 & 0.6301 & \makecell{\texttt{fut\%(2\%M)|(23\%f)} (310), \, \texttt{fut\%2\%f\%sg} (288), \\ \texttt{qal\%prefix\_stem} (176)} \\
+%\bottomrule
+%\end{tabular}
+%\label{tab:purity-pitfall}
+%\caption{Selected cluster purities from a clustering generated at $\langle{s} = 2,\delta = 2\rangle$ from the TS dataset.}
+%\end{table}
 %On the other hand, the presence of all of the transcriptional vowels in transcriptional was not always helpful. The 
 %transcriptional vowels seems to have added considerable noise and complexity to the task of finding consonantal 
 %roots, as explained in section \ref{sec:qual}. 
@@ -1088,12 +1113,14 @@ $s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 \label{sec:extr-results}
 The extrinsic evaluation was itself a sort of experiment, one that sought to evaluate Multimorph according to its 
 ability to positively influence a downstream application. It involved a four-stage procedure that is described in 
-chapter~\ref{ch:eval}. 
+chapter~\ref{ch:eval}.
 Basically, this process compressed Multimorph's input words by substituting original characters with atomic 
 representations of morphs (i.e., morphs represented as single characters). The resulting file was then fed to 
 Morfessor, the idea being to give Morfessor a pre-analyzed (or pre-digested, as it were) list of input words and
  see if Morfessor was able perform better on the pre-analyzed, i.e., compressed, data than on ordinary input, i.e., 
- the control group, which was in this case the original Hebrew wordlists, untouched by Multimorph.
+ the control group, which was in this case the original Hebrew wordlists, untouched by Multimorph. Because each
+experimental model, i.e., each combination of $s$ and $\delta$ values, had different word coverage---i.e., involved a somewhat different set of words---each required its own control model. Thus, table~\ref{tab:extr-results-1000} shows control results for each valuation of $s$ and $\delta$.
+%because the parameters $s$ and $\delta$ 
  
 Table~\ref{tab:extr-results-1000} shows the results of the extrinsic evaluation at $K=1000$. 
 Morfessor clearly did not perform 
@@ -1111,14 +1138,15 @@ The scores of the orthographic (O) models come closest to matching the control r
 also had surprisingly good extrinsic results (see section~\ref{sec:extr-results}). The relative success of the orthographic models in the extrinsic component of the
 evaluation reinforces the notion that there really is something about the orthographic representation that
 is inherently and unexpectedly beneficial---that more and/or better information is present in the orthographic representation than what seems immediately apparent.
+
 %orthographic data that is inherently beneficial.
 
-The reader may have noticed that the tables contain the 
-results of many control datasets, one for each experimental model, in fact. This may seem strange 
-because the parameters $s$ and $\delta$ were irrelevant to the control data, untouched as it was 
-by Multimorph. This is indeed true, but the actual reason for the many control models is 
-that each experimental model yielded a different word coverage. The control datasets were made 
-to have the same words as their corresponding models covered. 
+%The reader may have noticed that the tables contain the 
+%results of many control datasets, one for each experimental model, in fact. This may seem strange 
+%because the parameters $s$ and $\delta$ were irrelevant to the control data, untouched as it was 
+%by Multimorph. This is indeed true, but the actual reason for the many control models is 
+%that each experimental model yielded a different word coverage. The control datasets were made 
+%to have the same words as their corresponding models covered. 
 
 %\begin{table}[htb]
 %\subtable[Transcriptions with stress (TS), $K = 1000$\label{subtab:extr-1000-ts}]{
