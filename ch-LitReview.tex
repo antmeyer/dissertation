@@ -11,19 +11,20 @@ phonological segments (essentially phonemes).\footnote{McCarthy uses
  the term \emph{segment} in the phonological sense, i.e., a minimal unit of sound. 
 Researchers in \ac{ULM}, however, generally use the word to 
 refer to minimal morphological units, 
-as in \textit{the problem of morphological segmentation}, for example.}  \marginpar{Strange footnote.}
+as in \textit{the problem of morphological segmentation}, for example.}
 Because they are restricted to this single layer, they can only represent 
 morphological groupings in one way, namely to insert delimiters of 
 some sort 
 into the very string under analysis. At any given
-insertion point, moreover, such an approach can see only the two segments 
-(i.e., phonological segments) immediately to the left and right. It thus
+insertion point, moreover, such an approach can see only two (phonological) segments, namely the one immediately to the left and the one immediately to the right. 
+%(i.e., phonological segments) immediately to the left and right. 
+It thus
 has no way to identify morphs that are made up of discontiguous phonemes.
 
 \cite{mccarthy:1981} offers an alternative \emph{nonlinear} 
 approach to grouping segments into morphs, one that liberates the 
 representation of morphs from the segmental tier. McCarthy's formalism, 
-\\emph{autosegmental morphology}, is an extension of the autosegmental 
+\emph{autosegmental morphology}, is an extension of the autosegmental 
 approach to phonology developed by \citep{goldsmith:1976} to account 
 for nonlinear phonological phenomena. One such phenomenon, for instance, 
 is \emph{tone spreading}, whereby the tone on one vowel spreads to other 
@@ -33,58 +34,54 @@ Goldsmith's solution was to introduce \emph{autosegmental} tiers
 to the segmental tier---tiers that could thus ``see'' and access any 
 phonological segment in the segmental tier, as well as any subsequence 
 of segments, contiguous or discontiguous. The key was the nonlinearity 
-(or multilinearity)\footnote{The terms \emph{nonlinear} and \emph{multilinear} 
-interchangeably in this work, as they both mean, essentially, ``not linear."}
+(or multilinearity) 
+%\footnote{The terms \emph{nonlinear} and \emph{multilinear} 
+%interchangeably in this work, as they both mean, essentially, ``not linear."}
 introduced by the multiple tiers and their separation both from each other 
 and the segmental tier. 
 McCarthy's insight was that this same nonlinear architecture could be 
 applied to the problem of nonconcatenative morphology, particularly the 
 root-and-pattern morphology of Semitic languages. 
 
-I have cooked up my own novel framework for comparing (and classifying)
+I have devised a framework for comparing (and classifying)
 previous approaches
 the unsupervised learning of morphology. This framework is a classification 
 system derived from the definitions of nonlinearity and nonsequentiality 
-(see chapter~\ref{ch:intro}, definitions \ref{def:ns} and \ref{def:nl}) 
+(see chapter~\ref{ch:intro}, definitions \ref{def:nl} and \ref{def:ns}) 
 and the proposition that 
 a model can learn nonconcatenative morphology if and only if it 
 possesses both of these categories (chapter~\ref{ch:intro}, 
 proposition~\ref{prop:nlns}). In particular, first observe that nonlinearity 
 and nonsequentiality are negative concepts and thus suggest the existence 
-of their ``positive'' counterparts, namely \emph{linearity} and 
+of their positive counterparts, namely \emph{linearity} and 
 \emph{sequentiality}. To facilitate the exposition of these concepts, we 
 repeat the definitions of nonlinearity and nonsequentiality here and 
 then define their complements, \emph{linearity} and \emph{sequentiality}.
 	\begin{description}%\label{def:nl}
 	%\begin{definition*}
-	%\item[{\textsc{Nonlinearity}}:]A model is 
-	\item[\textbf{nonlinear}] if each of its morphs occupies a tier that is \emph{not} the phonological tier.
+	\item[{\textsc{Nonlinearity}}:]A model is 
+	\textbf{nonlinear} if each of its morphs occupies a tier that is \emph{not} the phonological tier.
 	%\end{definition*}
 	%\begin{definition*}
 	%\label{def:ns}
 	\item[{\textsc{Nonsequentiality}}:]
-	A model is \textbf{nonsequential} if \textbf{no two morphs} occupy the \emph{same} tier. This is to say that all morphs are independent, i.e., that there are no morph-to-morph connections. 
+	A model is \textbf{nonsequential} if \textbf{no two morphs} occupy the \emph{same} tier. This is to say that all morphs are independent, i.e., there are no morph-to-morph connections. 
 	\end{description}
-	\begin{definition}\label{def:l}{\textsc{Linearity}}:
-	A model is \textbf{linear} if (at least some of) its morphs occupy the phonological tier.
+	\begin{definition}\label{def:l}{\textsc{\textbf{Linearity}}}:
+	A model is \textbf{linear} if at least some of its morphs occupy the phonological tier.
 	\end{definition}
-	\begin{definition}\label{def:s}{\textsc{Sequentiality}}:
-A model is \textbf{sequential} if (two or more) morphs occupy the \emph{same} tier.\footnote{In practice, `` two or more morphs'' is tantamount to saying ``all morphs,'' since it is hard to envision a scenario in which only a subset of morphs occupy separate tiers.}. This is to say that there are connections between at least some pairs of morphs.
+	\begin{definition}\label{def:s}{\textsc{\textbf{Sequentiality}}}:
+A model is \textbf{sequential} if two or more morphs occupy the \emph{same} tier.\footnote{In practice, `` two or more morphs'' is tantamount to saying ``all morphs,'' since it is hard to envision a scenario in which only a subset of morphs occupy their own tiers.} This is to say that there are connections between at least some pairs of morphs.
 	\end{definition}
 
-Proposition \ref{prop:nlns} asserts that \emph{both} nonlinearity \emph{and} nonsequentiality
-must be present in a model if it is to capable of modeling nonconcatenative morphology.
- In other words, the category of models capable of the learning nonconcatenative 
- morphology is  the intersection of the (more general) nonlinear and 
- sequential categories. Thus, one of our framework's categories has to be 
- \textbf{nonlinear-nonsequential}. Indeed, this is the ``desired'' category, 
- so to speak, the category whose members are intrinsically capable of modeling/learning
- nonconcatenative morphology. The other three are likewise each the intersections 
- of two of the basic categories outlined above.  For instance, another category is \textbf{nonlinear-sequential}, 
- or the intersection of the nonlinear and sequential categories. The remaining two categories, 
- \textbf{linear-nonsequential} and \textbf{linear-sequential} are analogously defined. The four categories are summarized in figure~\ref{fig:intersections}:
-
-\begin{figure}[h]
+Proposition~\ref{prop:nlns} in chapter~\ref{ch:intro} conditions an algorithm's ability to model nonconcatenative morphology on the \emph{conjunction} of nonlinearity and nonsequentiality. That is, 
+\begin{quote}\noindent
+A model of morphology can represent nonconcatenative morphology if it is nonlinear \emph{and} nonsequential.
+\end{quote}
+Thus, the desired category is the \emph{intersection} of the basic nonlinear and nonsequential categories, and because it is the desired category, it has to be a category in our conceptual framework.
+%It stands to reason that the other categories would be related to this desired category. In par
+The other categories are similarly derived by taking pairwise intersections of the basic categories outlined above, as shown in figure~\ref{fig:intersections}.
+\begin{figure}[!h]
 \centering
 \fbox{\begin{minipage}{9cm}
 \centering
@@ -96,6 +93,37 @@ must be present in a model if it is to capable of modeling nonconcatenative morp
 \label{fig:intersections}
 \caption{Four-category framework.}
 \end{figure}
+The resulting framework thus consists of two orthogonal axes, each representing one of two binary distinctions,
+namely ``linear vs. nonlinear'' and ``sequential vs. nonsequential." The following sections will discuss each of these categories
+in turn, citing examples 
+for each. 
+
+%will use the term
+%\textbf{nonlinear} (NL) to refer to learning
+%models (or algorithms) one
+%or more hidden layers to encode the
+%morphological structure.
+%We use the term \emph{nonlinear} in the sense of \citep{mccarthy:1981, goldsmith:1976}, i.e., 
+%to describe learning models that incorporate more than one tier of representation, i.e., more than 
+%just the words (segmental strings) themselves.
+%Proposition \ref{prop:nlns} asserts that \emph{both} nonlinearity \emph{and} nonsequentiality
+%must be present in a model if it is to capable of modeling nonconcatenative morphology.
+%A model of morphology can represent nonconcatenative morphology if it is nonlinear and nonsequential.
+% In other words, the category of models capable of the learning nonconcatenative 
+% morphology is  the intersection of the (more general) nonlinear and 
+% sequential categories. Thus, one of our framework's categories has to be 
+% \textbf{nonlinear-nonsequential}. Indeed, this is the ``desired'' category, 
+% so to speak, the category whose members are intrinsically capable of modeling/learning
+% nonconcatenative morphology. 
+ 
+% The other categories are likewise intersections
+% of the basic categories outlined above.  They are derived as follows: 
+% 
+% For instance, another category is \textbf{nonlinear-sequential}, 
+% or the intersection of the nonlinear and sequential categories. The remaining two categories, 
+% \textbf{linear-nonsequential} and \textbf{linear-sequential} are analogously defined. The four categories are summarized in figure~\ref{fig:intersections}:
+
+
 
 %\fbox{\begin{minipage}{9cm}
 %\centering
@@ -138,28 +166,23 @@ must be present in a model if it is to capable of modeling nonconcatenative morp
 %\end{itemize}
 %The linear-sequential category is the intersection of the linear and sequential basic categories; the nonlinear-sequential category is 
 
-The framework thus consists of two orthogonal axes, each representing one of two binary distinctions,
-namely ``linear vs. nonlinear'' and ``sequential vs. nonsequential." 
-We use the term \emph{nonlinear} in the sense of \citep{mccarthy:1981, goldsmith:1976}, i.e., 
-to describe learning models that incorporate more than one tier of representation, i.e., more than 
-just the words (segmental strings) themselves.
+%The resulting framework thus consists of two orthogonal axes, each representing one of two binary distinctions,
+%namely ``linear vs. nonlinear'' and ``sequential vs. nonsequential." 
+%We use the term \emph{nonlinear} in the sense of \citep{mccarthy:1981, goldsmith:1976}, i.e., 
+%to describe learning models that incorporate more than one tier of representation, i.e., more than 
+%just the words (segmental strings) themselves.
 
-We thus use the term \emph{linear} in the sense of `one-dimensional' (i.e., in opposition to \emph{nonlinear}). 
-In particular, we use it to label learning models that  I in the sense that opposes our sense of nonlinear, i.e., 
-opposing categories to a pair of opposing categories; the first is learning models along two 
-orthogonal axes consists of four categories, namely  in two pairs of opposing categories, namely 
-``linear vs. nonlinear" and ``sequential vs. nonsequential." We cross-combine these categories 
-to create a $2\times2$ grid, the cells of which represent create a total of four categories. 
-The first is the``linear vs. nonlinear" distinction of \citep{mccarthy:1981, goldsmith:1976} 
-to categorizing existing approaches in \ac{ULM}.
+%We thus use the term \emph{linear} in the sense of `one-dimensional' (i.e., in opposition to \emph{nonlinear}). 
+%In particular, we use it to label learning models that  I in the sense that opposes our sense of nonlinear, i.e., 
+%opposing categories to a pair of opposing categories; the first is learning models along two 
+%orthogonal axes consists of four categories, namely  in two pairs of opposing categories, namely 
+%``linear vs. nonlinear" and ``sequential vs. nonsequential." 
+%We cross-combine these categories 
+%to create a $2\times2$ grid, the cells of which represent create a total of four categories. 
+%The first is the``linear vs. nonlinear" distinction of \citep{mccarthy:1981, goldsmith:1976} 
+%to categorizing existing approaches in \ac{ULM}.
 
-The following sections will discuss each of these categories
-in turn, citing examples 
-sections will use the term
-\textbf{nonlinear} (NL) to refer to learning
-models (or algorithms) one
-or more hidden layers to encode the
-morphological structure.
+
 % in the
 %surface layer, whereas 
 %, the layer of the graphemes/phonemes.
@@ -852,7 +875,7 @@ morphological structure.
 
 %We will now discuss and exemplify each of these categories in turn.
 
-\subsection{Sequential linear algorithms}
+\section{Sequential linear algorithms}
 \label{subsec:seq-lin}
 
 The sequential linear (SL) type of algorithm is depicted in figure~\ref{fig:seq-lin}. 
@@ -1021,7 +1044,8 @@ because they lack hidden nodes, and every path through a trie is deterministic.
 % \end{itemize}
 % Notice the sequential nature of this technique: each LSV calculation is determined solely by the immediately preceding string of graphemes. Note also its linearity: there is only a single layer of representation for both the grapheme sequence and the morphological analysis.
 
- \begin{figure}[th]
+ \begin{figure}[t]
+ \begin{mdframed}
  %\begin{minipage}{.3\textwidth}
  \begin{center}
  \begin{tikzpicture}[shorten >=1pt,->,draw=black!100,node distance = 1.3cm, auto]]
@@ -1055,6 +1079,7 @@ because they lack hidden nodes, and every path through a trie is deterministic.
  \caption{Sequential linear architecture.}
  %. Each representational unit depends on the preceding unit, and no unit exists outside of the surface layer.}
  \label{fig:seq-lin}
+ \end{mdframed}
  \end{figure}
 
 % The intuition behind the LSV/LPV method is related to that behind the entropy-based methods in natural language processing:
@@ -1099,13 +1124,13 @@ because they lack hidden nodes, and every path through a trie is deterministic.
 % example above, but it does not change the fundamentally sequential and
 % linear nature of their approach.
 
-\subsection{Non-sequential linear algorithms}
+\section{Non-sequential linear algorithms}
 \label{subsec:nonseq-lin}
 In the non-sequential linear (NSL) type of algorithm, shown in figure~\ref{fig:nonseq-lin}, the representational units are generally not raw characters, but rather \emph{features}, i.e., binary variables representing the presence or absence of particular properties.
 %specifying whether or not a word has a certain property. 
-Features in non-sequential algorithms need not correspond to contiguous chunks of the original string; for example, features like the following are perfectly valid: ``\textit{t} precedes \textit{i} within $\delta$ characters" and ``\textit{t} precedes \textit{b} within $\delta$ characters," where the character pairs \emph{t..i} and \emph{t..b} are discontiguous as long as $\delta \ne 0$. Notice that such features cannot really be ordered; each is either \textsc{true} or \textsc{false} irrespective of order.
-All non-sequential algorithms---of which NSL algorithms are a subcategory---view a given word's features as being unordered, i.e., as being sequentially unrelated to each other. 
-But while NSL algorithms are non-sequential, they are linear because they incorporate no hidden units. Thus, even though an NSL algorithm's features may refer to discontiguous subsequences of characters, they are nonetheless restricted to representing only properties that are overtly present in the surface layer of characters. 
+Features in non-sequential algorithms need not correspond to continuous chunks of the original string; for example, features like the following are perfectly valid: ``\textit{t} precedes \textit{i} within $\delta-1$ characters" and ``\textit{t} precedes \textit{b} within $\delta-1$ characters," where the character pairs \emph{t..i} and \emph{t..b} are discontiguous as long as $\delta > 1$. Notice that such features cannot really be ordered; each is either \textsc{true} or \textsc{false} irrespective of order.
+All non-sequential algorithms---of which NSL algorithms are a subcategory---view a given word's features as being unordered, that is, as being sequentially unrelated to each other. 
+But while NSL algorithms are nonsequential, they are linear because they incorporate no hidden units. Thus, even though an NSL algorithm's features may refer to discontinuous subsequences of characters, they are nonetheless restricted to representing only properties that are overtly present in the surface layer of characters. 
 
 One NSL example is the algorithm of \cite{poon-et-al:2009}, which uses log-linear models to induce morphological segmentations for Arabic and Hebrew. 
 Log-linear models are inherently non-sequential because they treat all features as independent, estimating a global joint probability for the entire bag of features. 
@@ -1126,7 +1151,7 @@ This feature overlap is made possible by the non-sequentiality of log-linear mod
 %and the characters \textit{w} and \textit{n} on the right).
 %Note, however, that 
 
-Note, however, that log-linear models can handle much more non-sequentiality than this. Indeed, since a log-linear models is inherently non-sequential, it accommodate any sort of non-sequential feature. 
+Note, however, that log-linear models can handle much more non-sequentiality than this. Indeed, because a log-linear model is inherently non-sequential, it can accommodate any sort of non-sequential feature. 
 %one can incorporate into log-linear model.
 %feature %or combination of feature types 
 %in a log-linear model.  
@@ -1209,7 +1234,8 @@ It is, however, linear because it incorporates no hidden units to mediate associ
 %%, and not discontiguous roots and patterns.
 %% of Arabic and Hebrew.
 
- \begin{figure}[h]
+ \begin{figure}[t]
+\begin{mdframed}
  %\begin{minipage}{.3\textwidth}
  \begin{center}
  \begin{tikzpicture}[shorten >=1pt,->,draw=black!100]
@@ -1239,6 +1265,7 @@ It is, however, linear because it incorporates no hidden units to mediate associ
  
  %. No dependencies exist between representational units, and no unit exists outside of the surface layer.}
  \label{fig:nonseq-lin}
+  \end{mdframed}
  \end{figure}
 
 % \cite{poon-et-al:2009} use morpheme features and morpheme context
@@ -1253,7 +1280,7 @@ It is, however, linear because it incorporates no hidden units to mediate associ
 % contiguous and discontinues bigrams in the same feature set.
 
 
-\subsection{Sequential nonlinear algorithms}
+\section{Sequential nonlinear algorithms}
 \label{subsec:seq-nonlin}
 % First, what sort of algorithms are sequential nonlinear?
 The sequential nonlinear (SNL) type of algorithm is illustrated in figure~\ref{fig:seq-nonlin}. 
@@ -1307,7 +1334,8 @@ The hidden layer in this case serves to facilitate the search for the optimal le
 
 %The HMM's role is to evaluate each candidate morph sequence. 
 % took out the "h"
- \begin{figure}[h]
+ \begin{figure}[t]
+ \begin{mdframed}
  %\begin{minipage}{.3\textwidth}
  \begin{center}
  \begin{tikzpicture}[shorten >=1pt,->,draw=black!100]
@@ -1345,17 +1373,17 @@ The hidden layer in this case serves to facilitate the search for the optimal le
  		(m1)	edge	node	{}	(r1)
  		(m2)	edge	node	{}	(r2)
  		(m3)	edge	node	{}	(r3)
- 		(m4)	edge	node	{}	(r4);
-			
+ 		(m4)	edge	node	{}	(r4);		
  \end{tikzpicture}
  \end{center}
  \caption{Sequential nonlinear architecture}
  % . Sequential dependencies only exist between hidden units, 
  % not between the observed units of the surface layer. The hidden units ``cause" the surface units.}
  \label{fig:seq-nonlin}
+ \end{mdframed}	
  \end{figure}
 
-\subsection{Non-sequential nonlinear algorithms}
+\section{Non-sequential nonlinear algorithms}
 \label{subsec:nonseq-nonlin}
 % Intro
  Like sequential nonlinear (SNL) algorithms, \textit{non}-sequential
@@ -1371,7 +1399,8 @@ This intra-layer independence allows a hidden unit to associate with
 any combination of surface units, whether contiguous or discontiguous
 %(see Figure \ref{fig:nonseq-nonlin}).
 
- \begin{figure}[tb]
+ \begin{figure}[t]
+ \begin{mdframed}	
  %\begin{minipage}{.3\textwidth}
  \begin{center}
  \begin{tikzpicture}[shorten >=1pt,->,draw=black!100] %,scale=.95]
@@ -1412,6 +1441,7 @@ any combination of surface units, whether contiguous or discontiguous
  \caption{Non-sequential nonlinear architecture}
  %. Neither layer contains sequential dependencies; every unit is independent within its own layer. Each hidden unit is thus free to cause any combination of observed units.}
  \label{fig:nonseq-nonlin}
+ \end{mdframed}	
  \end{figure}
 
 %The NSNL type can take many forms.  \cite{baroni-et-al:2002}, for
@@ -1467,7 +1497,9 @@ mutual information,
 combining it with an orthographic similarity score based on minimum 
 edit distance.
 
- \begin{figure}[htb!]
+ \begin{figure}[t]
+ \begin{mdframed}
+  \vspace{10pt}
  %\begin{minipage}{.3\textwidth}
  \begin{center}
  \begin{tikzpicture}[draw=black!100]
@@ -1508,6 +1540,7 @@ edit distance.
  \end{center}
  \caption{The minimum-edit-distance alignment for the Hebrew words \textit{dibr} `he spoke' and \textit{mdbr} `he is speaking'. The discontiguous root \textit{d.b.r } is discovered by aligning \textit{dibr} with \textit{mdbr} and extracting the common subsequence.}
  \label{fig:lev-align}
+ \end{mdframed}
  \end{figure}
 
 
@@ -1520,11 +1553,11 @@ used by a second phase (and perhaps subsequent phases) to perform other
 aspects of the analysis.
 Multiple phases occurring at different times can thus replicate the effects 
 of multiple simultaneous levels of representation.
-This is the approach taken by \cite{rodrigues-and-cavar:2005} to induce 
+This is the approach taken by \citet{rodrigues-and-cavar:2005} to induce 
 the non-concatenative morphology of Arabic. 
 %Following the statistical constraint-based method of \cite{elghamry:2005}, 
 Their first phase identifies root radicals according to the statistical 
-constraint-based method of \cite{elghamry:2005}. 
+constraint-based method of \citet{elghamry:2005}. 
 For each word in their corpus, 
 they generate a set of candidate triliteral roots according to 
 constraints derived from the tendencies of Arabic roots as observed in corpora. 
@@ -1540,7 +1573,7 @@ Then, a statistical score is computed for each candidate, and the one with the h
 Once the roots---and thus the stems---have been isolated by the first phase, the second phase identifies the concatenative affixes through a separate methodology.
 
 % Goldsmith and Xanthos
-An alternative first-phase strategy can be found in \cite{goldsmith-and-xanthos:2009}, 
+An alternative first-phase strategy can be found in \citet{goldsmith-and-xanthos:2009}, 
 who present methods for
 partitioning a phonemic inventory into a class of consonants and a class of vowels. 
 Their paper does not go into automatic morphological analysis, but it is not difficult to see how C and V classes could be useful to a multi-phase morphological analyzer.
@@ -1552,7 +1585,7 @@ Subsequent phases would then use these CV skeletons to isolate roots, patterns, 
 While the NSNL approaches described in this section provide a means for detecting discontiguous morphemes, they are not without their weaknesses. 
 % Baroni
 %% Mucho filtering
-The algorithm of \cite{baroni-et-al:2002} must filter out a large proportion of its input corpus, accepting only the words with relative frequencies of less than 0.01 percent; which are presumed to be content words.
+The algorithm of \citet{baroni-et-al:2002} must filter out a large proportion of its input corpus, accepting only the words with relative frequencies of less than 0.01 percent; which are presumed to be content words.
 %% Arbitrary thresholds
 It also relies on arbitrary thresholds; e.g., the threshold for orthographic similarity measure (i.e., $1 - $ the normalized minimum edit distance) is set at 0.5, although there is no obvious reason why this should be so.
 Note also that behind this threshold is the assumption that morphologically related words share at least half of their characters, which is not necessarily true. Such an assumption would be especially problematic for highly agglutinative languages, 
@@ -1561,9 +1594,11 @@ Moreover, the Levenshtein edit-distance approach is only capable of comparing wo
 
 % Rodrigues and Cavar
 %% Only tri-literal roots
-Moreover, \cite{rodrigues-and-cavar:2005}, following \cite{elghamry:2005}, limit their algorithm's search to triliteral roots in order to reduce the problem's complexity, even though quadriliteral roots are not uncommon in Hebrew or Arabic.
+Moreover, \citet{rodrigues-and-cavar:2005}, following \citet{elghamry:2005}, limit their algorithm's search to triliteral roots in order to reduce the problem's complexity, even though quadriliteral roots are not uncommon in Hebrew or Arabic.
 %% Reasonable constraints, but constraints nonetheless. A truly general algorithm wouldn't need constraints. 
 And while their two constraints on candidate-root generation are quite reasonable, these constraints are particular to the case of Semitic morphology, and thus they would not be required by a truly general algorithm.
 
 Finally, none of the works discussed in this section represents both the hidden layer and surface layer simultaneously in a single, straightforward model. In contrast, the Multiple Cause Mixture Model (MCMM) \citep{saund:94} is an NSNL algorithm that explicitly represents both surface and hidden nodes in a single graphical model. The MCMM is the focus of the next section.
 
+\section{Conclusion}
+In sum, both \emph{nonlinearity} and \emph{nonsequentiality} must be present in an algorithm if it is to be handle nonconcatenative morphology. As we have seen through the examples in this chapter, it is not sufficient to have just one of these properties without the other. In the next chapter, we will glean deeper insight into nonlinearity and nonsequentiality by relating them to the mathematical properties of \emph{bipartite} graphs. 

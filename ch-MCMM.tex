@@ -12,10 +12,10 @@ This chapter is a culmination of the chain of reasoning established in the prece
 In chapters~\ref{ch:intro} and \ref{ch:lit-review}, we saw that it was precisely 
 the set of \emph{nonlinear-nonsequential} models that were capable of representing 
 nonconcatenative morphological structure, and that it was the properties \emph{nonlinearity}
-and \emph{nonsequentiality} that give rise to this capacity. Furthermore, we in 
+and \emph{nonsequentiality} that give rise to this capacity. Furthermore, we saw in 
 chapter~\ref{ch:graph} that bipartite graphs (or bipartite graphical algorithms) were a 
 subset of NLNS algorithms. In fact, the bipartite structure of such graphs turns out to 
-be a particularly coherent way to capture nonlinearity and nonsequentiality (see chapter~\ref{}).
+be a particularly coherent way to capture nonlinearity and nonsequentiality. %(see chapter~\ref{}).
 The present chapter homes in on a particular kind of bipartite learning algorithm, namely 
 the MCMM. Thus, the present chapter, when taken in the context of the preceding chapters, 
 explains the rational and theoretical significance of my choosing an MCMM 
@@ -33,18 +33,18 @@ in particular to serve as Multimorph's learning algorithm.
 %of an MCMM. But while their bipartiteness is most significant for our purposes, MCMMs have other attractive properties. [which we shall discuss in this chapter.] For example, an MCMM is neither sum nor a product of experts, 
 
 %In this chapter, therefore, we thus present a particular bipartite graphical model,  as Multimorph's core learning algorithm. In particular, I chose the bipartite graphical model known as the MCMM.
-This chapter is organized as follows: Section first lays out the key components 
+This chapter is organized as follows: Section~\ref{sec:architecture} first lays out the key components 
 of an MCMM's structure, i.e., the attributes that all MCMMs share. 
-Section~\ref{sec:context} then proceeds to place MCMMs in a larger of 
+Section~\ref{sec:context} then proceeds to place MCMMs in a larger context of 
 unsupervised learning algorithms, demonstrating 
 the similarities and differences between MCMMs and other types of
  learning algorithms such as Restricted Boltzmann Machines (RBM) \citep{smolensky:1986, hinton:2002}
- and Latent Dirichlet Allocation (LDA). Section~\ref{sec:mixing-function} 
- focuses a particularly important component of an MCMM, namely its 
+ and Latent Dirichlet Allocation (LDA) \citep{blei-et-al:2003}. Section~\ref{sec:mixing-function} 
+ focuses on a particularly important component of an MCMM, namely its 
  \emph{mixing function}, which is a type of activation function, that is, a 
  function that determines the activities of nodes in neural networks.  
 Finally, section~\ref{sec:mcmm-learning} discusses the means by which 
-MCMMs learns, paying particular attention to Multimorph's MCMM.
+MCMMs learn, paying particular attention to Multimorph's MCMM.
 
 %demonstrates the bipartite nature of an MCMM; compare figure~\ref{fig:mcmm} in section~\ref{sec:architecture} to the canonical bipartite structure shown in figure \ref{fig:gt-bipartite} in chapter~\ref{ch:graph}. whose bipartiteness becomes clearly evident in section~\ref{sec:architecture} Section~\ref{sec:architecture} also breaks the architecture of an MCMM, describing its basic components and how they relate to each other. hen delves deeper into the nature the MCMM, comparing and contrasting it to related learning algorithms, such as the Restricted Boltzmann Machine (RBM). Finally, section~\ref{sec:mcmm-learning} discusses the particular means by which Multimorph's MCMM learns.
 
@@ -119,7 +119,7 @@ MCMMs learns, paying particular attention to Multimorph's MCMM.
 
 In \citet{saund:94}, the term \emph{multiple cause mixture model} refers to a family of algorithms rather than to a  a single, 
 specific algorithm. But though the term is general to an extent, it also denotes a certain category of algorithms.
-And since MCMMs constitute an definite category, 
+And since MCMMs constitute a definite category, 
 all MCMMs share certain key attributes.
 These attributes are 
 %in large part 
@@ -128,14 +128,14 @@ the subject of this section.
 An MCMM is a graphical model consisting of two layers of nodes (or units): a \emph{surface} (or \emph{visible}) 
 layer and a \emph{hidden} layer.
 These two layers are illustrated in figure~\ref{fig:mcmm}, where $\mathbf{m}_i$ 
-is the vector of hidden units, and $\mathbf{r}_i$ is the layer of surface units. The layer $\mathbf{r}_i$ is actually a (working) reconstruction of the original vector of surface units $\mathbf{x}_i$, but we will nonetheless generally refer to $\mathbf{r}_i$ as the surface layer, and its components or nodes as surface units. 
-\footnote{Saund uses $\mathbf{d}$ 
+is the vector of hidden units, and $\mathbf{r}_i$ is the layer of surface units. The layer $\mathbf{r}_i$ is actually a  "working" reconstruction of the original surface-unit vector $\mathbf{x}_i$, but we will nonetheless generally refer to it as the \emph{surface layer}, and its components (or nodes) as surface units.\footnote{Saund 
+uses $\mathbf{d}$ 
 rather than $\mathbf{x}$ to denote this vector. We use $\mathbf{x}$ because it seems to be more widely
-used elsewhere to denote data points. We also use $\mathbf{d}$ to denote the \emph{direction vector} later in this chapter, so using $\mathbf{x}$ to denote data points helps to avoid confusion.}; 
-The vector it is the observed, 
-real-world data. The vector $\mathbf{r}_i$ is the ``working" 
-reconstruction of original data vector $\textbf{x}_i$. It is dynamic, evolving as learning progresses and  
-becoming increasingly similar to $\mathbf{x}_i$. 
+used elsewhere to denote data points. We also use $\mathbf{d}$ to denote the \emph{direction vector} later in this chapter, so using $\mathbf{x}$ to denote data points helps to avoid confusion.}
+%The vector it is the observed, real-world data. 
+As a working
+reconstruction, $\mathbf{r}_i$ is dynamic; it evolves as the learning progresses and thus
+becomes increasingly similar to $\mathbf{x}_i$. 
 %This is the essence of the learning process, and the mechanisms that drive it are
 %discussed in section~\ref{sec:mcmm-learning}.
 
@@ -147,9 +147,10 @@ match $\mathbf{x}_i$, that is, to reconstruct the component values of $\mathbf{x
 the vector $\mathbf{r}_i$. The process that achieves this reconstruction is the learning process and is discussed in detail in section~\ref{sec:mcmm-learning}.
 % shall discuss this reconstruction process in more detail in section REF.
 
-\begin{figure}[htb]
-\begin{center}
-%\small
+\begin{figure}[t]
+%\begin{center}
+\centering
+\small
 \begin{tikzpicture}[shorten <=1pt,->,draw=black!100]
 	\def \rowtwoht{4.25cm}
 	\def \weightlevel{2.75cm}
@@ -220,9 +221,10 @@ the vector $\mathbf{r}_i$. The process that achieves this reconstruction is the 
 		(m4)	edge	node	{}	(r5);
 		
 \end{tikzpicture}
-\end{center}
+%\end{center}
 \caption{Architecture of a Multiple Cause Mixture Model (MCMM)} 
 \label{fig:mcmm}
+\vspace{12pt}
 \end{figure}
 
 The vector $\mathbf{x}_i$ is the $i$th row in the 
@@ -235,12 +237,13 @@ point, and thus ultimately the same word. Notice that the hidden
 layer $\textbf{m}_i$ bears this same index and is thus also tied to the $i$th word. The index $i$
 means that it 
 is the 
-\emph{cluster-membership vector} of the $i$th word; that is, it is the $i$th row in the row 
-in the $I \times K$ matrix 
-$\mathbf{M}$, and each of $\mathbf{M}$'s $K$ columns corresponds to a particular 
-\emph{cluster}. Thus, the activity of each cell $m_{i,k}$ indicates whether or not the $i$th 
-data point $\mathbf{x}_i$ (via its reconstruction $\mathbf{r}_i$) is a member of the 
-$k$th cluster.
+\emph{cluster-membership vector} of the $i$th word; that is, it is the $i$th row of 
+the $I \times K$ matrix 
+$\mathbf{M}$.  Each column in the $\mathbf{M}$ matrix corresponds to a cluster, and thus so does each component $m_{i,k}i$ of a cluster-membership vector. In particular, the $k$th component in a given cluster-membership vector corresponds to the $k$th cluster. It indicates whether or not $i$th data point is a member of that cluster. 
+%and each of $\mathbf{M}$'s $K$ columns corresponds to a particular 
+%\emph{cluster}. Thus, the activity of each cell $m_{i,k}$ indicates whether or not the $i$th 
+%data point $\mathbf{x}_i$ (via its reconstruction $\mathbf{r}_i$) is a member of the 
+%$k$th cluster.
 
 %corresponds to the $i$th word.  The vector $\mathbf{r}_i$ 
 %is the \emph{reconstruction} vector; that is, it is a (working) 
@@ -282,7 +285,7 @@ On the other hand, the very name
 contains the term \emph{mixture model}, which itself refers to a large class of unsupervised learning models. 
 This section is therefore divided into two subsections: First, section~\ref{sec:autoencoders} 
 considers MCMMs as neural networks, i.e., as autoencoders, using neural-network terminology 
-to relate them to other autoencoders. Section~\ref{sec:autoencoders} then 
+to relate them to other autoencoders. Section~\ref{sec:mixture-models} then 
 considers MCMMs from a \emph{mixture-model} perspective, discussing their relationship to standard mixture models as well as \emph{mixed-membership} (or \emph{admixture}) models. 
 
 \subsection{Autoencoders}
@@ -311,22 +314,9 @@ An autoencoder tests the fitness of its working model by attempting to reconstru
 point from its internal representation (or encoding) of the data point, % (i.e. from the represenationthe working the model, 
 and measuring the \emph{reconstruction error}, the discrepancy between the reconstructed and original data vectors.  
 It then makes adjustments to the model so as to reduce this error.
-
-In the following, we consider three types
-of autoencoders, namely the classical autoencoder, the Restricted Boltzmann Machine (RBM),
-and the MCMM. We compare them across three dimensions: \emph{form}, \emph{node activation}, 
-(i.e., the means of computing node activities), and \emph{optimization procedure}
-(i.e., method for minimizing the model's error).
-
-%These adjustments, which mark the end of the current iteration, should result in a slightly better internal representation for next iteration.  
-
-%\subsubsection{Classical Autoencoder}
-%\paragraph{Form.}
-%\label{sec:classical-auto}
-
-\begin{figure}[tb]
+\begin{figure}[t]
 %%\begin{minipage}{.3\textwidth}
-\begin{center}
+\centering
 \small
 \begin{tikzpicture}[shorten <=1pt,->,draw=black!100]
 	\def \rowtwoht{5cm}
@@ -429,14 +419,29 @@ and the MCMM. We compare them across three dimensions: \emph{form}, \emph{node a
 		(m4)	edge	node	{}	(r3)
 		(m4)	edge	node	{}	(r5);		
 \end{tikzpicture}
-\end{center}
 \caption{The ``classical'' autoencoder, one member of the general autoencoder family}
 %: an input layer ($\mathbf{d}$), a hidden layer ($\mathbf{m}$), and an output layer
 \label{fig:autoencoder}
+\vspace{12pt}
 \end{figure}
 
+In the following, we will consider three types
+of autoencoders, namely the classical autoencoder, the Restricted Boltzmann Machine (RBM),
+and the MCMM. In addition to describing each of these, we will compare them across three dimensions: \emph{form}, \emph{node activation}, 
+(i.e., the means of computing node activities), and \emph{optimization procedure}
+(i.e., method for minimizing the model's error).
+
+%These adjustments, which mark the end of the current iteration, should result in a slightly better internal representation for next iteration.  
+
+%\subsubsection{Classical Autoencoder}
+%\paragraph{Form.}
+%\label{sec:classical-auto}
+
 \begin{figure}[t]
-\begin{center}
+\vspace{12pt}
+%\begin{mdframed}
+\centering
+%\begin{center}
 %\small
 \begin{tikzpicture}[shorten <=1pt,<->,draw=black!100]
 	\def \rowtwoht{4.25cm}
@@ -508,9 +513,11 @@ and the MCMM. We compare them across three dimensions: \emph{form}, \emph{node a
 		(m4)	edge	node	{}	(r5);
 		
 \end{tikzpicture}
-\end{center}
+%\end{center}
 \caption{Restricted Boltzmann Machine} 
 \label{fig:rbm}
+%\end{mdframed}
+\vspace{12pt}
 \end{figure}
 
 \paragraph{Form.}
@@ -531,7 +538,6 @@ and the MCMM. We compare them across three dimensions: \emph{form}, \emph{node a
 %The main differences pertain to form (or general architecture), node activation, 
 %i.e., the means of computing node activities, and the \emph{optimization procedure}, 
 %i.e., the method for minimizing the model's error.
-
 MCMMs and RBMs are both bipartite graphs, whereas the classical autoencoder is 
 not (see the description of bipartite graphs in chapter~\ref{ch:graph}).
 The classical autoencoder, shown in figure~\ref{fig:autoencoder}. has distinct input 
@@ -583,7 +589,7 @@ The sigmoidal weighted sum is a composition of two functions: the ``outer" funct
 	\end{equation} %\label{eq:sigws
 The ``inner'' function replaces the $t$ in equation~\eqref{eq:sig}. It is a weighted-sum of the form 
 \begin{equation} \label{eq:wtd-sum}
-\sum_{j} x_{j} w_{j,k} \qquad  \text{or} \qquad \textbf{x}^{\textsf{T}}\textbf{w}_k
+t = \sum_{j} x_{j} w_{j,k} \qquad  \text{or} \qquad t = \textbf{x}^{\textsf{T}}\textbf{w}_k
 \end{equation}
 %$\sum_{j} x_{j} w_{j,k}$, which is equivalent to the \emph{inner product} of vectors $\textbf{x}$ and  $\textbf{w}$, that is, $\textbf{x}^\textsf{T}\textbf{w}_k$, 
 where $\textbf{x}$ would be a vector of $J$ node activities and $\textbf{w}_k$ the vector of $J$ weights connecting the nodes of $\textbf{x}$ to the $k$th node in a different layer of nodes, say $\textbf{m}$. 
@@ -697,7 +703,9 @@ the influence of minority subsets of inputs. \citet{saund:94} argues
 that the averaging nature of the sigmoidal weighted sum is inappropriate when one wants to encourage
 a small subset of votes to take responsibility for a given surface unit's activity, as in MCMMs.
 \citet{saund:94} thus proposes for MCMMs a special kind of activation function called a \emph{mixing function}.
-We discuss the properties of mixing functions in 
+That is, \emph{mixing function} is the term that \citet{saund:94} gave to a set of activation functions that have certain
+properties---properties, which, in turn, give MCMMs their distinguishing properties.
+We will discuss the properties of mixing functions in 
 section~\ref{sec:mixing-function}.
 
 %One of the simplest possible activation functions is a weighted sum of the form
@@ -736,7 +744,7 @@ The values of the hidden units are not directly manipulated; rather, they change
 only as a 
 consequence of the direct adjustments made to the weights. The same is true in an RBM: 
 an RBM's hidden-unit activities change in response to adjustments 
-make to the weights and biases change, but they are not
+made to the weights and biases, but they are not
 adjusted directly.
 
 In an MCMM, by contrast, both $\textbf{m}_i$ and $\textbf{C}$ are directly manipulated. This means that
@@ -747,7 +755,7 @@ $\textbf{C}$, and it must induce both during the course of learning. We shall di
 %the values in its respective matrix. 
 
 \subsection{Mixture and Mixed-Membership Models}
-
+\label{sec:mixture-models}
 A mixture model attempts to account for the data points in a data set 
 by assuming that multiple probability
 distributions are responsible for generating the data. 
@@ -755,7 +763,7 @@ It also assumes that \emph{exactly one}
 of these underlying distributions is responsible for each data point. 
  These underlying 
 distributions can be interpreted as clusters. Under this interpretation, each data point is 
-is assigned to cluster (distribution) that is responsible for generating it. 
+is assigned to a cluster (distribution) that is responsible for generating it. 
 However, since the process is probabilistic,
 data points are often not mapped to clusters with 100 percent certainty. 
 There may be, for example, a 60 percent chance that a given datapoint belongs to one 
@@ -796,7 +804,7 @@ and another for 30 percent, and so on.
 %A single topic 
 %cannot be responsible for the whole document unless no other topics 
 %are involved.  
-However, it is important to note that these percentages 
+It is important to note that these percentages 
 do not indicate uncertainty as they would in mixture models. 
 %The assumption
 %of multiple causes (i.e., clusters) is built 
@@ -855,11 +863,13 @@ do not have coherent interpretations in morphology as they do in topic modeling.
 In morphology, it is the simple presence/absence 
 of a morphological unit that is important, not the proportion of characters 
 or features it can claim. Moreover, the percentages of mixed-membership 
-models correspond to degrees of membership:  
-``[M]ixed membership models assume that individuals or observational units 
+models correspond to degrees of membership:
+\begin{quote}\noindent 
+[M]ixed membership models assume that individuals or observational units 
 [i.e., words] may only partly belong to population mixture categories [i.e., topics] \dots. 
 The degree of membership then is a vector of continuous, 
-non-negative latent variables [i.e., hidden units] that add up to 1'' \citep[][p. 4]{airoldi-et-al:2014}. 
+non-negative latent variables [i.e., hidden units] that add up to 1 \citep[][p. 4]{airoldi-et-al:2014}. 
+\end{quote}
 By contrast, in morphology, there are no degrees of membership (and thus
 no a requirement that they should add up to one.)
 
@@ -940,8 +950,8 @@ determines the values of surface nodes.
 \begin{equation}\label{eq:noisy-or}
 r_{i,j} = 1 - \prod\limits_{k} (1 - m_{i,k} c_{j,k})
 \end{equation}
- The Noisy-OR function is essentially an\textit{OR} gate, or, to put it another way, 
- an``at-least-one" gate. That is, the surface node $r_{i,j}$ is $1$ (and thus ``\textsc{on}") as long as 
+ The Noisy-OR function is essentially an \textit{OR} gate, or, to put it another way, 
+ an ``at-least-one" gate. That is, the surface node $r_{i,j}$ is $1$ (and thus ``\textsc{on}") as long as 
  \emph{at least one} cause is active.
  If two or more causes are active,
 $r_{i,j}$ is still going to be $1$. The output of Noisy-OR does not change 
@@ -968,20 +978,20 @@ are each either $1$ or  $-1$. Note the absolute value in the denominator in the 
 This absolute value allows the numerator and denominator to differ in sign so that 
 the $r_{i,j}$ can be either positive or negative (and thus match the signs of the components of the original data points).
 
- Notice also that equation~\eqref{eq:wwb} contains weighted sums. In fact, same weighted sum
+ Notice also that equation~\eqref{eq:wwb} contains weighted sums. In fact, the weighted sum
 in the numerator of the upper case of equation~\eqref{eq:wwb} is the same weighted sum that appears in the sigmoidal weighted sum, namely $\sum\limits_{k} m_{i,k} c_{j,k}$.
  Nevertheless, there are important differences 
  between equation~\eqref{eq:wwb} and the sigmoidal weighted sum. First, there is 
  no logistic sigmoid in equation~\eqref{eq:wwb}; it is the denominator $\sum_{k} m_{i,k} |c_{j,k}|$ 
  that constrains output of \eqref{eq:wwb} to the interval $[-1,1]$. The other 
- difference is the nonlinearity arises from the conditions on the output \eqref{eq:wwb}; 
+ difference is that the nonlinearity arises from the conditions on the output \eqref{eq:wwb}; 
  to avoid division by zero, it is necessary to stipulate that $r_{i,j}=0$ if 
  $\sum_{k} m_{i,k} |c_{j,k}| = 0$, a result that occurs only if every vote is 0, 
  in which case no cluster can claim responsibility for the value of $r_{i,j}$. But 
  because $0$ never occurs in the original data points in the \textsc{write-white-and-black} 
- domain, the learning process would tend drive activities of the reconstruction nodes 
+ domain, the learning process would tend to drive activities of the reconstruction nodes 
  away from $0$. That is, because the learning process seeks to minimize the discrepancy 
- between $\textbf{r}_i$ and $\textbf{x}_i$, $0$ cannot a valid final value for any $r_{i,j}$.  
+ between $\textbf{r}_i$ and $\textbf{x}_i$, $0$ cannot be a valid final value for any $r_{i,j}$.  
  Thus, the weights and the hidden-unit vectors will be shaped to produce surface-node 
  activities that are either $-1$ or $1$ in accordance with the component values of 
  the original data points. 
@@ -1003,21 +1013,22 @@ and the \textsc{write-white-and-black} mixing function. The latter did
 not work well; in fact, under the \textsc{write-white-and-black} mixing function, the system 
 failed to make progress toward learning to reconstruct the original 
 data points. This may have been due to the sparseness of the data points 
-in this study; each data point is vector of hundreds of feature slots, but 
-only a handful have the value $1$. are feature-vector representations of words. 
+in this study; each data point is a vector of hundreds of feature slots, but 
+only a handful have the value $1$. %are feature-vector representations of words. 
 There are hundreds of features, and each has a designated slot in each feature vector.
 (We will discuss these features in detail in chapter~\ref{ch:experi}.)
 
 %in fact, it seemed to be fundamentally ill-suited to the present study's learning task. proved not to work well given for the purposes of the present study,  particularly the nature of this study's data points. Recall this study's data points are feature-vector representations of words, and that these feature vectors are sparse. That is, for any given word, most features are not present. 
-In a \textsc{Write-Black} formulation, absent features have the value $0$, but in the write-white-and-black formulation, they are $-1$. Therefore, in a sparse feature vector under the write-white-and-black formulation, the vast majority of features are $-1$. The cumulative effect of all these negatives in \eqref{eq:wwb} seemed to drown out the few positive positive features, making it impossible to reproduce the original data vectors. 
+In a \textsc{write-black} formulation, absent features have the value $0$, but in the\textsc{write-white-and-black} formulation, they are $-1$. Therefore, in a sparse feature vector under the\textsc{write-white-and-black} formulation, the vast majority of features are $-1$. The cumulative effect of all these negatives in \eqref{eq:wwb} seemed to drown out the few positive features, making it impossible to reproduce the original data vectors. 
 
 Noisy-OR, on the other hand, did allow learning to take place; that is, 
 the system was able to reduce its error with Noisy-OR as its mixing function. 
 Apparently, this study's sparse feature vectors (i.e., data points) are more aptly 
-placed in the \textsc{Write-Black} domain than the \textsc{write-white-and-black} domain.
+placed in the \textsc{write-black} domain than the \textsc{write-white-and-black} domain.
 
-\begin{figure}[htb]
-\begin{center}
+\begin{figure}[t]
+%\begin{center}
+\centering
 \begin{tikzpicture}[shorten <=1pt,->,draw=black!100]
 	\def \rowtwoht{4.25cm}
 	\def \weightlevel{2.75cm}
@@ -1075,7 +1086,7 @@ placed in the \textsc{Write-Black} domain than the \textsc{write-white-and-black
 
 		
 \end{tikzpicture}
-\end{center}
+%\end{center}
 \caption{%The activity of each surface unit  is determined by a \emph{vote}, so to speak.  
 %Each hidden unit casts a \emph{weighted vote}, so to speak, 
 The activity of a given surface (or reconstruction) unit is determined by combining ``votes'' cast by the hidden units.}
@@ -1148,6 +1159,8 @@ Because Multimorph's composite objective function is nonlinear, it requires a no
 %For the sake discussion, let us assume a single one type of parameter
 %\subsection{The Nonlinear Conjugate Gradient Method}
 %\label{sec:ncg-gen}
+
+
 To facilitate a general description of the class of nonlinear conjugate gradient methods, 
 we shall for moment consider a simple model with only one parameter 
 %a hypothetical vector we shall call $\textbf{w}$.
@@ -1158,7 +1171,30 @@ the weights in $\textbf{C}$ and the hidden-unit activities in $\textbf{M}$.
 We shall fully examine the workings of this dual-parameter framework in \ref{sec:two-in-one} below.
 %If there are $I$ nodes in one layer and $J$ nodes in the other, there are $I \times J$ 
 %individual node-to-node weights.
-
+\begin{algorithm}[t]
+ \KwData{parameter vector \textbf{w} along with ancillary data}
+\KwResult{optimized parameter vector \textbf{w}}
+ Choose $\epsilon_1, \epsilon_2$\;
+ Compute gradient: $\textbf{g} := \frac{\partial f(\textbf{w})}{\partial \textbf{w}}$\;
+Initialize direction: $\textbf{d} := -\textbf{g}$\; \label{line:init-d}
+ \While{$||\textbf{g}|| > \epsilon_1$}{
+   Compute $\alpha = \textsc{Line-Search}(\textbf{d})$\;  \label{line:alpha-update-1}
+  %Compute $\alpha$ so that $f(\textbf{w}+\alpha \textbf{d}) \geq f(\textbf{w}) +  c \, \alpha \, \textbf{g}^{\textsf{T}}\textbf{d})$ (Armijo rule)\;
+  Save parameter vector: \textbf{w}_{\text{old}} := \textbf{w}\;
+  Update parameter vector: $\textbf{w} := \textbf{w} + \alpha \textbf{d}$\;  \label{line:param-update-1}
+   Save gradient: $\textbf{g}_{\text{old}} := \textbf{g}$ \; \label{line:save-gradient-1}
+   Save direction: $\textbf{d}_{\text{old}} := \textbf{d}$ \; \label{line:save-direction-1}
+  Update $\textbf{g} := \frac{\partial f(\textbf{w})}{\partial \textbf{w}}$\;
+  Compute $\beta$\;
+  Update direction: $\textbf{d} := -\textbf{g} + \beta \textbf{d}_{\text{old}}$\;  \label{line:d-update-1}
+  %Update $t := t + 1$\;
+  \If{$f(\textbf{w}_{\text{old}}) - f(\textbf{w}) < \epsilon_2$}{
+   Stop\;
+   }
+ }
+\caption{General (nonlinear) conjugate-gradient algorithm.}
+\label{alg:gen-cg}
+\end{algorithm}
 The general process of nonlinear conjugate-gradient optimization 
 (i.e., \emph{minimization} in our case)
 is shown in algorithm~\ref{alg:gen-cg}. The process consists of a loop, 
@@ -1173,10 +1209,10 @@ the latter being determined by a scaling factor $\alpha$. A step thus takes the 
 The length of a step is conditioned upon its direction $\textbf{d}$; 
 that is, one must decide on a direction $\textbf{d}$ before 
 determining how far to go in that direction.
-The scalar $alpha$ is computed by a \emph{line-search} function 
+The scalar $\alpha$ is computed by a \emph{line-search} function 
 that takes the direction $\textbf{d}$
 as input, as in line~\ref{line:alpha-update-1} in algorithm~\ref{alg:gen-cg}.
-Multimorph's line-search function that makes sure that $\alpha$ satisfies the
+Multimorph's line-search function makes sure that $\alpha$ satisfies the
 Armijo condition \citep{armijo:1966}. %^, i.e., that 
 
 The direction is initialized as the negative of the objective function's gradient
@@ -1224,30 +1260,6 @@ In conjugate-gradient methods, if the goal is to decrease the objective function
   \end{equation}
 Inside the loop, the direction vector $\textbf{d}$ is updated in each iteration, and each update to  $\textbf{d}$ 
 takes into account information from the preceding iteration. Thus the current direction and gradient vectors in the in any given iteration are always copied and saved as $\textbf{g}_ {\text{old}}$ and $\textbf{d}_{\text{old}}$, respectively, before they are updated, so that they will be available later.
-\begin{algorithm}[h]
- \KwData{parameter vector \textbf{w} along with ancillary data}
-\KwResult{optimized parameter vector \textbf{w}}
- Choose $\epsilon_1, \epsilon_2$\;
- Compute gradient: $\textbf{g} := \frac{\partial f(\textbf{w})}{\partial \textbf{w}}$\;
-Initialize direction: $\textbf{d} := -\textbf{g}$\; \label{line:init-d}
- \While{$||\textbf{g}|| > \epsilon_1$}{
-   Compute $\alpha = \textsc{Line-Search}(\textbf{d})$\;  \label{line:alpha-update-1}
-  %Compute $\alpha$ so that $f(\textbf{w}+\alpha \textbf{d}) \geq f(\textbf{w}) +  c \, \alpha \, \textbf{g}^{\textsf{T}}\textbf{d})$ (Armijo rule)\;
-  Save parameter vector: \textbf{w}_{\text{old}} := \textbf{w}\;
-  Update parameter vector: $\textbf{w} := \textbf{w} + \alpha \textbf{d}$\;  \label{line:param-update-1}
-   Save gradient: $\textbf{g}_{\text{old}} := \textbf{g}$ \; \label{line:save-gradient-1}
-   Save direction: $\textbf{d}_{\text{old}} := \textbf{d}$ \; \label{line:save-direction-1}
-  Update $\textbf{g} := \frac{\partial f(\textbf{w})}{\partial \textbf{w}}$\;
-  Compute $\beta$\;
-  Update direction: $\textbf{d} := -\textbf{g} + \beta \textbf{d}_{\text{old}}$\;  \label{line:d-update-1}
-  %Update $t := t + 1$\;
-  \If{$f(\textbf{w}_{\text{old}}) - f(\textbf{w}) < \epsilon_2$}{
-   Stop\;
-   }
- }
-\caption{General (nonlinear) conjugate-gradient algorithm. }
-\label{alg:gen-cg}
-\end{algorithm}
 
 %The parameter vector $\textbf{w}$ is thus updated according to a rule that incorporates 
 %both $\textbf{d}$ and $\alpha$, namely:
@@ -1267,7 +1279,8 @@ of a special ratio called $\beta$, as in
 \begin{equation}\label{eq:basic-d}
 \textbf{d}= -\textbf{g}  + \beta \textbf{d}_{\text{old}} 
 \end{equation}
-where \textbf{g} is the gradient (first partial derivative) of the error function with respect to the parameter vector $\textbf{w}$ 
+where \textbf{g} is the gradient (first partial derivative) of the error function with respect 
+to the parameter vector $\textbf{w}$. 
 Conjugate-gradient methods are further subdivided according to how they calculate $\beta$.
  %\citet[For an overview of the available options, see][] 
 \citet{hager:2006} provide an overview of the various existing recipes for $\beta$.
@@ -1280,7 +1293,7 @@ where
 \textbf{y} = \textbf{g} - \textbf{g}_{\text{old}} 
 \end{equation}
 
-For Multimorph, I chose the optimization method of \citet{cheng-and-li:2012}, which is related to the Polak--Ribi\'{e}re--Polyak  method. In particular, it is based on the Polak--Ribi\'{e}re--Polyak variant proposed by \citet{zhang-et-al:2006}. This variant
+For Multimorph, I chose the optimization method of \citet{cheng-and-li:2012}, which is related to the Polak--Ribi\'{e}re--Polyak  method. In particular, it is based on the \emph{modifed} Polak--Ribi\'{e}re--Polyak method (\textsc{modified-PRP})  proposed by \citet{zhang-et-al:2006}. This \textsc{modifed-PRP} method
 %uses the Polak--Ribi\'{e}re--Polyak formula for $\beta$. But more precisely, conjugate-gradient
 %\citet{cheng-and-li:2012} use a modified version of the original Polak--Ribi\'{e}re--Polyak method. The modified version, first proposed by \citet{zhang-et-al:2006}, 
 introduces a third term, namely  $-\eta \textbf{y}$, to the direction formula \eqref{eq:basic-d}, as follows:
@@ -1292,14 +1305,14 @@ where
 \label{eq:eta}
 \eta = \frac{\textbf{g}^{\textsf{T}}\textbf{d}_{\text{old}}}{{||\textbf{g}_{\text{old}})||}^2}
 \end{equation}
-The pseudocode for the \textsc{modified-PRP} method is shown in algorithm~\ref{alg:mod-prp-cg}. \citet{cheng-and-li:2012} essentially take \textsc{modified-PRP} and turn it into an \emph{active-set} method as described below in section~\ref{sec:active-set}.
+The pseudocode for the \textsc{modified-PRP} is shown as algorithm~\ref{alg:mod-prp-cg}. It the \textsc{modified-PRP} is a more specific instantiation of algorithm~\ref{alg:gen-cg}; that is, it is a complete conjugate-gradient algorithm (and not a subpart).\citet{cheng-and-li:2012} essentially take \textsc{modified-PRP} and turn it into an \emph{active-set} method as described below in section~\ref{sec:active-set}.
 %by introducing to it mechanisms for partitioning parameter components into \emph{active} and \emph{inactive} sets, as described below in section~\ref{sec:active-set}.
-\begin{algorithm}[ht]
+\begin{algorithm}[t]
 \KwData{parameter vector \textbf{w} to be optimized along with ancillary data}
 \KwResult{optimized parameter vector \textbf{w}}
 	 Choose $\epsilon_1, \epsilon_2$\;
  Compute gradient: $\textbf{g} = \frac{\partial f(\mathbf{w})}{\partial \mathbf{w}} $\;
- Initialize direction: $\mathbf{d} = -\textbf{g} $\; \label{line:init-d-2}
+ Initialize direction: $\mathbf{d} = -\textbf{g}$\; \label{line:init-d-2}
  \While{$||\textbf{g} || > \epsilon_1$}{
   Compute $\alpha = \textsc{Line-Search}(\textbf{d})$\;   \label{line:alpha-update-2}
    Save parameter vector: $\textbf{w}_{\text{old}} := \textbf{w}$\;
@@ -1353,10 +1366,11 @@ $\mathbf{M}$ and $\mathbf{C}$. That is,
 \label{eq:bounds-c}
 0 \le c_{j,k} \le 1 \quad \text{$\forall j \in J$, $\forall k  \in K$}
 \end{align}
-These constraints are necessary to allow the reconstruction activities $r_{i,j}$ to approach 
-and eventually match the component values of the original feature vectors, 0's and 1's in the case of Multimorph's data.
-
-The constraints~\ref{eq:bounds-m} and \ref{eq:bounds-c} are necessary to ensure that Multimorph's mixing function, (the Noisy-OR function) always outputs reconstruction activities in $[0,1]$.
+The constraints~\eqref{eq:bounds-m} and \eqref{eq:bounds-c} are necessary to ensure that Multimorph's mixing function, (the Noisy-OR function) always outputs reconstruction activities in $[0,1]$.
+This is necessary to allow the reconstruction activities $r_{i,j}$ to approach 
+and eventually match the component values of the original feature vectors, which are either 0 or 1 in the case of Multimorph's data.
+%
+%The constraints~\ref{eq:bounds-m} and \ref{eq:bounds-c} are necessary to ensure that Multimorph's mixing function, (the Noisy-OR function) always outputs reconstruction activities in $[0,1]$.
 %feature vectors consist of 0's and 1's. Given Multimorph's mixing function, namely the Noisy-OR 
 %function (see section~\ref{sec:mixing-function}), the above constraints are necessary to yield 
 %reconstruction vectors of 0's and 1's.
@@ -1423,7 +1437,9 @@ jointly, particularly when the values of one depend on those of the other.
 It is to this question that we now turn.
 
 An MCMM does not \emph{simultaneously} induce the 
-$\textbf{M}$ and $\textbf{C}$ matrices, but rather 
+cluster-membership matrix $\textbf{M}$ and the cluster-centroid matrix $\textbf{C}$,
+%matrices (i.e., the cluster-membership and cluster-centroid matrices, respectively), 
+but rather 
 alternates between two separate optimization states, \textsc{Optimize-M} and \textsc{Optimize-C}. 
 In each state, one matrix is held fixed (i.e., treated as constant), 
 while the other is optimized. The fixed matrix serves as the``known" set 
@@ -1469,7 +1485,7 @@ give rise to an alternation between two states, hence the name \textsc{Alternati
 %\label{alg:m-and-c}
 %\end{algorithm}
 
-\begin{algorithm}[h]
+\begin{algorithm}[th]
 \KwData{\textbf{M}, \textbf{C}, \textbf{X}, \textbf{R}}
 \KwResult{Optimized \textbf{M} and \textbf{C} matrices}
  Evaluate Error: $E = \frac{1}{2} \big(\frac{1}{I\times J}\big) \sum_i \sum_j (r_{i,j} - x_{i,j})^2$\;\label{line:init-E} 
@@ -1491,9 +1507,8 @@ optimization method of \citet{cheng-and-li:2012}, which if we have
 dubbed \textsc{Active-Set-Modified-PRP}, since it is an active-set version of the 
 \textsc{Modified-PRP} method (algorithm~\ref{alg:mod-prp-cg}). 
 \textsc{Optimize-M} contains a version of \textsc{Active-Set-Modified-PRP} tailored for
- the optimization of $\textbf{M}$ matrix, a version that we will call \textsc{Active-Set-Modified-PRP-for-M}.
-  That is, 
-that takes one cluster-membership vector $\textbf{m}_i$ at a time (for $i \in I$), 
+ the optimization of that $\textbf{M}$ matrix, a version that we will call \textsc{Active-Set-Modified-PRP-for-M}.
+It takes one cluster-membership vector $\textbf{m}_i$ at a time (for $i \in I$), 
 since each cluster-membership vector must be optimized separately. 
 Thus, \textsc{Optimize-M} is essentially a loop that iteratively calls 
 \textsc{Active-Set-Modified-PRP-for-M} $I$ times, once for each row index $i$ in 
@@ -1506,37 +1521,37 @@ because it applies to all data points universally,
 whereas any given cluster-membership vector $\textbf{m}_i$ is relevant only to one 
 data point (namely, the $i$th data point).
 
-\begin{algorithm}[ht]
-\KwData{\textbf{D}, \textbf{G}, \textbf{w}}
-\KwResult{Constrained \textbf{D}}
-	\For{$n \in N$}{
-		% in the case of descent to toward minimum, is the Grad positive or negative?
-		% --> We want gTd to be negative, and d = -Grad initially. That is, d and Grad
-		% point in opposing directions. When this is no longer true, the model
-		% is moving away from its target.
-		% However, d is not always going to be negative; its sign just needs to oppose
-		%the Gradient's sign.
-		\If {$l < \textsf{vec}(\textbf{C})[n] < u$}{
-			$\textsf{vec}(\textbf{D})[n] = -\textsf{vec}(\textbf{G})[n]$\;
-		}
-		\If {$\textsf{vec}(\textbf{C}[n]) = l$}{
-			\eIf {$\textsf{vec}(\textbf{G})[n] \geq 0$}{
-				$\textsf{vec}(\textbf{D})[n] = 0$\;
-			}{
-				$\textsf{vec}(\textbf{D})[n] = -\textsf{vec}(\textbf{G})[n]$\;
-			}
-		}
-		\If {$\textsf{vec}(\textbf{C})[n] = u$} { 
-			\eIf {$\textsf{vec}(\textbf{G})[n] \geq 0$}{
-				 $\textsf{vec}(\textbf{D})[n] = 0$\;
-			}{
-				$\textsf{vec}(\textbf{D})[n] = -\textsf{vec}(\textbf{G})[n]$\;
-			}
-		}
-	}
-\caption{This procedure identifies and sets to zero any direction component that is going to cause its corresponding parameter component either to fall below the lower bound $l$ or exceed the upper bound $u$. It thus in effect cancels the update to this parameter component.}
-\label{alg:constrained-d}
-\end{algorithm}
+%\begin{algorithm}[t]
+%\KwData{\textbf{D}, \textbf{G}, \textbf{w}}
+%\KwResult{Constrained \textbf{D}}
+%	\For{$n \in N$}{
+%		% in the case of descent to toward minimum, is the Grad positive or negative?
+%		% --> We want gTd to be negative, and d = -Grad initially. That is, d and Grad
+%		% point in opposing directions. When this is no longer true, the model
+%		% is moving away from its target.
+%		% However, d is not always going to be negative; its sign just needs to oppose
+%		%the Gradient's sign.
+%		\If {$l < \textsf{vec}(\textbf{C})[n] < u$}{
+%			$\textsf{vec}(\textbf{D})[n] = -\textsf{vec}(\textbf{G})[n]$\;
+%		}
+%		\If {$\textsf{vec}(\textbf{C}[n]) = l$}{
+%			\eIf {$\textsf{vec}(\textbf{G})[n] \geq 0$}{
+%				$\textsf{vec}(\textbf{D})[n] = 0$\;
+%			}{
+%				$\textsf{vec}(\textbf{D})[n] = -\textsf{vec}(\textbf{G})[n]$\;
+%			}
+%		}
+%		\If {$\textsf{vec}(\textbf{C})[n] = u$} { 
+%			\eIf {$\textsf{vec}(\textbf{G})[n] \geq 0$}{
+%				 $\textsf{vec}(\textbf{D})[n] = 0$\;
+%			}{
+%				$\textsf{vec}(\textbf{D})[n] = -\textsf{vec}(\textbf{G})[n]$\;
+%			}
+%		}
+%	}
+%\caption{This procedure identifies and sets to zero any direction component that is about to push its corresponding parameter component either below the lower bound $l$ or above the upper bound $u$. In effect, it cancels the update to this parameter component.}
+%\label{alg:constrained-d}
+%\end{algorithm}
 %\textsc{Optimize-C} follows exactly the process outlined in section~\ref{sec:num-opt}, 
 %except with  $\textbf{C}$ taking the place of the generic matrix $\textbf{W}$. 
 %\textsc{Optimize-M} is a somewhat different case in that it is divided 
@@ -1652,7 +1667,7 @@ $I = \textsc{Number-of-Rows}(\textbf{M})$\;
 %$J = \textsc{Number-of-Rows{\textbf{C}}$\;
 \textsc{Active-Set-Modified-PRP-for-C}(\textbf{C}, \textbf{M}, \textbf{X}, \textbf{R})\;
 \caption{\textsc{Optimize-C}}
-\label{alg:opt-M}
+\label{alg:opt-C}
 \end{algorithm}
 %\paragraph{\textsc{Optimize-C}.} 
 %The function \textsc{Optimize-C} consists of a single optimization loop over the 
@@ -1694,8 +1709,9 @@ To the add a cluster, the system splits a cluster, specifically the worst cluste
 it computes E^{\prime}_{k}, the MCMM's error \emph{without} the 
  $k$th cluster.  The worst cluster is the one whose \emph{absence} leads to the best model, 
  i.e., the one with the lowest $E^{\prime}$, and the index of the worst cluster is thus the 
- $k$ such that E^{\prime}_{k} is lowest. If this index is $h$, then cluster $h$ is the worst cluster and thus the cluster to split. To split cluster $h$, 
- the system would copy column $h$ in $\textbf{M}$ as pastes it as the new 
+ $k$ such that E^{\prime}_{k} is lowest. If this index is $h$, then cluster $h$ is the 
+ worst cluster and thus the cluster to split. To split cluster $h$, 
+ the system would copy column $h$ in $\textbf{M}$ and paste it as the new 
  rightmost column in $\textbf{M}$ (so that its index is $K$)  At this point, 
  the column indexed $h$ and the new rightmost columns have identical values.  
  Some noise is thus introduced to both to encourage the two clusters to diverge. 
@@ -1753,7 +1769,7 @@ Evaluate $E = \frac{1}{I\times J} \frac{1}{2} \sum_i \sum_j (r_{i,j} - x_{i,j})^
 \subsection{A Simple MCMM Example}
 \label{subsec:example}
 
-Figure~\ref{fig:example-1} shows a simple MCMM at two distinct stages. Subfigure~\ref{fig:example:subfig1-1} shows the MCMM before convergence, while learning is still in progress. The surface and hidden-unit activities at this stage are still greater than $0$ and less than $1$, though they are on their way to either $0$ or $1$. Subfigure~\ref{fig:example:subfig2-1}, on the other hand, shows the MCMM after it has converged, when the learning process is complete.
+Figure~\ref{fig:example-1} shows a simple MCMM at two distinct stages. Figure~\ref{fig:example:subfig1-1} shows the MCMM before convergence, while learning is still in progress. The surface and hidden-unit activities at this stage are still greater than $0$ and less than $1$, though they are on their way to either $0$ or $1$. Figure~\ref{fig:example:subfig2-1}, on the other hand, shows the MCMM after it has converged, when the learning process is complete.
 
 The input data matrix for the MCMM in figure~\ref{fig:example-1} consists of three data points (i.e., $I = 3$).
 The hidden cluster activities $\mathbf{M}$, the weights $\mathbf{C}$, the surface-unit vectors $\mathbf{R}$,
@@ -1761,23 +1777,25 @@ and the mixing function together constitute a model that reproduces the
 observed data points $\mathbf{X}$.
 The nodes $m_{i,k}$ are the hidden units and represent cluster-membership activities. There are three cluster-membership vectors $m_{i}$, one for each $i \in I$, i.e., one for each data point. Because there are two clusters, each cluster-membership vector has two components. For instance, $\textbf{m}_{0} = [0, 1]$, which means the first data point $\textbf{x}_{0}$ does not belong to the first cluster, but \emph{does} belong to the second. By contrast, $\textbf{m}_{1} = [1,0]$ indicates that $\textbf{x}_{1}$ belongs to first cluster, but not to the second. Finally, $\textbf{m}_{2} = [1,1]$ indicates that  $\textbf{x}_{2}$ belongs to \emph{both} clusters. 
 
-These cluster-membership vectors make more sense when we consider the this MCMM's $J \times K$ ($3 \times 2$) weight matrix $\textbf{C}$. The two column-vectors $\textbf{c}_0 = [0,1,0]$ and $\textbf{c}_1 = [1,0,1]$ are the \emph{centroids} of the first and second clusters, respectively. A cluster's centroid is a sort of average or composite of the cluster's member vectors; it represents the feature values that a cluster's members have in common and can thus serve as a label for a cluster. The first data point $\textbf{x}_0 = [0,1,0]$ is thus clearly a the cluster whose centroid  $[0,1,0]$. Similarly, the second data point $\textbf{x}_1 = [1,0,1]$ is clearly of the member of the cluster whose centroid is $[1,0,1]$. But just as clearly, the influence of both clusters is evident in the third data point $\textbf{x}_2 = [1,1,1]$.
+These cluster-membership vectors make more sense when we consider the this MCMM's $J \times K$ ($3 \times 2$) weight matrix $\textbf{C}$. The two column-vectors $\textbf{c}_0 = [0,1,0]$ and $\textbf{c}_1 = [1,0,1]$ are the \emph{centroids} of the first and second clusters, respectively. A cluster's centroid is a sort of average or composite of the cluster's member vectors; it represents the feature values that a cluster's members have in common and can thus serve as a label for a cluster. The first data point $\textbf{x}_0 = [0,1,0]$ is a member of the cluster whose centroid is $[0,1,0]$. Similarly, the second data point $\textbf{x}_1 = [1,0,1]$ is clearly a member of the cluster whose centroid is $[1,0,1]$. But just as clearly, the influence of \emph{both} clusters is evident in the third data point $\textbf{x}_2 = [1,1,1]$.
 
 Table~\ref{tab:cl-members} shows the members as well as the centroids of each of the two clusters: Notice that the active components in each cluster centroid correspond to the shared component values among the cluster's members.
 
 \begin{table}[b]
-\begin{mdframed}
+%\begin{mdframed}
 \centering
-\setlength{\extrarowheight}{4pt}
-\begin{tabular}{ccc} 
-Cluster index ($k$) & Member Data Points & Cluster Centroid \\ \hline\hline
- $0$ &  $[0,\mathbf{1},0]$, $[1,\mathbf{1},1]$ & $[0,1,0]$\\ \hline
+\setlength{\extrarowheight}{8pt}
+\begin{tabular}{ccc}
+\toprule
+Cluster index ($k$) & Member Data Points & Cluster Centroid \\ \midrule
+ $0$ &  $[0,\mathbf{1},0]$, $[1,\mathbf{1},1]$ & $[0,1,0]$\\ 
  $1$  & $[\mathbf{1},0,\mathbf{1}]$, $[\mathbf{1},1,\mathbf{1}]$ & $[1,0,1]$\\
+ \bottomrule
  \end{tabular}
 \label{tab:cl-members}
 \caption{\emph{Clusters from Figure~\ref{fig:example-1} and their Centroids.} The active features in each cluster's centroid are the \emph{shared} active features among the cluster's members.}
 %reflected in the centroids.}
-\end{mdframed}
+%\end{mdframed}
 \end{table}	
 
 
@@ -2205,7 +2223,7 @@ $m_{i,k}c_{j,k} = 1$ (and $0$ otherwise).
 
 %the activities and the centers are 1 and are 0 otherwise.
 
- \begin{figure}[htb!]
+ \begin{figure}[th]
  %\usetikzlibrary{positioning}
  \begin{center}
  \subfigure[Observed Data]{
@@ -2461,3 +2479,20 @@ $m_{i,k}c_{j,k} = 1$ (and $0$ otherwise).
  \end{center}
  \end{figure}
 
+\section{Conclusion}
+This chapter has been the culminating chapter of what can be regarded as 
+Part 1 of this thesis. These first four chapters have been concerned with 
+linking autosegmental morphological theory to an unsupervised learning 
+algorithm, in particular, the MCMM. It has advanced the hypthesis 
+(first introduced as proposition~\ref{prop:nlns} in chapter~\ref{ch:intro}) 
+that a ULM algorithm/system can learn nonconcatenative morphology if it 
+is nonlinear and nonsequential. We have seen the MCMMs meet these criteria. 
+We will now adjust our course somewhat as we begin the thesis’s second part, 
+which will be concerned with the actual testing of the first part’s hypothesis.
+ This testing, as we will see, essentially took the form of building of Multimorph, 
+ an MCMM-driven system (as we have established the MCMM’s nonlinearity 
+ and nonsequentiality in this chapter and chapter~\ref{ch:graph} preceding chapters) 
+ and trying it out on Hebrew words, which contained plenty of nonconcatenative morphology. 
+ Of course, additional research questions were raised along the way, and we 
+ will address these in the following chapters. The next chapter discusses the setup 
+ of the experiments whereby Multimorph was evaluated.

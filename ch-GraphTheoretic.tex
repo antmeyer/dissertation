@@ -9,14 +9,15 @@ MCMMs are bipartite graphs.
 %is to motivate the use of an \ac{MCMM} as Multimorph's 
 %learning framework. 
 The key concept in this chapter will be the \emph{bipartite} graph, 
-a type of graph so named because its nodes can be partitioned into two subsets according 
-to criteria which we discuss below. 
+a type of graph so named because its nodes are partitioned into two subsets according 
+to criteria which we will discuss below in section~\ref{sec:bipartite}. 
 We will see that bipartite graphs have properties that are essential 
 to the tasks of modeling and learning nonconcatenative morphology.
 % a type of graph with two sets of nodes such that only nodes of different sets are connected. Within each set, there are no connections. This intra-layer independence engenders some important properties, as we shall see.
-In section~\ref{sec:bipartite}, we will describe the mathematical concept of the 
-\emph{bipartite graph}, placing particular importance on the properties that make this type 
-of graph naturally conducive to modeling nonconcatenative morphology. %We shall demonstrate that bipartite graphs are essential for the modeling of nonconcatenative morphology (and thus morphology in general). 
+%In section~\ref{sec:bipartite}, we will describe the mathematical concept of the 
+%\emph{bipartite graph}, 
+%placing particular importance on the properties that make this type 
+%of graph naturally conducive to modeling nonconcatenative morphology. %We shall demonstrate that bipartite graphs are essential for the modeling of nonconcatenative morphology (and thus morphology in general). 
 
 In section~\ref{sec:autoseg-bipart}, we will take a fresh look at McCarthy's 
 autosegmental framework for morphology \citep{mccarthy:1981} in light of the 
@@ -26,7 +27,8 @@ autosegmental framework can be reduced to a bipartite graph.
 % but also that the properties of 
 %bipartite graphs are essential for the modeling of nonconcatenative morphology.
 % naturally well-suited to modeling non-concatenative morphology. and more than that, we will argue that bipartite graphs are general that ultimately derive from these properties two necessary conditions that morphological models must satisfy in order to be capable of modeling bipartite graphs two criteria that a morphological model must satisfy We will see that McCarthy's framework is itself a bipartite graph. and re
-Finally, in section~\ref{sec:mcmm-bipartite}, we will see that the \ac{MCMM} is also a bipartite graph.
+Finally, in section~\ref{sec:mcmm-bipartite}, we will see that the \ac{MCMM} is also a bipartite graph,
+though we will defer a detailed discussion of the MCMM to the next chapter.
 Bipartiteness will ultimately serve as a common denominator, so to speak, between the autosegmental formalism and the MCMM, providing a means of expressing the autosegmental formalism as an MCMM.
 %via its biparteness, its compatibility with %is a bipartite graph, 
 %and that, consequently, it is compatible, so to  speak, with autosegmental morphology. 
@@ -96,17 +98,17 @@ nonsequentiality, respectively, first presented as defintions~\ref{def:nl} and \
 % as (\ref{ex:criteria1-again}) and (\ref{ex:criteria2-again}):
 %\begin{exe} \label{ex:criteria1-again} \ex \begin{xlist}
 	\begin{description}
-	\item[Nonlinearity:]
+	\item[\textsc{Nonlinearity:}]
 	%\ex {\textsc{Nonlinearity}}.  %A model is \emph{nonlinear} 
 	A model is \textbf{nonlinear} if each of its morphs occupies a tier that is \emph{not} the phonological tier.
 %	Morphs must be represented separately 
 %	from the surface (or phonological) tier, i.e., as residing on tiers distinct from 
 %	the phonological tier. %\label{ex:criteria1-again}
 	%eparately for m  as being separate from (or outside of) the the phonological (or segmental) tier.  % is a property wherein morphs are represented as being separate from the segmental tier.
-	\item[Nonsequentiality:]
+	\item[\textsc{Nonsequentiality:}]
 	%\ex {\textsc{Nonsequentiality}}.
 	%Each morph tier is required to be orthogonal to all other morph tiers. %\label{ex:criteria2-again}
-	A model is \textbf{nonsequential} if \textbf{no two morphs} occupy the \emph{same} tier. This is to say that all morphs are independent, i.e., that there are no morph-to-morph connections.
+	A model is \textbf{nonsequential} if \textbf{no two morphs} occupy the \emph{same} tier. This is to say that all morphs are independent, that is, there are no morph-to-morph connections.
 	%\end{xlist}
 %\end{exe}
 	\end{description}
@@ -222,9 +224,9 @@ morphs as one of the partitions in a bipartite graph.
 	\centering
 	\subfigure[Multilinear approach\label{subfig:multilinear-gt}]{
 	\begin{tikzpicture}[shorten >=1pt,draw=black!100]
-	\def \rowtwoht{4cm}
+	\def \rowtwoht{3.5cm}
 	%\def \weightstwo{3.75cm}
-	\def \rowoneht{2cm}
+	\def \rowoneht{1.75cm}
 	%\def \weightsone{1.25cm}
 	\def \basement{0cm}
 	\tikzstyle{m-node}=[text height=6pt,text centered,inner sep=6pt,minimum size=12pt]
@@ -267,11 +269,13 @@ morphs as one of the partitions in a bipartite graph.
 	\subfigure[Linear approach\label{subfig:linear-gt}]{
 	\begin{tikzpicture}[shorten >=1pt,draw=black!100]
 
-	\def \floor{2cm}
+	\def \floor{1.75cm}
+	\def \basement{0cm};
 	\tikzstyle{f-node}=[text height=6pt,text centered,inner sep=6pt,minimum size=15pt]
 	\tikzstyle{annot}=[text width=20ex]
 	% labels
 	\node[annot] (floorlabel) at (0cm,\floor) {surface layer};
+	\node[annot] (baselabel) at (0cm,\basement) {};
 	
 	% surface layer
 	\node[f-node] 	(f0)	at (1.4cm,\floor)		{h};
@@ -302,7 +306,7 @@ The root \textit{z.k.r} (boldface) is discontinuous. The linear (single-tier) ap
 	%\def \weightstwo{3.75cm}
 	\def \rowoneht{2cm}
 	%\def \weightsone{1.25cm}
-	%\def \basement{0cm}
+	\def \basement{0cm}
 	\tikzstyle{m-node}=[text height=6pt,text centered,inner sep=2pt,minimum size=12pt]
 	\tikzstyle{r-node}=[text height=6pt,text centered,inner sep=6pt,minimum size=12pt]
 	\tikzstyle{d-node}=[text height=6pt,text centered,inner sep=6pt,minimum size=12pt]
@@ -365,7 +369,7 @@ The root \textit{z.k.r} (boldface) is discontinuous. The linear (single-tier) ap
 \label{fig:autoseg-to-bipartite}
 %\caption{Two approaches to analyzing \textit{hizkir} (`he reminded'), which has three morphemes. 
 %The root \textit{z.k.r} (boldface) is discontinuous. The linear (single-tier) approach is unable to connect the \textit{r} to the \textit{zk}, while the multilinear approach is able to unite discontiguous elements through external morpheme ($\mu$) nodes.}
-\caption{The morphs are line up to form a vector. They are still orthogonal, and thus each still occupies its own tier.}
+\caption{The morphs are lined up to form a vector. This is only an aesthetic change, however. The morphs are still orthogonal, and thus each still occupies its own tier.}
 %: an input layer ($\mathbf{d}$), a hidden layer ($\mathbf{m}$), and an output layer
 \end{mdframed}
 \end{figure} 
@@ -552,13 +556,13 @@ nonconcatenative morphology, as discussed in chapter~\ref{ch:lit-review}.
 In subsequent chapters, we will refer to an MCMM's partitions as
 \emph{vectors}, i.e., vectors of nodes, and use matrix and vector notation to
 describe the components of an MCMM:
-Uppercase boldface letters will denote matrices,%(e.g., $\mathbf{M}$),
+Uppercase boldface letters will denote matrices, %(e.g., $\mathbf{M}$),
 lowercase boldface letters will denote vectors,
 % and matrix rows or columns, 
 %(e.g., $\mathbf{m}_i$),
 and italicized lowercase letters will refer to the individual elements
 of vectors and matrices. % (e.g., $m_{ik}$).
-For example, $m_{i,k}$ is the $k$th %$k^{\text{th}}$ 
+For example, $m_{i,k}$ is the $k$th  %$k^{\text{th}}$ 
 element in the vector
 $\mathbf{m}_i$, which is the $i$th
 %$i^{\text{th}}$ 

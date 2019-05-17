@@ -76,18 +76,18 @@ that are behind the effectiveness of autosegmental morphology.
 %treatment of concatenative 
 %and non-concatenative processes by taking autosegmental phonology's 
 %\emph{multilinear} framework and adapting it for morphology. 
-%A multilinear approach, illustrated in fig.~\ref{subfig:multilinear}, 
+%A multilinear approach, illustrated in figure~\ref{subfig:multilinear}, 
 %uses multiple \emph{tiers} to represent morphological structure.
 %Each morpheme occupies its own tier.
-%In fig.~\ref{subfig:multilinear}, the tiers are 
+%In figure~\ref{subfig:multilinear}, the tiers are 
 %$\mu_{1}$, $\mu_{2}$, and $\mu_{3}$, which we shall call the \emph{hidden nodes}, 
 %and collectively, the \emph{hidden layer}. 
 %Likewise, the word itself occupies its own tier, namely the \emph{surface layer}, 
 %which is composed of \emph{surface nodes} (here, the word's letters). 
 %Crucially, each morpheme tier is external to the surface layer. 
 %This externality allows a single morpheme, such as $\mu_{2}$ in 
-%fig.~\ref{subfig:multilinear}, to connect nonadjacent surface nodes.
-%However, note in fig.~\ref{subfig:linear} that when remove the external 
+%figure~\ref{subfig:multilinear}, to connect nonadjacent surface nodes.
+%However, note in figure~\ref{subfig:linear} that when remove the external 
 %morpheme tiers, we lose the capacity to unite the discontiguous \textit{gd} and \textit{l}.   
 %
 %The multilinear model of \cite{mccarthy:1981} has been implemented computationally i
@@ -115,7 +115,7 @@ to account for morphological structure. The segmental tier is
 a series of placeholders for consonants and vowels, often called the
 \emph{CV skeleton}. The other tiers each represent a particular \emph{morph}, i.e., unit of morphological structure.\footnote{Our choice of \emph{morph} over another term, such as \emph{morpheme}, is a deliberate  one. The question of what to call the fundamental units of morphological structure is non-trivial, since it is, practically speaking, tantamount to the question of what these fundamental units \emph{are}, i.e., what their nature is. It is thus also very pertinent to the question of what sorts of units can be induced by ULM systems. We will address these questions (as well as motivate our usage of \emph{morph}) in chapter~\ref{autonomous}.}
  
- Figure~\ref{fig:nonlinear} contrasts an autosegmental (or nonlinear) morphological analysis  with a linear one, both with respect to the Hebrew word \textit{magdil} `to make large, magnify.' 
+ Figure~\ref{fig:nonlinear} contrasts an autosegmental (or nonlinear) morphological analysis  with a linear one, both with respect to the Hebrew word \textit{magdil} (`to make large, magnify').
 %The autosegmental analysis for the Hebrew word \emph{magdil} `to make large, magnify.' 
 In the autosegmental analysis (subfigure~\ref{subfig:nonlinear}), the morphological structure of \textit{magdil} is represented by four distinct tiers: One is the CV
 skeleton, and the other three, labeled $\mu_1$, $\mu_2$, and $\mu_3$, 
@@ -136,7 +136,7 @@ is associated with /g/ must precede the C associated with /d/, etc. At the
 same, however, these \textit{C}s could be separated by any number of 
 \textit{C}s or \textit{V}s, and the mapping of the morph's to phonological 
 segments would still work. This is an important consequence of the nonlinear 
-(autosegmental) architecture in subfigure~\ref{subfig:nonlinear}. 
+(autosegmental) architecture in figure~\ref{subfig:nonlinear-1}. 
 %Each morph is essentially an independent data structure  both the ordering of its phonemes as well as 
 
 %In an autosegmental framework, therefore, morphs do not depend on the particular arrangement of phonemes within the segmental string.  of phonological segments.
@@ -147,8 +147,9 @@ segments would still work. This is an important consequence of the nonlinear
 \begin{figure}[t]
 %\begin{figure}{R}{0.50\textwidth}
 %\vspace{-20pt}
+\begin{mdframed}
 \centering
-	\subfigure[Multi-linear approach]{
+	\subfigure[Multi-linear approach\label{subfig:nonlinear-1}]{
 	\begin{tikzpicture}[shorten >=2pt,shorten <=3pt, draw=black!100]
 	\def \rowthreeht{4.4cm}
 	\def \rowtwoht{3.8cm}
@@ -196,10 +197,10 @@ segments would still work. This is an important consequence of the nonlinear
 		(m5)	edge	node	{}	(r4);
 		
 	\end{tikzpicture}
-	\label{subfig:nonlinear}
+	%\label{subfig:nonlinear}
 	}
 
-	\subfigure[Linear approach]{
+	\subfigure[Linear approach\label{subfig:linear-1}]{
 	\begin{tikzpicture}[shorten >=1pt,draw=black!100]
 	\vspace{50pt}
 	\def \floor{0cm}
@@ -211,20 +212,21 @@ segments would still work. This is an important consequence of the nonlinear
 	% surface layer
 	\node[f-node] 	(f0)	at (1.4cm,\floor)			{m\,\,a\,\,$|$\,\,\textbf{g}\,\,\textbf{d}\,\,$|$\,\,i\,\,$|$\,\,\textbf{l}};
 	\end{tikzpicture}
-\label{subfig:linear}
+%\label{subfig:linear}
 }
 \label{fig:nonlinear}
 \caption{Multiple tiers vs. a single tier}
 %\vspace{-20pt}
 %\vspace{1pt}
+\end{mdframed}
 \end{figure}
 
 %Notice that $\mu_2$, the consonantal root, is discontinuous; it is
 %interrupted by $\mu_3$. 
 %This autosegmental account of the 
-By contrast, the analysis in subfigure~\ref{subfig:linear} is the \emph{linear} counterpart to the autosegmental  (or nonlinear) analysis in fig.~\ref{subfig:nonlinear}
+By contrast, the analysis in figure~\ref{subfig:linear-1} is the \emph{linear} counterpart to the autosegmental  (or nonlinear) analysis in figure~\ref{subfig:nonlinear-1}
 If a model should have only one tier, as in 
-fig.~\ref{subfig:linear}, there would be no way of representing the
+figure~\ref{subfig:linear-1}, there would be no way of representing the
 unity of $\mu_2$, i.e., the fact that \textit{g}, \textit{d}, and \textit{l}
 all belong to the same morphological unit. Observations such these motivate this thesis's two principal concepts: \emph{nonlinearity} and \emph{nonsequentiality}. We will define these concepts now and revisit them further in subsequent chapters. 
 
@@ -236,7 +238,7 @@ all belong to the same morphological unit. Observations such these motivate this
 	%---i.e., independent of---all other morph tiers. 
 	A model is \textbf{nonsequential} if \textbf{no two morphs} occupy the \emph{same} tier. This is to say that all morphs are independent, i.e., that there are no morph-to-morph connections.
 	\end{definition}
-I propose that these two properties are the essential properties that enable autosegmental morphology to handle nonconcatenative morphology. The main idea of this thesis is that these two properties must be present in any model in order for it to be capable of handling (or learning) nonconcatenative morphology.  We will also revisit this idea later (see in particular section~\ref{sec:framework-intro}).
+I propose that these two properties are the essential properties that enable autosegmental morphology to handle nonconcatenative morphology. The main idea of this thesis is that these two properties must be present in any model in order for it to be capable of handling (or learning) nonconcatenative morphology.  We will later revisit the idea stated here here as proposition~\ref{prop:nlns} (see in particular section~\ref{sec:framework-intro}).
 \begin{proposition}\label{prop:nlns}
 A model of morphology can handle nonconcatenative morphology if and only if it satisfies both \textbf{nonlinearity} and \textbf{nonsequentiality}. %  the modeling of nonconcatenative morphology.}
 \end{proposition}
@@ -270,9 +272,9 @@ The rational argument will consist in three main points.
 First, the properties of nonlinearity and nonsequentiality are absolutely essential for dealing with nonconcatenative morphology.
 Second, these properties are equivalent to the formal mathematical properties that define bipartite graphs. And third, this equivalence provides a foundation for the use of graphical learning models for the purpose of morphological learning. 
 %The present study uses a graphical learning framework known as the Multiple Cause Mixture Model (MCMM) \citep{saund:94}. 
-These points will be further fleshed out in chapters \ref{ch:lit-review}, \ref{ch:graph}, and\ref{ch:MCMM}. 
+These points will be further fleshed out in chapters \ref{ch:lit-review}, \ref{ch:graph}, and \ref{ch:MCMM}. 
 The experimental component of the dissertation consists of the development and evaluation of
- \textbf{Multimorph}, a novel unsupervised morphology-learning system that is driven by an MCMM and embodies the three points stated above.
+ \textbf{Multimorph}, a novel unsupervised morphology-learning system that is driven by a \ac{MCMM} \citep{saund:94} and embodies the three points stated above.
 %The input data consisted of Modern Hebrew words represented as feature vectors. 
 %The present study focuses on the learning of Modern Hebrew, since Modern Hebrew
 %exhibits both concatenative and non-concatenative morphological processes 
@@ -405,7 +407,7 @@ are significant to computer vision, particularly \emph{invariant} and \emph{vari
 
 \subsection{The Question of Data Representation} 
  %emph{representation} of the input data,
-In extracting features from the original data, i.e., a list of words, one is of altering the dataset. Different feature categories emphasize different kinds of information. But the raw material for feature extraction is any case the original word list, and thus the way in which the words represented in the original dataset plays its own role in shaping features. 
+In extracting features from the original data (a list of words), one alters the dataset. Different feature categories emphasize different kinds of information. But the raw material for feature extraction is in any case the original word list, and thus the way in which the words represented in the original dataset plays its own role in shaping features. 
 By \emph{representation}, we refer mainly to the alphabet---the
 particular set of symbols---from which the strings (i.e., words) of the input wordlist 
 are composed.  A word is fundamentally something spoken, i.e., a sequence of sounds, and thus in order to write the word down, one must devise a way to represent the spoken phenomenon on paper. Like feature-set design, this is a means of emphasizing some information at the expense of other information. All else being equal---i.e., even if the feature categories are the same---different modes of data representation will produce different features.  
@@ -442,7 +444,7 @@ orthography lacks symbols reserved for vowels. Its alphabet consists only of con
 I initially hypothesized that models induced from the orthographic 
 data would produce the worst-performing models. The reasoning behind this 
 hypothesis was that, first, any system that lacks vowels has 
-to be information- deficient, and second, vowels must be particularly important to 
+to be information-deficient, and second, vowels must be particularly important to 
 Hebrew because its derivational morphology consists of interleaving consonantal 
 roots and vowel patterns. The results, however, proved to be somewhat surprising, 
 as we shall see in chapter~\ref{ch:results}.
@@ -490,7 +492,7 @@ as we shall see in chapter~\ref{ch:results}.
 %If there were no objective function, there could be no learning. Learning proceeds by trial and error. 
 %The objective function supplies the error.
 
-\subsection{The Problem of Evaluation}  One goal of unsupervised learning is to discover previously unknown categories \citep{parsons:2004}. This is especially true where the present study is concerned. Chapter~\ref{autonomous} argues that unsupervised morphological learners by nature learn \emph{autonomous} morphological units, i.e., units that reside in an independent between phonology and syntax. Such units have no meaning in and of themselves, as they exist independently of syntax and semantics. It is difficult to know going into an experiment what these categories should look like, i.e., what would make such units of intermediate structure correct or incorrect. 
+\subsection{The Question of Evaluation}  One goal of unsupervised learning is to discover previously unknown categories \citep{parsons:2004}. This is especially true where the present study is concerned. Chapter~\ref{autonomous} argues that unsupervised morphological learners by nature learn \emph{autonomous} morphological units, i.e., units that reside in an independent between phonology and syntax. Such units have no meaning in and of themselves, as they exist independently of syntax and semantics. It is difficult to know going into an experiment what these categories should look like, i.e., what would make such units of intermediate structure correct or incorrect. 
 
 %going
 %The previously unknown categories in this case are going to be morphological units of some kind.
@@ -503,7 +505,7 @@ as we shall see in chapter~\ref{ch:results}.
 %\emph{morphome}, however, since MCMM-generated clusters may not correspond 
 %precisely to morphomes in every case (see section~\ref{sec:targets}).
 
-Thus, the evaluation itself presents an important research question, namely the question of how to evaluate the output of an unsupervised morphological clustering algorithm, particularly one that considers only features of \emph{word-internal form}, having no access to word-external morphosyntactic features, e.g., the person, number, and gender of surrounding words. 
+Thus, the evaluation itself presents an important research question, namely the question of how to evaluate the output of an unsupervised morphological clustering algorithm, particularly one that considers only features of \emph{word-internal form}, having no access to word-external morphosyntactic features, e.g., the person, number, and gender of surrounding words. In this thesis, therefore, I took a multi-faceted approach to the evaluation, that is, one composed of three complementary sub-approaches. It was designed to address the problems inherent in evaluating an unsupervised learning system. We will discuss the evaluation in chapter~\ref{ch:eval}.
 
 %Thus, my system will not require morphological building blocks to have particular
 %meanings. Instead, it 
@@ -527,4 +529,5 @@ Thus, the evaluation itself presents an important research question, namely the 
 \section{Organization}
 The remainder of this thesis is organized as follows: In chapter~\ref{ch:lit-review}, I present a new framework for thinking about the unsupervised learning of morphology. This framework is original to this thesis and stems from the concepts of nonsequentiality and nonlinearity, introduced above as the essential prerequisites for modeling nonconcatenative morphology. Chapter~\ref{ch:graph} establishes the relationship between autosegmental morphology and graph theory, particularly \emph{bipartite} graphs. Chapter~\ref{ch:MCMM} then introduces and describes a particular bipartite graphical learning model, namely the Multiple Cause Mixture Model (MCMM). As mentioned above, this is the learning model I have chosen to drive Multimorph, the system developed in this dissertation. The first four chapters thus establish a logical chain linking autosegmental morphological theory to a particular unsupervised learning model, namely the MCMM, which serves Multimorph's learning model. 
 
-The remaining five chapters (chapters \ref{autonomous} through \ref{ch:conclusion}) are concerned with the evaluation of Multimorph. Chapter~\ref{autonomous} addresses the question of the sort of categories that Multimorph and other unsupervised morphological should be expected to learn, i.e., the sort of categories that one should look for in evaluating such systems. This is part of the ``question of evaluation'' introduced above. Chapter~\ref{ch:experi} describes the experimental setup; i.e., it describes the collection and preparation of the datasets and the experimental variables, including the three modes of data representation and the parameters for the feature sets. Chapter~\ref{ch:eval} completes this thesis's response to the ``question of evaluation.'' It describes a dual-paradigm evaluation method consisting of both an intrinsic and extrinsic component. The extrinsic component in particular may be of interest to other ULM researchers as an alternative to conventional evaluation methods. Finally, chapter~\ref{ch:conclusion} offers concluding remarks. 
+The remaining five chapters (chapters \ref{autonomous} through \ref{ch:conclusion}) are concerned with the evaluation of Multimorph. Chapter~\ref{autonomous} addresses the question of the sort of categories that Multimorph and other unsupervised morphological should be expected to learn, i.e., the sort of categories that one should look for in evaluating such systems. This is part of the ``question of evaluation'' introduced above. Chapter~\ref{ch:experi} describes the experimental setup; i.e., it describes the collection and preparation of the datasets and the experimental variables, including the three modes of data representation and the parameters for the feature sets. Chapter~\ref{ch:eval} completes this thesis's response to the ``question of evaluation.'' It describes a dual-paradigm evaluation method consisting of both an intrinsic and extrinsic component. The extrinsic component in particular may be of interest to other ULM researchers as an alternative to conventional evaluation methods. The results are presented and discussed in chapter~\ref{ch:results}, and chapter~\ref{ch:conclusion} offers concluding remarks
+%Finally, chapter~\ref{ch:conclusion} offers concluding remarks. 
