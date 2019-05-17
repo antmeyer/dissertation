@@ -20,19 +20,7 @@ The present chapter homes in on a particular kind of bipartite learning algorith
 the MCMM. Thus, the present chapter, when taken in the context of the preceding chapters, 
 explains the rational and theoretical significance of my choosing an MCMM 
 in particular to serve as Multimorph's learning algorithm.
-%The importance of MCMMs to the present study is that an MCMM serves as Multimorph's core learning algorithm. 
-%This chapter thus in part motivates my choosing the MCMM to fill this role. It also---together with the preceding three chapters---explains the theoretical significance of this choice.
 
-%.. In particular, it motivates my choosing an MCMM to fill this role. In doing so, it explains the nature, structure, and function of MCMMs, and why an MCMM is an appropriate learning mechanism for Multimorph. 
-
-%The preceding chapters provide the chain of reasoning that leads to our choosing the MCMM.
-
-%For Multimorph, I chose a particular kind of bipartite learning model called the Multiple Cause Mixture Model (MCMM), developed by \citet{saund:94}.
-
-%MCMMs are conducive to ULM, particularly to the UL of non-concatenative morphology, mainly because they are bipartite graphs, since it is their bipartiteness that makes them nonlinear and nonsequential. The bipartiteness of MCMMs is evident in Section~\ref{sec:architecture} (see in particular figure~\ref{fig:mcmm}), which elucidates the architecture
-%of an MCMM. But while their bipartiteness is most significant for our purposes, MCMMs have other attractive properties. [which we shall discuss in this chapter.] For example, an MCMM is neither sum nor a product of experts, 
-
-%In this chapter, therefore, we thus present a particular bipartite graphical model,  as Multimorph's core learning algorithm. In particular, I chose the bipartite graphical model known as the MCMM.
 This chapter is organized as follows: Section~\ref{sec:architecture} first lays out the key components 
 of an MCMM's structure, i.e., the attributes that all MCMMs share. 
 Section~\ref{sec:context} then proceeds to place MCMMs in a larger context of 
@@ -240,39 +228,6 @@ is the
 \emph{cluster-membership vector} of the $i$th word; that is, it is the $i$th row of 
 the $I \times K$ matrix 
 $\mathbf{M}$.  Each column in the $\mathbf{M}$ matrix corresponds to a cluster, and thus so does each component $m_{i,k}i$ of a cluster-membership vector. In particular, the $k$th component in a given cluster-membership vector corresponds to the $k$th cluster. It indicates whether or not $i$th data point is a member of that cluster. 
-%and each of $\mathbf{M}$'s $K$ columns corresponds to a particular 
-%\emph{cluster}. Thus, the activity of each cell $m_{i,k}$ indicates whether or not the $i$th 
-%data point $\mathbf{x}_i$ (via its reconstruction $\mathbf{r}_i$) is a member of the 
-%$k$th cluster.
-
-%corresponds to the $i$th word.  The vector $\mathbf{r}_i$ 
-%is the \emph{reconstruction} vector; that is, it is a (working) 
-%reconstruction of $\mathbf{x}_i$. There is a reconstruction 
-%vector associated with each original data point \mathbf{x}_i$. 
-%is the $i$th data point among a total of $I$ data points. Each data point is a 
-%feature-vector representation of a word. Each row in $\textbf{X}$ contains $J$ 
-%columns, one column for each feature. The dimensions input data matrix 
-%$\textbf{X}$ are $I \times J$. 
-%$\mathbf{r}_i$, the reconstruction of $\mathbf{x}_i$, is the $i$th row in the 
-%$I \times J$ matrix $\mathbf{R}$. The subscript on the hidden-unit vector 
-%$\mathbf{m}_i$ indicates that it is related to $\mathbf{x}_i$ and $\mathbf{r}_i$. 
-%Each $J$ corresponds to a particular surface unit, i.e., feature. 
-%The hidden-unit vector $\mathbf{m}_i$ is a row in the larger $I \times K$ matrix 
-%$\mathbf{M}$. Each of $\mathbf{M}$'s $K$ columns corresponds to a particular 
-%\emph{cluster}, and thus, the activity of each $m_{i,k}$ indicates whether the $i$th 
-%data point $\mathbf{x}_i$ (via its reconstruction $\mathbf{r}_i$) is a member of the 
-%$k$th cluster.  
-%%columns contains $I$, each the particular vector of hidden causes for the $i$th surface 
-%vector. $\mathbf{}$ has $K$ columns.
-
-%The hidden units are connected to surface units by a matrix of weights $\mathbf{C}$. 
-%Each individual arc $c_{j,k}$ has a value in the interval $[0,1]$. This value 
-%represents the weight on the connection between $m_{i,k}$ and $r_{i,j}$.
-%Each node, i.e., each hidden unit and each surface unit, has an activity value in $[0,1]$ that
-%indicates whether it is \textsc{on} (active) or \textsc{off} (inactive).
-%The activity of $r_{i,j}$ is determined by a \emph{mixing function}, which takes as inputs the 
-%hidden-unit activities $\mathbf{m}$ and their respective weights $\mathbf{c}_j$
-%(section~\ref{sec:mixing-function}).
 
 \section{Relationship to Other Unsupervised\\Learning Frameworks}
 \label{sec:context}
@@ -290,8 +245,6 @@ considers MCMMs from a \emph{mixture-model} perspective, discussing their relati
 
 \subsection{Autoencoders}
 \label{sec:autoencoders}
-% So-and-so classifies Saund's MCMM as a kind of autoencoder. 
-%He considered a form of autoencoder network in which the hidden units signal features and the hidden-output weights describethe way in which  features generate predictions  of the inputs. 
 \citet[][p. 2]{dayan-and-zemel:95} describe the MCMM as a ``form of autoencoder network.'' 
 They mean \emph{autoencoder} in a general sense, as a term for a \emph{class} that encompasses several subtypes.  
 In this general sense, an \emph{autoencoder} is any unsupervised graphical algorithm that
@@ -902,11 +855,6 @@ of this surface node.
 \citet{saund:94} describes mixing functions as
 \emph{voting rules}, i.e., rules whereby multiple votes are combined in some way to yield a single decision, 
 Each vote is a product of the form $m_{i,k}c_{j,k}$ for $k \in K$, and the decision is a single node activity. 
-%for a particular surface node, 
-%activity value for the $j$th surface node $\textbf{r}_{i,j}$. 
-%All mixing functions
-%are activation functions, but not all activation functions are mixing functions.
-%That is, mixing functions constitute a special class of activation function; they 
 
 Mixing functions are 
 activation functions that are specially tailored to serve the needs of MCMMs. 
@@ -920,12 +868,7 @@ $k$th cluster if its $k$th hidden-unit activity is $1$.
 \item Each column in the matrix $\textbf{C}$ must be interpretable as the centroid 
 (or ``average" vector) of a particular cluster. That is, the $k$th column 
 $\textbf{C}$ (whose dimensions are $J \times K$) must be interpretable as the centroid vector of the $k$th cluster. This means that the $j$th element in the $k$th column of $\textbf{C}$ must be interpretable as the average $j$th feature value across the data points that belong to the $k$th cluster. 
-%  Note that each column in $\textbf{C}$ is composed of $J$ elements, each of which corresponds to one of the $J$ features that constitute a data point. 
-%(i.e., ``average'' vectors). 
-%The $j$th vector of weights $\textbf{c}_j$ 
-%(i.e., the $j$th row 
-%of the weight matrix $\textbf{C}$) must be interpretable as the centroid 
-%(i.e., the ``average" vector) of the $k$th cluster. 
+
 \end{enumerate}
 In short, both the hidden-unit values and weights must have coherent interpretations. 
 Recall from section~\ref{sec:context} that the sigmoidal weighted sum is 
@@ -1018,7 +961,6 @@ only a handful have the value $1$. %are feature-vector representations of words.
 There are hundreds of features, and each has a designated slot in each feature vector.
 (We will discuss these features in detail in chapter~\ref{ch:experi}.)
 
-%in fact, it seemed to be fundamentally ill-suited to the present study's learning task. proved not to work well given for the purposes of the present study,  particularly the nature of this study's data points. Recall this study's data points are feature-vector representations of words, and that these feature vectors are sparse. That is, for any given word, most features are not present. 
 In a \textsc{write-black} formulation, absent features have the value $0$, but in the\textsc{write-white-and-black} formulation, they are $-1$. Therefore, in a sparse feature vector under the\textsc{write-white-and-black} formulation, the vast majority of features are $-1$. The cumulative effect of all these negatives in \eqref{eq:wwb} seemed to drown out the few positive features, making it impossible to reproduce the original data vectors. 
 
 Noisy-OR, on the other hand, did allow learning to take place; that is, 
@@ -1090,10 +1032,7 @@ placed in the \textsc{write-black} domain than the \textsc{write-white-and-black
 \caption{%The activity of each surface unit  is determined by a \emph{vote}, so to speak.  
 %Each hidden unit casts a \emph{weighted vote}, so to speak, 
 The activity of a given surface (or reconstruction) unit is determined by combining ``votes'' cast by the hidden units.}
-%i.e., a value eThe votes must then be combined in some way to yield an activity.}
-%$r_{i,j}$
-% Each hidden unit $m_{i,k}$ casts a weighted vote, i.e., the product $m_{i,k}c_{j,k}$. 
-% The votes must then be combined in some way to yield a single activity for $r_{i,j}$.}
+
 \label{fig:voting}
 \end{figure}
 
@@ -1124,42 +1063,10 @@ all data points (i.e., $I \times J$ features):
 E = \bigg(\frac{1}{2}\bigg) \frac{1}{I \times J}\sum_{i} \sum_{j} {(r_{i,j} - x_{i,j})}^2
 \end{equation}
 where $r_i,j$ is itself a function, namely the Noisy-OR fuction (see section~\ref{sec:mixing-function}). The reason for factor $\frac{1}{2}$ in equation \eqref{eq:sse} is that it cancels out the coefficient 2 in the first derivative.
-% making Multimorph's objective function a composite function.  
-%The task in the case of Multimorph is thus one of minimization. 
-%In particular, it employs the method presented in
-%\citet{cheng-and-li:2012}, which is an \emph{active set} method conducive to 
-%\emph{bound-constrained} problems. It is also nonlinear method, i.e., conducive to \emph{nonlinear} problems. 
-%These are important attributes for our purposes because \dots.
 
 \subsection{Nonlinear Conjugate Gradient Optimization}
 \label{sec:ncg-gen}
 Because Multimorph's composite objective function is nonlinear, it requires a nonlinear optimization method.\footnote{Here, we mean \emph{nonlinear} in the standard mathematical sense, i.e., to describe functions whose graphs are not straight lines.} I chose a nonlinear conjugate-gradient method\footnote{In preliminary experiments conjugate-gradiant methods tended to outperform quasi-Newton methods. Moreover, \citet{saund:94} also uses a conjugate-gradient method.} 
-%As mentioned above in section~\ref{sec:architecture} (and in subsequent sections), 
-%an MCMM has two types of parameters:
-%(1) the hidden-unit activities in $\textbf{M}$ and (2) the weights in $\textbf{C}$. (Recall that this 
-%distinguishes MCMMs from other types of autoencoders, which do not treat hidden-unit activities as parameters.  
-%The search for optimal $\textbf{M}$ and $\textbf{C}$ values is conducted
-%via \emph{numerical optimization}, a term that embodies a family of 
-%methods characterized by descending the gradient of an error function 
-%(or, alternatively, by ascending the gradient of a positively defined objective function). 
-%Nonlinear conjugate gradient methods are themselves a subcategory 
-%of gradient-based optimization methods, which seek to minimize (or maximize)
-%an objective function $f$ by incrementally descending (or ascending) the slope 
-%of the objective function.
-%, i.e., by incrementally decreasing (or increasing) the value 
-%$f(\textbf{W})$, where is a parameter matrix. This descent (or ascent) 
-%is achieved by first computing the G, the gradient, or first partial derivative, of 
-%$f(\textbf{W})$ w.r.t. W, that is
-%\begin{equation}
-%
-%\end{equation}
-%and adding to each component of W a quantity proportional to the negative (or positive) 
-%This is done by iteratively adjusting components of $f$'s parameter vector $\textbf{w}$ 
-%so that the value $f(\textbf{w})$ is eventually minimized (or maximized).
-%For the sake discussion, let us assume a single one type of parameter
-%\subsection{The Nonlinear Conjugate Gradient Method}
-%\label{sec:ncg-gen}
-
 
 To facilitate a general description of the class of nonlinear conjugate gradient methods, 
 we shall for moment consider a simple model with only one parameter 
@@ -1669,33 +1576,9 @@ $I = \textsc{Number-of-Rows}(\textbf{M})$\;
 \caption{\textsc{Optimize-C}}
 \label{alg:opt-C}
 \end{algorithm}
-%\paragraph{\textsc{Optimize-C}.} 
-%The function \textsc{Optimize-C} consists of a single optimization loop over the 
-%entire matrix
-%$\mathbf{C}$. Each $c_{j,k}$ is adjusted by a quantity
-%proportional to the negative gradient of $E$ with respect to $c_{j,k}$.
-%%, or $-\frac{\partial E}{\partial c_{j,k}}$.
-%%(in the case of gradient descent).  
-%%Since $E$ is simply
-%%$\sum_i e_i$, i.e., the sum of the errors of the individual data-point
-%%reconstructions, $-\frac{\partial E}{\partial c_{j,k}} = -\sum_i
-%%\frac{\partial e_i}{\partial c_{j,k}}$.  Thus, the adjustment to each
-%%$c_{j,k}$ takes into account the error of each reconstructed vector
-%%$\mathbf{r}_i$ in $\mathbf{R}$. However,
-%Unlike \textsc{Optimize-M}, which comprises $I$ separate optimization
-%loops, \textsc{Optimize-C} consists of just one.
-%%optimizing the $\mathbf{C}$ matrix as a whole.  
-%When each of its $J \times K$
-%components has been adjusted, one round of updates to $\mathbf{C}$ is
-%complete.  $E$ is reevaluated only between completed rounds of
-%updates. If the change in $E$ remains significant, another round begins.  
 
 \subsection{Cluster Splitting}
 \label{sec:cl-split}
-%Both \textsc{Optimize-M} and \textsc{Optimize-C} are enclosed within 
-%an ``alternation loop" 
-%that alternates between the two functions, holding $\mathbf{C}$ fixed
-%during \textsc{Optimize-M}, and vice versa.
 The alternation loop (algorithm~{\ref{alg:m-and-c}) is nested within a still larger loop, which we shall call the ``outermost loop,'' which is responsible for increasing the number of clusters as necessary. That is, it launches the alternation loop (which alternates between \textsc{Optimize-M} and \textsc{Optimize-C}) and lets it run until it terminates (i.e., when $E$ stops decreasing significantly). Then, if the outermost loop's stopping condition has not yet been met, it adds a new cluster, and starts a new iteration (wherein the alternation loop is launched again). The stopping condition of the outermost loop is (in principle) that $E$ has fallen below a certain constant $\epsilon$.
 
  The outermost loop starts with a single cluster. This means that, initially, 
@@ -1718,13 +1601,6 @@ it computes E^{\prime}_{k}, the MCMM's error \emph{without} the
  Similarly, column $h$ in $\textbf{C}$ is duplicated, resulting in a centroid vector 
  for both cluster $h$ and cluster $K$.
  
-% initiall $K$, the number of clusters, by setting it to it. Thus, each iteration of the outermost loop makes the alternation loop iterate until the system's error $E$ stops decreasing significantly. within the larger loop shown in algorithm~\ref{alg:outer-loop}.  iterates until $E$ cannot be decreased further. At
-%this point, an ``outer loop''
-%splits the cluster which contributes the most to the error, adds one
-%to the cluster count $K$, and restarts the alternation loop. The outer loop
-%repeats until it reaches an overall stopping criterion, such as ``$E$ is lower than some small constant.''
-%; otherwise, the function terminates.
-
 \begin{algorithm}[h]
 Initialize cluster count $K = 1$\;
 Initialize $\textbf{M}$ and $\textbf{C}$\;
@@ -2494,5 +2370,4 @@ which will be concerned with the actual testing of the first part’s hypothesis
  and nonsequentiality in this chapter and chapter~\ref{ch:graph} preceding chapters) 
  and trying it out on Hebrew words, which contained plenty of nonconcatenative morphology. 
  Of course, additional research questions were raised along the way, and we 
- will address these in the following chapters. The next chapter discusses the setup 
- of the experiments whereby Multimorph was evaluated.
+ will address these in the following chapters. The next chapter discusses the targets of Multimorph's learning, that is, the type of categories one should look for in its output. This is a crucial question for purposes of evaluation.
