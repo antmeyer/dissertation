@@ -71,7 +71,7 @@ Chapter~\ref{ch:results} presented the results. %motivated and described in chap
 
 %We now revisit the questions of features, input data representation, and evaluation in order to offer concluding remarks for each.
 
-In the next three sections, namely sections~\ref{sec:concl-features}, \ref{sec:concl-data-rep}, and \ref{sec:concl-eval}, we revisit each secondary research question in turn and offer concluding remarks. Finally, section~\ref{sec:concl-final} offers a general conclusion. 
+In the next three sections, namely sections~\ref{sec:concl-features}, \ref{sec:concl-data-rep}, and \ref{sec:concl-eval}, we revisit each secondary research question in turn and offer concluding remarks. Finally, section~\ref{sec:concl-overall} offers a general conclusion. 
 % these questions further to be answered int build and evaluate Multimorph, but 
 %made the prediction that if a ULM system is based on a bipartite graph, then 
 %it would able to identify nonconcatenative morphological
@@ -93,7 +93,7 @@ In the next three sections, namely sections~\ref{sec:concl-features}, \ref{sec:c
 It is actually rather difficult through manual inspection to find a cluster in which positional clusters make a real contribution. 
 %This is especially
 %true in transcriptional clusters. 
-It was initially hypothesized that positional clusters would play a substantial role in
+It was initially hypothesized that positional features would play a substantial role in
 finding prefixes and suffixes. However, the qualitative analysis revealed that affixes tended to be captured through 
 precedence features; for example the prefix \textit{-\v{s}e} `that'  was often captured by the feature \texttt{\v{s}<e}. This is illustrated figure~\ref{fig:cluster-9-4-3-TS}, which shows the ten most-active centroid features of a \textit{-\v{e}} cluster.
  Often, the centroids associated with transcriptional two-character prefixes---i.e., prefixes of the form
@@ -145,10 +145,12 @@ We see the same pattern for suffixes, except that the components of the template
 \caption{Ten most-active features of cluster $k = 5$ generated at the settings $\langle{s}=4,\delta=3\rangle$, data type: TS}
 \end{mdframed}
 \end{figure}
-Even in the orthographic clusters, positional features rarely play a major role in representing affixes. 
+Even in the orthographic clusters, precedence features generally play larger role than the positional features in representing affixes, 
+as in figure~\ref{fig:cluster-0-2-3-O}, for example. 
+%positional features rarely play a major role. 
 %Usually, precedence features just in the transcriptional clusters, as in figure~\ref{fig:cluster-0-2-3-O}. 
 This is particularly significant because affixes in the orthographic data often consist of a single character; for example, the prefix \textit{be-} `in' is simply \textit{b-} in the orthographic data. The most active centroid features of a cluster corresponding to this very prefix are shown in figure~\ref{fig:cluster-2-2-2-O}. Figure~\ref{fig:cluster-16-2-3-O} shows a relatively rare instance of an affix cluster being represented by a positional feature, namely  \texttt{h}@\texttt{[0]}.
-\begin{figure}[ht] 
+\begin{figure}[t] 
 \begin{mdframed}
 {\LARGE \textbf{-\'{o}t}} {\large\,\,\, (-wt)} \hfill \large{$s=\textbf{2}, \delta=\textbf{3}$} \hfill Cluster 0\\
 \vspace{-10pt}
@@ -167,7 +169,7 @@ This is particularly significant because affixes in the orthographic data often 
 \end{mdframed}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 \begin{mdframed}
 {\LARGE \textbf{b-}}  {\large\,\,\, (b-)} \hfill {\large$s=\textbf{2}, \delta=\textbf{2}$} \hfill Cluster 2\\
 \vspace{-10pt}
@@ -186,7 +188,7 @@ This is particularly significant because affixes in the orthographic data often 
 brwrim \> \textbf{b}spinwt \> \textbf{b}la \> bwbwt \> \text{b}yli \> \textbf{b}yer
 \end{tabbing}
 %\label{fig:cluster-2-2-2}
-%\caption{30 words randomly selected from the 1000 members of cluster 2 from the settings $s=2,\delta =2$, data representation: O}
+%\caption{Thirty words randoestablishedmly selected from the 1000 members of cluster 2 from the settings $s=2,\delta =2$, data representation: O}
 %\end{mdframed}
 %\end{figure}
 \end{normalsize}
@@ -276,10 +278,14 @@ I sought to determine whether the additional symbols in the transcriptional alph
 
 %The qualitative analysis of the clusterings found transcriptional root clusters to be fewer in number and, in general, of a somewhat poorer quality than the orthographic root clusters. for example, a careful analysis of the BLK cluster---a sample from its component words is presented as an example in the previous chapter---revealed that a large majority of its words contained the letter i. This prevalence of i is direct reflection of the features in this cluster’s centroid vector; in particular, the most active of which was d<i. and this cluster centroid is DD less than I it's activity is a perfect one which is greater even then he activity of the future \texttt{l<q}.
 
-In chapter~\ref{ch:experi}, we saw that the reference to specific vowels in features can hinder an MCMM's ability to generalize. Recall, for instance, the case of the \texttt{d.l.q} cluster from chapter~\ref{ch:experi}. The prevalence 
-of \textit{i} in the sampled words was a direction reflection of the prominence of \textit{i}-referencing features in this cluster's centroid, namely the maximally active \texttt{d<i} and the moderately active \texttt{\'{i}<q} (see figure~\ref{fig:cluster-19-2-3-TS} in section~\ref{sec:qual}).
+In chapter~\ref{ch:experi}, we saw that the reference to specific vowels in features can 
+hinder an MCMM's ability to generalize. Recall, for instance, the case of the \texttt{d.l.q} 
+cluster from chapter~\ref{ch:experi}. The prevalence 
+of \textit{i} in the sampled words was a direction reflection of the prominence of 
+\textit{i}-referencing features in this cluster's centroid, namely the maximally 
+active \texttt{d<i} and the moderately active \texttt{\'{i}<q} (see figure~\ref{fig:cluster-19-2-3-TS} in section~\ref{sec:qual}).
 
-Even though vowels are can be detrimental, however, they can also be helpful. For example, the transcriptional models would never have found morphs like the nonconcatenative vowel-pattern morph \textit{a\_\'{e}} (see figure~\ref{fig:cluster-0-2-3-TS} in chapter~\ref{ch:results}) or \textit{-\'{e}\_et}, the discontinuous ending of  feminine singular participles, e.g., \textit{medab\'{e}ret} `she is speaking.' The ten most active features for \textit{-\'{e}\_et} are displayed in figure~\ref{fig:cluster-0-4-3-TS} in the present chapter.
+Even though vowels are can be detrimental, however, they can also be helpful. For example, the orthographic models would never have found morphs like the nonconcatenative vowel-pattern morph \textit{a\_\'{e}} (see figure~\ref{fig:cluster-19-2-3-TS} in chapter~\ref{ch:results}) or \textit{-\'{e}\_et}, the discontinuous ending of  feminine singular participles, e.g., \textit{medab\'{e}ret} `she is speaking.' The ten most active features for \textit{-\'{e}\_et} are displayed in figure~\ref{fig:cluster-0-4-3-TS} in the present chapter.
 %\footnote{The
 %latter was the \emph{first} cluster generated from the TS data at the settings $s=4,\delta=3$.} 
 %The  is particularly interesting because it involves both vowels and a consonant.
@@ -296,8 +302,8 @@ Even though vowels are can be detrimental, however, they can also be helpful. Fo
 \texttt{\a'{e}<t} \> (1.0000) \> \texttt{e<t} \> (1.0000) \> \texttt{x}@\texttt{[0]} \> (1.0000) \> \texttt{z}@\texttt{[0]} \> (0.9962) \> \texttt{\textipa{Q}}@\texttt{[3]} \> (0.9882) \\
  \texttt{\a'{e}<e} \> (0.9815) \> \texttt{o<\a'{e}} \> (0.1847) \> \texttt{r<e} \> (0.1098) \> \texttt{v<e} \> (0.0945) \> \texttt{l<e} \> (0.0854)
 \end{tabbing}
-\label{fig:cluster-0-4-3-TS}
 \caption{Ten most-active features of the first cluster (cluster $k = 0$) generated at the settings $\langle{s}=4,\delta=3\rangle$, data type: transcriptional with stress marking}
+\label{fig:cluster-0-4-3-TS}
 \end{mdframed}
 \end{figure}
 
@@ -324,7 +330,7 @@ An interesting avenue for future work would be to devise features with more gene
 As explained in chapter~\ref{ch:eval}, because of the inherent difficulties involved in evaluating a system like  Multimorph, I took an approach comprising three different and complementary sub-approaches. These included a qualitative approach, an intrinsic quantitative approach, and an extrinsic quantitative approach. 
 %Chapter presented results from each of these methods. 
 \subsection{Qualitative Evaluation}
-The qualitative observations insection \ref{sec:qual} shed considerable light on the quantitative results, that is, the intrinsic results in tables~\ref{tab:intr-500} and \ref{tab:intr-1000}, and the extrinsic results in table~\ref{tab:extr-results-1000}. For instance, the qualitative analyses of the clusters corresponding to the roots \textit{\textipa{P}.k.l} (or \textit{a.k.l}) and \textit{d.l.q} help explain the relatively high quantitative scores of the orthographic models:
+The qualitative observations in section \ref{sec:qual} shed considerable light on the quantitative results, that is, the intrinsic results in tables~\ref{tab:intr-500} and \ref{tab:intr-1000}, and the extrinsic results in table~\ref{tab:extr-results-1000}. For instance, the qualitative analyses of the clusters corresponding to the roots \textit{\textipa{P}.k.l} (or \textit{a.k.l}) and \textit{d.l.q} help explain the relatively high quantitative scores of the orthographic models:
 %The qualitative analysis suggests that 
 Sometimes the additional information provided by transcriptional vowels is irrelevant and thus tantamount to disinformation. 
 
@@ -336,7 +342,10 @@ There is a clear disconnect between BLC's morphosyntactic categories and the for
 
 The mappings were by no means perfect, however; while they produced gold-standard classes that were more
 form-based than the original morphosyntactic categories were, they did not constitute a complete transformation
-to autonomous morphological categories. This would have involved deciding the precise identity of each autonomous morphological category, which would have been beyond the scope of this thesis. Moreover, deciding ``correct'' categories ahead of time in any way would have been contrary to the exploratory nature of Multimorph's task. Thus, an intrinsic evaluation in Multimorph's case was never going to be ideal
+to autonomous morphological categories. This would have involved deciding the precise identity of each autonomous 
+morphological category, which would have been beyond the scope of this thesis. Moreover, deciding ``correct'' 
+categories ahead of time in any way would have been contrary to the exploratory nature of Multimorph's task. 
+Thus, an intrinsic evaluation in Multimorph's case was never going to be ideal.
 
 In this study's intrinsic results, the instrinsic evalutation metrics do sometimes accurately describe what is going on in a given cluster. But in other cases, they do not. Consider, for example, the purity results in table~\ref{tab:best-purities}. The purity scores for the clusters 0 through 4 accurately describe the contents of their respective clusters. This is because the most frequent gold-standard class in each of these cases happened to correspond with the aspect of form that Multimorph's MCMM found to be most salient in that case.
 Cluster 43 presents a different scenario, however. Its purity score is quite low. However, if one manual inspect this cluster's member words, a random sample of which is given in figure~\ref{fig:cluster-43-2-2-TS}, one finds a remarkable degree of coherence. Very nearly all of the words in 
@@ -378,43 +387,44 @@ $k$ &  Size & Purity & Most Frequent Gold-Std Classes (with frequencies) \\
 \bottomrule
 \end{tabular}
 \label{tab:best-purities}
-\caption{Purities of the oldest (i.e., first) five clusters in a clustering generated at $\langle{s} = 2, \delta = 2\rangle$ from the TS dataset.}
+\caption{Purities of the oldest (i.e., first) five clusters in a clustering generated at $\langle{s} = 2, \delta = 2\rangle$ from the TS dataset}
+\label{tab:best-purities}
 \end{table}
 %However, some gold-standard classes fail to a just a straightforward, one-to-one mapping.  %to aspects of form
 %Consider, for example, the purity results in \ref{tab:not-so-good-purities}. 
 
-%\begin{figure}[t]
+\begin{figure}[!htb]
 %\begin{mdframed}
 %\begin{small}
 %\texttt{Cluster 0043;  size:  955;  Purity: 0.1822;}\qquad\texttt{pre:ha (174), f\%pl (172), ptn:CaCoC (163)}
 %\end{small}
 %\end{mdframed}
 %\vspace{-3pt}
-%\begin{mdframed}
-%\begin{tabbing}
-%\hspace*{14ex}\= \hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex} \kill
-%be\textipa{P}awir\a'{o}n \> hatarneg\a'{o}l \> wehacip\a'{o}r \> yar\a'{o}q \> lic\textipa{Q}\a'{o}q \> ule\v{s}al\a'{o}m \\
-%hari\textipa{P}\v{s}\a'{o}n \> bayar\a'{o}q \> hame\textipa{P}ora\textsubdot{k}\a'{o}t \> we\textipa{P}ecba\textipa{Q}\a'{o}t \> wehayelad\a'{o}t \> \v{s}ax\a'{o}r \\
-%mela\textipa{Q}a\textsubdot{s}\a'{o}t \> be\v{s}al\a'{o}\v{s} \> be\textipa{P}ez\a'{o}r \> kam\a'{o}\textsubdot{k} \> \textipa{P}egz\a'{o}z \> gab\a'{o}t \\
-%ha\textsubdot{s}mal\a'{o}t \> gad\a'{o}l \> hagag\a'{o}t \> weta\textipa{Q}av\a'{o}d \> weha\v{s}a\textipa{Q}\a'{o}n \> ti\textsubdot{k}t\a'{o}v \\
-%\textipa{P}emz\a'{o}g \> ba\textipa{Q}ipar\a'{o}n \> bal\a'{o}nim \> wexal\a'{o}n \> \textipa{P}av\a'{o}\textipa{P} \> ledma\textipa{Q}\a'{o}t 
-%\end{tabbing}
-%%\vspace{-3pt}
-%%\begin{mdframed}
-%%\begin{small}
-%%\textit{Ten most active centroid features}
-%%\begin{tabbing}
-%%%4_3_cluster_0 \\
-%%\hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \kill
-%%\texttt{\v{s}}@\texttt{[-2]} \> (1.0000) \> \texttt{a<\a'{o}} \> (0.8188) \> \texttt{r<\a'{o}} \> (0.1294) \> \texttt{\a'{o}<n} \> (0.1146) \> \texttt{\a'{o}<r} \> (0.1024) \\
-%%\texttt{x<\a'{o}} \> (0.0953) \> \texttt{m<\a'{o}} \> (0.0761) \> \texttt{\a'{o}<m} \> (0.0759) \> \texttt{l<\a'{o}} \> (0.0676) \> \texttt{v<\a'{o}} \> (0.0556)
-%%\end{tabbing}
-%%\end{small}
-%%\end{mdframed}
-%\label{fig:cluster-43-2-2-TS}
-%\caption{30 words randomly selected from the 955 members of cluster 43, generated at the settings $s=2,\delta =2$, data representation: TS}
-%\end{mdframed}
-%\end{figure}
+\begin{mdframed}
+\begin{tabbing}
+\hspace*{14ex}\= \hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex} \kill
+be\textipa{P}awir\a'{o}n \> hatarneg\a'{o}l \> wehacip\a'{o}r \> yar\a'{o}q \> lic\textipa{Q}\a'{o}q \> ule\v{s}al\a'{o}m \\
+hari\textipa{P}\v{s}\a'{o}n \> bayar\a'{o}q \> hame\textipa{P}ora\textsubdot{k}\a'{o}t \> we\textipa{P}ecba\textipa{Q}\a'{o}t \> wehayelad\a'{o}t \> \v{s}ax\a'{o}r \\
+mela\textipa{Q}a\textsubdot{s}\a'{o}t \> be\v{s}al\a'{o}\v{s} \> be\textipa{P}ez\a'{o}r \> kam\a'{o}\textsubdot{k} \> \textipa{P}egz\a'{o}z \> gab\a'{o}t \\
+ha\textsubdot{s}mal\a'{o}t \> gad\a'{o}l \> hagag\a'{o}t \> weta\textipa{Q}av\a'{o}d \> weha\v{s}a\textipa{Q}\a'{o}n \> ti\textsubdot{k}t\a'{o}v \\
+\textipa{P}emz\a'{o}g \> ba\textipa{Q}ipar\a'{o}n \> bal\a'{o}nim \> wexal\a'{o}n \> \textipa{P}av\a'{o}\textipa{P} \> ledma\textipa{Q}\a'{o}t 
+\end{tabbing}
+%\vspace{-3pt}
+\begin{mdframed}
+\begin{small}
+\textit{Ten most active centroid features}
+\begin{tabbing}
+%4_3_cluster_0 \\
+\hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \kill
+\texttt{\v{s}}@\texttt{[-2]} \> (1.0000) \> \texttt{a<\a'{o}} \> (0.8188) \> \texttt{r<\a'{o}} \> (0.1294) \> \texttt{\a'{o}<n} \> (0.1146) \> \texttt{\a'{o}<r} \> (0.1024) \\
+\texttt{x<\a'{o}} \> (0.0953) \> \texttt{m<\a'{o}} \> (0.0761) \> \texttt{\a'{o}<m} \> (0.0759) \> \texttt{l<\a'{o}} \> (0.0676) \> \texttt{v<\a'{o}} \> (0.0556)
+\end{tabbing}
+\end{small}
+\end{mdframed}
+\caption{Thirty words randomly selected from the 955 members of cluster 43, generated at the settings $s=2,\delta =2$, data representation: TS}
+\label{fig:cluster-43-2-2-TS}
+\end{mdframed}
+\end{figure}
 %
 %
 %\begin{table}[t]
@@ -462,14 +472,13 @@ complexity of an input wordlist in a way that is helpful to a downstream process
 \end{quotation}
 % that Multimorph could aid a downstream process by preprocessing---pre-digesting, as it were---the downstream process's input. 
  It would thus function in a way similar to the morphomic layer discussed in chapter~\ref{autonomous}. As stated in chapter~\ref{ch:results}, the results displayed in table~\ref{tab:extr-results-1000} do not support this hypothesis, however, as the control models outperform the experimental ones in every experimental trial. 
-
 However, the contribution of the extrinsic evaluation transcends the numerical results.
 It in fact makes two contributions, both involving the \emph{four-stage process} presented in section~\ref{sec:eval-extrinsic}.
 
 \emph{First, the four-stage process is itself a contribution.}
-We established see chapter~\ref{autonomous} that the output of a ULM system necessarily consists of \emph{autonomous} morphological units.
+We established in chapter~\ref{autonomous} that the output of a ULM system necessarily consists of \emph{autonomous} morphological units.
 % pure form and thus independent of meaning produced by an unsupervised morphological learning system. 
-As explained in chapter~\ref{ch:eval}, the evaluation of such output is problematic: Unsupervised learning algorithms are in general difficult to evaluate to due to a lack of an obvious gold-standard. This difficulty is compounded in the case of ULM due to the hidden, intermediate nature of autonomous morphological units and the still-emerging status of the study of autonomous morphology as a field.  Therefore, the task of the learning algorithm in a ULM system is even especially exploratory, perhaps more so than usual. than is typically the case, %The four-stage process is a procedure for evaluating the autonomous morphological units 
+As explained in chapter~\ref{ch:eval}, the evaluation of such output is problematic: Unsupervised learning algorithms are in general difficult to evaluate to due to a lack of an obvious gold-standard. This difficulty is compounded in the case of ULM due to the hidden, intermediate nature of autonomous morphological units and the still-emerging status of the study of autonomous morphology as a field.  Therefore, the task of the learning algorithm in a ULM system is even especially exploratory, perhaps more so than usual. %The four-stage process is a procedure for evaluating the autonomous morphological units 
 In presenting the novel four-stage process, this thesis offers a solution to these problems. As an extrinsic method, the four-stage process is well-suited to the intermediate nature of autonomous morphological units. 
 Moreover, it is a fully worked-out, fully functional computer program; it has been coded and successfully executed. The input, internal processing, and output of each stage are described in detail in section~\ref{sec:eval-extrinsic}. Other researchers can regard it as a functional prototype that they can be further develop and modify, either to improve it or adapt it to fit their particular experimental setup (or both).
 
@@ -479,9 +488,9 @@ Moreover, it is a fully worked-out, fully functional computer program; it has be
 %The four-stage process is a real computational process, one implemented in computer code and executed; 
 
 One issue that we have not yet addressed is the suitability of Morfessor as the extrinsic evaluation's downstream process. 
-One ostensible downside to using Morfessor is its inability to handle nonconcatenative morphology. However, Stage three, by converting discontinuous morphs into atomic symbols, obliterates interdigitation.  Atomic symbols are monolithic and cannot be interleaved. 
+One ostensible downside to using Morfessor is its inability to handle nonconcatenative morphology. However, Stage 3, by converting discontinuous morphs into atomic symbols, obliterates interdigitation.  Atomic symbols are monolithic and cannot be interleaved. 
 %Interleaving requires multiple “leaves,” so to speak—i.e., multiple pieces that can be moved around. 
-Therefore, the compression component of Stage 3 \emph{entails} an ``unwinding" of the morphology regardless of the downstream application and its capabilities. Morfessor’s inability to identify nonconcatenative morphs is moot.
+Therefore, the compression component of Stage 3 entails an ``unwinding" of the morphology regardless of the downstream application and its capabilities. Morfessor’s inability to identify nonconcatenative morphs is moot.
 
 %Thus, Morfessor’s inability to model nonconcatenative morphology is moot, since Multimorph’s analyses would have had to be flattened in any case as a basic component of the process, that is, the packaging and shipping of Multimorph’s output to the downstream application (or more generally, the morphosyntactic level of language-processing).
 
@@ -602,20 +611,20 @@ in the case of \textit{d.l.q} (that is, figure~\ref{fig:cluster-339-4-3-TS}).
 %\textsubdot{s}ix\a'{a}qta \> hami\textsubdot{s}x\a'{a}q \> webami\textsubdot{s}x\a'{a}q \> we\textsubdot{s}ix\a'{a}qnu \> \v{s}e\textsubdot{s}ixaq\a'{u} \> weme\textsubdot{s}axq\a'{i}m \\
 %\end{tabbing}
 %\label{fig:cluster-55-4-3-TS}
-%\caption{30 words randomly selected from the 63 members of the cluster $k=55$ at the settings $s=4,\delta =3$, data representation: TS}
+%\caption{Thirty words randomly selected from the 63 members of the cluster $k=55$ at the settings $s=4,\delta =3$, data representation: TS}
 %\end{mdframed}
 %\end{figure}
 
 %In addition Multimorph also found numerous clusters corresponding to concatenative affixes. The following is just small sample:
 Multimorph found vowel patterns as well. Like roots, vowel patterns are nonconcatenative, since their vowels must interleave with root consonants to form stems. Some examples of the vowel patterns that Multimorph found are shown in table~\ref{tab:vowel-patterns}.
-\begin{table}[!ht]
+\begin{table}[ht]
 \centering
 \setlength{\extrarowheight}{6pt}
 \begin{tabular}{cccc}
 \toprule
    \makecell{(Possible)\\Morph} & \makecell{Interpretation} &   \makecell{Cluster \\ ($k$)}  & \makecell{Parameter\\Settings } \\
   \midrule
-  \makecell{\'{e}_et}  &  \makecell{\textsc{f.sg} participle \\ ending} & 0 &$\langle{s}=4$, $\delta=3\rangle$ \\\hline
+  \makecell{\'{e}\_et}  &  \makecell{\textsc{f.sg} participle \\ ending} & 0 &$\langle{s}=4$, $\delta=3\rangle$ \\\hline
   \makecell{a\_\'{e}}   &  \makecell{CaC\'{e}C vowel pattern \\ of the \textit{Pi`el} and \textit{Hitpa`el} \\ suffix stems} & 19 &  $\langle{s}=2$, $\delta=3\rangle$\\\hline
   \makecell{\'{e}\_e} &   \makecell{C\'{e}CeC vowel pattern \\ of \textit{Segholate} nouns} &  59 & $\langle{s}=4$, $\delta=3\rangle$ \\ \hline
   \makecell{i\_\'{a}}     &    --- & 23 &  $\langle{s}=4$, $\delta=3\rangle$ \\\hline
@@ -635,7 +644,7 @@ The sequence \textit{a\_\'{a}} serves as the CaC\'{a}C vowel pattern of the \tex
 binyan's suffix stem, as in \textit{rax\'{a}cti} `I washed' and \textit{hal\'{a}\textsubdot{k}ti} `I walked.'
 \footnote{The \textit{Qal} is also known as the \textit{\textit{Pa`al}} binyan because
 of this pattern.}
-The sequence \textit{a\_\'{a}} also servers as the defining pattern for a class of nouns, e.g., \textit{nag\'{an}} `musician'  \textit{xay\'{a}l}`deer' \textit{\v{s}ar\'{a}t} 'janitor', \textit{\textsubdot{t}ab\'{a}x} `chef, cook.'\footnote{This class primarily consists of words for professions. It is actually related to the \textit{Pi'el} binyan; in past forms of Hebrew, the second root consonant would have doubled, yielding \textit{nagg\'{an}}, \textsubdot{t}abb\'{a}x, etc. The historical pattern was thus CaCC\textipa{"\r{a}}C, the first \textit{a} being short and protected from reduction by the closed syllable.   There is in fact another \textit{a\_\'{a}} noun class---this one related to the \textit{Qal} (or \textit{Pa`al}) binyan. Historically, its pattern was C\textipa{\r{a}}CC\textipa{"\r{a}}C, with an initial long rounded \textit{a} (i.e., \textipa{\r{a}}). Today, these two nominal vowel patterns have the same pronunciation; i.e., both are pronounced CaC\'{a}C.}
+The sequence \textit{a\_\'{a}} also servers as the defining pattern for a class of nouns, e.g., \textit{nag\'{an}} `musician'  \textit{xay\'{a}l} `deer' \textit{\v{s}ar\'{a}t} `janitor', \textit{\textsubdot{t}ab\'{a}x} `chef, cook.'\footnote{This class primarily consists of words for professions. It is actually related to the \textit{Pi'el} binyan; in past forms of Hebrew, the second root consonant would have doubled, yielding \textit{nagg\'{an}}, \textsubdot{t}abb\'{a}x, etc. The historical pattern was thus CaCC\textipa{"\r{a}}C, the first \textit{a} being short and protected from reduction by the closed syllable.   There is in fact another \textit{a\_\'{a}} noun class---this one related to the \textit{Qal} (or \textit{Pa`al}) binyan. Historically, its pattern was C\textipa{\r{a}}CC\textipa{"\r{a}}C, with an initial long rounded \textit{a} (i.e., \textipa{\r{a}}). Today, these two nominal vowel patterns have the same pronunciation; i.e., both are pronounced CaC\'{a}C.}
 
 \begin{table}[t]
 \centering

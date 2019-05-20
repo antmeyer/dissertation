@@ -4,14 +4,14 @@
 \section{Introduction}
 Many morphologists in recent decades have rejected the notion of the morpheme---a concept that inextricably binds morphology to syntax and semantics---in favor of approaches that regard morphology as autonomous, i.e., as independent 
 of both syntax/semantics and phonology. The principle objective of this chapter is to 
-show that autonomous morphological units are legitimate learning targets for a \ac{ULM}  system. In fact, as we shall soon, autonomous morphology is more than just legitimate; it is the only possible learning target for \ac{ULM}  as it is conventionally defined.
+show that autonomous morphological units are legitimate learning targets for a \ac{ULM}  system. In fact, as we will soon see, autonomous morphology is more than just legitimate; it is the only possible learning target for \ac{ULM}  as it is conventionally defined.
 In the course of the discussion, we shall consider some of the more prominent theories of autonomous morphology, contrasting them with ``non-automonous" approaches, and  noting their significance to \ac{ULM} (and Multimorph in particular).
 
 
 \section{The Unsupervised Learning of \textit{What}, Exactly?}
 \label{sec:what-exactly}
 In the \ac{ULM} literature, authors often use the word \emph{morpheme(s)} 
-when describing their the systems' \emph{learning target(s)}, i.e., what their systems are meant to learn and 
+when describing their systems' \emph{learning target(s)}, i.e., what their systems are meant to learn and 
 output, as well as the features that compose their input feature vectors.
 \cite{poon-et-al:2009}, for example, use two main categories 
 of features, one of which they refer to as \emph{morpheme-context} features (see chapter \ref{ch:lit-review}).
@@ -48,9 +48,10 @@ to these categories. The lexeme-based view, which has been gaining momentum in r
 is that there exists an \emph{autonomous} layer of morphology, a layer that mediates between (morpho-)syntax
 and phonological realization, but has neither meaning nor phonologically realized form in and of itself. Proponents
 of lexeme-based morphology thus do not believe in pairings of form and meaning, i.e., \emph{morphemes}, as fundamental linguistic
-units \cite{anderson:2015}. We shall further discuss the notion of autonomous morphology in section~\ref{autonomous}. 
+units \citep{anderson:2015}. We will further discuss the notion of autonomous morphology in sections~\ref{sec:morpho-theories} and
+\ref{sec:the-morphome}.
 
-One's morphological theory effects the way in which one interprets the output of a \ac{ULM}  system. 
+One's morphological theory affects the way in which one interprets the output of a \ac{ULM}  system. 
 If one describes a \ac{ULM}  system and its learning task in terms of 
 morpheme-based morphology, one must also struggle to 
 describe its output as consisting of morphemes, as do, for example, 
@@ -64,7 +65,7 @@ his/her \ac{ULM}  system.
 The output of any machine learning system depends to 
 a great extent on the nature of its input, which, in the case of the 
 \emph{unsupervised} learning of morphology, 
-depends on with the meaning of ``unsupervised to a large extent." 
+depends to a large extent on with the meaning of ``unsupervised.'' 
 All of the major \ac{ULM}  
 systems take as input a list of independent tokenized words 
 \citep[e.g.,][]{goldsmith:2001,baroni-et-al:2002,creutz-and-lagus:2005,poon-et-al:2009}
@@ -74,20 +75,27 @@ requirement that each word be free of morphosyntactic
 or semantic information. In practice,
 this means being entirely free of context. I am 
 not aware of a \ac{ULM} system that extracts features from the raw context surrounding a given word, i.e.,
-the unanalyzed words adjacent to the unanalyzed word question. Presumably, this is because 
-such a context would not be helpful to a machine learner. 
+the unanalyzed words adjacent to the unanalyzed word question. It seems doubtful
+that such a context could be helpful to a machine learner. 
 It would probably have to be abstracted and categorized 
 (i.e., annotated) in order
 for it to be helpful to a system.
 
-Because morphemes are irreducible and arbitrary pairings of form and meaning
-but in order to deduce meaning, one needs contextual information. Because
-a \ac{ULM} system does not have access to context, it simply 
-cannot learn classical morphemes. A \ac{ULM} system might learn 
-subsequences of word strings that happen to resemble
- classical morphemes \emph{in form}, but only because there is always 
- morphological systems do tend to cooperate with syntax/semantics in some way, and in some 
- cases this cooperation appears more transparent and straightforward than
+%Because morphemes are irreducible and arbitrary pairings of form and meaning
+%but in 
+Classical morphemes are (irreducible) pairings of form and meaning.
+In order to learn morphemes, therefore, a system needs to learn meaning. But a ULM system does not have access to
+the contexts of its input words, as its input is a list of independent word tokens, and thus it cannot learn
+meaning.
+% because the input to ULM systems is a list of contextless tokenized words. 
+% learning meaning without contextual information. And since the input to a ULM 
+% a \ac{ULM} system consists of independent words without contextdoes not have access to context, it simply 
+cannot learn classical morphemes. 
+A \ac{ULM} system might learn 
+character subsequences that happen to resemble
+ classical morphemes \emph{in form}, but only because morphological systems
+do tend to cooperate with syntax/semantics in some way, and in some 
+ cases this cooperation is more transparent and straightforward than
  in others.  However, this \ac{ULM} system would nevertheless be oblivious to what
  these pieces of form actually mean. Meaning is an essential component of the classical morpheme, and because
  meaning depends on context, there is no way to induce classical morphemes from contextless words.
@@ -109,7 +117,7 @@ a set of affixes $A$, such that each stem-affix combination in the cross
 product $S \times A$ is observed in the corpus. Additionally, $S$ and 
 $A$ must each contain at least two members, with \textsc{null} being 
 a permissible member, and each stem can belong to only one signature.  
-For example, a signature could be the following $S = \{ \text{act}, \text{back}, \text{mint} \}$ 
+For example, a signature could be the following: $S = \{ \text{act}, \text{back}, \text{mint} \}$ 
 and $A = \{ \textsc{null}, \text{s}\}$. Every possible stem-affix combination is 
 \begin{equation}
 \label{eq:SxA}
@@ -118,11 +126,11 @@ S \times A = \{ \text{act}, \text{back}, \text{mint}, \text{act-s},
 \end{equation}
 The fifth 
 most common signature that Linguistica found among the words of 
-\textit{Tom Sawyer} had as its affix set $\{\textsc{null}\textit{.ed.ing.s}\}$  \cite{goldsmith:2001}. 
-The corresponding stem set had 14 members, though \cite{goldsmith:2001} 
+\textit{Tom Sawyer} had as its affix set $\{\textsc{null}\textit{.ed.ing.s}\}$ \citep{goldsmith:2001}. 
+The corresponding stem set had 14 members, though \citet{goldsmith:2001} 
 does not identify the individual stems. 
 In any case, the affix set \textsc{null}\textit{.ed.ing.s} represents 
-a stem equivalence class. Its extraction would be an impressive achievement for any \ac{ULM}  system, and this
+a stem equivalence class. Its extraction would be an impressive achievement for any \ac{ULM} system, and this
 is but one of many such signatures that Linguistica has found. However, 
 suppose we had no knowledge of English. It would then be impossible to deduce the nature 
 of this equivalence class. We might
@@ -141,8 +149,8 @@ with `3rd-person singular present-tense'. That is, it does not assign particular
 meanings to the stems and affixes it discovers.
 Nor would Linguistica know the particular meaning of any stem 
 associated with a given affix set. 
-Suppose that \{\textit{act}, \emph{jump}, and \emph{laugh}\} 
-were the stem set associated with \textsc{null}\textit{.ed.ing.s}. 
+Suppose that \{\textit{act}, \emph{jump}, \emph{laugh}\} 
+was the stem set associated with \textsc{null}\textit{.ed.ing.s}. 
 Linguistica would thus have learned that these stems are the same 
 in a way. But Linguistica would not have learned what this 
 equivalence should have signified, not would have learned the semantic 
@@ -160,8 +168,8 @@ of the classical morpheme and the limited nature of
 Linguistica's input, it is simply not possible for 
 Linguistica to learn true morphemes. First, because 
 Linguistica is an \emph{unsupervised} learner, it has 
-no access to the information it would need to assign 
-Second, as we shall see in section~\ref{sec:morpho-theories}, morphemes do not adequately 
+no access to the information it would need to assign meaning to units of form.
+Second, as we will see in section~\ref{sec:morpho-theories}, morphemes do not adequately 
 account for the full range of morphological phenomena \citep{anderson:2017}. 
 For these reasons, morphemes are not reasonable 
 targets of unsupervised morphological learning.
@@ -182,8 +190,10 @@ binary distinctions, namely \emph{lexical} vs. \emph{inferential} on the hand, a
 \begin{exe}
 \ex \textsc{First Distinction}: \textit{Lexical vs. Inferential} 
 \begin{xlist}
-	\ex \textbf{Lexical}: The meaning of \textit{issue-s}, for example, is determined by the lexical entries of its components \textit{issue} and \textit{-s}.
-	\ex \textbf{Inferential}: The meaning of \textit{issue-s} is determined by the meanings of related forms like \textit{dog-s} and \textit{bike-s},
+	\ex \textbf{Lexical}: \textit{A word's meaning is the compositions of its components' lexical entries.}\\
+	The meaning of \textit{issue-s}, for example, is determined by the lexical entries of its components \textit{issue} and \textit{-s}.
+	\ex \textbf{Inferential}: \textit{A word's meaning is determined by the meanings of related words.}\\
+	The meaning of \textit{issue-s} is determined by the meanings of related forms like \textit{dog-s} and \textit{bike-s},
 with ``similarities of form [directly] reflecting similarities of content and vice versa" \citep[][p. 2]{anderson:2015shorthist}. \label{ex:d-one-b}
 	\end{xlist}
 \ex \textsc{Second Distinction}: \textit{Incremental vs. Realizational} 
@@ -201,7 +211,7 @@ By cross-combining the options of first distinction with those of the second,
 \cite{stump:2001} derives four categories of morphological theories. 
 \emph{Lexical-Incremental} and \emph{Lexical-Realizational} theories 
 on the one hand, and on the other, \emph{Inferential-Incremental} and 
-\emph{Inferential-Realizational} theories. However, \citep{anderson:2017} 
+\emph{Inferential-Realizational} theories. However, \citet{anderson:2017} 
 notes that most theories fall into the \emph{Lexical-Incremental} and 
 \emph{Inferential-Realizational} categories. Indeed, these are the two are 
 the most extreme of the four categories in that they are entirely antithetical. 
@@ -216,8 +226,8 @@ between \emph{morpheme-based} and \emph{lexeme-based}
 views of morphology. Morpheme-based approaches regard 
 the classical morpheme as the seat of meaning.
 The concept of the morpheme and morpheme-centered morphological analysis
-was developed by Bloomfield in the 1920s and 1930s 
-\citep{bloomfield:1926, bloomfield:1933} and honed by his 
+was developed by Bloomfield in the 1920s and 1930s by
+\citet{bloomfield:1926, bloomfield:1933} and honed by his 
 successors in the descriptivist program, e.g., 
 \cite{hockett:1947} and \cite{harris:1955}.
 It was \cite[][p. 161]{bloomfield:1933} who famously wrote, ``A linguistic form 
@@ -244,55 +254,59 @@ Bloomfieldian view of morphology. The Bloomfieldian approach is essentially
 the lexical-incremental approach.
 
 By contrast, lexeme-based approaches (also called \emph{word-based} 
-approaches) view the whole word as the seat of meaning. That is, the component 
+approaches) consider the seat of meaning to be the whole word rather than its components. According to this view, the component 
 parts of a complex word do not have their own predetermined meanings. 
 Rather, 
-there is a buffer layer between the level of phonological form and that of 
+there is a buffer layer between the level of phonological form and the level of
 syntax/semantics. This
 buffer consists of morphological rules that map from raw phonological 
 strings to meanings.
-\ac{PFM} \citep{stump:2001} 
+Paridigm Function Morphology, a lexeme-based theory developed by \citet{stump:2001}, 
 posits a morphological architecture consisting of two kinds of paradigms: a \emph{content} paradigm and a \emph{form} paradigm.
-The cells of the former are related to those of the latter via
+The cells of the content paradigm are related to those of the form paradigm via
 \emph{paradigm functions}.
-A paradigm function takes the basic form of
-\eqref{eq:PF}, where the lefthand side represents a particular cell in the 
-content paradigm, and the righthand side a particular cell in the form paradigm.  
+A paradigm function follows the template
+%\eqref{eq:PF}, 
 \begin{equation}
 \label{eq:PF}
 	\text{PF}\langle \text{L},\sigma \rangle = \langle \text{X}, \sigma^\prime \rangle
 \end{equation}
-The L represents a lexeme, and the X a stem,  i.e., the form correspondent of L. 
+where the lefthand side represents a particular cell in the 
+content paradigm, and the righthand side a particular form-paradigm cell.
+In particular, $\text{L}$ is a lexeme, and $\text{X}$ is a stem, that is, the form correspondent of $\text{L}$. 
 The morphosyntactic property set associated with content cell and form cell are $\sigma$ and 
 $\sigma\prime$, respectively. In the canonical case, there is a one-to-one
 correspondence between content cells and paradigm cells, and 
 $\sigma = \sigma^\prime$.
-Often, however, the mapping between content and form paradigm cells is 
-not one-to-one, $\sigma \ne \sigma^\prime$, or both. A state of mismatch 
-between $\sigma$ and 
-$\sigma^\prime$ is called \emph{deponency}, it does not \emph{per se} 
-throw off a one-to-one correspondence between content and form cells; 
-that is, it does not change the number of form cells. Rather, deponency 
-is a condition in which a content cell refers to one morphosyntactic property 
-set $\sigma$, while its corresponding form cell refers to $\tau$, a different 
-morphosyntactic property set. For example, a verb stem might take passive 
-affixes in the active voice \citep{stewart-and-stump:2007}.
+Often, however, the mapping between content and form cells is 
+not one-to-one, $\sigma \ne \sigma^\prime$, such as in cases of
+% A state of mismatch 
+% between $\sigma$ and 
+% $\sigma^\prime$ is called \emph{deponency}, which retains 
+% throw off a one-to-one correspondence between content and form cells; 
+% that is, it does not change the number of form cells. Rather, deponency 
+% is a condition wherein a content cell contains one morphosyntactic property 
+% set, but is mapped to a form cell that is typically associated with a different 
+% morphosyntactic property set. For example, a verb stem might take passive 
+% affixes in the active voice \citep{stewart-and-stump:2007}.
 
-Another type of non-canonicity in content-to-form mappings is \emph{syncretism}. 
-This type does cause a misalignment between the content and form cells, namely,
-a many-to-one mapping, i.e., the form paradigm has fewer cells 
-than the content paradigm. Consider, for example, table 
+%Another type of non-canonicity in content-to-form mappings is 
+%A phenomenon called 
+\emph{syncretism}, wherein the mapping from content to form cells is many to one. 
+%is 
+%a many-to-one mapping from content to form cells. 
+Consider, for example, table 
 \ref{tab:engverbpres}, which shows both the content and form paradigms 
 for the English lexeme \emph{kick} in the simple present tense.
 The content paradigm has six cells, one for each combination of \textsc{person} 
 and \textsc{number}, while the form paradigm has only two, one for the 
 form that has no suffix (\textit{kick}) and the other for the form 
-that ends in \textit{-s} (\textit{kicks}). 
+that ends in \textit{-s}, namely \textit{kicks}. 
  
 \begin{table}[t]
- \setlength{\extrarowheight}{8pt}
+\setlength{\extrarowheight}{8pt}
 \centering
-\begin{tabular}{c c c}
+\begin{tabular}{ccc}
 \toprule
 Content Paradigm & Form Paradigm & Realization \\ [0.5ex] % inserts table
 \hline%heading
@@ -305,27 +319,27 @@ $\langle \textsc{kick} \land \{\textsc{p:1}$, \textsc{n}:{pl}\} $\rangle$  & \\ 
 $\langle \textsc{kick} \land \{\textsc{p:2}$, \textsc{n}:{pl}\} $\rangle$ &  \\ \cline{1-1}
 $\langle \textsc{kick} \land \{\textsc{p:3}$, \textsc{n}:{pl}\} $\rangle$ & \\ \hline
 $\langle \textsc{kick} \and \{\textbf{\textsc{p}:{3}}$, \textbf{\textsc{n}:{sg}}\} $\rangle$ & $\langle$ \textsc{kick}, \{\textbf{\textsc{p}:{3}}, \textbf{\textsc{n}:{sg}}\} $\rangle$  & kicks \\[0.5ex]
-\bottomrule%inserts single line
+\bottomrule
 \end{tabular}
-\label{tab:engverbpres} % is used to refer this table in the text
-\caption{Dual-paradigm analysis of the English present tense} % title of Table
+\label{tab:engverbpres}
+\caption{Dual-paradigm analysis of the English present tense}
 \end{table}
 
 Notice the unnaturalness of the two morphosyntactic classes in
 the form-paradigm column in table \ref{tab:engverbpres}.
 Classes like these abound in morphology.  
-They are unnatural in that they are not motivated by morphosyntactic properties; from a morphosyntactic
+They are unnatural in that they are not motivated by morphosyntactic properties. Thus, from a morphosyntactic
 perspective, they are quite arbitrary.
-there is no reason for putting only 3.sg in one class and all other combinations, 
-including the singulars and the 3.pl, in another class. Such classes help motivate 
-a theory of an \emph{autonomous} layer of morphology, i.e., a layer responsible 
-for mapping from the content level to the phonological, but does so by 
+There is no reason to put the third-person singular alone in one class and all of the other combinations, 
+including the other singular categories as well as third-person plural, together in the other class. Such classes help motivate 
+a theory of an \emph{autonomous} layer of morphology, that is, a layer responsible 
+for mapping from the content level to the phonological, but does so according 
 to its own terms.
 
 Surface forms are realized phonologically by \emph{realizational rules}, which 
-are functions that map from form cells (i.e., the second column in table~\ref{tab:engverbpres})
+are functions that map from form cells (for example, those in the second column in table~\ref{tab:engverbpres})
 to fully realized phonological forms (the third column in table~\ref{tab:engverbpres}). 
-In fact, each realizational rule is a bijection; i.e., every 
+In fact, each realizational rule is a bijection: Every 
 distinct phonological form implies the existence of a unique corresponding cell in 
 the form paradigm, and conversely, each distinct form cell implies the existence of 
 a distinct corresponding phonological form. The
@@ -333,7 +347,7 @@ content-paradigm cells are not directly connected to the realizational rules of
 the phonological level because the form paradigm acts as an 
 intervening layer---a layer of autonomous morphology---between the 
 content paradigm and the level of phonological realization. 
-Thus, the content paradigm cannot directly influence phonological form. 
+Thus, according to Paradigm Function Morphology, the content paradigm cannot directly influence phonological form. 
 
 Realizational rules come in two varieties:
 \emph{rules of exponence} and \emph{rules of referral}. Rules of exponence, as exemplified in \eqref{eq:roexp}, describe the 
@@ -364,15 +378,15 @@ different morphosyntactic property set in a different rule block. (The \textit{A
 is a purely arbitrary label in this case.) Stump cites the English perfect participle 
 to exemplify rules of referral. That is, for many lexemes, the form of the 
 past participle is identical to the simple-past form, e.g., \textit{raked}. 
-These participles would be formed via a rule of referral, i.e., one that 
+These participles would be formed through a rule of referral, i.e., one that 
 says, in effect, ``To get your perfect participle form, imagine that you 
-are a past-tense form, and proceed accordingly.  We shall revisit the English 
+were a past-tense form, and proceed accordingly.''  We will revisit the English 
 perfect participle when we discuss morphomes 
 in section~\ref{sec:the-morphome}.
 
-\ac{PFM} is an example of a morphological theory that involves an intermediate layer between
+Paradigm Function Morphology is an example of a morphological theory that involves an intermediate layer between
 meaning (i.e., content) and phonological form---and thus an indirect relationship between
-meaning and form. In the case of \ac{PFM}, this intermediate
+meaning and form. In the case of Paradigm Function Morphology, this intermediate
 level is of the form paradigm. It interacts with the semantics and phonology 
 via paradigm functions and rules of exponence, respectively,
 but it is nonetheless independent of both the semantics and the phonology and thus a layer of \emph{automonous} morphology.  
@@ -393,8 +407,8 @@ The morphome has sparked a
 great deal of research since Aronoff introduced it in 1994. Researchers
 such as \cite{maiden:2005, maiden:md:2016}, \cite{round:2009, round:2011, 
 round:2012, round:2015, round:md:2016}, \cite{oneill:2014b,oneill:2018}, and \cite{bonami:2008, bonami:2010}, to name 
-a few---have found striking examples of morphomicity in a wide variety of 
-languages and thus helped flesh out the notion of the morphome.
+a few---have found examples of morphomicity in a wide variety of 
+languages and have thereby helped to flesh out the notion of the morphome.
 Round, for instance, in \cite{round:2009} and subsequent works, 
 presents a complete morphome-based analysis of the morphology of 
 Kayardild, a nearly extinct language of northern Australia. 
@@ -405,14 +419,24 @@ consisting of a particular lexical item and a particular set of properties.
 \cite{round:2011} argues that such pairs can be either inflectional 
  or derivational in nature, and moreover, that the same morphome can fill 
  both inflectional and derivational roles. In English, for example, \emph{-s} 
- can serve as the \textsc{3.sg.pres} suffix on verbs and the \textsc{pl} 
- suffix on nouns, both of which are inflectional, but it can also serve a derivational 
- role as the possessive clitic e.g., \emph{This is the \textbf{girl's} new bicyicle} and 
- the \textsc{3.sg.pres} clitic, e.g., \emph{The girl's\textbf{bicycle's} new.} 
+functions as the \textsc{3.sg} present-tenxe suffix for verbs and as the \textsc{pl} 
+ suffix for nouns, both of which are inflectional, but it can also serve a derivational 
+ role as the possessive clitic, as in, \emph{The girl's\textbf{bicycle's} new}, and as a
+ cliticization of the copula, as in \emph{The girl's\textbf{bicycle's} new.}
+
+%  \begin{exe} 
+% \emph{This is the \textbf{girl's} new bicyicle}
+%  \ex This is the \textbf{girl's} new bicyicle.
+%  \end{exe} 
+%  and the \textsc{3.sg.pres} clitic, as in
+%  \begin{exe} 
+% % \ex \emph{The girl's\textbf{bicycle's} new.} 
+%  \ex The girl's\textbf{bicycle's} new.
+%  \end{exe} 
  Hebrew also has morphomes that ``cross the inflectional--derivational divide," 
  as Round puts it \citep[][p.14]{round:2015}. This inflectional--derivational 
- duality will prove useful to us in section \ref{sec:heb-example}, where we shall 
- examine a case of syncretism among certain inflectional and derivational suffixes in \ac{MH}.
+ duality will prove useful to us in section \ref{sec:heb-example}, where we will 
+ examine a case of syncretism among certain inflectional and derivational suffixes in Modern Hebrew.
   
   But first we must establish some notation. 
   One of Round's contributions is his rigorously formalized descriptions of 
@@ -487,9 +511,12 @@ of \ac{ULM} because it licenses an algorithm to identify
 morphological units solely on the basis of similarities in 
 form, irrespective of meaning.
 
-Suppose, for example, that $\lambda = \textsc{kick}$, 
-$\sigma =$ $\{\text{\textsc{pers}:1, \textsc{num}:pl, \textsc{tns}:pres} \}$, 
-and $\tau =$ $\{\text{\textsc{pers}:2, \textsc{num}:sg, \textsc{tns}:pres}\}$.
+Suppose, for example, that 
+\begin{center}
+$\lambda = \textsc{kick}$\\
+$\sigma =$ $\{\text{\textsc{pers}:1, \textsc{num}:pl, \textsc{tns}:pres} \}$\\
+$\tau =$ $\{\text{\textsc{pers}:2, \textsc{num}:sg, \textsc{tns}:pres}\}$\\
+\end{center}
 Even though the morphosyntactic property sets $\sigma$ and $\tau$ are very much different,
 the phonological representations of $\langle \textsc{kick}, (\lambda,\sigma) \rangle$
 and $\langle \textsc{kick}, (\lambda,\tau) \rangle$ are identical. That is,
@@ -612,8 +639,8 @@ a passive verb.
 \end{exe}
 However,
 from a hyper-root perspective, so to speak, we see that the precise \emph{instantiation} of the sameness varies from root to root.  
-Table \ref{tab:engpastperf} summarizes five varieties of the metamorphome $\mu{\textsc{perf}}$. But note that this table
-does not express the full variety of $\mu{\textsc{perf}}$'s realizations, as ablaut can take a number of different shapes.
+Table~\ref{tab:engpastpart} summarizes five varieties of the metamorphome $\mu{\textsc{perf}}$.\footnote{Note that this table
+does not express the full variety of $\mu{\textsc{perf}}$'s realizations, as ablaut can take a number of different shapes.}
 \begin{table}[ht]
 \centering
 \setlength{\extrarowheight}{8pt}
@@ -630,7 +657,7 @@ Root & Type & Form & Perfect & Passive  \\ [0.5ex]
 \bottomrule
 \end{tabular}
 \label{tab:engpastpart}
-\caption{The English past-participle is a metamorphome; i.e., a single abstract morphome instantiated across many different lexemes. Different lexemes may correspond to different stem types, which in turn take their own distinct affixes.}
+\caption{The English past-participle is a metamorphome; that is, it is a single abstract morphome instantiated across many different lexemes. Different lexemes may correspond to different stem types, which in turn take their own distinct affixes.}
 \end{table}
 
 \begin{table}[ht]
@@ -694,7 +721,7 @@ Root & Type & Form & Perfect & Passive  \\ [0.5ex]
  	\tikzstyle{m-node}=[circle,draw=black!100,thin,inner sep=0pt,minimum size=2mm]
 	\tikzstyle{pf-node}=[text centered]
  	\tikzstyle{m-lbl}=[text width=5ex]
-	\node[m-lbl] (label0) at (13ex,\rowoneht) {$\mu{\textit{PERF}}$};
+	\node[m-lbl] (label0) at (13ex,\rowoneht) {$\mu{\textit{\textsc{perf}}}$};
 	
  	% morphosyntax
  	\node[ms-node] 	(ms0)	at (3ex,\rowtwohta)		{perfect};
@@ -720,7 +747,7 @@ Root & Type & Form & Perfect & Passive  \\ [0.5ex]
 		%(label0) edge node {}      (m0);	
  \end{tikzpicture}
 \label{fig:ppgraph}
-\caption{In the terminology of \cite{aronoff}, the English perfect participle  is a \emph{polyvalent polymorphous} morphome; i.e., it has multiple functions (polyvalent) as well as multiple forms (polymorphous). The downward arcs represent form types, each of which is a \emph{meromorphomes.}}
+\caption{In the terminology of \citet{aronoff:1994}, the English perfect participle  is a \emph{polyvalent polymorphous} morphome; i.e., it has multiple functions (polyvalent) as well as multiple forms (polymorphous). The downward arcs represent form types, each of which is a \emph{meromorphomes.}}
 \end{figure}
 
 \paragraph{Meromorphomes.} Whereas rhizomorphomes and metamorphomes 
@@ -775,7 +802,7 @@ pl & gdol-im & gdol-ot  \\
 
 \subsection{An example from Hebrew}
 \label{sec:heb-example}
-We turn now to a case of syncretism in the morphology of \ac{MH}. Perhaps
+We turn now to a case of syncretism in the morphology of Modern Hebrew. Perhaps
 the best known aspect of Hebrew (and Semitic languages in general) is its 
 non-concatenative root-and-pattern morphology. But 
 Hebrew's morphology also has a rich concatenative component, consisting of
@@ -868,7 +895,7 @@ Tables~\ref{subtab:der-adjectives} and \ref{subtab:der-nouns-i}
 show additional
 examples of these two disparate functions of \textit{-i}.
 
-\subsection{A morpheme-based approach}
+\subsubsection{A morpheme-based approach}
 The ending \textit{-t}, when used as (part of) a suffix on 
 nominal forms, is always accompanied by a vowel. 
 In fact, it appears with each of Modern Hebrew's five vowels.
@@ -881,7 +908,7 @@ primitive word, as in, e.g., \textipa{P}ot `letter'.}
 
 Besides \textit{-t}, the only other systematic feminine marker is 
 \textit{-a}, which is found only 
-in fem.sg absolute-state forms. [Examples]
+in fem.sg absolute-state forms. %[Examples]
 But a final \textit{-t} appears even in these nouns when they are 
 in the construct state, a type of form which is used compound-noun 
 construction and marked by its complete lack of stress.
@@ -895,8 +922,8 @@ to \cite{faust:2013}, both
 \textit{-a} and \textit{-t} are underlyingly /-at/; sometimes 
 the \textit{a} deletes, and sometimes the \textit{-t} deletes, depending 
 upon certain phonological factors. Sometimes they appear 
-together in the same form, as in fem.sg construct nouns
-Faust additionally decomposes the derivational endings 
+together in the same form, as in fem.sg construct nouns.
+ Faust additionally decomposes the derivational endings 
 \textit{-ut} and \textit{-it} into /u-at/ and /i-at/, respectively. 
 The \textit{a} deletes in these forms.
 Faust regards \textit{-et} in \textit{-at} as both allophones of /-at/. 
@@ -933,7 +960,7 @@ consonantal root of Semitic morphology. Semitic roots would qualify as
 A \ac{DM} root has no particular morphosyntactic properties and thus belongs to 
 no morphosyntactic category.
 However, it does have abstract semantic features as well as inherent 
-selectional requirements, i.e., criteria that limit the set of stems with which it 
+selectional requirements, that is, criteria that limit the set of stems with which it 
 may combine. In particular, roots exclusively select 
 other roots as their complements.  
 
@@ -941,11 +968,11 @@ Because \textit{-at} is a root, therefore, it
 never attaches to derived stems. The same is true of /-i/ and /-u/.  
 However, \textit{-at} is distinguished from /-i/ and /-u/ in that it occupies the 
 position of category head in the derivation of adjectives.
-Of course, the suffix /-at/ is not present in the derivations of 
-masculine adjectives, 
-but the position of category head is. 
-It is just phonologically null, according to \ac{DM}.
-In such cases, the suffix /-i/ simply combines with the null adjectival head. 
+In masculine adjectives, the category-head position is occupied by a phonologically null unit instead of
+\textit{-at}, since \textit{-at} is a feminine suffix. %he \textit{-at} suffix is not present; % the suffix /-at/ is not itself present in the derivations of 
+%masculine adjectives,
+%It is just phonologically null, according to \ac{DM}.
+In masculine adjectives, therefore, the suffix /-i/ simply combines with the null adjectival head. 
 This, according to Faust, satisfies the selectional requirements of /-i/
 and the null adjectival head. The rest of the derivation,
 proceeds as it does in feminine adjectives. 
@@ -961,10 +988,10 @@ Moreover, Faust argues that the adjectival \textit{-i} and
 the noun-deriving \textit{-i} ending in tables 
 \ref{subtab:der-adjectives} and \ref{subtab:der-nouns-i} 
 are in fact one and the same expletive morpheme. That is, 
-/-i/ does not per se mean `\textsc{adjective}' in the derived adjectives 
-\ref{subtab:der-adjectives}. It is rather an expletive suffix, one that 
+/-i/ does not \textit{per se} mean `\textsc{adjective}' in the derived adjectives 
+\ref{subtab:der-adjectives}. Rather, it is an expletive suffix, one that 
 crucially, for Faust, lacks morphosyntactic properties.
-Note that it is \ac{DM} that motivates Faust's decision to posit a single 
+It is the theory of Distributed Morphology that motivates Faust's decision to posit a single 
 expletive /-i/ morpheme (as opposed to 
 separate adjective-deriving and noun-deriving morphemes).  Faust 
 requires /-i/ to be a \ac{DM} root so that /-at/ can combine with it, and since 
@@ -972,9 +999,9 @@ requires /-i/ to be a \ac{DM} root so that /-at/ can combine with it, and since
 category, an intrinsically adjectival /-i/ would
 not suit Faust's \ac{DM} analysis. 
 
-\subsection{A \emph{morphome}-based approach}
-As it turns out, Faust's account and a \emph{morphome}-based approach 
-are similar top each other in at least one respect, namely in the analysis of /-i/
+\subsubsection{A \emph{morphome}-based approach}
+Faust's account is similar to a \emph{morphome}-based account
+in one respect, namely, in its analysis of /-i/
 as a single (unified) morphological unit. But whereas Faust posits a unified 
 /-i/ morpheme, we shall posit here a 
 a unified \emph{morphome} $\mu{\textsc{i}}$. Like Faust's expletive /-i/,
@@ -1017,8 +1044,8 @@ underlying form /-at/.
         \midrule
           \multirow{2}{*}{Phonological} & xalal & -it \\
            & $\Phi$\textsc{stem} & $\Phi$\textsc{it} \\
-           Morphomic & $\mu$\textsc{a.a}, $\surd$\textsc{x-l-l} & $\mu$\textsc{i}, $\mu$\textsc{t} \\ 
-            Lexical & \multicolumn{2}{c}{$\surd$\textsc{x-l-l}, \{\text{noun}, \text{fem}, \text{sg}\}}\\
+           Morphomic & $\mu$\textsc{a.a}, $\surd$\textsc{x.l.l} & $\mu$\textsc{i}, $\mu$\textsc{t} \\ 
+            Lexical & \multicolumn{2}{c}{$\surd$\textsc{x.l.l}, \{\text{noun}, \text{fem}, \text{sg}\}}\\
        \bottomrule 
     \end{tabular}
     }
@@ -1034,16 +1061,16 @@ underlying form /-at/.
          & $\Phi$\textsc{stem}
          %s( \text{a.i}, \text{\textipa{P}.b.b} )$ 
          & $\Phi$\textsc{i} & $\Phi$\textsc{ot} \\ 
-        Morphomic & $\mu${\textsc{a-a}}, $\surd$\textsc{x-l-l} & $\mu$\textsc{i}  &  $\mu$\textsc{o}, $\mu$\textsc{t} \\
+        Morphomic & $\mu${\textsc{a-a}}, $\surd$\textsc{x.l.l} & $\mu$\textsc{i}  &  $\mu$\textsc{o}, $\mu$\textsc{t} \\
                             %\multicolumn{2}{c}{$\mu$\textsc{o}, $\mu$\textsc{t}} \\ %\hline
-        Lexical & \multicolumn{3}{c}{$\surd$\textsc{x-l-l}, \{\text{noun}, \text{fem}, \text{pl}\}}\\
+        Lexical & \multicolumn{3}{c}{$\surd$\textsc{x.l.l}, \{\text{noun}, \text{fem}, \text{pl}\}}\\
         \bottomrule 
        \end{tabular}
   }
     \caption{Morphomic analyses} 
     \end{center}
     \end{figure}
- Finally, we shall posit distinct morphomes for the abstract (-\textsc{concrete}) 
+ Finally, we posit distinct morphomes for the abstract (-\textsc{concrete}) 
  nominalizing suffix \textit{-u}
  as well as the \textit{-o} in the feminine plural \textit{-ot}.
 That is, following \cite{faust:2013}, we shall
@@ -1104,7 +1131,7 @@ property \{\text{n}$\to$\text{n}[fem] among the derivational properties $\delta$
  Round, for instance, has frequently observed it in Kayardild: ``[M]ost of the exponents 
  employed by the inflectional system are also used derivationally" \citep[][p. 13]{round:2015}.
 
-\section{Implications for \ac{ULM}  and Multimorph}
+\section{Implications for \ac{ULM} and Multimorph}
 
 Because \ac{ULM} systems do not have access to
 semantic or syntactic features, they cannot learn pairings of form and meaning, 
@@ -1243,7 +1270,6 @@ $\mu${\textsc{d}}, etc.
 %that nearly every word in the cluster has in common. 
 %This is basically what a meromorphome is.
 
-
 One must rely heavily on form to find morphomes. One 
 must infer facts about morphomic representations
 from evidence observed in surface forms. Form is thus the 
@@ -1263,8 +1289,8 @@ has been substantiated by a wealth research \citep[including, e.g.,][]{stump:200
 There is a rich and complex 
 world between the planes of syntax and phonology, namely the world of autonomous morphology, which is free of both form and meaning. This is thus not the world of classical morphemes (pairings of form and meaning), but rather a new sort of morphological unit that mediates between phonology and
 syntax/semantics, but is beholden to neither.  
-Among the most notable formulations of autonomous morphology to date are Paradigm Function Morphology \ac{PFM} \citep{stump:2001}, particularly in the workings of its form-paradigm cells, Arornoff's
-concept of the \emph{morphome} \citep{aronoff:1994}, and Round's expansions \citep[e.g.,][]{2011,2015,2016} of Aronoff's original concept. The ever growing body of work on autonomous morphology is vastly clarifies what \ac{ULM}'s target of learning is. Round's maxim in particular provides an implicit suggestion for how a \ac{ULM} algorithm might proceed with its learning task: \textit{Look for similarities in form, since shared elements of form are indicators of shared morphomes.} Even though these morphomes, according to Round, have neither meaning nor form, they do, however, project something of themselves onto the phonological (or surface) level, since it is the surface level---particularly shared  form at the surface level, that allows us to identify morphomes in the first place. 
+Among the most notable formulations of autonomous morphology to date are Paradigm Function Morphology \citep{stump:2001}, particularly in the workings of its form-paradigm cells, Arornoff's
+concept of the \emph{morphome} \citep{aronoff:1994}, and Round's expansions \citep[e.g.,][]{round:2011,round:2015} of Aronoff's original concept. The ever growing body of work on autonomous morphology is vastly clarifies what \ac{ULM}'s target of learning is. Round's maxim in particular provides an implicit suggestion for how a \ac{ULM} algorithm might proceed with its learning task: \textit{Look for similarities in form, since shared elements of form are indicators of shared morphomes.} Even though these morphomes, according to Round, have neither meaning nor form, they do, however, project something of themselves onto the phonological (or surface) level, since it is the surface level---particularly shared  form at the surface level, that allows us to identify morphomes in the first place. 
 
 Therefore, in evaluating the present study's ULM system, namely Multimorph, one should not look for classical morphemes in its output, but rather autonomous morphological units like morphomes. (We will being use the term \emph{morphs} when referring to Multimorph's targets of learning.)
 In the next chapter, we discuss the setup of the experiments by which Multimorph was evaluated.
