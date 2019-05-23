@@ -777,7 +777,7 @@ $s$ & $\delta$ & Purity &  BP & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 %\frametitle{Intrinsic Evaluation, $K=500$}
 %\begin{table}
 
-\subtable[Orthographic (O), $K=500$]{
+\subtable[Orthographic (O), $K=500$\label{subtab:intr-O-500}]{
 \footnotesize
 \centering
 \setlength{\extrarowheight}{3pt}
@@ -944,7 +944,7 @@ that this particular increase apparently did not have a detrimental effect, %res
 as the models trained on stress-marked transcriptions
 performed better than those trained on stressless transcriptions.  
 
-We also must note the precipitous drop in coverage in the orthographic models. In table~\ref{{subtab:intr-O-500}}, the coverage drops from 11051 to 4488 precisely when $s=0$ becomes $s=1$. Table~\ref{{subtab:intr-O-1000}} shows essentially the same drop and at precisely the same $s$ value (i.e., affix length).  In both of these tables, the coverage decreases even further as $s$ increases to $s=3$.  %low at $s=2$ and $s=3$, even decreasing further, by another 1000 words, in fact. 
+We also must note the precipitous drop in coverage in the orthographic models. In table~\ref{subtab:intr-O-500}, the coverage drops from 11051 to 4488 precisely when $s=0$ becomes $s=1$. Table~\ref{subtab:intr-O-1000} shows essentially the same drop and at precisely the same $s$ value (i.e., affix length).  In both of these tables, the coverage decreases even further as $s$ increases to $s=3$.  %low at $s=2$ and $s=3$, even decreasing further, by another 1000 words, in fact. 
 We do not see this decrease in the transcriptional models. %Apparently the introduction of positional features  
 At the same time, $K^{\prime}$, the number of clusters with at least one active member, is maximized in the orthographic models at $s = 1$, precisely when the coverage is lowest, indicating a greater degree overlap between the clusters. Perhaps the positional features encourage the MCMM to pay more attention to words containing positional regularities, as in cases of frequent affixes.  %highly frequent suffix or beginning with a highly frequent prefix. %($K=500$)
 Positional features are intrinsically more specific than precedence features. Precedence features specify a pair of characters, but not the particular \emph{indices} of these characters within the word. Depending on $\delta$. The distance between the characters is not even specified for most values of $\delta$ (see section~\ref{sec:features}).

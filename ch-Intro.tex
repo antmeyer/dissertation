@@ -1,62 +1,8 @@
 \chapter{Introduction}\label{ch:intro}
 
-%The purpose of this initial chapter will be two-fold: (1) to 
-%introduce certain key concepts, such as non-concatenative morphology 
-%and the unsupervised learning of morphology, 
-%and (2) to state and motivate my research objectives. 
-%
-%\section{Preliminaries} 
-%Linguists come to understand morphological 
-%systems, i.e., systems of word formation, through 
-%\emph{morphological analysis}, a process of isolating the fundamental units
-%(traditionally, \emph{morphemes}) of which words are constructed. 
-%The unsupervised learning of morphology (ULM) is the problem of devising an 
-%algorithm or computational system that
-%automatically induces such an analysis from raw, unannotated text.
-%
-%There are different categories of word-formation processes.
-%One is \emph{concatenation}, whereby one morpheme is attached 
-%to either the beginning or the end of another morpheme, as in the 
-%English word \textit{en}$|$\textit{large}$|$\textit{s}. 
-%The morphologies of many languages, including English, 
-%are almost entirely concatenative. Semitic languages, however, are 
-%famous for their \emph{non-concatenative} processes, whereby 
-%morphemes are interleaved rather than simply concatenated.
-% i.e., attached edge to edge. 
-
-%Consider the Hebrew word 
-%\textit{magdil} `he/it enlarges'. While the prefix \textit{ma-} is 
-%concatenated to the stem \textit{gdil}, the stem itself is 
-%non-concatenative, formed from the consonantal root \textit{g.d.l} 
-%(meaning essentially `big'), and the pattern morpheme \textit{i}, meaning 
-%%`cause to be \uline{\hspace{0.7cm}}'. 
-%`cause to be $x$.'
-%The latter is inserted 
-%\textit{between} the root's second and third consonants 
-%to yield a stem meaning `cause to be big' (or `enlarge').
-
-% Explain why the unsupervised learning of \emph{non-concatenative} 
-%morphology is hard: 
-%Non-concatenative processes such as this one pose a particular challenge to 
-%ULM. One problem is that it can 
-%they imply many more ways of dividing up a word into morphemes. 
-%That is, they engender many more potential (or candidate) morphemes.   
-%Thus, while a few works in ULM have addressed non-concatenative 
-%morphology 
-%\citep[e.g.,][]{rodrigues-and-cavar:2005, botha:blunsom:13}, 
-%the vast majority 
-%of work has dealt solely with concatenation.
-%Moreover, ULM systems tend 
-%to be designed either for concatenative or for nonconcatenative morphology, 
-%but generally not for both, and if they are designed  clear gap in ULM.
-%The systems that do handle nonconcatenative morphology often devise different processes, one type of process to
-%handle concatenative and another to handle nonconcatenative morphology.
-%to be designed either for concatenative or for nonconcatenative morphology, 
-%but generally not for both, and if they are designed  clear gap in ULM.
-
 This thesis presents an approach to the unsupervised learning of morphology (ULM) that 
 that marries autosegmental theory \citep{mccarthy:1981} and graphical 
-computing methods. The novelty of this approach as well %as its contribution to the field 
+computing methods. The novelty of this approach as well
 lies in its simplicity and generality. It is equally applicable both to concatenative and 
 nonconcatenative morphology, as well as to any language in theory. We will see that
 autosegmental theory, once it is distilled down to its essential properties, 
@@ -65,51 +11,8 @@ to machine learning. I will show that a bipartite graphical model in particular,
 because of its a layer of hidden nodes, exhibits the same multilinear properties 
 that are behind the effectiveness of autosegmental morphology. 
 
-%The power of autosegmental morphological theory \citep{mccarthy:1981}.
-%lies in its \emph{multilinear} framework. 
-%
-%and adapting it for morphology. 
-%has already provided a unified \emph{theoretical} 
-%treatment of concatenative 
-%and non-concatenative processes by taking autosegmental phonology's
-%Even so, \cite{mccarthy:1981} has already provided a unified \emph{theoretical} 
-%treatment of concatenative 
-%and non-concatenative processes by taking autosegmental phonology's 
-%\emph{multilinear} framework and adapting it for morphology. 
-%A multilinear approach, illustrated in figure~\ref{subfig:multilinear}, 
-%uses multiple \emph{tiers} to represent morphological structure.
-%Each morpheme occupies its own tier.
-%In figure~\ref{subfig:multilinear}, the tiers are 
-%$\mu_{1}$, $\mu_{2}$, and $\mu_{3}$, which we shall call the \emph{hidden nodes}, 
-%and collectively, the \emph{hidden layer}. 
-%Likewise, the word itself occupies its own tier, namely the \emph{surface layer}, 
-%which is composed of \emph{surface nodes} (here, the word's letters). 
-%Crucially, each morpheme tier is external to the surface layer. 
-%This externality allows a single morpheme, such as $\mu_{2}$ in 
-%figure~\ref{subfig:multilinear}, to connect nonadjacent surface nodes.
-%However, note in figure~\ref{subfig:linear} that when remove the external 
-%morpheme tiers, we lose the capacity to unite the discontiguous \textit{gd} and \textit{l}.   
-%
-%The multilinear model of \cite{mccarthy:1981} has been implemented computationally i
-%in non-learning systems, 
-%i.e., systems driven by hand-written rules.  
-%\citep[e.g.,][]{kiraz:1994, kiraz:2000}. 
-%However, to my knowledge, no one has yet attempted
-%to combine multi-linearity and \emph{unsupervised learning} in a single system.
-%This project will seek to fill this gap.
-%Moreover, because of its multilinear basis, I expect the resulting system to apply
-%equally well to both concatenative and non-concatenative processes.
-% \item Introduce McCarthyism. Explain how McCarthy's autosegmental 
-% morphology is able to deal with non-concatenative morphology.
-
-%\section{Autosegmental morphology}
-%\label{sec:autoseg-morph}
-%[Identity the property that enables it to handle discontinuous morphemes. 
-%(This property is its multi-linear architecture.)]
 The power and versatility of autosegmental morphological theory \citep{mccarthy:1981}
 stem from its \emph{multilinear} architecture, i.e., its
-%The most important component of autosegmental theory \citep{mccarthy:1981}
-%is its multi-linear architecture, i.e., its
 use of a \emph{segmental tier} along with many \emph{autosegmental tiers} 
 to account for morphological structure. The segmental tier is
 a series of placeholders for consonants and vowels, often called the
@@ -123,7 +26,7 @@ correspond to morphs. Each morph is basically shorthand for a particular
 subsequence of phonemes (or graphemes). Thus, when a morph connects 
 with a particular C (or V) in the segmental tier, the C (or V) inherits the 
 identity one of the morph's phonemes. For example,  in 
-subfigure~\ref{subfig:nonlinear}, $\mu_2$ claims the third phonological 
+figure~\ref{subfig:nonlinear-1}, $\mu_2$ claims the third phonological 
 segment, which thus takes on the identity of  $\mu_2$'s first phoneme, 
 namely /g/. The fourth phonological segment likewise belongs to $\mu_2$, 
 so it manifests $\mu_2$'s second phoneme, namely /d/. Now, $\mu_2$ 
@@ -285,8 +188,7 @@ The experimental component of the dissertation consists of the development and e
 	
 	 \subsection{The Question of Features} There is a great deal of information tacitly present in a string of alphabetic symbols.
 	 This is true regardless of whether the string is written, in which case the symbols are graphemes, or spoken,
-	 in which case they are phonemes. In either case, the symbols are each drawn from an alphabet of size $N$ and arranged along a single axis. % (say, the $x$ axis).
-%Consider the string of graphemes printed below.
+	 in which case they are phonemes. In either case, the symbols are each drawn from an alphabet of size $N$ and arranged along a single axis.
 By way of illustration, consider again the Hebrew word \textit{magdil}, but now specifically as a \emph{string of graphemes}: 
 %from figure~\ref{fig:nonlinear}, but now we think of it specifically as the \emph{string of graphemes}.
 \begin{figure}[h]

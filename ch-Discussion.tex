@@ -95,7 +95,7 @@ It is actually rather difficult through manual inspection to find a cluster in w
 %true in transcriptional clusters. 
 It was initially hypothesized that positional features would play a substantial role in
 finding prefixes and suffixes. However, the qualitative analysis revealed that affixes tended to be captured through 
-precedence features; for example the prefix \textit{-\v{s}e} `that'  was often captured by the feature \texttt{\v{s}<e}. This is illustrated figure~\ref{fig:cluster-9-4-3-TS}, which shows the ten most-active centroid features of a \textit{-\v{e}} cluster.
+precedence features; for example the prefix \textit{-\v{s}e} `that'  was often captured by the feature \texttt{\v{s}<e}. This is illustrated figure~\ref{fig:cluster-9-4-3-TS}, which shows the ten most-active centroid features of a \textit{-\v{s}e} cluster.
  Often, the centroids associated with transcriptional two-character prefixes---i.e., prefixes of the form
 $\alpha\beta$,
 where $\alpha$ is the first character, a consonant, and $\beta$ is the second, a vowel---
@@ -666,7 +666,7 @@ The sequence \textit{a\_\'{a}} also servers as the defining pattern for a class 
 
 Thus, the above proposition is satisfactorily confirmed, and Multimorph passes as a proof of concept for the multilinear approach to ULM.
 
-At the same time, however, there is still plenty of room for improvement. The system is by no means perfect. For instance, some morphs tend to recur in more than one cluster in the same clustering. There are also incoherent clusters in every clustering, clusters that do not seem to correspond to anything specific.
+At the same time, however, there is still plenty of room for improvement. The system is by no means perfect. For instance, some morphs are repeated as more than one cluster in the same clustering. There are also incoherent clusters in every clustering, clusters that do not seem to correspond to anything specific.
 The features, particularly the precedence features, may be overly specific and thus lacking in their ability to represent generalizations, as we discussed above. We proposed a means of introducing flexibility into the features; in particular, one can try replacing specific vowel symbols with a variable. For example, \texttt{V} could represent any vowel. One could also try doing something similar with consonants, that is, replacing individual consonants with \texttt{C}, for instance, which would represent any consonant. One could also create variables for particular vowel of consonant subsets. %  specificity in the features needs to 
 %The qualitative results alone demonstrate the 
 %viability of the multilinear approach to ULM. 

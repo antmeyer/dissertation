@@ -15,7 +15,7 @@ nonconcatenative morphological structure, and that it was the properties \emph{n
 and \emph{nonsequentiality} that give rise to this capacity. Furthermore, we saw in 
 chapter~\ref{ch:graph} that bipartite graphs (or bipartite graphical algorithms) were a 
 subset of NLNS algorithms. In fact, the bipartite structure of such graphs turns out to 
-be a particularly coherent way to capture nonlinearity and nonsequentiality. %(see chapter~\ref{}).
+be a particularly coherent way to capture nonlinearity and nonsequentiality.
 The present chapter homes in on a particular kind of bipartite learning algorithm, namely 
 the MCMM. Thus, the present chapter, when taken in the context of the preceding chapters, 
 explains the rational and theoretical significance of my choosing an MCMM 
@@ -33,74 +33,6 @@ the similarities and differences between MCMMs and other types of
  function that determines the activities of nodes in neural networks.  
 Finally, section~\ref{sec:mcmm-learning} discusses the means by which 
 MCMMs learn, paying particular attention to Multimorph's MCMM.
-
-%demonstrates the bipartite nature of an MCMM; compare figure~\ref{fig:mcmm} in section~\ref{sec:architecture} to the canonical bipartite structure shown in figure \ref{fig:gt-bipartite} in chapter~\ref{ch:graph}. whose bipartiteness becomes clearly evident in section~\ref{sec:architecture} Section~\ref{sec:architecture} also breaks the architecture of an MCMM, describing its basic components and how they relate to each other. hen delves deeper into the nature the MCMM, comparing and contrasting it to related learning algorithms, such as the Restricted Boltzmann Machine (RBM). Finally, section~\ref{sec:mcmm-learning} discusses the particular means by which Multimorph's MCMM learns.
-
-% learning process itself in detail. The following section then describesSection~ fact that will become plainly evident in section~{sec:architecture}  reasoning to motivate the use of bipartite graphical learning model, specifically the MCMM, as Multimorph's algorithm.  takes this this line of argumentation to its logical conclusion i  a bipartite graphical model, namely the MCMM, tononconcatenative morphology, and thus a bipartite graphical learning algorithm is going to be at least furthermore, a bipartite archict
-%In this chapter, we pre 
-%From  that bipartite graphs intrinsically nonlinear and nonsequential, and that bipartite graphical learning models are 
-%Thus, a bipartite architecture implies both nonlinearity and nonsequentiality and hence a capacity for representing both nonconcatenative and concatenative morphological structure. 
-%
-%Proposition x thus motivates the choice of bipartite graphical model to serve as Multimorph's learning suitable for learning  have the capacity to represent both nonconcatenative and concatentative morphological struThis brings us to the primary concern of the present the chapter: the choice of Multimorph's core learning algorithm. Motivated by the results of the previous chaptersparticular, the preceding chapters motivate and thus capable of representing nonconcatenative morphology. All of this is Multimorph's learning algorithm
-
-%I chose the Multiple Cause 
-%Mixture Model (MCMM) proposed by \citet{saund:94} to fill this role. The present chapter motivates this decision, and in doing so, provides a detailed exposition of the MCMM. Section~\ref{sec:architecture} first provides an overview of an MCMM's architecture, i.e., a description of its major components and the relationships between these components. Section~\ref{sec:architecture} then delves deeper into the nature the MCMM, comparing and contrasting it to related learning algorithms, such as the Restricted Boltzmann Machine (RBM).   comparing it to other including a description of their architecture in detail. describes the will be motivated in the present present chapter.  The present chapter will describe   primary objective of this chapter  motivate this decision; first of all, it will show in section~{sec:architecture}that it is a bipartite graph and thus qualifies as a nonlinear-nonsequential algorithm. \citet{saund:94}  nonlinear-nonsequential models are argued that nonlinearity and nonsequentiality were essential properties learning nonconcatenative
-%morphology must be   
-%Multimorph's learning algorithm is an instance of an Multiple Cause 
-%Mixture Model (MCMM) proposed by \citet{saund:94}, and thus MCMMs
-%is a major focus of this chapter.
-
-%By \emph{model}, 
-%we mean a set of assumptions about how the world works. Where Multimorph is concerned, 
-%the ``world" is the morphology of natural languages, which, significantly, includes \emph{non-concatenative} morphology. 
-%autosegmental morphology \citep{mccarthy:1981}. 
-%In chapter~\ref{ch:graph}, we argued
-%that in order
-%for a model to be able to deal with nonconcatenative morphology,
-% it must be both \textbf{nonlinear} \textbf{and}
-% \textbf{nonsequential},
-% i.e., satisfy both the \textsc{Nonlinearity} criterion and the \textbf{Nonsequentiality} criterion; 
-% see definitions (\ref{def:nl}) and (\ref{def:ns}) and 
-% proposition (\ref{prop:nlns}). We also saw in chapter~\ref{ch:graph} that these two conditions are equivalent to the two parts of the definition of biparteness. In particular, \dots.
- 
-% Therefore, if a model is a bipartite graphical model, then it is both nonlinear and nonsequential, which means
-% that it has the capacity to model nonconcatenative morphology:
-%  \begin{proposition}
-%% In order for a model to be able to handle non-concatenative morphology, it must be a bipartite graph.
-%% \end{proposition}
-%  \label{prop:bipartite}
-%If a model is a bipartite graph, it can handle nonconcatenative morphology. Moreover, if it can handle nonconcatenative morphology, it can handle concatenative morphology.
-% \end{proposition}
- 
-%if a model is a bipartite graph, 
-%it has the capacity to deal with nonconcatenative morphology.
-%% of morphology are treated as the same basic phenomenon; the capacity to model nonconcatenative morphology is actually the more general capacity, since a concatenative process is essentially a nonconcatenative process with zero interdigitation. 
-%That is, if there were such a thing as a ``morph discontiguity factor,'' that is, a some sort of measure of the degree to which the phonemes of different morphs tend to be interleaved (i.e., the tendency of morphs to be discontinuous), 
-%%separation between phonemes of the same morpheme discontiguous the  phonemes of the same morph separated by intervening phonemes (from another morph) by those of other morphs), 
-%then this metric would be zero for ``strictly concatenative'' morphological processes, and some number greater than zero for ``nonconcatenative" ones. The point is that there no categorical difference between concatenative and nonconcatenative processes. Fundamentally, the two type of processes are in fact one and the same  process.  Thus, the capacity to model noncatenative morphology implies the capacity to model concatenative morphology. 
-%Noncatenative morphology can thus be regarded as the more general case.
-% \begin{proposition}
-%% In order for a model to be able to handle non-concatenative morphology, it must be a bipartite graph.
-%% \end{proposition}
-%  \label{prop:bipartite}
-%If a model is a bipartite graph, it can handle nonconcatenative morphology. Moreover, if it can handle nonconcatenative morphology, it can handle concatenative morphology.
-% \end{proposition}
-
- %call for a bipartite graph, since they are essentially equivalent to
-% The Multiple Cause Mixture Model (MCMM) is a general 
-% framework for unsupervised learning developed by \cite{saund:94}. 
-% Section~\ref{sec:architecture} in this chapter will describe the architecture 
-% of an MCMM, i.e., its key components and the relationships between these 
-% components. It will become clear in this section that MCMMs are bipartite 
-% graphs and thus, by proposition~\ref{prop:bipartite}, an MCMM is capable 
-% of learning nonconcatenative morphology. 
- %serve as Multimorph's core learning framework.
- %  In this chapter, we shall first demonstrate an MCMM qualifies as a bipartite graph.  
-%In addition to demonstrating the bipartite \emph{bona fides} of MCMMs, this chapter will, in section~\ref{sec:architecture}, discuss the architecture of an \ac{MCMM},
-%i.e., is key components and the relationships between these components. 
-%This chapter will also, in 
-%sections~\ref{sec:mixing-function} and \ref{sec:mcmm-learning}, describe the process whereby
-%an \ac{MCMM} learns. 
 
 \section{Basic MCMM Architecture}
 \label{sec:architecture}
@@ -227,7 +159,7 @@ means that it
 is the 
 \emph{cluster-membership vector} of the $i$th word; that is, it is the $i$th row of 
 the $I \times K$ matrix 
-$\mathbf{M}$.  Each column in the $\mathbf{M}$ matrix corresponds to a cluster, and thus so does each component $m_{i,k}i$ of a cluster-membership vector. In particular, the $k$th component in a given cluster-membership vector corresponds to the $k$th cluster. It indicates whether or not $i$th data point is a member of that cluster. 
+$\mathbf{M}$.  Each column in the $\mathbf{M}$ matrix corresponds to a cluster, and thus so does each component $m_{i,k}$ of a cluster-membership vector. In particular, the $k$th component in a given cluster-membership vector corresponds to the $k$th cluster. It indicates whether or not $i$th data point is a member of that cluster. 
 
 \section{Relationship to Other Unsupervised\\Learning Frameworks}
 \label{sec:context}
@@ -241,16 +173,16 @@ contains the term \emph{mixture model}, which itself refers to a large class of 
 This section is therefore divided into two subsections: First, section~\ref{sec:autoencoders} 
 considers MCMMs as neural networks, i.e., as autoencoders, using neural-network terminology 
 to relate them to other autoencoders. Section~\ref{sec:mixture-models} then 
-considers MCMMs from a \emph{mixture-model} perspective, discussing their relationship to standard mixture models as well as \emph{mixed-membership} (or \emph{admixture}) models. 
+considers MCMMs from a \emph{mixture-model} perspective, discussing their 
+relationship to standard mixture models as well as \emph{mixed-membership} 
+(or \emph{admixture}) models. 
 
 \subsection{Autoencoders}
 \label{sec:autoencoders}
 \citet[][p. 2]{dayan-and-zemel:95} describe the MCMM as a ``form of autoencoder network.'' 
 They mean \emph{autoencoder} in a general sense, as a term for a \emph{class} that encompasses several subtypes.  
 In this general sense, an \emph{autoencoder} is any unsupervised graphical algorithm that
-learns a compressed encoding of its input data. 
-% The compressed encoding from which the original can be generated, or \emph{reconstructed} which through a \emph{generative} process, i.e., a process of learning to generate its input data. To do this, it must construct an internal theory, so to speak, of its input data's structure. This theory takes the form of a compressed encoding of the input data, and in particular, a compressed encoding from which the original data can be generated, or \emph{reconstructed}.  
-%The learning process of is essentially one of trial and error; 
+learns a compressed encoding of its input data.
 An autoencoder learns by iteratively testing and revising its internal model, improving it slightly with each iteration. 
 %The autoencoder tests the suitability of a working encoding through \emph{reconstruction}, i.e., by attempting to recover or reconstruct the original data from the working encoding.
 %Thus, at the beginning of each iteration, the autoencoder has 
@@ -261,10 +193,9 @@ each hidden-unit vector $\textbf{m}_i$ is specific to the $i$th data point.
 An autoencoder's learning process consists of two
 loops, an \emph{inner loop} that iterates over the data-point indices $i \in I$, 
 visiting each individual data point in turn, and an \emph{outer loop} that repeats 
-the inner loop as many times as necessary. 
-%(until the total reconstruction error falls below certain threshold).
+the inner loop as many times as necessary.
 An autoencoder tests the fitness of its working model by attempting to reconstruct each input data 
-point from its internal representation (or encoding) of the data point, % (i.e. from the represenationthe working the model, 
+point from its internal representation (or encoding) of the data point, 
 and measuring the \emph{reconstruction error}, the discrepancy between the reconstructed and original data vectors.  
 It then makes adjustments to the model so as to reduce this error.
 \begin{figure}[t]
@@ -383,12 +314,6 @@ of autoencoders, namely the classical autoencoder, the Restricted Boltzmann Mach
 and the MCMM. In addition to describing each of these, we will compare them across three dimensions: \emph{form}, \emph{node activation}, 
 (i.e., the means of computing node activities), and \emph{optimization procedure}
 (i.e., method for minimizing the model's error).
-
-%These adjustments, which mark the end of the current iteration, should result in a slightly better internal representation for next iteration.  
-
-%\subsubsection{Classical Autoencoder}
-%\paragraph{Form.}
-%\label{sec:classical-auto}
 
 \begin{figure}[t]
 \vspace{12pt}
@@ -546,11 +471,6 @@ t = \sum_{j} x_{j} w_{j,k} \qquad  \text{or} \qquad t = \textbf{x}^{\textsf{T}}\
 \end{equation}
 %$\sum_{j} x_{j} w_{j,k}$, which is equivalent to the \emph{inner product} of vectors $\textbf{x}$ and  $\textbf{w}$, that is, $\textbf{x}^\textsf{T}\textbf{w}_k$, 
 where $\textbf{x}$ would be a vector of $J$ node activities and $\textbf{w}_k$ the vector of $J$ weights connecting the nodes of $\textbf{x}$ to the $k$th node in a different layer of nodes, say $\textbf{m}$. 
-%The two vectors in this case are (1) a vector of node activities, and (2), a vector of weights.  component is the inner product of two vectors, 
-%namely the activities of the preceding node layer activities and that layer's corresponding weight vector (i.e., the set of weights linking the preceding node layer to the current node layer),
-%weight vector connecting preceding layer to the current node in the 
-%current layer, 
-%as in $\sum_{j} x_{j} a_{j,k}$, where $a_{j,k}$ is a weight. % in $\mathbf{A}$.
 The logistic sigmoid \eqref{eq:sig} maps the weighted sum (no matter how large or small it may be) to a number in the interval $[0,1]$, thus constraining node activities to this interval.
 %	\begin{equation} %\label{eq:sigws}
 %	\label{eq:sig}
@@ -603,7 +523,7 @@ lies in the fact that the RBM's functions~\eqref{eq:sig-m} and \eqref{eq:sig-r}
 both refer to the same weight matrix $\textbf{C}$, whereas the classical 
 autoencoder's  functions \ref{eq:sig-m-ac} and \ref{eq:sig-r-ac} each 
 refer to a different weight matrix 
-($\textbf{A}$ in equation~\ref{eq:sig-m-ac} and $\textbf{B}$ in equation~\ref{eq:sig-r-ac}). 
+($\textbf{A}$ in equation~\eqref{eq:sig-m-ac} and $\textbf{B}$ in equation~\eqref{eq:sig-r-ac}). 
 An RBM's learning process is thus bi-directional: 
 The hidden-unit activities are conveyed to the matrix to the reconstruction 
 units via the weight matrix $\textbf{C}$, and then the reconstruction 
@@ -628,7 +548,7 @@ activities are conveyed back to the hidden units via the same weight matrix, res
 %Another difference between RBMs
 %The reconstruction error is computed, the weights are updated, and another cycle begins.
 % Then another round begins: The hidden-unit activities are re-computed from the new reconstruction activities and the updated weights $\textbf{C}$, and then the reconstruction activities are re-computed from the new hidden-unit activities and the same updated weights $\textbf{C}$. 
-%Equations~\ref{eq:sig-r} and  equation~\ref{eq:sig-m} are nonetheless very similar to the classical autoencoder's \emph{biases} to weighted sum. These biases are a distinctive feature of RBMs. Like the weights, they are parameters that must be learned
+%Equations~\ref{eq:sig-r} and  equation~\eqref{eq:sig-m} are nonetheless very similar to the classical autoencoder's \emph{biases} to weighted sum. These biases are a distinctive feature of RBMs. Like the weights, they are parameters that must be learned
 %
 %But despite these differences, RBM and the classical autoencoder nonetheless share 
 %the same basic activation function, the sigmoidal weighted sum. %, a significant departure from the MCMM.
@@ -655,34 +575,11 @@ The sigmoidal weighted sum is in effect a sort of average, and thus tends to obs
 the influence of minority subsets of inputs. \citet{saund:94} argues 
 that the averaging nature of the sigmoidal weighted sum is inappropriate when one wants to encourage
 a small subset of votes to take responsibility for a given surface unit's activity, as in MCMMs.
-\citet{saund:94} thus proposes for MCMMs a special kind of activation function called a \emph{mixing function}.
-That is, \emph{mixing function} is the term that \citet{saund:94} gave to a set of activation functions that have certain
-properties---properties, which, in turn, give MCMMs their distinguishing properties.
-We will discuss the properties of mixing functions in 
-section~\ref{sec:mixing-function}.
-
-%One of the simplest possible activation functions is a weighted sum of the form
-%$\sum_{k} h_{k} w_{k,j}$. It qualifies as an activation function because
-%it maps the votes $h_{k} w_{k,j}$ (for $k \in K$) to a single output value. 
-%However, this value can be any real number, and it grows (or shrinks) 
-%in direct proportion to the quantity and sizes of its input values.
-% Since most applications require that node activities stay within a 
-% certain interval, usually $[0,1]$ or $[-1,1]$, the output of such a sum
-% must be fed to a nonlinear ``squashing'' function, such as the logistic sigmoid, 
-% which enforces this constraint.
-
-%The sigmoidal weighted sum is in effect a sort of average. To take an average 
-%over a set of values is to put them them all in melting pot, so to speak. 
-%An average tends to obscure the influence of minority subsets of inputs.
-%Moreover, the weights in a classical autoencoder range from $-1$ to $1$. 
-%A negative weight can thus be paired with a positive hidden-unit activity to produce 
-%a negative vote. The presence of both positive and negative votes means that votes 
-%can counteract each other and even cancel each other out. 
-%These properties 
-%The averaging nature of the sigmoidal weighted sum allows innumerable possible 
-%configurations to produce the same node activity. \citet{saund:94} argues 
-%that such flexibility is inappropriate when one wants to encourage
-%a small subset of votes to take responsibility for a given surface unit's activity, as in MCMMs.
+%\citet{saund:94} thus proposes for MCMMs a special kind of activation function called a \emph{mixing function}.
+%That is, \emph{mixing function} is the term that \citet{saund:94} gave to a set of activation functions that have certain
+%properties---properties, which, in turn, give MCMMs their distinguishing properties.
+%We will discuss the properties of mixing functions in 
+%section~\ref{sec:mixing-function}.
 
 \citet{saund:94} thus proposes for MCMMs a special kind of activation function called a \emph{mixing function}.
 We discuss the properties of mixing functions in 
@@ -702,7 +599,7 @@ adjusted directly.
 
 In an MCMM, by contrast, both $\textbf{m}_i$ and $\textbf{C}$ are directly manipulated. This means that
 an MCMM's learning process begins with two unknown variables, the matrices $\textbf{M}$ and 
-$\textbf{C}$, and it must induce both during the course of learning. We shall discuss how an MCMM accomplishes in section~ref{sec:two-in-one}.
+$\textbf{C}$, and it must induce both during the course of learning. We shall discuss how an MCMM accomplishes in section~\ref{sec:two-in-one}.
 %That is, an MCMM requires two complimentary process, \textsc{Optimize-M} 
 %and \textsc{Optimize-C} (see section~\ref{sec:num-opt}), each directly manipulating 
 %the values in its respective matrix. 
@@ -902,22 +799,23 @@ as the number of active causes changes; it is 1 as long as there is at least one
 
 The \textsc{write-white-and-black} domain differs from \textsc{write-black} 
 in that it requires the mixing function to be capable of outputting negative surface-unit 
-activities as well as positive, i.e., values ranging from $-1$ to $1$.
+activities as well as positive, that is, values ranging from $-1$ to $1$.
 Clearly, the Noisy-OR function does not satisfy this requirement.
-Saund thus proposes the following mixing function for the {write-white-and-black} domain.
+Saund thus proposes the following mixing function for the \textsc{write-white-and-black} domain.
  \begin{align}\label{eq:wwb}
   r_{i,j} &=
     \begin{cases}
     %\label{eq:wwb-top}
-      \frac{\sum\limits_{k} m_{i,k} c_{j,k}}{\sum\limits_{k} m_{i,k} |c_{j,k}|} & \text{$\forall m_{i,k}, c_{j,k} : m_{i,k} c_{j,k} \in \{-1,0,1\} $}\\ 
+      \frac{\sum\limits_{k} m_{i,k} c_{j,k}}{\sum\limits_{k} m_{i,k} |c_{j,k}|} & \text{$\forall m_{i,k}, c_{j,k} : m_{i,k} c_{j,k} \in \{-1,0,1\}$} \\
       %\label{eq:wwb-bottom}
       0 & \text{if \, $\sum\limits_{k} m_{i,k} |c_{j,k}|= 0$} 
     \end{cases}
  \end{align}
-where $c_{j,k} \leq 1$, $0 \leq  m_{i,k} \leq  1$,  $-1 \leq  r_{i,j} \leq  1$, 
+% \footnote{\text{Note that it is the \textit{product} $mc$---that is,-1, 0, or 1 in this case---not $m_{i,j}$ or $c_{j,k}$ individually.}}
+where $-1 \leq c_{j,k} \leq 1$, $0 \leq  m_{i,k} \leq  1$,  and $-1 \leq  r_{i,j} \leq  1$; 
 and the components $x_{i,j}$ of the original data points
-are each either $1$ or  $-1$. Note the absolute value in the denominator in the upper case of equation~\eqref{eq:wwb}. 
-%of the expression $\frac{\sum_{k} m_{i,k} c_{j,k}}{\sum_{k} m_{i,k} |c_{j,k}|}$. 
+are each either $1$ or  $-1$. Note the absolute value in the denominator in the 
+upper case of equation~\eqref{eq:wwb}. 
 This absolute value allows the numerator and denominator to differ in sign so that 
 the $r_{i,j}$ can be either positive or negative (and thus match the signs of the components of the original data points).
 
@@ -1166,18 +1064,7 @@ In conjugate-gradient methods, if the goal is to decrease the objective function
 	\end{bmatrix}
   \end{equation}
 Inside the loop, the direction vector $\textbf{d}$ is updated in each iteration, and each update to  $\textbf{d}$ 
-takes into account information from the preceding iteration. Thus the current direction and gradient vectors in the in any given iteration are always copied and saved as $\textbf{g}_ {\text{old}}$ and $\textbf{d}_{\text{old}}$, respectively, before they are updated, so that they will be available later.
-
-%The parameter vector $\textbf{w}$ is thus updated according to a rule that incorporates 
-%both $\textbf{d}$ and $\alpha$, namely:
-
-%Just before the update, the current parameter vector is saved in the variable $\textbf{w}_{\text{old}}$, as in line~\ref{line:param} in algorithm~\ref{alg:gen-cg}). 
-%The scaling factor $\alpha$
-%and the direction vector $\textbf{d}$ must be recomputed at each iteration. 
-%Note that the vectors $\textbf{w}$, $\textbf{g}$, and $\textbf{d}$ all have the same number of components.
-%Thus, there is for each parameter component a distinct gradient component and a distinct direction component. $d_{j,k}$ 
-%for each parameter component $w_{j,k}$. The direction matrix $\textbf{D}$ 
-%thus has the same dimensions as the parameter matrix. 
+takes into account information from the preceding iteration. Thus the current direction and gradient vectors in the in any given iteration are always copied and saved as $\textbf{g}_ {\text{old}}$ and $\textbf{d}_{\text{old}}$, respectively, before they are updated, so that they will be available later. 
 
 There are various ways to compute $\textbf{d}$, each corresponding to a 
 particular type of optimization algorithm. The conjugate-gradient family, 
@@ -1201,8 +1088,6 @@ where
 \end{equation}
 
 For Multimorph, I chose the optimization method of \citet{cheng-and-li:2012}, which is related to the Polak--Ribi\'{e}re--Polyak  method. In particular, it is based on the \emph{modifed} Polak--Ribi\'{e}re--Polyak method (\textsc{modified-PRP})  proposed by \citet{zhang-et-al:2006}. This \textsc{modifed-PRP} method
-%uses the Polak--Ribi\'{e}re--Polyak formula for $\beta$. But more precisely, conjugate-gradient
-%\citet{cheng-and-li:2012} use a modified version of the original Polak--Ribi\'{e}re--Polyak method. The modified version, first proposed by \citet{zhang-et-al:2006}, 
 introduces a third term, namely  $-\eta \textbf{y}$, to the direction formula \eqref{eq:basic-d}, as follows:
 \begin{equation}\label{eq:mod-d-update}
 \textbf{d} = -\textbf{g}  + \beta^{PRP} \textbf{d}_{\text{old}} - \eta \textbf{y}
@@ -1233,7 +1118,6 @@ The pseudocode for the \textsc{modified-PRP} is shown as algorithm~\ref{alg:mod-
   Update $\textbf{y} := \textbf{g} - \textbf{g}_{\text{old}}$\;
   Compute $\beta^{PRP} := \frac{\textbf{g}^{\textsf{T}}{\textbf{y}}}{{||\textbf{g}_{\text{old}}||}^2}$\;
   Update direction: $\textbf{d} := -\textbf{g} + \beta^{PRP} \textbf{d}_{\text{old}} - \eta \textbf{y}$\;   \label{line:d-update-2}
-   %Update $t := t + 1$\;
  }
 \caption{\textsc{Modified-PRP}. \textit{Pseudocode for the modified version of Polak--Ribi\'{e}re--Polyak conjugate-gradient algorithm proposed by \citet{zhang-et-al:2006}.}} %\citet{zhang-et-al:2006}}.} % of  Cheng and Li (2012)}
 \label{alg:mod-prp-cg}
@@ -1653,456 +1537,10 @@ and the mixing function together constitute a model that reproduces the
 observed data points $\mathbf{X}$.
 The nodes $m_{i,k}$ are the hidden units and represent cluster-membership activities. There are three cluster-membership vectors $m_{i}$, one for each $i \in I$, i.e., one for each data point. Because there are two clusters, each cluster-membership vector has two components. For instance, $\textbf{m}_{0} = [0, 1]$, which means the first data point $\textbf{x}_{0}$ does not belong to the first cluster, but \emph{does} belong to the second. By contrast, $\textbf{m}_{1} = [1,0]$ indicates that $\textbf{x}_{1}$ belongs to first cluster, but not to the second. Finally, $\textbf{m}_{2} = [1,1]$ indicates that  $\textbf{x}_{2}$ belongs to \emph{both} clusters. 
 
-These cluster-membership vectors make more sense when we consider the this MCMM's $J \times K$ ($3 \times 2$) weight matrix $\textbf{C}$. The two column-vectors $\textbf{c}_0 = [0,1,0]$ and $\textbf{c}_1 = [1,0,1]$ are the \emph{centroids} of the first and second clusters, respectively. A cluster's centroid is a sort of average or composite of the cluster's member vectors; it represents the feature values that a cluster's members have in common and can thus serve as a label for a cluster. The first data point $\textbf{x}_0 = [0,1,0]$ is a member of the cluster whose centroid is $[0,1,0]$. Similarly, the second data point $\textbf{x}_1 = [1,0,1]$ is clearly a member of the cluster whose centroid is $[1,0,1]$. But just as clearly, the influence of \emph{both} clusters is evident in the third data point $\textbf{x}_2 = [1,1,1]$.
-
-Table~\ref{tab:cl-members} shows the members as well as the centroids of each of the two clusters: Notice that the active components in each cluster centroid correspond to the shared component values among the cluster's members.
-
-\begin{table}[b]
-%\begin{mdframed}
-\centering
-\setlength{\extrarowheight}{8pt}
-\begin{tabular}{ccc}
-\toprule
-Cluster index ($k$) & Member Data Points & Cluster Centroid \\ \midrule
- $0$ &  $[0,\mathbf{1},0]$, $[1,\mathbf{1},1]$ & $[0,1,0]$\\ 
- $1$  & $[\mathbf{1},0,\mathbf{1}]$, $[\mathbf{1},1,\mathbf{1}]$ & $[1,0,1]$\\
- \bottomrule
- \end{tabular}
-\label{tab:cl-members}
-\caption{\emph{Clusters from Figure~\ref{fig:example-1} and their Centroids.} The active features in each cluster's centroid are the \emph{shared} active features among the cluster's members.}
-%reflected in the centroids.}
-%\end{mdframed}
-\end{table}	
-
-
-% if $m_{1,2} = 1$,
-%for instance, the second cluster is active for $\mathbf{d}_1$ (i.e.,
-%$\mathbf{d}_1$ is a member of cluster 2).
-
-%Figure~\ref{fig:example-1} shows an example of an MCMM for two data points (i.e., $I = 2$).
-%The hidden cluster activities $\mathbf{M}$, the weights $\mathbf{C}$,
-%and the mixing function $r$ constitute a model that reproduces the
-%observed data points $\mathbf{D}$.
-%The nodes $m_{i,k}$ (for $k \in K$) are the hidden units and represent cluster-membership activities.
-% if $m_{1,2} = 1$,
-%for instance, the second cluster is active for $\mathbf{d}_1$ (i.e.,
-%$\mathbf{d}_1$ is a member of cluster 2).
-%
-%Note that the $J \times K$ weight matrix $\mathbf{C}$ is the same for
-%all data points, and
-%the $k{\text{th}}$ row in $\mathbf{C}$ can be seen as the $k{\text{th}}$
-%cluster's centroid, i.e., its average or composite vector: the $j{\text{th}}$ component in
-%$\mathbf{c}_k$ is 1 only if all data points in cluster $k$ have
-%1 at feature $j$.
-
-%\begin{figure}[htb!]
-%\usetikzlibrary{positioning}
-%%\begin{minipage}{.3\textwidth}
-%\begin{center}
-%%\subfigure[Learning in Progress]{
-%\begin{tikzpicture}[shorten <=1pt,->,draw=black!100, scale=0.85]
-%	\footnotesize
-%%	\def \attic{5.95cm}
-%%	\def \rowtwoht{5.4cm}
-%%	\def \weightlevel{3.9cm}
-%%	\def \rowoneht{2.4cm}
-%%	\def \basement{1.8cm}
-%%	\def \data{1cm}
-%%	\def \china{0cm}
-%
-%	\def \attic{5.4cm}
-%	\def \rowtwoht{4.8cm}
-%	\def \weightlevel{3.6cm}
-%	\def \rowoneht{2.4cm}
-%	\def \basement{1.8cm}
-%	\def \data{1cm}
-%	\def \china{0cm}
-%		
-%	\tikzstyle{m-node}=[circle,draw=black!100,thick,inner sep=2pt,minimum size=6mm]
-%	\tikzstyle{r-node}=[circle,draw=black!100,thick,inner sep=2pt,minimum size=6mm]
-%	\tikzstyle{d-node}=[circle,draw=black!100,fill=gray!45,thick,inner sep=2pt,minimum size=6mm]
-%	%\tikzstyle{dots}=[text width=5ex, text centered]
-%	\tikzstyle{annot}=[text width=2.5em]
-%	% labels
-%	\tikzstyle{label}=[text width=2.5em, text centered]
-%	\tikzstyle{formula}=[text width=30em, text centered]
-%	
-%	\scriptsize
-%	\node[annot] (hidden-layer) at (0cm,\rowtwoht) {$\mathbf{M}_{(i,k)}$};
-%	\node[annot] (weights) at (0cm,\weightlevel) {$\mathbf{C}_{(j,k)}$};
-%	\node[annot] (r-layer) at (0cm,\rowoneht) {$\mathbf{R}_{(i,j)}$};
-%	
-%	% hidden layer
-%	\scriptsize
-%	\node[m-node] 	(ma00)	at (1.45cm,\rowtwoht)		{$.2$};
-%	\node[m-node] 	(ma01)	at (3.35cm,\rowtwoht)		{$.9$};
-%	\node[m-node] 	(ma10)	at (5.55cm,\rowtwoht) 	{$.8$};
-%	\node[m-node] 	(ma11)	at (7.45cm,\rowtwoht)	 	{$.1$};
-%	% \node[m-node] 	(m20)	at (9.65cm,\rowtwoht) 	{$.8$};
-%	% \node[m-node] 	(m21)	at (11.55cm,\rowtwoht)	 	{$.9$};
-%	
-%	%\footnotesize
-%	\node[label]	(ml00) 	at (1.45cm,\attic)		{$m_{1,1}$}; %1.75 -> 1.45
-%	\node[label]	(ml01) 	at (3.35cm,\attic)		{$m_{1,2}$}; %3.05 -> 3.35
-%	\node[label] 	(ml10)	at (5.55cm,\attic) 	{$m_{2,1}$};     %5.85 -> 5.55
-%	\node[label] 	(ml11)	at (7.45cm,\attic)	 	{$m_{2,2}$}; %7.15 -> 7.45
-%	% \node[label] 	(ml20)	at (9.65cm,\attic) 	{$m_{3,1}$};     %9.95 -> 9.65
-%	% \node[label] 	(ml21)	at (11.55cm,\attic)	 	{$m_{3,2}$}; %11.25 -> 11.55
-%	
-%	\scriptsize
-%	\node[r-node] 	(ra00)	at (1.1cm,\rowoneht)		{$.24$};
-%	\node[r-node] 	(ra01)	at (2.4cm,\rowoneht)		{$.81$};
-%	\node[r-node] 	(ra02)	at (3.7cm,\rowoneht)	 	{$.23$};
-%	
-%	\node[r-node] 	(ra10)	at (5.2cm,\rowoneht) 		{$.68$};
-%	\node[r-node] 	(ra11) 	at (6.5cm,\rowoneht)   	{$.16$};
-%	\node[r-node] 	(ra12)	at (7.8cm,\rowoneht)		{$.76$};
-%	
-%	% \node[r-node] 	(r20) 	at (9.3cm,\rowoneht)  		{$.71$};
-%	% \node[r-node] 	(r21)	at (10.6cm,\rowoneht) 		{$.83$};
-%	% \node[r-node] 	(r22) 	at (11.9cm,\rowoneht)   	{$.77$};
-%	
-%	\node[label] 	(rl00)	at (1.1cm,\basement)		{$r_{1,1}$};
-%	\node[label] 	(rl01)	at (2.4cm,\basement)		{$r_{1,2}$};
-%	\node[label] 	(rl02)	at (3.7cm,\basement)	 	{$r_{1,3}$};
-%	
-%	\node[label] 	(rl10)	at (5.2cm,\basement) 		{$r_{2,1}$};
-%	\node[label] 	(rl11) 	at (6.5cm,\basement)   	{$r_{2,2}$};
-%	\node[label] 	(rl12)	at (7.8cm,\basement)		{$r_{2,3}$};
-%	
-%%	\node[label] 	(rl20) 	at (9.3cm,\basement)  		{$r_{3,1}$};
-%%	\node[label] 	(rl21)	at (10.6cm,\basement) 		{$r_{3,2}$};
-%%	\node[label] 	(rl22) 	at (11.9cm,\basement)   	{$r_{3,3}$};
-%
-%	\draw[-] (4.45cm, \attic+1.5mm) -- (4.45cm, \basement-1.5mm);
-%%	\draw[-] (8.55cm, \attic+1.5mm) -- (8.55cm, \basement-1.5mm);
-%
-%	\scriptsize
-%	\path
-%		(ma00)	edge	node [left]	{$.85$} (ra00)
-%		(ma00)	edge	node [left,xshift=-1mm,yshift=3mm]	{$.1$}	(ra01)
-%		(ma00)	edge	node [left,xshift=-1mm,yshift=8mm]	{$.95$}	(ra02)
-%
-%		(ma01)	edge	node [right,xshift=3mm,yshift=8mm]	{$.1$}	(ra00)
-%		(ma01)	edge	node [right,xshift=1mm,yshift=3mm]	{$.9$}	(ra01)
-%		(ma01)	edge	node [right]	{$.05$} (ra02)
-%		%
-%		(ma10)	edge	node [left] {$.85$} (ra10)
-%		(ma10)	edge	node [left,xshift=-1mm,yshift=3mm]	{$.1$}	(ra11)
-%		(ma10)	edge	node [left,xshift=-1mm,yshift=8mm] {$.95$}	(ra12)
-%		
-%		(ma11)	edge	node [right,xshift=3mm,yshift=8mm]	{$.1$}	(ra10)
-%		(ma11)	edge	node [right,xshift=1mm,yshift=3mm]	{$.9$}	(ra11)
-%		(ma11)	edge	node [right]	{$.05$} (ra12);
-%		%
-		% (m20)	edge	node [left]	{$.85$}	(r20)
-		% (m20)	edge	node [left,xshift=-1mm,yshift=4mm]	{$.1$}	(r21)
-		% (m20)	edge	node [left,xshift=-1mm,yshift=10mm]	{$.95$} (r22)
-		
-		% (m21)	edge	node [right,xshift=3mm,yshift=10mm]		{$.1$}	(r20)
-		% (m21)	edge	node [right,xshift=1mm,yshift=4mm]{$.9$}	(r21)
-		% (m21)	edge	node [right]	{$.05$}	(r22);		
-		
-%\end{tikzpicture}
-%\label{fig:example:fig1}
-%\caption{A simple MCMM example} % showing learning in progress}
-%\label{fig:example:fig1}
-%\end{center}
-%\end{figure}
-
-%\begin{figure}[htb!]
-%\usetikzlibrary{positioning}
-%\begin{center}
-%\subfigure[Observed Data]{
-%\begin{tikzpicture}[shorten <=1pt,->,draw=black!100, scale=0.85]
-%	\scriptsize
-%	\tikzstyle{label}=[text width=3em, text centered]
-%	\tikzstyle{annot}=[text width=2.5em]
-%	\tikzstyle{d-node}=[circle,draw=black!100,fill=gray!45,thick,inner sep=2pt,minimum size=6mm]
-%	
-%	\def \china{0.6cm}
-%	\def \data{0cm}
-%	
-%	\node[annot] (d-layer) at (0cm,\data) {$\mathbf{D}_{(i,j)}$};
-%	\draw[-] (4.45cm, \china+1.5mm) -- (4.45cm, \data-4.5mm);
-%%	\draw[-] (8.55cm, \china+1.5mm) -- (8.55cm, \data-4.5mm);
-%	%\draw[-] (-1cm, \china+.5cm) -- (13cm, \china+.5cm);
-%	%\draw[-] (-1cm, \data-.5cm) -- (13cm, \data-.5cm);
-%	
-%	\node[label] 	(dl00)	at (1.1cm,\china)		{$d_{1,1}$};
-%	\node[label] 	(dl01)	at (2.4cm,\china)		{$d_{1,2}$};
-%	\node[label] 	(dl02)	at (3.7cm,\china)	 	{$d_{1,3}$};
-%	
-%	\node[label] 	(dl10)	at (5.2cm,\china) 		{$d_{2,1}$};
-%	\node[label] 	(dl11) 	at (6.5cm,\china)   	{$d_{2,2}$};
-%	\node[label] 	(dl12)	at (7.8cm,\china)		{$d_{2,3}$};
-%	
-%	% \node[label] 	(dl20) 	at (9.3cm,\china)  		{$d_{3,1}$};
-%	% \node[label] 	(dl21)	at (10.6cm,\china) 		{$d_{3,2}$};
-%	% \node[label] 	(dl22) 	at (11.9cm,\china)   	{$d_{3,3}$};
-%	
-%	\node[d-node] 	(d00)	at (1.1cm,\data)		{$0$};
-%	\node[d-node] 	(d01)	at (2.4cm,\data)		{$1$};
-%	\node[d-node] 	(d02)	at (3.7cm,\data)		{$0$};
-%
-%	\node[d-node] 	(d10)	at (5.2cm,\data)		{$1$};
-%	\node[d-node] 	(d11)	at (6.5cm,\data)		{$0$};
-%	\node[d-node] 	(d12)	at (7.8cm,\data)		{$1$};
-%	
-%	% \node[d-node] 	(d20)	at (9.3cm,\data)		{$1$};
-%	% \node[d-node] 	(d21)	at (10.6cm,\data)		{$1$};
-%	% \node[d-node] 	(d22)	at (11.9cm,\data)		{$1$};
-%\end{tikzpicture}
-%\label{fig:example:subfig0}
-%}
-%\end{center}
-%
-%\usetikzlibrary{positioning}
-%%\begin{minipage}{.3\textwidth}
-%\begin{center}
-%\subfigure[Learning in Progress]{
-%\begin{tikzpicture}[shorten <=1pt,->,draw=black!100, scale=0.85]
-%	\footnotesize
-%%	\def \attic{5.95cm}
-%%	\def \rowtwoht{5.4cm}
-%%	\def \weightlevel{3.9cm}
-%%	\def \rowoneht{2.4cm}
-%%	\def \basement{1.8cm}
-%%	\def \data{1cm}
-%%	\def \china{0cm}
-%
-%	\def \attic{5cm}
-%	\def \rowtwoht{4.4cm}
-%	\def \weightlevel{3.4cm}
-%	\def \rowoneht{2.4cm}
-%	\def \basement{1.8cm}
-%	\def \data{1cm}
-%	\def \china{0cm}
-%		
-%	\tikzstyle{m-node}=[circle,draw=black!100,thick,inner sep=2pt,minimum size=6mm]
-%	\tikzstyle{r-node}=[circle,draw=black!100,thick,inner sep=2pt,minimum size=6mm]
-%	\tikzstyle{d-node}=[circle,draw=black!100,fill=gray!45,thick,inner sep=2pt,minimum size=6mm]
-%	%\tikzstyle{dots}=[text width=5ex, text centered]
-%	\tikzstyle{annot}=[text width=2.5em]
-%	% labels
-%	\tikzstyle{label}=[text width=2.5em, text centered]
-%	\tikzstyle{formula}=[text width=30em, text centered]
-%	
-%	\scriptsize
-%	\node[annot] (hidden-layer) at (0cm,\rowtwoht) {$\mathbf{M}_{(i,k)}$};
-%	\node[annot] (weights) at (0cm,\weightlevel) {$\mathbf{C}_{(j,k)}$};
-%	\node[annot] (r-layer) at (0cm,\rowoneht) {$\mathbf{R}_{(i,j)}$};
-%	
-%	% hidden layer
-%	\scriptsize
-%	\node[m-node] 	(ma00)	at (1.3cm,\rowtwoht)		{$.2$};
-%	\node[m-node] 	(ma01)	at (3.5cm,\rowtwoht)		{$.9$};
-%	\node[m-node] 	(ma10)	at (5.4cm,\rowtwoht) 	{$.8$};
-%	\node[m-node] 	(ma11)	at (7.6cm,\rowtwoht)	 	{$.1$};
-%	% \node[m-node] 	(m20)	at (9.65cm,\rowtwoht) 	{$.8$};
-%	% \node[m-node] 	(m21)	at (11.55cm,\rowtwoht)	 	{$.9$};
-%	
-%	%\footnotesize
-%	\node[label]	(ml00) 	at (1.3cm,\attic)		{$m_{1,1}$}; %1.75 -> 1.45
-%	\node[label]	(ml01) 	at (3.5cm,\attic)		{$m_{1,2}$}; %3.05 -> 3.35
-%	\node[label] 	(ml10)	at (5.4cm,\attic) 	{$m_{2,1}$};     %5.85 -> 5.55
-%	\node[label] 	(ml11)	at (7.6cm,\attic)	 	{$m_{2,2}$}; %7.15 -> 7.45
-%	% \node[label] 	(ml20)	at (9.65cm,\attic) 	{$m_{3,1}$};     %9.95 -> 9.65
-%	% \node[label] 	(ml21)	at (11.55cm,\attic)	 	{$m_{3,2}$}; %11.25 -> 11.55
-%	
-%	\scriptsize
-%	\node[r-node] 	(ra00)	at (1.1cm,\rowoneht)		{$.24$};
-%	\node[r-node] 	(ra01)	at (2.4cm,\rowoneht)		{$.81$};
-%	\node[r-node] 	(ra02)	at (3.7cm,\rowoneht)	 	{$.23$};
-%	
-%	\node[r-node] 	(ra10)	at (5.2cm,\rowoneht) 		{$.68$};
-%	\node[r-node] 	(ra11) 	at (6.5cm,\rowoneht)   	{$.16$};
-%	\node[r-node] 	(ra12)	at (7.8cm,\rowoneht)		{$.76$};
-%	
-%	\node[label] 	(rl00)	at (1.1cm,\basement)		{$r_{1,1}$};
-%	\node[label] 	(rl01)	at (2.4cm,\basement)		{$r_{1,2}$};
-%	\node[label] 	(rl02)	at (3.7cm,\basement)	 	{$r_{1,3}$};
-%	
-%	\node[label] 	(rl10)	at (5.2cm,\basement) 		{$r_{2,1}$};
-%	\node[label] 	(rl11) 	at (6.5cm,\basement)   	{$r_{2,2}$};
-%	\node[label] 	(rl12)	at (7.8cm,\basement)		{$r_{2,3}$};
-%
-%	\draw[-] (4.45cm, \attic+1.5mm) -- (4.45cm, \basement-1.5mm);
-%
-%	\scriptsize
-%	\path
-%		(ma00)	edge	node [left]	{$.85$} (ra00)
-%		(ma00)	edge	node [left,xshift=-1mm,yshift=2mm]	{$.1$}	(ra01)
-%		(ma00)	edge	node [left,xshift=-1mm,yshift=6mm]	{$.95$}	(ra02)
-%
-%		(ma01)	edge	node [right,xshift=2.5mm,yshift=6mm]	{$.1$}	(ra00)
-%		(ma01)	edge	node [right,xshift=1mm,yshift=2mm]	{$.9$}	(ra01)
-%		(ma01)	edge	node [right]	{$.05$} (ra02)
-%		%
-%		(ma10)	edge	node [left] {$.85$} (ra10)
-%		(ma10)	edge	node [left,xshift=-1mm,yshift=2mm]	{$.1$}	(ra11)
-%		(ma10)	edge	node [left,xshift=-1mm,yshift=6mm] {$.95$}	(ra12)
-%		
-%		(ma11)	edge	node [right,xshift=2.5mm,yshift=6mm]	{$.1$}	(ra10)
-%		(ma11)	edge	node [right,xshift=1mm,yshift=2mm]	{$.9$}	(ra11)
-%		(ma11)	edge	node [right]	{$.05$} (ra12);
-%		%
-%		% (m20)	edge	node [left]	{$.85$}	(r20)
-%		% (m20)	edge	node [left,xshift=-1mm,yshift=4mm]	{$.1$}	(r21)
-%		% (m20)	edge	node [left,xshift=-1mm,yshift=10mm]	{$.95$} (r22)
-%		
-%		% (m21)	edge	node [right,xshift=3mm,yshift=10mm]		{$.1$}	(r20)
-%		% (m21)	edge	node [right,xshift=1mm,yshift=4mm]{$.9$}	(r21)
-%		% (m21)	edge	node [right]	{$.05$}	(r22);		
-%		
-%\end{tikzpicture}
-%\label{fig:example:subfig1}
-%}
-%\subfigure[Convergence]{
-%
-%\begin{tikzpicture}[shorten <=1pt,->,draw=black!100, scale=0.85]
-%	\small
-%%	\def \attic{5.95cm}
-%%	\def \rowtwoht{5.4cm}
-%%	\def \weightlevel{3.9cm}
-%%	\def \rowoneht{2.4cm}
-%%	\def \basement{1.8cm}
-%%	\def \data{1cm}
-%%	\def \china{0cm}
-%
-%%	\def \attic{5.2cm}
-%%	\def \rowtwoht{4.6cm}
-%%	\def \weightlevel{3.5cm}
-%%	\def \rowoneht{2.4cm}
-%%	\def \basement{1.8cm}
-%%	\def \data{1cm}
-%%	\def \china{0cm}
-%
-%	\def \attic{5cm}
-%	\def \rowtwoht{4.4cm}
-%	\def \weightlevel{3.4cm}
-%	\def \rowoneht{2.4cm}
-%	\def \basement{1.8cm}
-%	\def \data{1cm}
-%	\def \china{0cm}
-%		
-%%	\def \attic{5.4cm}
-%%	\def \rowtwoht{5cm}
-%%	\def \weightlevel{3.9cm}
-%%	\def \rowoneht{2.4cm}
-%%	\def \basement{1.8cm}
-%%	\def \data{1cm}
-%%	\def \china{0cm}
-%	
-%	\small
-%	\tikzstyle{m-node}=[circle,draw=black!100,thick,inner sep=2pt,minimum size=6mm]
-%	\tikzstyle{r-node}=[circle,draw=black!100,thick,inner sep=2pt,minimum size=6mm]
-%	\tikzstyle{d-node}=[circle,draw=black!100,fill=gray!45,thick,inner sep=2pt,minimum size=6mm]
-%	\tikzstyle{annot}=[text width=2.5em]
-%	% labels
-%	\tikzstyle{label}=[text width=3em, text centered]
-%	\tikzstyle{formula}=[text width=30em, text centered]
-%	\node[annot] (hidden-layer) at (0cm,\rowtwoht) {$\mathbf{M}_{(i,k)}$};
-%	\node[annot] (weights) at (0cm,\weightlevel) {$\mathbf{C}_{(j,k)}$};
-%	\node[annot] (r-layer) at (0cm,\rowoneht) {$\mathbf{R}_{(i,j)}$};
-%	
-%	\node[m-node] 	(m00)	at (1.3cm,\rowtwoht)		{$0$};
-%	\node[m-node] 	(m01)	at (3.5cm,\rowtwoht)		{$1$};
-%	\node[m-node] 	(m10)	at (5.4cm,\rowtwoht) 	{$1$};
-%	\node[m-node] 	(m11)	at (7.6cm,\rowtwoht)	 	{$0$};
-%	% \node[m-node] 	(m20)	at (9.65cm,\rowtwoht) 	{$1$};
-%	% \node[m-node] 	(m21)	at (11.55cm,\rowtwoht)	 	{$1$};
-%	
-%	\node[label]	(ml00) 	at (1.3cm,\attic)		{$m_{1,1}$};
-%	\node[label]	(ml01) 	at (3.5cm,\attic)		{$m_{1,2}$};
-%	\node[label] 	(ml10)	at (5.4cm,\attic) 	{$m_{2,1}$};
-%	\node[label] 	(ml11)	at (7.6cm,\attic)	 	{$m_{2,2}$};
-%	% \node[label] 	(ml20)	at (9.65cm,\attic) 	{$m_{3,1}$};
-%	% \node[label] 	(ml21)	at (11.55cm,\attic)	 	{$m_{3,2}$};
-%	
-%	%\node[m-node] 	(m20)	[right of=m11,xshift=2cm]	 	{$1.0$};
-%	%\node[m-node] 	(m21)	[right of=m20,xshift=0.5cm]	 	{$1.0$};	
-%	% reconstructed vector
-%	\node[r-node] 	(r00)	at (1.1cm,\rowoneht)		{$0$};
-%	\node[label] 	(rl00)	at (1.1cm,\basement)		{$r_{1,1}$};
-%	\node[r-node] 	(r01)	at (2.4cm,\rowoneht)		{$1$};
-%	\node[label] 	(rl01)	at (2.4cm,\basement)		{$r_{1,2}$};
-%	\node[r-node] 	(r02)	at (3.7cm,\rowoneht)	 	{$0$};
-%	\node[label] 	(rl02)	at (3.7cm,\basement)	 	{$r_{1,3}$};
-%	
-%	\node[r-node] 	(r10)	at (5.2cm,\rowoneht) 		{$1$};
-%	\node[label] 	(rl10)	at (5.2cm,\basement) 		{$r_{2,1}$};
-%	\node[r-node] 	(r11) 	at (6.5cm,\rowoneht)   		{$0$};
-%	\node[label] 	(rl11) 	at (6.5cm,\basement)   		{$r_{2,2}$};
-%	\node[r-node] 	(r12)	at (7.8cm,\rowoneht)		{$1$};
-%	\node[label] 	(rl12)	at (7.8cm,\basement)		{$r_{2,3}$};
-%	
-%	% \node[r-node] 	(r20) 	at (9.3cm,\rowoneht)  		{$1$};
-%	% \node[label] 	(rl20) 	at (9.3cm,\basement)  		{$r_{3,1}$};
-%	% \node[r-node] 	(r21)	at (10.6cm,\rowoneht) 		{$1$};
-%	% \node[label] 	(rl21)	at (10.6cm,\basement) 		{$r_{3,2}$};
-%	% \node[r-node] 	(r22) 	at (11.9cm,\rowoneht)   		{$1$};
-%	% \node[label] 	(rl22) 	at (11.9cm,\basement)   		{$r_{3,3}$};
-%	
-%	\draw[-] (4.45cm, \attic+1.5mm) -- (4.45cm, \basement-1.5mm);
-%%	\draw[-] (8.55cm, \attic+1.5mm) -- (8.55cm, \basement-1.5mm);
-%
-%	\path
-%		(m00)	edge	node [left] 	{$1$}	(r00)
-%		(m00)	edge	node [left,xshift=-1mm,yshift=2mm]	{$0$}	(r01)
-%		(m00)	edge	node [left,xshift=-3mm,yshift=6mm]	{$1$}	(r02)
-%
-%		(m01)	edge	node [right,xshift=3mm,yshift=6mm]	{$0$}	(r00)
-%		(m01)	edge	node [right,xshift=1mm,yshift=2mm]	{$1$}	(r01)
-%		(m01)	edge	node [right]	{$0$}	(r02)
-%		%
-%		(m10)	edge	node [left] 	{$1$}	(r10)
-%		(m10)	edge	node [left,xshift=-1mm,yshift=2mm]	{$0$}	(r11)
-%		(m10)	edge	node [left,xshift=-3mm,yshift=6mm] {$1$}	(r12)
-%		
-%		(m11)	edge	node [right,xshift=3mm,yshift=6mm]	{$0$}	(r10)
-%		(m11)	edge	node [right,xshift=1mm,yshift=2mm]	{$1$}	(r11)
-%		(m11)	edge	node [right]	{$0$}	(r12);
-%		%
-%		% (m20)	edge	node [left]	{$1$}	(r20)
-%		% (m20)	edge	node [left,xshift=-1mm,yshift=4mm]	{$0$}	(r21)
-%		% (m20)	edge	node [left,xshift=-3mm,yshift=10mm]	{$1$} (r22)
-%		
-%		% (m21)	edge	node [right,xshift=3mm,yshift=10mm]		{$0$}	(r20)
-%		% (m21)	edge	node [right,xshift=1mm,yshift=4mm]{$1$}	(r21)
-%		% (m21)	edge	node [right]	{$0$}	(r22);		
-%\end{tikzpicture}
-%\label{fig:example:subfig2}
-%}
-%
-%\begin{framed}
-%	\centering
-%	\small
-%	where
-%	$\begin{aligned}
-%	   r_{i,j} = 1 - \Pi_{k=1}^{K} (1 - m_{i,k}c_{j,k}) 
-%	\end{aligned}$
-%        \hspace{2em}
-%        [\textsc{noisy-or} function]
-%\end{framed}
-%
-%\end{center}
-%\caption{A simple MCMM example} % showing learning in progress}
-%\label{fig:example}
-%\end{figure}
-
-We can see that while learning is in progress, the cluster activities
-$m_{i,k}$ and the cluster centers $c_{j,k}$ are in flux, as the
-error rate is being reduced, but that they converge to values of 0 and
-1.  At convergence, a reconstruction node $r_{i,j}$ is 1 if at least one
-$m_{i,k}c_{j,k} = 1$ (and $0$ otherwise).
-
-%the activities and the centers are 1 and are 0 otherwise.
-
- \begin{figure}[th]
+ \begin{figure}[t]
  %\usetikzlibrary{positioning}
  \begin{center}
- \subfigure[Observed Data]{
+ \subfigure[Observed Data\label{fig:example:subfig0-1}]{
  \begin{tikzpicture}[shorten <=1pt,->,draw=black!100]
  	\scriptsize
  	\tikzstyle{label}=[text width=3em, text centered]
@@ -2142,14 +1580,14 @@ $m_{i,k}c_{j,k} = 1$ (and $0$ otherwise).
  	\node[d-node] 	(d21)	at (10.6cm,\data)		{$1$};
  	\node[d-node] 	(d22)	at (11.9cm,\data)		{$1$};
  \end{tikzpicture}
- \label{fig:example:subfig0-1}
+ %\label{fig:example:subfig0-1}
  }
  \end{center}
 
  \usetikzlibrary{positioning}
  %\begin{minipage}{.3\textwidth}
  \begin{center}
- \subfigure[Learning in Progress]{
+ \subfigure[Learning in Progress\label{fig:example:subfig1-1}]{
  \begin{tikzpicture}[shorten <=1pt,->,draw=black!100]
  	\footnotesize
  	\def \attic{5.95cm}
@@ -2246,9 +1684,9 @@ $m_{i,k}c_{j,k} = 1$ (and $0$ otherwise).
  		(m21)	edge	node [right]	{$.05$}	(r22);		
 		
  \end{tikzpicture}
- \label{fig:example:subfig1-1}
+ %\label{fig:example:subfig1-1}
  }
- \subfigure[Convergence]{
+ \subfigure[Convergence\label{fig:example:subfig2-1}]{
 
  \begin{tikzpicture}[shorten <=1pt,->,draw=black!100]
  	\footnotesize
@@ -2286,9 +1724,6 @@ $m_{i,k}c_{j,k} = 1$ (and $0$ otherwise).
  	\node[label] 	(ml20)	at (9.65cm,\attic) 	{$m_{2,0}$};
  	\node[label] 	(ml21)	at (11.55cm,\attic)	 	{$m_{2,1}$};
 	
- 	%\node[m-node] 	(m20)	[right of=m11,xshift=2cm]	 	{$1.0$};
- 	%\node[m-node] 	(m21)	[right of=m20,xshift=0.5cm]	 	{$1.0$};	
- 	% reconstructed vector
  	\node[r-node] 	(r00)	at (1.1cm,\rowoneht)		{$0$};
  	\node[label] 	(rl00)	at (1.1cm,\basement)		{$r_{0,0}$};
  	\node[r-node] 	(r01)	at (2.4cm,\rowoneht)		{$1$};
@@ -2338,9 +1773,8 @@ $m_{i,k}c_{j,k} = 1$ (and $0$ otherwise).
  		(m21)	edge	node [right,xshift=1mm,yshift=4mm]{$1$}	(r21)
  		(m21)	edge	node [right]	{$0$}	(r22);		
  \end{tikzpicture}
- \label{fig:example:subfig2-1}
+ %\label{fig:example:subfig2-1}
  }
-
  \begin{framed}
  	\centering
  	\small
@@ -2349,11 +1783,34 @@ $m_{i,k}c_{j,k} = 1$ (and $0$ otherwise).
  	   r_{i,j} = 1 - \Pi_{k=1}^{K} (1 - m_{i,k}c_{j,k}) 
  	\end{aligned}$
  \end{framed}
-
- \label{fig:example-1}
  \caption{MCMM example showing learning in progress}
+ \label{fig:example-1}
  \end{center}
  \end{figure}
+ 
+These cluster-membership vectors make more sense when we consider the this MCMM's $J \times K$ ($3 \times 2$) weight matrix $\textbf{C}$. The two column-vectors $\textbf{c}_0 = [0,1,0]$ and $\textbf{c}_1 = [1,0,1]$ are the \emph{centroids} of the first and second clusters, respectively. A cluster's centroid is a sort of average or composite of the cluster's member vectors; it represents the feature values that a cluster's members have in common and can thus serve as a label for a cluster. The first data point $\textbf{x}_0 = [0,1,0]$ is a member of the cluster whose centroid is $[0,1,0]$. Similarly, the second data point $\textbf{x}_1 = [1,0,1]$ is clearly a member of the cluster whose centroid is $[1,0,1]$. But just as clearly, the influence of \emph{both} clusters is evident in the third data point $\textbf{x}_2 = [1,1,1]$.
+
+Table~\ref{tab:cl-members} shows the members as well as the centroids of each of the two clusters: Notice that the active components in each cluster centroid correspond to the shared component values among the cluster's members.
+
+\begin{table}[bt]
+\centering
+\setlength{\extrarowheight}{8pt}
+\begin{tabular}{ccc}
+\toprule
+Cluster index ($k$) & Member Data Points & Cluster Centroid \\ \midrule
+ $0$ &  $[0,\mathbf{1},0]$, $[1,\mathbf{1},1]$ & $[0,1,0]$\\ 
+ $1$  & $[\mathbf{1},0,\mathbf{1}]$, $[\mathbf{1},1,\mathbf{1}]$ & $[1,0,1]$\\
+ \bottomrule
+ \end{tabular}
+\caption{\emph{Clusters from Figure~\ref{fig:example-1} and their Centroids.} The active features in each cluster's centroid are the \emph{shared} active features among the cluster's members.}
+\label{tab:cl-members}
+\end{table}
+
+We can see that while learning is in progress, the cluster activities
+$m_{i,k}$ and the cluster centers $c_{j,k}$ are in flux, as the
+error rate is being reduced, but that they converge to values of 0 and
+1.  At convergence, a reconstruction node $r_{i,j}$ is 1 if at least one
+$m_{i,k}c_{j,k} = 1$ (and $0$ otherwise).
 
 \section{Conclusion}
 This chapter has been the culminating chapter of what can be regarded as 

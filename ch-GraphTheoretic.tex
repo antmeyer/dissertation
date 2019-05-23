@@ -450,7 +450,7 @@ $\mu_1$ in figure~\ref{subfig:multilinear-gt}, they also compose a morphological
 unit within the segmental tier, once $\mu_1$ has linked to the appropriate C and V slots. The morphs $\mu_1$, $\mu_2$, and $\mu_3$ 
 essentially \emph{cause} the segmental tier to be realized as a fully fledged 
 phonological form. This observation will become especially relevant in 
-section~\ref{sec:bipartite} below and in the following chapter, were we explore multiple cause mixture models (MCMMs) in depth.
+section~\ref{sec:mcmm-bipartite} below and in the following chapter, where we explore multiple cause mixture models (MCMMs) in depth.
 % the 
 %close to describing the workings of \ac{MCMM}. 
 
@@ -495,44 +495,18 @@ In this way, the multilinear framework of autosegmental morphology can be expres
 %intra-layer connections. The only connections are 
 %between nodes of different sets.
 
-
-
-%This bipartiteness is important because many learning algorithms are based on bipartite graphs. I will be focusing on one such algorithm called
-%the Multiple Cause Mixture Model (MCMM)
-%\citep{saund:94}. An MCMM is a kind of autoencoder network with a bipartite architecture. It has two layers of nodes, a reconstruction (surface) layer $R$, where it attempts to reconstruct the input feature vectors, and a hidden layer whose nodes encode shared features among the input vectors. Weighted arcs link the nodes of one layer to those of the other, but there are no \emph{intra}-layer connections.
-
 % Hebrew morphology, both its non-concatenative and concatenative components. 
 %In a multilinear framework, concatenative morphology is just a special case of non-concatenative morphology. There is no fundamental difference between them.
 \section{An MCMM is a Bipartite Graph}\label{sec:mcmm-bipartite}
 %An MCMM, as it turns out, is a special case of a bipartite graph. Indeed,
-
-% itself be a simple MCMM. %precisely the architecture of an MCMM.
-%To sum up, bipartite graphs possess the properties nonlinerarity and nonsequentiality. 
-%Because MCMMs are bipartite graphs, and bipartite graphs are both nonlinear and nonsequential, 
-%MCMMs must themselves be nonlinear and nonsequential, which makes MCMMs well-suited for modeling
-%non-concatenative morphology.
-
-%As it turns out, 
-% (figure~\ref{subfig:nonlinear}). 
-%\section{Conclusion}
-%\label{sec:graph-concl}
-
-%That is, because of its bipartite properties, an MCMM provides a sound framework in which to implement autosegmental morphology, or at least the components of autosegmental morphology that address non-concatenative morphology.
-%An MCMM
-%%, as it turns out, 
-%is clearly a bipartite graph. 
 We will discuss the architecture of MCMMs in detail in the following chapter. 
 We will see  that has two
 layers of nodes, a hidden layer and a
 surface layer---corresponding, respectively, to $M$ and $R$ in
 figure~\ref{fig:gt-bipartite}. Moreover, there are no intra-layer connections in
 MCMM; the only connections inter-layer, between $M$ and $R$ nodes.
-%For the moment, suffice it to say that
-%the graph
-%figure~\ref{fig:gt-bipartite} could itself be a diagram of an MCMM. 
-%Let us thus stipulate for the moment that MCMMs are bipartite graphs. %precisely the architecture of an MCMM.
-%To sum up, bipartite graphs possess the properties nonlinerarity and nonsequentiality. 
-Because MCMMs are bipartite graphs, therefore, and because bipartite graphs are both nonlinear and nonsequential, 
+Because MCMMs are bipartite graphs, therefore, and because bipartite graphs 
+are both nonlinear and nonsequential, 
 MCMMs must themselves be nonlinear and nonsequential. This makes them well-suited for modeling
 nonconcatenative morphology, as discussed in chapter~\ref{ch:lit-review}.
 
