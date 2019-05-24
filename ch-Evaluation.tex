@@ -130,8 +130,8 @@ hev\a'{i}n \> pos:v\&root:byn\&ptn:hifil\&tense:past\&pers:3\&gen:ms\&num:sg \\
 hev\a'{i}na \> pos:v\&root:byn\&ptn:hifil\&tense:past\&pers:3\&gen:fm\&num:sg \\
 \vdots \> \vdots \\
 \end{tabbing}
-\label{fig:verb-analyses}
 \caption{Morphological analyses extracted from the Berman Longitudinal Corpus.}
+\label{fig:verb-analyses}
 \end{mdframed}
 \end{figure}
 
@@ -143,7 +143,7 @@ The first major step in
 building the gold-standard data was to extract each word's morphological analysis 
 or analyses (section~\ref{sec:extr}). Figure~\ref{fig:verb-analyses} shows an excerpt from the full list
 of analyses extracted from the corpus. The words in this excerpt happen to be verbs of the \textit{Hif`il}
-binyan. The lines in figure~\ref{fig:verb-analyses} are the 
+\emph{binyan}. The lines of text in figure~\ref{fig:verb-analyses} are the 
 beginnings of gold-standard morphological analyses, i.e., 
 mappings from words to sets of gold-standard classes, with individual classes delimited by the 
 \texttt{\&} symbol.  However, many of the BLC's categories are morphosyntactic and thus too abstract for our purposes, having little 
@@ -174,7 +174,7 @@ $c_{j,k}$ is the weight between the $k$th hidden unit and the $j$th reconstructi
 \begin{algorithm}[t]
 \DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead 
 \KwIn{$\mathbf{M}$,  $\mathbf{C}$, input words $\mathbf{w}$, \text{threshold} $\theta$, $I$ $J$,$K$} 
-\KwOut{$\mathbf{U}$, a list of \emph{clusters}, in which each cluster is a list of words. Let $\{\mathbf{u}_k$ denote the $k$th cluster, i.e., the list of words composing the $k$th cluster.}
+\KwOut{$\mathbf{U}$, a list of \emph{clusters}, in which each cluster is a list of words. Let $\{\mathbf{u}_k$ denote the $k$th cluster, i.e., the list of \emph{words} that are the members of the $k$th cluster.}
 Initialize cluster member lists: $\mathbf{U} = \{\mathbf{u}_0, \mathbf{u}_1, \mathbf{u}_2,\ldots, \mathbf{u}_K\}$ where each $\mathbf{u}_k \gets \emptyset$\;
 \For {$ i \gets 0$ \textbf{to} $I$}{
 	\For {$ k  \gets 0$ \textbf{to} $K$}{
@@ -188,14 +188,15 @@ Initialize cluster member lists: $\mathbf{U} = \{\mathbf{u}_0, \mathbf{u}_1, \ma
 	}
 }
 \Return $\mathbf{U}$\;
-\label{alg:members}
 \caption{\textsc{Clusters-and-Members}}
+\label{alg:members}
 \end{algorithm}
- Recall also from chapter~\ref{ch:MCMM} that 
-% \emph{votes} 
-%% in an MCMM 
-% are products of the form $m_{i,k}c_{j,k}$, and that 
-the
+% Recall also from chapter~\ref{ch:MCMM} that 
+%% \emph{votes} 
+%%% in an MCMM 
+%% are products of the form $m_{i,k}c_{j,k}$, and that 
+%the
+As explained in chapter~\ref{ch:MCMM}, the 
  Noisy-OR mixing function requires at least one `\textsc{yes}' vote 
  in order to activate a given reconstruction unit.
  %, where votes are products 
@@ -207,7 +208,12 @@ the
  \begin{equation}\label{eq:vote-criterion}
  m_{i,k}c_{j,k} \geq \theta_{\text{mc}}
  \end{equation}
- where $\theta_{\text{mc}}$ is the membership threshold. In preliminary experiments, $\theta_{\text{mc}}$ was firt set to 0.5, but it was changed to 0.8 for the experiments reported in this thesis in order to ``tighten up'' the clusters, i.e., to eliminate outlier members and generally to reduce noise.
+ where $\theta_{\text{mc}}$ is the membership threshold. %In preliminary 
+ In this study's experiments, $\theta_{\text{mc}}$ 
+ was 
+ %first 
+ set to 0.5.   %, but it was changed 
+% to 0.8 for the experiments reported in this thesis in order to ``tighten up'' the clusters, i.e., to eliminate outlier members and generally to reduce noise.
  In algorithm~\ref{alg:members}, the \textsc{while}-loop condition on line~\ref{line:vote-thresh} enforces the threshold criterion. 
 % ~\ref{line:vote-thresh}
 %requires the current vote to be greater than (or equal to) to the membership threshold. 
@@ -255,10 +261,13 @@ As mentioned above, many of the BLC's categories are morphosyntactic in nature; 
 
 \subsubsection{Verbs} 
 
- The Berman Longitudinal Corpus (BLC) uses the conventional conjugational categories for verbs as exemplified in  
- tables~\ref{tab:hifil-paradigms} and \ref{tab:qal-paradigms}. These tables are essentially instances of Stump's \emph{content paradigm}. \citep{stump:2001}. The content paradigm, as we discussed in section~\ref{sec:morpho-theories} is to be distinguished from Stump's \emph{form paradigm}, since there is often a gap between these paradigms. We illustrated this gap in the case of the English present tense in table~\ref{tab:engverbpres}. Also recall from chapter~\ref{autonomous} that form-paradigm cells tend to be unnatural and thus morphomic. They are also therefore more conducive to our purposes than content cells. 
+ The Berman Longitudinal Corpus (BLC) uses the conventional conjugational categories for verbs exemplified in  
+ tables~\ref{tab:hifil-paradigms} and \ref{tab:qal-paradigms}, 
+  %tables~\ref{subtab:hifil-tensed} and \ref{subtab:hifil-part}, 
+ which are essentially instances of Stump's \emph{content paradigm} \citep{stump:2001}. The content paradigm, as we discussed in section~\ref{sec:morpho-theories}, is to be distinguished from Stump's \emph{form paradigm}, since there is often a gap between these paradigms. We illustrated this gap in the case of the English present tense in table~\ref{tab:engverbpres}. As discussed in chapter~\ref{autonomous}, form-paradigm cells tend to be unnatural and thus morphomic. They are also therefore better suited than content cells to serve as form-based gold-standard classes. 
 
-\begin{table}[t]  
+\begin{table}[bt] 
+ %\label{tab:hifil-paradigms}
 \centering
  %\footnotesize
  \subtable[Tensed verb forms\label{subtab:hifil-tensed}]{
@@ -292,12 +301,12 @@ As mentioned above, many of the BLC's categories are morphosyntactic in nature; 
       \bottomrule
       \end{tabular}
  }
-  \label{tab:hifil-paradigms}
- \caption{Past and future-tense paradigms for the root \textit{t.x.l} in the \textit{Hif`il} binyan.}
+ \caption{Paradigms for the root \textit{t.x.l} in the \textit{Hif`il} binyan.}
+ \label{tab:hifil-paradigms}
  \end{table}
  
- \begin{table}[t]
-  \centering
+ \begin{table}[bt]
+ \centering
  \subtable[Tensed verb forms\label{subtab:qal-tensed}]{
  \centering
  \setlength{\extrarowheight}{4pt}
@@ -328,8 +337,8 @@ As mentioned above, many of the BLC's categories are morphosyntactic in nature; 
       \bottomrule
       \end{tabular}
  }
-     \label{tab:qal-paradigms}
- \caption{Past and future-tense paradigms for the root \textit{g.m.r} in the \textit{Qal} binyan.}
+ \caption{Paradigms for the root \textit{g.m.r} in the \textit{Qal} binyan}
+    \label{tab:qal-paradigms}
  \end{table}
 I thus devised form-based gold-standard classes by grouping Hebrew verb inflections into form-based equivalence classes (essentially, form-paradigm cells). Table~\ref{tab:verb-cat-descriptions} summarizes the mappings from the BLC's conventional verb conjugational categories onto my form-based gold-standard classes. For example, the ``content" categories
 \begin{center}
@@ -338,16 +347,20 @@ future-tense, 2rd-person masc plural \\
 future-tense, 2rd-person fem plural \\
 future-tense, 3rd-person plural \\
 \end{center}
-all map onto the single form class
+all map onto the single form-based class
 \begin{center}
 \texttt{(past\%3\%Pl)|(fut\%23\%Pl)}
 \end{center}
 where the \texttt{|} symbol means `or', and \texttt{\%} is a delimiter.
 
 Note also the morphomic phenomena among the stems of  paradigms~\ref{subtab:hifil-tensed} and \ref{subtab:qal-tensed}.
-For instance, future-tense forms in paradigms~\ref{subtab:hifil-tensed} and \ref{subtab:qal-tensed} have different stems from their past-tense counterparts. Following \citet{vance:2004}, we will refer to the future-tense stems as \emph{prefix stems} and the past-tense stems as \emph{suffix stems}. There are two main reasons for these terms: First, the prefix stems really do tend to take prefixes, while the suffix stems tend to take suffixes. Second, these stems are not always associated with past and future tenses, as participles sometimes take a prefix-stem; see the \textit{Hif`il} participles, for instance in paradigm~\ref{subtab:hifil-part}. 
+For instance, future-tense forms in tables~ %\ref{subtab:hifil-tensed} and \ref{subtab:qal-tensed} 
+\ref{tab:hifil-paradigms} and \ref{tab:qal-paradigms}.
+have different stems from their past-tense counterparts. Following \citet{vance:2004}, we will refer to the future-tense stems as \emph{prefix stems} and the past-tense stems as \emph{suffix stems}. We do this for two main reasons: First, the prefix stems really do tend to take prefixes, while the suffix stems tend to take suffixes. Second, these stems are not always associated with past and future tenses, as participles take the prefix stem in some \emph{binyanim} (singular \emph{binyan}), e.g., the \textit{Hif`il} binyan; see the \textit{Hif`il} participles in table~\ref{tab:hifil-paradigms}. 
 %thus added the gold-standard classes \texttt{prefix\_stem} and \texttt{suffix\_stem}, the former for future-tense stems, and the latter for past-tense stems. These classes are so named because in addition to their stem-internal differences, the ``prefix stems'' tend to take prefixes, while the ``suffix stems'' tend to suffixes (see \citet{vance:2004}). 
-Moreover, the stems in paradigm~\ref{subtab:hifil-tensed} on the one hand differ from those in paradigm~\ref{subtab:qal-tensed} on the other. That is, while there are prefix stems and suffix stems \emph{within} each of these paradigms, the prefix and suffix stems in paradigm~\ref{subtab:hifil-tensed} differ as a group from those in paradigm~\ref{subtab:qal-tensed} as group. The difference between paradigms \ref{tab:hifil-paradigms} and  \ref{tab:qal-paradigms} is that they are of different \emph{binyanim} (singular \emph{binyan}), namely the \emph{Hif`il} binyan and \emph{Qal} binyan, respectively.
+Moreover, the future stems in table~\ref{tab:hifil-paradigms} on the one hand differ from the future stems in table~\ref{tab:qal-paradigms} on the other. That is, 
+%while there are prefix stems and suffix stems \emph{within} each of the two binyan paradigms.  
+the prefix and suffix stems in table~\ref{tab:hifil-paradigms} differ as a group from those in table~\ref{tab:qal-paradigms} as group. The difference between paradigm-set~\ref{tab:hifil-paradigms} on the one hand and paradigm-set~\ref{tab:qal-paradigms} on the other is that these two groups are of different binyanim, namely the \emph{Hif`il} binyan and \emph{Qal} binyan, respectively.
  
  Thus, to fully specify a given verb stem, one needs to give both its \emph{binyan} and say whether it is a prefix or suffix stem. I thus added the \emph{derivational} gold-standard verb classes to complement the inflectional classes in table~\ref{tab:verb-cat-descriptions}. These follow the template
  \begin{equation}\label{eq:stem-temp}
@@ -405,9 +418,10 @@ future-tense, 3rd-person fem plural & &\\
 \bottomrule
 \end{tabular}
 }
-\label{tab:verb-cat-descriptions}
+%\label{tab:verb-cat-descriptions}
 \caption{Mappings from conventional paradigm cells to form-based gold-standard classes} %(see tables~\ref{subtab:hifil-tensed} 
 %and \ref{subtab:qal-tensed}) to gold-standard classes for Multimorph's intrinsic evaluation}
+\label{tab:verb-cat-descriptions}
 \end{table}
   
 \subsubsection{Nominals}
@@ -417,48 +431,48 @@ inflect for gender and number. However, as discussed in chapter~\ref{autonomous}
 particularly section~\ref{sec:heb-example}, the Hebrew inflectional endings 
 for nominals are \emph{fusional}; it is impossible to separate the masculine plural suffix\textit{-im}, for instance, into 
 distinct singular and plural components.
-\begin{figure}[t]
-\begin{mdframed}
-\begin{tabbing}
-\hspace{1in} \= \hspace{5.5in} \kill
-\vdots \> \vdots \\
-pas \> pos:n\&gen:ms\&num:sg\&stat:unsp\\
-pas\a'{e}y \> pos:n\&gen:ms\&num:pl\&stat:cstr pos:n\&gen:ms\&num:pl\&stat:bound\\
-pas\a'{i}m \> pos:n\&\&gen:ms\&num:pl\&stat:abs\\
-%qi\v{s}q\a'{u}\v{s} \> pos:n\&gen:ms\&num:sg\&stat:u\\
-%qi\v{s}u\textipa{P}\a'{i}m \> pos:n\&root:q\v{s}	extipa{P}\&ptn:CiCuC\&gen:ms\&num:pl\&stat:abs\\
-%qi\v{s}u\UTF{1E6D}\a'{i}m \> pos:n\&root:q\v{s}\UTF{1E6D}\&ptn:CiCuC\&gen:ms\&num:pl\&stat:abs\\
-%qi\v{s}\a'{u}\textipa{P} \> pos:n\&root:q\v{s}\textipa{P}\&ptn:CiCuC\&gen:ms\&num:sg\&stat:u\\
-%qi\v{s}\a'{u}\UTF{1E6D} \> pos:n\&root:q\v{s}\UTF{1E6D}\&ptn:CiCuC\&gen:ms\&num:sg\&stat:u\\
-qvuc\a'{a} \> pos:n\&root:qbc\&ptn:CCuCa\&gen:fm\&num:sg\&stat:unsp\\
-qvuc\a'{o}t \> pos:n\&root:qbc\&ptn:CCuCa\&gen:fm\&num:pl\&stat:bound \\
-zriq\a'{a} \> pos:n\&root:zrq\&ptn:CCiCa\&gen:fm\&num:sg\&stat:unsp \\
-zriq\a'{a}t	 \> pos:n\&root:zrq\&ptn:CCiCa\&gen:fm\&num:sg\&stat:bound \\
-%qlaf \> pos:n\&root:qlp\&ptn:CCaC\&gen:ms\&num:sg\&stat:u\\
-%qlaf\a'{i}m \> pos:n\&root:qlp\&ptn:CCaC\&gen:ms\&num:pl\&stat:abs\\
-%siman\a'{i}m \> pos:n\&root:sym\&ptn:CiCan\&gen:ms\&num:pl\&stat:abs\\
-%sim\a'{a}n \> pos:n\&root:sym\&ptn:CiCan\&gen:ms\&num:sg\&stat:u\\
-%sin\a'{a}r \> pos:n\&root:snr\&ptn:CiCaC\&gen:ms\&num:sg\&stat:u\\
-%sin\a'{o}r \> pos:n\&root:snr\&ptn:CiCoC\&gen:ms\&num:sg\&stat:u\\
-%sipr\a'{a} \> pos:v\&root:spr\&ptn:piel\&tense:past\&pers:3\&gen:fm\&num:sg\\
-%sipr\a'{u} \> pos:v\&root:spr\&ptn:piel\&tense:past\&pers:3\&gen:unsp\&num:pl\\
-%sipur\a'{e}y \> pos:n\&root:spr\&ptn:CiCuC\&gen:ms\&num:pl\&stat:cstr\\
-%sipur\a'{i}m \> pos:n\&root:spr\&ptn:CiCuC\&gen:ms\&num:pl\&stat:abs\\
-%sip\a'{a}rnu \> pos:v\&root:spr\&ptn:piel\&tense:past\&pers:1\&gen:unsp\&num:pl\\
-%sip\a'{a}rt \> pos:v\&root:spr\&ptn:piel\&tense:past\&pers:2\&gen:fm\&num:sg\\
-%sip\a'{a}rta \> pos:v\&root:spr\&ptn:piel\&tense:past\&pers:2\&gen:ms\&num:sg\\
-%sip\a'{a}rti \> pos:v\&root:spr\&ptn:piel\&tense:past\&pers:1\&gen:unsp\&num:sg\\
-%sip\a'{e}r \> pos:v\&root:spr\&ptn:piel\&tense:past\&pers:3\&gen:ms\&num:sg\\
-%wilon\a'{o}t \> pos:n\&root:wln\&ptn:CiCoCa\&gen:fem\&num:pl\&stat:u\\
-%wil\a'{o}n \> pos:n\&root:wyl\&ptn:CiCon\&gen:ms\&num:sg\&stat:u\\
-%tmun\a'{a} \> pos:n\&root:mnh\&ptn:CCuCa\&gen:fm\&num:sg\&stat:u\\
-%tmun\a'{o}t \> pos:n\&root:mnh\&ptn:CCuCa\&gen:fm\&num:pl\&stat:u\\
-\vdots \> \vdots \\
-\end{tabbing}
-\label{fig:blc-nouns}
-\caption{BLC morphological analyses for nouns}
-\end{mdframed}
-\end{figure}
+%\begin{figure}[t]
+%\begin{mdframed}
+%\begin{tabbing}
+%\hspace{1in} \= \hspace{5.5in} \kill
+%\vdots \> \vdots \\
+%pas \> pos:n\&gen:ms\&num:sg\&stat:unsp\\
+%pas\a'{e}y \> pos:n\&gen:ms\&num:pl\&stat:cstr pos:n\&gen:ms\&num:pl\&stat:bound\\
+%pas\a'{i}m \> pos:n\&\&gen:ms\&num:pl\&stat:abs\\
+%%qi\v{s}q\a'{u}\v{s} \> pos:n\&gen:ms\&num:sg\&stat:u\\
+%%qi\v{s}u\textipa{P}\a'{i}m \> pos:n\&root:q\v{s}	extipa{P}\&ptn:CiCuC\&gen:ms\&num:pl\&stat:abs\\
+%%qi\v{s}u\UTF{1E6D}\a'{i}m \> pos:n\&root:q\v{s}\UTF{1E6D}\&ptn:CiCuC\&gen:ms\&num:pl\&stat:abs\\
+%%qi\v{s}\a'{u}\textipa{P} \> pos:n\&root:q\v{s}\textipa{P}\&ptn:CiCuC\&gen:ms\&num:sg\&stat:u\\
+%%qi\v{s}\a'{u}\UTF{1E6D} \> pos:n\&root:q\v{s}\UTF{1E6D}\&ptn:CiCuC\&gen:ms\&num:sg\&stat:u\\
+%qvuc\a'{a} \> pos:n\&root:qbc\&ptn:CCuCa\&gen:fm\&num:sg\&stat:unsp\\
+%qvuc\a'{o}t \> pos:n\&root:qbc\&ptn:CCuCa\&gen:fm\&num:pl\&stat:bound \\
+%zriq\a'{a} \> pos:n\&root:zrq\&ptn:CCiCa\&gen:fm\&num:sg\&stat:unsp \\
+%zriq\a'{a}t	 \> pos:n\&root:zrq\&ptn:CCiCa\&gen:fm\&num:sg\&stat:bound \\
+%%qlaf \> pos:n\&root:qlp\&ptn:CCaC\&gen:ms\&num:sg\&stat:u\\
+%%qlaf\a'{i}m \> pos:n\&root:qlp\&ptn:CCaC\&gen:ms\&num:pl\&stat:abs\\
+%%siman\a'{i}m \> pos:n\&root:sym\&ptn:CiCan\&gen:ms\&num:pl\&stat:abs\\
+%%sim\a'{a}n \> pos:n\&root:sym\&ptn:CiCan\&gen:ms\&num:sg\&stat:u\\
+%%sin\a'{a}r \> pos:n\&root:snr\&ptn:CiCaC\&gen:ms\&num:sg\&stat:u\\
+%%sin\a'{o}r \> pos:n\&root:snr\&ptn:CiCoC\&gen:ms\&num:sg\&stat:u\\
+%%sipr\a'{a} \> pos:v\&root:spr\&ptn:piel\&tense:past\&pers:3\&gen:fm\&num:sg\\
+%%sipr\a'{u} \> pos:v\&root:spr\&ptn:piel\&tense:past\&pers:3\&gen:unsp\&num:pl\\
+%%sipur\a'{e}y \> pos:n\&root:spr\&ptn:CiCuC\&gen:ms\&num:pl\&stat:cstr\\
+%%sipur\a'{i}m \> pos:n\&root:spr\&ptn:CiCuC\&gen:ms\&num:pl\&stat:abs\\
+%%sip\a'{a}rnu \> pos:v\&root:spr\&ptn:piel\&tense:past\&pers:1\&gen:unsp\&num:pl\\
+%%sip\a'{a}rt \> pos:v\&root:spr\&ptn:piel\&tense:past\&pers:2\&gen:fm\&num:sg\\
+%%sip\a'{a}rta \> pos:v\&root:spr\&ptn:piel\&tense:past\&pers:2\&gen:ms\&num:sg\\
+%%sip\a'{a}rti \> pos:v\&root:spr\&ptn:piel\&tense:past\&pers:1\&gen:unsp\&num:sg\\
+%%sip\a'{e}r \> pos:v\&root:spr\&ptn:piel\&tense:past\&pers:3\&gen:ms\&num:sg\\
+%%wilon\a'{o}t \> pos:n\&root:wln\&ptn:CiCoCa\&gen:fem\&num:pl\&stat:u\\
+%%wil\a'{o}n \> pos:n\&root:wyl\&ptn:CiCon\&gen:ms\&num:sg\&stat:u\\
+%%tmun\a'{a} \> pos:n\&root:mnh\&ptn:CCuCa\&gen:fm\&num:sg\&stat:u\\
+%%tmun\a'{o}t \> pos:n\&root:mnh\&ptn:CCuCa\&gen:fm\&num:pl\&stat:u\\
+%\vdots \> \vdots \\
+%\end{tabbing}
+%\label{fig:blc-nouns}
+%\caption{BLC morphological analyses for nouns}
+%\end{mdframed}
+%\end{figure}
    
    \begin{table}[t]
       \small
@@ -472,8 +486,8 @@ zriq\a'{a}t	 \> pos:n\&root:zrq\&ptn:CCiCa\&gen:fm\&num:sg\&stat:bound \\
 \textsc{f}  &	qvuc\'{a}	& qvuc\'{o}t \\	
     \bottomrule
     \end{tabular}
-    \label{tab:abs-only}
     \caption{Fusional noun endings.}
+    \label{tab:abs-only}
     \end{table}
  The same is true 
 of the feminine plural suffix \textit{-ot}. (See section~\ref{sec:heb-example} for the full argument.)
@@ -500,11 +514,11 @@ feminine singular---take distinctly construct suffixes, as shown in table~\ref{t
 
 \begin{exe}
 %\label{ex:abs-v-cstr}
-\ex \textit{pas\'{i}m \quad weharaq\'{e}vet} \\ \label{ex:free-state}
+\ex \textit{pas\'{i}m \quad weharaq\'{e}vet} \\ \label{ex:free-state} 
 pas-\'{i}m \quad we-ha-raq\'{e}vet \\
 stripe-\textsc{pl} \quad and-the-train \\
 `stripes and the train'
-\ex \textit{pas\'{e}y \quad ha-raq\'{e}vet} \\ \label{ex:construct-phrase}
+\ex  \textit{pas\'{e}y \quad ha-raq\'{e}vet} \\ \label{ex:construct-phrase}
 pas-\'{e}y \quad ha-raq\'{e}vet \\
 stripe-\textsc{cstr.pl} \quad \textsc{def}-train \\
 `the train tracks'
@@ -523,8 +537,8 @@ stripe-\textsc{cstr.pl} \quad \textsc{def}-train \\
      \textsc{construct} & pas & pas\'{e}y & qvuc\'{a}t	& qvuc\'{o}t\\
     \bottomrule
     \end{tabular}
-        \label{tab:cstr-endings}
-     \caption{Masculine and feminine construct forms.}
+     \caption{Masculine and feminine construct forms}
+             \label{tab:cstr-endings}
     \end{table}
     
 %The formal difference between construct and absolute states is not always apparent 
@@ -553,20 +567,20 @@ Therefore, when the BLC category \textit{stat:bound} (i.e., construct state) is 
 (\ref{ex:cstr:f-sg}).
 
 \begin{exe}
-\ex \label{ex:cstr-cats} 
+\ex  
 \begin{xlist}
 		\ex gen:ms\&num:sg \&stat:bound \quad $\to$ \quad \texttt{m\%sg} \label{ex:cstr:m-sg}
 		\ex gen:ms\&num:pl\&stat:bound \quad $\to$ \quad \texttt{cstr\%m\%sg} \label{ex:cstr:m-pl}
 		\ex gen:fm\&num:sg\&stat:bound  \quad $\to$ \quad \texttt{f\%pl} \label{ex:cstr:f-sg}
 		\ex gen:fm\&num:pl\&stat:bound \quad $\to$ \quad \texttt{cstr\%f\%pl} \label{ex:cstr:f-pl}
-	\end{xlist}
-\ex \label{ex:adj-cats} 
+	\end{xlist} \label{ex:cstr-cats}
+\ex  
 \begin{xlist}
 		\ex pos:adj\&gen:ms\&num:sg \quad $\to$ \quad \texttt{adj\&m\%sg} \label{ex:adj:m-sg}
 		\ex pos:adj\&gen:ms\&num:pl \quad $\to$ \quad \texttt{adj\&m\%pl} \label{ex:adj:m-pl}
 		\ex pos:adj\&gen:fm\&num:sg \quad $\to$ \quad \texttt{adj\&f\%sg} \label{ex:adj:f-sg}
 		\ex pos:adj\&gen:fm\&num:pl \quad $\to$ \quad \texttt{adj\&f\%pl} \label{ex:adj:f-pl}
-	\end{xlist}
+	\end{xlist} \label{ex:adj-cats}
 \end{exe}
 
 \item[Adjectives.]
@@ -610,8 +624,8 @@ lack a distinctive adjectival marker.  This is one of many ways in which the cat
    \textsc{f} &  nexmad-\'{i} & nexmad-\'{o}t \\
     \bottomrule
     \end{tabular}
-    \label{tab:non-y-adjs}
     \caption{Inflections of the adjective \textit{nexmad} `pleasant'}
+        \label{tab:non-y-adjs}
     \end{table}
 
 %\begin{table}[ht]
@@ -651,8 +665,8 @@ lack a distinctive adjectival marker.  This is one of many ways in which the cat
 \textsc{f} & meqom-\'{i}-t  & meqom-iy-\'{o}t  \\
 \bottomrule
 \end{tabular}
-\label{tab:der-adjs}
 \caption{Inflections of the adjective \textit{maqom\'{i}} `local,' derived from the noun for \textit{maqom} `place' via the suffix \textit{-i}/\textit{-y}}
+\label{tab:der-adjs}
 \end{table}
 
 %\texttt{cstr\%f\%mass}
@@ -763,8 +777,8 @@ while the latter corresponds to a particular \emph{cell} in this table.
    \textsc{3.f} & hi\textipa{P} &  hen \\
     \bottomrule
 \end{tabular}
-\label{tab:pers-pronouns}
 \caption{Personal pronouns}
+\label{tab:pers-pronouns}
 \end{table}
 
 \begin{table}[tb!]  
@@ -779,8 +793,8 @@ while the latter corresponds to a particular \emph{cell} in this table.
 \textsc{f} & \{ zo, zo\textipa{P}t \}  &  {\textglotstop}\'{e}lu \\
    \bottomrule
   \end{tabular}
-  \label{tab:dem-pronouns}
 \caption{Demonstrative pronouns}
+  \label{tab:dem-pronouns}
   \end{table}
   
 %  \begin{exe}
@@ -794,26 +808,26 @@ while the latter corresponds to a particular \emph{cell} in this table.
 %	\end{xlist}
 %\end{exe}
 
-  \begin{figure}[t]
-  \begin{mdframed}
- \begin{tabbing}
-\hspace{1in} \= \hspace{5.5in} \kill
-\v{s}ehem \> pre:sh\&pre:sh\&pos:pro:person\&pers:3\&gen:ms\&num:pl \\
-\v{s}ehen \> pre:sh\&pre:sh\&pos:pro\_person\&pers:3\&gen:fm\&num:pl\\
-\v{s}e\textipa{P}an\a'{i} \> pre:sh\&pos:pro:person\&pers:1\&num:sg \\
-\v{s}e\textipa{P}at\a'{a} \> pre:sh\&pre:sh\&pos:pro\_person\&pers:2\&gen:ms\&num:sg\\
-\v{s}e\textipa{P}at\a'{e}m \> pre:sh\&pre:sh\&pos:pro\_person\&pers:2\&gen:ms\&num:pl\\
-\textipa{P}an\a'{a}xnu \> pos:pro:person\&pers:1\&num:pl\\
-\textipa{P}an\a'{i} \> pos:pro:person\&pers:1\&num:sg\\
-\textipa{P}at\a'{e}m \> pos:pro:person\&pers:2\&gen:ms\&num:pl\\
-\textipa{P}at\a'{e}n \> pos:pro:person\&pers:2\&gen:fm\&num:pl\\
-hu\textipa{P} \> pos:pro:person\&pers:3\&gen:ms\&num:sg \\
-hi\textipa{P} \> pos:pro:person\&pers:3\&gen:fm\&num:sg \\
-\end{tabbing}
-\caption{Personal-pronoun analyses extracted from the BLC}
-\end{mdframed}
-\label{fig:pers-pronoun-analyses}
-\end{figure}
+%  \begin{figure}[t]
+%  \begin{mdframed}
+% \begin{tabbing}
+%\hspace{1in} \= \hspace{5.5in} \kill
+%\v{s}ehem \> pre:sh\&pre:sh\&pos:pro:person\&pers:3\&gen:ms\&num:pl \\
+%\v{s}ehen \> pre:sh\&pre:sh\&pos:pro\_person\&pers:3\&gen:fm\&num:pl\\
+%\v{s}e\textipa{P}an\a'{i} \> pre:sh\&pos:pro:person\&pers:1\&num:sg \\
+%\v{s}e\textipa{P}at\a'{a} \> pre:sh\&pre:sh\&pos:pro\_person\&pers:2\&gen:ms\&num:sg\\
+%\v{s}e\textipa{P}at\a'{e}m \> pre:sh\&pre:sh\&pos:pro\_person\&pers:2\&gen:ms\&num:pl\\
+%\textipa{P}an\a'{a}xnu \> pos:pro:person\&pers:1\&num:pl\\
+%\textipa{P}an\a'{i} \> pos:pro:person\&pers:1\&num:sg\\
+%\textipa{P}at\a'{e}m \> pos:pro:person\&pers:2\&gen:ms\&num:pl\\
+%\textipa{P}at\a'{e}n \> pos:pro:person\&pers:2\&gen:fm\&num:pl\\
+%hu\textipa{P} \> pos:pro:person\&pers:3\&gen:ms\&num:sg \\
+%hi\textipa{P} \> pos:pro:person\&pers:3\&gen:fm\&num:sg \\
+%\end{tabbing}
+%\caption{Personal-pronoun analyses extracted from the BLC}
+%\end{mdframed}
+%\label{fig:pers-pronoun-analyses}
+%\end{figure}
 
 \item[Pronominal suffixes] can attach to both nouns and prepositions. When attached to nouns, they function as genitive---or possessive---pronouns, as in \textit{\textsubdot{t}ipot-\'{a}y} `my drops' (cf. \textsubdot{t}ip\'{o}t `drops').
 In the latter case, they serve as the NP complement (i.e., the object) of the preposition 
@@ -864,8 +878,8 @@ There are two sets
 of pronominal suffixes: one set for singular noun stems and another for plural noun stems. 
 That is, the members of the first set, presented in table~\ref{subtab:pron-suf-sg}, 
 attach to singular nouns, while the members of the second set, shown in table~\ref{subtab:pron-suf-pl} 
-attach to plural nouns. 
-Even though prepositions themselves have no number (nor person or gender). 
+attach to plural nouns, 
+even though prepositions themselves have no number (nor person or gender). 
 Nevertheless, some prepositions, e.g., the prefixal preposition \textit{le-}, 
 take singular-stem pronominal suffixes, while others, e.g., \textit{\textipa{Q}al} `on,'
 take plural-stem-attaching suffixes. Thus, in example~(\ref{ex:prep-pro-to}), 
@@ -917,7 +931,7 @@ and (\ref{ex:prep-pro-on}). The BLC analyses for such suffix-bearing
 prepositions look much 
 like its analyses for free-standing pronouns. 
 In our category mappings, therefore, we treat the analyses of suffix-bearing 
-prepositions as do those 
+prepositions as we do those 
 of personal pronouns. That is, we map person and gender onto a person-and-gender gold-standard
 category, and then person, gender, and number onto another gold-standard class.
 Thus, the BLC analysis for \textit{\textipa{Q}al-\'{a}yi\textsubdot{k}}, 
@@ -926,7 +940,7 @@ is mapped onto the two gold-standard classes \texttt{prep:pro\%2\%m} and
 \texttt{prep:pro\%2\%m\%sg}.
 
 We retain the BLC's possessive person-number-gender feature, so that \texttt{poss:3mascSG},
-for example, became \texttt{[pro\_suf:3mascSG}.\footnote{The replacement of \texttt{poss:} with 
+for example, became \texttt{pro\_suf:3mascSG}.\footnote{The replacement of \texttt{poss:} with 
 \texttt{pro\_suf:3mascSG} was merely aesthetic and thus had no real effect.}
 We additionally introduced the gold-standard class \texttt{pro\_suf\_state}, a class that applies to
 all nouns bearing a pronominal suffix, regardless of the suffix's particular
@@ -1606,11 +1620,11 @@ and the set $\mathbf{V}$ replaces $\mathbf{U}$ in the $\text{Avg}$ function's su
 
 \subsection{Extrinsic Evaluation} \label{sec:eval-extrinsic} An \emph{extrinsic evaluation} 
 views a system as an embedded component of a larger system, i.e., as an ``upstream'' system that feeds a ``downstream''
-system. An extrinsic evaluation makes sense in the case Multimorph because it learns autonomous morphological units---i.e., \emph{morphs}---which are intermediate by nature (see chapter~\ref{autonomous}).
+system. An extrinsic evaluation makes sense in the case of  Multimorph because it learns autonomous morphological units---i.e., \emph{morphs}---which are intermediate by nature (see chapter~\ref{autonomous}).
 Multimorph is thus naturally conducive to functioning as an embedded system---as an intermediate step in a larger process
 
 Even though the ultimate purpose of an extrinsic evaluation is to evaluate the embedded---or upstream---system,
- but it does so by evaluating the downstream' system, since the
+it does so by evaluating the downstream' system, since the
  performance of the downstream system depends on that of the upstream system. 
  The assumption is thus that an evaluation of the downstream system is tantamount to an evaluation of the upstream system.
 % the upstream system performs poorly, and 
@@ -1669,7 +1683,7 @@ Multimorph finds \emph{useful} intermediate morphological units, i.e., units tha
 complexity of an input wordlist in a way that could be helpful to a downstream process.
 \end{quotation}
 where the downstream process was Morfessor in our case.
-The central assumption here was that ``helpfulness to a downstream process''  would manifest as an improved performance in the downstream process (i.e., Morfessor). %the downstream system, namely in our case. 
+%The central assumption here was that ``helpfulness to a downstream process''  would manifest as an improved performance in the downstream process (i.e., Morfessor). %the downstream system, namely in our case. 
 % systMorfessor's task by \emph{pre-processing} its input wordlist---that is, by identifying intermediate morphological units and thus producing a less complex \emph{intermediate wordlist} that will be easieMorfessor to n analyze for can analyze more easily and effectively than the original wordlist.
 %\end{quotation}
 %The purpose of the extrinsic evaluation was essentially to test this hypothesis. 
@@ -1761,8 +1775,8 @@ It what follows we discuss these four stages in
    \draw[->] (stage2) -- (stage3);
    \draw[->] (stage3) -- (stage4);
 \end{tikzpicture}
-\label{fig:four-stages-flowchart}
 \caption{The four stages of the extrinsic evaluation process.}
+\label{fig:four-stages-flowchart}
 \end{figure}
 
 
@@ -1824,7 +1838,7 @@ the matrices $\mathbf{M}$ and $\mathbf{C}$. As described in
 chapter~\ref{ch:MCMM}, the $\mathbf{M}$ contains a cluster-membership 
 vector for each data point (i.e., word), while the matrix $\mathbf{C}$ contains 
 each cluster's ``average'' vector or \emph{centroid}, i.e., the intersection 
-of its members active features (See the example in section~\ref{subsec:example}.)
+of its members' active features (See the example in section~\ref{subsec:example}.)
 A cluster's centroid thus concisely expresses the relationship between the cluster's members, which, ultimately, is the cluster's meaning. 
 Cluster centroids can therefore be used as cluster labels. In our case, however, a centroid is a vector of $J$ feature activities, each of which is a number in the interval $[0,1]$. 
 The goal of Stage 1 was to convert each centroid---a numerical, 
@@ -1865,7 +1879,7 @@ string, so groups that can be identified by group indices, i.e., by their positi
 in the matching string.
 The following examples show five fully-specified instantiations of the mapping rule \eqref{eq:positional-to-regex}:
 \begin{exe}
-\ex 
+\ex \label{ex:positional-morphs}
 \begin{xlist}
 \begin{tabbing}
 \hspace{0.7in} \= \hspace{0.5in} \=  \hspace{4.5in} \kill
@@ -1876,7 +1890,6 @@ The following examples show five fully-specified instantiations of the mapping r
  \texttt{u}\textrm{@}\texttt{[-3]} \>   $\to$   \>   \texttt{(u)} \\
 \end{tabbing}
 \end{xlist}
-\label{ex:positional-morphs}
 \end{exe}
 
 \begin{figure}[t]
@@ -1893,8 +1906,8 @@ The following examples show five fully-specified instantiations of the mapping r
 \end{tabbing}
 \caption{Regular-expression building blocks for atomic precedent features. Note that in these definitions, the phrase \emph{unspecified character} %is simply a ``nonspecific character''
 and is synonymous with \emph{any character}. }
-\end{mdframed}
 \label{fig:regex-defs}
+\end{mdframed}
 \end{figure}
 
 Precedence features, as discussed in chapter~\ref{ch:experi}, take the form
@@ -1964,7 +1977,7 @@ can also create composite regular expressions. For example, the
 features \, \texttt{d<b}\,  and \, \texttt{b<r} \, would together yield the 
 composite expression \, \texttt{(d).?(b).?(r)} \, (that is, if $\delta = 2$). 
 In general, two precedence features $\alpha$<$\beta$ and $\gamma$<$\delta$
-merge if $\gamma=\delta$.
+merge if $\beta=\gamma$.
 \begin{equation}
 \alpha\texttt{<} \beta \, ,\,\, \gamma \texttt{<} \eta  \quad \mapsto \quad \texttt{(} \alpha \texttt{)}  \,\, 
 {\{\texttt{.?}\}}^{\delta-1} \,\, \texttt{(}\beta \texttt{)} \,\,{\{\texttt{.?}\}}^{\delta-1} \, \, \texttt{(} \eta \texttt{)} \qquad \quad \text{if $\beta = \gamma$} 
@@ -2197,7 +2210,7 @@ vector $\mathbf{r}_{i}$. Specifically, the element $r_{i,j}$ is the \emph{activi
 of the $j$th feature of the $i$th reconstruction vector. A feature's 
 activity is a number between 0 and 1 that indicates the degree of the 
 feature's ``\textsc{off}-ness'' or ``\textsc{on}-ness,'' respectively. A 
-feature's activity can itself be thought of as weight because it indicates 
+feature's activity can itself be thought of as a weight because it indicates 
 the model's confidence in the feature's presence, i.e., it's ability to 
 account for the feauture (see the discussion of the mixing function in section~\ref{sec:mixing-function}). 
 Since features compose morphs, the activities of individual features served as base cases for deriving the weights of morphs. That is, the weight of a given morph's was computed by averaging the activities of its component features. 
@@ -2206,7 +2219,7 @@ sequences of identical morphs, such as the initial two 64s in the case of \texti
 we add the following to the basic averaging rule: 
 \begin{quote}\noindent
 Given a path of morph IDs, 
-whenever a morph ID is repeated, and it is sufficiently close to its preceding instances (i.e., with no more than three intervening positions, the path's weight is \emph{doubled}.
+whenever a morph ID is repeated, and it is sufficiently close to its preceding instances (i.e., with no more than three intervening positions), the path's weight is \emph{doubled}.
 \end{quote}
 
 Figure~\ref{fig:best-paths} illustrates the 
@@ -2227,10 +2240,11 @@ Consecutive morph IDs were simply mapped onto a \emph{single} instance of the sa
 \texttt{64, 64} \quad \mapsto \quad \texttt{64}
 \end{equation*}
 However, sometimes optimal paths
-exhibit morph interdigitation, as does our optimal path \eqref{eq:best-path}, in which morphs 148 and 248 are interleaved. 
-Because Morfessor does not deal 
-with interdigitation, Stage 3 collapsed sequences of interleaved morphs into two adjacent monolithic
-morphs; that is, 
+exhibit morph interdigitation, as does our optimal path \eqref{eq:best-path}, in which morphs 148 and 264 are interleaved. 
+%Because Morfessor does not deal 
+%with interdigitation, 
+Stage 3, however, collapsed sequences of interleaved morphs into two adjacent monolithic
+morphs. That is,
 \begin{equation*}
 \texttt{148, 264, 148, 264, 264} \quad \mapsto \quad \texttt{148, 264}
 \end{equation*}
@@ -2587,7 +2601,7 @@ a quantitative component. Moreover, the quantitative component had two complemen
 
 The instrinsic evaluation required a set of gold-standard morphological word-to-morphological-category mappings. We took the morphological analyses from thee Berman Longitudinal Corpus to serve gold-standard class assignments, since we lacked a gold-standard set of morph or morphome mappings. However, we had to modify these categories considerably, mapping them onto categories that were based more closely on form rather than abstract morphosyntactic category. These mappings were limited, though, since, if taken to an extreme, they would became tantamount to carrying out an morph/morphome annotation from scratch.
 
-The extrinsic evaluation regarded Multimorph as an intermediated step in a larger process. It tested the hypothesis that Multimorph could ``pre-digest'' a wordlist for Morfessor and thus improve Morfessor's performance on that
+The extrinsic evaluation regarded Multimorph as an intermediate step in a larger process. It tested the hypothesis that Multimorph could ``pre-digest'' a wordlist for Morfessor and thus improve Morfessor's performance on that
 wordlist.
 
 In the next chapter, we examine the results of these evaluation approaches.

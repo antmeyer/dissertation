@@ -12,7 +12,7 @@ a qualitative component and a dual-paradigm quantitative component, i.e., a quan
 Recall that Multimorph's output, in its raw form,
 consists of two matrices, $\mathbf{M}$ and $\mathbf{C}$.\footnote{These 
 matrices are actually by-products of the MCMM's attempt to reconstruct its original 
-data points (see chapter~\ref{ch:MMMM}).} While these are numerical matrices,
+data points (see chapter~\ref{ch:MCMM}).} While these are numerical matrices,
 they together encode a \emph{clustering} of words, and they can be converted (or decoded) 
 into such via algorithm~\ref{alg:members}, which we presented in section~\ref{sec:intrinsic} 
 of the preceding chapter. 
@@ -82,7 +82,7 @@ should continue until the global reconstruction falls below a predesignated
 threshold $\epsilon$, which is close to $0$ (e.g., 0.0001).  For this study, $\epsilon$ was
  set at $0.0001$, 
 %falls below a threshold $\epsilon$ close to 0, such as $\epsilon = 0.0001$).
-In theory, therefore, Multimorph should have created just enough clusters to decrease its error to $\epsilon$\footnote{In this study, $\epsilon$ was set to $0.0001$, a valuation that turned out to be moot, however, as Multimorph's error never reached it.}
+In theory, therefore, Multimorph should have created just enough clusters to decrease its error to $\epsilon$.\footnote{In this study, $\epsilon$ was set to $0.0001$, a valuation that turned out to be moot, however, as Multimorph's error never reached it.}
 %to $\epsilon$ or below it.
 In practice, however,
 % in the course of this dissertation's experiments,
@@ -150,9 +150,9 @@ hmikl \> enstkl \> blklk \> htlklkh \> \textbf{a}st\textbf{k}\textbf{l} \> h\tex
 \end{tabbing}
 \end{small}
 \end{mdframed}
-\label{fig:cluster-182-1-3-O}
 \vspace{-4pt}
 \caption{Thirty words randomly selected from the 97 members of cluster 182 from the settings $s=1,\delta =3$, data representation: O}
+\label{fig:cluster-182-1-3-O}
 \end{mdframed}
 \end{figure}
 
@@ -189,9 +189,9 @@ h\textbf{a}w\textbf{k}\textbf{l} \> ehkwl \> \textbf{a}w\textbf{k}\textbf{l}t \>
 \end{tabbing}
 \end{mdframed}
 \end{small}
-\label{fig:cluster-91-3-2-O}
 \vspace{-5pt}
 \caption{Thirty words randomly selected from the 42 members of cluster 91 from the settings $s=3,\delta =2$, data representation: O}
+\label{fig:cluster-91-3-2-O}
 \end{mdframed}
 \end{figure}
 
@@ -232,8 +232,8 @@ h\textbf{a}\textbf{k}\textbf{l}ti \> \textbf{a}\textbf{k}\textbf{l}i \> enw\text
 \end{mdframed}
 \end{small}
 \vspace{-5pt}
-\label{fig:cluster-81-2-2-O}
 \caption{Thirty words randomly selected from the 35 members of cluster 81 from the settings $s=2,\delta =2$, data representation: O}
+\label{fig:cluster-81-2-2-O}
 \end{mdframed}
 \end{figure}
 
@@ -270,8 +270,8 @@ we\textbf{\textipa{P}}a\textbf{\textsubdot{k}}\a'{a}\textbf{l} \> leyad\textsubd
 \end{tabbing}
 \end{small}
 \end{mdframed}
-\label{fig:cluster-33-0-2-TS}
 \caption{Thirty words randomly selected from the 163 members of cluster 33 from the settings $s=0,\delta =2$, data representation: TS}
+\label{fig:cluster-33-0-2-TS}
 \end{mdframed}
 \end{figure}
 
@@ -311,8 +311,8 @@ basandal\a'{i}m \> ma\textbf{d}\textbf{l}i\textbf{q}\a'{a} \> hi\textbf{d}\textb
 \end{small}
 \end{mdframed}
 \vspace{-5pt}
-\label{fig:cluster-339-4-3-TS}
 \caption{Thirty words randomly selected from the 59 members of cluster 339 from the settings $s=4,\delta =3$, data representation: TS}
+\label{fig:cluster-339-4-3-TS}
 \end{mdframed}
 \end{figure}
 
@@ -345,8 +345,8 @@ haqos\a'{e}m \> \textipa{P}axam\a'{e}m \> meqalq\a'{e}l \> \v{s}emi\v{s}tal\v{s}
 \end{small}
 \end{mdframed}
 \vspace{-3pt}
-\label{fig:cluster-19-2-3-TS}
 \caption{Thirty words randomly selected from the 1052 members of cluster 19 from the settings $s=2,\delta =3$, data representation: TS}
+\label{fig:cluster-19-2-3-TS}
 \end{mdframed}
 \end{figure}
 
@@ -374,7 +374,7 @@ both concatenative and nonconcatenative morphs. In general, the the most promine
 suffixes \textit{-im}
 and \textit{-wt}, corresponded to clusters with low indices, as the MCMM tended to discover these clusters first. The most 
 prominent morphs are generally concatenative affixes and nonconcatenative vowel patterns. Thus, in the 
-$\langle s=4, \delta=3\rangle$ clustering, for instance, the first cluster (i.e., the cluster indexed 0) corresponded to the morph \textit{-\'{e}\_et}, 
+$\langle s=4, \delta=3\rangle$ clustering, for instance, the first cluster (i.e., the cluster indexed 0) corresponded to the morph \textit{-\'{e}\_et}.\footnote{The \_ here represents a single slot occupied by a consonant of a \emph{different} morph, namely the root. The \_  thus indicates discontiguity.}
 a common feminine ending for participles.
 
 %\begin{center}
@@ -385,9 +385,9 @@ as many as corresponded to affixes and vowel patterns.
 %There are a many more unique roots in Hebrew
 %than unique vowel patterns and affixal morphs, since roots are lexical, but individual roots tend to occur at far lower frequencies than 
 %morphs that serve morphosyntactic purposes.
-also tended to occur at higher cluster indices; that is, the 
+Roots also tended to occur at higher cluster indices; that is, the 
 MCMM tended to find them later during the learning process. 
-Individual roots to not occur in as many distinct words
+Individual roots do not occur in as many distinct words
 as concatenative morphs and vowel patterns, since roots are entirely lexical in nature. Root clusters thus tend to be among the smallest of clusters.
 
 There were in root clusters
@@ -400,21 +400,23 @@ take in more consonants at once than in the transcriptional datasets.
 
 This section provides examples of some of the MCMM's clusters in a series of figures---examples in the form of random samples taken from the original clusters' members. Each of these figures is a box that contains, first, thirty words randomly selected from a particular cluster,
 and, second, the ten most active features in the cluster's centroid. 
-The first four figures all give samples of  clusters corresponding to the root \textit{\textipa{P}.k.l}; 
-
-Figures~\ref{fig:cluster-182-1-3-O} shows a word sample from a cluster corresponding to a root, namely \textit{\textipa{P}.k.l}, which appears in words pertaining to eating, for example, %\textit{\textipa{P}o\textsubdot{k}\'el\} `he/it is eating,'
-\textit{\textipa{P}a\textsubdot{k}\'al} `he/it ate' and \textit{\textipa{P}a\textsubdot{k}il\'a} `eating.' 
-This is cluster $k = 182$,   
-in the clustering $\langle s=1, \delta=3 \rangle$. Its data source was the orthographic data set. Its words are expressed in the (transliterated) orthographic alphabet (see the discussion in chapter~\ref{ch:experi}. Thus, \textit{\textipa{P}.k.l} becomes \textit{a.k.l}, for instance.
-%generated at the parameter settings $\langel s=1$ $\delta=3 \rangle$. 
+The first four figures all give word samples from clusters corresponding to the root \textit{\textipa{P}.k.l}, which is associated with the concept of eating, as in, for instance, \textit{\textipa{P}a\textsubdot{k}\'al} `he/it ate' and \textit{\textipa{P}a\textsubdot{k}il\'a} `eating.'  
+Figure~\ref{fig:cluster-182-1-3-O} samples the words from cluster $k = 182$   
+in the clustering $\langle s=1, \delta=3 \rangle$.
+Its data source was the orthographic data set, and so its words are expressed in the (transliterated) orthographic alphabet (see the discussion in chapter~\ref{ch:experi}). Thus, \textit{\textipa{P}.k.l} becomes \textit{a.k.l}.
+% shows a word sample from a cluster corresponding to a root, namely \textit{\textipa{P}.k.l}, which appears in words pertaining to eating, for example, %\textit{\textipa{P}o\textsubdot{k}\'el\} `he/it is eating,'
+%\textit{\textipa{P}a\textsubdot{k}\'al} `he/it ate' and \textit{\textipa{P}a\textsubdot{k}il\'a} `eating.' 
+%This is cluster $k = 182$   
+%in the clustering $\langle s=1, \delta=3 \rangle$. Its data source was the orthographic data set. Its words are expressed in the (transliterated) orthographic alphabet (see the discussion in chapter~\ref{ch:experi}). Thus, \textit{\textipa{P}.k.l} becomes \textit{a.k.l}, for instance.
+%%generated at the parameter settings $\langel s=1$ $\delta=3 \rangle$. 
 In the words that actually contain the root \textit{a.k.l}, the letters \textbf{a}, \textbf{k}, and \textbf{l} appear in boldface.
 Notice that not all of the words have this root.
 
 Figures~\ref{fig:cluster-91-3-2-O} and \ref{fig:cluster-81-2-2-O} correspond to \textit{a.k.l}
-(i.e., \textit{\textipa{P}.k.l}) clusters from other clusterings, namely those generated at
+(\textit{\textipa{P}.k.l}) clusters from other clusterings, namely the clusterings generated at
 $\langle s=3, \delta=2 \rangle$ and $\langle s=2, \delta=2 \rangle$, respectively. 
 Notice that each of these clusters is better than the previous one in that each is 
-a \emph{purer} representation of the root \textit{a.k.l} (= \textit{\textipa{P}.k.l}); that is,
+a \emph{purer} representation of the root \textit{a.k.l} (\textit{\textipa{P}.k.l}); that is,
 each has a greater proportion of words that actually contain \textit{a.k.l}.
 Furthermore, observe that the two \emph{most} active feature for each of these clusters are
 \begin{center}
@@ -423,7 +425,7 @@ Furthermore, observe that the two \emph{most} active feature for each of these c
 This makes sense. Clearly, no other feature, except perhaps \texttt{a<l}, would be as helpful in 
 encoding the nonconcatenative sequence \textit{a.k.l}.
 In figure~\ref{fig:cluster-182-1-3-O}, the activities of \texttt{k<l} and \texttt{a<k} are 1.0 and 0.8271, respectively.
-Figure~\ref{fig:cluster-91-3-2-O}, showing purer cluster, has these features at activities 1.0 and 1.0. It also has \texttt{a<l} among its top ten features, 
+Figure~\ref{fig:cluster-91-3-2-O}, showing a purer cluster, has these features at activities 1.0 and 1.0. It also has \texttt{a<l} among its top ten features, 
 at an activity of 0.4196, a low activity to be sure, but this feature does not appear at all among the top-ten features of the preceding
 cluster. 
 Finally, figure~\ref{fig:cluster-81-2-2-O}, the purest of these three clusters, has all three of the features \texttt{k<l}, \texttt{a<k}, \texttt{a<l} among
@@ -436,18 +438,18 @@ having come from the transcriptional dataset with accent-marking. This cluster w
 Figure~\ref{fig:cluster-33-0-2-TS} shows partial success in finding the root 
 \textit{\textipa{P}.k.l}, though less than the preceding three figures. This is
  probably not due to the absence of positional features, however, since positional 
- features do not seem conducing to representing a nonconcatenative sequence of 
- symbols such as a Hebrew root. The boldface letters in figure~\ref{fig:cluster-33-0-2-TS} 
+ features do not seem conducive to representing a sequence of characters whose positions may vary.
+ 
+ The boldface letters in figure~\ref{fig:cluster-33-0-2-TS} 
  demonstrate the positional variability of root consonants from word to word. 
- Positional features are thus likely not to be of much help in representing a root. 
- The mere addition of a prefixes changes the root characters' positions from \textit{\textbf{\textipa{P}}a\textbf{\textsubdot{k}}\a'{a}\textbf{l}} to \textit{we\textbf{\textipa{P}}a\textbf{\textsubdot{k}}\a'{a}\textbf{l}}. 
- But the positions of the root consonants relative to each other can also vary, 
+ The mere addition of a prefix changes a root characters' positions, as it does when \textit{we-} is added to \textit{\textbf{\textipa{P}}a\textbf{\textsubdot{k}}\a'{a}\textbf{l}} to yield \textit{we\textbf{\textipa{P}}a\textbf{\textsubdot{k}}\a'{a}\textbf{l}}. 
+ But the positions of root consonants can also vary \textit{relative to each other}.  
  as does the position of the \textit{l} relative to the \textit{x} in \textit{we\textbf{\textipa{P}}a\textbf{\textsubdot{k}}\a'{a}\textbf{l}} and \textit{we\textbf{\textipa{P}}a\textbf{\textsubdot{k}}\textbf{l}\a'{u}}. 
 %It is not clear exactly why this cluster is not as good as the preceding clusters. What is clear, however, is that this cluster's poorer 
-Let's take a closer look at the features of this bad boy.
-Do we see anything curious?
-This cluster's centroid features are not ideal for the root \textit{\textipa{P}.k.l}. Note the activities of the features 
-{\textipa{P}<\textsubdot{k}} (= orthographic \texttt{a<k}) and \texttt{\textsubdot{k}<l} (= orthographic \texttt{k<l}):  0.4984 and
+%Let's take a closer look at the features of this bad boy.
+%Do we see anything curious?
+Taking a closer look at this cluster's top ten centroid features, it becomes clear they are not ideal for capturing the root \textit{\textipa{P}.k.l}. Note the activities of the features 
+{\textipa{P}<\textsubdot{k}} (= orthographic \texttt{a<k}) and \texttt{\textsubdot{k}<l} (= orthographic \texttt{k<l}): 0.4984 and
  0.7588, respectively.  Notice that many of the features reference a vowel. 
 %at in figure~\ref{fig:cluster-33-0-2-TS} particularly well with
 % If we could choose features and their activities
@@ -468,14 +470,14 @@ occurrences of root \textit{d.l.q}, namely its co-occurrences with \textit{i}.
 
 Our last cluster example in this section is the one in figure~\ref{fig:cluster-19-2-3-TS}. It demonstrates 
 Multimorph's capacity to learn vowel patterns. The pattern in this case is \textit{a.\'{e}}.
- It is a morphological component of \textit{Hitpa`el} binyan, 
-as in \textit{mitrax\a'{e}c},  
+ It is a morphological component of the \textit{Hitpa`el} binyan, 
+as in \textit{mitrax\a'{e}c}, as well as the 
 the prefix stem of the \textit{Pi`el},
 e.g., \textit{teqal\a'{e}f}.
 As in the case of roots, precedence features seem to be better suited to capturing vowel patterns than positional features.
-In general, the precedent feature type seems to be essential for representative 
+In general, the precedent feature type seems to be essential for representing
 nonconcatenative phenomena of any kind. 
-Positional features, by contrast, are not essential for representing nonconcatenative morphs, and could be 
+Positional features, by contrast, do not appear to be essential for representing nonconcatenative morphs, and they could even be 
 detrimental.
 
 % \texttt{d<q} \> (0.798) \> \texttt{\a'{i}<q} \> (0.501)\\
@@ -947,13 +949,13 @@ performed better than those trained on stressless transcriptions.
 We also must note the precipitous drop in coverage in the orthographic models. In table~\ref{subtab:intr-O-500}, the coverage drops from 11051 to 4488 precisely when $s=0$ becomes $s=1$. Table~\ref{subtab:intr-O-1000} shows essentially the same drop and at precisely the same $s$ value (i.e., affix length).  In both of these tables, the coverage decreases even further as $s$ increases to $s=3$.  %low at $s=2$ and $s=3$, even decreasing further, by another 1000 words, in fact. 
 We do not see this decrease in the transcriptional models. %Apparently the introduction of positional features  
 At the same time, $K^{\prime}$, the number of clusters with at least one active member, is maximized in the orthographic models at $s = 1$, precisely when the coverage is lowest, indicating a greater degree overlap between the clusters. Perhaps the positional features encourage the MCMM to pay more attention to words containing positional regularities, as in cases of frequent affixes.  %highly frequent suffix or beginning with a highly frequent prefix. %($K=500$)
-Positional features are intrinsically more specific than precedence features. Precedence features specify a pair of characters, but not the particular \emph{indices} of these characters within the word. Depending on $\delta$. The distance between the characters is not even specified for most values of $\delta$ (see section~\ref{sec:features}).
+Positional features are intrinsically more specific than precedence features. Precedence features each specify a pair of characters, but not the particular \emph{indices} of these characters within the word. The distance between the characters is not even specified for most values of $\delta$ (see section~\ref{sec:features}).
 % be range of values, with the size of this range and thus the amount of vagueness varying in direct proportion to $\delta$. The size of the span is fully specified only when $\delta=1$, in which case there is no span, i.e. the two characters must be adjacent (see section~\ref{}).
 %  even specific they can allow a range of different span lengthsPrecedence as 
 %Perhaps this constriction is a consequence of the greater degree of specificity in positional features as compared to precedence features.
 
 Because of their specificity, positional features perhaps make it generally harder for a word to gain membership in a cluster, hence he abrupt decrease in coverage once positional features are introduced. The reason we see this dramatic decrease only in the orthographic data could be due to the following factors: 
-There are lot more precedence features in the transcriptional feature sets than in the orthographic feature set. The number of precedence features for a particular alphabet is the size of the alphabet \emph{squared}. For example, the size of the orthographic alphabet is 22, so the number of orthographic precedence features is $22^2 = 484$. By contrast, there are 49 characters in the TS alphabet is 39 and thus $39^2 = 1521$.\footnote{Features that never occurred emong the actual words of the dataset in question dataset were deleted, so the actual numbers were somewhat lower than these.}
+There are lot more precedence features in the transcriptional feature sets than in the orthographic feature set. The number of precedence features for a particular alphabet is the size of the alphabet \emph{squared}. For example, the size of the orthographic alphabet is 22, so the number of orthographic precedence features is $22^2 = 484$. By contrast, there are 49 characters in the TS alphabet is 39, and $39^2 = 1521$.\footnote{Features that never occurred among the actual words of the dataset in question dataset were deleted, so the actual numbers were somewhat lower than these.}
 
 
 %By contrast, the number positional features is
@@ -979,8 +981,8 @@ Perhaps the constriction in the number words covered in the orthographic cluster
 %was the result of the interacting factors:
 %Regularities become more specific, and thus clusters would become more specific, more definite and distinguished if the system is given small number of highly useful features (i.e., positional features corresponding to the extreme edges of words.
 Precedence features have a built-in degree of vagueness.
-Because of their specificity, positional features might make it harder for a word to gain membership in a cluster. At the edges of words, this increased specificity seems to have had a positive effect, as \dots
-whereas F-scores tend to be lower where $s = 2$ and $s=3$. Moreover, the coverage in the orthographic clusters decreased even further at $s$
+Because of their specificity, positional features might make it harder for a word to gain membership in a cluster. At the edges of words, this increased specificity seems to have had a positive effect.
+ F-scores tended to be lower where $s = 2$ and $s=3$. Moreover, the coverage in the orthographic clusters decreased even further at $s$
 values greater than 1. 
 %noncatenative regularities would be less frequent in orthographically-represnted, as would concatenative regularities, in fact, since the introduction of vowels increases the number of detectible categories. 
 %However, %the  tables~\ref{tab:intr-500} and \ref{tab:intr-100}, 

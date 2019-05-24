@@ -158,6 +158,13 @@
 %\renewcommand{\marginpar}[1]{}
 
 %\includeonly{ch-LitReview}
+\makeatletter
+\let\X@old@caption\caption
+\def\X@caption@minusone{\expandafter\advance\csname c@\@captype\endcsname-1 }
+\def\X@caption@br[#1]#2{\X@old@caption[#1]{#2}\X@caption@minusone}
+\def\X@caption@nobr#1{\X@old@caption{#1}\X@caption@minusone}
+\def\caption{\@ifnextchar[\X@caption@br\X@caption@nobr}
+\makeatother
 
 \begin{document}
 %\renewcommand{\theequation}{\roman{equation}}

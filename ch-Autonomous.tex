@@ -5,7 +5,7 @@
 Many morphologists in recent decades have rejected the notion of the morpheme---a concept that inextricably binds morphology to syntax and semantics---in favor of approaches that regard morphology as autonomous, i.e., as independent 
 of both syntax/semantics and phonology. The principle objective of this chapter is to 
 show that autonomous morphological units are legitimate learning targets for a \ac{ULM}  system. In fact, as we will soon see, autonomous morphology is more than just legitimate; it is the only possible learning target for \ac{ULM}  as it is conventionally defined.
-In the course of the discussion, we shall consider some of the more prominent theories of autonomous morphology, contrasting them with ``non-automonous" approaches, and  noting their significance to \ac{ULM} (and Multimorph in particular).
+In the course of the discussion, we shall consider some of the more prominent theories of autonomous morphology, contrasting them with ``non-automonous'' approaches, and  noting their significance to \ac{ULM} (and Multimorph in particular).
 
 
 \section{The Unsupervised Learning of \textit{What}, Exactly?}
@@ -30,10 +30,10 @@ work provides a good means for the segmentation of words into
 \textbf{morphemes} \citep[][p. 6]{creutz-and-lagus:2007}. 
 \ex``[W]e have demonstrated how the meaning and form of 
 \textbf{morpheme-like} units can be modeled in a 
-morphology induction task\dots" \citep{creutz-and-lagus:2005}.
+morphology induction task\dots'' \citep{creutz-and-lagus:2005}.
 \ex``The lexicon contains one entry for each distinct \textbf{morph} 
 (morph type) in the 
-segmented corpus" \citep[][p. 9]{creutz-and-lagus:2007}. 
+segmented corpus'' \citep[][p. 9]{creutz-and-lagus:2007}. 
 \end{exe}
 Creutz and Lagus seem to prefer the more general, theory-neutral term \emph{morph} 
 in more formal or technical contexts. Indeed,
@@ -48,8 +48,7 @@ to these categories. The lexeme-based view, which has been gaining momentum in r
 is that there exists an \emph{autonomous} layer of morphology, a layer that mediates between (morpho-)syntax
 and phonological realization, but has neither meaning nor phonologically realized form in and of itself. Proponents
 of lexeme-based morphology thus do not believe in pairings of form and meaning, i.e., \emph{morphemes}, as fundamental linguistic
-units \citep{anderson:2015}. We will further discuss the notion of autonomous morphology in sections~\ref{sec:morpho-theories} and
-\ref{sec:the-morphome}.
+units \citep{anderson:2015}. We will further discuss the notion of autonomous morphology in section~\ref{sec:morpho-theories}.
 
 One's morphological theory affects the way in which one interprets the output of a \ac{ULM}  system. 
 If one describes a \ac{ULM}  system and its learning task in terms of 
@@ -194,7 +193,7 @@ binary distinctions, namely \emph{lexical} vs. \emph{inferential} on the hand, a
 	The meaning of \textit{issue-s}, for example, is determined by the lexical entries of its components \textit{issue} and \textit{-s}.
 	\ex \textbf{Inferential}: \textit{A word's meaning is determined by the meanings of related words.}\\
 	The meaning of \textit{issue-s} is determined by the meanings of related forms like \textit{dog-s} and \textit{bike-s},
-with ``similarities of form [directly] reflecting similarities of content and vice versa" \citep[][p. 2]{anderson:2015shorthist}. \label{ex:d-one-b}
+with ``similarities of form [directly] reflecting similarities of content and vice versa'' \citep[][p. 2]{anderson:2015shorthist}. \label{ex:d-one-b}
 	\end{xlist}
 \ex \textsc{Second Distinction}: \textit{Incremental vs. Realizational} 
 \begin{xlist} 
@@ -230,8 +229,8 @@ was developed by Bloomfield in the 1920s and 1930s by
 \citet{bloomfield:1926, bloomfield:1933} and honed by his 
 successors in the descriptivist program, e.g., 
 \cite{hockett:1947} and \cite{harris:1955}.
-It was \cite[][p. 161]{bloomfield:1933} who famously wrote, ``A linguistic form 
-which bears no partial phonetic-semantic resemblance to any other form is a \emph{simple} form or \emph{morpheme}" (emphasis in the original). 
+It was \citet[][p. 161]{bloomfield:1933} who famously wrote, ``A linguistic form 
+which bears no partial phonetic-semantic resemblance to any other form is a \emph{simple} form or \emph{morpheme}'' (emphasis in the original). 
 That is, a morpheme, as a pairing of a form and a meaning, is a fundamental unit; it cannot be analyzed into smaller units
 of form and meaning.
 Moreover, Bloomfield and the descriptivists maintained that
@@ -280,21 +279,7 @@ correspondence between content cells and paradigm cells, and
 $\sigma = \sigma^\prime$.
 Often, however, the mapping between content and form cells is 
 not one-to-one, $\sigma \ne \sigma^\prime$, such as in cases of
-% A state of mismatch 
-% between $\sigma$ and 
-% $\sigma^\prime$ is called \emph{deponency}, which retains 
-% throw off a one-to-one correspondence between content and form cells; 
-% that is, it does not change the number of form cells. Rather, deponency 
-% is a condition wherein a content cell contains one morphosyntactic property 
-% set, but is mapped to a form cell that is typically associated with a different 
-% morphosyntactic property set. For example, a verb stem might take passive 
-% affixes in the active voice \citep{stewart-and-stump:2007}.
-
-%Another type of non-canonicity in content-to-form mappings is 
-%A phenomenon called 
 \emph{syncretism}, wherein the mapping from content to form cells is many to one. 
-%is 
-%a many-to-one mapping from content to form cells. 
 Consider, for example, table 
 \ref{tab:engverbpres}, which shows both the content and form paradigms 
 for the English lexeme \emph{kick} in the simple present tense.
@@ -304,25 +289,25 @@ form that has no suffix (\textit{kick}) and the other for the form
 that ends in \textit{-s}, namely \textit{kicks}. 
  
 \begin{table}[t]
-\setlength{\extrarowheight}{8pt}
+\setlength{\extrarowheight}{6pt}
 \centering
 \begin{tabular}{ccc}
 \toprule
-Content Paradigm & Form Paradigm & Realization \\ [0.5ex] % inserts table
-\hline%heading
-$\langle \textsc{kick} \land \textsc{p:1}$, \textsc{n}:{sg} $\rangle$ & \multirow{5}{*}{$\langle \textsc{kick}, 
-\{ \big((\textsc{p:}\text{1}\vee\text{2}) \land (\textsc{n:}\text{sg} \vee \text{pl})\big) 
-\vee (\textsc{p:}\text{3}\land \textsc{n:}\text{pl}) \} \rangle$} 
-& \multirow{5}{*}{kick} \\ \cline{1-1}
-$\langle \textsc{kick} \land \{\textsc{p:2}$, \textsc{n}:{sg}\} $\rangle$  &\\ \cline{1-1}
-$\langle \textsc{kick} \land \{\textsc{p:1}$, \textsc{n}:{pl}\} $\rangle$  & \\ \cline{1-1}
-$\langle \textsc{kick} \land \{\textsc{p:2}$, \textsc{n}:{pl}\} $\rangle$ &  \\ \cline{1-1}
-$\langle \textsc{kick} \land \{\textsc{p:3}$, \textsc{n}:{pl}\} $\rangle$ & \\ \hline
-$\langle \textsc{kick} \and \{\textbf{\textsc{p}:{3}}$, \textbf{\textsc{n}:{sg}}\} $\rangle$ & $\langle$ \textsc{kick}, \{\textbf{\textsc{p}:{3}}, \textbf{\textsc{n}:{sg}}\} $\rangle$  & kicks \\[0.5ex]
+Content Paradigm & Form Paradigm & Realization \\% inserts table
+\midrule %heading
+$\langle \textsc{kick}, \{ \textsc{p:1}, \textsc{n:}\text{sg} \}\rangle $ & \multirow{5}{*}{$\Bigg\langle \textsc{kick}, 
+\Big\{ \big((\textsc{p:}\text{1}\vee\text{2}) \land (\textsc{n:}\text{sg} \vee \text{pl})\big) 
+\vee (\textsc{p:}\text{3}\land \textsc{n:}\text{pl}) \Big\} \Bigg\rangle$} 
+& \multirow{5}{*}{kick} \\ \cmidrule{1-1}
+$\langle \textsc{kick},\{\textsc{p:2}$, \textsc{n}:{sg}\} $\rangle$  &\\ \cmidrule{1-1}
+$\langle \textsc{kick}, \{\textsc{p:1}$, \textsc{n}:{pl}\} $\rangle$  & \\ \cmidrule{1-1}
+$\langle \textsc{kick}, \{\textsc{p:2}$, \textsc{n}:{pl}\} $\rangle$ &  \\ \cmidrule{1-1}
+$\langle \textsc{kick}, \{\textsc{p:3}$, \textsc{n}:{pl}\} $\rangle$ & \\ \midrule
+$\langle \textsc{kick}, \{\textsc{p:3}, \textsc{n:}\text{sg}\} \rangle$ & $\langle$ \textsc{kick}, \{\textsc{p}:{3}, \textsc{n}:\text{sg}\} $\rangle$  & kicks \\
 \bottomrule
 \end{tabular}
-\label{tab:engverbpres}
 \caption{Dual-paradigm analysis of the English present tense}
+\label{tab:engverbpres}
 \end{table}
 
 Notice the unnaturalness of the two morphosyntactic classes in
@@ -354,18 +339,26 @@ Realizational rules come in two varieties:
 realization of surface forms from morphological \emph{exponents}. They take the form 
 $\text{X},\text{C},\sigma \to f(\text{X})$, where X is the stem, C is the lexical category of X, 
 $\sigma$ is a morphosyntactic property set,  and $f(\text{X})$ is the morphological operation to be performed 
-on X, as in ``Xs" (The addition of an \emph{-s} suffix. The two rules of exponence in \eqref{eq:roexp}  
+on X, as in ``Xs'' (addition of an \emph{-s} suffix). The two rules of exponence in \eqref{eq:roexp}  
 correspond to the two forms 
 of English present-tense verbs (see table~\ref{tab:engverbpres}). 
 \begin{align}
 \label{eq:roexp}
-	\text{X},\text{V},\sigma\text{:}\{ \textsc{pers:3}\text{,} \, \textsc{num:}\text{sg,} \, \textsc{tns:}\text{pres} \} &= \text{X}s \\ \label{eq:roexp1}
-	\text{X},\text{V},\tau\text{:}\{((\textsc{pers:}\text{1}\vee\text{2}) \land (\textsc{num:}\text{sg}\vee\text{pl})) \vee (\textsc{pers:}3 \vee \text{sg})\} &= \text{X} 
+	\text{X},\text{V},\sigma\text{:} \quad
+	\{ \textsc{pers:3}\text{,} \land \textsc{num:}\text{sg,} \land \textsc{tns:}\text{pres} \} &= \text{X}s \\ 
+	%\label{eq:roexp1}
+	\text{X},\text{V},\tau\text{:} \quad
+	%\{((\textsc{pers:}\text{1}\vee\text{2}) \land (\textsc{num:}\text{sg}\vee\text{pl})) \vee (\textsc{pers:}3 \vee \text{sg})\} 
+	%\Bigg\langle \textsc{kick}, 
+\Big\{ \big((\textsc{pers:}\text{1}\vee\text{2}) \land (\textsc{num:}\text{sg} \vee \text{pl})\big) 
+\vee (\textsc{pers:}\text{3}\land \textsc{num:}\text{pl}) \Big\} %\Bigg\rangle 
+&= \text{X} 
 \end{align}
-The subscript $V$ in \eqref{eq:roexp} denotes the lexical category of \textit{X}, which is  
-in this case is \textsc{verb}, 
-and $\sigma$ and $\tau$ are morphosyntactic property sets. 
-By contrast, a rule of referral redirects the word formation process to a different ``rule block," i.e.,
+where $\text{V}$ (\textit{verb}) is the lexical category of \textit{X},
+%, which is  in this case is \textsc{verb}, 
+and $\sigma$ and $\tau$ are distinct morphosyntactic property sets. 
+
+By contrast, a rule of referral redirects the word formation process to a different ``rule block,'' i.e.,
 a different morphosyntactic property set. Such a rule takes the form 
 \begin{equation}
 \label{eq:ror}
@@ -374,7 +367,7 @@ a different morphosyntactic property set. Such a rule takes the form
 Here, X again is a stem, 
 C its lexical category, and $\sigma$ its morphosyntactic property set. However, instead of the usual $f(\text{X})$ 
 to the right of the arrow, we have in this case a redirection to a 
-different morphosyntactic property set in a different rule block. (The \textit{A} in ``Block A" 
+different morphosyntactic property set in a different rule block. (The \textit{A} in ``Block A'' 
 is a purely arbitrary label in this case.) Stump cites the English perfect participle 
 to exemplify rules of referral. That is, for many lexemes, the form of the 
 past participle is identical to the simple-past form, e.g., \textit{raked}. 
@@ -394,9 +387,9 @@ but it is nonetheless independent of both the semantics and the phonology and th
 In his influential book \textit{Morphology By Itself} (1994), Aronoff 
 introduces the concept of the \emph{morphome}, which he
 defines as a function ``that is neither 
-syntactic nor phonological" \cite[][p. 25]{aronoff:1994},
+syntactic nor phonological'' \cite[][p. 25]{aronoff:1994},
 as well as a
-``mapping from morphosyntax to phonological realization" \citep[][p. 25]{aronoff:1994}. 
+``mapping from morphosyntax to phonological realization'' \citep[][p. 25]{aronoff:1994}. 
 It is related
 to the cells in Stump's form paradigm (see table~\ref{tab:engverbpres}), 
 but it is also more complex. It is to the morphome that we turn next.
@@ -421,8 +414,9 @@ consisting of a particular lexical item and a particular set of properties.
  both inflectional and derivational roles. In English, for example, \emph{-s} 
 functions as the \textsc{3.sg} present-tenxe suffix for verbs and as the \textsc{pl} 
  suffix for nouns, both of which are inflectional, but it can also serve a derivational 
- role as the possessive clitic, as in, \emph{The girl's\textbf{bicycle's} new}, and as a
- cliticization of the copula, as in \emph{The girl's\textbf{bicycle's} new.}
+ role as the possessive clitic, e.g.,
+ {\emph{The girl\textbf{'s} new bicycle}, as well as a
+ cliticization of the copula, e.g., \emph{The girl's bicycle\textbf{'s} new} (`The girl's bicycle \emph{is} new').
 
 %  \begin{exe} 
 % \emph{This is the \textbf{girl's} new bicyicle}
@@ -433,14 +427,14 @@ functions as the \textsc{3.sg} present-tenxe suffix for verbs and as the \textsc
 % % \ex \emph{The girl's\textbf{bicycle's} new.} 
 %  \ex The girl's\textbf{bicycle's} new.
 %  \end{exe} 
- Hebrew also has morphomes that ``cross the inflectional--derivational divide," 
+ Hebrew also has morphomes that ``cross the inflectional--derivational divide,'' 
  as Round puts it \citep[][p.14]{round:2015}. This inflectional--derivational 
  duality will prove useful to us in section \ref{sec:heb-example}, where we will 
  examine a case of syncretism among certain inflectional and derivational suffixes in Modern Hebrew.
   
   But first we must establish some notation. 
   One of Round's contributions is his rigorously formalized descriptions of 
-  morphomic phenomena. In \cite{round:2011}, for instance, 
+  morphomic phenomena. In \citet{round:2011}, for instance, 
   he expresses the \emph{morphomic representation} of a word 
   \textit{w} as a function $\mu{\textsc{word}}$ that 
   takes as input a pair of items, the precise nature
@@ -454,7 +448,7 @@ functions as the \textsc{3.sg} present-tenxe suffix for verbs and as the \textsc
   $\langle  \mu_{I} \dots \mu_{2}, \mu_{1}, x \rangle$, where $x$ 
   is some kind of initial form, such as a root or a stem. The elements in the sequence 
   $ \mu_{I} \dots \mu_{2}, \mu_{1}$ are each morphomes, 
-  which, according to \cite{round:2015}, can viewed as operations, 
+  which, according to \citet{round:2015}, can viewed as operations, 
   such that each applies rightward, starting with the lowest index, and progressing upward
   to index $I$.
   
@@ -496,10 +490,11 @@ Suppose the morphosyntactic property set $\sigma$ were replaced with a different
 Such a swap could result in a different phonological realization, but not necessarily. 
 That is, $\Phi{\textsc{word}}(\lambda,\tau)$ could very well be identical to 
  $\Phi{\textsc{word}}(\lambda,\sigma)$. One sees this kind of identity in English
- present-tense verbs, as exemplified in table~\ref{tab:engverbpres}. Every form is identical except the 3.sg , which takes the \textit{-s} suffix.
+ present-tense verbs, as exemplified in table~\ref{tab:engverbpres}. Every form is identical except the third-person singular, which takes the \textit{-s} suffix.
 
 \subsubsection{A central morphomic maxim} A central maxim 
-of morphomic theory is that \emph{identity at the phonological 
+of morphomic theory is that
+\emph{identity at the phonological 
 level entails identity at the morphomic level} \citep{round:2011}. 
 That is, if two 
 or more words share a particular subsequence of phonemes 
@@ -512,25 +507,39 @@ morphological units solely on the basis of similarities in
 form, irrespective of meaning.
 
 Suppose, for example, that 
-\begin{center}
-$\lambda = \textsc{kick}$\\
-$\sigma =$ $\{\text{\textsc{pers}:1, \textsc{num}:pl, \textsc{tns}:pres} \}$\\
-$\tau =$ $\{\text{\textsc{pers}:2, \textsc{num}:sg, \textsc{tns}:pres}\}$\\
-\end{center}
+\begin{align*}
+%$\lambda &= \textsc{kick}$\\
+%$\sigma &=$ $\{\text{\textsc{pers}:1, \textsc{num}:pl, \textsc{tns}:pres} \}$\\
+%$\tau &=$ $\{\text{\textsc{pers}:2, \textsc{num}:sg, \textsc{tns}:pres}\}$\\
+\lambda &= \textsc{kick} \\%\text{, and}\\
+\sigma &= \{\text{\textsc{pers}:1, \textsc{num}:pl, \textsc{tns}:pres} \} \\%\} \text{, and}\\
+\tau &=\{\text{\textsc{pers}:2, \textsc{num}:sg, \textsc{tns}:pres}\}
+\end{align*}
 Even though the morphosyntactic property sets $\sigma$ and $\tau$ are very much different,
 the phonological representations of $\langle \textsc{kick}, (\lambda,\sigma) \rangle$
-and $\langle \textsc{kick}, (\lambda,\tau) \rangle$ are identical. That is,
-$\Phi{\textsc{kick}}(\lambda,\sigma) = \text{kick}$, and 
-$\Phi{\textsc{kick}}(\lambda,\tau) = \text{kick}$. By the maxim stated above, because 
-$\Phi{\textsc{kick}}(\lambda,\sigma) =  \Phi{\textsc{kick}}(\lambda,\tau)$, 
-$\mu{\textsc{kick}}(\lambda,\sigma) = \mu{\textsc{kick}}(\lambda,\tau)$.
+and $\langle \textsc{kick}, (\lambda,\tau) \rangle$ are identical. 
+That is,
+\begin{align*}
+\Phi\textsc{kick}(\lambda,\sigma) \quad &= \quad \text{\textipa{/kIk/}} \\%\text{, and} \\
+\Phi{\textsc{kick}}(\lambda,\tau) \quad &= \quad \text{\textipa{/kIk/}} %\text{.}
+\end{align*} 
+%Thu because 
+%\begin{equation*}
+By the above maxim, because
+$\Phi{\textsc{kick}}(\lambda,\sigma) =  \Phi{\textsc{kick}}(\lambda,\tau)$, we can say that  %\\ \text{, and} \\
+%\end{equation*}
+%we have that 
+\begin{equation*}
+\mu{\textsc{kick}}(\lambda,\sigma) = \mu{\textsc{kick}}(\lambda,\tau) %\text{.}
+\end{equation*}
 That is, because these two instances of \textsc{kick} are identical in 
-phonological form, their morphomic representations must also be identical; 
-i.e., they must have the \emph{same} morphomic represention. If the 
+phonological form, their morphomic representations must also be identical. 
+%In other words, they must have the \emph{same} morphomic represention. 
+If the 
 phonological forms were only partially identical, their morphomic 
 representations would also be partially identical. For example, if they 
 shared a suffix, then the identity at the mormophic level would 
-be the morphome associated with this suffix.
+be the morphome corresponding to this suffix.
 
 \subsubsection{A Taxonomy of Morphomes}
 Another contribution of Round is his taxonomy of morphomes, which 
@@ -538,7 +547,7 @@ classifies morphomes according to the types of groups they engender.
 That is, if we think of morphomes as relations, we can think of them as 
 sets whose members all are alike in a particular way. \cite{round:2015, round:md:2016} 
 classifies morphomes according to the nature of this similarity. That is, 
-according to Round, there are different types of form-based similarity; i.e., different ``aspects of form" that are 
+according to Round, there are different types of form-based similarity; i.e., different ``aspects of form'' that are 
 shareable \citep[][p.230]{round:md:2016} and these different shareable aspects of form correspond to different types of morphomes. 
 This sort of taxonomy will prove useful when we discuss the 
 limitations on unsupervised morphological learning, i.e., what a \ac{ULM} 
@@ -548,10 +557,10 @@ Round's taxonomy comprises three categories, namely
 \textit{\textbf{rhizo}morphomes}, \textit{\textbf{meta}morphomes}, 
 and \textit{\textbf{mero}morphomes}. 
 Rhizomorphomes and metamorphomes both transcend the confines of 
-particular lexemes; Rhizomorphomes and metamorphomes are thus 
-rather abstract. Meromorphomes, in contrast, correspond to``concrete" 
+particular lexemes and are thus both
+rather abstract. Meromorphomes, in contrast, correspond to``concrete'' 
 pieces of form. They are the raw material from which paradigms are constructed. 
-Of these three, metamorphomes and meromorphomes are will be most 
+Of these three, metamorphomes and meromorphomes will be most 
 relevant to the present discussion, but we shall touch on rhizomorphomes briefly 
 before proceeding to metamorphomes and meromorphomes.
 
@@ -561,21 +570,21 @@ before proceeding to metamorphomes and meromorphomes.
 
 \paragraph{Metamorphomes.} A metamorphome is a pattern of stem 
 equivalence that spans multiple paradigms 
-(and thus multiple lexemes). See, for example, tables~\ref{subtab:digo})\ 
+(and thus multiple lexemes). See, for example, tables~\ref{subtab:digo}
 and \ref{subtab:crezco}, which demonstrate the L-morphome, a prominent 
 metamorphome in Romance languages \citep{maiden:2005}. Although the 
 lexemes defer in these tables, the morphome is the same. This is because 
 the morphome is not the particular stem in either table, but rather the 
 \emph{pattern} of stem equivalence. In this case, the equivalence class 
-forms  an``L"-shape when the paradigm cells are arranged as in tables~\ref{subtab:digo} 
+forms  an ``L''-shape when the paradigm cells are arranged as in tables~\ref{subtab:digo} 
 and \ref{subtab:crezco}.
-\begin{table}[t]
+\begin{table}[t]\label{tab:l-morphome}
  \setlength{\extrarowheight}{6pt}
 \centering % used for centering table
-\subtable[\textit{decir} `to say'\label{subtab:digo}]{
+\subtable[\textit{decir} `to say' \label{subtab:digo}]{
 \begin{tabular}{l c c c c c c} % centered columns (4 columns)
 \toprule
-	& 1.sg & 2/sg & 3.sg & 1.pl & 2.pl & 3.pl \\
+	& \textsc{1.sg} & \textsc{2.sg} & \textsc{3.sg} & \textsc{1.pl} & \textsc{2.pl} & \textsc{3.pl} \\
 \cmidrule{2-7}
 \textsc{pres ind} & \textbf{dig}o & dices & dice & dec\'imos & dec\'is & dicen  \\ 
 \textsc{pres subj}& \textbf{dig}a & \textbf{dig}as & \textbf{dig}a & \textbf{dig}amos & \textbf{dig}a\'is & \textbf{dig}an \\
@@ -583,10 +592,10 @@ and \ref{subtab:crezco}.
 \end{tabular}
 }
 \vspace{7pt}
-\subtable[\textit{crecir} `to grow'\label{subtab:crezco}]{
+\subtable[\textit{crecir} `to grow' \label{subtab:crezco}]{
 \begin{tabular}{l c c c c c c} 
 \toprule
-	& 1.sg & 2.sg & 3.sg & 1.pl & 2.pl & 3.pl \\ % inserts table
+	& \textsc{1.sg} & \textsc{2.sg} & \textsc{3.sg} & \textsc{1.pl} & \textsc{2.pl} & \textsc{3.pl} \\ % inserts table
 \cmidrule{2-7}
 \textsc{pres ind} & \textbf{crezc}o & creces & crece & crecemos & crece\'is  & crecen   \\
 \textsc{pres subj} & \textbf{crezc}a & \textbf{crezc}as & \textbf{crezc}a & \textbf{crezc}amos & 
@@ -594,7 +603,6 @@ and \ref{subtab:crezco}.
 \bottomrule
 \end{tabular}
 }
-\label{tab:l-morphome}
 \caption{The stem \textit{crezc-} `say' is an L-morphome in Spanish.}
 \end{table}
 
@@ -616,7 +624,7 @@ can serve a variety of  syntactic purposes. For instance, a perfect participle c
 with inflections of \emph{have} to form the perfect tenses, but also with 
 \emph{was} to express the passive voice. 
 
-In each of the examples (\ref{ex:pastpart:kick}), (\ref{ex:pastpart:write}), and (\ref{ex:pastpart:sing}), a present-perfect verb is identical to 
+In each of the examples~(\ref{ex:pastpart:kick}), (\ref{ex:pastpart:write}), and (\ref{ex:pastpart:sing}), a present-perfect verb is identical to 
 a passive verb.
 
 \begin{exe}
@@ -660,52 +668,52 @@ Root & Type & Form & Perfect & Passive  \\ [0.5ex]
 \caption{The English past-participle is a metamorphome; that is, it is a single abstract morphome instantiated across many different lexemes. Different lexemes may correspond to different stem types, which in turn take their own distinct affixes.}
 \end{table}
 
-\begin{table}[ht]
-\centering
-  \subtable[broken\label{subtab:eng-break}]{
-    \centering
-    \setlength{\extrarowheight}{8pt}
-        \begin{tabular}{l c c }
-        \toprule
-        \multirow{2}{*}{Phonological} & \textipa{broUk} & en \\
-         & $\Phi${\textsc{stem}} & $\Phi${\textsc{en}} \\
-         
-         \multirow{2}{*}{Morphomic} & $\mu$\textsc{ablaut:o}, $\surd$\textsc{br-k} & $\mu$\textsc{en} \\
-           					& \multicolumn{2}{c}{$\mu$\textsc{perf}, $\surd$\textsc{br-k}} \\ 
-         Lexical & \multicolumn{2}{c}{$\surd$\textsc{br-k}, \{{past-perfect}$\vee${passive}\}} \\
-         \bottomrule
-                 \vspace{1pt}
-    \end{tabular}
-    }
-    \subtable[sung\label{subtab:eng-sing}]{
-    \setlength{\extrarowheight}{8pt}
-    \centering
-        \begin{tabular}{l c   }
-        \toprule
-        \multirow{2}{*}{Phonological} & \textipa{s2N} \\
-         				& $\Phi{stem}$  \\  
-        \multirow{2}{*}{Morphomic} & $\mu$\textsc{ablaut:u}, $\surd$\textsc{\textipa{s-N}}\\
-           	 & \multicolumn{1}{c}{$\mu$\textsc{perf}, $\surd$\textsc{sing}} \\ 
-	 Lexical & \multicolumn{1}{c}{$\surd \textsc{sing}$, \{{past-perfect}$\vee${passive}\}}\\
-        \bottomrule
-        \vspace{1pt}
-    \end{tabular}
-  }
-      \subtable[kicked\label{subtab:eng-kick}]{
-    \centering
-    \setlength{\extrarowheight}{8pt}
-        \begin{tabular}{l c c }
-        \toprule
-        \multirow{2}{*}{Phonological} & \textipa{kIk} & -d \\
-         & $\Phi$\textsc{stem} & $\Phi$\textsc{d} \\
-        $\mu$\textsc{perf}: &  $\surd$\textsc{kick} &  $\mu$\textsc{d}   \\
-        Lexical & \multicolumn{2}{c}{$\surd \textsc{kick}$, \{{past-perfect}$\vee${passive}\}}\\ 
-         \bottomrule
-    \end{tabular}
-  }
-  \label{tab:eng-perf}
-\caption{Morphomic analyses for some English past-participle forms}
-\end{table}
+%\begin{table}[ht]
+%\centering
+%  \subtable[broken\label{subtab:eng-break}]{
+%    \centering
+%    \setlength{\extrarowheight}{8pt}
+%        \begin{tabular}{l c c }
+%        \toprule
+%        \multirow{2}{*}{Phonological} & \textipa{broUk} & en \\
+%         & $\Phi${\textsc{stem}} & $\Phi${\textsc{en}} \\
+%         
+%         \multirow{2}{*}{Morphomic} & $\mu$\textsc{ablaut:o}, $\surd$\textsc{br-k} & $\mu$\textsc{en} \\
+%           					& \multicolumn{2}{c}{$\mu$\textsc{perf}, $\surd$\textsc{br-k}} \\ 
+%         Lexical & \multicolumn{2}{c}{$\surd$\textsc{br-k}, \{{past-perfect}$\vee${passive}\}} \\
+%         \bottomrule
+%                 \vspace{1pt}
+%    \end{tabular}
+%    }
+%    \subtable[sung\label{subtab:eng-sing}]{
+%    \setlength{\extrarowheight}{8pt}
+%    \centering
+%        \begin{tabular}{l c   }
+%        \toprule
+%        \multirow{2}{*}{Phonological} & \textipa{s2N} \\
+%         				& $\Phi\textsc{stem}$  \\  
+%        \multirow{2}{*}{Morphomic} & $\mu$\textsc{ablaut:u}, $\surd$\textsc{\textipa{s-N}}\\
+%           	 & \multicolumn{1}{c}{$\mu$\textsc{perf}, $\surd$\textsc{sing}} \\ 
+%	 Lexical & \multicolumn{1}{c}{$\surd \textsc{sing}$, \{{past-perfect}$\vee${passive}\}}\\
+%        \bottomrule
+%        \vspace{1pt}
+%    \end{tabular}
+%  }
+%      \subtable[kicked\label{subtab:eng-kick}]{
+%    \centering
+%    \setlength{\extrarowheight}{8pt}
+%        \begin{tabular}{l c c }
+%        \toprule
+%        \multirow{2}{*}{Phonological} & \textipa{kIk} & -d \\
+%         & $\Phi$\textsc{stem} & $\Phi$\textsc{d} \\
+%        $\mu$\textsc{perf}: &  $\surd$\textsc{kick} &  $\mu$\textsc{d}   \\
+%        Lexical & \multicolumn{2}{c}{$\surd \textsc{kick}$, \{{past-perfect}$\vee${passive}\}}\\ 
+%         \bottomrule
+%    \end{tabular}
+%  }
+%  \label{tab:eng-perf}
+%\caption{Morphomic analyses for some English past-participle forms}
+%\end{table}
 
 \begin{figure}[ht]
 \centering
@@ -754,7 +762,7 @@ Root & Type & Form & Perfect & Passive  \\ [0.5ex]
 transcend the realms of individual lexemes and paradigms and thus highly 
 abstract, meromorphomes are comparatively concrete, as they 
 correspond to particular parts of word forms. Meromorphomes, it must be said, 
-are not the word parts themselves, since all morphomes reside at the 
+are technically not the word parts themselves, since all morphomes reside at the 
 morphomic level rather than the phonological, or surface, level \citep{round:2011}. 
 Even so, meromorphomes map directly onto phonological forms, and 
 are thus more closely associated with phonological forms than rhizomorphomes 
@@ -762,42 +770,41 @@ or metamorphomes. Indeed, both rhizomorphomes and metamorphomes are
 composed of meromorphomes, since, at some point, the abstract, trans-lexemic 
 types of morphomes must interact with specific phonological forms. 
 
-For instance, in English perfect participles, each individual root, e.g., \textit{s-ng}, 
-\textit{br-k}, \textit{kick}, etc., is a meromorphome. Each suffix 
-as well as each particular variety of ablaut is also a meromorphome. 
+For instance, in English perfect participles, each individual root, e.g., \textit{s-\textipa{2N}}, 
+\textit{br-k}, \textit{\textipa{kIk}}, etc., is a meromorphome, as is each suffix (e.g., \textit{-ed}, \textit{-en}, etc.}
+and each distinct variety of ablaut (e.g., \textit{br\textbf{ea}k/br\textbf{o}ken}, \textit{s\textbf{i}ng/s\textbf{u}ng}, etc.) is also a meromorphome. 
 The Romance L-morphome is also composed of particular meromorphomes. 
 Within the paradigm of the lexeme \textsc{decir} \textsc{`to say'} 
-(table \ref{tab:l-morphome}). The stem \textit{dig-} is a meromorphome. 
+(see table~\ref{subtab:digo}), the stem \textit{dig-} is a meromorphome. 
 Similarly, the stem \textit{crezc-} is a meromorphome within the paradigm of 
-\textsc{crecir} \textsc{`to grow'}.
+\textsc{crecir} \textsc{`to grow'} (see table~\ref{subtab:crezco}).
 
 \begin{table}[ht]
-\begin{center}
-\subtable[maqomi `local' \label{subtab:fusion:1}]{
+\centering
+\subtable[maqomi `local']{
 \setlength{\extrarowheight}{8pt}
-{\begin{tabular}{lcc}
+\begin{tabular}{lcc}
 \toprule
-\  & masc & fem  \\
+& \textsc{masc} & \textsc{fem}  \\
 \cmidrule{2-3} 
-sg & maqom-i & meqom-i-t  \\
-pl & meqom-iy-im & meqom-iy-ot  \\
+\textsc{sg} & maqom-i & meqom-i-t  \\
+\textsc{pl} & meqom-iy-im & meqom-iy-ot  \\
 \bottomrule
-\end{tabular}}
+\end{tabular}
 }
-\subtable[gadol `big' \label{subtab:fusion:2}]{
+\subtable[gadol `big']{
 \setlength{\extrarowheight}{8pt}
-{\begin{tabular}{lcc}
+\begin{tabular}{lcc}
 \toprule
-\  & masc & fem  \\
+& \textsc{masc} & \textsc{fem}  \\
 \cmidrule{2-3}
-sg & gadol & gdol-a  \\
-pl & gdol-im & gdol-ot  \\
+\textsc{sg} & gadol & gdol-a  \\
+\textsc{pl} & gdol-im & gdol-ot  \\
 \bottomrule
-\end{tabular}}
+\end{tabular}
 }
-\label{tab:fusion}
 \caption{Fusional suffixes in Hebrew nominals}
-\end{center}
+\label{tab:fusion}
 \end{table}
 
 \subsection{An example from Hebrew}
@@ -806,11 +813,15 @@ We turn now to a case of syncretism in the morphology of Modern Hebrew. Perhaps
 the best known aspect of Hebrew (and Semitic languages in general) is its 
 non-concatenative root-and-pattern morphology. But 
 Hebrew's morphology also has a rich concatenative component, consisting of
-of both inflectional and derivational affixes. Moreover, the inflectional affixes tend to be
-highly (and idiosyncratically) fusional.  
-Consider the forms in table~\ref{tab:fusion}. 
+of both inflectional and derivational affixes. 
+Moreover, the inflectional affixes tend to be
+highly %(and idiosyncratically) 
+fusional. This illustrated in table~\ref{tab:fusion}: The suffixes for `masculine plural' and `feminine plural'
+cannot be broken down into smaller gender and number components. 
+%is 
+%Consider, for example, the adjective inflections in table~\ref{tab:fusion}:
 
-In this section, we shall primarily be concerned with the
+In this section, we will primarily be concerned with the
 interaction between \textit{-t} and \textit{-i} in Hebrew feminine endings.
 Hebrew uses the vowel [i] 
 in both noun-deriving and adjective-deriving suffixes. 
@@ -823,7 +834,6 @@ element to occur in each
 of the four columns. % It must therefore be the adjectival exponent in these cases. 
 \begin{table}[ht]
    \centering
-   \caption{Derivational and inflectional syncretism in Hebrew feminine endings.}\label{tab:deriv} 
    \subtable[Adjectives derived from nouns via \textit{-i}\label{subtab:der-adjectives}]{
      \centering
      \setlength{\extrarowheight}{8pt}
@@ -870,8 +880,10 @@ of the four columns. % It must therefore be the adjectival exponent in these cas
         nagar \textit{`carpenter'} &  nagar-ut   &   nagr-uy-ot  & `carpentry' \\
         \bottomrule
 	\end{tabular}
+ 
    }
-
+   	\caption{Derivational and inflectional syncretism in Hebrew feminine endings}
+	\label{tab:deriv}
 \end{table}
 Thus, \textit{merxav} `space' + \textit{-i} = \textit{merxav-i} 
 `spatial (masc.sg)'. The fem.sg is obtained by attaching \textit{-t} to the masc.sg
@@ -902,13 +914,13 @@ In fact, it appears with each of Modern Hebrew's five vowels.
 In singular-form endings, it appears with every vowel except 
 \textit{o}: \textit{-at}, \textit{-(e)t}, \textit{-ut}, and \textit{-it}. 
 It appears with \textit{o} in the feminine plural suffix \textit{-ot} 
-also ends with \textit{t}. \footnote{The consonant /t/ occurs with 
+also ends with \textit{t}.\footnote{The consonant /t/ occurs with 
 /o/ in singular forms as well, but only when /-ot/ is part of a 
 primitive word, as in, e.g., \textipa{P}ot `letter'.}
 
 Besides \textit{-t}, the only other systematic feminine marker is 
 \textit{-a}, which is found only 
-in fem.sg absolute-state forms. %[Examples]
+in feminine-singular absolute-state (i.e., \emph{free}) forms. %[Examples]
 But a final \textit{-t} appears even in these nouns when they are 
 in the construct state, a type of form which is used compound-noun 
 construction and marked by its complete lack of stress.
@@ -922,31 +934,13 @@ to \cite{faust:2013}, both
 \textit{-a} and \textit{-t} are underlyingly /-at/; sometimes 
 the \textit{a} deletes, and sometimes the \textit{-t} deletes, depending 
 upon certain phonological factors. Sometimes they appear 
-together in the same form, as in fem.sg construct nouns.
+together in the same form, as in feminine-singular construct nouns.
  Faust additionally decomposes the derivational endings 
 \textit{-ut} and \textit{-it} into /u-at/ and /i-at/, respectively. 
 The \textit{a} deletes in these forms.
 Faust regards \textit{-et} in \textit{-at} as both allophones of /-at/. 
 Faust's analysis of the Hebrew feminine endings thus constitutes a total of 
 four morphemes, namely /-i/, /-u/, /-at/, and /-o/.
-  
-   \begin{table}
-     \centering
-\setlength{\extrarowheight}{8pt}
-       \begin{tabular}{c c c }
-       \toprule
-        \textsc{Morphome} &  Phon. suffixe(s) & Morphosyntactic property set(s) \\ [0.5ex]
-        \midrule
-       $\mu{\textsc{a}}$ & {/-\textbf{a}/},{/-\textbf{a}t/} & \{fem, sg,\textsc{state:}abs\}, \{fem, sg, \textsc{state:}constr\}\\
-       $\mu{\textsc{i}}$ & {/-\textbf{i}/, /-\textbf{i}t/} & \text{n}$\to${adj}, \text{n}$\to$\text{n}[fem] \\
-       $\mu{\textsc{u}}$ & {/-\textbf{u}t/} & \text{n}$\to$\text{n}[fem, -concrete] \\
-       $\mu{\textsc{o}}$ & {/-\textbf{o}t/} & \{fem, pl\} \\
-       $\mu{\textsc{t}}$ & { /-\textbf{t}/, /-o\textbf{t}/, /-u\textbf{t}/, /-i\textbf{t}/}  & \{fem\}, \{fem, pl\}, \{fem, -concrete\}, \\
-        \bottomrule 
-    \end{tabular}
-     \label{tab:heb-morphomes}
-    \caption{Morphomic and Phonological Operations}
-    \end{table}
     
 Faust's approach is based on Distributional Morphology 
  \citep{halle-and-marantz:1993}, 
@@ -954,9 +948,9 @@ a morpheme-based, Lexical-Realizational theory \citep{stump:2001}
 According to Faust, therefore, the suffixes /-i/, /-u/, and /-at/ are not only morphemes, 
 but \emph{roots.}
 In \ac{DM}, the term \emph{root} (along with \emph{formative}) is used to refer 
-to maximally primitive units of meaning. (It is not to be confused with the 
+to maximally primitive units of meaning. \footnote{However, is not to be confused with the 
 consonantal root of Semitic morphology. Semitic roots would qualify as 
-\ac{DM} roots, but the \ac{DM} root is more general than the Semitic root.)
+\ac{DM} roots, but the \ac{DM} root is more general than the Semitic root.}
 A \ac{DM} root has no particular morphosyntactic properties and thus belongs to 
 no morphosyntactic category.
 However, it does have abstract semantic features as well as inherent 
@@ -1016,7 +1010,7 @@ feminine ending \textit{-a} and a \emph{different} morphome for
 \textit{-t}, as there does not seem to be enough synchronic evidence to posit that 
 \textit{-a} and \text{-t} both have the \emph{synchronic} 
 underlying form /-at/.
- \begin{figure}[ht]
+ \begin{figure}[t]
   \small
 \begin{center}
     \label{tab:heb-morphomic-analyses} 
@@ -1029,8 +1023,8 @@ underlying form /-at/.
         \midrule
         \multirow{2}{*}{Phonological} & \textipa{P}aviv & -i & -t \\ %\hline
          & $\Phi${\textsc{stem}} & $\Phi${\textsc{i}} & $\Phi${\textsc{t}} \\
-       Morphomic & $\mu$\textsc{a-i}, $\surd \textsc{\textipa{P}-b-b}$ & $\mu{\textsc{i}}$  & $\mu{\textsc{t}}$ \\ 
-        Lexical & \multicolumn{3}{c}{$\surd \textsc{\textipa{P}-b-b}$, \{\text{adj}, \text{fem}, \text{sg}\}}\\
+       Morphomic & $\mu$\textsc{a.i}, $\mu$\textsc{\textipa{P}.b.b} & $\mu{\textsc{i}}$  & $\mu{\textsc{t}}$ \\ 
+        Lexical & \multicolumn{3}{c}{$\mu$\textsc{\textipa{P}.b.b}, \{\text{adj}, \text{fem}, \text{sg}\}}\\
         \bottomrule 
     \end{tabular}
     }
@@ -1044,8 +1038,8 @@ underlying form /-at/.
         \midrule
           \multirow{2}{*}{Phonological} & xalal & -it \\
            & $\Phi$\textsc{stem} & $\Phi$\textsc{it} \\
-           Morphomic & $\mu$\textsc{a.a}, $\surd$\textsc{x.l.l} & $\mu$\textsc{i}, $\mu$\textsc{t} \\ 
-            Lexical & \multicolumn{2}{c}{$\surd$\textsc{x.l.l}, \{\text{noun}, \text{fem}, \text{sg}\}}\\
+           Morphomic & $\mu$\textsc{a.a}, $\mu$\textsc{x.l.l} & $\mu$\textsc{i}, $\mu$\textsc{t} \\ 
+            Lexical & \multicolumn{2}{c}{$\mu$\textsc{x.l.l}, \{\text{noun}, \text{fem}, \text{sg}\}}\\
        \bottomrule 
     \end{tabular}
     }
@@ -1057,13 +1051,13 @@ underlying form /-at/.
        \toprule
         \multicolumn{4}{c}{[\textipa{x}alaliyot] `spaceships'}\\
         \midrule
-        \multirow{2}{*}{Phonological} & xalal & i & ot \\ 
+        \multirow{2}{*}{Phonological} & xalal & -i & -ot \\ 
          & $\Phi$\textsc{stem}
          %s( \text{a.i}, \text{\textipa{P}.b.b} )$ 
          & $\Phi$\textsc{i} & $\Phi$\textsc{ot} \\ 
-        Morphomic & $\mu${\textsc{a-a}}, $\surd$\textsc{x.l.l} & $\mu$\textsc{i}  &  $\mu$\textsc{o}, $\mu$\textsc{t} \\
+        Morphomic & $\mu${\textsc{a.a}}, $\mu$\textsc{x.l.l} & $\mu$\textsc{i}  &  $\mu$\textsc{o}, $\mu$\textsc{t} \\
                             %\multicolumn{2}{c}{$\mu$\textsc{o}, $\mu$\textsc{t}} \\ %\hline
-        Lexical & \multicolumn{3}{c}{$\surd$\textsc{x.l.l}, \{\text{noun}, \text{fem}, \text{pl}\}}\\
+        Lexical & \multicolumn{3}{c}{$\mu$\textsc{x.l.l}, \{\text{noun}, \text{fem}, \text{pl}\}}\\
         \bottomrule 
        \end{tabular}
   }
@@ -1089,6 +1083,26 @@ decompose not only /-it/, but /-ut/ and /-ot/ as well.
   masculine noun base \emph{nagar} `(male) carpenter'. 
 There is no *\emph{nagar-i}.
   
+  
+     \begin{table}[t]
+\setlength{\extrarowheight}{8pt}
+     \centering
+       \begin{tabular}{ccc}
+       \toprule
+        \textsc{Morphome} &  \makecell{Phonological suffixe(s)} & Morphosyntactic property set(s) \\ %[0.5ex]
+        \midrule
+       $\mu{\textsc{a}}$ & {/-\textbf{a}/}, {/-\textbf{a}t/} & \makecell{\{fem, sg,\textsc{state:}abs\}, \\
+       \{fem, sg, \textsc{state:}construct\}}\\
+       $\mu{\textsc{i}}$ & {/-\textbf{i}/, /-\textbf{i}t/} & \text{n}$\to${adj}, \text{n}$\to$\text{n}[fem] \\
+       $\mu{\textsc{u}}$ & {/-\textbf{u}t/} & \text{n}$\to$\text{n}[fem, -concrete] \\
+       $\mu{\textsc{o}}$ & {/-\textbf{o}t/} & \{fem, pl\} \\
+       $\mu{\textsc{t}}$ & \makecell{/-\textbf{t}/, /-o\textbf{t}/, /-u\textbf{t}/, /-i\textbf{t}/}  & \{fem\}, \{fem, pl\}, \{fem, -concrete\} \\
+        \bottomrule 
+    \end{tabular}
+    \caption{Morphomic and phonological operations}
+      \label{tab:heb-morphomes}
+    \end{table}
+    
 Together, $\mu\textsc{i}$ and $\mu\textsc{t}$ form what is in effect  
 a \emph{complex morphome} \citep{round:2015, round:md:2016}. A single 
 phonological operation maps $\langle \mu\textsc{i}$, $\mu\textsc{t} \rangle$ 
@@ -1115,11 +1129,11 @@ property \{\text{n}$\to$\text{n}[fem] among the derivational properties $\delta$
   morphomic level is to account for
   this sort of sameness.
   
- We shall analyze /-ot/, the fem.pl. suffix, and /-ut/, the abstract (or \textsc{concrete:}[-])
+ We shall analyze /-ot/, the feminine plural suffix, and /-ut/, the abstract (or \textsc{concrete:}[-])
  noun-deriving suffix, in a similar way. Both are monolithic suffixes at the phonological
  level, and both have complex morphomic representations. Again, the primary reason for this
  is that neither /-ot/ nor /-ut/ seem to be decomposable, at least not in a straightforward
- way; that is, /-ot/ as a whole is the fem.pl suffix. If /-t/ is the fem. suffix, then
+ way; that is, /-ot/ as a whole is the feminine plural suffix. If /-t/ is the fem. suffix, then
  /-o/ should be plural suffix. If this were the case, we would expect to see
  /-o/ in the masc.pl. ending, but the masc.pl. suffix is in fact /-im/. The suffix /-ot/
  corresponds to the morphome pair $\langle \mu\textsc{o}$, $\mu\textsc{t} \rangle$, 
@@ -1129,7 +1143,7 @@ property \{\text{n}$\to$\text{n}[fem] among the derivational properties $\delta$
  in /-t/. The morphome $\mu\textsc{t}$ is thus used both derivationally and 
  inflectionally, a kind of dual appropriation that is not unknown among the world's languages. 
  Round, for instance, has frequently observed it in Kayardild: ``[M]ost of the exponents 
- employed by the inflectional system are also used derivationally" \citep[][p. 13]{round:2015}.
+ employed by the inflectional system are also used derivationally'' \citep[][p. 13]{round:2015}.
 
 \section{Implications for \ac{ULM} and Multimorph}
 
@@ -1139,51 +1153,54 @@ and hence, they cannot learn classical morphemes (see section~\ref{sec:what-exac
 They can, however, learn recurrent units of \emph{pure} form. 
 Consider again, 
 for example, the feminine endings of Hebrew. A \ac{ULM} system would likely be 
-able to discover facts (\ref{ex:Xi}) and (\ref{ex:Yi}) and from them deduce 
-
-(\ref{ex:i-and-t}): 
+able to discover facts (\ref{ex:Xi}) and (\ref{ex:Yi}) and from them deduce (\ref{ex:i-and-t}): 
 \begin{exe} \label{ex:observations1}
-\ex There are many stems $X$ such that both $X$ and $X\text{\textbf{i}}$ are 
-attested as words. \label{ex:Xi}
- \ex There are many stems \textit{Y} such that both \textit{Y} and \textit{Y}\textbf{t} 
- are attested as words. \label{ex:Yi}
+\ex \label{ex:Xi} There are many stems $X$ such that both $X$ and $X\text{\textbf{i}}$ are 
+attested as words.
+ \ex \label{ex:Yi} There are many stems \textit{Y} such that both \textit{Y} and \textit{Y}\textbf{t} 
+ are attested as words.
 \ex Therefore, \textit{-i} and \textit{-t} are both morphological units. \label{ex:i-and-t}
 \end{exe}
 
 The following, on the other hand, may prove to be more difficult:
 \begin{exe} \label{ex:observations2}
-\ex  For some $X$ and $Y$, $Y=X\text{\textbf{i}}$. \label{ex:YequalsXi} 
-\ex  On the other hand, sometimes $Y \ne X\text{\textbf{i}}$; that is, for some stems 
-$X$, there is an $X\text{\textbf{it}}$, but no $X\text{\textbf{i}}$ . \label{YneXi}
+\ex  \label{ex:YequalsXi} For some $X$ and $Y$, $Y=X\text{\textbf{i}}$. 
+\ex  \label{ex:YneXi} On the other hand, sometimes $Y \ne X\text{\textbf{i}}$; that is, for some stems 
+$X$, there is an $X\text{\textbf{it}}$, but no $X\text{\textbf{i}}$. 
 \ex Therefore, there must be, \textbf{in addition to} \textit{-i} and \textit{-t}, 
-a distinct suffix \text{-it}.
+a distinct suffix \textit{-it}.
 \end{exe}
-Recall that in our morphome-based analysis of Hebrew feminine endings, we said 
-that \text{-it} was a unified suffix at the phonological level, but its morphomic 
+In our morphome-based analysis of Hebrew feminine endings, we said 
+that while \text{-it} was a unified suffix at the phonological level, its morphomic 
 representation consisted of two distinct morphomes, namely the pair 
-$\langle$$\mu$\textsc{i}, $\mu$\textsc{t}$\rangle$. This accounted
-for not only the identities of exponence between tables~\ref{subtab:der-adjectives} 
-and \ref{subtab:der-nouns-i}, but also the difference, namely that there is no independent
-\text{-i} in table~\ref{subtab:der-nouns-i}. 
+$\langle$$\mu$\textsc{i}, $\mu$\textsc{t}$\rangle$. 
+This accounted
+ not only for the identities of exponence between tables~\ref{subtab:der-adjectives} 
+and \ref{subtab:der-nouns-i}, but also for the \emph{difference}: There is an \emph{independent} \textit{-i} suffix 
+ in table~\ref{subtab:der-adjectives}, but not in % \emph{vs.} the absence of an independent \textit{-i} ending in 
+ table~\ref{subtab:der-nouns-i}.
 
-It would likely be difficult, however, for most \ac{ULM} systems to capture such subtlety. 
-Most \ac{ULM} systems would probably just decompose \textit{-it} 
-into \textit{-i} and \textit{-t} wherever it should occur, regardless of whether it be of the
- (\ref{YequalsXi}) type or the (\ref{YneXi}) type. At the same time, it arguably would not be incorrect to decompose \textit{-it} in every instance, not even from a morphomic perspective,
+%It would likely be difficult, however, for most \ac{ULM} systems to capture such subtlety. 
+%Most \ac{ULM} systems would probably tend to decompose \textit{-it} 
+%into \textit{-i} and \textit{-t} wherever it should occur, regardless of its type---i.e., whether it be of the
+%``$\text{Y} = \text{Xi}$'' type (\ref{YequalsXi}) or the ``$\text{Y} \ne \text{Xi}$'' type (\ref{ex:YneXi}). At the same time, 
+If a ULM system should encounter these different types of the \textit{-it} ending, one way it could analyze them would be to decompose the \textit{-it} into \textit{-i}  and \textit{-t} in every instance.
+Arguably, such an approach would not be incorrect,
+% to decompose \textit{-it} in every instance, not even from a morphomic perspective,
 since there are precisely two morphomes at work in generating \textit{-t}, \textit{-i}, and \textit{-it}, 
- namely $\mu$\textsc{i} and $\mu$\textsc{t}. 
-One's evaluation of a system thus depends on one's view of the output subsequences and the task of the system. Does one 
-expect a system to find phonological units (or operators), e.g., $\Phi$\textsc{i} $\Phi$\textsc{t}, and $\Phi$\textsc{it}, or 
+ namely $\mu$\textsc{i} and $\mu$\textsc{t} (see the `Morphomic' row in table~\ref{subtab:der-adjectives}).
+One's evaluation of a system thus depends on one's interpretation of the output as well as one's view of the system's 
+task. Is the system  expected to discover phonological units (or operators), e.g., $\Phi$\textsc{i} $\Phi$\textsc{t}, and $\Phi$\textsc{it}, or 
 morphomes, e.g., 
-$\mu$\textsc{i} and $\mu$\textsc{t} (which, strictly speaking, are not morphomes exactly, but projections of morphomes onto 
-the phonological plane---see below.)
+$\mu$\textsc{i} and $\mu$\textsc{t}.\footnote{Strictly speaking, the output would not contain morphomes themselves, but rather the \emph{projections} of morphomes onto 
+the phonological plane, since morphomes themselves do not have phonological substance.}
 
 One could argue that while they are composed of surface-level characters,
 they are closer to morphomes in nature than phonological forms.
  Multimorph's \ac{MCMM} has only one layer of hidden nodes,
 and thus Multimorph cannot learn hierarchical structure; rather, it can only learn 
 flat structure, and so, from a theoretical point of view, at least, it is ill-equipped to learn
-that the \textit{-it} described in (\ref{YneXi}) is simultaneously 
+that the \textit{-it} described in (\ref{ex:YneXi}) is simultaneously 
 both a unified whole and a composite structure,
 decomposable at the morphomic level into the distinct morphomes 
 $\mu$\textsc{i} and $\mu$\textsc{t}.
@@ -1195,8 +1212,8 @@ that an \ac{MCMM} can map multiple causes (multiple morphological units)
  morphological units (or clusters), it is capable of mapping all three 
  to a single surface-level node (representing a single feature). 
  But when it maps multiple clusters to individual surface-level nodes, 
- it does not do so in a hierarchical way; i.e., \textit{-i}, \textit{-t}, \text{-it} would
- all be at the same level, so to speak.
+ it does not do so in a hierarchical way; i.e., \textit{-i}, \textit{-t}, \textit{-it} would
+ all be at the same level. %, so to speak.
 
 At any rate, no \ac{ULM} system is going to be able to learn the full range of morphomic
 phenomena. No \ac{ULM} system is going to be able to identify a metamorphome in its full
@@ -1290,7 +1307,7 @@ There is a rich and complex
 world between the planes of syntax and phonology, namely the world of autonomous morphology, which is free of both form and meaning. This is thus not the world of classical morphemes (pairings of form and meaning), but rather a new sort of morphological unit that mediates between phonology and
 syntax/semantics, but is beholden to neither.  
 Among the most notable formulations of autonomous morphology to date are Paradigm Function Morphology \citep{stump:2001}, particularly in the workings of its form-paradigm cells, Arornoff's
-concept of the \emph{morphome} \citep{aronoff:1994}, and Round's expansions \citep[e.g.,][]{round:2011,round:2015} of Aronoff's original concept. The ever growing body of work on autonomous morphology is vastly clarifies what \ac{ULM}'s target of learning is. Round's maxim in particular provides an implicit suggestion for how a \ac{ULM} algorithm might proceed with its learning task: \textit{Look for similarities in form, since shared elements of form are indicators of shared morphomes.} Even though these morphomes, according to Round, have neither meaning nor form, they do, however, project something of themselves onto the phonological (or surface) level, since it is the surface level---particularly shared  form at the surface level, that allows us to identify morphomes in the first place. 
+concept of the \emph{morphome} \citep{aronoff:1994}, and Round's expansions \citep[e.g.,][]{round:2011,round:2015} of Aronoff's original concept. The ever growing body of work on autonomous morphology vastly clarifies what \ac{ULM}'s target of learning is. Round's maxim in particular provides an implicit suggestion for how a \ac{ULM} algorithm might proceed with its learning task: \textit{Look for similarities in form, since shared elements of form are indicators of shared morphomes.} Even though these morphomes, according to Round, have neither meaning nor form, they do, however, project something of themselves onto the phonological (or surface) level, since it is the surface level---particularly shared  form at the surface level, that allows us to identify morphomes in the first place. 
 
 Therefore, in evaluating the present study's ULM system, namely Multimorph, one should not look for classical morphemes in its output, but rather autonomous morphological units like morphomes. (We will being use the term \emph{morphs} when referring to Multimorph's targets of learning.)
 In the next chapter, we discuss the setup of the experiments by which Multimorph was evaluated.

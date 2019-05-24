@@ -1,8 +1,8 @@
 \chapter{EXPERIMENTAL SETUP}
 \label{ch:experi}
 \section{Introduction}
-This chapter will describe the experimental setup, i.e., the steps I took to prepare for and run the experiments. This discussion
-is divided into two main parts: The first (section~\ref{sec:datasource} concerns the extraction of the input data, including a description of the original data source. The second (section~\ref{sec:expvars)} discusses the experimental variables. The experimental variables comprise two broad categories, namely the \emph{data representation} (i.e., orthographic vs. transcriptional) and the \emph{feature types}. These are discussed in detail in section~\ref{sec:features}. 
+This chapter will describe the experimental setup, that is, the steps I took to prepare for and run the experiments. This discussion
+is divided into two main parts: The first (section~\ref{sec:datasource}) concerns the extraction of the input data, including a description of the original data source. The second (section~\ref{sec:expvars}) discusses the experimental variables. The experimental variables comprise two broad categories, namely the \emph{data representation} (i.e., orthographic vs. transcriptional) and the \emph{feature types}. These are discussed in detail in section~\ref{sec:features}. 
 
 Multimorph takes as input any list of words. The words can be of any
 language, although Multimorph does expect the input strings to be composed
@@ -11,7 +11,7 @@ than composite.
 For example the symbol \textsf{\textipa{\.*k}} can be represented in Unicode either 
 as a sequence of two code points, namely \texttt{U+006B, U+0323} 
 (where \texttt{U+0323}
-corresponds to the dot), or as the \emph{single} code point \texttt{+U1E33}. 
+corresponds to the dot), or as the \emph{single} code point \texttt{U+1E33}. 
 In its present form, Multimorph 
 expects the latter. I mention this because the data source 
 expresses
@@ -43,7 +43,9 @@ rather than transcribed. The Hebrew alphabet has no
 dedicated letters for vowels, and thus Hebrew 
 orthography is largely without vowels. I wanted data in which the vowels were 
 fully represented. Another advantage of the \ac{BLC} is that 
-it is quite extensive; I am unaware of larger source of 
+it is quite extensive. It contains 110,819 utterances, which, in turn, comprise 417,938 word tokens (13,828 word types) \citep{albert-et-al:2012}.
+% (13,828 word-types).; 
+I am unaware of larger source of 
 transcribed Modern Hebrew. 
 
 Each file in the \ac{BLC} is the transcription of a 
@@ -77,17 +79,17 @@ years old) when they ended.
     \>  \textsf{n|kli}\&\textsf{gen:ms\&num:pl\&pl:masc:match\&stat:free-\a'{i}m=tool .} \\[6pt]
 \textsf{\%gra:} \> \textsf{1|0|ROOT 2|1|ANONAGR 3|1|PUNCT}
 \end{tabbing}
+\caption{Excerpt from the Berman Longitudinal Corpus (BLC)}
 \label{fig:excerpt}
-\caption{Excerpt from the Berman Longitudinal Corpus (BLC).}
 \end{mdframed}
 \end{figure}
 Figure~\ref{fig:excerpt} shows an excerpt from the \ac{BLC}. 
 This excerpt contains two utterances, one spoken by the 
 target child (CHI), and the other by the child's mother (MOT).
 The first utterance in figure~\ref{fig:excerpt} is that of mother,
-who says, ``What is Mom doing in the kitchen?" The child
-then replies \textsf{[rox\a'{e}cet kel\a'{i}m]}, `Washing dishes.' \footnote{The BLC's gloss `tools' is a generic translation of the Hebrew \textit{kel\'{i}m}. However, the context here suggests `dishes'
-as a better translation.} % That is, `tools (for eating)' = `dishes.' )
+who says, ``What is Mom doing in the kitchen?'' The child
+then replies \textsf{[rox\a'{e}cet kel\a'{i}m]}, `Washing dishes.'\footnote{The BLC's gloss `tools' is a generic translation of the Hebrew \textit{kel\'{i}m}. However, the context here suggests `dishes'
+as a better translation.}
 I have inserted these English words as glosses in italics as additional 
 rows of text beneath the rows of transcribed words in figure~\ref{fig:excerpt}. 
 Note these two extra rows do not appear. 
@@ -126,9 +128,9 @@ gold-standard categories (see chapter~\ref{ch:eval}).
 
 \subsection{Transcription System}
 \label{sec:transcription}
-The \ac{BLC}'s transcription system eludes simple one-word 
-characterizations such as ``orthographic,"
-``phonetic," or ``phonemic." It is in fact a hybrid system, drawing
+The \ac{BLC}'s transcription system, summarized in tables~\ref{subtab:trans-vowels} and \ref{subtab:trans-cons}, eludes simple one-word 
+characterizations such as ``orthographic,''
+``phonetic,'' or ``phonemic.'' It is in fact a hybrid system, drawing
 both from phonetics and orthography \citep{albert-et-al:2013}. 
 It is a transcription system in some ways and a transliteration 
 system in others. It is a transcription system in that it has 
@@ -170,12 +172,12 @@ the Modern Hebrew column has the fewest distinctions.
 
 \begin{table}[t]
 \centering
-\caption{Transcription System of the Berman Longitudinal Corpus}
-\label{table:alphabet}
+%\caption{Transcription System of the Berman Longitudinal Corpus}
+%\label{tab:blc-alphabet}
 \subtable[Consonants\label{subtab:trans-cons}]{
 \setlength{\extrarowheight}{8pt}
 \begin{tabular}{c c c c c c c c c c c c c}
-\hline %\hline                      
+\toprule                     
 \begin{cjhebrew}'\end{cjhebrew} & \begin{cjhebrew}b\end{cjhebrew} & \begin{cjhebrew}g\end{cjhebrew} & \begin{cjhebrew}d\end{cjhebrew} 
 & \begin{cjhebrew}h\end{cjhebrew} & \begin{cjhebrew}w\end{cjhebrew} & \begin{cjhebrew}z\end{cjhebrew}& \begin{cjhebrew}.h\end{cjhebrew}
 & \begin{cjhebrew}.t\end{cjhebrew} & \begin{cjhebrew}y\end{cjhebrew} & \begin{cjhebrew}k|\end{cjhebrew} & \begin{cjhebrew}l\end{cjhebrew} 
@@ -190,45 +192,51 @@ the Modern Hebrew column has the fewest distinctions.
 	  n & s & \textipa{Q} 
 	  & p/f & c & q & r & \v{s}/\textsubdot{s} 
 	  & t & &  \v{z} & \textipa{J} & \c{c} \\
-\hline
+\bottomrule
 \end{tabular}
 }
 \subtable[Vowels\label{subtab:trans-vowels}]{
 \setlength{\extrarowheight}{8pt}
 \begin{tabular}{c c c c c}
-\hline
+%\hline
+\toprule
 a & e & i & o & u \\
 \'a & \'e & \'i & \'o & \'u \\
-\hline
+%\hline
+\bottomrule
 \end{tabular}
 }
+\caption{Transcription System of the Berman Longitudinal Corpus}
+\label{tab:blc-alphabet}
+\vspace{6pt}
 \end{table}
 
 \begin{table}[t]
 \centering
-\caption{\emph{a}-insertion before historical pharyngeals}\vspace{3pt}
-\label{tab:a-insertion}
 \setlength{\extrarowheight}{8pt}
 \begin{tabular}{l l c c c}
-\hline\hline
+\toprule
  & Classical Hebrew  & Modern Hebrew   &  \ac{BLC}  & Gloss \\
-\hline
+\midrule
 a. & \textipa{kot\'eB}  & \textipa{kot\'ev} & \textipa{kot\'ev} & `writes(s), writing' \\
 b. & \textipa{bor\'e\textbf{a}\textcrh} & \textipa{bor\'e\textbf{a}x} & \textipa{bor\'e\textbf{a}x} & `escape(s), escaping'  \\
-c. & \textipa{yod\'e\textbf{a}Q} & \textipa{yod\'e\textbf{a}} & \textipa{yod\'e\textbf{a}Q} & `know(s), knowing' \\\hline
+c. & \textipa{yod\'e\textbf{a}Q} & \textipa{yod\'e\textbf{a}} & \textipa{yod\'e\textbf{a}Q} & `know(s), knowing' \\\bottomrule
 \end{tabular}
+\caption{\emph{a}-insertion before historical pharyngeals}
+\label{tab:a-insertion}
+%\vspace{3pt}
 \end{table}
 
 \begin{table}[t]
 \centering 
 \setlength{\extrarowheight}{8pt}
 \begin{tabular}{l c c c}
-\hline\hline
+\toprule
 IPA & Orthography & BLC & Gloss  \\
 \hline
     \textipa{[yad\'{a}]} &  \begin{cjhebrew}`dy\end{cjhebrew}  & \textipa{yad\'{a}Q} & `(he) knew' \\
     \textipa{[yad\'{a}]} &  \begin{cjhebrew}hdy\end{cjhebrew}  & \textipa{yad\'{a}h} &  `her hand' \\
-\hline
+\bottomrule
 \end{tabular}
 \caption{Ambiguity arising from the loss of consonantal distinctions.}
 \label{tab:yada} 
@@ -331,7 +339,7 @@ Vowel \_\_. Hence, the \textit{b} in the root \textit{k-t-b}
 \textipa{\textit{yi{\.*k}t\'ov}} `he will write', which exhibits 
 two altered characters. Multimorph would see \textit{\textipa{\.*k}} 
 and \textit{k} as 
-entirely different symbols, not at allophones
+entirely different symbols, not as allophones
 of the same phoneme. The same would be true for \textit{b} 
 and \textit{v}.  
 
@@ -347,10 +355,9 @@ grapheme to have
 lost its ancient phonemic affiliation. 
 The graphemes \begin{cjhebrew}.t\end{cjhebrew} 
 (\textit{\textipa{\.*te\.*t}}), \begin{cjhebrew}s\end{cjhebrew} 
-(\textit{\textipa{same\.*k}}), corresponded to emphatic, i.e., 
+(\textit{\textipa{same\.*k}}), correspond to emphatic, i.e., 
 pharyngealized, consonants in ancient 
-Hebrew, i.e. pharyngealized versions of [s] of [t], most likely 
-\ref{matras-and-schiff:2005}.
+Hebrew, probably pharyngealized versions of [s] of [t] \citep{matras-and-schiff:2005}.
 Modern Hebrew, however, lacks pharyngealized consonants just as 
 it lacks pharyngeals. 
 The consonant \begin{cjhebrew}q\end{cjhebrew} (\textit{qof}, 
@@ -366,7 +373,7 @@ have merged with those of \textit{sin} and \textit{tav} respectively,
  so that \textit{\textipa{same\.*k}} and \textit{\textipa{sin}} 
  are both pronounced as [s], and \textit{\textipa{\.*te\.*t}} and 
  \textit{tav} as [t]. But whereas the phonemic inventory of 
- Modern Hebrew has lost distinctions, the Hebrew writing system has preserved sever inter-consonantal distinctions.
+ Modern Hebrew has lost distinctions, the Hebrew writing system has preserved several inter-consonantal distinctions.
 
 \begin{table}[t]
 \centering 
@@ -395,8 +402,8 @@ have merged with those of \textit{sin} and \textit{tav} respectively,
  \begin{cjhebrew}w\end{cjhebrew} (\textipa{waw}) & & \textipa{w} & \textsf{\textipa{v}} & \textit{\textsf{\textipa{w}}} \\
 \bottomrule
 \end{tabular}
-\label{tab:phon-neut} 
-\caption{Correspondences between Hebrew orthography, speech sounds (past and present), and the \ac{BLC}'s transcriptional system}
+\caption{Correspondences between Hebrew orthography, speech sounds (past and present), and the BLC's transcriptional system}
+\label{tab:phon-neut}
 \end{table}
 
 \subsection{Morphological Annotation}
@@ -430,7 +437,7 @@ segmentation, even though the segmentations may be identical.
 \paragraph{Prefixal clitics.} In Hebrew, many functional words are 
 \textit{prefixal clitics}; that is, they attach to content 
 words as prefixes. They include the definite article \textit{ha-}, the prepositions 
-\textit{le-} `to,' \textit{be-} `be,' \textit{ke-} `like/as,' and \textit{me-} 
+\textit{le-} `to,' \textit{be-} `in,' \textit{ke-} `like/as,' and \textit{me-} 
 `from,' the  complementizer/relativizer \textit{\v{s}e-} `that/which,' and the 
 conjunction \textit{we-} `and.' For example,  in
 \textsf{wehay\'eled} (`and the boy'), the prefixes \textit{we} and \textit{ha} 
@@ -485,79 +492,101 @@ the \ac{BLC}'s annotation conventions proved to be a great help.
 The \ac{BLC} deals with anomalous forms through a special 
 annotative device consisting of a set of square brackets, with the left bracket 
 accompanied
-by a colon, i.e., \textsf{[: \textit{corrected-form} ]}. Sometimes these brackets 
-are followed by another set
-of brackets. This latter set, if present, most frequently contains an asterisk 
-(`*$\tau$') where $tau$ may be empty, or it may specify some error category. 
-In the \ac{BLC}, it is most frequently empty, as in (\ref{ex:repl2}). 
-According to the CHILDES manual \citep{macwhinney:2000b}, the purpose 
-of the ``\textsf{[*$\tau$]}'' 
-is to specify that an anomalous form is 
-indeed erroneous rather than merely non-standard. 
-However, this distinction between 
-\textsf{[: \textit{corrected-form} ]} and 
-\textsf{[: \textit{corrected-form} ] [*{$\tau$}]} is not always manifest in \ac{BLC}.
-
-
-For example, in (\ref{ex:repl1}), the anomalous 
-form \textsf{patux} 
-(the `\textsf{@c} ' indicates a child-created form); 
-the anomaly is an absent \textit{a} before the \textit{x}, thus violating 
-a morphophonemic process 
-whereby \textit{a} is inserted before pharyngeals, a process that was inherited 
-from Classical Hebrew, even though Modern Hebrew no longer has pharyngeals (see \ref{tab:a-insertion}).
-In (\ref{ex:repl2}), the error is essentially that the pre-\textit{\textipa{P}} 
-\textit{a} is absent. The glottal stop
-associated with the grapheme \begin{cjhebrew}'\end{cjhebrew} (\textit{'alef}) 
-is typically not articulated in Modern Hebrew \citep{montoya:2014}. The distinction
-between the two is not entirely clear.
-
-In any case, however, the distinction, if there is one, is not important for our purposes. 
-Either way, we want to replace the anomalous form with the form enclosed in 
-(the first pair of) brackets (see example~(\ref{ex:brackets})). We can just discard the \textsf{[*$\tau$]} 
-if it is present, regardless of what $\tau$ is.
-
-\begin{exe}
-\label{ex:brackets}
-\ex \begin{xlist} 
-   \ex\label{ex:repl1} \begin{tabbing}  
-  \hspace{0.6in} \= \hspace{5.5in} \kill
-  \textsf{*CHI:} \> \textsf{po ye\v{s} patux@c \textbf{[: pat\a'{u}ax]} d\a'{e}let .}
-  \end{tabbing}
-     \ex\label{ex:repl2} \begin{tabbing}
-  \hspace{0.6in} \= \hspace{5.5in} \kill
-  \textsf{*CHI:} \> \textsf{tikri \,\textbf{[: tiqre\textipa{P}\a'{i}]}\, \textbf{[*]}\, 
-  sip\a'{u}r\, d\a'{o}da\, Orly .} \\
-  \textsf{\%mor:} \> \textsf{ti\#v|qar\a'{a}\textipa{P}\&root:qr\textipa{P}\&ptn:qal\&tense:fut\&pers:2\&gen:fm\&num:sg-\a'{i}=read} \\
-                    \> \textsf{n|sip\a'{u}r\&gen:ms\&num:sg\&stat:unsp } \\
-                    \> \textsf{n|dod\&gen:fm\&num:sg\&stat:free-a=uncle/aunt} \textsf{n:prop|Orly .}
-  \end{tabbing}
-   \end{xlist}
+by a colon, i.e., 
+\begin{center}
+\textsf{[: \textit{corrected-form} ]}
+\end{center}
+Sometimes these brackets 
+are followed by a second set of brackets, as in the following:
+\begin{exe} \label{ex:tau}
+\ex \textsf{tikri \,\textbf{[: tiqre\textipa{P}\a'{i}]}\, \textbf{[*]}\, sip\a'{u}r\, d\a'{o}da\, Orly .}
 \end{exe}
+This second set, if present, most frequently contains just the asterisk, but the asterisk may be followed
+by an error category. The first set (the one with colon) offers a correction for the preceding erroneous/anomalous form.
+
+%However, since neither error categories nor errors were relevant to the present study, I discarded second bracket pair wherever it occurred, and I replaced anomalous/erroneous forms with their respective corrections.
+
+% with the content in the first set of brackets ( %and was thus discarded. %discardethis second set of brackets was not
+%(`*$\tau$') where $tau$ may be empty, or it may specify some error category. 
+%In the \ac{BLC}, it is most frequently empty. %, as in (\ref{ex:repl2}). 
+
+%According to the CHILDES manual \citep{macwhinney:2000b}, the purpose 
+%of the ``\textsf{[*$\tau$]}'' 
+%is to specify that an anomalous form is 
+%indeed erroneous rather than merely non-standard. 
+%However, this distinction between 
+%\textsf{[: \textit{corrected-form} ]} and 
+%\textsf{[: \textit{corrected-form} ] [*{$\tau$}]} is not always manifest in \ac{BLC}.
+%In (\ref{ex:repl1}), the anomalous 
+%form \textsf{patux} 
+%(the `\textsf{@c} ' indicates a child-created form); 
+%the anomaly is an absent \textsf{a} before the \textsf{x}, thus violating 
+%a morphophonemic process 
+%whereby \textit{a} is inserted before pharyngeals.\footnote{This is a process grandfathered in from
+%from Classical Hebrew; its triggering context actually no longer exists, as Modern Hebrew no longer has pharyngeals (see section~\ref{tab:a-insertion}).}
+%In (\ref{ex:repl2}), the error is essentially that the pre-\textit{\textipa{P}} 
+%\textit{a} is absent. The glottal stop
+%associated with the grapheme \begin{cjhebrew}'\end{cjhebrew} (\textit{'alef}) 
+%is typically not articulated in Modern Hebrew \citep{montoya:2014}. The distinction
+%between the two is not entirely clear.
+%
+%The distinction between , if there is one, is not important for our purposes. 
+%Either way, I needed to replace the anomalous form with the form enclosed in 
+%(the first pair of) brackets (see example~(\ref{ex:brackets})). We can just discard the \textsf{[*$\tau$]} 
+%if it is present, regardless of what $\tau$ is.
+%The important material for our purposes was between the first pair of brackets, as these brackets offer a correction of the preceding erroneous form. I replaced all erroneous forms with their respective corrections.
+%\begin{exe}
+%\label{ex:brackets}
+%%\ex %\begin{xlist} 
+%\ex\label{ex:repl1} 
+%   %\ex\label{ex:repl1} 
+%   \begin{tabbing}  
+%  \hspace{0.6in} \= \hspace{5.5in} \kill
+%  \textsf{*CHI:} \> \textsf{po ye\v{s} patux@c \textbf{[: pat\a'{u}ax]} d\a'{e}let .}
+%  \end{tabbing}
+%\end{exe}  
+%     \ex\label{ex:repl2} \begin{tabbing}
+%  \hspace{0.6in} \= \hspace{5.5in} \kill
+%  \textsf{*CHI:} \> \textsf{tikri \,\textbf{[: tiqre\textipa{P}\a'{i}]}\, \textbf{[*]}\, 
+%  sip\a'{u}r\, d\a'{o}da\, Orly .} \\
+%  \textsf{\%mor:} \> \textsf{ti\#v|qar\a'{a}\textipa{P}\&root:qr\textipa{P}\&ptn:qal\&tense:fut\&pers:2\&gen:fm\&num:sg-\a'{i}=read} \\
+%                    \> \textsf{n|sip\a'{u}r\&gen:ms\&num:sg\&stat:unsp } \\
+%                    \> \textsf{n|dod\&gen:fm\&num:sg\&stat:free-a=uncle/aunt} \textsf{n:prop|Orly .}
+%  \end{tabbing}
+%   \end{xlist}
+%\end{exe}
 
 
 \paragraph{Dropped sounds}
-Adults produce anomalous or non-standard speech, too. In (\ref{ex:dropped}), for instance, the investigator 
+The adults recorded in the BLC produced anomalous or non-standard speech, too. In example~(\ref{ex:dropped}), for instance, the investigator 
 has dropped the 
 \emph{n} from the infinitive form 
 \textsf{li\textbf{(n)}s\'oa\textipa{Q}} (`to ride, drive, travel'), 
 which is of the root n.s.\textipa{Q}. 
 The \ac{BLC}'s transcribers ``restored'' such dropped or deleted sounds and enclosed them in parentheses.
-\begin{exe} \label{ex:dropped}
-\ex \begin{tabbing}
-\hspace{0.6in} \= \hspace{5.5in} \kill
-\textsf{*INV:} \> \textsf{li(n)s\a'{o}a\textipa{Q} \, ba\#\, \v{s}en\a'{i} ?}
-\end{tabbing}
+\begin{exe} 
+\ex \label{ex:dropped} \textsf{li(n)s\a'{o}a\textipa{Q} \, ba\#\, \v{s}en\a'{i} ?}
 \end{exe}
 
+%\ex \begin{tabbing}
+%\hspace{0.6in} \= \hspace{5.5in} \kill
+%\textsf{*INV:} \> \textsf{li(n)s\a'{o}a\textipa{Q} \, ba\#\, \v{s}en\a'{i} ?}
+%\end{tabbing}
+%\end{exe}
+
 \paragraph{Duplications}
-Sometimes a word, or, as in (\ref{ex:redundant}), a prefixal clitic, 
-is duplicated, and sometimes repeated
-several times consecutively. As in (\ref{ex:redundant}), in which the prefixal clitic \textit{we\#} is 
-repeated several times, no special annotation is used to mark or correct the repetition. Notice that morphological analysis for
-for \textit{we\#} is also repeated, so that each \textit{we\#} in the main tier has its ``own'' copy of the morphological analysis.
-\begin{exe} \label{ex:redundant}
-\ex \textsf{*CHI:\quad we\# we\# we\# we\#\, nigm\textipa{\'a}r } \\
+Sometimes the BLC records speakers as having repeated a word or clitic, as in eample~(\ref{ex:redundant}),x
+% (\ref{ex:redundant}), a prefixal clitic, 
+%is duplicated, and sometimes repeated
+%several times consecutively. 
+The BLC records word repititon (i.e., as part of dysfluency) even when it results in ungrammaticality.
+%(as in a dysfluency), 
+For example, (\ref{ex:redundant}) shows an utterance in which the prefixal clitic \textit{we\#} is 
+attached to itself several times. No special annotation is used to mark or correct such repetitions. 
+%Notice that morphological analysis for
+%for \textit{we\#} is also repeated, so that each \textit{we\#} in the main tier has its ``own'' copy of the morphological analysis.
+\begin{exe} 
+\ex \label{ex:redundant} \textsf{*CHI:\quad we\# we\# we\# we\#\, nigm\textipa{\'a}r } \\
    \textsf{\%mor:\quad conj|we=and\, conj|we=and\, conj|we=and\, conj|we=and} \\
    \textsf{v|nigm\'ar\&root:gmr\&ptn:nifal\&tense:past\&pers:3\&gen:ms\&num:sg=be\_finished }
 \end{exe}
@@ -567,7 +596,8 @@ for \textit{we\#} is also repeated, so that each \textit{we\#} in the main tier 
 %morphological analysis tier, the analyses are delimited by spaces, with each single analysis corresponding
 %to a word in the transcriptional tier. 
  
-\section{Extracting the Input Datasets}\label{sec:extr}
+\section{Extracting the Input Datasets}
+\label{sec:extr}
 %To conduct the experiments, three input wordlists were necessary, 
 The experiments required three input wordlists, one for each data-representation type. 
 namely, a transcriptional list with stress markings (TS), a transcriptional list without stress markings  (TR), and an orthographic list (O).
@@ -624,11 +654,11 @@ Such misrepresentative and potentially misleading forms were excluded from the
 extracted input data.  
 Wherever a pair of brackets, i.e., \textsf{[: \textit{corrected-text} ]}, was encountered, 
 the material within the brackets was extracted in place of the anomalous word (i.e., the 
-word to the immediate left of the left bracket (\textsf{[:})).
+word the preceding the ``\textsf{[:}'').
 
-\begin{exe}\label{ex:replace}
+\begin{exe}
 	\ex Replacing anomalous forms with their bracket-enclosed corrections
-	\begin{xlist}
+	\begin{xlist} \label{ex:replace}
 	   \ex \textsf{*CHI:}\quad\textsf{po\, ye\v{s}\, \textbf{patux@c\, [: pat\'{u}ax ]}\, d\'{e}let} $\quad\to\quad$
 	   \textsf{po ye\v{s} \textbf{pat\'{u}ax} d\'{e}let} 
 	   \ex \textsf{*CHI:}\quad\textsf{\textglotstop\'{o}\textsubdot{t}o\, \textbf{micpacef@c}\, \textbf{[: mecafc\'ef ]\, [*]}} $\quad\to\quad$ \textsf{\textglotstop\'o\textsubdot{t}o\, \textbf{mecafc\'ef}}
@@ -636,7 +666,7 @@ word to the immediate left of the left bracket (\textsf{[:})).
 \end{exe} 
 
 \paragraph{Prefixal clitics.}
-Whenever a word in the main tier is preceded by one or more prefixal clitic, we concatenate them one to another and attach the whole sequence to the base word. We discard all `\texttt{\#}' signs.
+Whenever a word in the main tier is preceded by one or more prefixal clitic, we concatenate them one to another and attach the whole sequence to the base word. We discard all ``\texttt{\#}'' signs.
 \begin{exe}\label{ex:preclitics}
 	\ex
 	\textsf{we\#\, \v{s}e\# me\textipa{Q}arbev\'im} $\quad\to\quad$ \textbf{\textit{\textsf{we\v{s}e}}}\textsf{me\textipa{Q}arbev\'im}\\
@@ -645,7 +675,7 @@ Whenever a word in the main tier is preceded by one or more prefixal clitic, we 
 \end{exe}
 
 \paragraph{Complex adverbs.} In the \ac{BLC}, all adverbs are characterized as atomic, unanalyzable morphological units. That is,
-the analysis any adverb, no matter how morphologically complex, is simply ``adv", as in 
+the analysis any adverb, no matter how morphologically complex, is simply ``adv'', as in 
 examples (\ref{ex:adv:bediyuq}) and (\ref{ex:adv:dscr})  These show the \ac{BLC}'s treatment of the adverbs \textit{\textsf{bediy\'{u}q}} and \textit{\textsf{me\textglotstop{a}xoran\'{i}t}}, respectively. Both are 
 morphologically complex.
 
@@ -727,7 +757,7 @@ the morphosyntactic features of the whole compound. In a Hebrew compound
 noun, the first noun
 is always the morphosyntactic head, despite its phonologically 
 reduced state.
-Thus, in (\ref{ex:cstr:pasey}), \textsf{pas\'{e}y} 'stripes/bands' 
+Thus, in (\ref{ex:cstr:pasey}), \textsf{pas\'{e}y} `stripes/bands' 
 is the head of \textsf{pas\'{e}y+ha+rak\'{e}vet} `the railroad 
 tracks.'\footnote{The \textit{ha} at the beginning of  
 \textsf{\textit{ha}rak\'{e}vet} is the definite article, a prefixal 
@@ -743,7 +773,7 @@ i.e., compound nouns can, in principle, be indefinitely long and comprise
 indefinitely many component nouns.
 %\marginpar{What is the longest in the data?} 
 Even a compound of two nouns begins to exceed the scope 
-of a ULM study. morphological learning. It is challenge enough 
+of a ULM study. It is challenge enough 
 to identify a single 
 content stem or a single content root in a word. 
 The second reason concerns the distribution of features among the 
@@ -823,9 +853,9 @@ symbols compose the strings (i.e., words)
 of an input wordlist.
 In the present work, three data representations were tested, two transcriptional 
 (TS and TR), and one orthographic (O), as described above.
-TS is essentially the transcription system of the BLC, and thus TR is the BLC without stress markings. 
-Its alphabet is thus the BLC's 34-symbol
-transcriptional system, which we discussed above in section.
+TS consisted of the BLC's transcriptions, and TR was TS without the stress markings. 
+%Its alphabet is thus the BLC's 34-symbol
+%transcriptional system, which we discussed above in section.
 O consists of TS's words, but mapped onto orthographic 
 representations; every character in O is thus
 a letter of the 22-letter consonantal Hebrew alphabet.
@@ -994,9 +1024,9 @@ As an example, consider again the word
 \begin{center}
 \textit{we\v{s}eme\textipa{Q}arbevim} \, `and which confuse'
 \end{center} 
-whose \ac{BLC} morphological 
-analysis appears above in example (\ref{ex:preclitics}). 
-Note that this word has has \textbf{two prefixal clitics}, namely \textsf{we} 
+%whose \ac{BLC} morphological 
+%analysis appears above in example (\ref{ex:preclitics}). 
+This word has has \textbf{two prefixal clitics}, namely \textsf{we} 
 (`and') and \textsf{\v{s}e} (`which').
 Suppose $\delta=2$. The feature \textsf{b<v} then would be assigned the value $1$ with respect to
 \textit{we\v{s}eme\textipa{Q}arbevim}, since
@@ -1018,7 +1048,7 @@ The feature \textsf{\textipa{Q}<b}, by contrast, would get the value $0$, since
 %	\ex $\text{index}($\textsf{b}$) - \text{index}($\textsf{\textrevglotstop}$) = 9 - 6 = 3$
 %\end{exe}
 which is greater than $\delta$ in this case.
-Now consisder the same main word \textit{me\textipa{Q}arbevim} \emph{without}
+Now consisder the same main word \textit{me\textipa{Q}arbevim} \textbf{without}
 the two prefixal clitics. Even though \textit{me\textipa{Q}arbevim} is four characters shorter than
 \textit{we\v{s}eme\textipa{Q}arbevim}, the values of the features \textsf{b<v} and
 \textsf{\textipa{Q}<b} do not change. That is,
@@ -1072,6 +1102,6 @@ Two of these representations were quasi-phonemic transcriptions---one with stres
 This study involves three main experimental variables. Two are the feature parameters, namely, affix length $s$ and precedence span $\delta$. The third variable is the representation of the input data. Three data sets were used in the experiments. Two were transcriptional---one with stress marking and one with no stress marking, and the other was orthographic. The latter two types were derived from the transcriptional data with stress marking. 
 
 Two feature types were chosen for experimentation, namely, \emph{positional features} and \emph{precedence features},
-because the former is variant and the latter invariant with respect to affixation. That is, e.g., if a prefix within a given word is represented with positional features, its feature-value representation will change of another prefix is attached before it. Thus, the same prefix may have different feature-value representations in different words. Precedence features, on the other hand, are defined in such a way that they are unaffected when additional material is attached to the fronts or ends of words. However, this does not mean that precedence features are going to be better than positional features in every case. Some morphological units, like the characters may require positional features, just as the characters 6 and 9 require position-variant features in \ac{OCR}. 
+because the former is variant and the latter invariant with respect to affixation. That is, e.g., if a prefix within a given word is represented with positional features, its feature-value representation will change of another prefix is attached before it. Thus, the same prefix may have different feature-value representations in different words. Precedence features, on the other hand, are defined in such a way that they are unaffected when additional material is attached to the fronts or ends of words. However, this does not mean that precedence features are going to be better than positional features in every case. Some morphological units may require positional features, just as the characters 6 and 9 require position-variant features in \ac{OCR}. 
 
 The focus of the next chapter will be the methods whereby the results of the experiments were evaluated. We shall see why, for instance, we needed to extract not just the words from the \ac{BLC}, but their morphological analyses. 
