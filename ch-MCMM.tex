@@ -3,9 +3,8 @@
 
 \section{Introduction}
 \label{sec:mcmm:intro}
-Multimorph is an unsupervised learning system and thus must be
-driven by an unsupervised learning algorithm, a, 
-a procedure that induces categories from raw, unlabeled data.
+Multimorph, as an unsupervised learning system, must be
+driven by an unsupervised learning algorithm, a procedure that induces categories from raw, unlabeled data.
 This chapter discusses Multimorph's core learning algorithm, the Multiple Cause Mixture Model (MCMM) \citep{saund:94} 
 
 This chapter is a culmination of the chain of reasoning established in the preceding three chapters.
@@ -52,12 +51,9 @@ is the vector of hidden units, and $\mathbf{r}_i$ is the layer of surface units.
 uses $\mathbf{d}$ 
 rather than $\mathbf{x}$ to denote this vector. We use $\mathbf{x}$ because it seems to be more widely
 used elsewhere to denote data points. We also use $\mathbf{d}$ to denote the \emph{direction vector} later in this chapter, so using $\mathbf{x}$ to denote data points helps to avoid confusion.}
-%The vector it is the observed, real-world data. 
 As a working
 reconstruction, $\mathbf{r}_i$ is dynamic; it evolves as the learning progresses and thus
 becomes increasingly similar to $\mathbf{x}_i$. 
-%This is the essence of the learning process, and the mechanisms that drive it are
-%discussed in section~\ref{sec:mcmm-learning}.
 
 Notice in figure~\ref{fig:mcmm} that there are no connections between $\mathbf{x}_i$ and $\mathbf{r}_i$, nor between 
 $\mathbf{x}_i$ and $\mathbf{m}_i$. The vector $\mathbf{x}_i$ is thus not an integrated component of the graphical 
@@ -65,7 +61,6 @@ model. Its role is merely to serve as a target for the reconstruction vector $\m
 The goal of the system as a learning model is therefore to get $\mathbf{r}_i$ to 
 match $\mathbf{x}_i$, that is, to reconstruct the component values of $\mathbf{x}_i$ in 
 the vector $\mathbf{r}_i$. The process that achieves this reconstruction is the learning process and is discussed in detail in section~\ref{sec:mcmm-learning}.
-% shall discuss this reconstruction process in more detail in section REF.
 
 \begin{figure}[t]
 %\begin{center}
@@ -1816,17 +1811,18 @@ $m_{i,k}c_{j,k} = 1$ (and $0$ otherwise).
 This chapter has been the culminating chapter of what can be regarded as 
 Part 1 of this thesis. These first four chapters have been concerned with 
 linking autosegmental morphological theory to an unsupervised learning 
-algorithm, in particular, the MCMM. It has advanced the hypthesis 
+algorithm, in particular, the MCMM. It has advanced the hypothesis 
 (first introduced as proposition~\ref{prop:nlns} in chapter~\ref{ch:intro}) 
 that a ULM algorithm/system can learn nonconcatenative morphology if it 
-is nonlinear and nonsequential. We have seen the MCMMs meet these criteria. 
+is nonlinear and nonsequential. We have seen that MCMMs meet these criteria. 
 We will now adjust our course somewhat as we begin the thesis’s second part, 
 which will be concerned with the actual testing of the first part’s hypothesis.
- This testing, as we will see, essentially took the form of building of Multimorph, 
- an MCMM-driven system (as we have established the MCMM’s nonlinearity 
- and nonsequentiality in this chapter and chapter~\ref{ch:graph} preceding chapters) 
- and trying it out on Hebrew words, which contained plenty of nonconcatenative morphology. 
- Of course, additional research questions were raised along the way, and we 
+ This testing has taken the form of building Multimorph, 
+ an MCMM-driven system 
+ %(as we have established the MCMM’s nonlinearity 
+% and nonsequentiality in this chapter and chapter~\ref{ch:graph} preceding chapters) 
+ and trying it out on Hebrew words, which contain plenty of nonconcatenative morphology. 
+Additional research questions were raised along the way, and we 
  will address these in the following chapters. The next chapter discusses the 
  targets of Multimorph's learning, that is, the type of categories one should 
  look for in its output. This is a crucial question for purposes of evaluation.

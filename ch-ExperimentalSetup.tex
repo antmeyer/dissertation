@@ -45,7 +45,7 @@ orthography is largely without vowels. I wanted data in which the vowels were
 fully represented. Another advantage of the \ac{BLC} is that 
 it is quite extensive. It contains 110,819 utterances, which, in turn, comprise 417,938 word tokens (13,828 word types) \citep{albert-et-al:2012}.
 % (13,828 word-types).; 
-I am unaware of larger source of 
+I am unaware of a larger source of 
 transcribed Modern Hebrew. 
 
 Each file in the \ac{BLC} is the transcription of a 
@@ -429,8 +429,8 @@ described in section~\ref{sec:extr}:
 \> \textsf{\textbf{matxil+im}\$\$adj\&root:txl\&ptn:tbd\&gen:ms\&num:pl}
 \end{tabbing}
 \end{exe}
-Note that there two separate analyses in (\ref{ex:finished}), a result of ambiguity. 
-Note also that each analysis is preceded by a segmentation (in boldface). 
+This example contains two separate analyses, a result of ambiguity. 
+Each analysis is preceded by a segmentation (in boldface). 
 In cases of ambiguity, i.e., of multiple analyses, each analysis gets its own 
 segmentation, even though the segmentations may be identical.
 
@@ -440,17 +440,21 @@ words as prefixes. They include the definite article \textit{ha-}, the prepositi
 \textit{le-} `to,' \textit{be-} `in,' \textit{ke-} `like/as,' and \textit{me-} 
 `from,' the  complementizer/relativizer \textit{\v{s}e-} `that/which,' and the 
 conjunction \textit{we-} `and.' For example,  in
-\textsf{wehay\'eled} (`and the boy'), the prefixes \textit{we} and \textit{ha} 
+\textsf{wehay\'eled} (`and the boy'), the prefixes \textit{we-} and \textit{ha-} 
 are attached as clitics to \textit{y\'eled}, 
 so that the whole is regarded as a single word. The 
 \ac{BLC} tokenizes these clitics, separating them from the 
 main (content) word, and adding the number symbol (`\texttt{\#}') to 
-the end of each prefixal clitic: \textsf{wehay\'eled} 
-would be transcribed as \textsf{we\# ha\# y\'eled}.
-The following is another example; in this one, \textit{we-} is followed by \textit{\v{s}e-} (`that'):
-\begin{exe}\label{ex:preclitics}
-	\ex
-	\textsf{we\#\, \v{s}e\# me\textipa{Q}arbev\'im} \\ 
+the end of each prefixal clitic:
+\begin{exe}
+\ex  \textsf{wehay\'eled}  \quad $\mapsto$ \quad \textsf{we\# ha\# y\'eled}.
+\end{exe}
+%would be transcribed as \textsf{we\# ha\# y\'eled}.
+The following example from the BLC, example~(\ref{ex:pphash2}), shows the morphological analyses accompanying the prefixal clitics \textit{we-} (`and') and \textit{\v{s}e-} (`that') as well as the morphological analysis of the main word.
+% \textit{we-} (`and') followed by the complementer/relativizer \textit{\v{s}e-} (`that'), which is another prefixal clitic.  It also shows the corresponding morphological analyses.
+\begin{exe}
+	\ex 
+	\textsf{we\#\, \v{s}e\# me\textipa{Q}arbev\'im} \\  \label{ex:pphash2}
 	\textsf{conj|we conj:subor|\v{s}e\, part|\textipa{P}irb\'ev\&root:\textipa{Q}rbb\&ptn:piel\&gen:ms\&num:pl} 
 \end{exe}
 
@@ -501,8 +505,9 @@ are followed by a second set of brackets, as in the following:
 \begin{exe} \label{ex:tau}
 \ex \textsf{tikri \,\textbf{[: tiqre\textipa{P}\a'{i}]}\, \textbf{[*]}\, sip\a'{u}r\, d\a'{o}da\, Orly .}
 \end{exe}
-This second set, if present, most frequently contains just the asterisk, but the asterisk may be followed
-by an error category. The first set (the one with colon) offers a correction for the preceding erroneous/anomalous form.
+This second set, if present, most frequently contains just an asterisk shown, as in example~(\ref{ex:tau}). However,
+the asterisk may be followed
+by an error classification. The first bracket pair (the one with colon) offers a correction for the preceding erroneous/anomalous form.
 
 %However, since neither error categories nor errors were relevant to the present study, I discarded second bracket pair wherever it occurred, and I replaced anomalous/erroneous forms with their respective corrections.
 
@@ -649,7 +654,7 @@ with unaccented vowels.
 The input datasets were extracted from the \ac{BLC}. However, as noted above in 
 section~\ref{sec:anomolous}, the \ac{BLC} is by no means free of anomalous forms, 
 forms that are ungrammatical with respect to the standard form of the language, 
-forms that would convey misinformation about the language if taken at face value. 
+forms that, for our purposes, would convey misinformation about the language if taken at face value. 
 Such misrepresentative and potentially misleading forms were excluded from the 
 extracted input data.  
 Wherever a pair of brackets, i.e., \textsf{[: \textit{corrected-text} ]}, was encountered, 
@@ -1086,16 +1091,23 @@ absolute indices. They are not defined relative to fixed points such as
 the beginning or end of a word.
 
 \section{Experimental Program}
-The experiments tested different combinations of $s$ and $\delta$ values, 
-in particular for
-$s = \{0,2,4,6\}$ and $\delta = \{1,2,3\}$. Twelve features sets were derived from combining these $s$ and $\delta$ values:
-$\langle s = 0, \delta =1 \rangle$,  $\langle s = 0, \delta = 2 \rangle$, and so on.
-Each $\langle s, \delta \rangle$ pair corresponds to a distinct feature set that was tested in a particular experiment. 
+%The experiments tested different combinations of $s$ and $\delta$ values, 
+%in particular for
+%$s = \{0,2,4,6\}$ and $\delta = \{1,2,3\}$. Twelve features sets were derived from combining these $s$ and $\delta$ values:
+%$\langle s = 0, \delta =1 \rangle$,  $\langle s = 0, \delta = 2 \rangle$, and so on.
+%Each $\langle s, \delta \rangle$ pair corresponds to a distinct feature set that was tested in a particular experiment. 
 
-Each combination of $s$ and $\delta$ was paired with each of the input-data representations. 
+
+For the transcriptional data types (TS and TR), the possible $s$ values were $s_T = \{0,2,4,6\}$, However, for O, they were different, namely $s_O = \{0,1,2,3\}$, since the O words contained fewer characters. All three data-representation types had the  same $\delta$ values, namely $\delta = \{1,2,3\}$. %Twelve features sets were 
+To obtain the list of experiments, each $s$ and $\delta$ combination was paired with each of the three data-representation types, making sure to match the O data type only with the $s_O$ values, and likewise, the TS and TR data types only with the $s_T$ values. The result was a set of triples, each of which corresponded to an experiment. 
+
+%derived from combining these $s$ and $\delta$ values:
+%$\langle s = 0, \delta =1 \rangle$,  $\langle s = 0, \delta = 2 \rangle$, and so on.
+%Each $\langle s, \delta \rangle$ pair corresponds to a distinct feature set that was tested in a particular experiment. 
+%Each combination of $s$ and $\delta$ values was paired with each of the three data representation types, namely, the transcriptions with stress marking (TS), the transcriptions without stress marking, (TR), and the orthographic data (O).
 %That is, Multimorph was run on each dataset at each of the feature-parameter combinations.  
 %representations of the input data. 
-Two of these representations were quasi-phonemic transcriptions---one with stress marking and one without. We shall abbreviate these two as TS and TR, respectively. The third kind of input-data representation was not transcriptional, but rather orthographic (O). 
+%Two of these data representations were quasi-phonemic transcriptions---one with stress marking and one without. We shall abbreviate these two as TS and TR, respectively. The third kind of input-data representation was not transcriptional, but orthographic (O). 
 
 \section{Summary}
 
