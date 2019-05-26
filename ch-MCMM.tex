@@ -25,7 +25,7 @@ of an MCMM's structure, i.e., the attributes that all MCMMs share.
 Section~\ref{sec:context} then proceeds to place MCMMs in a larger context of 
 unsupervised learning algorithms, demonstrating 
 the similarities and differences between MCMMs and other types of
- learning algorithms such as Restricted Boltzmann Machines (RBMs) \citep{smolensky:1986, hinton:2002, hinton-and-salak:2006}
+ learning algorithms such as Restricted Boltzmann Machines (RBMs) \citep{smolensky:1986, hinton:2002}
  and Latent Dirichlet Allocation (LDA) \citep{blei-et-al:2003}. Section~\ref{sec:mixing-function} 
  focuses on a particularly important component of an MCMM, namely its 
  \emph{mixing function}, which is a type of activation function, that is, a 
@@ -311,7 +311,7 @@ In particular, we will compare the classical autoencoder, the RBM, and the MCMM 
 (i.e., method for minimizing the model's error). 
 Authors whose work involves an autoencoder variant often describe their systems in relation to 
 the classical autoencoder, as do \citet{vincent:2010}, \citet{vincent:2011}, \citet{baldi:2012}, and \citet{chen-and-deng:2016}. 
-The descriptions and comparisons in these sources inform the bulk of the classical-autoencoder material of the following discussion.
+The descriptions and comparisons in these sources inform the bulk of the classical-autoencoder material in the following discussion. 
 %, where it concerns the classical autoencoder, draws from these descriptions and comparisons. 
 % as well as \citet{baldi:2012} and \citet}|
 %Where it concerns classical autoencoders, the following discussion draws mainly from \citet{baldi:2012}.
@@ -500,7 +500,7 @@ an analogy from \citet{saund:94}, is essentially a voting rule, i.e.,  a policy
 for combining multiple input votes into a single output decision.  
 In the context of neural-network models such as RBMs, MCMMs, and 
 classical autoencoders, the output decision takes the form of a \emph{node activity},
-and the input votes are the \emph{weighted} activities of the preceding layer's nodes \citep{hinton:1987trans}. 
+and the input votes are the \emph{weighted} activities of the preceding layer's nodes. 
 That is, each vote is a product of the form $x_{j} w_{j,k}$, where $x_{j}$ is the activity 
 of the $j$th node in a given layer of nodes, and $w_{j,k}$ is the weight associated with that 
 node. The question being voted upon is the activity of the $k$th node in the 
@@ -517,10 +517,10 @@ section~\ref{sec:mixing-function}.
 
 \paragraph{Optimization procedure.}  In a classical autoencoder, the two layers of 
 weights---first $\textbf{B}$ and then $\textbf{A}$---are directly updated via 
-back-propagation \citep{rumelhart-et-al:1985}.
+back-propagation \citep{rumelhart-et-al:1985, hinton:1987, hinton:1987trans, bourlard:1988}.
 The values of the hidden units are not directly manipulated; rather, they change  
 only as a 
-consequence of the direct adjustments made to the weights. The same is true in an RBM: 
+consequence of the adjustments made to the weights. The same is true in an RBM: 
 an RBM's hidden-unit activities change in response to adjustments 
 made to the weights and biases, but they are not
 adjusted directly.
@@ -541,7 +541,8 @@ It also assumes that \emph{exactly one}
 of these underlying distributions is responsible for each data point \citep{bishop:2006}. 
  These underlying 
 distributions can be interpreted as clusters. Under this interpretation, each data point is 
-is assigned to a cluster (distribution) that is responsible for generating it \citep{fraley:1998}. 
+is assigned to a cluster (distribution) that is responsible for 
+generating it \citep{fraley:1998}. 
 However, since the process is probabilistic,
 data points are often not mapped to clusters with 100 percent certainty. 
 There may be, for example, a 60 percent chance that a given data point belongs to one 
@@ -551,8 +552,9 @@ assigned to the single most probable category, and the other less probable
 possibilities are forgotten. However, the uncertainty can also be left 
 unresolved, so that, in the case of our example, all three possibilities, 
 along with their respective likelihoods, would be output. This is a 
-\emph{soft} clustering. But even in the case of a soft clustering, 
-we still assume that the data point in question \emph{fundamentally} belongs to only one cluster; 
+\emph{soft clustering}. But even in the case of a soft clustering, 
+we still assume that the data point in question \emph{fundamentally} 
+belongs to only one cluster; 
 the ``softness" of the clustering just expresses the model's uncertainty 
 as to which cluster this is. %the data point belongs.
 
@@ -566,7 +568,7 @@ By contrast, a mixed-membership model, e.g., Latent Dirichlet Allocation \citep{
 %vector in figure~\ref{fig:mcmm}). The topics in \cite{sahami-et-al:96} are represented 
 %as the MCMM's hidden units $\mathbf{m}_i$. Documents are grouped into topic 
 %clusters by the learning process described below in section~\ref{sec:mcmm-learning}.}, 
-views each data point as a complex object, i.e., as an object that itself consists of multiple objects, 
+views each data point as a complex object, that is, as an object that itself consists of multiple objects, 
 \emph{each of which} is generated by one of multiple probability distributions (or clusters) \citep{airoldi-et-al:2014}. 
 For example, in a mixed-membership topic model, the complex objects are the 
 \emph{documents} within a given corpus. The elemental objects that compose 

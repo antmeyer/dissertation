@@ -914,10 +914,10 @@ larger in one photograph simply because
 it was closer to the camera when that photograph was taken.
 
 Sometimes, however, both invariant and variant features are necessary, 
-as in \ac{OCR} \citep{trier-et-al:1996}.
-%For example, in the field of Optical Character Recognition (\ac{OCR}) 
+as in optical character recognition\citep{trier-et-al:1996}.
+%For example, in the field of optical character recognition
 %provides some good examples of this scenario. 
-Rotation-invariant features are considered essential in \ac{OCR} \citep{trier-et-al:1996}, 
+Rotation-invariant features are considered essential in optical character recognition \citep{trier-et-al:1996}, 
 at least
 insofar as a character's identity is independent 
 of its orientation.
@@ -931,7 +931,7 @@ However, this is not true of all letters. In many type faces, for instance,
 to become \textsf{n}. Often, a rotated (upside-down) \textsf{M} closely 
 resembles a \textsf{W}. And should we consider numerals, we would have to deal 
 with the famously rotation-variant \textsf{6} and \textsf{9}. If an 
-\ac{OCR} system were to rely solely upon rotation-invariant features, it
+optical-character-recognition system were to rely solely upon rotation-invariant features, it
 would not be able to distinguish between, for instance, \textsf{6} and 
 \textsf{9}, since the only features that can distinguish \textsf{6} from \textsf{9}
 are rotation-variant.
@@ -940,7 +940,7 @@ are rotation-variant.
 Global features describe an image as a whole, whereas local features are concerned
 only with a particular region in the image. That is, the value of local feature is dependent
 only upon its particular region; it is not affected by other regions. 
-In \ac{OCR}, an example of a global feature is \emph{aspect ratio}, defined 
+In optical character recognition, an example of a global feature is \emph{aspect ratio}, defined 
 as the width of a character's rectangular bounding box divided by the same 
 box's height. Note that aspect ratio is size-invariant. Global features 
 can be made invariant 
@@ -1114,6 +1114,6 @@ To obtain the list of experiments, each $s$ and $\delta$ combination was paired 
 This study involves three main experimental variables. Two are the feature parameters, namely, affix length $s$ and precedence span $\delta$. The third variable is the representation of the input data. Three data sets were used in the experiments. Two were transcriptional---one with stress marking and one with no stress marking, and the other was orthographic. The latter two types were derived from the transcriptional data with stress marking. 
 
 Two feature types were chosen for experimentation, namely, \emph{positional features} and \emph{precedence features},
-because the former is variant and the latter invariant with respect to affixation. That is, e.g., if a prefix within a given word is represented with positional features, its feature-value representation will change of another prefix is attached before it. Thus, the same prefix may have different feature-value representations in different words. Precedence features, on the other hand, are defined in such a way that they are unaffected when additional material is attached to the fronts or ends of words. However, this does not mean that precedence features are going to be better than positional features in every case. Some morphological units may require positional features, just as the characters 6 and 9 require position-variant features in \ac{OCR}. 
+because the former is variant and the latter invariant with respect to affixation. That is, e.g., if a prefix within a given word is represented with positional features, its feature-value representation will change of another prefix is attached before it. Thus, the same prefix may have different feature-value representations in different words. Precedence features, on the other hand, are defined in such a way that they are unaffected when additional material is attached to the fronts or ends of words. However, this does not mean that precedence features are going to be better than positional features in every case. Some morphological units may require positional features, just as the characters 6 and 9 require position-variant features in optical character recognition. 
 
 The focus of the next chapter will be the methods whereby the results of the experiments were evaluated. We shall see why, for instance, we needed to extract not just the words from the \ac{BLC}, but their morphological analyses. 
