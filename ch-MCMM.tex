@@ -10,14 +10,14 @@ This chapter discusses Multimorph's core learning algorithm, the Multiple Cause 
 This chapter is a culmination of the chain of reasoning established in the preceding three chapters.
 In chapters~\ref{ch:intro} and \ref{ch:lit-review}, we saw that it was precisely 
 the set of \emph{nonlinear-nonsequential} models that were capable of representing 
-nonconcatenative morphological structure, and that it was the properties \emph{nonlinearity}
-and \emph{nonsequentiality} that give rise to this capacity. Furthermore, we saw in 
+nonconcatenative morphological structure, and moreover, that this capacity stems from the properties \emph{nonlinearity}
+and \emph{nonsequentiality}. Furthermore, we saw in 
 chapter~\ref{ch:graph} that bipartite graphs (or bipartite graphical algorithms) were a 
 subset of NLNS algorithms. In fact, the bipartite structure of such graphs turns out to 
 be a particularly coherent way to capture nonlinearity and nonsequentiality.
 The present chapter homes in on a particular kind of bipartite learning algorithm, namely 
 the MCMM. Thus, the present chapter, when taken in the context of the preceding chapters, 
-explains the rational and theoretical significance of my choosing an MCMM 
+explains the rationale and theoretical significance of my choosing an MCMM 
 in particular to serve as Multimorph's learning algorithm.
 
 This chapter is organized as follows: Section~\ref{sec:architecture} first lays out the key components 
@@ -25,7 +25,7 @@ of an MCMM's structure, i.e., the attributes that all MCMMs share.
 Section~\ref{sec:context} then proceeds to place MCMMs in a larger context of 
 unsupervised learning algorithms, demonstrating 
 the similarities and differences between MCMMs and other types of
- learning algorithms such as Restricted Boltzmann Machines (RBM) \citep{smolensky:1986, hinton:2002}
+ learning algorithms such as Restricted Boltzmann Machines (RBM) \citep{smolensky:1986, hinton:2002, hinton-and-salak:2006}
  and Latent Dirichlet Allocation (LDA) \citep{blei-et-al:2003}. Section~\ref{sec:mixing-function} 
  focuses on a particularly important component of an MCMM, namely its 
  \emph{mixing function}, which is a type of activation function, that is, a 
@@ -47,7 +47,7 @@ the subject of this section.
 An MCMM is a graphical model consisting of two layers of nodes (or units): a \emph{surface} (or \emph{visible}) 
 layer and a \emph{hidden} layer.
 These two layers are illustrated in figure~\ref{fig:mcmm}, where $\mathbf{m}_i$ 
-is the vector of hidden units, and $\mathbf{r}_i$ is the layer of surface units. The layer $\mathbf{r}_i$ is actually a  "working" reconstruction of the original surface-unit vector $\mathbf{x}_i$, but we will nonetheless generally refer to it as the \emph{surface layer}, and its components (or nodes) as surface units.\footnote{Saund 
+is the vector of hidden units, and $\mathbf{r}_i$ is the layer of surface units. The layer $\mathbf{r}_i$ is actually a  "working" reconstruction of the original surface-unit vector $\mathbf{x}_i$, but we will nonetheless generally refer to it as the surface layer, and its components (or nodes) as surface units.\footnote{Saund 
 uses $\mathbf{d}$ 
 rather than $\mathbf{x}$ to denote this vector. We use $\mathbf{x}$ because it seems to be more widely
 used elsewhere to denote data points. We also use $\mathbf{d}$ to denote the \emph{direction vector} later in this chapter, so using $\mathbf{x}$ to denote data points helps to avoid confusion.}
@@ -161,13 +161,13 @@ $\mathbf{M}$.  Each column in the $\mathbf{M}$ matrix corresponds to a cluster, 
 
 In this section, we relate multiple cause mixture models to other frameworks for unsupervised learning. 
 Multiple cause mixture models simultaneously belong to two distinct unsupervised-learning contexts. 
-On the one hand, they are neural networks, and more specifically, they are \emph{autoencoders}, which are neural networks that learn without supervision \citep{dayan-and-zemel:95}.
+On the one hand, they are neural networks, and more specifically, they are \emph{autoencoders}, which are neural networks that learn without supervision \citep{bourlard:1988, dayan-and-zemel:95}. %, phongthong:2016}.
 On the other hand, the very name 
 \emph{multiple cause mixture model} 
 contains the term \emph{mixture model}, which itself refers to a large class of unsupervised learning models. 
 This section is therefore divided into two subsections: First, section~\ref{sec:autoencoders} 
 considers MCMMs as neural networks, i.e., as autoencoders, using neural-network terminology 
-to relate them to other autoencoders. Section~\ref{sec:mixture-models} then 
+to relate them to other autoencoders, particularly the classical autoencoder and the restricted Boltzmann machine (RBM).  Section~\ref{sec:mixture-models} then 
 considers MCMMs from a \emph{mixture-model} perspective, discussing their 
 relationship to standard mixture models as well as \emph{mixed-membership} 
 (or \emph{admixture}) models. 
@@ -175,24 +175,25 @@ relationship to standard mixture models as well as \emph{mixed-membership}
 \subsection{Autoencoders}
 \label{sec:autoencoders}
 \citet[][p. 2]{dayan-and-zemel:95} describe the MCMM as a ``form of autoencoder network.'' 
-They mean \emph{autoencoder} in a general sense, as a term for a \emph{class} that encompasses several subtypes.  
+They mean \emph{autoencoder} in a general sense, as a term for a class that encompasses several subtypes.  
 In this general sense, an \emph{autoencoder} is any unsupervised graphical algorithm that
-learns a compressed encoding of its input data.
-An autoencoder learns by iteratively testing and revising its internal model, improving it slightly with each iteration. 
+learns a compressed encoding of its input data. 
+An autoencoder learns by iteratively testing and revising its internal model, improving it slightly with each iteration 
+%\citep{rumelhart-et-al:1985, hinton:1987, hinton:1987trans, hinton-and-salak:2006}.
 %The autoencoder tests the suitability of a working encoding through \emph{reconstruction}, i.e., by attempting to recover or reconstruct the original data from the working encoding.
 %Thus, at the beginning of each iteration, the autoencoder has 
-The internal model consists of the values of its weight along with 
-the values in each hidden-unit vector $\textbf{m}_i$. The values 
+The internal model consists of the values of its weights along with 
+the values in the hidden-unit vectors $\textbf{m}_i$. The values 
 of the weights are universal, applying to the whole data set, while 
 each hidden-unit vector $\textbf{m}_i$ is specific to the $i$th data point. 
 An autoencoder's learning process consists of two
-loops, an \emph{inner loop} that iterates over the data-point indices $i \in I$, 
+loops: an \emph{inner loop} that iterates over the data-point indices $i \in I$, 
 visiting each individual data point in turn, and an \emph{outer loop} that repeats 
 the inner loop as many times as necessary.
 An autoencoder tests the fitness of its working model by attempting to reconstruct each input data 
 point from its internal representation (or encoding) of the data point, 
 and measuring the \emph{reconstruction error}, the discrepancy between the reconstructed and original data vectors.  
-It then makes adjustments to the model so as to reduce this error.
+It then makes adjustments to the model so as to reduce this error. % \citep{hinton:1987, hinton:1987trans}.
 \begin{figure}[t]
 %%\begin{minipage}{.3\textwidth}
 \centering
@@ -304,11 +305,26 @@ It then makes adjustments to the model so as to reduce this error.
 \vspace{12pt}
 \end{figure}
 
-In the following, we will consider three types
-of autoencoders, namely the classical autoencoder, the Restricted Boltzmann Machine (RBM),
-and the MCMM. In addition to describing each of these, we will compare them across three dimensions: \emph{form}, \emph{node activation}, 
+In order to elucidate the MCMM's autoencoder nature, we will now consider it in the context
+of two other types of autoencoder, namely the classical autoencoder and the Restricted Boltzmann Machine (RBM).
+In particular, we will compare the classical autoencoder, the RBM, and the MCMM across three dimensions, namely \emph{form}, \emph{node activation}, 
 (i.e., the means of computing node activities), and \emph{optimization procedure}
-(i.e., method for minimizing the model's error).
+(i.e., method for minimizing the model's error). 
+Authors whose research involves an autoencoder variant often describe their systems in relation to 
+to the classical autoencoder, as do \citet{vincent:2010}, \citet{vincent:2011}, \citet{baldi:2012}, and \citet{chen-and-deng:2016}.
+These descriptions and comparisons inform the following discussion's classical-autoencoder portions.
+%, where it concerns the classical autoencoder, draws from these descriptions and comparisons. 
+% as well as \citet{baldi:2012} and \citet}|
+%Where it concerns classical autoencoders, the following discussion draws mainly from \citet{baldi:2012}.
+For the RBM portions, my main sources were \citet{hinton-and-salak:2006}, \citet{cueto-et-al:2009},  and \citet{fischer:2014}.
+%\citet{hinton:1999, hinton:2002, hinton-and-salak:2006, cuteo-et-al:2009,  fischer:2014},
+%We will now compare and contrast three distinct autoencoder subtypes.    the conthe types of autoencoder
+%of autoencoders, namely the classical autoencoder, the Restricted Boltzmann Machine (RBM),
+%and the MCMM.  
+%The , I drew primarily from \citet{hinton:1999, hinton:2002, hinton-and-salak:2006, cuteo-et-al:2009,  fischer:2014}RBMs, I relied heavily on We will describe each of these in what follows, but more important, we will compare them across three dimensions, namely \emph{form}, \emph{node activation}, 
+%(i.e., the means of computing node activities), and \emph{optimization procedure}
+%(i.e., method for minimizing the model's error). 
+%Concerning RBMs, my main sources were  \citet{hinton-and-salak:2006}, \citet{cuteo-et-al:2009},  and \citet{fischer:2014}. For the material on the classical autoencoder , I drew from principally My sources for the RBM portions 
 
 \begin{figure}[t]
 \vspace{12pt}
@@ -394,64 +410,26 @@ and the MCMM. In addition to describing each of these, we will compare them acro
 \end{figure}
 
 \paragraph{Form.}
-%Whereas the MCMM has two layers of nodes ($\textbf{m}$ and $\textbf{r}$), 
-% The ``classical'' autoencoder,
-%shown in figure~\ref{fig:autoencoder} has three layers (or vectors) of nodes, namely 
-%%, as 
-%%illustrated in
-%%in figure~\ref{fig:autoencoder}. 
-%%\begin{enumerate}
-%%\item The \textbf{input} vector $\textbf{x}$
-%%\item The \textbf{hidden} vector $\textbf{m}$
-%%\item The \textbf{output} vector \textbf{reconstruction} layer $\textbf{r}$ 
-%%\end{enumerate}
-%the \textit{input} vector $\textbf{x}$, the \textit{hidden} vector $\textbf{m}$, and the \textit{output} (or \textit{reconstruction}) $\textbf{r}$.
-%Each of these vectors has a counterpart in an MCMM; in particular, each corresponds to the component in figure~\ref{fig:mcmm} that shares the same label.  
-%However, there are important differences between these two types of autoencoders. 
-%The main differences pertain to form (or general architecture), node activation, 
-%i.e., the means of computing node activities, and the \emph{optimization procedure}, 
-%i.e., the method for minimizing the model's error.
 MCMMs and RBMs are both bipartite graphs, whereas the classical autoencoder is 
 not (see the description of bipartite graphs in chapter~\ref{ch:graph}).
-The classical autoencoder, shown in figure~\ref{fig:autoencoder}. has distinct input 
-and output layers. Each original data vector $\textbf{x}_i$ enters the network at the input layer, is compressed 
+The classical autoencoder, shown in figure~\ref{fig:autoencoder}, has distinct input 
+and output layers.
+Each original data vector $\textbf{x}_i$ enters the network at the input layer, is compressed 
 at $\textbf{m}_i$, and reconstructed at $\textbf{r}_i$. Because there are three layers 
-of nodes in an autoencoder, there must be two layers of weights ($\textbf{A}$ and $\textbf{B}$ in figure~\ref{fig:autoencoder}), both which are oriented in the same direction.
+of nodes in an autoencoder, there must be two layers of weights ($\textbf{A}$ and $\textbf{B}$ in figure~\ref{fig:autoencoder}), both which are oriented in the same direction \citep{baldi:2012}.
 Classical autoencoders thus function similarly to supervised feed-forward neural networks. 
 In fact, the only difference between a classical autoencoder and a supervised 
 feed-forward network is that a classical autoencoder's target vectors are its input vectors. 
 
-MCMMs and RBMs, by contrast, both lack an input layer that is distinct from the reconstruction layer. In both MCMMs and RBMs,
-the original (input) data vectors $\textbf{x}_i$ are actually not even part of the graph, since there are no weights (i.e., arcs) that connect the original data vectors to the other vectors (namely, the hidden and reconstruction node layers). 
-Speaking strictly in terms of form, therefore, MCMMs and RBMs belong together in a class that excludes the classical autoencoder.
+MCMMs and RBMs, by contrast, both lack an input layer that is distinct from the reconstruction layer. 
+In both MCMMs and RBMs,
+the original (input) data vectors $\textbf{x}_i$ are actually not even part of the graph, 
+since there are no weights (i.e., arcs) that connect the original data vectors to the other 
+vectors (namely, the hidden and reconstruction node layers) \citep{martens:2013}
+Speaking strictly in terms of form, therefore, MCMMs and RBMs belong together in a 
+class that excludes the classical autoencoder.
 
-%MCMMs and RBMs are identical.
-%Both are bipartite graphs; that is, both have two layers of nodes such that no nodes within the same layer are connected
-%%direct connections between nodes of the same layer 
-%(see the description of bipartite graphs in chapter~\ref{ch:graph}).  Moreover, in a RBM, as in an \ac{MCMM}, 
-%one of these node layers functions as a hidden layer, and the other as the visible 
-%(or surface) layer \citep{mohamed-and-hinton:2010}. 
-%(i.e, the the vectors  $\textbf{m}_i$ and  $\textbf{r}_i$, respectively).
-%In this respect, MCMMs and RBMs differ significantly from the classical autoencoder, wherein the
-%In an MCMM, 
-%%the oriThe most conspicuous difference is that MCMMs bipartite graph, having just two layers of nodes, namely \textbf{m}$ and \textbf{r}$. Recall that in an MCMM, 
-%the original data vector $\textbf{x}$ is actually not part of the graph itself, since it is not connected by weights to either  $\textbf{m}$ or  $\textbf{r}$.
- %In a classical autoencoder, by contrast
-%namely the original data vector $\textbf{d}$, the hidden-node vector $\textbf{m}$, and reconstruction vector $\textbf{r}$. These vectors are also present in the MCMM in \ref{fig:mcmm}. One key difference between an MCMM and a classical autoencoder, however, is that the the original data vector 
-%$\textbf{d}$ is not a true layer in MCMM, since there are no connecting 
-%weights weights between it and $\textbf{m}$ or $\textbf{r}$. This is not 
-%the case in a classical encoder, where 
-%original data vectors $\textbf{x}_i$ constitute a fully integrated layer of the network, namely its input layer, which is distinct from the reconstruction (or output) layer.
-%\textit{input layer}. Each original data vector $\textbf{x}_i$ enters the network at the input later, is compressed 
-%at $\textbf{m}_i$, and reconstructed at $\textbf{r}_i$. Because there are three layers 
-%of nodes in an autoencoder, there must be two layers of weights, labeled 
-%$\textbf{A}$ and $\textbf{B}$ 
-%in \ref{fig:autoencoder}. The reconstruction error is computed at $\textbf{r}$, and the appropriate updates are 
-%\emph{backpropagated} to the $\textbf{B}$ and then $\textbf{A}$ weights.
-%
-%An MCMM has no designated input layer. The classical autoencoder, by contrast, has distinct input and output layers. Classical autoencoders thus function as a supervised feed-forward neural network. In fact, the only difference between a classical autoencoder and a supervised feed-forward network is that a classical autoencoder's target vectors are its input vectors.
-
-\paragraph{Node Activation.} The RBM and classical autoencoder essentially use the same function for computing node activities, namely the \emph{sigmoidal weighted sum}.
+\paragraph{Node Activation.} The RBM and classical autoencoder essentially use the same function for computing node activities, namely the \emph{sigmoidal weighted sum} \citep{hinton:1987trans, hinton-and-salak:2006}.
 %are essentially the same, generally  sharing the same activation function.
 However, MCMMs, as we shall see, call for a different type of activation function, a type of function that \citet{saund:94} calls a \emph{mixing function}.
 % that has different properties to those of sigmoidal weighted sum.
@@ -471,10 +449,11 @@ The logistic sigmoid \eqref{eq:sig} maps the weighted sum (no matter how large o
 %	\label{eq:sig}
 %	\sigma(x) = \frac{1}{1 + e^{-x}} 
 %	\end{equation} %\label{eq:sigws
-In a classical autoencoder, shown in figure~\ref{fig:autoencoder}, the activity of each the hidden node $m_k$ is computed according to equation \ref{eq:sig-m-ac}. 
+
+Thus, in a classical autoencoder (figure~\ref{fig:autoencoder}), the activity of each the hidden node $m_k$ is computed by equation~\eqref{eq:sig-m-ac}. That is, a weighted sum of the input layer's activities is fed to the sigmoid function \citep{bourlard:1988}.
 \begin{align}
 \label{eq:sig-m-ac}
-m_{k} &= \sigma\big(\sum_{j} r_{j} a_{j,k}\big) \\
+m_{k} &= \sigma\big(\sum_{j} x_{j} a_{j,k}\big) \\
 %m_{i,k} = P(m_{i,j}|r_{i,j}) =\sigma\big(\sum_{j} c_{j,k} r_{i,j}\big)
 \label{eq:sig-r-ac}
 %r_{i,j} = P(r_{i,j}|m_{i,k})  = \sigma\big(\sum_{i,k} c_{j,k} m_{i,k}\big)
@@ -486,106 +465,61 @@ we compute $\sum_{j} x_{i,j} a_{j,2}$, where each $x_{i,j}$ is the activity of o
 We then feed the resulting sum to the sigmoid function, thereby obtaining an activity for $m_{i,2}$ that is within $[0,1]$. 
 We do the same for each hidden node in $\textbf{m}_i$
 The process is the same for the reconstruction nodes, except that the just-computed hidden-node activities now become the input values, and the matrix $\textbf{B}$ now supplies the weight vectors instead of $\textbf{A}$.
-% the incoming node activities are those in the hidden layer, and the weight vector is
-%the corresponding column in the $\textbf{B}$ matrix.
-% Thus, for node, say, 
-%$r_{i,6}$ (i.e., $j=6$), the weighted sum is
-%%we would sum over the $K$ hidden-unit activities (each multiplied by its respective weight in 
-%%$\textbf{b}^{\textsf{T}}_{6}$: 
-%$\sum_{k} m_{i,k} b_{k,6}$.  
-%%That is, we sum over the $K$ hidden-unit activities, with each activity multiplied by its respective weight in the column (or row?) $\textbf{B}_{:,6}$). 
-%We  feed each such sum to the logistic sigmoid function, %as we do for every node. 
-%which restrains node activities to the interval $[0,1]$.
-%$\textbf{b}^{\textsf{T}}_{6}
-% we in the reconstruction vector, specifically The latter takes the output of the linear sum, which could be any real number, possibly much less than 0 or much greater than 1, and maps it onto a number in $[0,1]$.
 
 An RBM is essentially a 
-classical autoencoder in bipartite form. The activation functions of an RBM are the following: 
-%displayed as equations~\ref{eq:sig-m} and  
+classical autoencoder in bipartite form.
+%\citep{hinton-and-salak:2006}. 
+The activation functions of an RBM are the following: 
 \begin{align}
 \label{eq:sig-m}
 m_{k} &= \sigma\big(\sum_{j} r_{j} c_{j,k} + \delta_{j}\big) \\
-%m_{i,k} = P(m_{i,j}|r_{i,j}) =\sigma\big(\sum_{j} c_{j,k} r_{i,j}\big)
 \label{eq:sig-r}
-%r_{i,j} = P(r_{i,j}|m_{i,k})  = \sigma\big(\sum_{i,k} c_{j,k} m_{i,k}\big)
 r_{j} &= \sigma\big(\sum_{k}  m_{k} c_{k,j} + \theta_{k}\big)
 \end{align}
 where $\delta$ and $\theta$ are biases. 
-These are clearly similar to the classical autoencoder's activation functions~\eqref{eq:sig-m-ac} and \eqref{eq:sig-r-ac},
-but there are a few differences. One is of course the presence of the biases in the 
-RBM activation functions. But the main difference 
+These are clearly similar to the classical autoencoder's activation 
+functions~\eqref{eq:sig-m-ac} and \eqref{eq:sig-r-ac},
+but there are a few differences. One ostensible difference 
+is the presence of the biases in the 
+RBM activation functions, although some authors, e.g., \citet{rudy-and-taylor:2014}, have included biases in the activation functions of classical autoencoders. %but the classical encoder could in principle accomodate biases \citep{song:2013}   But the 
+The main difference
 lies in the fact that the RBM's functions~\eqref{eq:sig-m} and \eqref{eq:sig-r} 
 both refer to the same weight matrix $\textbf{C}$, whereas the classical 
-autoencoder's  functions \ref{eq:sig-m-ac} and \ref{eq:sig-r-ac} each 
+autoencoder's  functions \eqref{eq:sig-m-ac} and \eqref{eq:sig-r-ac} each 
 refer to a different weight matrix 
 ($\textbf{A}$ in equation~\eqref{eq:sig-m-ac} and $\textbf{B}$ in equation~\eqref{eq:sig-r-ac}). 
 An RBM's learning process is thus bi-directional: 
 The hidden-unit activities are conveyed to the matrix to the reconstruction 
 units via the weight matrix $\textbf{C}$, and then the reconstruction 
-activities are conveyed back to the hidden units via the same weight matrix, resulting in a cyclic process. 
-%computed via equation~\eqref{eq:sig-m} in one direction via the weight matrix $\textbf{C}$, and the reconstruction activities are then
-%computed via equation~\eqref{eq:sig-r} in the reverse direction v
+activities are conveyed back to the hidden units via the same weight matrix, resulting in a cyclic process 
+%\citep{larochelle-and-bengio:2008}. 
 
-%But despite these differences, RBMs and classical autoencoders can be grouped together where activation functions are concerned, since they both (essentially) use sigmoidal weighted sum. MCMMs, however, call for different type of activation function, a type of function that \citet{saund:94} calls a \emph{mixing function}. We shall discuss the properties of mixing functions in section~\ref{sec:mixing-function}.
-%are nonetheless more similar than they are different. nevertheless share 
-%the same basic activation function, the sigmoidal weighted sum. As we shall see, this is a point that places RBMs and classical autoencoders together on one side of a dividing line and MCMMs on the other. 
-
-%where $\delta_{k}$ and $\theta_{j}$ are \emph{biases}.  The activation functions of an RBM are 
-%displayed as equations~\eqref{eq:sig-m} and \eqref{eq:sig-r}. One difference 
-%between these activation functions and those of the classical autoencoder is the introduction of the biases
-%$\delta_{k}$ and $\theta_{j}$. 
-
-%Anotherthat equations activation functions and those of  a classical autoencoder is that whereas a classical autoencoder has two sets of weights (for three layers of nodes), an RBM has just one (to connect two layers of nodes)
-%%An RBM works somewhat differently due to its bipartite architecture. 
-%%In particular, 
-%The \emph{same} matrix of weights that connects the hidden nodes $\textbf{m}$ to the
-%reconstruction nodes $\textbf{r}$ also connects the reconstruction nodes to the hidden nodes, as illustrated in figure~\ref{rbm}. The learning process is thus bi-directional: 
-%Another difference between RBMs
-%The reconstruction error is computed, the weights are updated, and another cycle begins.
-% Then another round begins: The hidden-unit activities are re-computed from the new reconstruction activities and the updated weights $\textbf{C}$, and then the reconstruction activities are re-computed from the new hidden-unit activities and the same updated weights $\textbf{C}$. 
-%Equations~\ref{eq:sig-r} and  equation~\eqref{eq:sig-m} are nonetheless very similar to the classical autoencoder's \emph{biases} to weighted sum. These biases are a distinctive feature of RBMs. Like the weights, they are parameters that must be learned
-%
-%But despite these differences, RBM and the classical autoencoder nonetheless share 
-%the same basic activation function, the sigmoidal weighted sum. %, a significant departure from the MCMM.
-
-But despite these differences, RBMs and classical autoencoders can be grouped together where activation functions are concerned, since they both (essentially) use sigmoidal weighted sum.
+But despite these differences, RBMs and classical autoencoders can be grouped together where activation functions are concerned, since they both (essentially) use the sigmoidal weighted sum.
 The sigmoidal weighted sum is a very common activation function in neural networks, 
 but it is not the only way to compute the activity of a node. Any activation function, to borrow
 an analogy from \citet{saund:94}, is essentially a voting rule, i.e.,  a policy 
 for combining multiple input votes into a single output decision.  
 In the context of neural-network models such as RBMs, MCMMs, and 
-classical autoencoders, the output decision is always activity of a given node, 
-and the input votes are the \emph{weighted} activities of the preceding layer's nodes. 
+classical autoencoders, the output decision takes the form of a \emph{node activity},
+and the input votes are the \emph{weighted} activities of the preceding layer's nodes \citep{hinton:1987trans}. 
 That is, each vote is a product of the form $x_{j} w_{j,k}$, where $x_{j}$ is the activity 
 of the $j$th in a given layer of nodes, and $w_{j,k}$ is the weight associated with that 
 node. The question being voted upon in this case is the activity of the $k$th node in the 
 \emph{next} layer, and there are
 a total of $J$ votes to consider.
-%connecting $x_{i,j}$ to the $k$th node of another layer, 
-%whose activity is the question being voted upon. There are always a total of 
-%$K$ votes for the activation to take into account, where $K$ is the number 
-%of nodes in the preceding layer. 
 
-The sigmoidal weighted sum is in effect a sort of average, and thus tends to obscure
+The sigmoidal weighted sum is in effect a sort of average and thus tends to obscure
 the influence of minority subsets of inputs. \citet{saund:94} argues 
 that the averaging nature of the sigmoidal weighted sum is inappropriate when one wants to encourage
 a small subset of votes to take responsibility for a given surface unit's activity, as in MCMMs.
-%\citet{saund:94} thus proposes for MCMMs a special kind of activation function called a \emph{mixing function}.
-%That is, \emph{mixing function} is the term that \citet{saund:94} gave to a set of activation functions that have certain
-%properties---properties, which, in turn, give MCMMs their distinguishing properties.
-%We will discuss the properties of mixing functions in 
-%section~\ref{sec:mixing-function}.
-
-\citet{saund:94} thus proposes for MCMMs a special kind of activation function called a \emph{mixing function}.
+He thus proposes for MCMMs a special kind of activation function called a \emph{mixing function}.
 We discuss the properties of mixing functions in 
 section~\ref{sec:mixing-function}.
 
 \paragraph{Optimization procedure.}  In a classical autoencoder, the two layers of 
 weights---first $\textbf{B}$ and then $\textbf{A}$---are directly updated via 
-back-propagation. 
-The values of the hidden units are not directly manipulated; rather, they change 
-%are a consequence of the weights $\textbf{A}$. % (along with values in the input vector). 
-%Thus, in a classical autoencoder, the values of the hidden units change 
+back-propagation \citep{rumelhart-et-al:1985}.
+The values of the hidden units are not directly manipulated; rather, they change  
 only as a 
 consequence of the direct adjustments made to the weights. The same is true in an RBM: 
 an RBM's hidden-unit activities change in response to adjustments 
@@ -594,7 +528,7 @@ adjusted directly.
 
 In an MCMM, by contrast, both $\textbf{m}_i$ and $\textbf{C}$ are directly manipulated. This means that
 an MCMM's learning process begins with two unknown variables, the matrices $\textbf{M}$ and 
-$\textbf{C}$, and it must induce both during the course of learning. We shall discuss how an MCMM accomplishes in section~\ref{sec:two-in-one}.
+$\textbf{C}$, and it must induce both during the course of learning. We will discuss how an MCMM accomplishes this---that is, how it learns---in section~\ref{sec:two-in-one}.
 %That is, an MCMM requires two complimentary process, \textsc{Optimize-M} 
 %and \textsc{Optimize-C} (see section~\ref{sec:num-opt}), each directly manipulating 
 %the values in its respective matrix. 
@@ -605,20 +539,20 @@ A mixture model attempts to account for the data points in a data set
 by assuming that multiple probability
 distributions are responsible for generating the data. 
 It also assumes that \emph{exactly one}
-of these underlying distributions is responsible for each data point. 
+of these underlying distributions is responsible for each data point \citep{bishop:2006}. 
  These underlying 
 distributions can be interpreted as clusters. Under this interpretation, each data point is 
-is assigned to a cluster (distribution) that is responsible for generating it. 
+is assigned to a cluster (distribution) that is responsible for generating it \citep{fraley:1998}. 
 However, since the process is probabilistic,
 data points are often not mapped to clusters with 100 percent certainty. 
-There may be, for example, a 60 percent chance that a given datapoint belongs to one 
+There may be, for example, a 60 percent chance that a given data point belongs to one 
 cluster, a 30 percent chance it belongs to another, and a 10 percent chance 
 it belongs to yet another. In a \emph{hard clustering}, the data point is 
-assigned to the most single probable category, and the other less probable 
+assigned to the single most probable category, and the other less probable 
 possibilities are forgotten. However, the uncertainty can also be left 
 unresolved, so that, in the case of our example, all three possibilities, 
 along with their respective likelihoods, would be output. This is a 
-\emph{soft} clustering. But even in the case of a \emph{soft} clustering, 
+\emph{soft} clustering. But even in the case of a soft clustering, 
 we still assume that the data point in question \emph{fundamentally} belongs to only one cluster; 
 the ``softness" of the clustering just expresses the model's uncertainty 
 as to which cluster this is. %the data point belongs.
@@ -634,8 +568,8 @@ By contrast, a mixed-membership model, e.g., Latent Dirichlet Allocation \citep{
 %as the MCMM's hidden units $\mathbf{m}_i$. Documents are grouped into topic 
 %clusters by the learning process described below in section~\ref{sec:mcmm-learning}.}, 
 views each data point as a complex object, i.e., as an object that itself consists of multiple objects, 
-\emph{each of which} is generated by one of multiple probability distributions (or clusters). 
-For example, in a mixed-membership \textit{topic model}, the complex objects are the 
+\emph{each of which} is generated by one of multiple probability distributions (or clusters) \citep{airoldi-et-al:2014}. 
+For example, in a mixed-membership topic model, the complex objects are the 
 \emph{documents} within a given corpus. The elemental objects that compose 
 the documents are \emph{words}. The clusters correspond to \emph{topics}, which generate 
 the words that together compose the documents. That is, each document is a set of words, and each 
@@ -716,7 +650,7 @@ The degree of membership then is a vector of continuous,
 non-negative latent variables [i.e., hidden units] that add up to 1 \citep[][p. 4]{airoldi-et-al:2014}. 
 \end{quote}
 By contrast, in morphology, there are no degrees of membership (and thus
-no a requirement that they should add up to one.)
+no a requirement that they should add up to one).
 
 %\begin{table}[htb]
 %\centering
@@ -806,7 +740,6 @@ Saund thus proposes the following mixing function for the \textsc{write-white-an
       0 & \text{if \, $\sum\limits_{k} m_{i,k} |c_{j,k}|= 0$} 
     \end{cases}
  \end{align}
-% \footnote{\text{Note that it is the \textit{product} $mc$---that is,-1, 0, or 1 in this case---not $m_{i,j}$ or $c_{j,k}$ individually.}}
 where $-1 \leq c_{j,k} \leq 1$, $0 \leq  m_{i,k} \leq  1$,  and $-1 \leq  r_{i,j} \leq  1$; 
 and the components $x_{i,j}$ of the original data points
 are each either $1$ or  $-1$. Note the absolute value in the denominator in the 
@@ -840,7 +773,7 @@ function \eqref{eq:wwb} encourages hidden-unit activities to move toward
 either $0$ or $1$ and the weights toward either $-1$ and $1$. These are 
 values with clear cluster-oriented interpretations: The $1$'s and $0$'s of the 
 hidden-unit vector indicate cluster membership and nonmembership, respectively, 
-while the weights adopt the same of values, namely $\{-1, 1\}$ present in the original data points. 
+while the weights adopt the same values, namely $\{-1, 1\}$ present in the original data points. 
 This is important, since, as noted above, an MCMM's weight vectors have to be 
 interpretable as composite or average vectors for the clusters.
 
@@ -850,7 +783,7 @@ not work well; in fact, under the \textsc{write-white-and-black} mixing function
 failed to make progress toward learning to reconstruct the original 
 data points. This may have been due to the sparseness of the data points 
 in this study; each data point is a vector of hundreds of feature slots, but 
-only a handful have the value $1$. %are feature-vector representations of words. 
+only a handful have the value $1$.
 There are hundreds of features, and each has a designated slot in each feature vector.
 (We will discuss these features in detail in chapter~\ref{ch:experi}.)
 
@@ -950,16 +883,16 @@ with each other.
 %ineffective where the present study's sparse, high-dimensional data points were concerned. 
 %It led to unstable, overly dramatic leaps in the learning process. 
 Multimorph's objective function is an error function, specifically the \emph{sum-of-squared-error} (SSE)  function, normalized 
-by the total number of features across
-all data points (i.e., $I \times J$ features):
+by dividing by the total number of features across
+all data points (i.e., $I \times J$ features) \citep{somandepalli:2018}.
 \begin{equation} \label{eq:sse}
 E = \bigg(\frac{1}{2}\bigg) \frac{1}{I \times J}\sum_{i} \sum_{j} {(r_{i,j} - x_{i,j})}^2
 \end{equation}
-where $r_i,j$ is itself a function, namely the Noisy-OR fuction (see section~\ref{sec:mixing-function}). The reason for factor $\frac{1}{2}$ in equation \eqref{eq:sse} is that it cancels out the coefficient 2 in the first derivative.
+where $r_i,j$ is itself a function, namely the Noisy-OR fuction (see section~\ref{sec:mixing-function}). The reason for factor $\frac{1}{2}$ in equation \eqref{eq:sse} is that it cancels out the coefficient 2 in the first derivative.\footnote{The first derivative plays an important role in the learning process, which we will discuss in section~\ref{sec:mcmm-learning}.}
 
 \subsection{Nonlinear Conjugate Gradient Optimization}
 \label{sec:ncg-gen}
-Because Multimorph's composite objective function is nonlinear, it requires a nonlinear optimization method.\footnote{Here, we mean \emph{nonlinear} in the standard mathematical sense, i.e., to describe functions whose graphs are not straight lines.} I chose a nonlinear conjugate-gradient method\footnote{In preliminary experiments conjugate-gradiant methods tended to outperform quasi-Newton methods. Moreover, \citet{saund:94} also uses a conjugate-gradient method.} 
+Because Multimorph's composite objective function is nonlinear, it requires a nonlinear optimization method.\footnote{Here, we mean \emph{nonlinear} in the standard mathematical sense, i.e., to describe functions whose graphs are not straight lines.} I chose a nonlinear conjugate-gradient method\footnote{In preliminary experiments, conjugate-gradiant methods tended to outperform quasi-Newton methods. Moreover, \citet{saund:94} also uses a conjugate-gradient method.} 
 
 To facilitate a general description of the class of nonlinear conjugate gradient methods, 
 we shall for moment consider a simple model with only one parameter 
@@ -968,7 +901,7 @@ vector $\textbf{w}$.\footnote{Sometimes a parameter is most naturally expressed 
 Of course, as discussed in section~\ref{sec:architecture},
 an MCMM actually has \emph{two} types of parameters, namely
 the weights in $\textbf{C}$ and the hidden-unit activities in $\textbf{M}$. 
-We shall fully examine the workings of this dual-parameter framework in \ref{sec:two-in-one} below.
+We shall fully examine the workings of this dual-parameter framework in section~\ref{sec:two-in-one} below.
 %If there are $I$ nodes in one layer and $J$ nodes in the other, there are $I \times J$ 
 %individual node-to-node weights.
 \begin{algorithm}[t]
@@ -1180,12 +1113,10 @@ subject to constraint~\ref{eq:bounds-m}. If the $k$th component $m_{i,k}$ is $0$
 at $m_{i,k}$ is positive, then $m_{i,k}$ \emph{must not} be updated. This is
 because the sign of an update in the descent direction is the negative (i.e., the opposite) of the gradient's sign. Therefore,
 an update in these circumstances would be negative and thus push $m_{i,k}$ below $0$.
-%and thus violate constraint \ref{eq:bounds-m}.
-The constraint $0 \leq m_{i,k }\leq 1$ is thus said to be %\emph{active} for stay within $[0,1]$ would thus be 
+The constraint $0 \leq m_{i,k }\leq 1$ is thus said to be
 \emph{active} 
 for $m_{i,k}$, and the algorithm classifies $m_{i,k}$ as a member of the ``active set'' of 
 $\textbf{m}$'s components (i.e., the set of components for which the constraint is active).
-%the ``active'' set, i.e., the set of components at which the constraint is active.
 However, suppose that the gradient with respect to $m_{i,k}$ were reversed, i.e., is positive, while everything else were kept the same, i.e., suppose 
 $m_{i,k}$ were still $0$, but the gradient with respect to $m_{i,k}$ were \emph{negative} 
 rather than positive. 
@@ -1194,10 +1125,6 @@ would not be active at $m_{i,k}$ ). This is because a negative
 gradient at $m_{i,k}$ would be leading downward into the licit region $[0,1]$, and 
 thus an update would move $m_{i,k}$ away from the constraint boundary $0$ in the 
 positive direction. 
-%\eqref{eq:bounds-m} would be 
-%inactive at $m_{i,k}$, and $m_{i,k}$ would thus be placed in an inactive set. 
-%This is because the gradient at $m_{i,k}$ would be leading downward into the licit region $[0,1]$, and thus an update would both move $m_{i,k}$ away 
-%from $o$ (in the positive direction) \emph{and} further reduce $E$. 
 By classifying 
 parameter components in this way, active-set methods can tailor parameter updates 
 so that constraints are honored. 

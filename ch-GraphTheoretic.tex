@@ -24,17 +24,9 @@ autosegmental framework for morphology \citep{mccarthy:1981} in light of the
 properties of the bipartite graph. We will thus see that 
 McCarthy's 
 autosegmental framework can be reduced to a bipartite graph.
-% but also that the properties of 
-%bipartite graphs are essential for the modeling of nonconcatenative morphology.
-% naturally well-suited to modeling non-concatenative morphology. and more than that, we will argue that bipartite graphs are general that ultimately derive from these properties two necessary conditions that morphological models must satisfy in order to be capable of modeling bipartite graphs two criteria that a morphological model must satisfy We will see that McCarthy's framework is itself a bipartite graph. and re
 Finally, in section~\ref{sec:mcmm-bipartite}, we will see that the \ac{MCMM} is also a bipartite graph,
 though we will defer a detailed discussion of the MCMM to the next chapter.
 Bipartiteness will ultimately serve as a common denominator, so to speak, between the autosegmental formalism and the MCMM, providing a means of expressing the autosegmental formalism as an MCMM.
-%via its biparteness, its compatibility with %is a bipartite graph, 
-%and that, consequently, it is compatible, so to  speak, with autosegmental morphology. 
-%In other words, an MCMM can serve as a
-%a computational ``wrapper," so to speak, for McCarthy's autosegmental theory, a 
-%means whereby it can be specially packaged for use in a machine learning system. 
  
 %itself has a bipartite architecture, which is to say that it can be represented as and thought of as a bipartite graph without information loss.  essentially bipartite in its architecture, and that it ; we will see that the autosegmental framework is essentially a bipartite graph. We shall then observe in section~\ref{sec:bipartite} that an \ac{MCMM} is itself a bipartite graph, and that autosegmental morphology and \ac{MCMM}s have the same graphical properties. From this point, the conclusion follows that an From a theoretical perspective, therefore, it is a sound choice to use the \ac{MCMM} as a computational``wrapper," as it were, for McCarthy's theoretical autosegmental framework, to package for it for use a machine learning system. 
 %The argumentation in this chapter will proceed as follows: 
@@ -190,7 +182,7 @@ The multilinear architecture of autosegmental theory thus provides a means of
 dealing with nonconcatenative morphology. 
 
 One can see this plainly by comparing figures~\ref{subfig:multilinear-gt} and 
-\ref{subfig:linear-gt}. Each shows an attempt to analyze the word \emph{hizkir} `he reminded', 
+\ref{subfig:linear-gt}.\footnote{While nonconcatenative morphology is a hallmark of Semitic languages in general, we will be focusing on Hebrew in this thesis.}  Each shows an attempt to analyze the word \emph{hizkir} `he reminded', 
 in which the root \textit{z.k.r} (morph $\mu_3$) is interrupted by the /i/ of morph 
 $\mu_2$ and is thus a discontinuous, or non-concatenative morph. 
 Figure~\ref{subfig:multilinear-gt} is a multilinear autosegmental approach 
@@ -212,7 +204,7 @@ There is a clear correspondence between these two properties  %(\ref{ex:criteria
 and the two components of the definition of \emph{bipartite} in (\ref{ex:bipartite}) above.
 The reason for this correspondence is that the autosegmental 
 framework is essentially a bipartite graph. 
-We can make this clearer simply be rearranging the morph 
+We can make this clearer simply by rearranging the morph 
 nodes $\mu_1$, $\mu_2$, and $\mu_3$. That is, can 
 simply move up $\mu_2$ so that it is situated between 
 $\mu_1$ and $\mu_3$, i.e., so that all three morphs are 
@@ -461,12 +453,12 @@ section~\ref{sec:mcmm-bipartite} below and in the following chapter, where we ex
 %feature bundles (or matrices); e.g., the feature matrix [+back,+low, +syllabic] can be written as /a/. 
 %as  
 
-Furthermore, we can think of the each C and V slot in the segmental tier as a \emph{node}.
+Furthermore, we can think of each C and V slot in the segmental tier as a node.
 We can also think of each morph $\mu_k$ as a node. 
 %These features are mapped onto the
 %C and V slots in McCarthy's segmental tier. 
  Each of these nodes is (or represents) a complex object. In particular, each C and V node
- is a matrix of features, and morph node is a \emph{sequence} of (one or more) feature matrices. Thus, a single morph node, e.g., $\mu_1$, can be associated with more than one CV node because the morph node itself \emph{is equivalent to} more than one phonological unit.  
+ is a matrix of features, and each morph node is a \emph{sequence} of (one or more) feature matrices. Thus, a single morph node, e.g., $\mu_1$, can be associated with more than one CV node because the morph node itself \emph{is equivalent to} more than one phonological unit.  
 % tassociation arcs
 %fan out from a single morph morph node to meet more than one individual C and V nodes
 % given morph node to 
@@ -504,8 +496,8 @@ We will see  that has two
 layers of nodes, a hidden layer and a
 surface layer---corresponding, respectively, to $M$ and $R$ in
 figure~\ref{fig:gt-bipartite}. Moreover, there are no intra-layer connections in
-MCMM; the only connections inter-layer, between $M$ and $R$ nodes.
-Because MCMMs are bipartite graphs, therefore, and because bipartite graphs 
+an MCMM; the only connections inter-layer, between $M$ and $R$ nodes.
+MCMMs are thus bipartite graphs. Because bipartite graphs 
 are both nonlinear and nonsequential, 
 MCMMs must themselves be nonlinear and nonsequential. This makes them well-suited for modeling
 nonconcatenative morphology, as discussed in chapter~\ref{ch:lit-review}.

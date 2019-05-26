@@ -95,8 +95,8 @@ character subsequences that happen to resemble
  classical morphemes \emph{in form}, but only because morphological systems
 do tend to cooperate with syntax/semantics in some way, and in some 
  cases this cooperation is more transparent and straightforward than
- in others.  However, this \ac{ULM} system would nevertheless be oblivious to what
- these pieces of form actually mean. Meaning is an essential component of the classical morpheme, and because
+ in others.  However, this \ac{ULM} system would nevertheless be oblivious to the actual meanings
+ of these pieces of form. Meaning is an essential component of the classical morpheme, and because
  meaning depends on context, there is no way to induce classical morphemes from contextless words.
 Therefore, \ac{ULM} systems, particularly those which learn solely from 
 from lists of raw, contextless words, simply cannot learn 
@@ -295,15 +295,15 @@ that ends in \textit{-s}, namely \textit{kicks}.
 \toprule
 Content Paradigm & Form Paradigm & Realization \\% inserts table
 \midrule %heading
-$\langle \textsc{kick}, \{ \textsc{p:1}, \textsc{n:}\text{sg} \}\rangle $ & \multirow{5}{*}{$\Bigg\langle \textsc{kick}, 
+$\langle \textsc{kick}, \{ \textsc{p:1}, \textsc{n:}\text{sg} \}\rangle $ & \multirow{5}{*}{\raisebox{-32pt}{$\Bigg\langle \textsc{kick}, 
 \Big\{ \big((\textsc{p:}\text{1}\vee\text{2}) \land (\textsc{n:}\text{sg} \vee \text{pl})\big) 
-\vee (\textsc{p:}\text{3}\land \textsc{n:}\text{pl}) \Big\} \Bigg\rangle$} 
-& \multirow{5}{*}{kick} \\ \cmidrule{1-1}
-$\langle \textsc{kick},\{\textsc{p:2}$, \textsc{n}:{sg}\} $\rangle$  &\\ \cmidrule{1-1}
-$\langle \textsc{kick}, \{\textsc{p:1}$, \textsc{n}:{pl}\} $\rangle$  & \\ \cmidrule{1-1}
-$\langle \textsc{kick}, \{\textsc{p:2}$, \textsc{n}:{pl}\} $\rangle$ &  \\ \cmidrule{1-1}
-$\langle \textsc{kick}, \{\textsc{p:3}$, \textsc{n}:{pl}\} $\rangle$ & \\ \midrule
-$\langle \textsc{kick}, \{\textsc{p:3}, \textsc{n:}\text{sg}\} \rangle$ & $\langle$ \textsc{kick}, \{\textsc{p}:{3}, \textsc{n}:\text{sg}\} $\rangle$  & kicks \\
+\vee (\textsc{p:}\text{3}\land \textsc{n:}\text{pl}) \Big\} \Bigg\rangle$}} 
+& \multirow{5}{*}{\raisebox{-20pt}{kick}} \\ \cmidrule{1-1}
+$\langle \textsc{kick},\{\textsc{p:2}, \textsc{n:}\text{sg}\}\rangle$  &\\ \cmidrule{1-1}
+$\langle \textsc{kick}, \{\textsc{p:1}, \textsc{n:}\text{pl}\}\rangle$  & \\ \cmidrule{1-1}
+$\langle \textsc{kick}, \{\textsc{p:2}, \textsc{n:}\text{pl}\}\rangle$ &  \\ \cmidrule{1-1}
+$\langle \textsc{kick}, \{\textsc{p:3}, \textsc{n:}\text{pl}\}\rangle$ & \\ \midrule
+$\langle \textsc{kick}, \{\textsc{p:3}, \textsc{n:}\text{sg}\} \rangle$ & $\langle\textsc{kick}, \{\textsc{p:3}, \textsc{n:}\text{sg}\}\rangle$  & kicks \\
 \bottomrule
 \end{tabular}
 \caption{Dual-paradigm analysis of the English present tense}
@@ -448,7 +448,7 @@ functions as the \textsc{3.sg} present-tenxe suffix for verbs and as the \textsc
   $\langle  \mu_{I} \dots \mu_{2}, \mu_{1}, x \rangle$, where $x$ 
   is some kind of initial form, such as a root or a stem. The elements in the sequence 
   $ \mu_{I} \dots \mu_{2}, \mu_{1}$ are each morphomes, 
-  which, according to \citet{round:2015}, can viewed as operations, 
+  which, according to \citet{round:2015}, can be viewed as operations, 
   such that each applies rightward, starting with the lowest index, and progressing upward
   to index $I$.
   
@@ -1145,7 +1145,7 @@ property \{\text{n}$\to$\text{n}[fem] among the derivational properties $\delta$
  Round, for instance, has frequently observed it in Kayardild: ``[M]ost of the exponents 
  employed by the inflectional system are also used derivationally'' \citep[][p. 13]{round:2015}.
 
-\section{Implications for \ac{ULM} and Multimorph}
+\section{Implications for ULM and Multimorph}
 
 Because \ac{ULM} systems do not have access to
 semantic or syntactic features, they cannot learn pairings of form and meaning, 
