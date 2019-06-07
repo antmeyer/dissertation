@@ -52,7 +52,7 @@ evaluation approach, as it consisted of complementary \emph{intrinsic} and \emph
 %utput of the MCMM was evaluated \emph{qualitatively}. The  which is intended to complement the quantitative
 % intrinsic an extrinsic methods. 
  We will discuss each of these components in what follows. For the sake of simplicity,
-we will only be useing examples from the transcribed, stress-marked data (TS),
+we will only be using examples from the transcribed, stress-marked data (TS),
  but the discussion is equally applicable to
 the other two types of data.
 
@@ -93,8 +93,8 @@ which are autonomous morphological categories, as discussed in chapter~\ref{auto
 They mediate between phonology and morphosyntax, but are at the same time independent 
 of both of these levels of structure. It is thus not always clear what the morphs are in a 
 given data set. As intermediate, \emph{pre-}morphosyntactic units, morphs are void 
-of---and thus unconstrained by---meaning. They can thus
-be whatever they need to be in order to bridge the gap between phonological units 
+of---and thus unconstrained by---meaning. They can thus be whatever they 
+need to be in order to bridge the gap between phonological units 
 and meaning (i.e., syntax and semantics).  There are not many morphomic lexicons 
 or corpora wherein autonomous morphological units are annotated. There are no 
 such resources for Hebrew.
@@ -130,7 +130,7 @@ hev\a'{i}n \> pos:v\&root:byn\&ptn:hifil\&tense:past\&pers:3\&gen:ms\&num:sg \\
 hev\a'{i}na \> pos:v\&root:byn\&ptn:hifil\&tense:past\&pers:3\&gen:fm\&num:sg \\
 \vdots \> \vdots \\
 \end{tabbing}
-\caption{Morphological analyses extracted from the Berman Longitudinal Corpus.}
+\caption{Morphological analyses extracted from the Berman Longitudinal Corpus}
 \label{fig:verb-analyses}
 \end{mdframed}
 \end{figure}
@@ -211,9 +211,7 @@ As explained in chapter~\ref{ch:MCMM}, the
  where $\theta_{\text{mc}}$ is the membership threshold. %In preliminary 
  In this study's experiments, $\theta_{\text{mc}}$ 
  was 
- %first 
- set to 0.5.   %, but it was changed 
-% to 0.8 for the experiments reported in this thesis in order to ``tighten up'' the clusters, i.e., to eliminate outlier members and generally to reduce noise.
+ set to 0.5.
  In algorithm~\ref{alg:members}, the \textsc{while}-loop condition on line~\ref{line:vote-thresh} enforces the threshold criterion. 
 % ~\ref{line:vote-thresh}
 %requires the current vote to be greater than (or equal to) to the membership threshold. 
@@ -231,7 +229,7 @@ point (or word) in question is an active member of the $k$th cluster,
 (see section~{\ref{sec:mixing-function}). The \textsc{while} loop thus terminates immediately upon finding 
  such a vote, whereupon
 the current word is appended to the current cluster's list of active members (line~\ref{line:append}). 
-This \textsc{while} loop is executed for each word in in the input wordlist until the input words are exhausted, whereupon the procedure outputs a clustering in the form of a list of lists. Each inner list is a list of words and represents a cluster. 
+This \textsc{while} loop is executed for each word in the input wordlist until the input words are exhausted, whereupon the procedure outputs a clustering in the form of a list of lists. Each inner list is a list of words and represents a cluster. 
  
 If a vote $m_{i,k}c_{j,k}$ is greater than $0$ but \emph{less than} $\theta_{\text{mc}}$,
 %for some $k$ and some feature $j$, 
@@ -266,16 +264,17 @@ As mentioned above, many of the BLC's categories are morphosyntactic in nature; 
   %tables~\ref{subtab:hifil-tensed} and \ref{subtab:hifil-part}, 
  which are essentially instances of Stump's \emph{content paradigm} \citep{stump:2001}. The content paradigm, as we discussed in section~\ref{sec:morpho-theories}, is to be distinguished from Stump's \emph{form paradigm}, since there is often a gap between these paradigms. We illustrated this gap in the case of the English present tense in table~\ref{tab:engverbpres}. As discussed in chapter~\ref{autonomous}, form-paradigm cells tend to be unnatural and thus morphomic. They are also therefore better suited than content cells to serve as form-based gold-standard classes. 
 
-\begin{table}[bt] 
+\begin{table}[!t] 
  %\label{tab:hifil-paradigms}
 \centering
  %\footnotesize
- \subtable[Tensed verb forms\label{subtab:hifil-tensed}]{
+ %\subtable[Tensed verb forms\label{subtab:hifil-tensed}]{
   \centering
  \setlength{\extrarowheight}{4pt}
  \begin{tabular}{lcccc}
  \toprule
-    & \multicolumn{2}{c}{Past} & \multicolumn{2}{c}{Future} \\
+ %\multicolumn{3}{c}{{\small \textit{Hif`il} Tensed Forms}} \\
+    & \multicolumn{2}{c}{\small Past} & \multicolumn{2}{c}{\small Future} \\
     & \textsc{sg} & \textsc{pl} & \textsc{sg} & \textsc{pl} \\
 \cmidrule{2-3}  \cmidrule{4-5}
    \textsc{1.m/f} & hi-tx\'{i}l-ti & hi-tx\'{i}l-nu & \textipa{P}e-tx\'{i}l & na-tx\'{i}l \\
@@ -286,33 +285,37 @@ As mentioned above, many of the BLC's categories are morphosyntactic in nature; 
  \textsc{3.m} & hi-tx\'{i}l &   &  ya-tx\'{i}l & \\
  \textsc{3.f} & hi-txil-\'{a} & \raisebox{8pt}[0pt]{hi-txil-\'{u}} &  ta-tx\'{i}l & \raisebox{8pt}[0pt]{ya-txil-\'{u}} \\
    \bottomrule
- \end{tabular}
- } \\
-  \subtable[Participle forms\label{subtab:hifil-part}]{
+ \end{tabular} \\\vspace{5pt}
+ %} \\
+  %\subtable[Participle forms\label{subtab:hifil-part}]{
+  %\multicolumn{3}{c}{{\small \textit{Hif`il} Tensed Forms}} \\
  \centering
  \setlength{\extrarowheight}{4pt}
       \begin{tabular}{ccc}
       %\multicolumn{3}{c}{\textit{mzkir}  `he reminds'} \\
-      \toprule
+      %\toprule
+      \multicolumn{3}{c}{{\small Participle (or Present)}} \\
        & \textsc{sg} & \textsc{pl} \\
       \midrule
       \textsc{m} & ma-tx\'{i}l & ma-txil-\'{i}m \\
       \textsc{f} & ma-txil-\'{a} & ma-txil-\'{o}t \\
       \bottomrule
       \end{tabular}
- }
+ %}
  \caption{Paradigms for the root \textit{t.x.l} in the \textit{Hif`il} binyan.}
  \label{tab:hifil-paradigms}
  \end{table}
  
- \begin{table}[bt]
+ \begin{table}[!t]
+ \vspace{12pt}
  \centering
- \subtable[Tensed verb forms\label{subtab:qal-tensed}]{
+ %\subtable[Tensed verb forms\label{subtab:qal-tensed}]{
  \centering
  \setlength{\extrarowheight}{4pt}
  \begin{tabular}{lcccc}
  \toprule
-    & \multicolumn{2}{c}{Past} & \multicolumn{2}{c}{Future} \\
+ %\multicolumn{3}{c}{{\small \textit{Qal} Tensed Forms}} \\
+    & \multicolumn{2}{c}{\small Past} & \multicolumn{2}{c}{\small Future} \\
     & \textsc{sg} & \textsc{pl} & \textsc{sg} & \textsc{pl} \\
 \cmidrule{2-3}  \cmidrule{4-5}
    \textsc{1.m/f} & gam\'{a}r-ti & gam\'{a}r-nu & \textipa{P}e-gm\'{o}r & ni-gm\'{o}r \\
@@ -323,20 +326,21 @@ As mentioned above, many of the BLC's categories are morphosyntactic in nature; 
  \textsc{3.m} & gam\'{a}r &   &  yi-gm\'{o}r & \\
  \textsc{3.f} & gamr-\'{a} & \raisebox{8pt}[0pt]{gamr-\'{u}} &  ti-gm\'{o}r & \raisebox{8pt}[0pt]{yi-gmer-\'{u}} \\
    \bottomrule
- \end{tabular}
- }\\
- \subtable[Participle forms\label{subtab:qal-part}]{
- \centering
- \setlength{\extrarowheight}{4pt}
+ \end{tabular} \\\vspace{5pt}
+ %}\\
+ %\subtable[Participle forms\label{subtab:qal-part}]{
+	 \centering
+ 	\setlength{\extrarowheight}{4pt}
       \begin{tabular}{ccc}
-      \toprule
+       %\toprule
+     \multicolumn{3}{c}{\small Participle (or Present)}\\
        & \textsc{sg} & \textsc{pl} \\
       \midrule
       \textsc{m} & gom\'{e}r & gomr-\'{i}m \\
       \textsc{f} & gom\'{e}r-et & gomr-\'{o}t \\
       \bottomrule
       \end{tabular}
- }
+ %}
  \caption{Paradigms for the root \textit{g.m.r} in the \textit{Qal} binyan}
     \label{tab:qal-paradigms}
  \end{table}
@@ -353,8 +357,8 @@ all map onto the single form-based class
 \end{center}
 where the \texttt{|} symbol means `or', and \texttt{\%} is a delimiter.
 
-Note also the morphomic phenomena among the stems of  paradigms~\ref{subtab:hifil-tensed} and \ref{subtab:qal-tensed}.
-For instance, future-tense forms in tables~ %\ref{subtab:hifil-tensed} and \ref{subtab:qal-tensed} 
+Note also the morphomic phenomena among the stems of the paradigms in tables~\ref{tab:hifil-paradigms} and \ref{tab:qal-paradigms}.
+For instance, the future-tense forms in tables~ %\ref{subtab:hifil-tensed} and \ref{subtab:qal-tensed} 
 \ref{tab:hifil-paradigms} and \ref{tab:qal-paradigms}.
 have different stems from their past-tense counterparts. Following \citet{vance:2004}, we will refer to the future-tense stems as \emph{prefix stems} and the past-tense stems as \emph{suffix stems}. We do this for two main reasons: First, the prefix stems really do tend to take prefixes, while the suffix stems tend to take suffixes. Second, these stems are not always associated with past and future tenses, as participles take the prefix stem in some \emph{binyanim} (singular \emph{binyan}), e.g., the \textit{Hif`il} binyan; see the \textit{Hif`il} participles in table~\ref{tab:hifil-paradigms}. 
 %thus added the gold-standard classes \texttt{prefix\_stem} and \texttt{suffix\_stem}, the former for future-tense stems, and the latter for past-tense stems. These classes are so named because in addition to their stem-internal differences, the ``prefix stems'' tend to take prefixes, while the ``suffix stems'' tend to suffixes (see \citet{vance:2004}). 
@@ -419,7 +423,7 @@ future-tense, 3rd-person fem plural & &\\
 \end{tabular}
 }
 %\label{tab:verb-cat-descriptions}
-\caption{Mappings from conventional paradigm cells to form-based gold-standard classes} %(see tables~\ref{subtab:hifil-tensed} 
+\caption{Mappings from conventional paradigm cells to form-based gold-standard classes} 
 %and \ref{subtab:qal-tensed}) to gold-standard classes for Multimorph's intrinsic evaluation}
 \label{tab:verb-cat-descriptions}
 \end{table}
@@ -513,7 +517,6 @@ vowel reduction/deletion, but only two of the four---the masculine plural and
 feminine singular---take distinctly construct suffixes, as shown in table~\ref{tab:cstr-endings}. 
 
 \begin{exe}
-%\label{ex:abs-v-cstr}
 \ex \textit{pas\'{i}m \quad weharaq\'{e}vet} \\ \label{ex:free-state} 
 pas-\'{i}m \quad we-ha-raq\'{e}vet \\
 stripe-\textsc{pl} \quad and-the-train \\
@@ -553,7 +556,7 @@ Biblical Hebrew antecedents were intrinsically (and thus unchangeably) long.
 Other vowels are protected if they occur in a closed syllable.\footnote{Sometimes 
 a vowel in an open syllable is protected because the syllable \emph{would have been} 
 closed in Biblical Hebrew, which recognized geminate consonants as a sequence of two 
-moras. For instance, the word \textit{tabbax} `cook, chef', is pronounced [tabax] in Modern Hebrew---without the geminate /b/. Nevertheless, historical geminate \textit{b} protects the initial /a/ from deletion in the construct phrase [tabax  mi\v{s}k\'an] `resident chef' \citep[see][p. 43]{bolozky-and-schwarzwald:1990}.}
+moras. For instance, the word \textit{tabbax} `cook, chef,' is pronounced [tabax] in Modern Hebrew---without the geminate /b/. Nevertheless, historical geminate \textit{b} protects the initial /a/ from deletion in the construct phrase [tabax  mi\v{s}k\'an] `resident chef' \citep[see][p. 43]{bolozky-and-schwarzwald:1990}.}
 
 Thus, in the transcriptional data (both with and without stress marking), there 
 is sometimes no formal marker (or exponent) of the construct state in the masculine singular 
@@ -562,9 +565,11 @@ Moreover, in the orthographic data, there is \emph{never} a distinction between
 the absolute and construct states in these 
 two categories, since the vowels that are subject to reduction/deletion are not represented in the 
 orthographic data in the first place.
-%difference  since the orthographic data does not the represent vowels that are subject to deletion.
-Therefore, when the BLC category \textit{stat:bound} (i.e., construct state) is associated with a masculine singular or feminine plural nominal, we discard it, as in examples~(\ref{ex:cstr:m-sg}) and (\ref{ex:cstr:f-pl}). Otherwise, we fuse it to the \textsc{gender}\%\textsc{number} categories as \textit{cstr}, as in examples~(\ref{ex:cstr:m-pl}) and 
-(\ref{ex:cstr:f-sg}).
+Therefore, when the BLC category \textit{stat:bound} (i.e., construct state) 
+is associated with a masculine singular or feminine plural nominal, we discard it, 
+as in examples~(\ref{ex:cstr:m-sg}) and (\ref{ex:cstr:f-pl}). Otherwise, we fuse 
+it to the \textsc{gender}\%\textsc{number} categories as \textit{cstr}, as 
+in examples~(\ref{ex:cstr:m-pl}) and (\ref{ex:cstr:f-sg}).
 
 \begin{exe}
 \ex  
@@ -587,7 +592,7 @@ Therefore, when the BLC category \textit{stat:bound} (i.e., construct state) is 
 As discussed in chapter~\ref{autonomous} (section~\ref{sec:heb-example} in particular), 
 a large number of Modern Hebrew adjectives are derived by attaching the 
 suffix -\textit{i}
-to a noun. Thus, unlike nouns, many adjectives have a formal exponent, i.e., a particular aspect of from that distinctly corresponds to the category \emph{adjective}---at least the adjectives derived via -\textit{i} do, anyway. 
+to a noun. Thus, unlike nouns, many adjectives have a formal exponent, i.e., a particular aspect of form that distinctly corresponds to the category \emph{adjective}---at least the adjectives derived via -\textit{i} do, anyway. 
 We therefore retained
 \texttt{pos:adj} (i.e., \textit{part-of-speech: adjective}) as a gold-standard class.
 (Recall that we discarded the \emph{noun} category because it lacked particular formal exponent.) 
@@ -749,7 +754,7 @@ is combined with the fusional gender and number endings to categories like \text
 tables~\ref{tab:pers-pronouns} and \ref{tab:dem-pronouns}, respectively.
 Like verbs, personal pronouns have person, number, and gender, each of which is treated as 
 an atomic morphosyntactic feature in the BLC analyses, as illustrated in 
-figure~\ref{tab:pers-pronouns}. For each personal-pronoun morphological analysis, 
+table~\ref{tab:pers-pronouns}. For each personal-pronoun morphological analysis, 
 we map the person, gender, and number categories onto
 two gold-standard classes: one combining person and gender 
 into a single class, e.g., \texttt{pro:pers\%2\%m} (2nd-person $\land$ masculine), 
@@ -1558,7 +1563,8 @@ labels as there are data points. Standard purity assumes that most frequent
 \text{purity}(\mathbf{U}, \mathbf{V}) = \frac{1}{N} \sum_{k \in K} \text{max}_{j \in J} |\mathbf{u}_k \cap \mathbf{v}_j|
 \end{equation}
 In other words, 
-The problem for our purposes is that this version of purity assumes that each datapoint belongs to exactly only one gold-standard class. In fact, it requires that this be so, for if any data point should belong to more than one cluster belong to more than one cluster, the numerator in \eqref{eq:pur1} would be greater than than 1, and thus the resulting purity would exceed 1.
+the problem for our purposes is that this version of purity assumes 
+that each datapoint belongs to exactly one gold-standard class. In fact, it requires that this be so, for if any data point should belong to more than one cluster, the numerator in \eqref{eq:pur1} would be greater than 1, and thus the resulting purity would exceed 1.
 In the present study, each data point is a word, and the categories are morphological categories. In natural languages, words frequently belong to multiple morphological categories at once.
 %however, which contains multi-category examples, this assumption can yield purities greater than 1. 
 
@@ -1619,26 +1625,61 @@ and the set $\mathbf{V}$ replaces $\mathbf{U}$ in the $\text{Avg}$ function's su
 \end{equation}
 
 \subsection{Extrinsic Evaluation} \label{sec:eval-extrinsic} An \emph{extrinsic evaluation} 
-views a system as an embedded component of a larger system, i.e., as an ``upstream'' system that feeds a ``downstream''
-system. An extrinsic evaluation makes sense in the case of  Multimorph because it learns autonomous morphological units---i.e., \emph{morphs}---which are intermediate by nature (see chapter~\ref{autonomous}).
-Multimorph is thus naturally conducive to functioning as an embedded system---as an intermediate step in a larger process
+views a system as an embedded component of a larger system, that is, as an ``upstream'' system that feeds a ``downstream''
+system. An extrinsic evaluation makes sense as a means of evaluating Multimorph because of the intermediate nature of Multimorph's output. In particular, Multimorph  learns autonomous morphological units, or \emph{morphs}, which occupy a level between phonology and syntax. % are neither are intermediate by nature (see chapter~\ref{autonomous}).
+It is difficult to evaluate intermediate units on their own merits because they exist only to serve higher levels of processing. 
+It does not matter what they are, as long as they are useful to subsequent processing. 
+One could even call them \emph{hidden units} because they will take the form that 
+the downstream process needs them to take in order to realize the end goal, which, in the case of language, is communication.
 
-Even though the ultimate purpose of an extrinsic evaluation is to evaluate the embedded---or upstream---system,
-it does so by evaluating the downstream' system, since the
- performance of the downstream system depends on that of the upstream system. 
- The assumption is thus that an evaluation of the downstream system is tantamount to an evaluation of the upstream system.
+In chapter~\ref{autonomous}, we described autonomous morphological units as units that mapped from the level of meaning and morphosyntactic properties to the level of raw phonological form. This mapping direction was the \emph{generative} direction. For our present purposes, we need to view the process as one of \emph{recognition}, however. In other words, we need to reverse the mapping direction so that we can regard morphs as mapping from raw form (sequences of phonological units) to words. 
+The purpose of the extrinsic evaluation is to evaluate Multimorph's discovered clusters (or morphs) as \emph{intermediate units}, that is, to ask and attempt to answer the question, \emph{Are Multimorph's morphs useful to a downstream process?}
+
+For Multimorph's downstream process, we would ideally use an unsupervised learning system that learns to assemble fully-fledged words from morphs. However, no such system currently exists to my knowledge. I therefore used another unsupervised learner of morphology, namely Morfessor \citep{creutz:2003, creutz-and-lagus:2005, creutz-et-al:2006, creutz-and-lagus:2007}, a ULM
+system that takes a list of words as input, induces a lexicon of morphs 
+for these words, and divides each input word into its component morphs.
+
+Morfessor and Multimorph represent \emph{different types} of ULM system; 
+%is of a different type of ULM system than Multimorph; 
+in particular, Morfessor is a nonlinear sequential (NLS) system, whereas Multimorph is a nonlinear nonsequential (NLNS) system (see chapter~\ref{ch:lit-review}). 
+%(see sections~\ref{subsec:seq-nonlin} and \ref{sec:what-exactly}) 
+Even so, Morfessor is a ULM system in the standard understanding of ULM (see section~\ref{sec:what-exactly}), just as Multimorph is. 
+That is, like Multimorph, it takes as input a list of contextless word tokens. Consequently, it is restricted to the domain of autonomous morphology, just as Multimorph is.
+% But both are nevertheless ULM sytems, and thus Morfessor is as restristed to the domain of autonomous morphology as Multimorph is. 
+
+Despite this restriction, I nevertheless decided to incorporate Morfessor into the extrinsic evaluation as
+the downstream process. My reasoning in doing so was as follows:
+If Multimorph succeeds in finding useful morphological categories, its analysis will have presumably reduced the complexity of the original input wordlist. If Morfessor then acts as the downstream system, taking Multimorph's output as input (after some preparatory post-processing), it should benefit in some way from Multimorph's pre-analysis, even though it is ultimately just another ULM system. Its task should be made easier, which should lead to better evaluation scores.
+% 2. Because Morfessor is not a nonlinear nonsequential system as Multimorph is, but rather a linear nonsequential 
+% system (see section~\ref{subsec:seq-nonlin}), it cannot induce nonconcatenative morphs. Perhap's Multimorph's ability to model 
+
+
+% \emph{morphomes} as units that mediated between the level of meaning and the level of phonological form. We are using the term \emph{morph} to refer to basically the  This is the generative sequence. For our present purposes, how, we need to view the process as one of recognition. This reverses its direction: 
+%   or vice versa, depending on one's point of view. 
+% For our current purposes, we take the recognition point of view (as opposed to its generative counterpart).
+
+
+%whether one views the process as one of recognition as 
+%are hidden units in a way: 
+% Multimorph is thus naturally conducive to functioning as an embedded system---as 
+% an intermediate step in a larger process. 
+
+% Even though the ultimate purpose of an extrinsic evaluation is to evaluate the embedded---or upstream---system,
+% it does so by evaluating the downstream' system, since the
+%  performance of the downstream system depends on that of the upstream system. 
+%  The assumption is thus that an evaluation of the downstream system is tantamount to an evaluation of the upstream system.
 % the upstream system performs poorly, and 
 %an extrinsic evaluation  if the downstream system scores highly,
 %the upstream system (the system under evaluation), 
 %scores highly. 
 %Multimorph learns morphs, which which are intermediate nature (see \ref{autonomous}).
 %Multimorph is thus naturally conducive to functioning as an embedded system, as an intermediate step in a larger process.
-In this study, the upstream system was Multimorph. The downstream system was
- Morfessor
-\citep{creutz:2003, creutz-and-lagus:2005, creutz-et-al:2006, creutz-and-lagus:2007}, an 
-unsupervised morphological segmentation 
-system takes takes a list of words, induces a lexicon of morphs 
-for these words, and divides each input word into its component morphs.
+% In this study, the upstream system was Multimorph. The downstream system was
+%  Morfessor
+% \citep{creutz:2003, creutz-and-lagus:2005, creutz-et-al:2006, creutz-and-lagus:2007}, an 
+% unsupervised morphological segmentation 
+% system takes a list of words, induces a lexicon of morphs 
+% for these words, and divides each input word into its component morphs.
 %Multimorph learns autonomous morphological units---i.e., \emph{morphs}---which are intermediate nature (see \ref{autonomous}). Multimorph is thus naturally conducive to functioning as an embedded system---as an intermediate step in a larger process
 %facilitate the learning of morphemes. %My system is thus meant to be an embedded component of a larger process. 
 %\item It is very difficult to come up with gold-standard morphs, but gold-standard morphemes are relatively easy to produce, since morphemes, in contrast to morphs, are already well-defined. 
@@ -1677,12 +1718,12 @@ for these words, and divides each input word into its component morphs.
 %clustering. 
 %The extrinsic evaluation took each experiment's clustering, and through
 %through a succession of post-processing \emph{stages}, molded it into a format acceptable to Morfessor and then fed to Morfessor as \emph{input}. Morfessor \citep{creutz:2003, creutz-and-lagus:2005, creutz-and-lagus:2007} thus served as the ``downstream" application in extrinsic evaluation. was an unsupervised morphological segmentation system, takes a list of words as input and induces a morphological segmentation for each word. \
-The extrinsic evaluation in this study was thus intended to test the following hypothesis:
-\begin{quotation}\noindent
-Multimorph finds \emph{useful} intermediate morphological units, i.e., units that reduce the
-complexity of an input wordlist in a way that could be helpful to a downstream process.
-\end{quotation}
-where the downstream process was Morfessor in our case.
+% The extrinsic evaluation in this study was thus intended to test the following hypothesis:
+% \begin{quotation}\noindent
+% Multimorph finds \emph{useful} intermediate morphological units, i.e., units that reduce the
+% complexity of an input wordlist in a way that could be helpful to a downstream process.
+% \end{quotation}
+% where the downstream process was Morfessor in our case.
 %The central assumption here was that ``helpfulness to a downstream process''  would manifest as an improved performance in the downstream process (i.e., Morfessor). %the downstream system, namely in our case. 
 % systMorfessor's task by \emph{pre-processing} its input wordlist---that is, by identifying intermediate morphological units and thus producing a less complex \emph{intermediate wordlist} that will be easieMorfessor to n analyze for can analyze more easily and effectively than the original wordlist.
 %\end{quotation}
@@ -1785,7 +1826,7 @@ It what follows we discuss these four stages in
 
 %i.e., the clustering defined by the values in the $\mathbf{M}$ and $\mathbf{C}$ matrices, to the output of Morfessor (and crucially, the evaluation of this output) can be broken down into four stages. 
 %
-%had to be processed before it could be undergo thThis subsection 
+%had to be processed before it could be undergo. This subsection 
 %will describe each of the four stages. The input to Stage 1 is a cluster centroid vector, 
 %i.e., one the $K$ columns in the $J \times K$ matrix $\mathbf{C}$. The $k$th column 
 %corresponds to the $k$th cluster. Each $j \in J$ corresponds to a particular feature; the 
@@ -1924,7 +1965,7 @@ Each precedence feature is mapped onto an atomic regular expression composed of 
 the character $\alpha$ in parentheses, zero or more instances of the sequence \texttt{.?},  and finally
 the character $\beta$ in parentheses. In regular expressions, the symbol \, \texttt{.} \,means ``any character," and 
 \, the symbol \texttt{?} \, means ``up to one (i.e., zero or one) instance of the preceding symbol. The sequence \, \texttt{.?} \, 
-thus means``zero or one instances of some unspecified character.'' These definitions are summarized in figure~\ref{fig:regex-defs}.
+thus means ``zero or one instances of some unspecified character.'' These definitions are summarized in figure~\ref{fig:regex-defs}.
 
 The number of \texttt{.?} sequences is always $\delta - 1$. Thus, if $\delta = 2$, for example, all atomic
 features derived from precedence features would have $\delta - 1 \mathbf{= 1}$ 
@@ -1942,24 +1983,6 @@ follows the rule
 \end{equation}
 where ${\{\texttt{.?}\}}^{\delta-1}$ denotes ${\delta-1}$ instances of the literal regular expression ``\texttt{.?},'' as described above. 
 The lefthand side of rule \eqref{precedence-to-regex} represents the feature itself, while the righthand side is a general regular-expression template, similar to the template for positional atomic features in rule \eqref{eq:positional-to-regex} above.
- %${\{\texttt{.?}\}}^{\delta-1}$ denotes ${\delta-1}$ instances of ``\texttt{.?},'' as described above. 
-%\begin{equation*}
-%\texttt{(}\alpha \texttt{)}\,\, {\texttt{.?}}^{\delta-1} \,\, \texttt{(} \beta \texttt{)}
-%\end{equation*}
-%where $\alpha$ and $\beta$ are characters, and $\delta$ is the maximum 
-%difference allowed 
-%between index of $\beta$ and that of $\alpha$ within the word in question. 
-%In the regular expression, the sequence \texttt{.?} is repeated ${\delta-1}$ times, 
-%where \texttt{.} is the wildcard character and \texttt{?} makes the preceding item optional.  
-%For example, the regular expression \texttt{i.?u} means that one character may 
-%(or may not) occur between the \texttt{i} and \texttt{u}, while \texttt{i.?.?u} allows 
-%for \emph{up to} two intervening characters; i.e., zero, one, or two characters may 
-%occur between the  \texttt{i} and \texttt{u}. 
-
-%$\delta = 1$, the sequence \texttt{.?} does not appear in the regular expression.  repeated  depends on the value of the parameter $\delta$; in 
-%particular the number of \texttt{?} is equal to $\delta- 1$. Thus, 
-%$\delta$ values of 1, 2, and 3 correspond to zero, one, and two ``\texttt{.?}"s,
-% respectively. 
 
 If a cluster's centroid has more than one active feature, each
 was initially mapped onto its own atomic regular expression.
@@ -1971,7 +1994,6 @@ merged as follows:
 \begin{center}
 \texttt{h@[0]}, \texttt{a@[1]} $\quad \mapsto \quad$ \texttt{(h)(a)}
 \end{center}
-%to form the composite expression \, \texttt{(h)(a)} \,. 
 Precedence features 
 can also create composite regular expressions. For example, the 
 features \, \texttt{d<b}\,  and \, \texttt{b<r} \, would together yield the 
@@ -2008,12 +2030,9 @@ of clusters (i.e., cluster indices).
 Stage 2 then consulted the cluster-to-morph mapping computed in 
 Stage 1 to convert each such list to a list of morph objects.
 For example, for the word \textit{hicl\'{a}xti},
-this initial step produced %the morph IDs (i.e., cluster indices) listed in 
+this initial step produced
 morphs (i.e., pairs of morph IDs and regular expressions)  listed in 
-figure~\ref{fig:morph-regex}. %In the cluster-membership vector associated with 
-%\textit{hicl\'{a}xti}, there were seven \emph{active} units, each 
-%corresponding to a cluster, and each cluster (via Stage 1) corresponded to a morph object and hence
-%a morph's regular expression. 
+figure~\ref{fig:morph-regex}.
 
 
 Stage 2 next tried to match each morph's regular expression to a subsequence of
@@ -2134,8 +2153,98 @@ like that displayed in figure~\ref{fig:chars-to-morphs-tab}.
 %\end{mdframed}
 %\end{figure}
 
-\subsubsection{\textsc{Stage 3:} Compress and encode} 
-\begin{figure}[t]
+\subsubsection{\textsc{Stage 3:} Compress and encode}
+
+
+Figure~\ref{fig:chars-to-morphs-tab} illustrates several one-to-many mappings from 
+characters to morphs. Stage 2 often produced such mappings.
+One of Stage 3's objectives is to take these mappings and select the single \emph{best} morph for each character.
+ The morph choice for any given character depends on the choices 
+for other characters. For instance, notice in figure~\ref{fig:chars-to-morphs-tab} that the first 
+character of \textit{hicl\'{a}xti} maps to morph 64, and second character maps to 
+morphs  64, 151, and 202. Morph 64 is selected (by default) for the first character, 
+a fact that immediately makes morph 64 the most attractive choice for the second character.
+
+
+
+The task of determining the best morph at each character index was thus tantamount to determining the 
+best \emph{path} through the full lattice of morphs associated with a word.
+It was carried out as a
+\emph{best-first} search \citep{pearl:1984}, i.e., as a search for the 
+path with the maximal weight. Of course, path weights were not known beforehand, 
+but computed incrementally as the search progressed. 
+
+\begin{table}[tb]
+\centering
+\setlength{\extrarowheight}{8pt}
+\begin{tabular}{cl}
+\toprule
+Weight & Path \small(morph-ID sequence) \\
+\midrule
+2.625 & \texttt{[64, 64, 148, 264, 148, 264, 264, i]}  \\
+2.375  & \texttt{[64, 64, 264, 264, 202, 264, 264, i]} \\
+2.375 & \texttt{[64, 64, 264, 264, 148, 264, 264, i]}  \\
+2.250 & \texttt{[64, 202, 264, 264, 202, 264, 264, i]}  \\
+2.250 & \texttt{[64, 202, 264, 264, 148, 264, 264, i]}  \\
+%2.250  & \texttt{[64, 202, 264, 264, 95, 264, 264, i]}  \\
+%2.000 & \texttt{[64, 151, 148, 151, 148, 264, 264, i]}  \\
+%1.813  &  \texttt{[64, 64, 264, 95, 95, 264, 264, i]} \\
+%1.813 & \texttt{[64, 64, 148, 284, 148, 264, 264, i]}  \\
+%bp 3; path (len: 4 ) = [64, 148, 264, u'i']
+\bottomrule
+\end{tabular}
+\caption{The five top-scoring (i.e., `weightiest') morph paths for the word \textit{hicl\'{a}xti}. The best path is taken to be the one with the highest weight.} %It is depicted graphically in figure~\ref{fig:best-paths}.} 
+\label{tab:weights-paths}
+\end{table}
+
+
+
+
+
+The weight of a path was derived from
+ the weights of its morphs, and the weight of each morph was derived from the weights of its component features. 
+%More specifically, each morph's weight is a real number between 0 and 1 derived from the activities of its component features.  is therefore given a numerical weight in the interval $[0,1]$.
+%As described in the discussion of Stage 1 above, each morph is composed of one or more features. 
+%-either precedence features, 
+%positional features, or a combination of these two types. 
+Recall from chapter~\ref{ch:MCMM}, particularly section~\ref{sec:mixing-function}, that each feature corresponds 
+to a particular element $r_{i,j}$ in the \emph{reconstruction} 
+vector $\mathbf{r}_{i}$. Specifically, the element $r_{i,j}$ is the \emph{activity} 
+of the $j$th feature of the $i$th reconstruction vector. A feature's 
+activity is a number between 0 and 1 that indicates the degree of the 
+feature's ``\textsc{off}-ness'' or ``\textsc{on}-ness,'' respectively. A 
+feature's activity can itself be thought of as a weight because it indicates 
+the model's confidence in the feature's presence, i.e., it's ability to 
+account for the feature (see the discussion of the mixing function in section~\ref{sec:mixing-function}). 
+Since features compose morphs, the activities of individual features can serve as base cases for deriving the weights of morphs. The weight of each morph was thus computed by averaging the activities of its component features. 
+A path weight is then the average of the weights of its component morphs. However, in order to favor 
+sequences of identical morphs, such as the initial two 64s in the case of \textit{hicl\'{a}xti} (figure~\ref{fig:best-paths}), 
+we add the following to the basic averaging rule:
+\newline
+\begin{nbquote}\noindent
+Given a path of morph IDs, 
+whenever a morph ID is repeated, and it is sufficiently close to its preceding instances (i.e., with no more than three intervening positions), the path's weight is \emph{doubled}.
+\end{nbquote}
+
+
+Table~\ref{tab:weights-paths} lists the five paths with the highest weights in the case of \textit{hicl\'{a}cti}. The selected path was the one with the maximal weight, namely
+ %We restate this it here:
+\begin{equation}\label{eq:best-path} 
+\texttt{hicl\'{a}xti} \quad \mapsto \quad \texttt{64, 64, 148, 264, 148, 264, 264, i}
+\end{equation}
+Figure~\ref{fig:best-paths} illustrates this path graphically, i.e., as a path through the morph lattice associated with 
+\textit{hicl\'{a}cti}.
+ % best path through the morph IDs associated with the word \textit{hicl\'{a}xti}. This was the path with
+ % the maximal weight. 
+However, while this path is certainly among the best, it does not appear to be the very best.  The true best path in this case seems to be the one with \textit{second-highest} weight in table~\ref{tab:weights-paths}, primarily because it keeps all four of the characters (i.e., morph-to-character mappings) associated with morph 264; %'s morph-to- 
+note the four characters in the regular expression associated with morph 264 in figure~\ref{fig:morph-regex}. 
+The fact that this path was not given the highest weight indicates a 
+flaw in the path-weighting algorithm.\footnote{Another problem is  s
+that morph 264, with regular expression \texttt{(c).?.?(l).?.?(x).?.?(t)}, was itself not entirely correct: The root in \textit{hicl\'{a}xti} is actually morph 264's first three consonants, namely \textit{c.l.x}; the \textit{t} is in fact part of the 1st-person past-tense suffix \textit{-ti}. Clearly, the various processes involved here have yet to be perfected, although they do show promise.}
+% On the other hand, \textit{-i} three characters should have been mapped to t
+
+
+\begin{figure}[tb]
 \begin{mdframed}
 \centering
 \begin{tikzpicture}[node distance=1.55cm, auto, >=stealth]
@@ -2182,58 +2291,9 @@ like that displayed in figure~\ref{fig:chars-to-morphs-tab}.
 \label{fig:best-paths}
 \end{mdframed}
 \end{figure}
-Figure~\ref{fig:chars-to-morphs-tab} illustrates several one-to-many mappings from 
-characters to morphs. Stage 2 often produced such mappings.
-One of Stage 3's objectives is to take these mappings and select the single \emph{best} morph for each character.
- The morph choice for any given character depends on the choices 
-for other characters. For instance, notice in figure~\ref{fig:chars-to-morphs-tab} that the first 
-character of \textit{hicl\'{a}xti} maps to morph 64, and second character maps to 
-morphs  64, 151, and 202. Morph 64 is selected (by default) for the first character, 
-a fact that immediately makes morph 64 the most attractive choice for the second character.
-
-The task of determining the best morph at each character index was thus tantamount to determining the 
-best \emph{path} through the full lattice of morphs associated with a word.
-It was carried out as a
-\emph{best-first} search \citep{pearl:1984}, i.e., as a search for the 
-path with the maximal weight. Of course, path weights were not known beforehand, 
-but computed incrementally as the search progressed. 
-
-The weight of a path was derived from
- the weights of its morphs, and the weight of each morph was derived from the weights of its component features. 
-%More specifically, each morph's weight is a real number between 0 and 1 derived from the activities of its component features.  is therefore given a numerical weight in the interval $[0,1]$.
-%As described in the discussion of Stage 1 above, each morph is composed of one or more features. 
-%-either precedence features, 
-%positional features, or a combination of these two types. 
-Recall from chapter~\ref{ch:MCMM}, particularly section~\ref{sec:mixing-function}, that each feature corresponds 
-to a particular element $r_{i,j}$ in the \emph{reconstruction} 
-vector $\mathbf{r}_{i}$. Specifically, the element $r_{i,j}$ is the \emph{activity} 
-of the $j$th feature of the $i$th reconstruction vector. A feature's 
-activity is a number between 0 and 1 that indicates the degree of the 
-feature's ``\textsc{off}-ness'' or ``\textsc{on}-ness,'' respectively. A 
-feature's activity can itself be thought of as a weight because it indicates 
-the model's confidence in the feature's presence, i.e., it's ability to 
-account for the feauture (see the discussion of the mixing function in section~\ref{sec:mixing-function}). 
-Since features compose morphs, the activities of individual features served as base cases for deriving the weights of morphs. That is, the weight of a given morph's was computed by averaging the activities of its component features. 
-A weight of a \emph{path} is then the average of the weights of its component morphs. However, to favor 
-sequences of identical morphs, such as the initial two 64s in the case of \textit{hicl\'{a}xti} (figure~\ref{fig:best-paths}), 
-we add the following to the basic averaging rule: 
-\begin{quote}\noindent
-Given a path of morph IDs, 
-whenever a morph ID is repeated, and it is sufficiently close to its preceding instances (i.e., with no more than three intervening positions), the path's weight is \emph{doubled}.
-\end{quote}
-
-Figure~\ref{fig:best-paths} illustrates the 
- best path through the morph IDs associated with the word \textit{hicl\'{a}xti}. This was the path with
- the maximal weight.
- We restate this it here:
-\begin{equation}\label{eq:best-path} 
-\texttt{hicl\'{a}xti} \quad \mapsto \quad \texttt{64, 64, 148, 264, 148, 264, 264, i}
-\end{equation}
-Each morph ID in this sequence corresponds to a particular character in \textit{hicl\'{a}xti}.\footnote{We should note that this character-to-morph mapping is not entirely correct. The root in \textit{hicl\'{a}xti} is \textit{c.l.x}, so there should have been a morph to which these three characters all map together. Also, the \textit{t} (along with the \textit{-i}) is actually part of the 1st-person past-tense suffix \textit{-ti}.}
-% On the other hand, \textit{-i} three characters should have been mapped to t
 The second major objective of Stage 3 is to abstract away from individual 
 characters by eliminating repeated morph IDs. 
-This straightforward in cases of uninterrupted 
+This is straightforward in cases of uninterrupted 
 occurrences of the same morph ID, such as the consecutive 64s in \eqref{eq:best-path}. 
 Consecutive morph IDs were simply mapped onto a \emph{single} instance of the same ID. Thus, for example,
 \begin{equation*}
@@ -2560,7 +2620,10 @@ MCMM-induced morphs.
  %Note, however, that even the encoded words of the experimental file had started out as original words, they so altered in their encoded forms that they generally bore no resemblance to their original forms.
 % described  computes a segmentation for each compressed/encoded word in the experimental set. We also run Morfessor on the control dataset, thus obtaining segmentations of the original words. We at this point have two segmented files, but the words in the experimental file are still encoded. 
 %A ten percent sample of the data was previous  10 percent sample of these segmented compressed words and \emph{decompress} them, i.e.,
-Both the experimental and control models had to be evaluated against the same gold standard.
+Both the experimental and control models had to be evaluated against the same gold standard.\footnote{Note also that each
+pair of $s$ and $\delta$ values yielded a different word coverage
+and thus 
+each required its own control model.}
 But to make this possible, Stage 4 first had to \emph{decode} (or \emph{decompress}) the strings in the experimental segmentation file; that is, it had to take experimental-string segmentations like the ones in 
 figure~\ref{fig:morfessor-output} and convert the CJK characters back to the original character sequences.
 To avoid altering Morfessor’s segmentation decisions, 
@@ -2599,7 +2662,7 @@ We began this chapter by pointing out that there is at present no single ideal w
 We thus adopted a multi-faceted approach to the evaluation, one that included both a qualitative and
 a quantitative component. Moreover, the quantitative component had two complementary components, namely an intrinsic component and an extrinsic component. Most of this chapter focused on describing the intrinsic and the extrinsic evaluation procedure. Both involved considerable processing. 
 
-The instrinsic evaluation required a set of gold-standard morphological word-to-morphological-category mappings. We took the morphological analyses from thee Berman Longitudinal Corpus to serve gold-standard class assignments, since we lacked a gold-standard set of morph or morphome mappings. However, we had to modify these categories considerably, mapping them onto categories that were based more closely on form rather than abstract morphosyntactic category. These mappings were limited, though, since, if taken to an extreme, they would become tantamount to carrying out an morph/morphome annotation from scratch.
+The instrinsic evaluation required a set of gold-standard morphological word-to-morphological-category mappings. We took the morphological analyses from the Berman Longitudinal Corpus to serve gold-standard class assignments, since we lacked a gold-standard set of morph or morphome mappings. However, we had to modify these categories considerably, mapping them onto categories that were based more closely on form rather than abstract morphosyntactic category. These mappings were limited, though, since, if taken to an extreme, they would become tantamount to carrying out an morph/morphome annotation from scratch.
 
 The extrinsic evaluation regarded Multimorph as an intermediate step in a larger process. It tested the hypothesis that Multimorph could ``pre-digest'' a wordlist for Morfessor and thus improve Morfessor's performance on that
 wordlist.

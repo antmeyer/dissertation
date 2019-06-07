@@ -1003,7 +1003,7 @@ In conjugate-gradient methods, if the goal is to decrease the objective function
 	\end{bmatrix}
   \end{equation}
 Inside the loop, the direction vector $\textbf{d}$ is updated in each iteration, and each update to  $\textbf{d}$ 
-takes into account information from the preceding iteration. Thus the current direction and gradient vectors in the in any given iteration are always copied and saved as $\textbf{g}_ {\text{old}}$ and $\textbf{d}_{\text{old}}$, respectively, before they are updated, so that they will be available later. 
+takes into account information from the preceding iteration. Thus, the current direction and gradient vectors in any given iteration are copied and saved as $\textbf{g}_ {\text{old}}$ and $\textbf{d}_{\text{old}}$, respectively, before they are updated, so that they will be available later. 
 
 There are various ways to compute $\textbf{d}$, each corresponding to a 
 particular type of optimization algorithm. The conjugate-gradient family, 
@@ -1109,7 +1109,7 @@ and eventually match the component values of the original feature vectors, which
 
 I therefore chose a particular variant of the nonlinear conjugate gradient method that was designed to honor bound constraints like \eqref{eq:bounds-m} and \eqref{eq:bounds-c}, namely the \emph{active-set} method of\citet{cheng-and-li:2012}. 
 %This algorithm is an \emph{active-set, bound-constrained} method, which means
-An active-set methods classifies
+An active-set method classifies
 %The algorithm of \citet{cheng-and-li:2012} 
 %satisfies this requirement because it 
 each parameter component according to the following:

@@ -95,7 +95,7 @@ It is actually rather difficult through manual inspection to find a cluster in w
 %true in transcriptional clusters. 
 It was initially hypothesized that positional features would play a substantial role in
 finding prefixes and suffixes. However, the qualitative analysis revealed that affixes tended to be captured through 
-precedence features; for example the prefix \textit{-\v{s}e} `that'  was often captured by the feature \texttt{\v{s}<e}. This is illustrated in figure~\ref{fig:cluster-9-4-3-TS}, which shows the ten most-active centroid features of a \textit{-\v{s}e} cluster.
+precedence features; for example the prefix \textit{\v{s}e-} `that'  was often captured by the feature \texttt{\v{s}<e-}. This is illustrated in figure~\ref{fig:cluster-9-4-3-TS}, which shows the ten most-active centroid features of a \textit{\v{s}e-} cluster.
  Often, the centroids associated with transcriptional two-character prefixes---i.e., prefixes of the form
 $\alpha\beta$,
 where $\alpha$ is the first character, a consonant, and $\beta$ is the second, a vowel---
@@ -110,7 +110,7 @@ $\alpha$<$\gamma$ \quad and \quad $\beta$<$\gamma$
 \end{center}
 where $\gamma$ is a character occurring later in the word within the range of $\delta$. These features apparently serve to reinforce the prefix status of the morph in question, as the characters of a prefix would regularly precede many different characters. It is presently not clear to me, however, why the $\alpha$<$\gamma$ features have such low activities, nor how these low activities (apparently) end up influencing the surface units $r_{i,j}$.
 
-We see the same pattern for suffixes, except that the components of the templates $\alpha$<$\gamma$ and $\beta$<$\gamma$ are flipped, becoming $\gamma$<$\alpha$ and $\gamma$<$\beta$, respectively, and $\gamma$ becomes a character occurring $\emph{earlier}$ in the word. In \ref{fig:cluster-9-4-3-TS}, we see several instances of the $\alpha$<$\gamma$ template, namely, \texttt{\v{s}<h}, \texttt{\v{s}<n}, etc. Figure~\ref{fig:cluster-5-4-3-TS} shows the most active centroid features for a cluster corresponding to the feminine plural suffix \textit{\'{o}t}. It shows examples of both $\gamma$<$\alpha$ and $\gamma$<$\beta$ types.
+We see the same pattern for suffixes, except that the components of the templates $\alpha$<$\gamma$ and $\beta$<$\gamma$ are flipped, becoming $\gamma$<$\alpha$ and $\gamma$<$\beta$, respectively, and $\gamma$ becomes a character occurring $\emph{earlier}$ in the word. In figure~\ref{fig:cluster-9-4-3-TS}, we see several instances of the $\alpha$<$\gamma$ template, namely, \texttt{\v{s}<h}, \texttt{\v{s}<n}, etc. Figure~\ref{fig:cluster-5-4-3-TS} shows the most active centroid features for a cluster corresponding to the feminine plural suffix \textit{\'{o}t}. It shows examples of both $\gamma$<$\alpha$ and $\gamma$<$\beta$ types.
 
 \begin{figure}[!t] 
 \begin{mdframed}
@@ -245,8 +245,8 @@ brwrim \> \textbf{b}spinwt \> \textbf{b}la \> bwbwt \> \text{b}yli \> \textbf{b}
 \texttt{g<n} \> (0.1122) \> \texttt{a<g} \> (0.1059) \> \texttt{g<t} \> (0.1056) \> \texttt{g<m} \> (0.0937) \> \texttt{g<y} \> (0.0724)
 \end{tabbing}
 \end{normalsize}
-\label{fig:cluster-16-2-3-O}
 \caption{Ten most-active features of cluster $k = 16$ generated at the settings $\langle s=2,\delta=3 \rangle$, data type: orthographic}
+\label{fig:cluster-16-2-3-O}
 \end{mdframed}
 \end{figure}
 
@@ -285,7 +285,7 @@ of \textit{i} in its sampled words was a direct reflection of the prominence of
 \textit{i}-referencing features in this cluster's centroid, namely the maximally 
 active \texttt{d<i} and the moderately active \texttt{\'{i}<q} (see figure~\ref{fig:cluster-19-2-3-TS} in section~\ref{sec:qual}).
 
-Even though vowels are can be detrimental, however, they can also be helpful. For example, the orthographic models would never have found morphs like the nonconcatenative vowel-pattern morph \textit{a.\'{e}} (see figure~\ref{fig:cluster-19-2-3-TS} in chapter~\ref{ch:results}) or \textit{-\'{e}.et}, the discontinuous ending of  feminine singular participles, e.g., as in \textit{medab\'{e}ret} `she is speaking.' The ten most active features for \textit{-\'{e}.et} are displayed in figure~\ref{fig:cluster-0-4-3-TS} in the present chapter.
+Even though vowels can be detrimental, however, they can also be helpful. For example, the orthographic models would never have found morphs like the nonconcatenative vowel-pattern morph \textit{a.\'{e}} (see figure~\ref{fig:cluster-19-2-3-TS} in chapter~\ref{ch:results}) or \textit{-\'{e}.et}, the discontinuous ending of  feminine singular participles, e.g., as in \textit{medab\'{e}ret} `she is speaking.' The ten most active features for \textit{-\'{e}.et} are displayed in figure~\ref{fig:cluster-0-4-3-TS} in the present chapter.
 %\footnote{The
 %latter was the \emph{first} cluster generated from the TS data at the settings $s=4,\delta=3$.} 
 %The  is particularly interesting because it involves both vowels and a consonant.
@@ -350,7 +350,7 @@ categories ahead of time in any way would have been contrary to the exploratory 
 Thus, an intrinsic evaluation in Multimorph's case was never going to be ideal.
 
 In this study's intrinsic results, the instrinsic evalutation metrics do sometimes accurately describe what is going on in a given cluster. But in other cases, they do not. Consider, for example, the purity results in table~\ref{tab:best-purities}. The purity scores for the clusters 0 through 4 accurately describe the contents of their respective clusters. This is because the most frequent gold-standard class in each of these cases happened to correspond with the aspect of form that Multimorph's MCMM found to be most salient in that case.
-Cluster 43 presents a different scenario, however. Its purity score is quite low. However, if one manual inspect this cluster's member words, a random sample of which is given in figure~\ref{fig:cluster-43-2-2-TS}, one finds a remarkable degree of coherence. Very nearly all of the words in 
+Cluster 43 presents a different scenario, however. Its purity score is quite low. However, if one manually inspects this cluster's member words, a random sample of which is given in figure~\ref{fig:cluster-43-2-2-TS}, one finds a remarkable degree of coherence. Very nearly all of the words in 
 figure~\ref{fig:cluster-43-2-2-TS}, have \textsf{\'{o}} in the final syllable. These \textsf{\'{o}}'s do not all correspond to the same morphosyntactic category, but they could be the same morphome. The point is that we cannot really say whether or not this is a valid cluster because we cannot say for certain which character subsequences are morphs/morphomes and which are not. In some cases we have a fairly good idea as to whether a given subsequence is morph/morphome, but not in every case at this time.
 
 %it accurately captures  itis thus never going to be 
@@ -478,36 +478,88 @@ However, the contribution of the extrinsic evaluation transcends the numerical r
 It in fact makes two contributions, both involving the \emph{four-stage process} presented in section~\ref{sec:eval-extrinsic}.
 
 \emph{First, the four-stage process is itself a contribution.}
-We established in chapter~\ref{autonomous} that the output of a ULM system necessarily consists of autonomous morphological units.
+We established in chapter~\ref{autonomous} that the output of a 
+ULM system necessarily consists of autonomous morphological units.
 % pure form and thus independent of meaning produced by an unsupervised morphological learning system. 
 As explained in chapter~\ref{ch:eval}, the evaluation of such output is problematic: Unsupervised learning algorithms are in general difficult to evaluate to due to a lack of an obvious gold-standard. This difficulty is compounded in the case of ULM due to the hidden, intermediate nature of autonomous morphological units and the still-emerging status of the study of autonomous morphology as a field.  Therefore, the task of the learning algorithm in a ULM system is especially exploratory, perhaps more so than usual. %The four-stage process is a procedure for evaluating the autonomous morphological units 
-In presenting the novel four-stage process, this thesis offers a solution to these problems. As an extrinsic method, the four-stage process is well-suited to the intermediate nature of autonomous morphological units. 
-Moreover, it is a fully worked-out, fully functional computer program; it has been coded and successfully executed. The input, internal processing, and output of each stage are described in detail in section~\ref{sec:eval-extrinsic}. Other researchers can regard it as a functional prototype that they can be further developed and modified, either to improve it or adapt it to fit their particular experimental setup (or both).
+In presenting the novel four-stage process, this thesis offers a solution 
+to these problems. As an extrinsic method, the four-stage process is well-suited to the intermediate nature of autonomous morphological units. 
+Moreover, it is a fully implemented, fully functional computer program; 
+it has been coded and successfully executed. The input, internal 
+processing, and output of each stage are described in detail in 
+section~\ref{sec:eval-extrinsic}. Other researchers can regard 
+it as a functional prototype that they can be further developed and 
+modified, either to improve it or adapt it to fit their particular experimental setup (or both).
 
-\textit{Second}, the four-stage process provides a means for transforming a clustering algorithm into an unsupervised morphological segmentation system, that is, a means of converting a clustering into segmentations. % into morphs represented as \emph{strings} and then segmentin% ---initially encoded in the$\textbf{M}$ and $\textbf{C}$ matrices, into morphs represented \emph{strings}, The string representations  can then be used by a downstream application or easily interpreted by a human 
+\textit{Second}, the four-stage process provides a means for 
+transforming a clustering algorithm into an unsupervised morphological 
+segmentation system, that is, a means of converting a clustering into segmentations. % into morphs represented as \emph{strings} and then segmentin% ---initially encoded in the$\textbf{M}$ and $\textbf{C}$ matrices, into morphs represented \emph{strings}, The string representations  can then be used by a downstream application or easily interpreted by a human 
 %In working out the four-stage process and describing it in detail stage by stage, This thesis offers a solution to these problems, an evaluation method tailored to the suit the nature of autonomous morphological units. 
 %%in effect, bypasses the problems mentioned in REF. 
 %The four-stage process is a real computational process, one implemented in computer code and executed; 
 
-One issue that we have not yet addressed is the suitability of Morfessor as the extrinsic evaluation's downstream process. 
-One ostensible downside to using Morfessor is its inability to handle nonconcatenative morphology. However, Stage 3, by converting discontinuous morphs into atomic symbols, obliterates interdigitation.  Atomic symbols are monolithic and cannot be interleaved. 
+One issue that we have not yet addressed is the suitability of Morfessor 
+as the extrinsic evaluation's downstream process. 
+One ostensible downside to using Morfessor is its inability to handle 
+nonconcatenative morphology. However, Stage 3, by converting 
+discontinuous morphs into atomic symbols, obliterates interdigitation.  
+Atomic symbols are monolithic and cannot be interleaved. 
 %Interleaving requires multiple “leaves,” so to speak—i.e., multiple pieces that can be moved around. 
-Therefore, the compression component of Stage 3 entails an ``unwinding" of the morphology regardless of the downstream application and its capabilities. Morfessor’s inability to identify nonconcatenative morphs is thus moot.
+Therefore, the compression component of Stage 3 entails an 
+``unwinding" of the morphology regardless of the downstream 
+application and its capabilities. Morfessor’s inability to identify 
+nonconcatenative morphs is thus moot.
+%For example, consider the word 
+%\begin{exe}
+%\ex \textit{yo\textipa{P}\textipa{\.*k}\'{a}l}} \label{ex:unwinding}
+%\end{exe} 
+For example, the word \textit{yo\textipa{P}\textipa{\.*k}\'{a}l}} (`he will eat') 
+is derived from the root \textit{\textipa{P}.\textipa{\.*k}.l}. 
+Notice that \textit{\textipa{P}.\textipa{\.*k}.l} 
+is a discontinuous in this word. However, Stage 3 must map \textit{\textipa{P}.\textipa{\.*k}.l} onto an atomic symbol. 
+There is no way to do this and yet retain the interdigitation between the root and the vowel \textit{\'{a}}, since atomic symbols cannot be interleaved. 
+% retaining the discontinuity ithe  this  mapping \textit{\textipa{P}.\textipa{\.*k}.l} onto a onto atomic symbol (i.e., its own unique atomic symbol), \textit{\'{a}} onto a different atomic symbol, and then placing these atomic symbols side by side.
+Thus, the elimination of interdigitation is a natural consequence (or ``side effect'') of the encoding process in Stage 3.
+Moreover, because the very purpose of Stage 3 is to prepare the encoded intermediate wordlist for the downstream system to take as input, the downstream system will never actually encounter interdigitation. 
+There was a possibility that Multimorph's ability to detect nonconcatenative morphs might \emph{indirectly} help Morfessor; i.e., that Stage 3 would be able to turn Multimorph's nonconcatenative morphs, the roots and vowel patterns, and fuse them into stem-like, higher-level morphs, which could be useful to Morfessor. Given the results in table~\ref{tab:extr-results-1000}, however, I cannot say that this was so. 
+% it  before the encoded (or compressed) wordlist is delivered to the downstream process in Stage 4, since it is Stage 3 that does the encoding
+%Moreover, it is the output of Stage 3---the encoded wordlist---that is fed to the downstream process. Thus, the interdigitation is  necessarily happens before the encoded (or compressed) wordl
+% Note that this root is discontinuous in \textit{yo\textipa{P}\textipa{\.*k}\'{a}l}};
+%its second and third consonants are separated by the [\'{a}]. Stage 3 must replace all morphs, even discontinuous ones like \textit{\textipa{P}.\textipa{\.*k}.l} in this example, with a unique, atomic symbol. However, this cannot be done in the case of \textit{\textipa{P}\textipa{\.*k}.l} in \textit{yo\textipa{P}\textipa{\.*k}\'{a}l}}.
+%way to do this in the case of  
 
+%\v{s}eyo\textipa{P}\textipa{\.*k}\'{a}l \quad 0:9, 1:8,9,27, 2:27, 3:8, 4:179,207, 5:207, 6:50,179, 7:207
+%\begin{table}[htb]
+%\begin{tabular}{lcc}
+%\toprule
+%Word & Character Index & Morph IDs \\
+%\midrule
+%\v{s}eyo\textipa{P}\textipa{\.*k}\'{a}l&  \texttt{0:} & \texttt{[9]} \\
+%& \texttt{1:} & \texttt{[8, 9, 27]} \\
+%& \texttt{3:} & \texttt{[8]} \\
+%& \texttt{4:} & \texttt{[179, 207]} \\
+%& \texttt{5:} & \texttt{[207]} \\
+%& \texttt{6:} & \texttt{[50, 179]} \\
+%& \texttt{7:} & \texttt{[207]} \\
+%\bottomrule
+%\end{tabular}
+%\end{table}
 %Thus, Morfessor’s inability to model nonconcatenative morphology is moot, since Multimorph’s analyses would have had to be flattened in any case as a basic component of the process, that is, the packaging and shipping of Multimorph’s output to the downstream application (or more generally, the morphosyntactic level of language-processing).
 
-Note that Stage 3 thus makes a tacit theoretical claim. It claims that morphs are hierarchical to some extent; that is, elemental morphs can be composed of smaller morphs, but these morphs fuse together in a way that makes them inaccessible above the level of stem-derivation. Thus, they cannot be accessed at the inflectional level. %Within stems, derivational morphs can combine in a noncatenative manner,  The stem-external realm is the realm of inflection, which is the domain of concatenative morphology. See the discussion of composite morphs in chapter 5.
+We can still point out, however, that Stage 3 tacitly makes an interesting theoretical claim; in particular, it implies that morphs have some sort of hierarchy: Elemental morphs can be composed of smaller morphs, but these morphs fuse together in a way that makes them inaccessible above the level of stem-derivation. Thus, they cannot be accessed at the inflectional level. %Within stems, derivational morphs can combine in a noncatenative manner,  The stem-external realm is the realm of inflection, which is the domain of concatenative morphology. See the discussion of composite morphs in chapter 5.
 
 The other ostensible downside of using Morfessor is that 
-Morfessor is itself an unsupervised morphological leaner in the 
-standard sense of the term (see chapter~\ref{ch:experi}), 
+Morfessor is itself an unsupervised morphological learner in the 
+standard sense of the term (see chapter~\ref{autonomous}), 
 and it thus cannot serve as a true morphosyntactic module.
 Like Multimorph, it takes as input a list of independent word tokens.
-And thus, like Multimorph, it operates at the level of autonomous morphology, 
-Ideally, Multimorph’s downstream process should have been 
-an unsupervised \emph{morphosynactic} learner that requires
-syntactic and semantic context in some way. 
-This would probably involve a more complex pipeline than our current  four-stage process.
+And thus, like Multimorph, it operates at the level of autonomous morphology. 
+In order to better fit the autonomous morphological framework discussed in chapter~\ref{autonomous}, i.e., the view that morphology is an autonomous layer that mediates between phonology and morphosyntax, an unsupervised  %ownstream process should have been 
+%an unsupervised 
+\emph{morphosynactic} learner would make a more appropriate downstream process for Multimorph. 
+Of course, such a system would in some way have to incorporate syntactic and semantic information into its learning process.
+%syntactic and semantic context in some way. 
+%This would probably involve a more complex pipeline than our current  four-stage process.
 %But Morfessor, in theory 
 %The four stage process is meant to investigate the entropy-reducing 
 %effect of Multi-morph and effectively compress strings of characters 
@@ -542,7 +594,7 @@ we equated this task to verifying the proposition
 A model of morphology can represent nonconcatenative morphology if it is nonlinear and nonsequential.
 \end{quote}
 In other words, \textit{A ULM system can learn nonconcatenative morphology if its learning model is nonlinear and nonsequential.}
-My method was essentially to develop a nonlinear nonsequential system and try it out on nonconcatenative data; if successful, the very fact of its success would confirm the above proposition as well the validity of the multilinear approach.
+My method was essentially to develop a nonlinear nonsequential system and test it on nonconcatenative data; if successful, the very fact of its success would confirm the above proposition as well the validity of the multilinear approach.
 The results show that Multimorph was indeed able to learn nonconcatenative morphs, % (in addition to numerous conconcatenative ones), 
 a fact plainly evident in the samples of cluster members presented in chapter~\ref{ch:results},
 particularly those in figures~\ref{fig:cluster-81-2-2-O} and \ref{fig:cluster-339-4-3-TS}. These correspond, respectively, to the orthographic root \textit{a.k.l} (equivalent to \textit{\textipa{P}.k.l} in the transcriptional data) and 
@@ -633,8 +685,8 @@ Multimorph found vowel patterns as well. Like roots, vowel patterns are nonconca
   \makecell{a.\'{a}}     & ---  &  65 & $\langle{s}=4$, $\delta=3\rangle$  \\
   \bottomrule
 \end{tabular}
+\caption{Some of the vowel patterns discovered by Multimorph}
 \label{tab:vowel-patterns}
-\caption{Some of the vowel-patterns discovered by Multimorph}
 \end{table}
 %Why are there dashes in the \textit{Interpretation} column for  \textit{i.\'{a}} and \textit{a.\'{a}}?
 The dashes in this table's \textit{Interpretation} column for \textit{i.\'{a}} and \textit{a.\'{a}} signify that these patterns occur in a wide variety of morphosyntactic patterns and thus cannot be
@@ -688,7 +740,7 @@ The features, particularly the precedence features, may be overly specific and t
 
 %Even though the quantitative results
 %are pending, the qualitative evidence yielded by manual 
-%inspection is already sufficient to demonstrate the validity of the 
+%%inspection is already sufficient to demonstrate the validity of the 
 %multilinear approach to ULM, both for nonconcatenative 
 %and concatenative morphology. 
 %Some of this qualitative evidence 

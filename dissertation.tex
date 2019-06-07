@@ -1,5 +1,6 @@
 % !TEX encoding = UTF-8 Unicode
-\documentclass{iuphd}
+\documentclass[showabstract,showacknowledgments,showpreface,showdedication]{iuphd} 
+%\documentclass{iuphd}
 \usepackage{listings}
 %\usepackage[UTF8]{ctex}
 \usepackage[utf8]{inputenc}
@@ -154,6 +155,10 @@
 %\usepackage[normalem]{ulem}
 %\usepackage{nomencl}
 
+\newenvironment{nbquote}
+ {\quote\interlinepenalty=10000 }
+ {\endquote}
+ 
 % Uncomment this to make sure marginpars are removed before submission:
 %\renewcommand{\marginpar}[1]{}
 
@@ -166,7 +171,7 @@
 \def\caption{\@ifnextchar[\X@caption@br\X@caption@nobr}
 \makeatother
 
-\begin{document}
+%\begin{document}
 %\renewcommand{\theequation}{\roman{equation}}
 %\newcommand\tab[1][1cm]{\hspace*{#1}}
 %\usepackage{tabto}
@@ -175,20 +180,29 @@
 \author{Anthony Meyer}
 \date{November 29, 2018}
 \department{Department of Linguistics}
-\maketitle
+%\maketitle
 %data for Acceptance Page
 %\committeechair{Committee Chair}
 %\readertwo{2nd Reader}
 %\readerthree{3rd Reader}
 %\readerfour{4th Reader}
 %\defensedate{Defense Date}
-\committeeMember{Markus Dickinson, PhD (Chair)}
-\committeeMember{Sandra K\"ubler, PhD}
-\committeeMember{Damir Cavar, PhD}
-\committeeMember{David Crandall, PhD}
-\defensedate{November 29, 2018}
-%data for Copyright Page
+\committeechair{Markus Dickinson, PhD}
+\readertwo{Sandra K\"{u}bler, PhD}
+\readerthree{Damir \'{C}avar, PhD}
+\readerfour{David Crandall, PhD}
+\defensedate{November 29, 2018} % Date of PhD defense
+
 \cryear{2018}
+\begin{document}
+\maketitle
+%\committeeMember{Markus Dickinson, PhD (Chair)}
+%\committeeMember{Sandra K\"{u}bler, PhD}
+%\committeeMember{Damir \'{C}avar, PhD}
+%\committeeMember{David Crandall, PhD}
+%\defensedate{November 29, 2018}
+%data for Copyright Page
+%\cryear{2018}
 
 
 
@@ -204,10 +218,9 @@
 \copyrightpage 
 
 
-%\begin{dedication}
-%\end{dedication}
 
-%\begin{acknowledgments}
+
+\begin{acknowledgments}
 %The acknowledgments are designed to recognize people or agencies to whom you feel grateful for any academic,
 %technical, financial, or personal aid in the preparation of your thesis or dissertation; as a matter of
 %courtesy, you would ordinarily mention the members of your committee here, as well as institutions that
@@ -222,8 +235,19 @@
 %This work has been supported by the German Federal Ministry of Education and
 %Research within the National Network Computational Neuroscience under grant number
 %01GQ0951 (Bernstein Fokus “Learning behavioral models: From human experiment
-%to technical assistance”).
- %\end{acknowledgments}
+%to technical assistance”)
+I would like to express heartfelt thanks to the members of my committee, Drs. Damir \'{C}avar, David Crandall, Sandra K\"{u}bler, and Markus Dickinson, for their guidance and patience as I worked to complete this document. 
+
+%I owe special thanks to my advisor, Dr. Markus Dickinson, for his insightful, skillful, and kind mentorship throughout my graduate-school journey. His support has been absolutely essential.
+
+I am deeply grateful to Dr. Sandra K\"{u}bler for being an indispensable source of clarity, wisdom, and answers throughout this process.
+
+I would like to thank to Dr. Eric Saund for graciously responding to the questions I emailed him. His work on multiple cause mixture models inspired this thesis.
+
+I would also like to thank Dr. Matthew Anderson and Tim Gilmanov of Indiana University’s Center for Research in Extreme Scale Technologies (CREST) for helping me navigate the world of supercomputing.
+
+Last, but certainly not least, I am sincerely grateful to the Department of Linguistics at Indiana University for providing me funding, teaching and research opportunities, and other kinds of support
+ \end{acknowledgments}
 %\printnomenclature 
 %\hfill % add blank space
 % 
@@ -237,47 +261,25 @@
 %\begin{preface}
 %\end{preface}
 
+\begin{dedication}
+%\newpage
+\vspace*{9cm}
+\begin{center}
+To my parents.
+\end{center}
+\end{dedication}
+
 \begin{abstract}
 This dissertation presents a multilinear approach to the unsupervised learning of morphology (ULM), where \emph{multilinear} refers to a multi-tiered architecture that allows for the handling of both concatenative and nonconcatenative phenomena in a general, unified way, as in autosegmental morphology. This dissertation reformulates autosegmental theory in graph-theoretic terms. That is, it identifies the essential properties that make autosegmental theory so conducive to modeling nonconcatenative morphology and shows that these properties are equivalent to the mathematical properties of a bipartite graph. This observation makes it possible to recast the autosegmental formalism as a graphical machine-learning model, namely the Multiple Cause Mixture Model (MCMM), a bipartite graphical model related to the Restricted Boltzmann Machine. The dissertation's experimental component consists of the development and evaluation of Multimorph, an MCMM-driven ULM system. The evaluation method takes a “dual-paradigm” approach, comprising both intrinsic and extrinsic components. The latter evaluates the system as a component of a larger chain of processes. This in line with lexeme-based theories of morphology, i.e., theories that regard morphology as a distinct but mediating layer of linguistic organization situated between phonology and syntax/semantics. The results of the experiments demonstrate the soundness and promise of a multilinear approach to the unsupervised learning of morphology.
 \end{abstract}
+\newpage
 
-\tableofcontents
 %\include{iuphd-doc}
-\chapter*{Acronyms and Abbreviations}
+\chapter{Acronyms and Abbreviations}
 \addcontentsline{toc}{chapter}{Acronyms}
 \begin{acronym}[TDMA]
-%	\acro{1}[1p]{first person}
-%	\acro{2}[2p]{second person}
-%	\acro{3}[3p]{third person}
-%	\acro{n}[\textsc{n}] {\textsc{number}}
-%	\acro{p}[\textsc{p}] {\textsc{person}}
-%	\acro{g}[\textsc{g}] {\textsc{gender}}
-%	\acro{sg}[\textit{sg}]{singular}
-%	\acro{pl}[\textit{pl}]{plural}
-%	\acro{3ms}{third-person masculine singular}
-%	\acro{2ms}{second-person masculine singular}
-%	\acro{2fs}{second-person feminine singular}
-%	\acro{2mp}{second-person masculine plural}
-%	\acro{2fp}{second-person feminine plural}
-%	\acro{1cs}{first-person common-gender singular}
-%	\acro{1cp}{first-person common-gender plural}
 	\acro{BLC}{Berman Longitudinal Corpus}
-%	\acro{past}[\textit{past}]{past tense}
-%	\acro{pres}[\textit{pres}]{present tense}
-%	\acro{fut}[\textit{fut}]{future tense}
-%	\acro{tns}[\textsc{tns}]{tense}
-%	\acro{perf-ptc}{perfect participle}
-	
-%	\acro{EN}{English}
-
-%	\acro{MH}{Modern Hebrew}
-%	\acro{CH}{Classical Hebrew}
-%	\acro{MPS}{morphosyntactic property set}
-%	\acro{LPV}{Letter Predecessor Variety}
-%	\acro{LSV}{Letter Successor Variety}
 	\acro{DM}{Distributional Morphology}
-%	\acro{PFM}{Paradigm Function Morphology}
-%	\acro{PF}{paradigm function}
 	\acro{LS}{Linear Sequential}
 	\acro{NLS}{Nonlinear Sequential}
 	\acro{LNS}{Linear Nonsequential}
@@ -286,8 +288,9 @@ This dissertation presents a multilinear approach to the unsupervised learning o
 	\acro{MCMM}{Multiple Cause Mixture Model}
 	\acro{OCR}{Optical Character Recognition}
 	\acro{ULM}{Unsupervised Learning of Morphology}
-%	\acro{RBM}{Restricted Boltzmann Machine}	
 \end{acronym}
+
+\tableofcontents
 \include{ch-Intro}
 \include{ch-LitReview}
 \include{ch-GraphTheoretic} % Graph-Theoretic Foundation

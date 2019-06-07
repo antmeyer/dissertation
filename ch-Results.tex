@@ -17,7 +17,7 @@ they together encode a \emph{clustering} of words, and they can be converted (or
 into such via algorithm~\ref{alg:members}, which we presented in section~\ref{sec:intrinsic} 
 of the preceding chapter. 
 Thus, each experiment described in
-chapter~\ref{ch:experi}---that is, each combination of $\delta$, $s$, and 
+chapter~\ref{ch:experi}---each combination of $\delta$, $s$, and 
 data-representation type---yielded a distinct pair of $\mathbf{M}$ and $\mathbf{C}$ 
 matrices. Each such pair was in turn converted into a clustering of words through 
 algorithm~\ref{alg:members}, and each clustering was then evaluated according to the diverse 
@@ -77,7 +77,7 @@ and adds a cluster (by splitting the worst cluster) whenever the
 global reconstruction error can no longer be decreased 
 significantly with the current
 array of clusters. In principle, this incremental addition 
-of clusters is 
+of clusters
 should continue until the global reconstruction falls below a predesignated 
 threshold $\epsilon$, which is close to $0$ (e.g., 0.0001).  For this study, $\epsilon$ was
  set at $0.0001$, 
@@ -86,7 +86,7 @@ In theory, therefore, Multimorph should have created just enough clusters to dec
 %to $\epsilon$ or below it.
 In practice, however,
 % in the course of this dissertation's experiments,
- Multimorph's error never reached this threshold,.
+ Multimorph's error never reached this threshold.
  Rather, in every experimental trial reported in this thesis, Multimorph's 
  error decreased steadily toward $\epsilon$ for a time, but then stopped at a point greater that  $\epsilon$, 
  where it reversed direction and started to increase.  
@@ -116,6 +116,48 @@ for all three data sets, I am reporting results both at $K = 500$ and $K = 1000$
 %\end{mdframed}
 %\end{figure}
 
+The value of quantitative methods lies in their systematicity and objectivity, but
+they are by no means guaranteed to capture every salient fact regarding a system's output,
+especially when the system in question is an unsupervised learning system. 
+ This dissertation thus incorporated a qualitative analysis of Multimorph's output to supplement the  
+quantitative results presented later in this chapter.
+This qualitative analysis basically consisted in manually inspecting the component words of clusters output by Multimorph.\footnote{
+Recall that
+algorithm~\ref{alg:members} (section~\ref{sec:intrinsic}) converted the MCMM's $\mathbf{M}$ and $\mathbf{C}$
+matrices into a list of wordlists, where each wordlist was (or represented) a cluster.} 
+When in inspecting a given cluster, I took into account its centroid vector, particularly the centroid's \emph{most active
+features}, since these features help determine which shared bits of form among a cluster's words can truly be attributed to the MCMM. 
+%That is, sometimes 
+%directly and which are by-products or correlates of the 
+%ten most active features in the centroid vector of the cluster in question. 
+%
+%\item A manual inspection of \emph{ten most active features} in each cluster's centroid vector (see chapter~\ref{sec:mcmm}, particularly sections~\ref{sec:mixing-function} and \ref{subsec:example})
+%\item A 
+%assembled via algorithm~\ref{alg:members} (section~\ref{sec:instrinsic})
+
+The manual inspection revealed many clusters corresponding to morphological categories, including 
+both concatenative and nonconcatenative morphs. In general, the the most prominent morphs, e.g., the plural
+suffixes \textit{-im}
+and \textit{-wt}, corresponded to clusters with low indices, as the MCMM tended to discover these clusters first. The most 
+prominent morphs are generally concatenative affixes and nonconcatenative vowel patterns. Thus, in the 
+$\langle{s}=4,\delta=3\rangle$ clustering, for instance, the first cluster (i.e., the cluster indexed 0) corresponded to the morph \textit{-\'{e}.et}.
+%\footnote{The \_ here represents a single slot occupied by a consonant of a \emph{different} morph, namely the root. The \_  thus indicates discontiguity.}
+a common feminine ending for participles.
+
+%\begin{center}
+%\textit{-\'{e}\_et} figure here?
+%\end{center}
+There were also some clusters that corresponded to roots, though not
+as many as corresponded to affixes and vowel patterns. 
+%There are a many more unique roots in Hebrew
+%than unique vowel patterns and affixal morphs, since roots are lexical, but individual roots tend to occur at far lower frequencies than 
+%morphs that serve morphosyntactic purposes.
+Roots also tended to occur at higher cluster indices; that is, the 
+MCMM tended to find them later during the learning process. 
+Individual roots do not occur in as many distinct words
+as concatenative morphs and vowel patterns, since roots are entirely 
+lexical in nature. Root clusters thus tend to be among the smallest of clusters.
+
 \begin{figure}[!t]
 \begin{mdframed}
 \vspace{2pt}
@@ -129,11 +171,6 @@ e\textbf{a}\textbf{k}\textbf{l}tm \> eklblbim \> h\textbf{a}w\textbf{k}\textbf{l
 hkwl \> hkil \> \textbf{a}\textbf{k}\textbf{l}tm \> blklkh \> hmkxwl \> blklkw \\
 hklim \> cvrk \> ekwlm \> bekl \> \textbf{a}\textbf{k}\textbf{l}ti \> \textbf{a}\textbf{k}\textbf{l} \\
 hmikl \> enstkl \> blklk \> htlklkh \> \textbf{a}st\textbf{k}\textbf{l} \> h\textbf{a}\textbf{k}\textbf{l}t 
-%eaklt \> awklt \> blklwkim \> awkl \> awtkm \> eawklt \\
-%eakltm \> eklblbim \> hawkl \> elhakil \> bawkl \> enwakl \\
-%hkwl \> hkil \> akltm \> blklkh \> hmkxwl \> blklkw \\
-%hklim \> cvrk \> ekwlm \> bekl \> aklti \> akl \\
-%hmikl \> enstkl \> blklk \> htlklkh \> astkl \> haklt 
 \end{tabbing}
 \end{normalsize}
 \vspace{3pt}
@@ -156,7 +193,7 @@ hmikl \> enstkl \> blklk \> htlklkh \> \textbf{a}st\textbf{k}\textbf{l} \> h\tex
 \end{mdframed}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[!t]
 \begin{mdframed}
 \vspace{2pt}
 {\LARGE \textbf{\textipa{P}.k.l}}\, {\Large\text{(a.k.l)}} \hfill {\large$s = \mathbf{3}$, $\delta = \mathbf{2}$} \hfill {\normalsize cluster 91}
@@ -195,7 +232,24 @@ h\textbf{a}w\textbf{k}\textbf{l} \> ehkwl \> \textbf{a}w\textbf{k}\textbf{l}t \>
 \end{mdframed}
 \end{figure}
 
-\begin{figure}[!ht]
+There were root clusters
+ in the clusterings of all three data types, but the
+orthographic clusterings contained the largest number. This is perhaps to some degree a result
+of the prevalence of consonants in Hebrew orthography (see chapter~\ref{ch:experi}).
+Standard Hebrew orthography does not represent many vowels, and thus the consonants tend to be closer to each other 
+and are often adjacent. Thus, precedence features in the orthographic data can generally 
+span more consonants at once than they can in the transcriptional datasets. 
+
+This section provides examples of some of the MCMM's clusters in a series of figures---examples in the form of random samples taken from the original clusters' members. Each of these figures is a box that contains, first, thirty words randomly selected from a particular cluster,
+and, second, the ten most active features in this cluster's centroid. 
+The first four figures all give word samples from clusters corresponding to the root \textit{\textipa{P}.k.l}, which is associated with the concept of eating, as in, for instance, \textit{\textipa{P}a\textsubdot{k}\'al} `he/it ate' and \textit{\textipa{P}a\textsubdot{k}il\'a} `eating.'  
+Figure~\ref{fig:cluster-182-1-3-O} samples the words from cluster $k = 182$   
+in the clustering $\langle s=1, \delta=3 \rangle$.
+Its data source was the orthographic data set, and so its words are expressed in the (transliterated) orthographic alphabet (see the discussion in chapter~\ref{ch:experi}). Thus, \textit{\textipa{P}.k.l} becomes \textit{a.k.l}.
+In the words that actually contain the root \textit{a.k.l}, the letters \textbf{a}, \textbf{k}, and \textbf{l} appear in boldface.
+Notice that not all of the words in figure~\ref{fig:cluster-182-1-3-O} have this root.
+
+\begin{figure}[!t]
 \begin{mdframed}
 \vspace{2pt}
 {\LARGE \textbf{\textipa{P}.k.l}}\, {\Large\text{\, (a.k.l)}}  \hfill {\large$s = \mathbf{2}$, $\delta = \mathbf{2}$} \hfill {\normalsize cluster 81}
@@ -237,8 +291,28 @@ h\textbf{a}\textbf{k}\textbf{l}ti \> \textbf{a}\textbf{k}\textbf{l}i \> enw\text
 \end{mdframed}
 \end{figure}
 
+Figures~\ref{fig:cluster-91-3-2-O} and \ref{fig:cluster-81-2-2-O} correspond to \textit{a.k.l}
+(\textit{\textipa{P}.k.l}) clusters from the clusterings generated at
+$\langle{s}=3,\delta=2 \rangle$ and $\langle s=2, \delta=2 \rangle$, respectively. 
+%The cluster in figure~\ref{fig:cluster-91-3-2-O} is better than the one in figure~\ref}fig:cluster-81-2-2-O}, previous one in that each is 
+These clusters are both better than the first one in that they are
+\emph{purer} representations of the root \textit{a.k.l} (\textit{\textipa{P}.k.l}); that is,
+each has a greater proportion of words that actually contain the root \textit{a.k.l}.
+Moreover, for both of these clusters, the two \emph{most-active} features are 
+%for both of these clusters are
+\begin{center}
+ {\large \texttt{a<k}} \quad  and \quad {\large \texttt{k<l}}
+\end{center}
+This makes sense. Clearly, no other feature, except perhaps \texttt{a<l}, would be as helpful in 
+encoding the sequence of  position-variant (or ``floating'') consonants \textit{a.k.l}. In figure~\ref{fig:cluster-182-1-3-O}, the activities of \texttt{k<l} and \texttt{a<k} are 1.0 and 0.8271, respectively.
+Figure~\ref{fig:cluster-91-3-2-O}, showing a purer cluster, has these features both at 1.0 activities. It also has \texttt{a<l} among its top ten features, 
+at an activity of 0.4196, a low activity to be sure, but this feature does not appear at all among the top ten features of the preceding
+cluster. 
+Finally, figure~\ref{fig:cluster-81-2-2-O}, the purest of these three clusters, has all three of the features \texttt{k<l}, \texttt{a<k}, \texttt{a<l} among
+its ten most active,
+and, moreover, it has each of these features at a perfect activity of 1.0.
 
-\begin{figure}[!ht]
+\begin{figure}[!t]
 \begin{mdframed}
 \vspace{2pt}
 {\LARGE \textbf{\textipa{P}.k.l}} \hfill \large{$s = \mathbf{0}$, $\delta = \mathbf{2}$} \hfill {\normalsize cluster 33}
@@ -275,7 +349,7 @@ we\textbf{\textipa{P}}a\textbf{\textsubdot{k}}\a'{a}\textbf{l} \> leyad\textsubd
 \end{mdframed}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[!t]
 \begin{mdframed}
 \vspace{2pt}
 {\LARGE \textbf{d.l.q}} \hfill {\large$s = \mathbf{4}$, $\delta = \mathbf{3}$} \hfill {\normalsize cluster 339}\\ 
@@ -305,8 +379,6 @@ basandal\a'{i}m \> ma\textbf{d}\textbf{l}i\textbf{q}\a'{a} \> hi\textbf{d}\textb
 \hspace*{6ex}\= \hspace*{10ex}\= \hspace*{6ex}\= \hspace*{10ex} \= \hspace*{7ex} \= \hspace*{11ex} \= \hspace*{7ex}\= \hspace*{11ex} \= \hspace*{7ex} \= \hspace*{9.5ex}\kill
 \texttt{d<\a'{i}} \> (1.000) \> \texttt{d<l} \> (1.000) \> \texttt{l<q} \> (0.853) \> \texttt{d<q} \> (0.798) \> \texttt{\a'{i}<q} \> (0.501)\\
 \texttt{h<d} \> (0.374) \> \texttt{l<\a'{i}} \> (0.162) \> \texttt{g<d} \> (0.157) \> \texttt{\a'{e}}@\texttt{[-1]} \> (0.135) \> \texttt{r}@\texttt{[-2]} \> (0.135)
-%\texttt{d<\a'{i}} \> (1.0000) \> \texttt{d<l} \> (1.0000) \> \texttt{l<q} \> (0.8525) \> \texttt{d<q} \> (0.7975) \> \texttt{\a'{i}<q} \> (0.5013)\\
-%\texttt{h<d} \> (0.3741) \> \texttt{l<\a'{i}} \> (0.1622) \> \texttt{g<d} \> (0.1572) \> \texttt{\a'{e}}@\texttt{[-1]} \> (0.1353) \> \texttt{r}@\texttt{[-2]} \> (0.1347)
 \end{tabbing}
 \end{small}
 \end{mdframed}
@@ -316,7 +388,7 @@ basandal\a'{i}m \> ma\textbf{d}\textbf{l}i\textbf{q}\a'{a} \> hi\textbf{d}\textb
 \end{mdframed}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[htb]
 \begin{mdframed}
 \vspace{2pt}
 {\LARGE\textbf{a.\'{e}}} \hfill {\large$s = \mathbf{2}$, $\delta = \mathbf{3}$} \hfill {\normalsize cluster 19}
@@ -349,89 +421,6 @@ haqos\a'{e}m \> \textipa{P}axam\a'{e}m \> meqalq\a'{e}l \> \v{s}emi\v{s}tal\v{s}
 \label{fig:cluster-19-2-3-TS}
 \end{mdframed}
 \end{figure}
-
-The value of quantitative methods lies in their systematicity and objectivity, but
-they are by no means guaranteed to capture every salient fact regarding a system's output,
-especially when the system in question is an unsupervised learning system. 
- This dissertation thus incorporated a qualitative analysis of Multimorph's output to supplement the  
-quantitative results presented later in this chapter.
-This qualitative analysis basically consisted in manually inspecting the component words of clusters output by Multimorph.\footnote{
-Recall that
-algorithm~\ref{alg:members} (section~\ref{sec:intrinsic}) converted the MCMM's $\mathbf{M}$ and $\mathbf{C}$
-matrices into a list of wordlists, where each wordlist was (or represented) a cluster.} 
-When in inspecting a given cluster, I took into account its centroid vector, particularly the centroid's \emph{most active
-features}, since these features help determine which shared bits of form among a cluster's words can truly be attributed to the MCMM. 
-%That is, sometimes 
-%directly and which are by-products or correlates of the 
-%ten most active features in the centroid vector of the cluster in question. 
-%
-%\item A manual inspection of \emph{ten most active features} in each cluster's centroid vector (see chapter~\ref{sec:mcmm}, particularly sections~\ref{sec:mixing-function} and \ref{subsec:example})
-%\item A 
-%assembled via algorithm~\ref{alg:members} (section~\ref{sec:instrinsic})
-
-The manual inspection revealed many clusters corresponding to morphological categories, including 
-both concatenative and nonconcatenative morphs. In general, the the most prominent morphs, e.g., the plural
-suffixes \textit{-im}
-and \textit{-wt}, corresponded to clusters with low indices, as the MCMM tended to discover these clusters first. The most 
-prominent morphs are generally concatenative affixes and nonconcatenative vowel patterns. Thus, in the 
-$\langle{s}=4,\delta=3\rangle$ clustering, for instance, the first cluster (i.e., the cluster indexed 0) corresponded to the morph \textit{-\'{e}\_et}.\footnote{The \_ here represents a single slot occupied by a consonant of a \emph{different} morph, namely the root. The \_  thus indicates discontiguity.}
-a common feminine ending for participles.
-
-%\begin{center}
-%\textit{-\'{e}\_et} figure here?
-%\end{center}
-There were also some clusters that corresponded to roots, though not
-as many as corresponded to affixes and vowel patterns. 
-%There are a many more unique roots in Hebrew
-%than unique vowel patterns and affixal morphs, since roots are lexical, but individual roots tend to occur at far lower frequencies than 
-%morphs that serve morphosyntactic purposes.
-Roots also tended to occur at higher cluster indices; that is, the 
-MCMM tended to find them later during the learning process. 
-Individual roots do not occur in as many distinct words
-as concatenative morphs and vowel patterns, since roots are entirely lexical in nature. Root clusters thus tend to be among the smallest of clusters.
-
-There were in root clusters
- in the clusterings of all three data types, but the
-but orthographic clusterings contained the most root clusters. This is perhaps to some degree a result
-of the prevalence of consonants in Hebrew orthography (see chapter~\ref{ch:experi}).
-Standard Hebrew orthography does not represent many vowels, and thus the consonants tend to be closer to each other 
-and are often adjacent. Thus, precedence features in the orthographic data can generally 
-take in more consonants at once than in the transcriptional datasets. 
-
-This section provides examples of some of the MCMM's clusters in a series of figures---examples in the form of random samples taken from the original clusters' members. Each of these figures is a box that contains, first, thirty words randomly selected from a particular cluster,
-and, second, the ten most active features in the cluster's centroid. 
-The first four figures all give word samples from clusters corresponding to the root \textit{\textipa{P}.k.l}, which is associated with the concept of eating, as in, for instance, \textit{\textipa{P}a\textsubdot{k}\'al} `he/it ate' and \textit{\textipa{P}a\textsubdot{k}il\'a} `eating.'  
-Figure~\ref{fig:cluster-182-1-3-O} samples the words from cluster $k = 182$   
-in the clustering $\langle s=1, \delta=3 \rangle$.
-Its data source was the orthographic data set, and so its words are expressed in the (transliterated) orthographic alphabet (see the discussion in chapter~\ref{ch:experi}). Thus, \textit{\textipa{P}.k.l} becomes \textit{a.k.l}.
-% shows a word sample from a cluster corresponding to a root, namely \textit{\textipa{P}.k.l}, which appears in words pertaining to eating, for example, %\textit{\textipa{P}o\textsubdot{k}\'el\} `he/it is eating,'
-%\textit{\textipa{P}a\textsubdot{k}\'al} `he/it ate' and \textit{\textipa{P}a\textsubdot{k}il\'a} `eating.' 
-%This is cluster $k = 182$   
-%in the clustering $\langle s=1, \delta=3 \rangle$. Its data source was the orthographic data set. Its words are expressed in the (transliterated) orthographic alphabet (see the discussion in chapter~\ref{ch:experi}). Thus, \textit{\textipa{P}.k.l} becomes \textit{a.k.l}, for instance.
-%%generated at the parameter settings $\langel s=1$ $\delta=3 \rangle$. 
-In the words that actually contain the root \textit{a.k.l}, the letters \textbf{a}, \textbf{k}, and \textbf{l} appear in boldface.
-Notice that not all of the words have this root.
-
-Figures~\ref{fig:cluster-91-3-2-O} and \ref{fig:cluster-81-2-2-O} correspond to \textit{a.k.l}
-(\textit{\textipa{P}.k.l}) clusters from the clusterings generated at
-$\langle{s}=3,\delta=2 \rangle$ and $\langle s=2, \delta=2 \rangle$, respectively. 
-Each of these clusters is better than the previous one in that each is 
-a \emph{purer} representation of the root \textit{a.k.l} (\textit{\textipa{P}.k.l}); that is,
-each has a greater proportion of words that actually contain \textit{a.k.l}.
-Furthermore, for both of these clusters, the two \emph{most-active} features are 
-%for both of these clusters are
-\begin{center}
- {\large \texttt{a<k}} \quad  and \quad {\large \texttt{k<l}}
-\end{center}
-This makes sense. Clearly, no other feature, except perhaps \texttt{a<l}, would be as helpful in 
-encoding the sequence of  position-variant (or ``floating'') consonants \textit{a.k.l}. In figure~\ref{fig:cluster-182-1-3-O}, the activities of \texttt{k<l} and \texttt{a<k} are 1.0 and 0.8271, respectively.
-Figure~\ref{fig:cluster-91-3-2-O}, showing a purer cluster, has these features both at 1.0 activities. It also has \texttt{a<l} among its top ten features, 
-at an activity of 0.4196, a low activity to be sure, but this feature does not appear at all among the top ten features of the preceding
-cluster. 
-Finally, figure~\ref{fig:cluster-81-2-2-O}, the purest of these three clusters, has all three of the features \texttt{k<l}, \texttt{a<k}, \texttt{a<l} among
-its ten most active,
-and, moreover, it has each of these features at a perfect activity of 1.0.
-
 Figure~\ref{fig:cluster-33-0-2-TS} shows yet another cluster corresponding to the root \textit{a.k.l/}\textit{\textipa{P}.k.l}, this one
 having come from the transcriptional dataset with stress marking. This cluster was generated under the parameter settings $\langle s=0, \delta=2 \rangle$. An $s$ value of 0 means that positional features were completely absent in this clustering (see chapter~\ref{ch:experi}).
 %However, this lack would not have hindered the MCMM in finding roots, since precedence features are the better feature type for capturing roots.
@@ -484,7 +473,7 @@ since the distance between the first and third root consonants often exceeds $\d
 involved. We again have problematic vowel-referencing features, however, particularly features 
 referencing \textit{i}: \texttt{d<\a'{i}} is especially strong with an activity of 1.0, and \texttt{\'{i}<q} 
 has a modest activity of 0.501. The \textit{i} in these two features is reflected in frequency of \textit{i} in 
-this cluster's words. It would thus be more accurate to say that this cluster represents subset of the 
+this cluster's words. It would thus be more accurate to say that this cluster represents a subset of the 
 occurrences of root \textit{d.l.q}, namely its co-occurrences with \textit{i}. 
 
 Our last cluster example in this section is the one in figure~\ref{fig:cluster-19-2-3-TS}. It demonstrates 
@@ -736,7 +725,7 @@ which the set of \emph{active} clusters, that is, the clusters with at least one
 Each table  is associated with a $K$ cutoff value, either 500 or 1000, and each divided into three subtables, 
 one for each of the three types of input data representation (DR).
 
-\begin{table}[t]
+\begin{table}[!h]
 \centering
 \subtable[Transcriptions with Stress Marking (TS)\label{subtab:intr-TS-500}]{
 \footnotesize
@@ -826,7 +815,7 @@ $s$ & $\delta$ & Purity &  BP & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 %}
 %\frame{
 %\frametitle{Intrinsic Evaluation, $K=1000$}
-\begin{table}
+\begin{table}[!h]
 \centering
 \subtable[Transcriptions with Stress Markings (TS)\label{subtab:intr-TS-1000}]{ %(TS), $K=1000$ 
 %\label{subtab:intr-TS-1000}]{
@@ -915,10 +904,10 @@ One of the most important observations regarding tables~\ref{tab:intr-500} and \
 %   These were substantially higher that average F-score of the TR models---the models trained on transcriptions without stress marking---at $K=1000$, which was 0.308.
   Two important points emerge from these observations: 
   
-\emph{First, the O models performed surprisingly well.} 
-They performed as well as the TS models and substantially better than the
-  TR models.
- This is a surprising result because, as discussed in chapter~\ref{ch:experi}, 
+\emph{First, the orthographic models performed surprisingly well.} 
+Their F-scores were as good those of the TS models and substantially better than those of the
+  TR models. It must be said that orthographic coverages were generally much lower than the transcriptional coverages, especially where the orthographic F-scores were the highest.
+But even so, this is still a surprising result because, as discussed in chapter~\ref{ch:experi}, 
  the orthography of Hebrew is basically consonantal; that is, the alphabet lacks vowel symbols. 
 It would not be unreasonable to expect the orthographic dataset to be the least efficacious of the three because it
 lacks the information contributed by vowels, which would seem to be important information, as vowel patterns seem to be crucial to Hebrew's 
@@ -940,7 +929,7 @@ particularly where finding roots was concerned. As discussed in section~\ref{sec
 
 \emph{Second, the TS models outperformed the TR models by a substantial margin.} From this observation, we can infer that
 the transcriptions with stress marking  engendered better features than the
-transcriptions that lacked stress information. We might further that the distinction between \emph{stressed syllable} and \emph{unstressed syllable} is salient to the task of inducing Hebrew morphological structure. 
+transcriptions that lacked stress information. We can further infer that the distinction between \emph{stressed syllable} and \emph{unstressed syllable} is salient to the task of inducing Hebrew morphological structure. 
 %vowels whose stress is not specified. 
 It is important to note, however, that the 
 alphabets used in this study consisted solely of atomic unicode characters. 
@@ -995,7 +984,7 @@ In the TS feature sets, at $s =2$, for instance, the ratio of precedence feature
 Perhaps the precedence features were numerous enough in the transcriptional feature sets (especially TS) to drown out the influence of the relatively scarce transcriptional positional features. This would explain the lack of a coverage drop in the transcriptional results.
 
 %The highest F-scores also tended to occur when $s = 1$, but this was true not only of the orthographic models, but of the transcriptional models, as well.
-The highest F-scores in all three data types tended to occur at $s=1$ , suggesting that the benefit of positional features is maximized at the edges of words (see section~\ref{sec:concl-features} in the next chapter).
+The highest F-scores tended to occur at $s=1$ for the O models and $s=2$ for the TR and TS models, i.e., at the lowest non-zero $s$ value for each of the three data types, suggesting that the benefit of positional features is maximized at the edges of words (see section~\ref{sec:concl-features} in the next chapter).
 At the edges of words, the increased specificity seems to have a positive effect, since $s=1$ places all positional features exactly at the edges of words.
 
 %By contrast, the number positional features is
@@ -1216,19 +1205,23 @@ Morfessor. The idea was to give Morfessor pre-analyzed (i.e., compressed) lists 
 % the control group, which was in this case the original Hebrew wordlists, untouched by Multimorph.
 %  
 Because each
-experimental model, i.e., each combination of $s$ and $\delta$ values, yielded a different word coverage, 
+experimental combination of $s$ and $\delta$ values yielded a different word coverage, 
 %---i.e., involved a somewhat different set of words---
-each required its own control model. Thus, table~\ref{tab:extr-results-1000} shows control results for each valuation of $s$ and $\delta$.
+each combination required its own control model. Thus, table~\ref{tab:extr-results-1000} shows control results for each valuation of $s$ and $\delta$.
 %because the parameters $s$ and $\delta$ 
  
 Table~\ref{tab:extr-results-1000} shows the results of the extrinsic evaluation at $K=1000$. 
 Morfessor clearly did not perform 
-better on the data material that was preprocessed by Multimorph, as the control 
+better on the data that was preprocessed by Multimorph, as the control 
 results are always better than the corresponding 
-experimental results. But even so, experimental and control results do seem to be \emph{comparable}; that is,
-the experimental and control results do not seem large enough to suggest a \emph{fundamental} inferiority in the 
-experimental models. One must bear in mind that this four-stage process is both new---it was executed for the first time in this study---and highly complex. The process's results in table~\ref{tab:extr-results-1000} are close enough to 
-the control results at this early in its development to indicate promise, a potential for considerable improvement.
+experimental results by a substantial margin. The closest margins between experimental and control results occur among the O models at $s = 1$ and $s = 2$. At $\langle{s}=2,\delta=3\rangle$, the experimental orthographic F-score was 0.56, and the corresponding control F-score was 0.65. 
+%But even so, experimental and control results do seem to be \emph{comparable}. 
+%that is,
+%the experimental and control results do not seem large enough to suggest a fundamental inferiority in the 
+%experimental models. 
+
+One must bear in mind that this four-stage process is both new---it was executed for the first time in this project---and highly complex. The process's results in table~\ref{tab:extr-results-1000} are close enough to 
+the control results at this early stage in its development to indicate promise, a potential for considerable improvement.
 %comparable. the differences between the control and experimental do not appear large enough to   experimental and control results are 
 %comparable. 
 %Interestingly, the scores of the orthographic (O) models come closest to matching the control results.
@@ -1406,7 +1399,7 @@ $s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
 \end{table}
 
 \section{Summary}
-To sum up, in the qualitative analysis, we found clusters corresponding to roots, vowel patterns, as well as concatenative affixes. The orthographic (O) models produced more clusters corresponding to consonantal roots than the transcriptional models (TS and TR), and in general, produced root clusters that were more coherent as well. But since the orthographic representation favors consonants at the expense of vowels (see chapter~\ref{ch:experi}), this is perhaps was to be expected. We also saw all types of models represented nonconcatenative phenomena through precedence features, and that at least two precedence features were necessary to represent a tri-consonantal root, whereas one precedence feature sufficed to represent most vowel patterns.
+To sum up, in the qualitative analysis, we found clusters corresponding to roots, vowel patterns, as well as concatenative affixes. The orthographic (O) models produced more clusters corresponding to consonantal roots than the transcriptional models TS and TR, and in general, their clusters were more coherent as well. But since the orthographic representation favors consonants at the expense of vowels (see chapter~\ref{ch:experi}), this was perhaps to be expected. We also saw all types of models represented nonconcatenative phenomena through precedence features, and that at least two precedence features were necessary to represent a tri-consonantal root, whereas one precedence feature sufficed to represent most vowel patterns.
 
 
 According to the intrinsic results, the O models performed at a level on par with the TS models. In the extrinsic results, the orthographic models were the best, coming closest to matching those of the control model. 
@@ -1414,7 +1407,6 @@ According to the intrinsic results, the O models performed at a level on par wit
 %good relative to those of the transcriptional models (TS and TR). 
 %proved to be considerably better. 
 %extrinsic results (see section~\ref{sec:extr-results}). 
-The relative success of the orthographic models in the extrinsic evaluation reinforces the idea that there is something about the orthographic representation that is inherently and unexpectedly beneficial
----that more and/or better information is present in the orthographic representation than what seems immediately apparent. The quantitative results, like the qualitative results, suggest that there are limits to the usefulness of positional features. At the same time, however, the setting $s=1$ (the `affix length' parameter for positional features) tended to lead to substantially results better than $s=0$.
+The relative success of the orthographic models in the extrinsic evaluation reinforces the idea that there is something about the orthographic representation that is inherently and unexpectedly beneficial---that more and/or better information is present in the orthographic representation than what seems immediately apparent. The quantitative results, like the qualitative results, suggest that there are limits to the usefulness of positional features. At the same time, however, the setting $s=1$ (the `affix length' parameter for positional features) tended to lead to substantially results better than $s=0$.
 
 In the next chapter, we will consider the results from the perspective of the thesis as a whole.

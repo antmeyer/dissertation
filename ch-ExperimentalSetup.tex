@@ -1,4 +1,4 @@
-\chapter{EXPERIMENTAL SETUP}
+\chapter{MULTIMORPH}
 \label{ch:experi}
 \section{Introduction}
 This chapter will describe the experimental setup, that is, the steps I took to prepare for and run the experiments. This discussion
@@ -44,7 +44,6 @@ dedicated letters for vowels, and thus Hebrew
 orthography is largely without vowels. I wanted data in which the vowels were 
 fully represented. Another advantage of the \ac{BLC} is that 
 it is quite extensive. It contains 110,819 utterances, which, in turn, comprise 417,938 word tokens (13,828 word types) \citep{albert-et-al:2012}.
-% (13,828 word-types).; 
 I am unaware of a larger source of 
 transcribed Modern Hebrew. 
 
@@ -128,47 +127,6 @@ gold-standard categories (see chapter~\ref{ch:eval}).
 
 \subsection{Transcription System}
 \label{sec:transcription}
-The \ac{BLC}'s transcription system, summarized in tables~\ref{subtab:trans-vowels} and \ref{subtab:trans-cons}, eludes simple one-word 
-characterizations such as ``orthographic,''
-``phonetic,'' or ``phonemic.'' It is in fact a hybrid system, drawing
-both from phonetics and orthography \citep{albert-et-al:2013}. 
-It is a transcription system in some ways and a transliteration 
-system in others. It is a transcription system in that it has 
-five dedicated vowel symbols, 
-namely \{a, e, i, o, u\}, each of which matches one of the 
-vowels in Modern Hebrew's five-vowel inventory. 
-At the same time, however, 
-it is a \emph{transliteration} system in that it is sensitive to 
-orthographic distinctions that are Modern Hebrew does not have.
-The present consonantal alphabet of Hebrew originated in the 
-language's classical period, with each 
-consonantal grapheme corresponding to 
-a distinct consonantal phoneme in Classical Hebrew \citep{rendsburg:1997}. The alphabet itself
-has remained largely unchanged 
-into the present day \citep{weinberg:1975, ravid:2005}; i.e. it has the same letters as it 
-did in antiquity. The phonemic inventory 
-of Hebrew, however, has changed. Thus, the correspondence 
-between the graphemes of the Hebrew
-alphabet and the phonemes of Modern Hebrew is far from perfect. 
-The consonant inventory of Modern Hebrew
-has undergone a number of neutralizations, leaving 
-Modern Hebrew with a smaller inventory of consonant phonemes than
-Classical Hebrew had. %Hebrew had in the Biblical period (i.e., the older part  
-The mapping 
-from consonantal graphemes in the Hebrew alphabet
-to Modern Hebrew consonantal phonemes is therefore many-to-one.
-
-In its rendering of consonants, the \ac{BLC}'s transcriptional system 
-favors orthography over actual pronunciation \citep{albert-et-al:2013}.
-It honors a number of historical distinctions that have been preserved in the orthography, 
-i.e., the alphabet and 
-spelling conventions, but neutralized or otherwise lost in spoken Modern Hebrew. 
-Table~\ref{tab:phon-neut} compares 
-(reconstructed) Classical Hebrew phonemes, which are taken to be in a one-to-one 
-correspondence with the letters of 
-the Hebrew alphabet, Modern Hebrew speech sounds, and transcription symbols 
-from the \ac{BLC}. Notice that the
-the Modern Hebrew column has the fewest distinctions.
 
 \begin{table}[t]
 \centering
@@ -211,6 +169,37 @@ a & e & i & o & u \\
 \vspace{6pt}
 \end{table}
 
+The \ac{BLC}'s transcription system, summarized in table~\ref{tab:blc-alphabet}, %~\ref{subtab:trans-vowels} and \ref{subtab:trans-cons}, 
+eludes simple one-word 
+characterizations such as ``orthographic,''
+``phonetic,'' or ``phonemic.'' It is in fact a hybrid system, drawing
+both from phonetics and orthography \citep{albert-et-al:2013}. 
+It is a transcription system in some ways and a transliteration 
+system in others. It is a transcription system in that it has 
+five dedicated vowel symbols, 
+namely \{a, e, i, o, u\}, each of which matches one of the 
+vowels in Modern Hebrew's five-vowel inventory. 
+At the same time, however, 
+it is a \emph{transliteration} system in that it is sensitive to 
+orthographic distinctions that Modern Hebrew does not have.
+The present consonantal alphabet of Hebrew originated in the 
+language's classical period, with each 
+consonantal grapheme corresponding to 
+a distinct consonantal phoneme in Classical Hebrew \citep{rendsburg:1997}. The alphabet itself
+has remained largely unchanged 
+into the present day \citep{weinberg:1975, ravid:2005}; i.e. it has the same letters as it 
+did in antiquity. The phonemic inventory 
+of Hebrew, however, has changed. Thus, the correspondence 
+between the graphemes of the Hebrew
+alphabet and the phonemes of Modern Hebrew is far from perfect. 
+The consonant inventory of Modern Hebrew
+has undergone a number of neutralizations, leaving 
+Modern Hebrew with a smaller inventory of consonant phonemes than
+Classical Hebrew had. %Hebrew had in the Biblical period (i.e., the older part  
+The mapping 
+from consonantal graphemes in the Hebrew alphabet
+to Modern Hebrew consonantal phonemes is therefore many-to-one.
+
 \begin{table}[t]
 \centering
 \setlength{\extrarowheight}{8pt}
@@ -227,7 +216,19 @@ c. & \textipa{yod\'e\textbf{a}Q} & \textipa{yod\'e\textbf{a}} & \textipa{yod\'e\
 %\vspace{3pt}
 \end{table}
 
-\begin{table}[t]
+In its rendering of consonants, the \ac{BLC}'s transcriptional system 
+favors orthography over actual pronunciation \citep{albert-et-al:2013}.
+It honors a number of historical distinctions that have been preserved in the orthography, 
+i.e., the alphabet and 
+spelling conventions, but neutralized or otherwise lost in spoken Modern Hebrew. 
+Table~\ref{tab:phon-neut} compares 
+(reconstructed) Classical Hebrew phonemes, which are taken to be in a one-to-one 
+correspondence with the letters of 
+the Hebrew alphabet, Modern Hebrew speech sounds, and transcription symbols 
+from the \ac{BLC}. Notice that the
+the Modern Hebrew column has the fewest distinctions.
+
+\begin{table}[ht]
 \centering 
 \setlength{\extrarowheight}{8pt}
 \begin{tabular}{l c c c}
@@ -580,7 +581,7 @@ The \ac{BLC}'s transcribers ``restored'' such dropped or deleted sounds and encl
 %\end{exe}
 
 \paragraph{Duplications}
-Sometimes the BLC records speakers as having repeated a word or clitic, as in eample~(\ref{ex:redundant}),x
+Sometimes the BLC records speakers as having repeated a word or clitic, as in example~(\ref{ex:redundant}),
 % (\ref{ex:redundant}), a prefixal clitic, 
 %is duplicated, and sometimes repeated
 %several times consecutively. 
@@ -719,7 +720,7 @@ I thus expanded the morphological analyses of complex adverbs in order to captur
 least some of the derivational morphology of these adverbs.
 %T morphological analyses of complex adverbs were expanded.
 But I did not go so far as to delineate morphomes, as this would 
-be straying too far from the rest of the analyses in the \ac{BLC}. Such 
+be straying too far from the rest of the analyses in the BLC. Such 
 analyses would be out of place among all of the other analyses in corpus. 
 This would at best be a futile, and at worst, experimentally detrimental.
 
@@ -956,7 +957,7 @@ The main problem with global features where the present study is concerned is th
 words tend to be complex objects, often composed of 
 multiple morphological units, which are 
 generally orthogonal. That is, a plural suffix can 
-appear with wide variety of stems, for example, and a 
+appear with a wide variety of stems, for example, and a 
 given stem may occur with a wide variety of suffixes.
 Two words can share a single morphological component and 
 differ in the rest of their components. Indeed,
@@ -1027,7 +1028,7 @@ Precedence features are invariant with respect to affixation; that is,
 they are \emph{affixation-invariant}.
 As an example, consider again the word
 \begin{center}
-\textit{we\v{s}eme\textipa{Q}arbevim} \, `and which confuse'
+\textit{we\v{s}eme\textipa{Q}arbevim} \quad `and which confuse'
 \end{center} 
 %whose \ac{BLC} morphological 
 %analysis appears above in example (\ref{ex:preclitics}). 
@@ -1040,20 +1041,11 @@ Suppose $\delta=2$. The feature \textsf{b<v} then would be assigned the value $1
 \end{equation*}
 which satisfies the criterion `less than or equal to $\delta$'. 
 The feature \textsf{\textipa{Q}<b}, by contrast, would get the value $0$, since 
-\begin{equation*}
-\text{index}(\textipa{Q}) - \text{index}(\text{b}) = 9 - 6 = 3
-\end{equation*}
-% would be assigned the following  If $\delta=2$, these features would get the 
-%following values: 
-%\begin{exe}	
-%	\ex \textsf{b<v} $ =1 $, \qquad \textsf{e<v} $ =1 $, \qquad\textsf{\textipa{Q}<r} $ =1$, \qquad \textsf{\textipa{Q}< b} $=0$
-%\end{exe}
-%All evaluate to 1 or \textsc{true} except \textsf{\textipa{Q}<b}, since
-%\begin{exe}
-%	\ex $\text{index}($\textsf{b}$) - \text{index}($\textsf{\textrevglotstop}$) = 9 - 6 = 3$
-%\end{exe}
+\begin{center}
+\text{index}(\textipa{Q})\,$ - $\,\text{index}(\text{b})\,\,$ = 9 - 6 = 3$
+\end{center}
 which is greater than $\delta$ in this case.
-Now consisder the same main word \textit{me\textipa{Q}arbevim} \textbf{without}
+Now consider the same main word \textit{me\textipa{Q}arbevim} \textbf{without}
 the two prefixal clitics. Even though \textit{me\textipa{Q}arbevim} is four characters shorter than
 \textit{we\v{s}eme\textipa{Q}arbevim}, the values of the features \textsf{b<v} and
 \textsf{\textipa{Q}<b} do not change. That is,
@@ -1065,9 +1057,9 @@ the two prefixal clitics. Even though \textit{me\textipa{Q}arbevim} is four char
 \end{equation*}
 which is still `less than or equal to $\delta$', and thus \textsf{b<v}} is still $1$, and
 The feature \textsf{\textipa{Q}<b}, by contrast, would get the value $0$, since 
-\begin{equation*}
-\text{index}(\textipa{Q}) - \text{index}(\text{b}) = 9 - 6 = 3
-\end{equation*}
+\begin{center}
+\text{index}(\textipa{Q})\,$ - $\,\text{index}(\text{b})\,\,$ = 9 - 6 = 3$
+\end{center}
 which is still greater than $\delta$, and thus \textsf{\textipa{Q}<b} is still $0$.
 %The others evaluate to 1 because the difference between indices in their cases is \emph{at most} 2. That is,
 %\begin{exe}
