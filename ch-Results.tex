@@ -725,7 +725,7 @@ which the set of \emph{active} clusters, that is, the clusters with at least one
 Each table  is associated with a $K$ cutoff value, either 500 or 1000, and each divided into three subtables, 
 one for each of the three types of input data representation (DR).
 
-\begin{table}[!h]
+\begin{table}[!ht]
 \centering
 \subtable[Transcriptions with Stress Marking (TS)\label{subtab:intr-TS-500}]{
 \footnotesize
@@ -748,9 +748,7 @@ $s$ & $\delta$ & Purity &  BP & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 6 & 3 & 0.529 & 0.345 & 0.474 & 0.399 & 11858 & 76 \\ \hline \hline%500 %TS %6_3_K6000_N12271_basic_180621_07-59_k-500
  \multicolumn{2}{r|}{\textit{Avgs:}} & 0.518 & 0.350 & 0.480 & 0.399 & 11966 & 117 \\
 \end{tabular}
-}
- 
-
+}\\
 %\subtable[Transcriptions, no stress marking (TR), $K=500$ \label{subtab:intr-TR-500}]{
 %\tiny
 %\setlength{\extrarowheight}{3pt}
@@ -778,15 +776,12 @@ $s$ & $\delta$ & Purity &  BP & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
  \multicolumn{2}{r|}{\textit{Avgs:}} & 0.446 & 0.276 & 0.547 & 0.359 & 12110 & 105 \\
 \end{tabular}
 %\end{table} 
-}
+}\\
 %\subtable[Orthographic data (O), $K=500$ \label{subtab:intr-O-500}]{
-
-
 %\setlength{\extrarowheight}{6pt}
 %\frame{
 %\frametitle{Intrinsic Evaluation, $K=500$}
 %\begin{table}
-
 \subtable[Orthographic (O), $K=500$]{
 \footnotesize
 \centering
@@ -812,10 +807,7 @@ $s$ & $\delta$ & Purity &  BP & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 \caption{Intrinsic evaluation results at $K = 500$. In the table headers, $s$ and $\delta$ are the parameters for positional and precedence features, respectively. \textit{BP} and \textit{BR} are BCubed Precision and BCubed Recall, respectively, and \textit{Cov.} (coverage) is the number of words that are active members of at least one cluster.}
 \label{tab:intr-500}
 \end{table}
-%}
-%\frame{
-%\frametitle{Intrinsic Evaluation, $K=1000$}
-\begin{table}[!h]
+\begin{table}[!ht]
 \centering
 \subtable[Transcriptions with Stress Markings (TS)\label{subtab:intr-TS-1000}]{ %(TS), $K=1000$ 
 %\label{subtab:intr-TS-1000}]{
