@@ -1,16 +1,16 @@
-\chapter{AUTONOMOUS MORPHOLOGY AS A TARGET OF LEARNING}
+\chapter{Autonomous Morphology as a Target of Learning}
 \label{autonomous}
 
 \section{Introduction}
 Many morphologists in recent decades have rejected the notion of the morpheme---a concept that inextricably binds morphology to syntax and semantics---in favor of approaches that regard morphology as autonomous, i.e., as independent 
 of both syntax/semantics and phonology. The principle objective of this chapter is to 
-show that autonomous morphological units are legitimate learning targets for a \ac{ULM}  system. In fact, as we will soon see, autonomous morphology is more than just legitimate; it is the only possible learning target for \ac{ULM}  as it is conventionally defined.
-In the course of the discussion, we shall consider some of the more prominent theories of autonomous morphology, contrasting them with ``non-automonous'' approaches, and  noting their significance to \ac{ULM} (and Multimorph in particular).
+show that autonomous morphological units are legitimate learning targets for system of unsupervised morphological learning. In fact, as we will soon see, autonomous morphology is more than just legitimate; it is the only possible learning target for the unsupervised learning of morphology (ULM) as it is conventionally defined.
+In the course of the discussion, we shall consider some of the more prominent theories of autonomous morphology, contrasting them with ``non-automonous'' approaches, and  noting their significance to ULM (and Multimorph in particular).
 
 
 \section{The Unsupervised Learning of \textit{What}, Exactly?}
 \label{sec:what-exactly}
-In the \ac{ULM} literature, authors often use the word \emph{morpheme(s)} 
+In the ULM literature, authors often use the word \emph{morpheme(s)} 
 when describing their systems' \emph{learning target(s)}, i.e., what their systems are meant to learn and 
 output, as well as the features that compose their input feature vectors.
 \cite{poon-et-al:2009}, for example, use two main categories 
@@ -40,7 +40,7 @@ in more formal or technical contexts. Indeed,
 of the above three terms, they probably use 
 \emph{morph} most frequently.
 
-Moreover, \ac{ULM} researchers virtually never specify what they mean
+Moreover, ULM researchers virtually never specify what they mean
 when they use the word \emph{morphology}, even though there
 are currently at least two fundamentally different schools of thought concerning the nature of morphology. These are the 
 the \emph{morpheme-based} and \emph{lexeme-based} views, to borrow the labels that \cite{aronoff:1994} has assigned 
@@ -50,30 +50,30 @@ and phonological realization, but has neither meaning nor phonologically realize
 of lexeme-based morphology thus do not believe in pairings of form and meaning, i.e., \emph{morphemes}, as fundamental linguistic
 units \citep{anderson:2015}. We will further discuss the notion of autonomous morphology in section~\ref{sec:morpho-theories}.
 
-One's morphological theory affects the way in which one interprets the output of a \ac{ULM}  system. 
-If one describes a \ac{ULM}  system and its learning task in terms of 
+One's morphological theory affects the way in which one interprets the output of a ULM  system. 
+If one describes a ULM  system and its learning task in terms of 
 morpheme-based morphology, one must also struggle to 
 describe its output as consisting of morphemes, as do, for example, 
 \cite{creutz-and-lagus:2007,creutz-and-lagus:2005}. In contrast, under a 
-lexeme-based theory, one would view the output of a \ac{ULM}  system as 
+lexeme-based theory, one would view the output of a ULM  system as 
 consisting of \emph{autonomous} morphological units, i.e., 
 expressly non-morpheme units. 
 Thus, one's theory of morphology makes an implicit claim about the output of 
-his/her \ac{ULM}  system.
+his/her ULM  system.
 
 The output of any machine learning system depends to 
 a great extent on the nature of its input, which, in the case of the 
 \emph{unsupervised} learning of morphology, 
 depends to a large extent on with the meaning of ``unsupervised.'' 
-All of the major \ac{ULM}  
+All of the major ULM  
 systems take as input a list of independent tokenized words 
 \citep[e.g.,][]{goldsmith:2001,baroni-et-al:2002,creutz-and-lagus:2005,poon-et-al:2009}
 Thus, a convention seems to have emerged whereby, in the 
-case of \ac{ULM} , the meaning of \emph{unsupervised} includes a
+case of ULM , the meaning of \emph{unsupervised} includes a
 requirement that each word be free of morphosyntactic 
 or semantic information. In practice,
 this means being entirely free of context. I am 
-not aware of a \ac{ULM} system that extracts features from the raw context surrounding a given word, i.e.,
+not aware of a ULM system that extracts features from the raw context surrounding a given word, i.e.,
 the unanalyzed words adjacent to the unanalyzed word question. It seems doubtful
 that such a context could be helpful to a machine learner. 
 It would probably have to be abstracted and categorized 
@@ -88,22 +88,22 @@ the contexts of its input words, as its input is a list of independent word toke
 meaning.
 % because the input to ULM systems is a list of contextless tokenized words. 
 % learning meaning without contextual information. And since the input to a ULM 
-% a \ac{ULM} system consists of independent words without contextdoes not have access to context, it simply 
+% a ULM system consists of independent words without contextdoes not have access to context, it simply 
 cannot learn classical morphemes. 
-A \ac{ULM} system might learn 
+A ULM system might learn 
 character subsequences that happen to resemble
  classical morphemes \emph{in form}, but only because morphological systems
 do tend to cooperate with syntax/semantics in some way, and in some 
  cases this cooperation is more transparent and straightforward than
- in others.  However, this \ac{ULM} system would nevertheless be oblivious to the actual meanings
+ in others.  However, this ULM system would nevertheless be oblivious to the actual meanings
  of these pieces of form. Meaning is an essential component of the classical morpheme, and because
  meaning depends on context, there is no way to induce classical morphemes from contextless words.
-Therefore, \ac{ULM} systems, particularly those which learn solely from 
+Therefore, ULM systems, particularly those which learn solely from 
 from lists of raw, contextless words, simply cannot learn 
 \emph{morphemes} in the strict sense of the term.
 
 Consider, for example, Linguistica, the seminal 
-\ac{ULM}  system developed by \cite{goldsmith:2001, goldsmith:2006}. 
+ULM  system developed by \cite{goldsmith:2001, goldsmith:2006}. 
 Linguistica finds morphological relationships by filling in 
 data structures 
 called \emph{signatures} as it iterates over datasets comprising many
@@ -129,7 +129,7 @@ most common signature that Linguistica found among the words of
 The corresponding stem set had 14 members, though \citet{goldsmith:2001} 
 does not identify the individual stems. 
 In any case, the affix set \textsc{null}\textit{.ed.ing.s} represents 
-a stem equivalence class. Its extraction would be an impressive achievement for any \ac{ULM} system, and this
+a stem equivalence class. Its extraction would be an impressive achievement for any ULM system, and this
 is but one of many such signatures that Linguistica has found. However, 
 suppose we had no knowledge of English. It would then be impossible to deduce the nature 
 of this equivalence class. We might
@@ -177,7 +177,7 @@ targets of unsupervised morphological learning.
 \label{sec:morpho-theories}
 In the preceding section, we argued that Linguistica does not learn morphemes. The same can be said of Morfessor, 
 the system of \cite{poon-et-al:2009}, and
-every other \ac{ULM}  system.
+every other ULM  system.
  But how can we say that these systems learn morphology, but not morphemes? As it turns out,
  the existence of morphemes is by no means a sure thing.  
 
@@ -246,7 +246,7 @@ the undergraduate and graduate level. Any introductory text containing
 a unit on morphological analysis is going to present a methodology that 
 is essentially Bloomfieldian \citep{anderson:2017}.
 It is therefore perhaps no surprise that
-computational linguists, including researchers in the field of \ac{ULM}, 
+computational linguists, including researchers in the field of ULM, 
 tend to presume
 the reality of Bloomfieldian morphemes and the soundness of a 
 Bloomfieldian view of morphology. The Bloomfieldian approach is essentially
@@ -502,7 +502,7 @@ or more words share a particular subsequence of phonemes
 must all share a particular morphome, since it is the shared 
 morphome that gives rise to the shared subsequence at the 
 phonological level. This maxim is crucial for the purposes 
-of \ac{ULM} because it licenses an algorithm to identify 
+of ULM because it licenses an algorithm to identify 
 morphological units solely on the basis of similarities in 
 form, irrespective of meaning.
 
@@ -550,7 +550,7 @@ classifies morphomes according to the nature of this similarity. That is,
 according to Round, there are different types of form-based similarity; i.e., different ``aspects of form'' that are 
 shareable \citep[][p.230]{round:md:2016} and these different shareable aspects of form correspond to different types of morphomes. 
 This sort of taxonomy will prove useful when we discuss the 
-limitations on unsupervised morphological learning, i.e., what a \ac{ULM} 
+limitations on unsupervised morphological learning, i.e., what a ULM 
 system can and cannot learn given the limited nature of its input.
 
 Round's taxonomy comprises three categories, namely 
@@ -947,11 +947,11 @@ Faust's approach is based on Distributional Morphology
 a morpheme-based, Lexical-Realizational theory \citep{stump:2001}
 According to Faust, therefore, the suffixes /-i/, /-u/, and /-at/ are not only morphemes, 
 but \emph{roots.}
-In \ac{DM}, the term \emph{root} (along with \emph{formative}) is used to refer 
+In Distributed Morphology (DM), the term \emph{root} (along with \emph{formative}) is used to refer 
 to maximally primitive units of meaning. \footnote{However, is not to be confused with the 
 consonantal root of Semitic morphology. Semitic roots would qualify as 
-\ac{DM} roots, but the \ac{DM} root is more general than the Semitic root.}
-A \ac{DM} root has no particular morphosyntactic properties and thus belongs to 
+DM roots, but the DM root is more general than the Semitic root.}
+A DM root has no particular morphosyntactic properties and thus belongs to 
 no morphosyntactic category.
 However, it does have abstract semantic features as well as inherent 
 selectional requirements, that is, criteria that limit the set of stems with which it 
@@ -965,7 +965,7 @@ position of category head in the derivation of adjectives.
 In masculine adjectives, the category-head position is occupied by a phonologically null unit instead of
 \textit{-at}, since \textit{-at} is a feminine suffix. %he \textit{-at} suffix is not present; % the suffix /-at/ is not itself present in the derivations of 
 %masculine adjectives,
-%It is just phonologically null, according to \ac{DM}.
+%It is just phonologically null, according to DM.
 In masculine adjectives, therefore, the suffix /-i/ simply combines with the null adjectival head. 
 This, according to Faust, satisfies the selectional requirements of /-i/
 and the null adjectival head. The rest of the derivation,
@@ -988,10 +988,10 @@ crucially, for Faust, lacks morphosyntactic properties.
 It is the theory of Distributed Morphology that motivates Faust's decision to posit a single 
 expletive /-i/ morpheme (as opposed to 
 separate adjective-deriving and noun-deriving morphemes).  Faust 
-requires /-i/ to be a \ac{DM} root so that /-at/ can combine with it, and since 
-\ac{DM} roots must be free of any specification of morphosyntactic 
+requires /-i/ to be a DM root so that /-at/ can combine with it, and since 
+DM roots must be free of any specification of morphosyntactic 
 category, an intrinsically adjectival /-i/ would
-not suit Faust's \ac{DM} analysis. 
+not suit Faust's DM analysis. 
 
 \subsubsection{A \emph{morphome}-based approach}
 Faust's account is similar to a \emph{morphome}-based account
@@ -1147,12 +1147,12 @@ property \{\text{n}$\to$\text{n}[fem] among the derivational properties $\delta$
 
 \section{Implications for ULM and Multimorph}
 
-Because \ac{ULM} systems do not have access to
+Because ULM systems do not have access to
 semantic or syntactic features, they cannot learn pairings of form and meaning, 
 and hence, they cannot learn classical morphemes (see section~\ref{sec:what-exactly}). 
 They can, however, learn recurrent units of \emph{pure} form. 
 Consider again, 
-for example, the feminine endings of Hebrew. A \ac{ULM} system would likely be 
+for example, the feminine endings of Hebrew. A ULM system would likely be 
 able to discover facts (\ref{ex:Xi}) and (\ref{ex:Yi}) and from them deduce (\ref{ex:i-and-t}): 
 \begin{exe} \label{ex:observations1}
 \ex \label{ex:Xi} There are many stems $X$ such that both $X$ and $X\text{\textbf{i}}$ are 
@@ -1180,8 +1180,8 @@ and \ref{subtab:der-nouns-i}, but also for the \emph{difference}: There is an \e
  in table~\ref{subtab:der-adjectives}, but not in % \emph{vs.} the absence of an independent \textit{-i} ending in 
  table~\ref{subtab:der-nouns-i}.
 
-%It would likely be difficult, however, for most \ac{ULM} systems to capture such subtlety. 
-%Most \ac{ULM} systems would probably tend to decompose \textit{-it} 
+%It would likely be difficult, however, for most ULM systems to capture such subtlety. 
+%Most ULM systems would probably tend to decompose \textit{-it} 
 %into \textit{-i} and \textit{-t} wherever it should occur, regardless of its type---i.e., whether it be of the
 %``$\text{Y} = \text{Xi}$'' type (\ref{YequalsXi}) or the ``$\text{Y} \ne \text{Xi}$'' type (\ref{ex:YneXi}). At the same time, 
 If a ULM system should encounter these different types of the \textit{-it} ending, one way it could analyze them would be to decompose the \textit{-it} into \textit{-i}  and \textit{-t} in every instance.
@@ -1197,7 +1197,7 @@ the phonological plane, since morphomes themselves do not have phonological subs
 
 One could argue that while they are composed of surface-level characters,
 they are closer to morphomes in nature than phonological forms.
- Multimorph's \ac{MCMM} has only one layer of hidden nodes,
+ Multimorph's MCMM has only one layer of hidden nodes,
 and thus Multimorph cannot learn hierarchical structure; rather, it can only learn 
 flat structure, and so, from a theoretical point of view, at least, it is ill-equipped to learn
 that the \textit{-it} described in (\ref{ex:YneXi}) is simultaneously 
@@ -1206,8 +1206,8 @@ decomposable at the morphomic level into the distinct morphomes
 $\mu$\textsc{i} and $\mu$\textsc{t}.
 It is, however, capable of handling such a case in other ways. 
 Recall, from chapter~\ref{ch:MCMM} 
-that an \ac{MCMM} can map multiple causes (multiple morphological units)
- to a single surface-level node. Thus, if Multimorph's \ac{MCMM} finds 
+that an MCMM can map multiple causes (multiple morphological units)
+ to a single surface-level node. Thus, if Multimorph's MCMM finds 
  \textit{-i}, \textit{-t}, \textit{-it} as three distinct
  morphological units (or clusters), it is capable of mapping all three 
  to a single surface-level node (representing a single feature). 
@@ -1215,12 +1215,12 @@ that an \ac{MCMM} can map multiple causes (multiple morphological units)
  it does not do so in a hierarchical way; i.e., \textit{-i}, \textit{-t}, \textit{-it} would
  all be at the same level. %, so to speak.
 
-At any rate, no \ac{ULM} system is going to be able to learn the full range of morphomic
-phenomena. No \ac{ULM} system is going to be able to identify a metamorphome in its full
+At any rate, no ULM system is going to be able to learn the full range of morphomic
+phenomena. No ULM system is going to be able to identify a metamorphome in its full
  extra-lexemic, trans-paradigmatic glory. Such a capability would require some means
 of keeping track of what different lexemes do in different paradigm cells, which would be tantamount
 to possessing morphosyntactic knowledge, since paradigm cells, whether taken alone or in groups,
-are morphosyntactic property sets. As we have already noted, \ac{ULM} systems do not
+are morphosyntactic property sets. As we have already noted, ULM systems do not
 have access to morphosyntactic information.
 
 %Why?  \emph{morphomes}?
@@ -1264,7 +1264,7 @@ meromorphomes have forms, not in and
 of themselves, even though they constitute the 
 morphome type that is most closely associated with specific, concrete pieces of form. 
 
-Recall from chapter~\ref{ch:MCMM} that Multimorph's \ac{MCMM} consists of
+Recall from chapter~\ref{ch:MCMM} that Multimorph's MCMM consists of
 of a hidden layer, a reconstruction layer, and a layer of
 weights connecting each hidden node to each reconstruction (or surface) node
 Multimorph, however, relies heavily on form. The hidden 
@@ -1297,7 +1297,7 @@ can be observed only at the phonological level.
 Identity of exponence is important not just to a morphomic analysis,
 but also to Stump's Paradigm Function Morphology, especially where the 
 the form paradigm is concerned, and indeed, it is central to any 
-brand of autonomous morphology. It is thus appropriate that \ac{ULM} 
+brand of autonomous morphology. It is thus appropriate that ULM 
 systems---Multimorph included---are driven by form.
 
 \section{Summary}\label{sum}
@@ -1307,7 +1307,7 @@ There is a rich and complex
 world between the planes of syntax and phonology, namely the world of autonomous morphology, which is free of both form and meaning. This is thus not the world of classical morphemes (pairings of form and meaning), but rather a new sort of morphological unit that mediates between phonology and
 syntax/semantics, but is beholden to neither.  
 Among the most notable formulations of autonomous morphology to date are Paradigm Function Morphology \citep{stump:2001}, particularly in the workings of its form-paradigm cells, Arornoff's
-concept of the \emph{morphome} \citep{aronoff:1994}, and Round's expansions \citep[e.g.,][]{round:2011,round:2015} of Aronoff's original concept. The ever growing body of work on autonomous morphology vastly clarifies what \ac{ULM}'s target of learning is. Round's maxim in particular provides an implicit suggestion for how a \ac{ULM} algorithm might proceed with its learning task: \textit{Look for similarities in form, since shared elements of form are indicators of shared morphomes.} Even though these morphomes, according to Round, have neither meaning nor form, they do, however, project something of themselves onto the phonological (or surface) level, since it is the surface level---particularly shared  form at the surface level, that allows us to identify morphomes in the first place. 
+concept of the \emph{morphome} \citep{aronoff:1994}, and Round's expansions \citep[e.g.,][]{round:2011,round:2015} of Aronoff's original concept. The ever growing body of work on autonomous morphology vastly clarifies what ULM's target of learning is. Round's maxim in particular provides an implicit suggestion for how a ULM algorithm might proceed with its learning task: \textit{Look for similarities in form, since shared elements of form are indicators of shared morphomes.} Even though these morphomes, according to Round, have neither meaning nor form, they do, however, project something of themselves onto the phonological (or surface) level, since it is the surface level---particularly shared  form at the surface level, that allows us to identify morphomes in the first place. 
 
 Therefore, in evaluating the present study's ULM system, namely Multimorph, one should not look for classical morphemes in its output, but rather autonomous morphological units like morphomes. (We will being use the term \emph{morphs} when referring to Multimorph's targets of learning.)
 In the next chapter, we discuss the setup of the experiments by which Multimorph was evaluated.
