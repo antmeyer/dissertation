@@ -1,97 +1,28 @@
-% !TEX encoding = UTF-8 Unicode
-\documentclass[showabstract,showacknowledgments,showpreface,showdedication]{iuphd} 
-%\documentclass{iuphd}
-\usepackage{listings}
-%\usepackage[UTF8]{ctex}
+\documentclass[showabstract,showacknowledgments,showdedication]{iuphd} 
+%\usepackage{cite}
 \usepackage[utf8]{inputenc}
 \usepackage{setspace}
 \usepackage{hyperref}
 \usepackage{url}
-\usepackage{bibentry}
-\usepackage{hanging}
-%\usepackage[showframe=true]{geometry}
 \usepackage{enumitem}
-
-%%\bibliographystyle{styles/aclnat}
-%\newcommand\hangbib[1]{
-%	%\setlength{\leftmargin}{#1}}%
-%    \smallskip\par\hangpara{1em}{1}\bibentry{#1}\smallskip\par %{indent}{afterline}
-%}
-%
-%\newenvironment{myindentpar}[1]%
-% {\begin{list}{}%
-%         {\setlength{\leftmargin}{#1}}%
-%         \item[]%
-% }
-% {\end{list}}
- 
-%\newcommand{\hangbib}[1]{\begin{verse} \bibentry{#1} \end{verse}}
-
-%\hypersetup{}
-%\usepackage{xeCJK}
-%\usepackage{CJKutf8}
-%\setCJKmainfont{SimSun}
-%\usepackage{CJKutf8}
-%\usepackage[CJK,English]{babel}
-%\setCJKmainfont[BoldFont=STHeiti,ItalicFont=STKaiti]{STSong}
-%\setCJKsansfont[BoldFont=STHeiti]{STXihei}
-%\setCJKmonofont{STFangsong}
-%\usepackage{cite}
 \usepackage{graphicx}
-\usepackage{blindtext}
-%\usepackage{showframe}
+%\usepackage{blindtext}
 \usepackage{array}
 \usepackage[export]{adjustbox}
-%\usepackage[]{algorithm2e}
 \usepackage[ruled,linesnumbered]{algorithm2e}
 \usepackage[normalem]{ulem}
-%\usepackage{algorithm}
-%\usepackage[noend]{algpseudocode}
-%\documentclass[UTF8,nofonts]{ctexart}
-%\usepackage{pdfpages}
-%\documentclass{iuphd}
-%\documentclass[a4paper,12pt,times,authoryear,print,index]{iuphd}
-%\usepackage[round]{natbib}
-%\usepackage[font=normal,skip=0pt]{caption}
-%\usepackage{natbib}
-\usepackage[toc,page]{appendix}
-%\usepackage{lmodern}
+%\usepackage[toc,page]{appendix}
 \usepackage[scaled=0.86]{helvet}
-%\usepackage[sfdefault]{ClearSans}
 \usepackage{times}
-%\usepackage{tipx}
 \usepackage{tipa}
-%\usepackage[T1]{tipa}
 \usepackage{tipx}
-
-%\newenvironment{boxed}
-%    {\begin{center}
-%    \begin{tabular}{|p{0.9\textwidth}|}\includegraphics[]{dissertation.pdf}
-
-%    \hline\\
-%    }
-%    { 
-%    \\\\\hline
-%    \end{tabular} 
-%    \end{center}
-%    }
-%\usepackage[hebrew,english]{babel}
-%\usepackage{CJKutf8}
 \renewcommand*\ttdefault{cmvtt}
 %\renewcommand*\familydefault{\ttdefault} %% Only if the base font of the document is to be typewriter style
 \usepackage[T1]{fontenc}
-%\usepackage[scaled=.83]{beramono}
-%\usepackage{lipsum}
 \usepackage{amsthm}
 \usepackage{amsmath}
-%\theoremstyle{remark}
-%\newtheorem*{remark}{Remark}
 \theoremstyle{remark}
 \newtheorem{definition}{Definition}
-%\theoremstyle{remark}
-%\newtheorem*{remark}{Remark}
-%\theoremstyle{remark}
-%\newtheorem{definition}{Definition}
 \theoremstyle{remark}
 \newtheorem{criterion}{Criterion}
 \theoremstyle{remark}
@@ -99,32 +30,6 @@
 \theoremstyle{remark}
 \newtheorem{corollary}{Corollary}
 \usepackage[framemethod=tikz]{mdframed}
-%\DeclareFontFamily{T3}{ClearSans-LF}{}
-%\DeclareFontShape{T3}{ClearSans-LF}{m}{n}
-% {<-> ssub * cmss/m/n }{}
-%\DeclareFontShape{T3}{ClearSans-LF}{b}{n}
-% {<-> ssub * cmss/bx/n }{}
-%\DeclareFontShape{T3}{ClearSans-LF}{m}{it}
-% {<-> ssub * cmss/m/sl }{}
-%\DeclareFontShape{T3}{ClearSans-LF}{m}{sl}
-% {<-> ssub * cmss/m/sl }{}
-\usepackage{natbib}
-\bibliographystyle{abbrvnat}
-\setcitestyle{authoryear}
-%\bibliographystyle{plainnat}
-%\usepackage{makecell}
-% removing ACL style package
-%\usepackage{styles/acl2016}
-%\usepackage{palatino}
-%\usepackage{tgpagella}
-%\usepackage{tgschola}
-%\usepackage{lmodern}
-%\usepackage{tgbonum}
-%\usepackage{tipa}
-%\usepackage{times}
-%\usepackage{latexsym}
-%\aclfinaltrue
-\usepackage{amsmath}
 \usepackage{mathtools}
 \usepackage{framed}
 \usepackage{multirow}
@@ -132,10 +37,7 @@
 \usepackage{subfigure}
 \usepackage{wrapfig}
 \usepackage{cjhebrew}
-\usepackage[printonlyused,withpage]{acronym}
-%\usepackage[T1, T2A]{fontenc}
-%\usepackage{subcaption}
-%\usepackage{dcolumn}
+%\usepackage[printonlyu
 \usepackage{tabto}
 \usepackage{url}
 \usepackage{array}
@@ -145,17 +47,9 @@
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
 \usepackage{booktabs}
-\newcommand\Tstrut{\rule{0pt}{2.6ex}}       % "top" strut
-\newcommand\Bstrut{\rule[-1.2ex]{0pt}{0pt}} % "bottom" strut
-\newcommand\TBstrut{\Tstrut\Bstrut} % top&bottom struts
-%\usepackage{caption}	
-%\newcommand{\myparagraph}[1]{\vspace{8pt}\noindent\textbf{#1.}}
-%\newcommand{\myparagraphtwo}[1]{\vspace{8pt}\noindent\textbf{#1}\hspace{\textwidth}}
-%\newcommand{\mysubparagraph}[1]{\vspace{2.5pt}\indent\textit{#1.}}
-\newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
-%\newcommand{\tab}[1]{\hspace{.2\textwidth}\rlap{#1}}
-%\newcommand\tab[1][1cm]{\hspace*{#1}}
 \usepackage{tikz}
+\usepackage{natbib}
+\bibliographystyle{unsrtnat}
 \usetikzlibrary{positioning, calc}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{shapes,arrows}
@@ -165,28 +59,11 @@
 \usepackage{etoolbox}
 \usepackage{makecell}
 
-\renewcommand\theadalign{bc}
-\renewcommand\theadfont{\bfseries}
-\renewcommand\theadgape{\Gape[4pt]}
-\renewcommand\cellgape{\Gape[4pt]}
 
 \makeatletter
 \apptocmd{\@exe}{\singlespacing}{}{}
 \makeatother
 
-\definecolor{LightGray}{gray}{0.8}
-\definecolor{LightGray2}{gray}{0.9}
-%\usepackage[normalem]{ulem}
-%\usepackage{nomencl}
-
-\newenvironment{nbquote}
- {\quote\interlinepenalty=10000 }
- {\endquote}
- 
-% Uncomment this to make sure marginpars are removed before submission:
-%\renewcommand{\marginpar}[1]{}
-
-%\includeonly{ch-LitReview}
 \makeatletter
 \let\X@old@caption\caption
 \def\X@caption@minusone{\expandafter\advance\csname c@\@captype\endcsname-1 }
@@ -195,74 +72,47 @@
 \def\caption{\@ifnextchar[\X@caption@br\X@caption@nobr}
 \makeatother
 
-%\begin{document}
-%\renewcommand{\theequation}{\roman{equation}}
-%\newcommand\tab[1][1cm]{\hspace*{#1}}
-%\usepackage{tabto}
-%data for Title Page
+\newenvironment{nbquote}
+ {\quote\interlinepenalty=10000 }
+ {\endquote}
+ 
+% For title and abstract page
+
 \title{A Multilinear Approach to the Unsupervised Learning of Morphology}
 \author{Anthony Meyer}
-\date{November 29, 2018}
-\department{Department of Linguistics}
-%\maketitle
-%data for Acceptance Page
-%\committeechair{Committee Chair}
-%\readertwo{2nd Reader}
-%\readerthree{3rd Reader}
-%\readerfour{4th Reader}
-%\defensedate{Defense Date}
+%\date{November 29, 2018}
+\date{Month Year} % Completion date of Dissertation
+\department{Linguistics} % Change this to your department if not Mathematics
+
+% For acceptance and abstract page
+
+%\committeechair{Committee Chairperson, PhD}
+%\readertwo{Committee Person 2, PhD}
+%\readerthree{Committee Person 3, PhD}
+%\readerfour{Committee Person 4, PhD}
 \committeechair{Markus Dickinson, PhD}
 \readertwo{Sandra K\"{u}bler, PhD}
 \readerthree{Damir \'{C}avar, PhD}
 \readerfour{David Crandall, PhD}
 \defensedate{November 29, 2018} % Date of PhD defense
 
-\cryear{2018}
+% For Copyright Page
+\cryear{2019} % Copyright year
+
 \begin{document}
 \maketitle
-%\committeeMember{Markus Dickinson, PhD (Chair)}
-%\committeeMember{Sandra K\"{u}bler, PhD}
-%\committeeMember{Damir \'{C}avar, PhD}
-%\committeeMember{David Crandall, PhD}
-%\defensedate{November 29, 2018}
-%data for Copyright Page
-%\cryear{2018}
-
-
-
-%\makenomenclature
- 
-%\renewcommand{\nomname}{List of Abbreviations}
- 
-%\begin{document}
-%\maketitle
-
 \acceptancepage
 
-\copyrightpage 
+% This page is optional
+\copyrightpage
 
 
-
+% This page is optional but generally included
 
 \begin{acknowledgments}
-%The acknowledgments are designed to recognize people or agencies to whom you feel grateful for any academic,
-%technical, financial, or personal aid in the preparation of your thesis or dissertation; as a matter of
-%courtesy, you would ordinarily mention the members of your committee here, as well as institutions that
-%provided funding, your typist, or anyone else who helped.
-%I just love everyone. I just want everyone to be happy and to like me.
-%\end{acknowledgments}
-%\begin{acknowledgments}
-%I want to thank all people who supported me during my work on this thesis. Especially
-%I want to thank my supervisor Christian Igel for his continuous support and advice.
-%Thanks to my colleagues Kai Br¨ugge, Oswin Krause, Jan Melchior, Tobias Glasmachers
-%and Laurenz Wiskott. It was a pleasure and a lot of fun to work with you!
-%This work has been supported by the German Federal Ministry of Education and
-%Research within the National Network Computational Neuroscience under grant number
-%01GQ0951 (Bernstein Fokus “Learning behavioral models: From human experiment
-%to technical assistance”)
 I would like to express heartfelt thanks to the members of my committee, Drs. Damir \'{C}avar, David Crandall, Sandra K\"{u}bler, and Markus Dickinson, for their guidance and patience as I worked to complete this document. 
 
-%I owe special thanks to my advisor, Dr. Markus Dickinson, for his insightful, skillful, and kind mentorship throughout my graduate-school journey. His support has been absolutely essential.
+I owe special thanks to my advisor, Dr. Markus Dickinson, for his insightful, skillful, and kind mentorship throughout my graduate-school journey. His support has been absolutely essential.
 
 I am deeply grateful to Dr. Sandra K\"{u}bler for being an indispensable source of clarity, wisdom, and answers throughout this process.
 
@@ -270,49 +120,31 @@ I would like to thank to Dr. Eric Saund for graciously responding to the questio
 
 I would also like to thank Dr. Matthew Anderson and Tim Gilmanov of Indiana University’s Center for Research in Extreme Scale Technologies (CREST) for helping me navigate the world of supercomputing.
 
-Last, but certainly not least, I am sincerely grateful to the Department of Linguistics at Indiana University for providing me funding, teaching and research opportunities, and other kinds of support
- \end{acknowledgments}
-%\printnomenclature 
-%\hfill % add blank space
-% 
-%NLP is a field of computer science, artificial intelligence, and linguistics concerned with the interactions between computers and human (natural) languages.
-% 
-%\nomenclature{NLP}{Natural Language Processing}
-% 
-%$\sigma$ is the eighteenth letter of the Greek alphabet, and carries the 's' sound. In the system of Greek numerals, it has a value of 200. 
-% 
-%\nomenclature{$\sigma$}{The total mass of angels per unit area}
-%\begin{preface}
-%\end{preface}
+Last, but certainly not least, I am sincerely grateful to the Department of Linguistics at Indiana University for providing me funding, teaching and research opportunities, and other kinds of support.
+\end{acknowledgments}
+
+% This page is optional
 
 \begin{dedication}
-%\newpage
-%\vspace*{9cm}
-%\begin{center}
 To my parents.
-%\end{center}
 \end{dedication}
 
+% This page is optional
+
+%\begin{preface}
+%This is the (optional) preface page which can be used if you wish. This page should appear after the dedication (or acknowledgements page if there is no dedication page) and before the abstract page.
+%\end{preface}
+
+% % This page is required
+
 \begin{abstract}
+%This abstract page is required. Make sure to adhere to the word count and other limits set by ProQuest. It should appear in your dissertation that is submitted to the Graduate School \emph{without} signatures.
 This dissertation presents a multilinear approach to the unsupervised learning of morphology (ULM), where \emph{multilinear} refers to a multi-tiered architecture that allows for the handling of both concatenative and nonconcatenative phenomena in a general, unified way, as in autosegmental morphology. This dissertation reformulates autosegmental theory in graph-theoretic terms. That is, it identifies the essential properties that make autosegmental theory so conducive to modeling nonconcatenative morphology and shows that these properties are equivalent to the mathematical properties of a bipartite graph. This observation makes it possible to recast the autosegmental formalism as a graphical machine-learning model, namely the Multiple Cause Mixture Model (MCMM), a bipartite graphical model related to the Restricted Boltzmann Machine. The dissertation's experimental component consists of the development and evaluation of Multimorph, an MCMM-driven ULM system. The evaluation method takes a “dual-paradigm” approach, comprising both intrinsic and extrinsic components. The latter evaluates the system as a component of a larger chain of processes. This in line with lexeme-based theories of morphology, i.e., theories that regard morphology as a distinct but mediating layer of linguistic organization situated between phonology and syntax/semantics. The results of the experiments demonstrate the soundness and promise of a multilinear approach to the unsupervised learning of morphology.
 \end{abstract}
-%\newpage
 
-%\include{iuphd-doc}
-%\chapter{Acronyms and Abbreviations}
-%\addcontentsline{toc}{chapter}{Acronyms}
-%\begin{acronym}[TDMA]
-%	\acro{BLC}{Berman Longitudinal Corpus}
-%	\acro{DM}{Distributional Morphology}
-%	\acro{LS}{Linear Sequential}
-%	\acro{NLS}{Nonlinear Sequential}
-%	\acro{LNS}{Linear Nonsequential}
-%	\acro{NLNS}{Nonlinear Nonsequential}
-%	\acro{IPA}{International Phonetic Alphabet}
-%	\acro{MCMM}{Multiple Cause Mixture Model}
-%	\acro{OCR}{Optical Character Recognition}
-%	\acro{ULM}{Unsupervised Learning of Morphology}
-%\end{acronym}
+\newpage
+
+% This page is required
 
 \tableofcontents
 
@@ -325,76 +157,201 @@ This dissertation presents a multilinear approach to the unsupervised learning o
 \include{ch-Evaluation} %
 \include{ch-Results} %
 \include{ch-Discussion} %
-%\include{cv}
 
-%%%%%%%%%%% Overview %%%%%%%%%%%%
+%\chapter{Documentation}
 %
-%I. Introduction
+%This document doubles as documentation for the \texttt{iuphd.cls} and as a sample for the output. The \texttt{iuphd} class is based on the standard \LaTeX $~$ report class, and as such you may assume that it follows the default formatting of the report class unless otherwise specified below. The changes to the report class include the following:
 %
-%II. Literature Review
-%	2.1. Linear sequential (LS)
-%	2.2. Non-linear sequential (NLS)
-%	2.3. Linear non-sequential (LNS)
-%	2.4. Non-linear non-sequential (NLNS)
+%\begin{itemize}
+%\item changes to the default settings for margins, font size (11pt), spacing (double), and pagination,
+% \item the quote, quotation, and verse environments have been changed to switch temporarily to single spacing, and
+%       remove the extra space at the top and bottom,
+% \item the enumerate and itemize environments have been changed to remove extra space between the items and at the
+%       top and bottom,
+% \item a line has been added to prevent the double spacing from affecting arrays,
+% \item both numbered and unnumbered chapter headings are now centered by default,
+% \item changes to the definitions of \textbackslash maketitle and the `abstract' environment,
+% \item the addition of commands for creating the acceptance page and copyright page,
+% \item the addition of the `acknowledgments', `preface', and `dedication' environments,
+% \item the addition of macros for specifying the department or school name, the names of
+% the committee members, the defense date, and the copyright year,
+% \item document class options for changing ``Department'' to ``School'' on the title page, and for showing
+% the abstract, preface, acknowledgments, or dedication in the table of contents.
+%\end{itemize}
 %
-%III. Graph-Theoretic Foundation
+%\newpage
 %
-%IV. The Multiple Cause Mixture Model
-%	4.1. Architecture
-%	4.2. Mixing Function
-%	4.3. Learning
+%The latest update (Summer 2018) makes the following changes from the last update (Fall 2013):
+%\begin{itemize}
+%\item Makes the left and right margins a uniform width of 1" on all pages.
+%\item Headings have been changed so that they are no longer forced to be uppercase and so that they match the font size requirements of the Graduate School.
+%\item Spacing of chapter headings has been changed so that the chapter headings appear at the top of the page.
+%\item Lines have been added for the signatures on the Acceptance and Abstract pages.
+%\item The Dedication page has been changed to remove the title and to center the text both horizontally and vertically.
+%\end{itemize}
 %
-%V. Evaluation
-%	5.1. Targets of learning
-%	5.2. Input Data
-%		Orthographic Words
-%		Transcribed Words
-%	5.3. Experimental Variables
-%		Data Representation
-%		^Mixing Function.
-%		^Objective Function.
-%		Features.
-%			Positional
-%			Precedence
-%			Bigrams
-%	5.4. Evaluation paradigms
-%		Intrinsic evaluation
-%		Extrinsic evaluation
-%	5.5. Results
-%	
-%VI. Discussion
 %
-%VII. Conclusion
+%The appropriate commands for each section are detailed in the section that follows. You can comment out any section you do not want by using a $\%$.
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\bibliographystyle{plain}
-%\bibliographystyle{plainnat}
-%\begin{appendices}
-%\chapter{Appendix A: Derivatives and Update Rules}
-%\section{Overview}
+%\section{Current Section Standards}
+%The following document \emph{should} adhere to the current standards of the Graduate School (last updated in Summer 2018). The current order of the sections must be
 %
-%\section{Noisy-Or (Write Black) Mixing Function} 
+%\begin{itemize}
 %
-%\section{Write-White-and-Black Mixing Function}
+%\item Title Page
+%\item Acknowledgements (optional)
+%\item Dedication (optional)
+%\item Preface (optional)
+%\item Abstract
+%\item Dissertation Body
+%\item Bibliography
+%\item Appendices, Indexes, List of Figures/Tables (optional)
+%\item CV
+%\end{itemize}
 %
-%\section{Sigmoidal Weighted Sum Activation Function}
+%Note: Some styles guides prefer appendices to come before the bibliography. Check your field's standards on this.
 %
-%\section{Sum-of-Squares Error Function}
 %
-%I may include some pseudocode or other technical detail in an appendix.
-%\section{Updates to the C matrix}
+%\subsection{Table of Contents}
+%
+%Sections coming before the dissertation body appear in the table of contents without a chapter number and are numbered with Roman numerals. There does not seem to be a standard about whether the abstract, preface, acknowledgments, and dedication are listed in the table of contents (TOC) or not.  As such, an option has been provided for including or excluding each one individually.  The syntax for these options follows the pattern `showX' if X is to be listed in the TOC, and 'hideX' if X is to be omitted from the TOC, where X can be any of the four items listed above.  In all cases, the default is for these \emph{not} to have entries in the table of contents.  So for example, to include both the abstract and the preface in the table of contents, but not the dedication or acknowledgments, you would use the code:
+%
+%\medskip
+%
+%\textbackslash documentclass[showabstract,showpreface]\{iuphd\}
+%\medskip
+%
+%These commands are in use for this document but can be changed as necessary. Depending on how you include the sections that come before the dissertation body, you might have a numbering issue. This can be remedied by adding the line \textbackslash{setcounter[page]{0}} immediately before the start of the first chapter of the dissertation body.
+%
+%\subsubsection{Including Sections in Bibliography}
+%\noindent To include a line for the bibliography in the table of contents, the command
+%
+%\medskip
+%
+%\textbackslash addcontentsline\{toc\}\{chapter\}\{Bibliography\}
+%\medskip
+%
+%\noindent should be placed directly above the \textbackslash bibliography and \textbackslash bibliographystyle commands.  It may be necessary to use \textbackslash clearpage above this command to get the page number displayed in the contents to be correct.  However, if you are using \textbackslash include for each chapter, then \textbackslash clearpage has technically already been used in this case, and so it is not necessary to use it again. Similar commands will work for including any unnumbered heading in the table of contents, with careful attention to the effects of \textbackslash clearpage.
+%
+%\subsection{CV}
+%
+%A CV is also required following the bibliography, however, to maintain maximum flexibility no special tools have been provided for formatting a CV.  Various packages are available that do this, although custom formatting is best. As such, only a line for including the CV after the bibliography is included. Please note that the Graduate School currently requires the CV to have the same font as the rest of the dissertation. 
+%
+%\section{Commands}
+%
+%Various commands have been defined for the data that will show up on the title page, acceptance page, and copyright page.  These include:
+%\begin{itemize}
+% \item \textbackslash title - for the title of the dissertation
+% \item \textbackslash author - for the name of the author of the dissertation
+% \item \textbackslash date - for the \emph{completion date} of the dissertation
+% \item \textbackslash department - this is optional.  The default value is ``Mathematics,'' but if you are in a different department, this
+%        command can be used to change its value to the name of whatever department (or school) you are in.  
+% \item \textbackslash committeechair, \textbackslash readertwo, \textbackslash readerthree, \textbackslash readerfour - for the names of the
+%                      dissertation committee members.
+% \item \textbackslash defensedate - for the \emph{defense date} of the dissertation (which may not match the completion date).
+% \item \textbackslash cryear - for the copyright year.
+%\end{itemize}
+%
+%Additionally the commands \textbackslash acceptancepage and \textbackslash copyrightpage have been defined to generate the acceptance page and copyright page, respectively.  The copyright page is not required, and is commented out in this sample document.  Two document class options have been provided for switching the text on the title page between ``Department'' and ``School.''  These options are given the obvious names `department' and `school'. The default option is `department', so it only needs to be changed if you are in a school rather than a department.
+%
+%\chapter{Suggestions for additional formatting}
+%
+%\section{The \textbackslash include feature}
+%
+%For longer documents, it is often easier to manage if it is broken into multiple files.  This can be done by using the \textbackslash include\{filename\} or \textbackslash input\{filename\} commands.  You can think of \textbackslash input\{filename\} as an alias for all of the text contained in filename.tex: the text contained in that file,
+%simply gets inserted at the exact spot where the command \textbackslash input is used.  This means that filename.tex should not have \textbackslash begin\{document\}, \textbackslash end\{document\}, or a preamble. On the other hand, \textbackslash include\{filename\} has the additional feature of adding \textbackslash clearpage both before and after the text being inserted. As an example
+%
+%\textbackslash chapter\{Introduction\}
+%
+%\textbackslash include\{chap1\}
+%\medskip
+%
+%gives the title of chapter 1 as Introduction and the body of the chapter is in the file \texttt{chap1.tex}.
+%
+%\section{Useful Packages}
+%
+%Many \LaTeX \ packages are already available for additional customization of the formatting which is otherwise built in.
+%Some of these are listed below.  To use them, simply declare them with \textbackslash usepackage in the preamble
+%and refer to the documentation files for them, which are easily available online.
+%
+%\begin{itemize}
+% \item titlesec - for custom formatting of part, chapter, and section headings.
+% \item nomencl - for lists of notation (a tweak of makeindex).
+% \item prettyref - for custom formatting of references (e.g. referencing equations as (1), (2), etc., instead of the default
+%       1, 2, etc.).  The ams packages also have a similar feature but it is much more limited.
+% \item natbib, custom-bib, or biblatex - offer additional flexibility for bibliography formatting beyond the standard used by
+%       the mathematics community.
+% \item setspace - contains features for resetting the global line spacing, as well as environments that can be used to change
+%       spacing locally, which are compatible with the quote, quotation, and verse environments.
+% \item quoting - provides a more flexible quotation environment, with options for adjusting the margins manually.  This package
+%     should be used with setspace, to ensure single spacing of the quotations.
+% \item enumitem or paralist - provide several more flexible list environments.
+% \item titling - for custom changes to maketitle.
+% \item geometry - for customizing the page layout.
+%\end{itemize}
+%
+%%add features for block quotes, underlined titles, and different departments.
+%
+%The last two should not be necessary unless the standards at IU change.  However, if that happens, it would really be better to
+%rewrite the iuphd document class.
+%
+%\section{Quote samples}
+%The quote environment:
+%\begin{quote}
+%``God does not play dice with the universe.'' - Albert Einstein
+%\end{quote}
+%The quotation environment:
+%\begin{quotation}
+% ``A GREAT discovery solves a great problem, but there is a grain of discovery in the solution of any problem.
+% Your problem may be modest, but if it challenges your curiosity and brings into play your inventive faculties,
+% and if you solve it by your own means, you may experience the tension and enjoy the triumph of discovery.''
 % 
-%\chapter{Appendix B: Pseudocode}
-%I may include some pseudocode or other technical detail in an appendix.
+% - George P\'olya
+%\end{quotation}
+%The verse environment:
+%\begin{verse}
+%Im September ist alles aus Gold:\\ 
+%die Sonne, die durch das Blau hinrollt,\\
+%das Stoppelfeld,\\
+%die Sonnenblume, schl\"afrig am Zaun,\\
+%das Kreuz auf der Kirche,\\
+%der Apfel im Baum.\\
+%Ob er h\"alt,\\
+%ob er f\"allt? \\
+%Da wirft ihn geschwind\\
+%der Wind\\
+%in die goldene Welt.
 %
-%\end{appendices}
+%- Georg Britting
+%\end{verse}
 
+\addcontentsline{toc}{chapter}{Bibliography}
+
+%\bibliographystyle{alpha}
+\bibliographystyle{unsrtnat}
+%\bibliographystyle{thesnumb}
 \bibliography{dissertation}
+%\bibliographystyle{alpha}
+\newpage
 
-%\include{CV}
+% \appendix command is necessary to change chapter numbering.
+% Appendices are optional
+
+%\appendix
+%\chapter{Troubleshooting}
+%
+%If you are getting an error with the TOC, you might have compiled a previous *.toc file with a different latex class (e.g. the amsbook class). To remedy this, delete the current *.toc file and recompile.
+%
+%\bigskip
+%
+%Did you remember to use \textbackslash addcontentsline and or
+%\textbackslash clearpage commands where necessary?
+
+
+
+
+% Adds a line for your CV without a page number
 \include{cv}
 \addtocontents{toc}{%
-\protect\contentsline{chapter}{Curriculum Vitae}{}}
-\end{document}          
-
+  \protect\contentsline{chapter}{Curriculum Vitae}{}}
+\end{document}

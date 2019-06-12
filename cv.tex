@@ -1,4 +1,6 @@
-
+%\addtocontents{toc}{\protect\contentsline{chapter}{Curriculum Vitae}{}}
+%\addcontentsline{toc}{chapter}{Curriculum Vitae}
+%\chapter{Curriculum Vitae}
 %\documentclass[12pt]{article}
 %\usepackage{setspace}% http://ctan.org/pkg/setspace
 %\usepackage{fancyhdr}
@@ -49,6 +51,7 @@
 %\setlength{\voffset}{0in}
 %%\newlength{\outerbordwidth}
 %%\pagestyle{plain}
+%\nopagenumbers
 %\pagestyle{fancy}
 %\lhead{}
 %\chead{}
@@ -97,12 +100,12 @@
 %    \smallskip\par\hangpara{1em}{1}\bibentry{#1}\smallskip\par %{indent}{afterline}
 %}
 %%
-\newenvironment{myindentpar}[1]%
- {\begin{list}{}%
-         {\setlength{\leftmargin}{#1}}%
-         \item[]%
- }
-{\end{list}}
+%\newenvironment{myindentpar}[1]%
+% {\begin{list}{}%
+%         {\setlength{\leftmargin}{#1}}%
+%         \item[]%
+% }
+%{\end{list}}
 % 
 %\newcommand{\hangbib}[1]{\begin{verse} \bibentry{#1} \end{verse}}
 %\nobibliography{my-cv-bib}
@@ -122,7 +125,7 @@
 %\begin{document}
 %\thispagestyle{empty}
 \begin{singlespace}
-\centerline{\textbf{\Large Anthony J. Meyer}}
+\centerline{\textbf{\LARGE Anthony J. Meyer}}
 %\begin{center}
 %\textbf{\Large Anthony J. Meyer} \\
 %\vbox{\hrule width 6in height 1pt}
@@ -139,7 +142,7 @@
 
 
 %\centerline{\textbf{\large Highly Versatile Computational Linguist}}
-\vspace{16pt}
+\vspace{18pt}
 %\textbf{Knowledgeable linguist} Worked on Prof. Cavar's   Regarded as an concerning matters of general linguistics and linguistic theory / Regarded as one of the group's primary linguistic experts.
 %
 %\textbf{Proficient computer programmer}
@@ -202,7 +205,7 @@
 %\newgeometry{textwidth=6.5in,textheight=9in}
 %\begin{singlespace}
 %\centerline{\textbf{EDUCATION}} \\
-\centerline{\large\textbf{Education}}
+\centerline{\Large\textbf{Education}}
 %\vspace{11pt}
 \begin{description}
 \item \textbf{PhD, Computational Linguistics}\hfill June 2019
@@ -237,18 +240,21 @@
 \end{description}
 \end{description}
 %\end{singlespace}
-\vspace{6pt}
+\vspace{12pt}
 %\begin{singlespace}
-\centerline{\textbf{\large Research Interests}}
+\centerline{\textbf{\Large Research Interests}}
 %\textbf{Research}
 %\vspace{8pt}
 %\begin{itemize}[label=\textbullet, leftmargin=*, nolistsep]
 \begin{itemize}[label=\textbullet, leftmargin=*, itemsep=.01pt]
-\item Applying machine learning to Natural Language Processing (NLP)
+\item Machine-learning approaches to Natural Language Processing (NLP)
 \item Computational morphology, particularly the unsupervised learning of morphology
+\item Non-morphemic approaches to morphology
+\item Non-concatenative (e.g., root-and-pattern) morphological systems
 \item Hebrew and Semitic linguistics
-\item Nonconcatenative (e.g., root-and-pattern) morphological systems
-%\item Intelligent Computer Aided Language Learning (ICALL) and the development ICALL-based educational applications
+\item Knowledge Graphs
+\item Harnessing parallel-computing to speed up complex NLP applications
+\item Intelligent Computer Aided Language Learning (ICALL) %and the development ICALL-based educational applications
 \end{itemize}
 %\end{singlespace}
 %Unsupervised learning of nonconcatenative morphology
@@ -257,9 +263,9 @@
 %\noindent My research focuses on the unsupervised learning of \textit{nonconcatenative} morphology. I am developing an approach that applies the Multiple Cause Mixture Model (MCMM), a variant of the classical autoencoder network, to the problem of identifying nonconcatenative morphological units.
 %\end{mdframed}
 %%\end{spacing}
-\vspace{16pt}
+\vspace{18pt}
 %\begin{singlespace}
-\centerline{\large \textbf{Skills}}
+\centerline{\Large \textbf{Skills}}
 %\textbf{Skills}
 %\vspace{8pt}
 %\textit{Computing}:
@@ -277,18 +283,19 @@ Python, Cython, C, C++, CUDA, OpenCL, PyCUDA, PyOpenCL, OpenMP, Java, Matlab, FO
 %\LaTeX, Wavesurfer \\
 %\vspace{6pt}
 %\hangindent=1em \textit{Analytical Skills}: 
-\item[Analytical Skills:] Algorithms analysis; linguistic analysis at the levels of pragmatics, semantics, syntax, morphology, phonology, and phonetics
+\item[Analytical Skills:] Analysis of Algorithms; linguistic analysis at the levels of pragmatics, semantics, syntax, morphology, phonology, and phonetics
 %\vspace{6pt}
 %\hangindent=1em 
-\item[Other Skills:] Teaching at the university level; public speaking; graphic design and visual communication
+\item[Other Skills:] %Teaching at the university level; public speaking; graphic design and visual communication
+Visual art (e.g., painting and drawing), design (including graphic design), draughtsmanship, and visual communication; creative writing
 \end{description}
 %\end{singlespace}
 %\newpage
-\vspace{16pt}
+\vspace{20pt}
 %\begin{spacing}{1.3}
 %\begin{singlespace}
-\centerline{\textbf{\large Research Experience}}
-\vspace{10pt}
+\centerline{\textbf{\Large Research Experience}}
+\vspace{12pt}
 \noindent\textbf{Research Assistant} \hfill Spring 2013 \\
 \hspace{2ex} Experigen: A platform for creating linguistic experiments \\
 \hspace{2ex} \url{https://github.com/tlozoot/experigen} \\
@@ -316,7 +323,7 @@ Supervisors: Prof. Markus Dickinson, Prof. Sandra K\"ubler, and Ayelet Weiss
 %%\end{singlespace}
 \end{itemize}
 %\end{spacing}
-%\vspace{8pt}
+\vspace{8pt}
 %%\begin{singlespace}
 \noindent\textbf{Intern and Research Assistant} \hfill Fall 2016--Spring 2018 \\
 Free Linguistic Environment (FLE) Project \\
@@ -341,15 +348,18 @@ Supervisor: Prof. Damir \'Cavar
 \end{itemize}
 %\end{singlespace
 %\end{singlespace}
-\vspace{18pt}
-\centerline{\textbf{\large Teaching Experience}}
+%\vspace{20pt}
+\newpage
+\centerline{\textbf{\Large Teaching Experience}}
 \vspace{6pt}
 \noindent\textbf{Associate Instructor} \hfill 2009-2010; 2011-2012 \\
-\noindent{D}epartment of Linguistics, Indiana University \\
-\vspace{-3pt}
-\noindent Planned and taught discussion-section lessons. Provided students with individualized assistance through office hours, appointments, and email. Graded students' work and maintained electronic records of grades. \\
+\noindent{D}epartment of Linguistics, Indiana University
+
+\vspace{6pt}
+\noindent{Planned} and taught discussion-section lessons. Provided students with individualized assistance through office hours, appointments, and email. Graded students' work and maintained electronic records of grades.
+\vspace{3pt}
 \begin{itemize} \itemsep2pt
-\item LING-L103: \textit{Introduction to the Study of Language} \hfill Spr 2010; 2011-2012 \\
+\item{LING-L103:} \textit{Introduction to the Study of Language} \hfill Spr 2010; 2011-2012 \\
 Supervisor: Dr. Richard Janda \\
 %\vspace{2pt}
 \noindent Facilitated visual learning through power-point presentations and video clips. Designed and distributed worksheets to encourage active learning and classroom participation.
@@ -360,9 +370,9 @@ Supervisor: Prof. Kenneth de Jong \\
 Introduced students to phonological, morphological, and syntactic analysis. Focused on the rationale of the analytical process to help students sharpen their problem-solving skills.
 \end{itemize}
 %%\end{singlespace}
-\vspace{13pt}
+\vspace{18pt}
 %\centerline{\textbf{OTHER EXPERIENCE}}
-\centerline{\textbf{\large Other Experience}}
+\centerline{\textbf{\Large Other Experience}}
 %\vspace{8pt}
 %\textbf{Intern} \hfill Fall 2016 \\
 %The LINGUIST List, Indiana University \\
@@ -474,12 +484,12 @@ Department of Linguistics, Indiana University
 
 %\nobibliography{my-cv-bib}
 %\bibliographystyle{styles/aclnat}
-\vspace{16pt}
+\vspace{20pt}
 %\centerline{\textbf{PUBLICATIONS}}
-\centerline{\large \textbf{Publications}}
-\vspace{6pt} 
+\centerline{\Large \textbf{Publications}}
+\vspace{10pt} 
 %\item{itemize} \itemsep0pt
-\centerline{\textbf{Conference Proceedings}}
+\centerline{\large \textbf{Conference Proceedings}}
 %\vspace{-4pt}
 %\begin{myindentpar}{1em}
 \begin{description}
@@ -498,14 +508,14 @@ International Workshop on Recent Advances in Natural Language Processing (RANLP 
 pages 25--32. Hissar, Bulgaria.
 \end{description}
 \vspace{-3pt}
-\centerline{\textbf{Poster}} %\end{center}
+\centerline{\large \textbf{Poster}} %\end{center}
 \begin{description}
 \item Markus Dickinson, Sandra K\"{u}bler, Ayelet Weiss, Anthony Meyer, Chris Riley, and Amber Smith.
 2011. Hebrew Online Prociency Evaluation (HOPE). \emph{Workshop on the Automatic Analysis of
 Learner Language}. Victoria, BC, May 18, 2011.
 \end{description}
 %\vspace{-1pt}
-\centerline{\textbf{Presentations}}
+\centerline{\large\textbf{Presentations}}
 \begin{description}
 \item Anthony Meyer and Markus Dickinson. 2016b. \emph{A Multilinear Approach to the
 Unsupervised Learning of Morphology.} CLingDing, the Computational Linguistics
@@ -560,8 +570,8 @@ http://cl.indiana.edu/wiki
 %\item \bibentry{poster:2011}
 %\end{itemize}
 
-\centerline{\textbf{\large Memberships}}
-\vspace{7pt}
+\centerline{\textbf{\Large Memberships}}
+\vspace{8pt}
 \centerline{Phi Beta Kappa Society}
 \centerline{Golden Key International Honour Society}
 \centerline{Bloomington Watercolor Society}

@@ -725,10 +725,10 @@ which the set of \emph{active} clusters, that is, the clusters with at least one
 Each table  is associated with a $K$ cutoff value, either 500 or 1000, and each divided into three subtables, 
 one for each of the three types of input data representation (DR).
 
-\begin{table}[!ht]
+\begin{table}[!h]
 \centering
 \subtable[Transcriptions with Stress Marking (TS)\label{subtab:intr-TS-500}]{
-\footnotesize
+\small
 \centering
 %\caption{ Transcriptions with Stress Marking (TS)}
 \setlength{\extrarowheight}{3pt}
@@ -756,7 +756,8 @@ $s$ & $\delta$ & Purity &  BP & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 %\frametitle{Intrinsic Evaluation, $K = 500$}
 %\begin{table}
 \subtable[Transcriptions, No Stress Marking (TR)\label{subtab:intr-TR-500}]{
-\footnotesize
+%\footnotesize
+\small
 \centering
 \setlength{\extrarowheight}{3pt}
 \begin{tabular}{cc|ccccrr}
@@ -783,7 +784,8 @@ $s$ & $\delta$ & Purity &  BP & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 %\frametitle{Intrinsic Evaluation, $K=500$}
 %\begin{table}
 \subtable[Orthographic (O), $K=500$]{
-\footnotesize
+%\footnotesize
+\small
 \centering
 \setlength{\extrarowheight}{3pt}
 \begin{tabular}{cc|ccccrr}
@@ -804,14 +806,17 @@ $s$ & $\delta$ & Purity &  BP & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 \end{tabular}
 \label{subtab:intr-O-500}
 }
-\caption{Intrinsic evaluation results at $K = 500$. In the table headers, $s$ and $\delta$ are the parameters for positional and precedence features, respectively. \textit{BP} and \textit{BR} are BCubed Precision and BCubed Recall, respectively, and \textit{Cov.} (coverage) is the number of words that are active members of at least one cluster.}
+\caption{
+Intrinsic evaluation results at $K = 500$. 
+%In the table headers, $s$ and $\delta$ are the parameters for positional and precedence features, respectively. \textit{BP} and \textit{BR} are BCubed Precision and BCubed Recall, respectively, and \textit{Cov.} (coverage) is the number of words that are active members of at least one cluster.
+}
 \label{tab:intr-500}
 \end{table}
-\begin{table}[!ht]
+\begin{table}[!h]
 \centering
 \subtable[Transcriptions with Stress Markings (TS)\label{subtab:intr-TS-1000}]{ %(TS), $K=1000$ 
 %\label{subtab:intr-TS-1000}]{
-\footnotesize
+\small
 \setlength{\extrarowheight}{4pt}
 \begin{tabular}{cc|ccccrr}
 $s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
@@ -835,7 +840,7 @@ $s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 %\frametitle{Intrinsic Evaluation, $K=1000$}
 %\begin{table}
 \subtable[Transcriptions, No Stress Marking (TR)\label{subtab:intr-TR-1000}]{
-\footnotesize
+\small
 \centering
 \setlength{\extrarowheight}{4pt}
 \begin{tabular}{cc|ccccrr}
@@ -857,7 +862,7 @@ $s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 }
 \subtable[Orthographic (O)]{
 \centering
-\footnotesize
+\small
 \setlength{\extrarowheight}{4pt}
 \begin{tabular}{cc|ccccrr}
 $s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
@@ -878,7 +883,9 @@ $s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 \label{subtab:intr-O-1000}
 }
 %\end{table}
-\caption{Intrinsic evaluation results at $K = 1000$. The headers $s$ and $\delta$ are the parameters for positional and precedence features, respectively. \textit{BP} and \textit{BR} stand for BCubed Precision and Recall, and \textit{Cov.} (coverage) is the number of words that are active members of at least one cluster.}
+\caption{Intrinsic evaluation results at $K = 1000$. 
+%The headers $s$ and $\delta$ are the parameters for positional and precedence features, respectively. \textit{BP} and \textit{BR} stand for BCubed Precision and Recall, and \textit{Cov.} (coverage) is the number of words that are active members of at least one cluster.
+}
 \label{tab:intr-1000}
 \end{table}
 
@@ -1303,7 +1310,8 @@ the control results at this early stage in its development to indicate promise, 
 \setlength{\extrarowheight}{3pt}
 %\caption{ Transcriptions with Stress Marking (TS)}
 \subtable[Transcriptions with stress (TS), $K = 1000$\label{subtab:extr-1000-ts}]{
-\footnotesize
+%\footnotesize
+\small
 \centering
 \begin{tabular}{cc|ccc|ccc}
 \multicolumn{2}{c}{} & \multicolumn{3}{c}{Four-stage process} & \multicolumn{3}{c}{Control} \\
@@ -1342,7 +1350,8 @@ $s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
 \setlength{\extrarowheight}{3pt}
 %\caption{ Transcriptions, No Stress Marking (TR)}
 \subtable[Transcriptions with stress (TR), $K = 1000$\label{subtab:extr-1000-tr}]{
-\footnotesize
+%\footnotesize
+\small
 \centering
 \begin{tabular}{cc|ccc|ccc}
 \multicolumn{2}{c}{} & \multicolumn{3}{c}{Four-stage process} & \multicolumn{3}{c}{Control} \\
@@ -1366,7 +1375,8 @@ $s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
 \setlength{\extrarowheight}{3pt}
 %\caption{ Orthographic (O)}
 \subtable[Orthographic (O), $K = 1000$\label{subtab:extr-1000-o}]{
-\footnotesize
+%\footnotesize
+\small
 \centering
 \begin{tabular}{cc|ccc|ccc}
 \multicolumn{2}{c}{} & \multicolumn{3}{c}{Four-stage process} & \multicolumn{3}{c}{Control} \\
