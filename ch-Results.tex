@@ -725,7 +725,7 @@ which the set of \emph{active} clusters, that is, the clusters with at least one
 Each table  is associated with a $K$ cutoff value, either 500 or 1000, and each divided into three subtables, 
 one for each of the three types of input data representation (DR).
 
-\begin{table}[!h]
+\begin{table}[!ht]
 \centering
 \subtable[Transcriptions with Stress Marking (TS)\label{subtab:intr-TS-500}]{
 \small
@@ -778,11 +778,20 @@ $s$ & $\delta$ & Purity &  BP & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 \end{tabular}
 %\end{table} 
 }\\
-%\subtable[Orthographic data (O), $K=500$ \label{subtab:intr-O-500}]{
-%\setlength{\extrarowheight}{6pt}
-%\frame{
-%\frametitle{Intrinsic Evaluation, $K=500$}
+%\caption{
+%Intrinsic evaluation results at $K = 500$. 
+%In the table headers, $s$ and $\delta$ are the parameters for positional and precedence features, respectively. \textit{BP} and \textit{BR} are BCubed Precision and BCubed Recall, respectively, and \textit{Cov.} (coverage) is the number of words that are active members of at least one cluster.
+%\label{tab:intr-500}
+%\end{table}
+%
+%\clearpage
+%%\subtable[Orthographic data (O), $K=500$ \label{subtab:intr-O-500}]{
+%%\setlength{\extrarowheight}{6pt}
+%%\frame{
+%%\frametitle{Intrinsic Evaluation, $K=500$}
+%%\begin{table}
 %\begin{table}
+%\ContinuedFloat
 \subtable[Orthographic (O), $K=500$]{
 %\footnotesize
 \small
@@ -812,7 +821,8 @@ Intrinsic evaluation results at $K = 500$.
 }
 \label{tab:intr-500}
 \end{table}
-\begin{table}[!h]
+
+\begin{table}[!ht]
 \centering
 \subtable[Transcriptions with Stress Markings (TS)\label{subtab:intr-TS-1000}]{ %(TS), $K=1000$ 
 %\label{subtab:intr-TS-1000}]{
@@ -1409,6 +1419,7 @@ According to the intrinsic results, the O models performed at a level on par wit
 %good relative to those of the transcriptional models (TS and TR). 
 %proved to be considerably better. 
 %extrinsic results (see section~\ref{sec:extr-results}). 
-The relative success of the orthographic models in the extrinsic evaluation reinforces the idea that there is something about the orthographic representation that is inherently and unexpectedly beneficial---that more and/or better information is present in the orthographic representation than what seems immediately apparent. The quantitative results, like the qualitative results, suggest that there are limits to the usefulness of positional features. At the same time, however, the setting $s=1$ (the `affix length' parameter for positional features) tended to lead to substantially results better than $s=0$.
+The relative success of the orthographic models in the extrinsic evaluation reinforces the idea that there is something about the orthographic representation that is inherently and unexpectedly beneficial---that more and/or better information is present in the orthographic representation than what seems immediately apparent. The quantitative results, like the qualitative results, suggest that there are limits to the usefulness of positional features. At the same time, how\input{dissertation.toc}
+ever, the setting $s=1$ (the `affix length' parameter for positional features) tended to lead to substantially results better than $s=0$.
 
 In the next chapter, we will consider the results from the perspective of the thesis as a whole.

@@ -1212,12 +1212,12 @@ give rise to an alternation between two states, hence the name \textsc{Alternati
 \begin{algorithm}[th]
 \KwData{\textbf{M}, \textbf{C}, \textbf{X}, \textbf{R}}
 \KwResult{Optimized \textbf{M} and \textbf{C} matrices}
- Evaluate Error: $E = \frac{1}{2} \big(\frac{1}{I\times J}\big) \sum_i \sum_j (r_{i,j} - x_{i,j})^2$\;\label{line:init-E} 
+ Evaluate Error: $E = \frac{1}{2} \big(\frac{1}{I\times J}\big) \sum_i \sum_j (r_{i,j} - x_{i,j})^2$\;\label{line:init-E-alt} 
  \While{\textbf{True}}{   \label{line:init-alternation-loop}
 Save current Error: $E_{\text{old}} = E$\;
 \textsc{Optimize-M}(\textbf{M}, \textbf{C}, \textbf{X}, \textbf{R})\;
 \textsc{Optimize-C}(\textbf{C}, \textbf{M}, \textbf{X}, \textbf{R})\;
-Evaluate Error: $E = \frac{1}{2} \big( \frac{1}{I\times J} \big) \sum_i \sum_j (r_{i,j} - x_{i,j})^2$\;\label{line:update-E}
+Evaluate Error: $E = \frac{1}{2} \big( \frac{1}{I\times J} \big) \sum_i \sum_j (r_{i,j} - x_{i,j})^2$\;\label{line:update-E-alt}
       \If{$E_{\text{old}} - E < \epsilon$}{
    Stop\;
    }
