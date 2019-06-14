@@ -74,14 +74,16 @@ This chapter now presents the results of the different methods composing this mu
 
 As a final preliminary matter for this chapter, recall from 
 section~\ref{sec:mcmm-learning}
-that Multimorph begins its learning process with a single cluster ($K = 1$) 
-and adds a cluster (by splitting the worst cluster) whenever the 
+that Multimorph's MCMM begins its learning process with a single cluster, so that initially $K = 1$.
+Then, whenever the  
 global reconstruction error can no longer be decreased 
-significantly with the current
-array of clusters. In principle, this incremental addition 
+significantly, it adds a cluster (by splitting the worst cluster) and thus initiates a new cycle of error minimization.
+%i.e., when a plateau is reached.  with the current
+%array of clusters. 
+In principle, this incremental addition 
 of clusters
-should continue until the global reconstruction falls below a predesignated 
-threshold $\epsilon$ close to $0$.
+should continue until the global reconstruction falls below a
+threshold $\epsilon$, a predisignated number close to $0$.
 % (e.g., 0.0001).  
 %In this study, $\epsilon$ was
 % set at 

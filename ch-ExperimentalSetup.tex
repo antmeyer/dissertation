@@ -2,8 +2,8 @@
 \label{ch:experi}
 \section{Introduction}
 %This chapter will describe the experimental setup,
-This chapter will be concerned the unsupervised morphological learning system Multimorph. Chapter~\ref{ch:MCMM} described the Multiple Cause Mixture Model (MCMM), a general unsupervised learning model (or algorithm). An MCMM serves as the core learning algorithm of Multimorph. The present chapter
- describe a particular morphological learning system that uses an MCMM as its core learning algorithm MCthe 
+This chapter will be concerned with the unsupervised morphological learning system Multimorph. Chapter~\ref{ch:MCMM} described the Multiple Cause Mixture Model (MCMM), a general unsupervised learning model (or algorithm). An MCMM serves as the core learning algorithm of Multimorph. The present chapter
+% describes a particular morphological learning system that uses an MCMM as its core learning algorithm MCthe 
  describes the steps necessary to transform an MCMM into Multimorph,
 % up into Mu   fully realized morphological learning system 
 %chapter~\ref{ch:MCMM}. 
@@ -317,7 +317,7 @@ the forms for `(he) knew' and `her hand' in  table~\ref{tab:yada}
 have identical pronunciations in Modern Hebrew, as indicated 
 by their identical transcriptions in the International Phonetic Alphabet (IPA)
 in \ref{tab:yada}. And yet they are different. 
-The former is a 3ms past-tense verb of the 
+The former is a 3rd-masculine-singular past-tense verb of the 
 \emph{qal} binyan. Its root consists of the \emph{three}
 consonants \textit{\textipa{y.d.Q}}, which one must 
 know in order 
@@ -346,7 +346,7 @@ obscures them. For example, the BLC's transcriptions
 represent the spirantization of the certain oral obstruents; 
 in particular, /b/ $\to$ v, /p/ $\to$ f, and /k/ $\to$ \textsubdot{k} 
 in the context
-Vowel \_\_. Hence, the \textit{b} in the root \textit{k-t-b} 
+Vowel \_\_. Hence, the \textit{b} in the root \textit{k.t.b} 
 (`write') often surfaces as [v], as in, e.g., \textipa{\textit{katavti}} 
 `I wrote', and 
 \textipa{\textit{yi{\.*k}t\'ov}} `he will write', which exhibits 
@@ -450,8 +450,8 @@ segmentation, even though the segmentations may be identical.
 \paragraph{Prefixal clitics.} In Hebrew, many functional words are 
 \textit{prefixal clitics}; that is, they attach to content 
 words as prefixes. They include the definite article \textit{ha-}, the prepositions 
-\textit{le-} `to,' \textit{be-} `in,' \textit{ke-} `like/as,' and \textit{me-} 
-`from,' the  complementizer/relativizer \textit{\v{s}e-} `that/which,' and the 
+\textit{le-} (`to, for') \textit{be-} (`in'), \textit{ke-} (`like/as'), and \textit{me-} 
+(`from'), the  complementizer/relativizer \textit{\v{s}e-} (`that/which'), and the 
 conjunction \textit{we-} `and.' For example,  in
 \textsf{wehay\'eled} (`and the boy'), the prefixes \textit{we-} and \textit{ha-} 
 are attached as clitics to \textit{y\'eled}, 
@@ -684,7 +684,7 @@ word the preceding the ``\textsf{[:}'').
 \end{exe} 
 
 \paragraph{Prefixal clitics.}
-Whenever a word in the main tier is preceded by one or more prefixal clitic, we concatenate them one to another and attach the whole sequence to the base word. We discard all ``\texttt{\#}'' signs.
+Whenever a word in the main tier was preceded by one or more prefixal clitic, the entire sequence of clitics were concatenated together, and the resulting string was then attached  to the base word. All ``\texttt{\#}'' symbols were discarded, as in the following:
 \begin{exe}\label{ex:preclitics}
 	\ex
 	\textsf{we\#\, \v{s}e\# me\textipa{Q}arbev\'im} $\quad\to\quad$ \textbf{\textit{\textsf{we\v{s}e}}}\textsf{me\textipa{Q}arbev\'im}\\
@@ -716,11 +716,11 @@ morphologically complex.
 	\end{tabbing}
 \end{exe}
 
-The adverb \textit{bediy\'uq} `precisely, exactly'
-is composed of the prefixal preposition \textit{be-} `in' and the 
-noun \textit{diy\'uk} `exactitude, accuracy', which is itself composed of the 
+The adverb \textit{bediy\'uq} (`precisely, exactly')
+is composed of the prefixal preposition \textit{be-} (`in') and the 
+noun \textit{diy\'uk} (`exactitude, accuracy'), which is itself composed of the 
 root $\surd$d.y.q and the nominal vowel pattern C\textbf{i}C\textbf{\'u}C 
-a pattern that implies a relationship to a verb of the \textit{Piel} binyan.  
+a pattern that implies a relationship to a verb of the \textit{Pi`el} binyan.  
 The adverb \textit{\textsf{me\textglotstop{a}xoran\a'{i}t}} in 
 (\ref{ex:adv:dscr}) is even more complex. It has two nominalizing
 derivation affixes \textit{\textsf{-an}} and \textit{\textsf{-it}} in addition 
@@ -783,9 +783,9 @@ clitic. The definite-article clitic attaches not to the compound's
 morphosyntactic head, but rather to its \emph{phonological} head, 
 i.e., the final component noun, which bears the compound's primary stress.}
 
-For our purposes, we extract only the first noun of a compound noun, 
-discarding the others. 
-There are two reasons for doing so:
+For our purposes, we needed to extract only the first noun of a compound noun, 
+discarding all others.
+There are two reasons for doing this:
 The first is word length; 
 i.e., compound nouns can, in principle, be indefinitely long and comprise
 indefinitely many component nouns.
@@ -836,7 +836,7 @@ the input datasets.
 
 
 \section{Experimental Variables}\label{sec:expvars}
-The experimental component of this dissertation consists of two major axes of inquiry. 
+The experimental component of this thesis consists of two major axes of inquiry. 
 One concerns the \textsc{representation} of the input data, and the other the \textsc{features}. 
 We shall address each of these in turn. 
 
@@ -861,12 +861,12 @@ is actually a very general problem, and thus the same types of features
 sometimes should apply to different types of objects.
 We shall focus in particular on \emph{invariant} and \emph{variant} 
 features. The distinction between these two feature types is highly significant in
-computer vision and its various subfields. In the present dissertation, 
+computer vision and its various subfields. In the present thesis, 
 we hypothesize that this distinction is also relevant to ULM. 
 
 \subsection {Data Representation} 
 \label{sec:datarep}
-By \emph{representation} we refer mainly to the alphabet whose 
+By \emph{representation} we mean the alphabet whose 
 symbols compose the strings (i.e., words) 
 of an input wordlist.
 In the present work, three data representations were tested, two transcriptional 
@@ -878,12 +878,12 @@ O consists of TS's words, but mapped onto orthographic
 representations; every character in O is thus
 a letter of the 22-letter consonantal Hebrew alphabet.
 Arguably, the transcriptional datasets contains more information than O,
-since T has a distinct symbol for each of Modern Hebrew's five vowels sounds,
+since TR and TS each has a dedicated symbol for each of Modern Hebrew's five vowels sounds (TS in fact has two symbols for each vowel, one stressed and one unstressed),
 as well as all of the archaic consonantal distinctions found in O. 
-\textsc{data representation} refers to the ``encoding'' of the input
-word lists. Essentially, it refers to a choice between one of two alphabets (and the spelling conventions that 
-accompany each alphabet). The two alphabets are the standard consonantal Hebrew alphabet, consisting of 22 letters,
-and the 34-symbol BLC transcriptional system.]
+%\textsc{data representation} refers to the ``encoding'' of the input
+%word lists. Essentially, it refers to a choice between one of two alphabets (and the spelling conventions that 
+%accompany each alphabet). The two alphabets are the standard consonantal Hebrew alphabet, consisting of 22 letters,
+%and the 34-symbol BLC transcriptional system.]
 
 \subsection{Features}   %\label{sec:expvars:features}
 \label{sec:features}
