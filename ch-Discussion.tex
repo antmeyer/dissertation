@@ -10,7 +10,7 @@
 In this thesis, I have proposed a \emph{multilinear} approach to the unsupervised learning of morphology (ULM).
 %(The primary research objective was thus to validate this proposal.)
 %\item %In chapters~\ref{ch:lit-review} and \ref{ch:graph}, 
-In motivating this approach, I introduced, initially in chapter~\ref{ch:intro}, the properties of the \emph{nonlinearity} 
+In motivating this approach, I introduced, initially in chapter~\ref{ch:intro}, the properties of \emph{nonlinearity} 
 and \emph{nonsequentiality}. The key point was that they are the 
 essential properties of the autosegmental formalism, the very properties responsible for its
 ability to model nonconcatenative morphology. 
@@ -18,7 +18,7 @@ ability to model nonconcatenative morphology.
 %these two properties should be present in an unsupervised morphological learning system if it
 %is to learn nonconcatenative morphology as well as concatenative.
 %\item 
-In chapter~\ref{ch:lit-review}, we further fleshed out the properties of nonlinearity and nonsequentiality
+In chapter~\ref{ch:lit-review}, we further fleshed out nonlinearity and nonsequentiality
 by proposing a taxonomy for classifying previous approaches to ULM, 
 a taxonomy based on the concepts \emph{nonlinearity} 
 and \emph{nonsequentiality} and their respective complements \emph{linearity}  and \emph{sequentiality}. We  derived the taxonomy's categories by combining these four elemental categories in pairs:
@@ -34,7 +34,7 @@ noncatenative morphology.
 In chapter~\ref{ch:graph}, I showed that nonlinearity 
 and nonsequentiality map nicely onto the formal properties of \emph{bipartite} graphs.
 This correspondence between the properties of the autosegmental formalism and the properties of bipartite graphs was crucial because it provided a path for realizing nonlinearity 
-and nonsequentiality in a computational system. The path, in particular, was to use a bipartite graphical learning algorithm. I thus chose the bipartite Multiple Cause Mixture Model (MCMM) \citep{saund:94} to serve as the core learning model in an unsupervised morphological learning system called \emph{Multimorph}. Chapter~\ref{ch:MCMM} provided a detailed, multi-perspective discussion of the MCMM. We considered it  in both
+and nonsequentiality in a computational system. This path, in particular, was to use a bipartite graphical learning algorithm. I thus chose the bipartite Multiple Cause Mixture Model (MCMM) \citep{saund:94} to serve as the core learning model in an unsupervised morphological learning system called \emph{Multimorph}. Chapter~\ref{ch:MCMM} provided a detailed, multi-perspective discussion of the MCMM. We considered it  in both
 its neural-network and mixture-model contexts. We also discussed its structure, mathematics, and implementation.
 %\item 
 %Essentially, the solution was to choose a bipartite graphical learning algorithm. Enter the bipartite multiple cause mixture model (MCMM), which we explored in depth in chapter~\ref{ch:MCMM}. I thus choose the MCMM to serve as the learning model in the unsupervised morphological learning system called \emph{Multimorph}.
@@ -49,13 +49,15 @@ The first four chapters of this thesis compose a natural group, a Part 1. Its ma
  establishing a logical link from autosegmental theory to a computational ULM system. Chapter~\ref{ch:MCMM}, the MCMM chapter,
  was this first part's culmination. 
 The second part, %beginning with chapter~\ref{ch:experi},
-comprising chapters~\ref{autonomous} to \ref{ch:results}, was concerned with the \emph{testing} of the hypothesis advanced in the first part, that is, the hypothesis that nonlinearity and nonsequentiality together would enable a system to learn nonconcatenative morphology.
+comprising chapters~\ref{autonomous} to \ref{ch:results}, was concerned with the \emph{testing} of the hypothesis advanced in the first part, that is, the hypothesis that nonlinearity and nonsequentiality together 
+%would 
+enable a system to learn nonconcatenative morphology.
 This testing took the form of developing and evaluating an actual ULM system, namely Multimorph. 
 %However, even though its concerns were in some ways more pragmatic, this second part was by no means devoid of theoretical contribution.
 
 %\begin{enumerate}
 %\item 
-The contribution of chapter~\ref{autonomous} was to show that conventional morphemes cannot be the targets of unsupervised morphological learning, not as the task of ULM is typically construed, at any rate. The nature of ULM is such that ULM systems are constrained to  %, by the very nature of the task of ULM, 
+The contribution of chapter~\ref{autonomous} was in large part to show that conventional morphemes cannot be the targets of unsupervised morphological learning, not as the task of ULM is typically construed, at any rate. The nature of ULM is such that ULM systems are constrained to  %, by the very nature of the task of ULM, 
 the level of \emph{automonous} morphological units, that is, %units of pure morphology, 
 units of form without meaning. 
 %The contribution of chapter~\ref{autonomous} was it showed that 
@@ -89,13 +91,16 @@ In the next three sections (sections~\ref{sec:concl-features} to \ref{sec:concl-
 %What do they say about the importance of positional features?
 %Conclusions about the (differing) roles/significances of precedent features and positional features. 
 
+
+
+
 %\subsection{The role of positional features}
 It is actually rather difficult through manual inspection to find a cluster in which positional clusters make a real contribution. 
 %This is especially
 %true in transcriptional clusters. 
 It was initially hypothesized that positional features would play a substantial role in
 finding prefixes and suffixes. However, the qualitative analysis revealed that affixes tended to be captured through 
-precedence features; for example the prefix \textit{\v{s}e-} `that'  was often captured by the feature \texttt{\v{s}<e-}. This is illustrated in figure~\ref{fig:cluster-9-4-3-TS}, which shows the ten most-active centroid features of a \textit{\v{s}e-} cluster.
+precedence features; for example the prefix \textit{\v{s}e-} (`that')  was often captured by the feature \texttt{\v{s}<e}. This is illustrated in figure~\ref{fig:cluster-9-4-3-TS}, which shows the ten most-active centroid features of a \textit{\v{s}e-} cluster.
  Often, the centroids associated with transcriptional two-character prefixes---i.e., prefixes of the form
 $\alpha\beta$,
 where $\alpha$ is the first character, a consonant, and $\beta$ is the second, a vowel---
@@ -108,17 +113,15 @@ of the forms
 \begin{center}
 $\alpha$<$\gamma$ \quad and \quad $\beta$<$\gamma$  
 \end{center}
-where $\gamma$ is a character occurring later in the word within the range of $\delta$. These features apparently serve to reinforce the prefix status of the morph in question, as the characters of a prefix would regularly precede many different characters. It is presently not clear to me, however, why the $\alpha$<$\gamma$ features have such low activities, nor how these low activities (apparently) end up influencing the surface units $r_{i,j}$.
+where $\gamma$ is a character occurring later in the word within the range of $\delta$. These features apparently serve to reinforce the prefix status of the morph in question, as the characters of a prefix would naturally precede many different characters\footnote{See section~\ref{subsec:seq-lin}, particularly the discussion of letter successor variety (LSV) and letter predecessor variety (LPV) \citep{harris:1955, harris:1967}.}. It is presently not clear to me, however, why the $\alpha$<$\gamma$ features have such low activities, nor how these low activities (apparently) end up influencing the surface units $r_{i,j}$.
 
-We see the same pattern for suffixes, except that the components of the templates $\alpha$<$\gamma$ and $\beta$<$\gamma$ are flipped, becoming $\gamma$<$\alpha$ and $\gamma$<$\beta$, respectively, and $\gamma$ becomes a character occurring $\emph{earlier}$ in the word. In figure~\ref{fig:cluster-9-4-3-TS}, we see several instances of the $\alpha$<$\gamma$ template, namely, \texttt{\v{s}<h}, \texttt{\v{s}<n}, etc. Figure~\ref{fig:cluster-5-4-3-TS} shows the most active centroid features for a cluster corresponding to the feminine plural suffix \textit{\'{o}t}. It shows examples of both $\gamma$<$\alpha$ and $\gamma$<$\beta$ types.
-
-\begin{figure}[!t] 
+\begin{figure}[t] 
 \begin{mdframed}
 {\LARGE \textbf{\v{s}e-}} \hfill \large{$s=\textbf{4}, \delta=\textbf{3}$} \hfill Cluster 9\\
 \vspace{-6pt}
 \begin{normalsize}
 \begin{tabbing}
-\hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \= \hspace{5ex} \= \hspace{10ex} \= \hspace{5ex} \= \hspace{10ex} \= \hspace{5ex} \= \hspace{9ex} \kill
+\hspace{6ex} \= \hspace{12ex} \= \hspace{6ex} \= \hspace{12ex} \= \hspace{6ex} \= \hspace{12ex} \= \hspace{6ex} \= \hspace{12ex} \= \hspace{6ex} \= \hspace{9ex} \kill
 %4_3_cluster_9 \\
 \texttt{\v{s}<e} \> (1.0000) \> \texttt{d}@\texttt{[3]} \> (1.0000) \> \texttt{v<a} \> (0.4972) \> \texttt{\v{s}<h} \> (0.1047) \> \texttt{\v{s}<n} \> (0.0515) \\ 
 \texttt{\v{s}<t} \> (0.0468) \> \texttt{\v{s}<o} \> (0.0434) \> \texttt{\v{s}<\textipa{P}} \> (0.0406) \> \texttt{\v{s}<y} \> (0.0376) \> \texttt{\v{s}<b} \> (0.0334)
@@ -129,28 +132,25 @@ We see the same pattern for suffixes, except that the components of the template
 \end{mdframed}
 \end{figure}
 
-\begin{figure}[ht] 
+ 
+\begin{figure}[htb] 
 \begin{mdframed}
 {\LARGE \textbf{-\'ot}} \hfill {\large$s=\textbf{4}, \delta=\textbf{3}$} \hfill Cluster 5\\
 %4_3_cluster_5 \\
 \vspace{-10pt}
 \begin{normalsize}
 \begin{tabbing}
-\hspace{6ex} \= \hspace{9.5ex} \= \hspace{7ex} \= \hspace{10ex} \= \hspace{7ex} \= \hspace{10ex} \= \hspace{5ex} \= \hspace{9.5ex} \= \hspace{5ex} \= \hspace{8ex} \kill
+\hspace{6ex} \= \hspace{11ex} \= \hspace{6ex} \= \hspace{12ex} \= \hspace{8ex} \= \hspace{11ex} \= \hspace{5ex} \= \hspace{12ex} \= \hspace{6ex} \= \hspace{9ex} \kill
 \texttt{\a'{o}<t} \> (1.0000) \> \texttt{x}@\texttt{[0]} \> (1.0000) \> \texttt{\a'{a}}@\texttt{[-4]} \> (0.9624) \> \texttt{n<\a'{o}} \> (0.1189) \> \texttt{r<\a'{o}} \> (0.1001) \\
  \texttt{l<\a'{o}} \> (0.0671) \> \texttt{q<\a'{o}} \> (0.0561) \> \texttt{o<\a'{o}} \> (0.0472) \> \texttt{q<t} \> (0.0343) \> \texttt{d<\a'{o}} \> (0.0337)
  \end{tabbing}
  \end{normalsize}
-\label{fig:cluster-5-4-3-TS}
 \caption{Ten most-active features of cluster $k = 5$ generated at the settings $\langle{s}=4,\delta=3\rangle$, data type: TS}
+\label{fig:cluster-5-4-3-TS}
 \end{mdframed}
 \end{figure}
-Even in the orthographic clusters, precedence features generally played larger role than positional features in representing affixes, 
-as in figure~\ref{fig:cluster-0-2-3-O}, for example. 
-%positional features rarely play a major role. 
-%Usually, precedence features just in the transcriptional clusters, as in figure~\ref{fig:cluster-0-2-3-O}. 
-This is particularly significant because affixes in the orthographic data often consist of a single character; for example, the prefix \textit{be-} `in' is simply \textit{b-} in the orthographic data. The most active centroid features of a cluster corresponding to this very prefix are shown in figure~\ref{fig:cluster-2-2-2-O}. Figure~\ref{fig:cluster-16-2-3-O} shows a relatively rare instance of an affix cluster being represented by a positional feature, namely  \texttt{h}@\texttt{[0]}.
-\begin{figure}[t] 
+
+\begin{figure}[b] 
 \begin{mdframed}
 {\LARGE \textbf{-\'{o}t}} {\large\,\,\, (-wt)} \hfill \large{$s=\textbf{2}, \delta=\textbf{3}$} \hfill Cluster 0\\
 \vspace{-10pt}
@@ -158,24 +158,26 @@ This is particularly significant because affixes in the orthographic data often 
 \begin{small}
 \begin{tabbing}
 %4_3_cluster_0 \\
-\hspace{6ex} \= \hspace{9.5ex} \= \hspace{6ex} \= \hspace{9.5ex} \= \hspace{6ex} \= \hspace{9.5ex} \= \hspace{6ex} \= \hspace{9.5ex} \= \hspace{5ex} \= \hspace{9ex} \kill
+\hspace{6ex} \= \hspace{12ex} \= \hspace{7ex} \= \hspace{12ex} \= \hspace{7ex} \= \hspace{12ex} \= \hspace{6ex} \= \hspace{12ex} \= \hspace{6ex} \= \hspace{9ex} \kill
 %% 0
 \texttt{w<t} \> (1.0000) \> \texttt{t}@\texttt{[-2]} \> (0.9608) \> \texttt{r<t} \> (0.1149) \> \texttt{n<t} \> (0.0676) \> \texttt{m<t} \> (0.0524) \\
 \texttt{y<t} \> (0.0409) \> \texttt{p<t} \> (0.0360) \> \texttt{x<t} \> (0.0329) \> \texttt{k<t} \> (0.0314) \> \texttt{g<t} \> (0.0283)
 \end{tabbing}
-\caption{Ten most-active features of cluster $k = 0$ generated at the settings $\langle{s}=2,\delta=3\rangle$, data type: orthographic}
+\caption{Ten most-active features of cluster $k = 0$ generated at the settings $\langle{s}=2,\delta=3\rangle$, data type: O}
 \label{fig:cluster-0-2-3-O}
 \end{small}
 \end{mdframed}
 \end{figure}
 
-\begin{figure}[ht]
+We see the same pattern for suffixes, except that the components of the templates $\alpha$<$\gamma$ and $\beta$<$\gamma$ are flipped, becoming $\gamma$<$\alpha$ and $\gamma$<$\beta$, respectively, and $\gamma$ becomes a character occurring $\emph{earlier}$ in the word. In figure~\ref{fig:cluster-9-4-3-TS}, we see several instances of the $\alpha$<$\gamma$ template, namely, \texttt{\v{s}<h}, \texttt{\v{s}<n}, etc. Figure~\ref{fig:cluster-5-4-3-TS} shows the most active centroid features for a cluster corresponding to the feminine plural suffix \textit{-\'{o}t}. It shows examples of both $\gamma$<$\alpha$ and $\gamma$<$\beta$ types.
+
+\begin{figure}[t]
 \begin{mdframed}
 {\LARGE \textbf{b-}}  {\large\,\,\, (b-)} \hfill {\large$s=\textbf{2}, \delta=\textbf{2}$} \hfill Cluster 2\\
 \vspace{-10pt}
 \begin{normalsize}
 \begin{tabbing}
-\hspace*{14ex}\= \hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex} \kill
+\hspace*{16ex}\= \hspace*{16ex}\=\hspace*{16ex}\=\hspace*{16ex}\=\hspace*{16ex}\=\hspace*{13ex} \kill
 %bbmqwmi \> bwbh \> blxlb \> blk \> bnkh \> bnq \\
 %bewm \> blicni \> bdea \> bhtxlh \> brz \> byininim \\
 %bqe \> bgn \> bwnwt \> bsbwn \> bgdwl \> bbebi \\
@@ -198,7 +200,7 @@ brwrim \> \textbf{b}spinwt \> \textbf{b}la \> bwbwt \> \text{b}yli \> \textbf{b}
 \textit{Ten most active centroid features}
 \begin{tabbing}
 %4_3_cluster_0 \\
-\hspace{6ex} \= \hspace{9.5ex} \= \hspace{6ex} \= \hspace{9.5ex} \= \hspace{6ex} \= \hspace{9.5ex} \= \hspace{6ex} \= \hspace{9.5ex} \= \hspace{6ex} \= \hspace{9.5ex} \kill
+\hspace{6ex} \= \hspace{11ex} \= \hspace{6ex} \= \hspace{11ex} \= \hspace{6ex} \= \hspace{11ex} \= \hspace{6ex} \= \hspace{11ex} \= \hspace{6ex} \= \hspace{11ex} \kill
 %% \> 2 \> s \> = \> 2 \> delta \> = \> 2
 % Most Active
 \texttt{a}@\texttt{[0]} \> (1.0000) \> \texttt{b<b} \> (0.0618) \> \texttt{b<c} \> (0.0214) \> \texttt{b<d} \> (0.0200) \> \texttt{b<g} \> (0.0184) \\
@@ -207,26 +209,34 @@ brwrim \> \textbf{b}spinwt \> \textbf{b}la \> bwbwt \> \text{b}yli \> \textbf{b}
 \end{small}
 \end{mdframed}
 \vspace{-6pt}
-\caption{Thirty words randomly selected from the 1000-member cluster $k = 2$, which was generated at the settings $\langle{s}=2,\delta=2\rangle$, data type: orthographic}
+\caption{Thirty words randomly selected from the 1000-member cluster $k = 2$, which was generated at the settings $\langle{s}=2,\delta=2\rangle$, data type: O}
 \label{fig:cluster-2-2-2-O}
 \end{mdframed}
 \end{figure}
 
-\begin{figure}[ht] 
+Even in the orthographic clusters, precedence features generally played larger role than positional features in representing affixes, 
+as in figure~\ref{fig:cluster-0-2-3-O}, for example. 
+%positional features rarely play a major role. 
+%Usually, precedence features just in the transcriptional clusters, as in figure~\ref{fig:cluster-0-2-3-O}. 
+This is particularly significant because affixes in the orthographic data often consist of a single character; for example, the prefix \textit{be-} `in' is simply \textit{b-} in the orthographic data. A word sample of a cluster most active centroid cluster corresponding to this very prefix is shown in figure~\ref{fig:cluster-2-2-2-O}, along with the ten most active features of its centroid.
+
+Finally, figure~\ref{fig:cluster-16-2-3-O} shows a relatively rare instance of an affix cluster being represented by a positional feature, namely  \texttt{h}@\texttt{[0]}.
+ 
+ \begin{figure}[h] 
 \begin{mdframed}
 {\LARGE \textbf{hi-}} {\large\,\,\, (h-)} \hfill \large{$s=\textbf{2}, \delta=\textbf{3}$} \hfill Cluster 16\\
 \vspace{-6pt}
 \begin{normalsize}
 \begin{tabbing}
 %4_3_cluster_0 \\
-\hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \kill
+\hspace{6ex} \= \hspace{12ex} \= \hspace{6ex} \= \hspace{12ex} \= \hspace{6ex} \= \hspace{12ex} \= \hspace{6ex} \= \hspace{12ex} \= \hspace{6ex} \= \hspace{9ex} \kill
 %## 16
 %Most Active
 \texttt{h}@\texttt{[0]} \> (1.0000) \> \texttt{h<g} \> (0.9271) \> \texttt{g<i} \> (0.5658) \> \texttt{g<b} \> (0.1659) \> \texttt{g<d} \> (0.1501) \\
 \texttt{g<n} \> (0.1122) \> \texttt{a<g} \> (0.1059) \> \texttt{g<t} \> (0.1056) \> \texttt{g<m} \> (0.0937) \> \texttt{g<y} \> (0.0724)
 \end{tabbing}
 \end{normalsize}
-\caption{Ten most-active features of cluster $k = 16$ generated at the settings $\langle s=2,\delta=3 \rangle$, data type: orthographic}
+\caption{Ten most-active features of cluster $k = 16$ generated at the settings $\langle s=2,\delta=3 \rangle$, data type: O}
 \label{fig:cluster-16-2-3-O}
 \end{mdframed}
 \end{figure}
@@ -280,12 +290,13 @@ Even though vowels can be detrimental, however, they can also be helpful. For ex
 \begin{small}
 \begin{tabbing}
 %4_3_cluster_0 \\
-\hspace{6ex} \= \hspace{10.5ex} \= \hspace{6ex} \= \hspace{10.5ex} \= \hspace{6ex} \= \hspace{11ex} \= \hspace{7ex} \= \hspace{11ex} \= \hspace{7ex} \= \hspace{10ex} \kill
+\hspace{6ex} \= \hspace{12ex} \= \hspace{6ex} \= \hspace{13ex} \= \hspace{7ex} \= \hspace{13ex} \= \hspace{7ex} \= \hspace{13ex} \= \hspace{7ex} \= \hspace{9ex} \kill
 \texttt{\a'{e}<t} \> (1.0000) \> \texttt{e<t} \> (1.0000) \> \texttt{x}@\texttt{[0]} \> (1.0000) \> \texttt{z}@\texttt{[0]} \> (0.9962) \> \texttt{\textipa{Q}}@\texttt{[3]} \> (0.9882) \\
  \texttt{\a'{e}<e} \> (0.9815) \> \texttt{o<\a'{e}} \> (0.1847) \> \texttt{r<e} \> (0.1098) \> \texttt{v<e} \> (0.0945) \> \texttt{l<e} \> (0.0854)
 \end{tabbing}
 \end{small}
-\caption{Ten most-active features of the first cluster (cluster $k = 0$) generated at the settings $\langle{s}=4,\delta=3\rangle$, data type: transcriptional with stress marking}
+%\caption{Ten most-active features of the first cluster (cluster $k = 0$) generated at the settings $\langle{s}=4,\delta=3\rangle$, data type: transcriptional with stress marking}
+\caption{Ten most-active features of the first cluster (cluster $k = 0$) generated at the settings $\langle{s}=4,\delta=3\rangle$, data type: TS}
 \label{fig:cluster-0-4-3-TS}
 \end{mdframed}
 \end{figure}
@@ -323,6 +334,26 @@ The very fact that the gold-standard mapping was necessary supports the idea of 
 There is a clear disconnect between BLC's morphosyntactic categories and the form-based categories that Multimorph learned.
  Section~\ref{sec:gld-std-classes}, in detailing the category mappings, demonstrates the reality of the form paradigm and the gap that separates it from the content paradigm and its morphosyntactic categories. Moreover, they demonstrate that form-based categories exist independently of Multimorph; that is, they are not merely ad-hoc categories invented for the sake of Multimorph. At the very least, the mappings demonstrate a disparity between form and meaning that needs to be explained.
 
+\begin{table}[tb]
+\centering
+\setlength{\extrarowheight}{6pt}
+\begin{tabular}{cccc}
+\toprule
+$k$ &  Size & Purity & Most frequent gold classes (with frequencies) \\
+\midrule
+0 & 1218 & 0.9992 & \texttt{pre\%we} (1217),\, \texttt{f\%sg} (157), \,\texttt{n\%m\%sg} (154) \\
+1 & 1111 & 0.9388 & \texttt{m\%pl} (1043), \,\texttt{pre:ha} (206), \,\texttt{pre:mi} (160) \\
+2 & 450 & 0.8711 & \texttt{f\%sg} (392), \, \texttt{qal\%particle} (121), \, \texttt{pre:mi} (112) \\
+3 & 1498 & 0.9559 & \texttt{pre:ha} (1432), \, \texttt{f\%sg} (363), \, \texttt{n\%m\%sg} (321) \\
+4 & 1093 & 0.8216 & \texttt{pre:mi} (898), \, \texttt{f\%sg} (312), \, \texttt{pre:ha} (217) \\
+\vdots & \vdots & \vdots & \vdots \\
+43 & 995 & \textbf{0.1822} & \texttt{pre:ha} (174), \, \texttt{f\%pl}  (172), \, \texttt{ptn:CaCoC} (163) \\
+\bottomrule
+\end{tabular}
+\caption{Purities of the oldest (i.e., first) five clusters in a clustering generated at $\langle{s} = 2, \delta = 2\rangle$ from the TS dataset}
+\label{tab:best-purities}
+\end{table}
+
 The mappings were by no means perfect, however; while they produced gold-standard classes that were more
 form-based than the original morphosyntactic categories were, they did not constitute a complete transformation
 to autonomous morphological categories. This would have involved deciding the precise identity of each autonomous 
@@ -330,10 +361,10 @@ morphological category, which would have been beyond the scope of this thesis. M
 categories ahead of time in any way would have been contrary to the exploratory nature of Multimorph's task. 
 Thus, an intrinsic evaluation in Multimorph's case was never going to be ideal.
 
+
 In this study's intrinsic results, the instrinsic evalutation metrics do sometimes accurately describe what is going on in a given cluster. But in other cases, they do not. Consider, for example, the purity results in table~\ref{tab:best-purities}. The purity scores for the clusters 0 through 4 accurately describe the contents of their respective clusters. This is because the most frequent gold-standard class in each of these cases happened to correspond with the aspect of form that Multimorph's MCMM found to be most salient in that case.
 Cluster 43 presents a different scenario, however. Its purity score is quite low. However, if one manually inspects this cluster's member words, a random sample of which is given in figure~\ref{fig:cluster-43-2-2-TS}, one finds a remarkable degree of coherence. Very nearly all of the words in 
 figure~\ref{fig:cluster-43-2-2-TS}, have \textsf{\'{o}} in the final syllable. These \textsf{\'{o}}'s do not all correspond to the same morphosyntactic category, but they could be the same morphome. The point is that we cannot really say whether or not this is a valid cluster because we cannot say for certain which character subsequences are morphs/morphomes and which are not. In some cases we have a fairly good idea as to whether a given subsequence is morph/morphome, but not in every case at this time.
-
 %it accurately captures  itis thus never going to be 
 %Some of gold-standard classes map follow form more closely than others. correspond to aspects of form than others. actual formal distinctions more faithfully than others. 
 %In some cases, the disparities between content paradigm and form paradigm were entirely
@@ -353,29 +384,9 @@ figure~\ref{fig:cluster-43-2-2-TS}, have \textsf{\'{o}} in the final syllable. T
 %\item the masc. plural suffix \textit{-im}
 %\item the definite article prefix \textit{ha-}
 %\end{itemize}
-\begin{table}[t]
-\centering
-\setlength{\extrarowheight}{6pt}
-\begin{tabular}{cccc}
-\toprule
-$k$ &  Size & Purity & Most frequent gold classes (with frequencies) \\
-\midrule
-0 & 1218 & 0.9992 & \texttt{pre\%we} (1217),\, \texttt{f\%sg} (157), \,\texttt{n\%m\%sg} (154) \\
-1 & 1111 & 0.9388 & \texttt{m\%pl} (1043), \,\texttt{pre:ha} (206), \,\texttt{pre:mi} (160) \\
-2 & 450 & 0.8711 & \texttt{f\%sg} (392), \, \texttt{qal\%particle} (121), \, \texttt{pre:mi} (112) \\
-3 & 1498 & 0.9559 & \texttt{pre:ha} (1432), \, \texttt{f\%sg} (363), \, \texttt{n\%m\%sg} (321) \\
-4 & 1093 & 0.8216 & \texttt{pre:mi} (898), \, \texttt{f\%sg} (312), \, \texttt{pre:ha} (217) \\
-\vdots & \vdots & \vdots & \vdots \\
-43 & 995 & \textbf{0.1822} & \texttt{pre:ha} (174), \, \texttt{f\%pl}  (172), \, \texttt{ptn:CaCoC} (163) \\
-\bottomrule
-\end{tabular}
-\caption{Purities of the oldest (i.e., first) five clusters in a clustering generated at $\langle{s} = 2, \delta = 2\rangle$ from the TS dataset}
-\label{tab:best-purities}
-\end{table}
 %However, some gold-standard classes fail to a just a straightforward, one-to-one mapping.  %to aspects of form
 %Consider, for example, the purity results in \ref{tab:not-so-good-purities}. 
-
-\begin{figure}[!htb]
+\begin{figure}[htb]
 %\begin{mdframed}
 %\begin{small}
 %\texttt{Cluster 0043;  size:  955;  Purity: 0.1822;}\qquad\texttt{pre:ha (174), f\%pl (172), ptn:CaCoC (163)}
@@ -384,7 +395,7 @@ $k$ &  Size & Purity & Most frequent gold classes (with frequencies) \\
 %\vspace{-3pt}
 \begin{mdframed}
 \begin{tabbing}
-\hspace*{14ex}\= \hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex} \kill
+\hspace*{15ex}\= \hspace*{15ex}\=\hspace*{15ex}\=\hspace*{15ex}\=\hspace*{15ex}\=\hspace*{15ex} \kill
 be\textipa{P}awir\a'{o}n \> hatarneg\a'{o}l \> wehacip\a'{o}r \> yar\a'{o}q \> lic\textipa{Q}\a'{o}q \> ule\v{s}al\a'{o}m \\
 hari\textipa{P}\v{s}\a'{o}n \> bayar\a'{o}q \> hame\textipa{P}ora\textsubdot{k}\a'{o}t \> we\textipa{P}ecba\textipa{Q}\a'{o}t \> wehayelad\a'{o}t \> \v{s}ax\a'{o}r \\
 mela\textipa{Q}a\textsubdot{s}\a'{o}t \> be\v{s}al\a'{o}\v{s} \> be\textipa{P}ez\a'{o}r \> kam\a'{o}\textsubdot{k} \> \textipa{P}egz\a'{o}z \> gab\a'{o}t \\
@@ -397,7 +408,7 @@ ha\textsubdot{s}mal\a'{o}t \> gad\a'{o}l \> hagag\a'{o}t \> weta\textipa{Q}av\a'
 \textit{Ten most active centroid features}
 \begin{tabbing}
 %4_3_cluster_0 \\
-\hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \= \hspace{6ex} \= \hspace{10ex} \kill
+\hspace{7ex} \= \hspace{12ex} \= \hspace{6ex} \= \hspace{12ex} \= \hspace{6ex} \= \hspace{12ex} \= \hspace{6ex} \= \hspace{12ex} \= \hspace{6ex} \= \hspace{12ex} \kill
 \texttt{\v{s}}@\texttt{[-2]} \> (1.0000) \> \texttt{a<\a'{o}} \> (0.8188) \> \texttt{r<\a'{o}} \> (0.1294) \> \texttt{\a'{o}<n} \> (0.1146) \> \texttt{\a'{o}<r} \> (0.1024) \\
 \texttt{x<\a'{o}} \> (0.0953) \> \texttt{m<\a'{o}} \> (0.0761) \> \texttt{\a'{o}<m} \> (0.0759) \> \texttt{l<\a'{o}} \> (0.0676) \> \texttt{v<\a'{o}} \> (0.0556)
 \end{tabbing}

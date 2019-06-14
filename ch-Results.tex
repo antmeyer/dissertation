@@ -3,26 +3,28 @@
 
 \section{Introduction}
 
-In the preceding chapter, %~\ref{ch:eval}, 
-we motivated and outlined a multi-faceted evaluation program, an approach comprising both
-a qualitative component and a dual-paradigm quantitative component, that is, a quantitative component with 
-both \emph{intrinsic} and \emph{extrinsic} sub-components. 
+%In the preceding chapter, %~\ref{ch:eval}, 
+%we motivated and outlined a multi-faceted evaluation program, an approach comprising both
+%a qualitative component and a \emph{dual-paradigm} quantitative component, that is, a quantitative component with 
+%both \emph{intrinsic} and \emph{extrinsic} sub-components. 
 
-
-Multimorph's output, in its raw form,
-consists of two matrices, $\mathbf{M}$ and $\mathbf{C}$.\footnote{These 
+We saw in chapter~\ref{ch:MCMM} that Multimorph's output, in its raw form,
+consists of two matrices, $\mathbf{M}$ and $\mathbf{C}$.\footnote{Note that these 
 matrices are actually by-products of the MCMM's attempt to reconstruct its original 
 data points (see chapter~\ref{ch:MCMM}).} While these are numerical matrices,
 they together encode a \emph{clustering} of words, and they can be converted (or decoded) 
-into such via algorithm~\ref{alg:members}, which we presented in section~\ref{sec:intrinsic} 
+into the the form of word clustering through algorithm~\ref{alg:members}, which we presented in section~\ref{sec:intrinsic} 
 of the preceding chapter. 
-Thus, each experiment described in
-chapter~\ref{ch:experi}---each combination of $\delta$, $s$, and 
+Each experiment described in
+chapter~\ref{ch:experi}---that is, each combination of $\delta$, $s$, and 
 data-representation type---yielded a distinct pair of $\mathbf{M}$ and $\mathbf{C}$ 
 matrices. Each such pair was in turn converted into a clustering of words through 
-algorithm~\ref{alg:members}, and each clustering was then evaluated according to the diverse 
-methods described in chapter~\ref{ch:eval}. 
-In this chapter, I present the results of these multi-faceted evaluations. 
+algorithm~\ref{alg:members}, and each clustering was then evaluated according to the
+multi-faceted evaluation program described
+%methods described 
+in chapter~\ref{ch:eval}. 
+%In this chapter, I present the results of these multi-faceted evaluations. 
+This chapter now presents the results of the different methods composing this multi-faceted evaluation.
 
 %As a preliminary matter, it is worthwhile to review briefly what we are evaluating.
 %The 
@@ -79,10 +81,13 @@ significantly with the current
 array of clusters. In principle, this incremental addition 
 of clusters
 should continue until the global reconstruction falls below a predesignated 
-threshold $\epsilon$, which is close to $0$ (e.g., 0.0001).  For this study, $\epsilon$ was
- set at $0.0001$, 
+threshold $\epsilon$ close to $0$.
+% (e.g., 0.0001).  
+%In this study, $\epsilon$ was
+% set at 
+% ($0.0001$ in this study).
 %falls below a threshold $\epsilon$ close to 0, such as $\epsilon = 0.0001$).
-In theory, therefore, Multimorph should have created just enough clusters to decrease its error to $\epsilon$.\footnote{In this study, $\epsilon$ was set to $0.0001$, a valuation that turned out to be moot, however, as Multimorph's error never reached it.}
+In theory, therefore, Multimorph should have created just enough clusters to decrease its error to just below $\epsilon$.\footnote{In this study, $\epsilon$ was set to $0.0001$, a valuation that turned out to be moot, however, as Multimorph's error never reached it.}
 %to $\epsilon$ or below it.
 In practice, however,
 % in the course of this dissertation's experiments,
@@ -92,11 +97,11 @@ In practice, however,
  where it reversed direction and started to increase.  
 It continued to increase until the experiment in question was stopped at 3000 or 4000 clusters.  
 The error minimum generally occurred when the cluster count $K$ was between 400 and 1200. 
-For the transcriptional data with stress markings, the average error-minimizing $K$ was 589.4.
+For the transcriptional data with stress marking, the average error-minimizing $K$ was 589.4.
 It was
-833.0 for the transcriptional data without stress markings,
+833.0 for the transcriptional data without stress marking,
 and 742.9 for the orthographic data. Because the error-minimizing $K$ was between 500 and 1000
-for all three data sets, I am reporting results both at $K = 500$ and $K = 1000$.
+for all three datasets, I am reporting results both at $K = 500$ and $K = 1000$.
 
 \section{Qualitative Analysis}
 \label{sec:qual}
@@ -118,14 +123,14 @@ for all three data sets, I am reporting results both at $K = 500$ and $K = 1000$
 
 The value of quantitative methods lies in their systematicity and objectivity, but
 they are by no means guaranteed to capture every salient fact regarding a system's output,
-especially when the system in question is an unsupervised learning system. 
+especially when the system in question is an unsupervised. 
  This dissertation thus incorporated a qualitative analysis of Multimorph's output to supplement the  
 quantitative results presented later in this chapter.
-This qualitative analysis basically consisted in manually inspecting the component words of clusters output by Multimorph.\footnote{
-Recall that
+This qualitative analysis consisted in manually inspecting the component words of the clusters 
+output by Multimorph.\footnote{Recall that
 algorithm~\ref{alg:members} (section~\ref{sec:intrinsic}) converted the MCMM's $\mathbf{M}$ and $\mathbf{C}$
 matrices into a list of wordlists, where each wordlist was (or represented) a cluster.} 
-When in inspecting a given cluster, I took into account its centroid vector, particularly the centroid's \emph{most active
+When inspecting a given cluster, I took into account its centroid vector, particularly the centroid's \emph{most active
 features}, since these features help determine which shared bits of form among a cluster's words can truly be attributed to the MCMM. 
 %That is, sometimes 
 %directly and which are by-products or correlates of the 
@@ -136,27 +141,27 @@ features}, since these features help determine which shared bits of form among a
 %assembled via algorithm~\ref{alg:members} (section~\ref{sec:instrinsic})
 
 The manual inspection revealed many clusters corresponding to morphological categories, including 
-both concatenative and nonconcatenative morphs. In general, the the most prominent morphs, e.g., the plural
+both concatenative and nonconcatenative morphs. In general, the most prominent morphs, e.g., the plural
 suffixes \textit{-im}
-and \textit{-wt}, corresponded to clusters with low indices, as the MCMM tended to discover these clusters first. The most 
-prominent morphs are generally concatenative affixes and nonconcatenative vowel patterns. Thus, in the 
-$\langle{s}=4,\delta=3\rangle$ clustering, for instance, the first cluster (i.e., the cluster indexed 0) corresponded to the morph \textit{-\'{e}.et}.
+and \textit{-wt}, corresponded to clusters with low indices ($k$ values), as the MCMM tended to discover these clusters first. The most 
+prominent morphs were generally concatenative affixes and nonconcatenative vowel patterns. Thus, in the 
+$\langle{s}=4,\delta=3\rangle$ clustering, for instance, the first cluster (i.e., the cluster indexed $k = 0$) corresponded to the morph \textit{-\'{e}.et},
 %\footnote{The \_ here represents a single slot occupied by a consonant of a \emph{different} morph, namely the root. The \_  thus indicates discontiguity.}
 a common feminine ending for participles.
 
 %\begin{center}
 %\textit{-\'{e}\_et} figure here?
 %\end{center}
-There were also some clusters that corresponded to roots, though not
-as many as corresponded to affixes and vowel patterns. 
+There were some clusters that corresponded to roots, although root clusters were less common in MCMM clusterings
+than clusters corresponding to vowel patterns and affixes. 
 %There are a many more unique roots in Hebrew
 %than unique vowel patterns and affixal morphs, since roots are lexical, but individual roots tend to occur at far lower frequencies than 
 %morphs that serve morphosyntactic purposes.
-Roots also tended to occur at higher cluster indices; that is, the 
-MCMM tended to find them later during the learning process. 
-Individual roots do not occur in as many distinct words
-as concatenative morphs and vowel patterns, since roots are entirely 
-lexical in nature. Root clusters thus tend to be among the smallest of clusters.
+Roots also tended to occur at higher cluster indices (i.e., $k$ values); that is, the 
+MCMM tended to ``find'' them later during the learning process. 
+These facts are likely due to the lower frequencies of roots: Individual roots do not occur in as many distinct words
+as concatenative morphs and vowel patterns, since roots are entirely lexical in nature. 
+Root clusters therefore tended to be among the smallest of clusters.
 
 \begin{figure}[!t]
 \begin{mdframed}
@@ -165,7 +170,7 @@ lexical in nature. Root clusters thus tend to be among the smallest of clusters.
 \vspace{3pt}
 \begin{normalsize}
 \begin{tabbing}
-\hspace*{13ex}\= \hspace*{13ex}\=\hspace*{13ex}\=\hspace*{13ex}\=\hspace*{13ex}\=\hspace*{11ex} \kill
+\hspace*{15ex}\= \hspace*{16ex}\=\hspace*{16ex}\=\hspace*{16ex}\=\hspace*{16ex}\=\hspace*{13ex} \kill
 e\textbf{a}\textbf{k}\textbf{l}t \> \textbf{a}w\textbf{k}\textbf{l}t \> blklwkim \> \textbf{a}w\textbf{k}\textbf{l} \> awtkm \> e\textbf{a}w\textbf{k}\textbf{l}t \\
 e\textbf{a}\textbf{k}\textbf{l}tm \> eklblbim \> h\textbf{a}w\textbf{k}\textbf{l} \> elh\textbf{a}\textbf{k}i\textbf{l} \> b\textbf{a}w\textbf{k}\textbf{l} \> enw\textbf{a}\textbf{k}\textbf{l} \\
 hkwl \> hkil \> \textbf{a}\textbf{k}\textbf{l}tm \> blklkh \> hmkxwl \> blklkw \\
@@ -179,7 +184,7 @@ hmikl \> enstkl \> blklk \> htlklkh \> \textbf{a}st\textbf{k}\textbf{l} \> h\tex
 \textit{Ten most active centroid features:}
 \vspace{-5pt}
 \begin{tabbing}
-\hspace*{6ex}\= \hspace*{10ex}\= \hspace*{6ex}\= \hspace*{10ex} \= \hspace*{5ex} \= \hspace*{9ex} \= \hspace*{5ex}\= \hspace*{9ex} \= \hspace*{6ex} \= \hspace*{10ex}\kill
+\hspace*{6ex}\= \hspace*{12ex}\= \hspace*{6ex}\= \hspace*{12ex}\= \hspace*{6ex} \= \hspace*{12ex} \= \hspace*{6ex}\= \hspace*{12ex} \= \hspace*{6ex} \= \hspace*{10ex}\kill
 %k<l \> (1.0000) \> a<k  \> (0.8271) \> t<k  \> (0.1012) \> w<k  \>  (0.0616) \> s<l  \> (0.0406) \\
  %k<k \> (0.0388) \> k<m  \> (0.0305) \> s<k  \> (0.0293)\> k<x  \> (0.0213) \> l<k  \> (0.0170) \\
  \texttt{k<l} \> (1.0000) \> \texttt{a<k} \> (0.8271) \> \texttt{t<k} \> (0.1012) \> \texttt{w<k} \> (0.0616) \> \texttt{s<l} \> (0.0406)\\
@@ -200,7 +205,7 @@ hmikl \> enstkl \> blklk \> htlklkh \> \textbf{a}st\textbf{k}\textbf{l} \> h\tex
 \vspace{3pt}
 \begin{normalsize}
 \begin{tabbing}
-\hspace*{13ex}\= \hspace*{13ex}\=\hspace*{13ex}\=\hspace*{13ex}\=\hspace*{13ex}\=\hspace*{11ex} \kill
+\hspace*{15ex}\= \hspace*{16ex}\=\hspace*{16ex}\=\hspace*{16ex}\=\hspace*{16ex}\=\hspace*{13ex} \kill
 h\textbf{a}\textbf{k}\textbf{l}ti \> etwkli \> e\textbf{a}w\textbf{k}\textbf{l}im \> e\textbf{a}\textbf{k}\textbf{l}tm \> \textbf{a}\textbf{k}\textbf{l}i \> elh\textbf{a}\textbf{k}i\textbf{l} \\
 blklwkim \> \textbf{a}\textbf{k}\textbf{l}h \> aekib \> e\textbf{a}\textbf{k}\textbf{l}t \> etw\textbf{a}\textbf{k}\textbf{l}i \> e\textbf{a}\textbf{k}\textbf{l} \\
 arkib \> \textbf{a}\textbf{k}\textbf{l}tm \> \textbf{a}\textbf{k}\textbf{l} \> \textbf{a}\textbf{k}\textbf{l}ti \> enw\textbf{a}\textbf{k}\textbf{l} \> \textbf{a}\textbf{k}\textbf{l}t \\
@@ -219,7 +224,7 @@ h\textbf{a}w\textbf{k}\textbf{l} \> ehkwl \> \textbf{a}w\textbf{k}\textbf{l}t \>
 \textit{Ten most active centroid features}
 \vspace{-4pt}
 \begin{tabbing}
-\hspace*{6ex}\= \hspace*{10ex}\= \hspace*{6ex}\= \hspace*{10ex} \= \hspace*{6ex} \= \hspace*{10ex} \= \hspace*{6ex}\= \hspace*{10ex} \= \hspace*{6ex} \= \hspace*{10ex}\kill
+\hspace*{6ex}\= \hspace*{12ex}\= \hspace*{7ex}\= \hspace*{12ex}\= \hspace*{6ex} \= \hspace*{13ex}\= \hspace*{8ex}\= \hspace*{12ex}\= \hspace*{8ex} \= \hspace*{10ex}\kill
 %##91akl
 \texttt{k<l} \> (1.0000) \> \texttt{a<k} \> (1.0000) \> \texttt{a<l} \> (0.4196) \> \texttt{k}@\texttt{[-1]} \> (0.4082) \> \texttt{y}@\texttt{[-1]} \> (0.2929)\\
 \texttt{w<k} \> (0.2262) \> \texttt{k<i} \> (0.1747) \> \texttt{l<t} \> (0.1599) \> \texttt{k<t} \> (0.1414) \> \texttt{g}@\texttt{[1]} \> (0.0730)
@@ -232,20 +237,23 @@ h\textbf{a}w\textbf{k}\textbf{l} \> ehkwl \> \textbf{a}w\textbf{k}\textbf{l}t \>
 \end{mdframed}
 \end{figure}
 
-There were root clusters
- in the clusterings of all three data types, but the
+%There were root clusters
+% in the clusterings 
+ All of three data types produced root clusters, but the
 orthographic clusterings contained the largest number. This is perhaps to some degree a result
 of the prevalence of consonants in Hebrew orthography (see chapter~\ref{ch:experi}).
-Standard Hebrew orthography does not represent many vowels, and thus the consonants tend to be closer to each other 
-and are often adjacent. Thus, precedence features in the orthographic data can generally 
-span more consonants at once than they can in the transcriptional datasets. 
+Standard Hebrew orthography does not represent many vowels, and thus the consonants tend to denser; indeed, they are often adjacent. Thus, precedence features in the orthographic data can generally 
+span more consonants than they can in the transcriptional datasets. 
 
-This section provides examples of some of the MCMM's clusters in a series of figures---examples in the form of random samples taken from the original clusters' members. Each of these figures is a box that contains, first, thirty words randomly selected from a particular cluster,
-and, second, the ten most active features in this cluster's centroid. 
-The first four figures all give word samples from clusters corresponding to the root \textit{\textipa{P}.k.l}, which is associated with the concept of eating, as in, for instance, \textit{\textipa{P}a\textsubdot{k}\'al} `he/it ate' and \textit{\textipa{P}a\textsubdot{k}il\'a} `eating.'  
+The present section exemplifies some of the MCMM's clusters in a series of figures, each figure presenting a random sample of the members of a particular cluster. Each of these figures takes the form of a box that contains the following: 
+\begin{itemize}
+\item 30 words randomly selected from a particular cluster
+\item The 10 most active features in this cluster's centroid. 
+\end{itemize}
+The first four figures all give word samples from clusters corresponding to the root \textit{\textipa{P}.k.l}, which is associated with the concept of eating, as in, for instance, \textit{\textipa{P}a\textsubdot{k}\'al} (`he/it ate') and \textit{\textipa{P}a\textsubdot{k}il\'a} (`eating').
 Figure~\ref{fig:cluster-182-1-3-O} samples the words from cluster $k = 182$   
 in the clustering $\langle s=1, \delta=3 \rangle$.
-Its data source was the orthographic data set, and so its words are expressed in the (transliterated) orthographic alphabet (see the discussion in chapter~\ref{ch:experi}). Thus, \textit{\textipa{P}.k.l} becomes \textit{a.k.l}.
+Its data source was the orthographic dataset, and so its words are expressed in the (transliterated) orthographic alphabet (see the discussion in chapter~\ref{ch:experi}). Thus, \textit{\textipa{P}.k.l} becomes \textit{a.k.l}.
 In the words that actually contain the root \textit{a.k.l}, the letters \textbf{a}, \textbf{k}, and \textbf{l} appear in boldface.
 Notice that not all of the words in figure~\ref{fig:cluster-182-1-3-O} have this root.
 
@@ -258,7 +266,7 @@ Notice that not all of the words in figure~\ref{fig:cluster-182-1-3-O} have this
 \vspace{3pt}
 \begin{normalsize}
 \begin{tabbing}
-\hspace*{14ex}\= \hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{11ex} \kill
+\hspace*{15ex}\= \hspace*{16ex}\=\hspace*{16ex}\=\hspace*{16ex}\=\hspace*{16ex}\=\hspace*{13ex} \kill
 b\textbf{a}w\textbf{k}\textbf{l} \> \textbf{a}w\textbf{k}\textbf{l}t \> \textbf{a}e\textbf{k}w\textbf{l} \> etw\textbf{a}\textbf{k}\textbf{l}i \> etw\textbf{a}\textbf{k}\textbf{l} \> el\textbf{a}\textbf{k}w\textbf{l} \\
 h\textbf{a}w\textbf{k}\textbf{l} \> \textbf{a}\textbf{k}\textbf{l}nw \> e\textbf{a}w\textbf{k}\textbf{l} \> \textbf{a}\textbf{k}\textbf{l}h \> \textbf{a}e\textbf{k}w\textbf{l}im \> \textbf{a}w\textbf{k}\textbf{l} \\
 h\textbf{a}\textbf{k}\textbf{l}ti \> \textbf{a}\textbf{k}\textbf{l}i \> enw\textbf{a}\textbf{k}\textbf{l} \> e\textbf{a}w\textbf{k}\textbf{l}im \> \textbf{a}\textbf{k}\textbf{l}ti \> \textbf{a}\textbf{k}\textbf{l}w \\
@@ -279,7 +287,7 @@ h\textbf{a}\textbf{k}\textbf{l}ti \> \textbf{a}\textbf{k}\textbf{l}i \> enw\text
 \textit{Ten most active centroid features}
 \vspace{-5pt}
 \begin{tabbing}
-\hspace*{6ex}\= \hspace*{10ex}\= \hspace*{6ex}\= \hspace*{10ex} \= \hspace*{6ex} \= \hspace*{10ex} \= \hspace*{6ex}\= \hspace*{10ex} \= \hspace*{6ex} \= \hspace*{10ex}\kill
+\hspace*{6ex}\= \hspace*{12ex}\= \hspace*{6ex}\= \hspace*{12ex}\= \hspace*{6ex} \= \hspace*{12ex}\= \hspace*{6ex}\= \hspace*{12ex}\= \hspace*{6ex} \= \hspace*{10ex}\kill
 \texttt{k<l} \> (1.000) \> \texttt{a<l} \> (1.000) \> \texttt{a<k} \> (1.000) \> \texttt{w<k} \> (0.181) \> \texttt{k<t} \> (0.160)\\
 \texttt{k<i} \> (0.139) \> \texttt{i}@\texttt{[0]} \> (0.112) \> \texttt{w<a} \> (0.068) \> \texttt{h<k} \> (0.058) \> \texttt{l<h} \> (0.044)
 \end{tabbing}
@@ -291,7 +299,7 @@ h\textbf{a}\textbf{k}\textbf{l}ti \> \textbf{a}\textbf{k}\textbf{l}i \> enw\text
 \end{mdframed}
 \end{figure}
 
-Figures~\ref{fig:cluster-91-3-2-O} and \ref{fig:cluster-81-2-2-O} correspond to \textit{a.k.l}
+Figures~\ref{fig:cluster-91-3-2-O} and \ref{fig:cluster-81-2-2-O} represent \textit{a.k.l}
 (\textit{\textipa{P}.k.l}) clusters from the clusterings generated at
 $\langle{s}=3,\delta=2 \rangle$ and $\langle s=2, \delta=2 \rangle$, respectively. 
 %The cluster in figure~\ref{fig:cluster-91-3-2-O} is better than the one in figure~\ref}fig:cluster-81-2-2-O}, previous one in that each is 
@@ -308,7 +316,7 @@ encoding the sequence of  position-variant (or ``floating'') consonants \textit{
 Figure~\ref{fig:cluster-91-3-2-O}, showing a purer cluster, has these features both at 1.0 activities. It also has \texttt{a<l} among its top ten features, 
 at an activity of 0.4196, a low activity to be sure, but this feature does not appear at all among the top ten features of the preceding
 cluster. 
-Finally, figure~\ref{fig:cluster-81-2-2-O}, the purest of these three clusters, has all three of the features \texttt{k<l}, \texttt{a<k}, \texttt{a<l} among
+Finally, figure~\ref{fig:cluster-81-2-2-O}, the purest of these three clusters, has all three of the features \texttt{k<l}, \texttt{a<k}, and \texttt{a<l} among
 its ten most active,
 and, moreover, it has each of these features at a perfect activity of 1.0.
 
@@ -319,7 +327,7 @@ and, moreover, it has each of these features at a perfect activity of 1.0.
  \vspace{3pt}
  \begin{normalsize}
 \begin{tabbing}
-\hspace*{17.5ex}\= \hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14.5ex}\=\hspace*{12.5ex}\=\hspace*{11ex} \kill
+\hspace*{17.5ex}\= \hspace*{16ex}\=\hspace*{16ex}\=\hspace*{16ex}\=\hspace*{16ex}\=\hspace*{13ex} \kill
 %\v{s}e\textipa{P}o\textsubdot{k}l\a'{i}m \> hat\textsubdot{k}\a'{e}let \> \textipa{Q}a\textsubdot{k}b\a'{a}r \> \v{s}e\textipa{P}a\textsubdot{k}\a'{a}ltem \> webi\textsubdot{k}l\a'{a}l \> ma\textsubdot{k}\a'{i}n \\
 %ta\textipa{P}a\textsubdot{k}\a'{i}li \> hamelu\textsubdot{k}l\a'{a}\textsubdot{k} \> wehal\textsubdot{k}\a'{a} \> hithap\textsubdot{k}\a'{a} \> midra\textsubdot{k}\a'{a} \> xa\textsubdot{k}\a'{a}m \\
 %wehamelu\textsubdot{k}la\textsubdot{k}\a'{i}m \> weme\v{s}u\textsubdot{k}l\a'{a}l \> mitla\textsubdot{k}le\textsubdot{k}\a'{i}m \> \textipa{P}a\textsubdot{k}\a'{a}l \> hamidra\textsubdot{k}\a'{a} \> we\textipa{P}a\textsubdot{k}\a'{a}lt \\
@@ -338,7 +346,7 @@ we\textbf{\textipa{P}}a\textbf{\textsubdot{k}}\a'{a}\textbf{l} \> leyad\textsubd
 \textit{Ten most active centroid features}
 \vspace{-3pt}
 \begin{tabbing}
-\hspace*{6ex}\= \hspace*{11ex}\= \hspace*{6ex}\= \hspace*{11ex} \= \hspace*{6ex} \= \hspace*{11ex} \= \hspace*{6ex}\= \hspace*{11ex} \= \hspace*{6ex} \= \hspace*{9.5ex}\kill
+\hspace*{6ex}\= \hspace*{12ex}\= \hspace*{6ex}\= \hspace*{12ex} \= \hspace*{6ex} \= \hspace*{12ex} \= \hspace*{7ex}\= \hspace*{13ex} \= \hspace*{7ex} \= \hspace*{9.5ex}\kill
 \texttt{a<\textsubdot{k}} \> (1.0000) \> \texttt{\textsubdot{k}<\a'{a}} \> (0.8585) \> \texttt{\textsubdot{k}<l} \> (0.7588) \> \texttt{\textipa{P}<\textsubdot{k}} \> (0.4984) \> \texttt{\textsubdot{k}<\a'{i}} \> (0.4439)\\
 \texttt{e<\textsubdot{k}} \> (0.3341) \> \texttt{\a'{a}<l} \> (0.3159) \> \texttt{\textsubdot{k}<n} \> (0.2960) \> \texttt{o<\textsubdot{k}} \> (0.2271) \> \texttt{l<\textsubdot{k}} \> (0.2206)
 \end{tabbing}
@@ -356,13 +364,13 @@ we\textbf{\textipa{P}}a\textbf{\textsubdot{k}}\a'{a}\textbf{l} \> leyad\textsubd
 \vspace{-3pt}
  \begin{normalsize}
 \begin{tabbing}
-\hspace*{13ex}\= \hspace*{13ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex} \kill
+\hspace*{15ex}\= \hspace*{16ex}\=\hspace*{16ex}\=\hspace*{16ex}\=\hspace*{16ex}\=\hspace*{13ex} \kill
 hi\textbf{d}\textbf{l}\a'{i}\textbf{q} \> weleha\textbf{d}\textbf{l}\a'{i}\textbf{q} \> ha\v{s}ehi\textbf{d}\textbf{l}\a'{i}\textbf{q} \> ya\textbf{d}\textbf{l}\a'{i}\textbf{q} \> lehadb\a'{i}q \> wehi\textbf{d}\textbf{l}\a'{i}\textbf{q} \\
 tadb\a'{i}qi \> hi\textbf{d}\textbf{l}\a'{a}\textbf{q}nu \> ta\textbf{d}\textbf{l}\a'{i}\textbf{q} \> welehadb\a'{i}q \> wenadb\a'{i}q \> we\v{s}eyadb\a'{i}q \\
 lagdol\a'{i}m \> wema\textbf{d}\textbf{l}\a'{i}\textbf{q} \> mavdil\a'{i}m \> \textipa{P}a\textbf{d}\textbf{l}\a'{i}\textbf{q} \> hi\textbf{d}\textbf{l}\a'{i}\textbf{q}u \> ta\textbf{d}\textbf{l}\a'{i}\textbf{q}i \\
 basandal\a'{i}m \> ma\textbf{d}\textbf{l}i\textbf{q}\a'{a} \> hi\textbf{d}\textbf{l}\a'{a}\textbf{q}t \> \v{s}etadb\a'{i}qi \> hi\textbf{d}\textbf{l}\a'{a}\textbf{q}ti \> leha\textbf{d}\textbf{l}\a'{i}\textbf{q} \\
 \textbf{d}o\textbf{l}\textbf{q}\a'{i}m \> gdel\a'{i}m \> gdol\a'{i}m \> hasandal\a'{i}m \> ni\textbf{d}\textbf{l}\a'{a}\textbf{q} \> \textbf{d}\textbf{l}u\textbf{q}\a'{a}
-%\hspace*{13ex}\= \hspace*{13ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex} \kill
+%\hspace*{13ex}\= \hspace*{13ex}\=\hspace*{15ex}\=\hspace*{15ex}\=\hspace*{15ex}\=\hspace*{15ex} \kill
 %hidl\a'{i}q \> welehadl\a'{i}q \> ha\v{s}ehidl\a'{i}q \> yadl\a'{i}q \> lehadb\a'{i}q \> wehidl\a'{i}q \\
 %tadb\a'{i}qi \> hidl\a'{a}qnu \> tadl\a'{i}q \> welehadb\a'{i}q \> wenadb\a'{i}q \> we\v{s}eyadb\a'{i}q \\
 %lagdol\a'{i}m \> wemadl\a'{i}q \> mavdil\a'{i}m \> \textipa{P}adl\a'{i}q \> hidl\a'{i}qu \> tadl\a'{i}qi \\
@@ -376,7 +384,7 @@ basandal\a'{i}m \> ma\textbf{d}\textbf{l}i\textbf{q}\a'{a} \> hi\textbf{d}\textb
 \textit{Ten most active centroid features}
 \vspace{-3pt}
 \begin{tabbing}
-\hspace*{6ex}\= \hspace*{10ex}\= \hspace*{6ex}\= \hspace*{10ex} \= \hspace*{7ex} \= \hspace*{11ex} \= \hspace*{7ex}\= \hspace*{11ex} \= \hspace*{7ex} \= \hspace*{9.5ex}\kill
+\hspace*{6ex}\= \hspace*{11ex}\= \hspace*{6ex}\= \hspace*{11ex}\= \hspace*{7ex} \= \hspace*{11ex} \= \hspace*{8ex}\= \hspace*{11ex} \= \hspace*{8ex} \= \hspace*{9.5ex}\kill
 \texttt{d<\a'{i}} \> (1.000) \> \texttt{d<l} \> (1.000) \> \texttt{l<q} \> (0.853) \> \texttt{d<q} \> (0.798) \> \texttt{\a'{i}<q} \> (0.501)\\
 \texttt{h<d} \> (0.374) \> \texttt{l<\a'{i}} \> (0.162) \> \texttt{g<d} \> (0.157) \> \texttt{\a'{e}}@\texttt{[-1]} \> (0.135) \> \texttt{r}@\texttt{[-2]} \> (0.135)
 \end{tabbing}
@@ -395,7 +403,7 @@ basandal\a'{i}m \> ma\textbf{d}\textbf{l}i\textbf{q}\a'{a} \> hi\textbf{d}\textb
 \vspace{3pt}
 \begin{normalsize}
 \begin{tabbing}
-\hspace*{14ex}\= \hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex}\=\hspace*{14ex} \kill
+\hspace*{15ex}\= \hspace*{16ex}\=\hspace*{16ex}\=\hspace*{16ex}\=\hspace*{16ex}\=\hspace*{13ex} \kill
 lexam\a'{e}\v{s} \> taxac\a'{e} \> lexap\a'{e}\textsubdot{s} \> \textipa{P}a\textsubdot{k}as\a'{e} \> \v{s}e\textipa{P}axr\a'{e}y \> mitla\textsubdot{k}l\a'{e}\textsubdot{k} \\
 k\v{s}e\textipa{P}at\a'{e}m \> \textipa{Q}acm\a'{e}nu \> sifr\a'{e}y \> wenexap\a'{e}\textsubdot{s} \> weyot\a'{e}r \> metaqt\a'{e}q \\
 mera\v{s}r\a'{e}\v{s} \> tefaz\a'{e}r \> meyac\a'{e}v \> texab\a'{e}q \> lehizah\a'{e}r \> ne\textsubdot{s}ax\a'{e}q \\
@@ -409,7 +417,7 @@ haqos\a'{e}m \> \textipa{P}axam\a'{e}m \> meqalq\a'{e}l \> \v{s}emi\v{s}tal\v{s}
 \textit{Ten most active centroid features}
 \vspace{-3pt}
 \begin{tabbing}
-\hspace*{6.5ex}\= \hspace*{11ex}\= \hspace*{6.5ex}\= \hspace*{11ex} \= \hspace*{6.5ex} \= \hspace*{11ex} \= \hspace*{6.5ex}\= \hspace*{11ex} \= \hspace*{6.5ex} \= \hspace*{11ex}\kill
+\hspace*{7ex}\= \hspace*{12ex}\= \hspace*{7ex}\= \hspace*{12ex} \= \hspace*{7ex} \= \hspace*{12ex} \= \hspace*{6ex}\= \hspace*{12ex} \= \hspace*{6ex} \= \hspace*{10ex}\kill
 %2_3_cluster_19
 \texttt{a<\a'{e}} \> (1.0000) \> \texttt{\a'{u}}@\texttt{[1]} \> (0.9931) \> \texttt{r<\a'{e}} \> (0.1233) \> \texttt{\a'{e}<r} \> (0.1112) \> \texttt{x<\a'{e}} \> (0.1097)\\
 \texttt{n<\a'{e}} \> (0.0827) \> \texttt{q<\a'{e}} \> (0.0820) \> \texttt{b<\a'{e}} \> (0.0805) \> \texttt{t<\a'{e}} \> (0.0751) \> \texttt{d<\a'{e}} \> (0.0662)
@@ -450,7 +458,7 @@ The bipartite architecture of the MCMM should be able to form the necessary clus
 %Do we see anything curious?
 
 Let us now take a closer look of top ten features of this cluster (figure~\ref{fig:cluster-33-0-2-TS}) with an eye to explaining its relative incoherence. 
-Of course, all of this cluster's features are precedence features. Nevertheless, however, the top ten features in this cluster's centroid are not ideal for representing 
+Of course, all of this cluster's features are precedence features. But even so, the top ten features in this cluster's centroid are not ideal for representing 
 a %position-variant 
 sequence of position-variant consonants.
 % closer look at this cluster's top ten centroid features, one can see that they are not ideal for capturing the root \textit{\textipa{P}.k.l}. 
@@ -464,17 +472,17 @@ The activities of the important features
 In fact, the two most active features, namely \texttt{a<\textsubdot{k}} (activity 1.0) and \texttt{\textsubdot{k}<\'{a}} (activity 0.8585), both reference a vowel.\footnote{In the transcriptional datasets, \textsf{a} is a vowel.} References to specific vowels are problematic for roots because different vowel patterns have different vowels, and thus the particular sequence of vowels that interleaves with a root's consonants can vary from word to word.
 %  as different vowel patterns have different vowels.
 
-Another cluster of transcribed words (with stress-marking) is shown in figure~\ref{fig:cluster-339-4-3-TS}. 
+Another cluster of transcribed words (with stress-marking) is represented in figure~\ref{fig:cluster-339-4-3-TS}. 
 This one corresponds to the root \textit{d.l.q} and is considerably purer than the 
-cluster in figure~\ref{fig:cluster-33-0-2-TS}. The activities of the features \texttt{d<l} and \texttt{l<q}  
-are 1.0 and 0.853, respectively. We also have the feature \texttt{d<q} at an activity of 0.798. Such features spanning 
-from the first to the third root consonant are likely to be rarer and/or have weaker activities in the transcriptional domain, 
+cluster in figure~\ref{fig:cluster-33-0-2-TS}. The activities of the key features \texttt{d<l} and \texttt{l<q}  
+are 1.0 and 0.853, respectively. We also have, at an activity of 0.798, the feature \texttt{d<q}. Such features, i.e., features spanning 
+features spanning the first root consonant to the third, tend to be rarer and/or have weaker activities in the transcriptional models, 
 since the distance between the first and third root consonants often exceeds $\delta$ when vowels are 
-involved. We again have problematic vowel-referencing features, however, particularly features 
-referencing \textit{i}: \texttt{d<\a'{i}} is especially strong with an activity of 1.0, and \texttt{\'{i}<q} 
-has a modest activity of 0.501. The \textit{i} in these two features is reflected in frequency of \textit{i} in 
+involved. While this third root feature has a fairly high activity is this cluster, recall that its analogue \texttt{a<l} had an activity of 1.0 in the orthographic cluster represented in figure~\ref{fig:cluster-81-2-2-O}. We again have problematic vowel-referencing features in this cluster, particularly features 
+referencing \textit{i} and \textit{\'{i}}, such as\texttt{d<\'{i}}, which is especially strong with an activity of 1.0, and \texttt{\'{i}<q} with  
+ a modest activity of 0.501. The \textit{\'{i}} in these two features is reflected in frequency of \textit{\'{i}} in 
 this cluster's words. It would thus be more accurate to say that this cluster represents a subset of the 
-occurrences of root \textit{d.l.q}, namely its co-occurrences with \textit{i}. 
+occurrences of root \textit{d.l.q}, namely its co-occurrences with \textit{\'{i}} (and \textit{i}).
 
 Our last cluster example in this section is the one in figure~\ref{fig:cluster-19-2-3-TS}. It demonstrates 
 Multimorph's capacity to learn vowel patterns. The pattern in this case is \textit{a.\'{e}}.
@@ -726,6 +734,7 @@ Each table  is associated with a $K$ cutoff value, either 500 or 1000, and each 
 one for each of the three types of input data representation (DR).
 
 \begin{table}[!ht]
+\small
 \centering
 \subtable[Transcriptions with Stress Marking (TS)\label{subtab:intr-TS-500}]{
 \small
@@ -823,6 +832,7 @@ Intrinsic evaluation results at $K = 500$.
 \end{table}
 
 \begin{table}[!ht]
+\small
 \centering
 \subtable[Transcriptions with Stress Markings (TS)\label{subtab:intr-TS-1000}]{ %(TS), $K=1000$ 
 %\label{subtab:intr-TS-1000}]{
@@ -978,23 +988,26 @@ Positional features, each specifying both a character \emph{and} a position, are
 %  even specific they can allow a range of different span lengthsPrecedence as 
 %Perhaps this constriction is a consequence of the greater degree of specificity in positional features as compared to precedence features.
 
-Because of their specificity, positional features perhaps made it generally harder for a word to gain membership in a cluster, hence the abrupt decrease in coverage once positional features are introduced. The reason we see this dramatic decrease only in the orthographic data could be a due to the sheer number of precedence features in the transcriptional feature sets, especially the TS feature sets. 
+Because of their specificity, positional features perhaps made it generally harder for a word to gain membership in a cluster, hence the abrupt decrease in coverage when positional features were introduced. The reason we see this dramatic decrease only in the orthographic data could be due to the sheer number of precedence features in the transcriptional feature sets, especially the TS feature sets. 
 %The transcriptional feature sets contained many more precedence features than the orthographic feature set. 
-The number of precedence features is a function of the size of the alphabet from which they are drawn. 
+The number of precedence features was a function of the size of the alphabet from which they are drawn. 
 %
-In particular, it is the size of the alphabet \emph{squared}. For example, the size of the orthographic alphabet is 22, and thus the number of orthographic precedence features is $22^2 = 484$. By contrast, there are 39 characters in the TS alphabet, which translates to $39^2 = 1521$ TS precedence features.\footnote{Features that never occurred in the dataset in question dataset were deleted, so the actual numbers were somewhat lower than these.}
+In particular, it was the size of the alphabet \emph{squared}. For example, the size of the orthographic alphabet was 22; thus, the number of orthographic precedence features was $22^2 = 484$. By contrast, there were 39 characters in the TS alphabet, which means that there were $39^2 = 1521$ in the TS data.\footnote{Features that never occurred in the dataset in question dataset were deleted, so the actual numbers were somewhat lower than these.}
 %%The size of the precedence feature set thus increases \emph{exponentially} with the size of the alphabet. By contrast, 
-The size of positional feature set is given by: 
+
+The number of positional features was also a function of the size of the alphabet, but a \emph{linear} one, namely 
 \begin{equation*}
 \text{size(}{PositionalFeatures}\text{)} = s \times 2 \times \text{size(}{Alphabet}\text{)}
 \end{equation*}
-where $s$ is the affix-length parameter, i.e., the number of positions considered at \emph{one} of the two ends, and $s \times 2$ is the total number positions (taking into account both ends; see section~\ref{sec:features}). The size of the positional feature set thus also increases with the size of the alphabet, but at a much slower rate than the precedence features, and so the size disparity between the two feature sets only increases as the alphabet grows larger.
-In the TS feature sets, at $s =2$, for instance, the ratio of precedence features to positional features was 9.7 to one. In the orthographic feature sets, by contrast, this ratio was 5.5 to one.
-Perhaps the precedence features were numerous enough in the transcriptional feature sets (especially TS) to drown out the influence of the relatively scarce transcriptional positional features. This would explain the lack of a coverage drop in the transcriptional results.
+where $s$ was the affix-length parameter, i.e., the number of positions considered at \emph{one} of the two ends, and $s \times 2$ was the total number positions (taking into account both ends; see section~\ref{sec:features}). The size of the positional feature set thus also increased with the size of the alphabet, but at a much slower rate than the size of the precedence feature sets.
+
+Moreover, in every feature set, the precedence features substantially outnumbered the positional, but this size disparity was greater for larger alphabets.
+For example, in the TS feature sets (whose alphabet size was 39), at $s =2$, the ratio of the number of precedence features to the number of positional features was 9.7 to one. By contrast, in the orthographic feature sets (alphabet size 22), this ratio was considerably smaller, namely 5.5 to one.
+Perhaps the precedence features were numerous enough in the transcriptional feature sets (especially TS) to drown out the influence of the relatively scarce positional features in these feature sets. This would explain the lack of a coverage drop in the transcriptional results.
 
 %The highest F-scores also tended to occur when $s = 1$, but this was true not only of the orthographic models, but of the transcriptional models, as well.
-The highest F-scores tended to occur at $s=1$ for the O models and $s=2$ for the TR and TS models, i.e., at the lowest non-zero $s$ value for each of the three data types, suggesting that the benefit of positional features is maximized at the edges of words (see section~\ref{sec:concl-features} in the next chapter).
-At the edges of words, the increased specificity seems to have a positive effect, since $s=1$ places all positional features exactly at the edges of words.
+The highest F-scores tended to occur at $s=1$ for the O models and $s=2$ for the TR and TS models. In other words, the highest F-scores tended to occur at the lowest non-zero $s$ value for each of the three data types, suggesting that the benefit of positional features is maximized at the edges of words (see section~\ref{sec:concl-features} in the next chapter).
+%At the edges of words, the increased specificity seems to have a positive effect, since $s=1$ places all positional features exactly at the edges of words.
 
 %By contrast, the number positional features is
 %\begin{equation*}
@@ -1201,120 +1214,7 @@ At the edges of words, the increased specificity seems to have a positive effect
 %\end{table}
 %
 
-
-\subsection{Extrinsic Results}
-\label{sec:extr-results}
-The extrinsic evaluation was itself a sort of experiment, one that sought to evaluate Multimorph according to its 
-ability to positively influence a downstream application. It involved a four-stage procedure that is described in 
-chapter~\ref{ch:eval}.
-Basically, this process compressed Multimorph's input words by substituting original characters with atomic 
-representations of morphs (i.e., morphs represented as single characters). The resulting file was then fed to 
-Morfessor. The idea was to give Morfessor pre-analyzed (i.e., compressed) lists of input words and
- see if Morfessor performed better on them than on the original, untouched wordlists (i.e., the control wordlists) .
-% the control group, which was in this case the original Hebrew wordlists, untouched by Multimorph.
-%  
-Because each
-experimental combination of $s$ and $\delta$ values yielded a different word coverage, 
-%---i.e., involved a somewhat different set of words---
-each combination required its own control model. Thus, table~\ref{tab:extr-results-1000} shows control results for each valuation of $s$ and $\delta$.
-%because the parameters $s$ and $\delta$ 
- 
-Table~\ref{tab:extr-results-1000} shows the results of the extrinsic evaluation at $K=1000$. 
-Morfessor clearly did not perform 
-better on the data that was preprocessed by Multimorph, as the control 
-results are always better than the corresponding 
-experimental results by a substantial margin. The closest margins between experimental and control results occur among the O models at $s = 1$ and $s = 2$. At $\langle{s}=2,\delta=3\rangle$, the experimental orthographic F-score was 0.56, and the corresponding control F-score was 0.65. 
-%But even so, experimental and control results do seem to be \emph{comparable}. 
-%that is,
-%the experimental and control results do not seem large enough to suggest a fundamental inferiority in the 
-%experimental models. 
-
-One must bear in mind that this four-stage process is both new---it was executed for the first time in this project---and highly complex. The process's results in table~\ref{tab:extr-results-1000} are close enough to 
-the control results at this early stage in its development to indicate promise, a potential for considerable improvement.
-%comparable. the differences between the control and experimental do not appear large enough to   experimental and control results are 
-%comparable. 
-%Interestingly, the scores of the orthographic (O) models come closest to matching the control results.
-
-
-%orthographic data that is inherently beneficial.
-
-%The reader may have noticed that the tables contain the 
-%results of many control datasets, one for each experimental model, in fact. This may seem strange 
-%because the parameters $s$ and $\delta$ were irrelevant to the control data, untouched as it was 
-%by Multimorph. This is indeed true, but the actual reason for the many control models is 
-%that each experimental model yielded a different word coverage. The control datasets were made 
-%to have the same words as their corresponding models covered. 
-
-%\begin{table}[htb]
-%\subtable[Transcriptions with stress (TS), $K = 1000$\label{subtab:extr-1000-ts}]{
-%\small
-%\setlength{\extrarowheight}{6pt}
-%\begin{tabular}{cc|ccc|ccc}
-%\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
-%0 & 1 & 0.40 & 0.37 & 0.39 & 0.78 & 0.60 & 0.68 \\
-%0 & 2 & 0.37 & 0.35 & 0.36 & 0.77 & 0.60 & 0.68 \\
-%0 & 3 & 0.50 & 0.39 & 0.44 & 0.77 & 0.60 & 0.67 \\\hline
-%2 & 1 & 0.50 & 0.48 & 0.49 & 0.77 & 0.60 & 0.67 \\
-%2 & 2 & 0.40 & 0.40 & 0.40 & 0.78 & 0.59 & 0.67 \\
-%2 & 3 & 0.46 & 0.42 & 0.44 & 0.78 & 0.59 & 0.67 \\\hline
-%4 & 1 & 0.54 & 0.48 & 0.51 & 0.78 & 0.59 & 0.67 \\
-%4 & 2 & 0.54 & 0.46 & 0.50 & 0.79 & 0.61 & 0.68 \\
-%4 & 3 & 0.48 & 0.38 & 0.42 & 0.78 & 0.59 & 0.68 \\ \hline
-%6 & 1 & 0.55 & 0.50 & 0.52 & 0.78 & 0.60 & 0.68 \\
-%6 & 2 & 0.58 & 0.49 & 0.53 & 0.77 & 0.59 & 0.67 \\ \hline\hline
-%\multicolumn{2}{r|}{\textit{Avgs:}} & 0.48 & 0.43 & 0.45 & 0.78 & 0.60 & 0.67 \\
-%\end{tabular}
-%}
-%\subtable[Transcriptions with stress (TR), $K = 1000$\label{subtab:extr-1000-tr}]{
-%\small
-%\setlength{\extrarowheight}{6pt}
-%\begin{tabular}{cc|ccc|ccc}
-%\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
-%0 & 1 & 0.36 & 0.47 & 0.40 & 0.61 & 0.68 & 0.62 \\
-%0 & 2 & 0.46 & 0.41 & 0.43 & 0.79 & 0.63 & 0.70 \\
-%0 & 3 & 0.50 & 0.37 & 0.43 & 0.80 & 0.64 & 0.71 \\ \hline
-%2 & 1 & 0.50 & 0.46 & 0.48 & 0.81 & 0.65 & 0.72 \\
-%2 & 2 & 0.44 & 0.40 & 0.42 & 0.81 & 0.64 & 0.71 \\
-%2 & 3 & 0.31 & 0.56 & 0.40 & 0.40 & 0.73 & 0.52 \\ \hline
-%4 & 1 & 0.51 & 0.47 & 0.49 & 0.80 & 0.65 & 0.72 \\
-%4 & 2 & 0.46 & 0.42 & 0.44 & 0.80 & 0.64 & 0.71 \\
-%4 & 3 & 0.47 & 0.43 & 0.45 & 0.79 & 0.63 & 0.71 \\ \hline
-%6 & 1 & 0.53 & 0.49 & 0.51 & 0.81 & 0.64 & 0.72 \\
-%6 & 2 & 0.51 & 0.43 & 0.47 & 0.81 & 0.64 & 0.71 \\
-%6 & 3 & 0.59 & 0.46 & 0.52 & 0.79 & 0.64 & 0.71 \\ \hline\hline
-% \multicolumn{2}{r|}{\textit{Avgs:}} & 0.48 & 0.44 & 0.46 & 0.76 & 0.65 & 0.69 \\
-%\end{tabular}
-%}
-%\bigskip
-%\subtable[Orthographic (O), $K = 1000$ \label{subtab:extr-1000-0}]{
-%\small
-%\setlength{\extrarowheight}{6pt}
-%\begin{tabular}{cc|ccc|ccc}
-%\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
-%$s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
-%0 & 1 & 0.69 & 0.42 & 0.52 & 0.83 & 0.67 & 0.75 \\
-%0 & 2 & 0.67 & 0.31 & 0.42 & 0.84 & 0.68 & 0.75 \\
-%0 & 3 & 0.67 & 0.28 & 0.39 & 0.83 & 0.68 & 0.75 \\ \hline
-%1 & 1 & 0.49 & 0.56 & 0.52 & 0.59 & 0.64 & 0.61 \\
-%1 & 2 & 0.53 & 0.48 & 0.51 & 0.60 & 0.64 & 0.62 \\
-%1 & 3 & 0.72 & 0.30 & 0.42 & 0.59 & 0.64 & 0.61 \\ \hline
-%2 & 1 & 0.47 & 0.62 & 0.53 & 0.57 & 0.71 & 0.63 \\
-%2 & 2 & 0.46 & 0.59 & 0.52 & 0.58 & 0.72 & 0.64 \\
-%2 & 3 & 0.55 & 0.56 & 0.56 & 0.59 & 0.73 & 0.65 \\ \hline
-%3 & 1 & 0.46 & 0.59 & 0.51 & 0.58 & 0.73 & 0.65 \\
-%3 & 2 & 0.43 & 0.56 & 0.49 & 0.60 & 0.70 & 0.65 \\
-%3 & 3 & 0.49 & 0.58 & 0.53 & 0.58 & 0.74 & 0.65 \\ \hline\hline
-% \multicolumn{2}{r|}{\textit{Avgs:}} & 0.55 & 0.49 & 0.49 & 0.65 & 0.69 & 0.66 \\
-%\end{tabular}
-%}
-%\caption{Extrinsic evaluation results at $K = 1000$.}
-%\label{tab:extr-results-1000}
-%\end{table}
-
-%\frame{
-%\frametitle{Extrinsic Evaluation, $K = 1000$} %\label{subtab:extr-1000-0}]{
-
-\begin{table}
+ \begin{table}
 %\scriptsize
 \centering
 \setlength{\extrarowheight}{3pt}
@@ -1410,6 +1310,122 @@ $s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
 \label{tab:extr-results-1000}
 \end{table}
 
+\subsection{Extrinsic Results}
+\label{sec:extr-results}
+The extrinsic evaluation was itself a sort of experiment, one that sought to evaluate Multimorph according to its 
+ability to positively influence a downstream application. It involved a four-stage procedure that is described in 
+chapter~\ref{ch:eval}.
+Basically, this process compressed Multimorph's input words by substituting original characters with atomic 
+representations of morphs (i.e., morphs represented as single characters). The resulting file was then fed to 
+Morfessor. The idea was to give Morfessor pre-analyzed (i.e., compressed) lists of input words and
+ see if Morfessor performed better on them than on the original, untouched wordlists (i.e., the control wordlists) .
+% the control group, which was in this case the original Hebrew wordlists, untouched by Multimorph.
+%  
+Because each
+experimental combination of $s$ and $\delta$ values yielded a different word coverage, 
+%---i.e., involved a somewhat different set of words---
+each combination required its own control model. Thus, table~\ref{tab:extr-results-1000} shows control results for each valuation of $s$ and $\delta$.
+%because the parameters $s$ and $\delta$ 
+ 
+
+
+Table~\ref{tab:extr-results-1000} shows the results of the extrinsic evaluation at $K=1000$. 
+Morfessor clearly did not perform 
+better on the data that was preprocessed by Multimorph, as the control 
+results were always better than the corresponding 
+experimental results by a substantial margin. The closest margins between experimental and control results occur among the O models at $s = 1$ and $s = 2$. At $\langle{s}=2,\delta=3\rangle$, the experimental orthographic F-score was 0.56, and the corresponding control F-score was 0.65. 
+%But even so, experimental and control results do seem to be \emph{comparable}. 
+%that is,
+%the experimental and control results do not seem large enough to suggest a fundamental inferiority in the 
+%experimental models. 
+
+One must bear in mind that this four-stage process is both new---it was executed for the first time in this project---and highly complex. The process's results in table~\ref{tab:extr-results-1000} are close enough to 
+the control results at this early stage in its development to indicate promise, a potential for considerable improvement.
+%comparable. the differences between the control and experimental do not appear large enough to   experimental and control results are 
+%comparable. 
+%Interestingly, the scores of the orthographic (O) models come closest to matching the control results.
+
+
+%orthographic data that is inherently beneficial.
+
+%The reader may have noticed that the tables contain the 
+%results of many control datasets, one for each experimental model, in fact. This may seem strange 
+%because the parameters $s$ and $\delta$ were irrelevant to the control data, untouched as it was 
+%by Multimorph. This is indeed true, but the actual reason for the many control models is 
+%that each experimental model yielded a different word coverage. The control datasets were made 
+%to have the same words as their corresponding models covered. 
+
+%\begin{table}[htb]
+%\subtable[Transcriptions with stress (TS), $K = 1000$\label{subtab:extr-1000-ts}]{
+%\small
+%\setlength{\extrarowheight}{6pt}
+%\begin{tabular}{cc|ccc|ccc}
+%\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
+%0 & 1 & 0.40 & 0.37 & 0.39 & 0.78 & 0.60 & 0.68 \\
+%0 & 2 & 0.37 & 0.35 & 0.36 & 0.77 & 0.60 & 0.68 \\
+%0 & 3 & 0.50 & 0.39 & 0.44 & 0.77 & 0.60 & 0.67 \\\hline
+%2 & 1 & 0.50 & 0.48 & 0.49 & 0.77 & 0.60 & 0.67 \\
+%2 & 2 & 0.40 & 0.40 & 0.40 & 0.78 & 0.59 & 0.67 \\
+%2 & 3 & 0.46 & 0.42 & 0.44 & 0.78 & 0.59 & 0.67 \\\hline
+%4 & 1 & 0.54 & 0.48 & 0.51 & 0.78 & 0.59 & 0.67 \\
+%4 & 2 & 0.54 & 0.46 & 0.50 & 0.79 & 0.61 & 0.68 \\
+%4 & 3 & 0.48 & 0.38 & 0.42 & 0.78 & 0.59 & 0.68 \\ \hline
+%6 & 1 & 0.55 & 0.50 & 0.52 & 0.78 & 0.60 & 0.68 \\
+%6 & 2 & 0.58 & 0.49 & 0.53 & 0.77 & 0.59 & 0.67 \\ \hline\hline
+%\multicolumn{2}{r|}{\textit{Avgs:}} & 0.48 & 0.43 & 0.45 & 0.78 & 0.60 & 0.67 \\
+%\end{tabular}
+%}
+%\subtable[Transcriptions with stress (TR), $K = 1000$\label{subtab:extr-1000-tr}]{
+%\small
+%\setlength{\extrarowheight}{6pt}
+%\begin{tabular}{cc|ccc|ccc}
+%\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
+%0 & 1 & 0.36 & 0.47 & 0.40 & 0.61 & 0.68 & 0.62 \\
+%0 & 2 & 0.46 & 0.41 & 0.43 & 0.79 & 0.63 & 0.70 \\
+%0 & 3 & 0.50 & 0.37 & 0.43 & 0.80 & 0.64 & 0.71 \\ \hline
+%2 & 1 & 0.50 & 0.46 & 0.48 & 0.81 & 0.65 & 0.72 \\
+%2 & 2 & 0.44 & 0.40 & 0.42 & 0.81 & 0.64 & 0.71 \\
+%2 & 3 & 0.31 & 0.56 & 0.40 & 0.40 & 0.73 & 0.52 \\ \hline
+%4 & 1 & 0.51 & 0.47 & 0.49 & 0.80 & 0.65 & 0.72 \\
+%4 & 2 & 0.46 & 0.42 & 0.44 & 0.80 & 0.64 & 0.71 \\
+%4 & 3 & 0.47 & 0.43 & 0.45 & 0.79 & 0.63 & 0.71 \\ \hline
+%6 & 1 & 0.53 & 0.49 & 0.51 & 0.81 & 0.64 & 0.72 \\
+%6 & 2 & 0.51 & 0.43 & 0.47 & 0.81 & 0.64 & 0.71 \\
+%6 & 3 & 0.59 & 0.46 & 0.52 & 0.79 & 0.64 & 0.71 \\ \hline\hline
+% \multicolumn{2}{r|}{\textit{Avgs:}} & 0.48 & 0.44 & 0.46 & 0.76 & 0.65 & 0.69 \\
+%\end{tabular}
+%}
+%\bigskip
+%\subtable[Orthographic (O), $K = 1000$ \label{subtab:extr-1000-0}]{
+%\small
+%\setlength{\extrarowheight}{6pt}
+%\begin{tabular}{cc|ccc|ccc}
+%\multicolumn{2}{c}{} & \multicolumn{3}{c}{4-stage process} & \multicolumn{3}{c}{Control} \\
+%$s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
+%0 & 1 & 0.69 & 0.42 & 0.52 & 0.83 & 0.67 & 0.75 \\
+%0 & 2 & 0.67 & 0.31 & 0.42 & 0.84 & 0.68 & 0.75 \\
+%0 & 3 & 0.67 & 0.28 & 0.39 & 0.83 & 0.68 & 0.75 \\ \hline
+%1 & 1 & 0.49 & 0.56 & 0.52 & 0.59 & 0.64 & 0.61 \\
+%1 & 2 & 0.53 & 0.48 & 0.51 & 0.60 & 0.64 & 0.62 \\
+%1 & 3 & 0.72 & 0.30 & 0.42 & 0.59 & 0.64 & 0.61 \\ \hline
+%2 & 1 & 0.47 & 0.62 & 0.53 & 0.57 & 0.71 & 0.63 \\
+%2 & 2 & 0.46 & 0.59 & 0.52 & 0.58 & 0.72 & 0.64 \\
+%2 & 3 & 0.55 & 0.56 & 0.56 & 0.59 & 0.73 & 0.65 \\ \hline
+%3 & 1 & 0.46 & 0.59 & 0.51 & 0.58 & 0.73 & 0.65 \\
+%3 & 2 & 0.43 & 0.56 & 0.49 & 0.60 & 0.70 & 0.65 \\
+%3 & 3 & 0.49 & 0.58 & 0.53 & 0.58 & 0.74 & 0.65 \\ \hline\hline
+% \multicolumn{2}{r|}{\textit{Avgs:}} & 0.55 & 0.49 & 0.49 & 0.65 & 0.69 & 0.66 \\
+%\end{tabular}
+%}
+%\caption{Extrinsic evaluation results at $K = 1000$.}
+%\label{tab:extr-results-1000}
+%\end{table}
+
+%\frame{
+%\frametitle{Extrinsic Evaluation, $K = 1000$} %\label{subtab:extr-1000-0}]{
+
+
+
 \section{Summary}
 To sum up, in the qualitative analysis, we found clusters corresponding to roots, vowel patterns, as well as concatenative affixes. The orthographic (O) models produced more clusters corresponding to consonantal roots than the transcriptional models TS and TR, and in general, their clusters were more coherent as well. But since the orthographic representation favors consonants at the expense of vowels (see chapter~\ref{ch:experi}), this was perhaps to be expected. We also saw all types of models represented nonconcatenative phenomena through precedence features, and that at least two precedence features were necessary to represent a tri-consonantal root, whereas one precedence feature sufficed to represent most vowel patterns.
 
@@ -1419,7 +1435,8 @@ According to the intrinsic results, the O models performed at a level on par wit
 %good relative to those of the transcriptional models (TS and TR). 
 %proved to be considerably better. 
 %extrinsic results (see section~\ref{sec:extr-results}). 
-The relative success of the orthographic models in the extrinsic evaluation reinforces the idea that there is something about the orthographic representation that is inherently and unexpectedly beneficial---that more and/or better information is present in the orthographic representation than what seems immediately apparent. The quantitative results, like the qualitative results, suggest that there are limits to the usefulness of positional features. At the same time, how\input{dissertation.toc}
-ever, the setting $s=1$ (the `affix length' parameter for positional features) tended to lead to substantially results better than $s=0$.
+The relative success of the orthographic models in the extrinsic evaluation reinforces the idea that there is something about the orthographic representation that is inherently and unexpectedly beneficial---that more and/or better information is present in the orthographic representation than what seems immediately apparent. The quantitative results, like the qualitative results, suggest that there are limits to the usefulness of positional features. At the same time, however, the affix-length setting $s=1$ 
+%(the `affix length' parameter for positional features) 
+tended to lead to substantially results better than $s=0$.
 
 In the next chapter, we will consider the results from the perspective of the thesis as a whole.
