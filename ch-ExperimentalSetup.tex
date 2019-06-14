@@ -1,10 +1,22 @@
 \chapter{Multimorph}
 \label{ch:experi}
 \section{Introduction}
-This chapter will describe the experimental setup, that is, the steps I took to prepare for and run the experiments. This discussion
-is divided into two main parts: The first (section~\ref{sec:datasource}) concerns the extraction of the input data, including a description of the original data source. The second (section~\ref{sec:expvars}) discusses the experimental variables. The experimental variables comprise two broad categories, namely the \emph{data representation} (i.e., orthographic vs. transcriptional) and the \emph{feature types}. These are discussed in detail in section~\ref{sec:features}. 
+%This chapter will describe the experimental setup,
+This chapter will be concerned the unsupervised morphological learning system Multimorph. Chapter~\ref{ch:MCMM} described the Multiple Cause Mixture Model (MCMM), a general unsupervised learning model (or algorithm). An MCMM serves as the core learning algorithm of Multimorph. The present chapter
+ describe a particular morphological learning system that uses an MCMM as its core learning algorithm MCthe 
+ describes the steps necessary to transform an MCMM into Multimorph,
+% up into Mu   fully realized morphological learning system 
+%chapter~\ref{ch:MCMM}. 
+to bridge the gap between the general core and the fully realized system. 
+% a particular unsupervised morphological learning system. 
+For instance, one crucial matter discussed in this chapter is the question of \emph{features}, the elemental data descriptors that shape Multimorph's view of its input data and provide a common framework for establishing relations between data points. %(through its MCMM) relates one data point to another. 
+Also in this chapter, we describe the preparation of Multimorph's input data an the key experimental variables that factored into Multimorph's evaluation.
+%that is, the steps I took to prepare for and run the experiments. 
 
-Multimorph takes as input any list of words. The words can be of any
+This chapter's discussion
+is divided into two main sections: The first, section~\ref{sec:datasource}, concerns the extraction of the input data, including a description of the original data source. The second, section~\ref{sec:expvars}, discusses the experimental variables. The experimental variables comprise two broad categories, namely the \emph{data representation} (i.e., orthographic vs. transcriptional) and the \emph{feature types}. The latter are discussed in detail in section~\ref{sec:features}. 
+
+Multimorph can take as input \emph{any} list of words. The words can be of any
 language, although Multimorph does expect the input strings to be composed
 of alphabetic symbols. It also assumes that each symbol will be atomic rather
 than composite. 
@@ -307,7 +319,7 @@ by their identical transcriptions in the International Phonetic Alphabet (IPA)
 in \ref{tab:yada}. And yet they are different. 
 The former is a 3ms past-tense verb of the 
 \emph{qal} binyan. Its root consists of the \emph{three}
-consonants \textit{\textipa{y-d-Q}}, which one must 
+consonants \textit{\textipa{y.d.Q}}, which one must 
 know in order 
 to connect this verb to derivationally related words. 
 The second \textipa{[yad\`{a}]} 
@@ -585,7 +597,7 @@ Sometimes the BLC records speakers as having repeated a word or clitic, as in ex
 % (\ref{ex:redundant}), a prefixal clitic, 
 %is duplicated, and sometimes repeated
 %several times consecutively. 
-The BLC records word repititon (i.e., as part of dysfluency) even when it results in ungrammaticality.
+The BLC records word repetiton (i.e., as part of dysfluency) even when it results in ungrammaticality.
 %(as in a dysfluency), 
 For example, (\ref{ex:redundant}) shows an utterance in which the prefixal clitic \textit{we\#} is 
 attached to itself several times. No special annotation is used to mark or correct such repetitions. 

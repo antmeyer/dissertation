@@ -95,7 +95,7 @@ of both of these levels of structure. It is thus not always clear what the morph
 given data set. As intermediate, \emph{pre-}morphosyntactic units, morphs are void 
 of---and thus unconstrained by---meaning. They can thus be whatever they 
 need to be in order to bridge the gap between phonological units 
-and meaning (i.e., syntax and semantics).  There are not many morphomic lexicons 
+and meaning (i.e., syntax and semantics).  There exist very few morphomic lexicons 
 or corpora wherein autonomous morphological units are annotated. There are no 
 such resources for Hebrew.
 
@@ -255,16 +255,17 @@ The concept of a clustering's \emph{coverage} will be relevant to our discussion
 
 \subsection{Gold-Standard Classes}
 \label{sec:gld-std-classes}
-As mentioned above, many of the BLC's categories are morphosyntactic in nature; for example, \emph{person}, \emph{number}, and \emph{gender} are independent categories in the BLC's morphological analyses. In Hebrew morphology, however, such categories are often not representative of autonomous morphological categories, i.e., categories based on form rather than syntax or semantics (see section~\ref{autonomous}). The problem in evaluating Multimorph, as mentioned above, is that Multimorph finds autonomous morphological categories rather than morphosyntactic ones. For this reason, I modified some of the BLC's categories to obtain gold-standard classes that were more directly tied to form. This section describes these modifications.  
+As mentioned above, many of the BLC's categories are morphosyntactic in nature; for example, \emph{person}, \emph{number}, and \emph{gender} are independent categories in the BLC's morphological analyses. In Hebrew morphology, however, such categories are often not representative of autonomous morphological categories, i.e., categories based on form rather than syntax or semantics (see section~\ref{autonomous}). The problem in evaluating Multimorph, as mentioned above, is that Multimorph finds autonomous morphological categories rather than morphosyntactic ones. For this reason, I modified some of the BLC's categories to produce gold-standard classes that were more directly tied to form. This section describes these modifications.  
 
 \subsubsection{Verbs} 
 
  The Berman Longitudinal Corpus (BLC) uses the conventional conjugational categories for verbs exemplified in  
  tables~\ref{tab:hifil-paradigms} and \ref{tab:qal-paradigms}, 
   %tables~\ref{subtab:hifil-tensed} and \ref{subtab:hifil-part}, 
- which are essentially instances of Stump's \emph{content paradigm} \citep{stump:2001}. The content paradigm, as we discussed in section~\ref{sec:morpho-theories}, is to be distinguished from Stump's \emph{form paradigm}, since there is often a gap between these paradigms. We illustrated this gap in the case of the English present tense in table~\ref{tab:engverbpres}. As discussed in chapter~\ref{autonomous}, form-paradigm cells tend to be unnatural and thus morphomic. They are also therefore better suited than content cells to serve as form-based gold-standard classes. 
+ which are essentially instances of Stump's \emph{content paradigm} \citep{stump:2001}. The content paradigm, as we discussed in section~\ref{sec:morpho-theories}, is to be distinguished from Stump's \emph{form paradigm}, since there is often a gap or disparity between these paradigms. We illustrated this disparity in the case of the English present tense in table~\ref{tab:engverbpres}. As discussed in chapter~\ref{autonomous}, form-paradigm cells tend to be unnatural and thus morphomic. They are also therefore better suited than content cells to serve as form-based gold-standard classes. 
 
-\begin{table}[!t] 
+\begin{table}[!t]
+ \begin{mdframed}
  %\label{tab:hifil-paradigms}
 \centering
  %\footnotesize
@@ -304,9 +305,11 @@ As mentioned above, many of the BLC's categories are morphosyntactic in nature; 
  %}
  \caption{Paradigms for the root \textit{t.x.l} in the \textit{Hif`il} binyan.}
  \label{tab:hifil-paradigms}
+ \end{mdframed}
  \end{table}
  
  \begin{table}[!t]
+ \begin{mdframed}
  \vspace{12pt}
  \centering
  %\subtable[Tensed verb forms\label{subtab:qal-tensed}]{
@@ -343,21 +346,23 @@ As mentioned above, many of the BLC's categories are morphosyntactic in nature; 
  %}
  \caption{Paradigms for the root \textit{g.m.r} in the \textit{Qal} binyan}
     \label{tab:qal-paradigms}
+   \end{mdframed}
  \end{table}
-I thus devised form-based gold-standard classes by grouping Hebrew verb inflections into form-based equivalence classes (essentially, form-paradigm cells). Table~\ref{tab:verb-cat-descriptions} summarizes the mappings from the BLC's conventional verb conjugational categories onto my form-based gold-standard classes. For example, the ``content" categories
+I thus devised form-based gold-standard classes by grouping Hebrew verb inflections into form-based equivalence classes (essentially, form-paradigm cells). Table~\ref{tab:verb-cat-descriptions} summarizes the mappings from the BLC's conventional verb conjugational categories onto my form-based gold-standard classes. For example, consider the the following content categories:
 \begin{center}
 past-tense, 3rd-person plural \\
 future-tense, 2rd-person masc plural \\
 future-tense, 2rd-person fem plural \\
 future-tense, 3rd-person plural \\
 \end{center}
-all map onto the single form-based class
+These all map onto the single \emph{form-based} class
 \begin{center}
 \texttt{(past\%3\%Pl)|(fut\%23\%Pl)}
 \end{center}
 where the \texttt{|} symbol means `or', and \texttt{\%} is a delimiter.
 
-Note also the morphomic phenomena among the stems of the paradigms in tables~\ref{tab:hifil-paradigms} and \ref{tab:qal-paradigms}.
+Note %also 
+the morphomic phenomena among the stems of the paradigms in tables~\ref{tab:hifil-paradigms} and \ref{tab:qal-paradigms}.
 For instance, the future-tense forms in tables~ %\ref{subtab:hifil-tensed} and \ref{subtab:qal-tensed} 
 \ref{tab:hifil-paradigms} and \ref{tab:qal-paradigms}.
 have different stems from their past-tense counterparts. Following \citet{vance:2004}, we will refer to the future-tense stems as \emph{prefix stems} and the past-tense stems as \emph{suffix stems}. We do this for two main reasons: First, the prefix stems really do tend to take prefixes, while the suffix stems tend to take suffixes. Second, these stems are not always associated with past and future tenses, as participles take the prefix stem in some \emph{binyanim} (singular \emph{binyan}), e.g., the \textit{Hif`il} binyan; see the \textit{Hif`il} participles in table~\ref{tab:hifil-paradigms}. 
@@ -882,16 +887,16 @@ in question, as in, for instance \textit{\textipa{Q}al-\'{a}y} `on me' (cf. \tex
 There are two sets
 of pronominal suffixes: one set for singular noun stems and another for plural noun stems. 
 That is, the members of the first set, presented in table~\ref{subtab:pron-suf-sg}, 
-attach to singular nouns, while the members of the second set, shown in table~\ref{subtab:pron-suf-pl} 
+attach to singular nouns, while the members of the second set, shown in table~\ref{subtab:pron-suf-pl}, 
 attach to plural nouns, 
 even though prepositions themselves have no number (nor person or gender). 
-Nevertheless, some prepositions, e.g., the prefixal preposition \textit{le-}, 
-take singular-stem pronominal suffixes, while others, e.g., \textit{\textipa{Q}al} `on,'
+Nevertheless, some prepositions, e.g., the prefixal preposition \textit{le-} (`to, for'), 
+take singular-stem pronominal suffixes, while others, e.g., \textit{\textipa{Q}al} (`on'),
 take plural-stem-attaching suffixes. Thus, in example~(\ref{ex:prep-pro-to}), 
 \textit{le-} takes 1st-person singular pronominal suffix for \emph{singular} stems, 
 while \textit{\textipa{Q}al} in example~(\ref{ex:prep-pro-on}) takes the 1st-person 
 for \emph{plural} nouns. In both of these examples, the person and number of 
-the suffix is the same: 1st-person singular. (There is no gender specification in the first person.)
+the suffix is the same, namely 1st-person and singular. (There is no gender specification in the first person.)
 The only functional difference between these two suffixes is that the former 
 attaches to singular nouns (and certain prepositions), whereas the latter 
 attaches to the plural nouns (and the other prepositions). 
@@ -920,7 +925,7 @@ n|yad\&gen:fm\&num:sg\,\&\,poss:3mascSG-\'{a}yw=hand
 
 When a noun bears a pronominal suffix, both the noun and the suffix have their 
 own distinct gender and number features. In addition, the suffix has a person feature. 
-In such cases, the BLC treats the noun's gender and number as separate, atomic
+In such cases, the BLC treats the noun's gender and number as separate atomic
 categories in the usual way. To avoid additional and possibly conflicting gender 
 and number features in the same
 analysis, the BLC combines the suffix's person, gender, and number categories into 
@@ -938,7 +943,7 @@ like its analyses for free-standing pronouns.
 In our category mappings, therefore, we treat the analyses of suffix-bearing 
 prepositions as we do those 
 of personal pronouns. That is, we map person and gender onto a person-and-gender gold-standard
-category, and then person, gender, and number onto another gold-standard class.
+class, and then person, gender, and number onto another gold-standard class.
 Thus, the BLC analysis for \textit{\textipa{Q}al-\'{a}yi\textsubdot{k}}, 
 which consists of the categories \texttt{prep:pro}, \texttt{pers:2}, \texttt{gen:m}, and \texttt{num:3}, 
 is mapped onto the two gold-standard classes \texttt{prep:pro\%2\%m} and 
@@ -1551,8 +1556,8 @@ We evaluate the intrinsic results according to three metrics: \textbf{average pu
 \paragraph{Average purity.}
 The standard purity metric seeks to calculate the global correctness of a 
 given clustering by determining the proportion of data points that have 
-assigned to the correct cluster. Each individual data point has at some 
-point been associated with a gold-standard \emph{category} label. Thus, 
+assigned to the correct cluster. Each individual data point has %at some point 
+been associated with a gold-standard \emph{category} label. Thus, 
 in any given cluster, there are in effect as many gold-standard class 
 labels as there are data points. Standard purity assumes that most frequent 
  gold-standard class in a given cluster $\mathbf{u}_k$ is the gold-standard label for the entire cluster. The number of correctly clustered data points in $\mathbf{u}_k$ is thus equal to the frequency of  $\mathbf{v}_j$ in cluster $\mathbf{u}_k$. Standard purity sums up the correctly clustered data points over all clusters, and divides this sum by $N$, the total number of distinct data points in the clustering
@@ -1564,7 +1569,7 @@ labels as there are data points. Standard purity assumes that most frequent
 \end{equation}
 In other words, 
 the problem for our purposes is that this version of purity assumes 
-that each datapoint belongs to exactly one gold-standard class. In fact, it requires that this be so, for if any data point should belong to more than one cluster, the numerator in \eqref{eq:pur1} would be greater than 1, and thus the resulting purity would exceed 1.
+that each datapoint belongs to exactly one gold-standard class. In fact, it \emph{requires} that this be so, for if any data point should belong to more than one cluster, the numerator in \eqref{eq:pur1} would be greater than 1, and thus the resulting purity would exceed 1.
 In the present study, each data point is a word, and the categories are morphological categories. In natural languages, words frequently belong to multiple morphological categories at once.
 %however, which contains multi-category examples, this assumption can yield purities greater than 1. 
 
@@ -1572,10 +1577,10 @@ To avoid purities that exceed 1, we modify equation \eqref{eq:pur1} as follows:
 \begin{equation} \label{eq:pur2}
 \text{purity}_{\text{avg}}(\mathbf{U}, \mathbf{V}) =  \frac{1}{K} \sum_{k \in K} max_{j \in J} |\mathbf{u}_k \cap \mathbf{v}_j|
 \end{equation}
-This new equation represents an \emph{average cluster-wise purity}; i.e., it computes each cluster's internal purity and then averages over these purities. %the mean of the $K$ clusters’ internal purities. 
+This new equation represents an \emph{average cluster-wise purity}; that is, it computes each cluster's internal purity and then averages over these purities. %the mean of the $K$ clusters’ internal purities. 
 While this equation yields purities within $[0, 1]$, even 
 when clusters overlap, it retains %the well-known bias of the 
-purity metric's bias toward small clusters. We thus incorporate other metrics. 
+purity metric's bias toward small clusters. We thus incorporate other metrics, namely, the so-called \emph{BCubed} metrics.
 
 \paragraph{BCubed precision and recall}
 The metrics \emph{BCubed precision} (BP) and \emph{BCubed recall} (BR) \citep{bagga-and-baldwin:1998} evaluate a clustering by checking one 
@@ -1633,9 +1638,10 @@ One could even call them \emph{hidden units} because they will take the form tha
 the downstream process needs them to take in order to realize the end goal, which, in the case of language, is communication.
 
 In chapter~\ref{autonomous}, we described autonomous morphological units as units that mapped from the level of meaning and morphosyntactic properties to the level of raw phonological form. This mapping direction was the \emph{generative} direction. For our present purposes, we need to view the process as one of \emph{recognition}, however. In other words, we need to reverse the mapping direction so that we can regard morphs as mapping from raw form (sequences of phonological units) to words. 
-The purpose of the extrinsic evaluation is to evaluate Multimorph's discovered clusters (or morphs) as \emph{intermediate units}, that is, to ask and attempt to answer the question, \emph{Are Multimorph's morphs useful to a downstream process?}
+%The purpose of the extrinsic evaluation is to evaluate Multimorph's discovered clusters (or morphs) as \emph{intermediate units}, that is, to 
+The extrinsic evaluation then asks and attempts to answer the question, \emph{Are Multimorph's morphs useful to a downstream process?}
 
-For Multimorph's downstream process, we would ideally use an unsupervised learning system that learns to assemble fully-fledged words from morphs. However, no such system currently exists to my knowledge. I therefore used another unsupervised learner of morphology, namely Morfessor \citep{creutz:2003, creutz-and-lagus:2005, creutz-et-al:2006, creutz-and-lagus:2007}, a ULM
+For Multimorph's downstream process, we would ideally use an unsupervised learning system that learns to assemble fully-fledged words from morphs. However, to my knowledge, no such system currently exists. I therefore used another unsupervised learner of morphology, namely Morfessor \citep{creutz:2003, creutz-and-lagus:2005, creutz-et-al:2006, creutz-and-lagus:2007}, a ULM
 system that takes a list of words as input, induces a lexicon of morphs 
 for these words, and divides each input word into its component morphs.
 
@@ -1734,7 +1740,7 @@ $\textbf{M}$ and $\textbf{C}$ matrices, deriving from it an intermediate wordlis
 a list of intermediate strings corresponding to the original input words---that could %The resulting intermediate
 %wordlist could 
 then be fed to Morfessor. 
-This intermediate wordlist was the experimental wordlist for its experimental trial
+This intermediate wordlist was the experimental wordlist in an experimental trial
 and was thus accompanied by a \emph{control wordlist}, i.e., an unaltered wordlist.
 Because the different experimental trials---i.e., 
 the different combinations $\delta$ and $s$---covered
@@ -1876,7 +1882,7 @@ It what follows we discuss these four stages in
 
 An MCMM's output consists of 
 the matrices $\mathbf{M}$ and $\mathbf{C}$. As described in 
-chapter~\ref{ch:MCMM}, the $\mathbf{M}$ contains a cluster-membership 
+chapter~\ref{ch:MCMM}, the matrix $\mathbf{M}$ contains a cluster-membership 
 vector for each data point (i.e., word), while the matrix $\mathbf{C}$ contains 
 each cluster's ``average'' vector or \emph{centroid}, i.e., the intersection 
 of its members' active features (See the example in section~\ref{subsec:example}.)
@@ -1943,7 +1949,7 @@ The following examples show five fully-specified instantiations of the mapping r
 %\>\texttt{.?} \> means \> ``0 or 1 instance(s) of \emph{any character}'' \\
 \texttt{i.?u}  \>\texttt{i} followed by \emph{up to 1} unspecified character(s), followed by \texttt{u}\\
 \texttt{i.?.?u}  \>\texttt{i} followed by \emph{up to 2} unspecified characters, followed by \texttt{u}\\
-\texttt{i.?.?.?u}  \>\texttt{i} followed by \emph{up to 3} unspecified characters, followed by \texttt{u}\\
+%\texttt{i.?.?.?u}  \>\texttt{i} followed by \emph{up to 3} unspecified characters, followed by \texttt{u}\\
 \end{tabbing}
 \caption{Regular-expression building blocks for atomic precedent features. Note that in these definitions, the phrase \emph{unspecified character} %is simply a ``nonspecific character''
 and is synonymous with \emph{any character}. }
@@ -1989,11 +1995,13 @@ was initially mapped onto its own atomic regular expression.
 However, if two atomic regular expressions are compatible with each other, 
 they are combined to create a composite expression. For instance, two 
 positional features are compatible if their indices are consecutive, 
-as they are in the pair \texttt{h@[0]} and \texttt{a@[1]}. These two features would be
+as they are in the case of the pair \texttt{h@[0]} and \texttt{a@[1]}. These two features would be
 merged as follows:
-\begin{center}
-\texttt{h@[0]}, \texttt{a@[1]} $\quad \mapsto \quad$ \texttt{(h)(a)}
-\end{center}
+%\begin{center}
+\begin{equation}
+\texttt{h@[0]}, \texttt{a@[1]} \quad \mapsto \quad \texttt{(h)(a)}
+%\end{center}
+\end{equation}
 Precedence features 
 can also create composite regular expressions. For example, the 
 features \, \texttt{d<b}\,  and \, \texttt{b<r} \, would together yield the 
@@ -2005,24 +2013,19 @@ merge if $\beta=\gamma$.
 {\{\texttt{.?}\}}^{\delta-1} \,\, \texttt{(}\beta \texttt{)} \,\,{\{\texttt{.?}\}}^{\delta-1} \, \, \texttt{(} \eta \texttt{)} \qquad \quad \text{if $\beta = \gamma$} 
 \end{equation}
 
-Each morph is represented in the four-stage process as a complex object. Here 
-we mean \emph{object} in the object-oriented-programming sense, i.e., an instantiation of a \emph{class} with a certain set \emph{attributes}.
-In the four-stage process, the morph class had two main attributes:
+Each morph is represented in the four-stage process as a complex object. Here we mean \emph{object} in the object-oriented-programming sense, that is, an instantiation of a \emph{class} with a certain set \emph{attributes}.
+In the four-stage process, the morph class has two main attributes:
 \begin{enumerate}
 \item A unique \emph{morph ID}.
 \item A regular expression built up through the process described above.
 \end{enumerate}
-The morph ID was an integer, and the regular expression was a string.
+The morph ID is an integer; in particular, \textbf{it is simply the cluster index} $k$. The regular expression is a string.
 
-The output of Stage 1 was ultimately a mapping from cluster IDs (i.e., cluster indices) to \emph{morph objects}.
-Stage 1 is thus concerned only with clusters and their representation as morphs, not with words. That is,
-it does not address the morphological segmentation of individual words, which can
-be described as a mapping from word characters to morphs. This mapping is the purview of Stage 2,
-to which we now turn.
+The output of Stage 1 was ultimately a mapping from cluster IDs (i.e., cluster indices) to \emph{morph objects}. Stage 1 is thus concerned only with clusters and their representation as morphs, not with words. That is, it does not address the morphological segmentation of individual words, which can be described as a mapping from word characters to morphs. This mapping was the purview of Stage 2, to which we now turn.
 
 \subsubsection{Stage 2. Match morphs to words}
  
-The objective of Stage 2 was to map each character of each input word to a morph.
+The objective of Stage 2 was to map each character in each input word to a morph.
 Given an input word, the first step within Stage 2 was to consult its 
 cluster-membership vector in the matrix $\mathbf{M}$ to obtain a list of clusters
 of which it was an \emph{active} member and thus assign it a preliminary list 
@@ -2099,7 +2102,7 @@ Word & Character Index & Morph IDs\\
 \label{fig:chars-to-morphs-tab}
 \end{figure}
 
-The morph-to-character alignment depicted figure~\ref{fig:morph-regex} yielded
+The morph-to-character alignment depicted in figure~\ref{fig:morph-regex} yielded
 a mapping from character indices to morphs (i.e., morph IDs), exemplified in 
 figure~\ref{fig:chars-to-morphs-tab} for \textit{hicl\'{a}xti}. Note that
 some characters are mapped to more than one morph. 
@@ -2220,10 +2223,9 @@ Since features compose morphs, the activities of individual features can serve a
 A path weight is then the average of the weights of its component morphs. However, in order to favor 
 sequences of identical morphs, such as the initial two 64s in the case of \textit{hicl\'{a}xti} (figure~\ref{fig:best-paths}), 
 we add the following to the basic averaging rule:
-\newline
 \begin{nbquote}\noindent
 Given a path of morph IDs, 
-whenever a morph ID is repeated, and it is sufficiently close to its preceding instances (i.e., with no more than three intervening positions), the path's weight is \emph{doubled}.
+whenever a morph ID is repeated, and it is sufficiently close to its preceding instance (i.e., with no more than three intervening positions), the path's weight is \emph{doubled}.
 \end{nbquote}
 
 
@@ -2294,7 +2296,7 @@ that morph 264, with regular expression \texttt{(c).?.?(l).?.?(x).?.?(t)}, was i
 The second major objective of Stage 3 is to abstract away from individual 
 characters by eliminating repeated morph IDs. 
 This is straightforward in cases of uninterrupted 
-occurrences of the same morph ID, such as the consecutive 64s in \eqref{eq:best-path}. 
+occurrences of the same morph ID, such as the consecutive 64s in mapping \eqref{eq:best-path}. 
 Consecutive morph IDs were simply mapped onto a \emph{single} instance of the same ID. Thus, for example,
 \begin{equation*}
 \texttt{64, 64} \quad \mapsto \quad \texttt{64}
@@ -2652,7 +2654,7 @@ The same process was carried out for each word in the experimental segmentation 
  %decoding process did not  placement of the  `+' signs remained distinct.
 The decoded experimental segmentations and the control segmentations were then evaluated against the same gold-standard data set, which I created by manually segmenting 
 one-tenth of the original, unprocessed wordlist. 
-This was repeated for each experimental trial, i.e., for each of the $\delta$ and $s$ 
+This was repeated for each experimental trial, i.e., for each of the $\langle\delta,s\rangle$ 
 pairs as well as for each of the three data types (i.e., orthographic, transcriptions with stress, 
 and transcriptions without stress).
 I created a separate gold-standard file for each data type.
@@ -2662,7 +2664,7 @@ We began this chapter by pointing out that there is at present no single ideal w
 We thus adopted a multi-faceted approach to the evaluation, one that included both a qualitative and
 a quantitative component. Moreover, the quantitative component had two complementary components, namely an intrinsic component and an extrinsic component. Most of this chapter focused on describing the intrinsic and the extrinsic evaluation procedure. Both involved considerable processing. 
 
-The instrinsic evaluation required a set of gold-standard morphological word-to-morphological-category mappings. We took the morphological analyses from the Berman Longitudinal Corpus to serve gold-standard class assignments, since we lacked a gold-standard set of morph or morphome mappings. However, we had to modify these categories considerably, mapping them onto categories that were based more closely on form rather than abstract morphosyntactic category. These mappings were limited, though, since, if taken to an extreme, they would become tantamount to carrying out an morph/morphome annotation from scratch.
+The instrinsic evaluation required a set of gold-standard morphological word-to-morphological-category mappings. We took the morphological analyses from the Berman Longitudinal Corpus to serve gold-standard class assignments, since we lacked a gold-standard set of morph or morphome mappings. However, we modified these categories considerably, mapping them onto categories that were based more closely on form rather than abstract morphosyntactic categories. These mappings were limited, though, since a producing a perfect mapping would be tantamount to devising and executing a complete annotation of a corpus's morphs (or morphomes), which is beyond the scope of this project.
 
 The extrinsic evaluation regarded Multimorph as an intermediate step in a larger process. It tested the hypothesis that Multimorph could ``pre-digest'' a wordlist for Morfessor and thus improve Morfessor's performance on that
 wordlist.

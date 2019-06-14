@@ -63,6 +63,7 @@ match $\mathbf{x}_i$, that is, to reconstruct the component values of $\mathbf{x
 the vector $\mathbf{r}_i$. The process that achieves this reconstruction is the learning process and is discussed in detail in section~\ref{sec:mcmm-learning}.
 
 \begin{figure}[t]
+\begin{mdframed}
 %\begin{center}
 \centering
 \small
@@ -140,6 +141,7 @@ the vector $\mathbf{r}_i$. The process that achieves this reconstruction is the 
 \caption{Architecture of a Multiple Cause Mixture Model (MCMM)} 
 \label{fig:mcmm}
 \vspace{12pt}
+\end{mdframed}
 \end{figure}
 
 The vector $\mathbf{x}_i$ is the $i$th row in the 
@@ -193,7 +195,9 @@ An autoencoder tests the fitness of its working model by attempting to reconstru
 point from its internal representation (or encoding) of the data point 
 and then measuring the \emph{reconstruction error}, the discrepancy between the reconstructed and original data vectors.  
 It then makes adjustments to the model so as to reduce this error. % \citep{hinton:1987, hinton:1987trans}.
+
 \begin{figure}[t]
+\begin{mdframed}
 %%\begin{minipage}{.3\textwidth}
 \centering
 \small
@@ -302,6 +306,7 @@ It then makes adjustments to the model so as to reduce this error. % \citep{hint
 %: an input layer ($\mathbf{d}$), a hidden layer ($\mathbf{m}$), and an output layer
 \label{fig:autoencoder}
 \vspace{12pt}
+\end{mdframed}
 \end{figure}
 
 In order to elucidate the MCMM's autoencoder nature, we will now consider it in the context
@@ -326,6 +331,7 @@ For the RBM material, my main sources were \citet{hinton-and-salak:2006}, \citet
 %Concerning RBMs, my main sources were  \citet{hinton-and-salak:2006}, \citet{cuteo-et-al:2009},  and \citet{fischer:2014}. For the material on the classical autoencoder , I drew from principally My sources for the RBM portions 
 
 \begin{figure}[t]
+\begin{mdframed}
 \vspace{12pt}
 %\begin{mdframed}
 \centering
@@ -406,6 +412,7 @@ For the RBM material, my main sources were \citet{hinton-and-salak:2006}, \citet
 \label{fig:rbm}
 %\end{mdframed}
 \vspace{12pt}
+\end{mdframed}
 \end{figure}
 
 \paragraph{Form.}
@@ -439,7 +446,7 @@ The sigmoidal weighted sum is a composition of two functions: the ``outer" funct
 	\end{equation} %\label{eq:sigws
 The ``inner'' function replaces the $t$ in equation~\eqref{eq:sig}. It is a weighted-sum of the form 
 \begin{equation} \label{eq:wtd-sum}
-t = \sum_{j} x_{j} w_{j,k} \qquad  \text{or} \qquad t = \textbf{x}^{\textsf{T}}\textbf{w}_k
+t = \sum_{j} x_{j} w_{j,k} \qquad  \text{or, equivalently,} \qquad t = \textbf{x}^{\textsf{T}}\textbf{w}_k
 \end{equation}
 %$\sum_{j} x_{j} w_{j,k}$, which is equivalent to the \emph{inner product} of vectors $\textbf{x}$ and  $\textbf{w}$, that is, $\textbf{x}^\textsf{T}\textbf{w}_k$, 
 where $\textbf{x}$ is a vector of $J$ node activities, and $\textbf{w}_k$ is a vector of $J$ weights. These weights connect the nodes of $\textbf{x}$ to a particular node (namely, the $k$th node) in a \emph{different} layer, which we will call $\textbf{m}$. 
@@ -806,6 +813,7 @@ Apparently, this study's sparse feature vectors (i.e., data points) are more apt
 placed in the \textsc{write-black} domain than the \textsc{write-white-and-black} domain.
 
 \begin{figure}[t]
+\begin{mdframed}
 %\begin{center}
 \centering
 \begin{tikzpicture}[shorten <=1pt,->,draw=black!100]
@@ -871,6 +879,7 @@ placed in the \textsc{write-black} domain than the \textsc{write-white-and-black
 The activity of a given surface (or reconstruction) unit is determined by combining ``votes'' cast by the hidden units.}
 
 \label{fig:voting}
+\end{mdframed}
 \end{figure}
 
 \section{Learning}
@@ -1404,21 +1413,7 @@ The alternation loop (algorithm~{\ref{alg:m-and-c}) is nested within a still lar
  single initial column is initialized to $0.5$, while each cell in $\textbf{C}$'s 
  single initial row is initialized to a random number between $0$ and $1$.  
 
-To the add a cluster, the system splits a cluster, specifically the worst cluster. To find the worst cluster, 
- the system iterates through all existing clusters, for $k \in K$, and at each $k$, 
-it computes E^{\prime}_{k}, the MCMM's error \emph{without} the 
- $k$th cluster.  The worst cluster is the one whose \emph{absence} leads to the best model, 
- i.e., the one with the lowest $E^{\prime}$, and the index of the worst cluster is thus the 
- $k$ such that E^{\prime}_{k} is lowest. If this index is $h$, then cluster $h$ is the 
- worst cluster and thus the cluster to split. To split cluster $h$, 
- the system would copy column $h$ in $\textbf{M}$ and paste it as the new 
- rightmost column in $\textbf{M}$ (so that its index is $K$).  At this point, 
- the column indexed $h$ and the new rightmost columns have identical values.  
- Some noise is thus added to both columns in order to encourage the two clusters to diverge. 
- Similarly, column $h$ in $\textbf{C}$ is duplicated, resulting in a centroid vector 
- for both cluster $h$ and cluster $K$.
- 
-\begin{algorithm}[h]
+\begin{algorithm}[t]
 Initialize cluster count $K = 1$\;
 Initialize $\textbf{M}$ and $\textbf{C}$\;
 Choose $\epsilon$\;
@@ -1442,6 +1437,20 @@ Evaluate $E = \frac{1}{I\times J} \frac{1}{2} \sum_i \sum_j (r_{i,j} - x_{i,j})^
 \label{alg:outer-loop}
 \end{algorithm}
 
+To the add a cluster, the system splits a cluster, specifically the worst cluster. To find the worst cluster, 
+ the system iterates through all existing clusters, for $k \in K$, and at each $k$, 
+it computes E^{\prime}_{k}, the MCMM's error \emph{without} the 
+ $k$th cluster.  The worst cluster is the one whose \emph{absence} leads to the best model, 
+ i.e., the one with the lowest $E^{\prime}$, and the index of the worst cluster is thus the 
+ $k$ such that E^{\prime}_{k} is lowest. If this index is $h$, then cluster $h$ is the 
+ worst cluster and thus the cluster to split. To split cluster $h$, 
+ the system would copy column $h$ in $\textbf{M}$ and paste it as the new 
+ rightmost column in $\textbf{M}$ (so that its index is $K$).  At this point, 
+ the column indexed $h$ and the new rightmost columns have identical values.  
+ Some noise is thus added to both columns in order to encourage the two clusters to diverge. 
+ Similarly, column $h$ in $\textbf{C}$ is duplicated, resulting in a centroid vector 
+ for both cluster $h$ and cluster $K$.
+ 
 % \subsection{Bound Constrained Optimization}
 %The optimization task is subject to the constraint %$0 le m_{i,k} ge 1$
 %that no value in $\mathbf{M}$ or $\mathbf{C}$ may exceed 1 or fall below 0. 
@@ -1462,15 +1471,8 @@ Evaluate $E = \frac{1}{I\times J} \frac{1}{2} \sum_i \sum_j (r_{i,j} - x_{i,j})^
 \subsection{A Simple MCMM Example}
 \label{subsec:example}
 
-Figure~\ref{fig:example-1} shows a simple MCMM at two distinct stages. Figure~\ref{fig:example:subfig1-1} shows the MCMM before convergence, while learning is still in progress. The surface and hidden-unit activities at this stage are still greater than $0$ and less than $1$, though they are on their way to either $0$ or $1$. Figure~\ref{fig:example:subfig2-1}, on the other hand, shows the MCMM after it has converged, when the learning process is complete.
-
-The input data matrix for the MCMM in figure~\ref{fig:example-1} consists of three data points (i.e., $I = 3$).
-The hidden cluster activities $\mathbf{M}$, the weights $\mathbf{C}$, the surface-unit vectors $\mathbf{R}$,
-and the mixing function together constitute a model that reproduces the
-observed data points $\mathbf{X}$.
-The nodes $m_{i,k}$ are the hidden units and represent cluster-membership activities. There are three cluster-membership vectors $m_{i}$, one for each $i \in I$, i.e., one for each data point. Because there are two clusters, each cluster-membership vector has two components. For instance, $\textbf{m}_{0} = [0, 1]$, which means the first data point $\textbf{x}_{0}$ does not belong to the first cluster, but \emph{does} belong to the second. By contrast, $\textbf{m}_{1} = [1,0]$ indicates that $\textbf{x}_{1}$ belongs to first cluster, but not to the second. Finally, $\textbf{m}_{2} = [1,1]$ indicates that  $\textbf{x}_{2}$ belongs to \emph{both} clusters. 
-
- \begin{figure}[t]
+ \begin{figure}[!b]
+ %\begin{mdframed}
  %\usetikzlibrary{positioning}
  \begin{center}
  \subfigure[Observed Data\label{fig:example:subfig0-1}]{
@@ -1720,12 +1722,17 @@ The nodes $m_{i,k}$ are the hidden units and represent cluster-membership activi
  \label{fig:example-1}
  \end{center}
  \end{figure}
- 
-These cluster-membership vectors make more sense when we consider the this MCMM's $J \times K$ ($3 \times 2$) weight matrix $\textbf{C}$. The two column-vectors $\textbf{c}_0 = [0,1,0]$ and $\textbf{c}_1 = [1,0,1]$ are the \emph{centroids} of the first and second clusters, respectively. A cluster's centroid is a sort of average or composite of the cluster's member vectors; it represents the feature values that a cluster's members have in common and can thus serve as a label for a cluster. The first data point $\textbf{x}_0 = [0,1,0]$ is a member of the cluster whose centroid is $[0,1,0]$. Similarly, the second data point $\textbf{x}_1 = [1,0,1]$ is clearly a member of the cluster whose centroid is $[1,0,1]$. But just as clearly, the influence of \emph{both} clusters is evident in the third data point $\textbf{x}_2 = [1,1,1]$.
 
-Table~\ref{tab:cl-members} shows the members as well as the centroids of each of the two clusters: Notice that the active components in each cluster centroid correspond to the shared component values among the cluster's members.
+Figure~\ref{fig:example-1} shows a simple MCMM at two distinct stages. Figure~\ref{fig:example:subfig1-1} shows the MCMM before convergence, while learning is still in progress. The surface and hidden-unit activities at this stage are still greater than $0$ and less than $1$, though they are on their way to either $0$ or $1$. Figure~\ref{fig:example:subfig2-1}, on the other hand, shows the MCMM after it has converged, when the learning process is complete.
 
-\begin{table}[bt]
+The input data matrix for the MCMM in figure~\ref{fig:example-1} consists of three data points (i.e., $I = 3$).
+The hidden cluster activities $\mathbf{M}$, the weights $\mathbf{C}$, the surface-unit vectors $\mathbf{R}$,
+and the mixing function together constitute a model that reproduces the
+observed data points $\mathbf{X}$.
+The nodes $m_{i,k}$ are the hidden units and represent cluster-membership activities. There are three cluster-membership vectors $m_{i}$, one for each $i \in I$, i.e., one for each data point. Because there are two clusters, each cluster-membership vector has two components. For instance, $\textbf{m}_{0} = [0, 1]$, which means the first data point $\textbf{x}_{0}$ does not belong to the first cluster, but \emph{does} belong to the second. By contrast, $\textbf{m}_{1} = [1,0]$ indicates that $\textbf{x}_{1}$ belongs to first cluster, but not to the second. Finally, $\textbf{m}_{2} = [1,1]$ indicates that  $\textbf{x}_{2}$ belongs to \emph{both} clusters. 
+
+ \begin{table}[b]
+\begin{mdframed}
 \centering
 \setlength{\extrarowheight}{8pt}
 \begin{tabular}{ccc}
@@ -1737,8 +1744,12 @@ Cluster index ($k$) & Member Data Points & Cluster Centroid \\ \midrule
  \end{tabular}
 \caption{\emph{Clusters from Figure~\ref{fig:example-1} and their Centroids.} The active features in each cluster's centroid are the \emph{shared} active features among the cluster's members.}
 \label{tab:cl-members}
+\end{mdframed}
 \end{table}
 
+These cluster-membership vectors make more sense when we consider the this MCMM's $J \times K$ ($3 \times 2$) weight matrix $\textbf{C}$. The two column-vectors $\textbf{c}_0 = [0,1,0]$ and $\textbf{c}_1 = [1,0,1]$ are the \emph{centroids} of the first and second clusters, respectively. A cluster's centroid is a sort of average or composite of the cluster's member vectors; it represents the feature values that a cluster's members have in common and can thus serve as a label for a cluster. The first data point $\textbf{x}_0 = [0,1,0]$ is a member of the cluster whose centroid is $[0,1,0]$. Similarly, the second data point $\textbf{x}_1 = [1,0,1]$ is clearly a member of the cluster whose centroid is $[1,0,1]$. But just as clearly, the influence of \emph{both} clusters is evident in the third data point $\textbf{x}_2 = [1,1,1]$.
+
+Table~\ref{tab:cl-members} shows the members as well as the centroids of each of the two clusters: Notice that the active components in each cluster centroid correspond to the shared component values among the cluster's members.
 We can see that while learning is in progress, the cluster activities
 $m_{i,k}$ and the cluster centers $c_{j,k}$ are in flux, as the
 error rate is being reduced, but that they converge to values of 0 and

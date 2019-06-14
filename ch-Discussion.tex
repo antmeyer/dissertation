@@ -276,7 +276,7 @@ of \textit{i} in its sampled words was a direct reflection of the prominence of
 \textit{i}-referencing features in this cluster's centroid, namely the maximally 
 active \texttt{d<i} and the moderately active \texttt{\'{i}<q} (see figure~\ref{fig:cluster-19-2-3-TS} in section~\ref{sec:qual}).
 
-Even though vowels can be detrimental, however, they can also be helpful. For example, the orthographic models would never have found morphs like the nonconcatenative vowel-pattern morph \textit{a.\'{e}} (see figure~\ref{fig:cluster-19-2-3-TS} in chapter~\ref{ch:results}) or \textit{-\'{e}.et}, the discontinuous ending of  feminine singular participles, e.g., as in \textit{medab\'{e}ret} `she is speaking.' The ten most active features for \textit{-\'{e}.et} are displayed in figure~\ref{fig:cluster-0-4-3-TS} in the present chapter.
+Even though vowels can be detrimental, however, they can also be helpful. For example, the orthographic models would never have found morphs like the nonconcatenative vowel-pattern morph \textit{a.\'{e}} (see figure~\ref{fig:cluster-19-2-3-TS} in chapter~\ref{ch:results}) or \textit{-\'{e}.et}, the discontinuous ending of  feminine singular participles, e.g., as in \textit{medab\'{e}ret} (`she is speaking'). The ten most active features for \textit{-\'{e}.et} are displayed in figure~\ref{fig:cluster-0-4-3-TS} in the present chapter.
 %\footnote{The
 %latter was the \emph{first} cluster generated from the TS data at the settings $s=4,\delta=3$.} 
 %The  is particularly interesting because it involves both vowels and a consonant.
@@ -354,7 +354,7 @@ $k$ &  Size & Purity & Most frequent gold classes (with frequencies) \\
 \label{tab:best-purities}
 \end{table}
 
-The mappings were by no means perfect, however; while they produced gold-standard classes that were more
+The mappings were by no means perfect, however. While they produced gold-standard classes that were more
 form-based than the original morphosyntactic categories were, they did not constitute a complete transformation
 to autonomous morphological categories. This would have involved deciding the precise identity of each autonomous 
 morphological category, which would have been beyond the scope of this thesis. Moreover, deciding ``correct'' 
@@ -363,7 +363,7 @@ Thus, an intrinsic evaluation in Multimorph's case was never going to be ideal.
 
 
 In this study's intrinsic results, the instrinsic evalutation metrics do sometimes accurately describe what is going on in a given cluster. But in other cases, they do not. Consider, for example, the purity results in table~\ref{tab:best-purities}. The purity scores for the clusters 0 through 4 accurately describe the contents of their respective clusters. This is because the most frequent gold-standard class in each of these cases happened to correspond with the aspect of form that Multimorph's MCMM found to be most salient in that case.
-Cluster 43 presents a different scenario, however. Its purity score is quite low. However, if one manually inspects this cluster's member words, a random sample of which is given in figure~\ref{fig:cluster-43-2-2-TS}, one finds a remarkable degree of coherence. Very nearly all of the words in 
+Cluster 43 presents a different scenario, however. Its purity score is quite low. But if one manually inspects this cluster's member words, a random sample of which is given in figure~\ref{fig:cluster-43-2-2-TS}, one finds a remarkable degree of coherence. Very nearly all of the words in 
 figure~\ref{fig:cluster-43-2-2-TS}, have \textsf{\'{o}} in the final syllable. These \textsf{\'{o}}'s do not all correspond to the same morphosyntactic category, but they could be the same morphome. The point is that we cannot really say whether or not this is a valid cluster because we cannot say for certain which character subsequences are morphs/morphomes and which are not. In some cases we have a fairly good idea as to whether a given subsequence is morph/morphome, but not in every case at this time.
 %it accurately captures  itis thus never going to be 
 %Some of gold-standard classes map follow form more closely than others. correspond to aspects of form than others. actual formal distinctions more faithfully than others. 
@@ -386,7 +386,7 @@ figure~\ref{fig:cluster-43-2-2-TS}, have \textsf{\'{o}} in the final syllable. T
 %\end{itemize}
 %However, some gold-standard classes fail to a just a straightforward, one-to-one mapping.  %to aspects of form
 %Consider, for example, the purity results in \ref{tab:not-so-good-purities}. 
-\begin{figure}[htb]
+\begin{figure}[t]
 %\begin{mdframed}
 %\begin{small}
 %\texttt{Cluster 0043;  size:  955;  Purity: 0.1822;}\qquad\texttt{pre:ha (174), f\%pl (172), ptn:CaCoC (163)}
@@ -475,8 +475,8 @@ ULM system necessarily consists of autonomous morphological units.
 As explained in chapter~\ref{ch:eval}, the evaluation of such output is problematic: Unsupervised learning algorithms are in general difficult to evaluate to due to a lack of an obvious gold-standard. This difficulty is compounded in the case of ULM due to the hidden, intermediate nature of autonomous morphological units and the still-emerging status of the study of autonomous morphology as a field.  Therefore, the task of the learning algorithm in a ULM system is especially exploratory, perhaps more so than usual. %The four-stage process is a procedure for evaluating the autonomous morphological units 
 In presenting the novel four-stage process, this thesis offers a solution 
 to these problems. As an extrinsic method, the four-stage process is well-suited to the intermediate nature of autonomous morphological units. 
-Moreover, it is a fully implemented, fully functional computer program; 
-it has been coded and successfully executed. The input, internal 
+Moreover, it is an implemented, functional computer program; 
+it has been coded and executed. The input, internal 
 processing, and output of each stage are described in detail in 
 section~\ref{sec:eval-extrinsic}. Other researchers can regard 
 it as a functional prototype that they can be further developed and 
@@ -507,12 +507,12 @@ nonconcatenative morphs is thus moot.
 For example, the word \textit{yo\textipa{P}\textipa{\.*k}\'{a}l}} (`he will eat') 
 is derived from the root \textit{\textipa{P}.\textipa{\.*k}.l}. 
 Notice that \textit{\textipa{P}.\textipa{\.*k}.l} 
-is a discontinuous in this word. However, Stage 3 must map \textit{\textipa{P}.\textipa{\.*k}.l} onto an atomic symbol. 
+is a discontinuous morph in this word. However, Stage 3 must map \textit{\textipa{P}.\textipa{\.*k}.l} onto an atomic symbol. 
 There is no way to do this and yet retain the interdigitation between the root and the vowel \textit{\'{a}}, since atomic symbols cannot be interleaved. 
 % retaining the discontinuity ithe  this  mapping \textit{\textipa{P}.\textipa{\.*k}.l} onto a onto atomic symbol (i.e., its own unique atomic symbol), \textit{\'{a}} onto a different atomic symbol, and then placing these atomic symbols side by side.
 Thus, the elimination of interdigitation is a natural consequence (or ``side effect'') of the encoding process in Stage 3.
 Moreover, because the very purpose of Stage 3 is to prepare the encoded intermediate wordlist for the downstream system to take as input, the downstream system will never actually encounter interdigitation. 
-There was a possibility that Multimorph's ability to detect nonconcatenative morphs might \emph{indirectly} help Morfessor; i.e., that Stage 3 would be able to turn Multimorph's nonconcatenative morphs, the roots and vowel patterns, and fuse them into stem-like, higher-level morphs, which could be useful to Morfessor. Given the results in table~\ref{tab:extr-results-1000}, however, I cannot say that this was so. 
+There was a possibility that that Multimorph's ability to detect nonconcatenative morphs might \emph{indirectly} help Morfessor; i.e., that Stage 3 would be able to turn Multimorph's nonconcatenative morphs, the roots and vowel patterns, and fuse them into stem-like, higher-level morphs, which could be useful to Morfessor. Given the results in table~\ref{tab:extr-results-1000}, however, I cannot say that this possibility was borne out in this study.
 % it  before the encoded (or compressed) wordlist is delivered to the downstream process in Stage 4, since it is Stage 3 that does the encoding
 %Moreover, it is the output of Stage 3---the encoded wordlist---that is fed to the downstream process. Thus, the interdigitation is  necessarily happens before the encoded (or compressed) wordl
 % Note that this root is discontinuous in \textit{yo\textipa{P}\textipa{\.*k}\'{a}l}};
@@ -683,7 +683,7 @@ Multimorph found vowel patterns as well. Like roots, vowel patterns are nonconca
 The dashes in this table's \textit{Interpretation} column for \textit{i.\'{a}} and \textit{a.\'{a}} signify that these patterns occur in a wide variety of morphosyntactic patterns and thus cannot be
 given a single interpretation. The sequence \textit{i.\'{a}} occurs in nouns as nominal vowel pattern, 
 e.g., \textit{\textipa{Q}iq\'ar},\footnote{Historically, the second consonant in \textit{\textipa{Q}iq\'ar} was doubled.}  %that is, the pattern was  CiCC\'{a}C (or rather CaCC\textipa{"\r{a}}C, with the stressed \textit{a} lengthened and rounded).}
- but it also occurs in \textit{Pi`\'{e}l} verbs, specifically in the \textit{Pi`\'{e}l} suffix-stem inflections (see table~\ref{tab:piel-paradigm}).
+ but it also occurs in \textit{Pi`{e}l} verbs, specifically in the \textit{Pi`{e}l} suffix-stem inflections (see table~\ref{tab:piel-paradigm}).
 The sequence \textit{a.\'{a}} serves as the CaC\'{a}C vowel pattern of the \textit{Qal} 
 %(also known as the \textit{Pa`al}) 
 binyan's suffix stem, as in \textit{rax\'{a}cti} `I washed' and \textit{hal\'{a}\textsubdot{k}ti} `I walked.'
@@ -711,7 +711,7 @@ The sequence \textit{a.\'{a}} also servers as the defining pattern for a class o
 
 Thus, the above proposition is satisfactorily confirmed, and Multimorph passes as a proof of concept for the multilinear approach to ULM.
 
-At the same time, however, there is still plenty of room for improvement. The system is by no means perfect. For instance, some morphs are repeated as more than one cluster in the same clustering. There are also incoherent clusters in every clustering, clusters that do not seem to correspond to anything specific.
+At the same time, however, there is still plenty of room for improvement. The system is by no means perfect. Some morphs, for instance, were repeated as more than one cluster in the same clustering. There were also incoherent clusters in every clustering, clusters that dis not seem to correspond to anything specific.
 The features, particularly the precedence features, may be overly specific and thus lacking in their ability to represent generalizations, as we discussed above. We proposed a means of introducing flexibility into the features; in particular, one can try replacing specific vowel symbols with a variable. For example, \texttt{V} could represent any vowel. One could also try doing something similar with consonants, that is, replacing individual consonants with \texttt{C}, for instance, which would represent any consonant. One could also create variables for particular vowel of consonant subsets. %  specificity in the features needs to 
 %The qualitative results alone demonstrate the 
 %viability of the multilinear approach to ULM. 
