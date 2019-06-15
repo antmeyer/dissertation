@@ -49,7 +49,7 @@ a model can learn nonconcatenative morphology if and only if it
 possesses both of these categories (chapter~\ref{ch:intro}, 
 proposition~\ref{prop:nlns}). In particular, first observe that nonlinearity 
 and nonsequentiality are negative concepts and thus suggest the existence 
-of their positive counterparts, namely \emph{linearity} and 
+of their positive counterparts, \emph{linearity} and 
 \emph{sequentiality}. To facilitate the exposition of these concepts, we 
 repeat the definitions of nonlinearity and nonsequentiality here and 
 then define their complements, \emph{linearity} and \emph{sequentiality}.
@@ -958,10 +958,12 @@ The intuition behind the LSV/LPV method is that \emph{within} a morpheme, the id
 However, while morpheme boundaries generally coincide with high LVP/LSV counts, it is not necessarily true that a high LVP/LSV indicates a morpheme boundary.
 %LSV is not always a reliable indicator of morpheme boundaries. 
 \cite{hammarstrom:2011}, for example, provide LPV counts for the word \textit{disturbance}. 
-The highest LPV count of 25 
+The highest (25)
 %(i.e., 25 of the 26 possible letters in the English alphabet) 
-occurs between \textit{disturbanc} and \textit{e}.
-An LPV-based analysis would thus incorrectly identify \textit{e} as a suffix, a consequence of the ubiquity of \textit{e} as a stem-final letter in English spelling. 
+occurs between \textit{disturbanc} and \textit{e}, even though the \textit{e} is not a morpheme.
+An LPV-based analysis would thus incorrectly identify \textit{e} as a morpheme, a consequence
+of the high frequency of \textit{e} word-finally in English spelling.\footnote{To be fair, all ULM approaches have difficulty in differentiating morphological regularity (i.e., patterning resulting from the recurrence of morphological building blocks) from other kinds of regularity (e.g., spelling conventions). This is to be expected, since the task of ULM, as it is conventionally understood, does not have access to semantic/syntactic contexts, and thus ULM systems cannot assign meanings to patterns (see chapter~\ref{autonomous}).}  
+%even though  \textit{e} occurs with high frequency as word-final letter in English spelling, it does not consequence of the high frequency of \textit{e} at the ends of Engl stem-final letter in English spelling. 
 
 %Goldsmith
 Because of such problems, most linear sequential methods today have abandoned LSV/LPV, often in favor of frequency-based heuristics.

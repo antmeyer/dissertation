@@ -4,7 +4,7 @@
 \section{Introduction}
 Many morphologists in recent decades have rejected the notion of the morpheme---a concept that inextricably binds morphology to syntax and semantics---in favor of approaches that regard morphology as autonomous, i.e., as independent 
 of both syntax/semantics and phonology. The principle objective of this chapter is to 
-show that autonomous morphological units are legitimate learning targets for system of unsupervised morphological learning. In fact, as we will soon see, autonomous morphology is more than just legitimate; it is the only possible learning target for the unsupervised learning of morphology (ULM) as it is conventionally defined.
+show that autonomous morphological units are legitimate learning targets for a system of unsupervised morphological learning. In fact, as we will soon see, autonomous morphology is more than just legitimate; it is the only possible learning target for the unsupervised learning of morphology (ULM) as it is conventionally defined.
 In the course of the discussion, we shall consider some of the more prominent theories of autonomous morphology, contrasting them with ``non-automonous'' approaches, and  noting their significance to ULM (and Multimorph in particular).
 
 
@@ -152,7 +152,7 @@ Suppose that \{\textit{act}, \emph{jump}, \emph{laugh}\}
 was the stem set associated with \textsc{null}\textit{.ed.ing.s}. 
 Linguistica would thus have learned that these stems are the same 
 in a way. But Linguistica would not have learned what this 
-equivalence should have signified, not would have learned the semantic 
+equivalence signified, nor the semantic 
 distinctions between the members of the same equivalence set. 
 That is, even though \textit{act}, \emph{jump}, and \emph{laugh} 
 share the same affix set, they do not share the same meaning. 
@@ -207,7 +207,7 @@ with ``similarities of form [directly] reflecting similarities of content and vi
 \end{exe}
 
 By cross-combining the options of first distinction with those of the second, 
-\cite{stump:2001} derives four categories of morphological theories. 
+\cite{stump:2001} derives four categories of morphological theory. 
 \emph{Lexical-Incremental} and \emph{Lexical-Realizational} theories 
 on the one hand, and on the other, \emph{Inferential-Incremental} and 
 \emph{Inferential-Realizational} theories. However, \citet{anderson:2017} 
@@ -272,7 +272,7 @@ A paradigm function follows the template
 \end{equation}
 where the lefthand side represents a particular cell in the 
 content paradigm, and the righthand side a particular form-paradigm cell.
-In particular, $\text{L}$ is a lexeme, and $\text{X}$ is a stem, that is, the form correspondent of $\text{L}$. 
+In particular, $\text{L}$ is a lexeme, and $\text{X}$ is a stem, i.e., the form correspondent of $\text{L}$. 
 The morphosyntactic property set associated with content cell and form cell are $\sigma$ and 
 $\sigma\prime$, respectively. In the canonical case, there is a one-to-one
 correspondence between content cells and paradigm cells, and 
@@ -317,7 +317,7 @@ They are unnatural in that they are not motivated by morphosyntactic properties.
 perspective, they are quite arbitrary.
 There is no reason to put the third-person singular alone in one class and all of the other combinations, 
 including the other singular categories as well as third-person plural, together in the other class. Such classes help motivate 
-a theory of an \emph{autonomous} layer of morphology, that is, a layer responsible 
+a theory of an \emph{autonomous} layer of morphology, a layer responsible 
 for mapping from the content level to the phonological, but does so according 
 to its own terms.
 
@@ -549,10 +549,12 @@ representations would also be partially identical. For example, if they
 shared a suffix, then the identity at the mormophic level would 
 be the morphome corresponding to this suffix.
 
-\subsubsection{A Taxonomy of Morphomes}
-Another contribution of Round is his taxonomy of morphomes, which 
+\subsubsection{A Taxonomy of Morphomes}\label{sec:round-taxonomy}
+Another contribution of Round is his taxonomy of morphomes, which, for our purposes, will be
+useful for discussing the limitations on unsupervised morphological learning, i.e., what a ULM 
+system can and cannot learn given the nature of its input. The taxonomy
 classifies morphomes according to the types of equivalence classes they represent. 
-Essentially, each category in this taxonomy represents a different approach to relating forms---a different set of standards or conditions for putting forms in the same category. %--orms can be considered ``the same.''
+Essentially, each category in this taxonomy represents a different approach to relating forms to other forms; each is a different set of standards or conditions for placing forms in the same class. %--orms can be considered ``the same.''
 %morphomes as relations, we can think of them as 
 %A morphome is thus a set whose members all are alike in a particular way. \cite{round:2015, round:md:2016} What counts as ``alike'' depends on the morphome type.
 %%classifies morphomes according to the nature of this similarity. That is, 
@@ -562,15 +564,15 @@ Essentially, each category in this taxonomy represents a different approach to r
 %This taxonomy will prove useful when we discuss the 
 %limitations on unsupervised morphological learning, i.e., what a ULM 
 %system can and cannot learn given the limited nature of its input.
-The taxonomy has three categories, namely 
+The taxonomy has three categories:
 \textit{\textbf{rhizo}morphomes}, \textit{\textbf{meta}morphomes}, 
 and \textit{\textbf{mero}morphomes}. Meromorphomes are the most ``concrete'' type in that they correspond to actual 
 pieces of form. They are the raw material from which paradigms are constructed. 
-By contrast, both rhizomorphomes and metamorphomes transcend the confines of specific lexemes. A single rhizomorphome can incorporate many different lexemes. The same can be said of a single metamorphome. 
+By contrast, both rhizomorphomes and metamorphomes transcend individual, specific lexemes. A single metamorphome incorporates many lexemes, as does a single rhizomorphome.
 %eas we will see below.% both comprise multiple %the confines of 
 %particular lexemes and are thus both
 %rather abstract. 
-Of these three, metamorphomes and meromorphomes will be most 
+Of these three, metamorphomes and meromorphomes are the most 
 relevant to our discussion, but we will touch on rhizomorphomes briefly 
 before proceeding to metamorphomes and meromorphomes.
 
@@ -1198,7 +1200,7 @@ property \{\text{n}$\to$\text{n}[fem] among the derivational properties $\delta$
  Round, for instance, has frequently observed it in Kayardild: ``[M]ost of the exponents 
  employed by the inflectional system are also used derivationally'' \citep[][p. 13]{round:2015}.
 
-\section{Implications for ULM and Multimorph}
+\section{Implications for ULM and Multimorph}\label{sec:morphomic-implications}
 
 Because ULM systems do not have access to
 semantic or syntactic features, they cannot learn pairings of form and meaning, 

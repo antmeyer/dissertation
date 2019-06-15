@@ -1,6 +1,6 @@
 \chapter{Multimorph}
 \label{ch:experi}
-\section{Introduction}
+\section{Introduction}\label{sec:experi-intro}
 %This chapter will describe the experimental setup,
 This chapter will be concerned with the unsupervised morphological learning system Multimorph. Chapter~\ref{ch:MCMM} described the Multiple Cause Mixture Model (MCMM), a general unsupervised learning model (or algorithm). An MCMM serves as the core learning algorithm of Multimorph. The present chapter
 % describes a particular morphological learning system that uses an MCMM as its core learning algorithm MCthe 
@@ -14,7 +14,12 @@ Also in this chapter, we describe the preparation of Multimorph's input data an 
 %that is, the steps I took to prepare for and run the experiments. 
 
 This chapter's discussion
-is divided into two main sections: The first, section~\ref{sec:datasource}, concerns the extraction of the input data, including a description of the original data source. The second, section~\ref{sec:expvars}, discusses the experimental variables. The experimental variables comprise two broad categories, namely the \emph{data representation} (i.e., orthographic vs. transcriptional) and the \emph{feature types}. The latter are discussed in detail in section~\ref{sec:features}. 
+is divided into two main sections: The first, section~\ref{sec:datasource}, concerns the extraction of the input data, including a description of the original data source. The second, section~\ref{sec:expvars}, discusses the experimental variables. The experimental variables comprise two broad categories: 
+\begin{enumerate}
+\item The representation of the input data. (For instance, the input words could be represented orthographically, according to the spelling conventions of Modern Hebrew, or they could be transcribed in some way.) The three choices for data representation are described in section~\ref{sec:datarep}.
+%(i.e., orthographic vs. transcriptional) 
+\item The precise definitions of the feature types, which varied according to the values of certain feature parameters. These parameters are discussed in section~\ref{sec:features}.
+\end{enumerate}  
 
 Multimorph can take as input \emph{any} list of words. The words can be of any
 language, although Multimorph does expect the input strings to be composed
@@ -344,17 +349,24 @@ In addition, increasing the number of symbols does not
 always help to clarify true relationships; sometimes it 
 obscures them. For example, the BLC's transcriptions 
 represent the spirantization of the certain oral obstruents; 
-in particular, /b/ $\to$ v, /p/ $\to$ f, and /k/ $\to$ \textsubdot{k} 
+in particular, \textipa{/b/} $\to$ v, \textipa{/p/} $\to$ f, and \textipa{/k/} $\to$ \textsubdot{k} 
 in the context
-Vowel \_\_. Hence, the \textit{b} in the root \textit{k.t.b} 
-(`write') often surfaces as [v], as in, e.g., \textipa{\textit{katavti}} 
-`I wrote', and 
-\textipa{\textit{yi{\.*k}t\'ov}} `he will write', which exhibits 
-two altered characters. Multimorph would see \textit{\textipa{\.*k}} 
-and \textit{k} as 
-entirely different symbols, not as allophones
-of the same phoneme. The same would be true for \textit{b} 
-and \textit{v}.  
+Vowel \_\_. Hence, the underlying \textipa{/b/} in the root \textit{k.t.b} 
+(`\textsc{write}') often manifests as [v], as it does in \textit{katavti}
+(`I wrote') and 
+\textipa{\textit{yi{\.*k}t\'ov}} (`he will write'). The latter exhibits not only
+the alternation 
+\textipa{/b/}~$\to$~v, but also \textipa{/k/}~$\to$~\textsubdot{k}.
+%two altered characters. 
+Recall, however, from section~\ref{sec:experi-intro}, that even \textit{\textipa{\.*k}} looks like \textit{k} with a dot below it,
+Multimorph would have seen them as entirely distinct symbols, just as \textit{\textipa{b}} and \textit{v} are distinct symbols.
+In Multimorph's input data, \textit{\textipa{\.*k}} and \textit{\textsubdot{k}} were each represented as a  distinct atomic unicode character.
+%Multimorph thus did not not see \textit{\textipa{\.*k}} and \textit{\textsubdot{k}} as fundamentally related. 
+All unicode characters were atomic and monolithic. Symbols with dots (e.g., \textsubdot{k}) or accent marks (e.g., \'{u}) were represented as \textit{precomposed} unicode characters and thus were in effect as atomic as any other character.
+%and \textit{k} as 
+%entirely different symbols, not as allophones
+%of the same phoneme. The same would be true for \textit{b} 
+%and \textit{v}.  
 
 %\begin{cjhebrew}yd`\end{cjhebrew}
 %For the purposes of learning Hebrew morphology, this is probably useful information. 
@@ -369,7 +381,7 @@ lost its ancient phonemic affiliation.
 The graphemes \begin{cjhebrew}.t\end{cjhebrew} 
 (\textit{\textipa{\.*te\.*t}}), \begin{cjhebrew}s\end{cjhebrew} 
 (\textit{\textipa{same\.*k}}), correspond to emphatic, i.e., 
-pharyngealized, consonants in ancient 
+pharyngealized, consonants in Classical 
 Hebrew, probably pharyngealized versions of [s] of [t] \citep{matras-and-schiff:2005}.
 Modern Hebrew, however, lacks pharyngealized consonants just as 
 it lacks pharyngeals. 
@@ -380,8 +392,9 @@ it has merged with the velar voiceless stop
 \begin{cjhebrew}k|\end{cjhebrew} (\textit{kaf}, IPA \textipa{[k]}).
 %Thus, 
 %as the \emph{emphatic consonants}, were once associated with pharyngealized phonemes, but now they are pronounced simply as [s] and [t]. 
-Similarly, the pronunciations (or affiliated phonemes) of 
-\textit{\textipa{same\.*k}} and \textit{\textipa{\.*te\.*t}} 
+Similarly, the pronunciations 
+%(or affiliated phonemes) 
+of  \textit{\textipa{same\.*k}} and \textit{\textipa{\.*te\.*t}} 
 have merged with those of \textit{sin} and \textit{tav} respectively, 
  so that \textit{\textipa{same\.*k}} and \textit{\textipa{sin}} 
  are both pronounced as [s], and \textit{\textipa{\.*te\.*t}} and 
@@ -580,7 +593,7 @@ The adults recorded in the BLC produced anomalous or non-standard speech, too. I
 has dropped the 
 \emph{n} from the infinitive form 
 \textsf{li\textbf{(n)}s\'oa\textipa{Q}} (`to ride, drive, travel'), 
-which is of the root n.s.\textipa{Q}. 
+which is of the root \textit{n.s.\textipa{Q}}. 
 The BLC's transcribers ``restored'' such dropped or deleted sounds and enclosed them in parentheses.
 \begin{exe} 
 \ex \label{ex:dropped} \textsf{li(n)s\a'{o}a\textipa{Q} \, ba\#\, \v{s}en\a'{i} ?}
@@ -719,13 +732,15 @@ morphologically complex.
 The adverb \textit{bediy\'uq} (`precisely, exactly')
 is composed of the prefixal preposition \textit{be-} (`in') and the 
 noun \textit{diy\'uk} (`exactitude, accuracy'), which is itself composed of the 
-root $\surd$d.y.q and the nominal vowel pattern C\textbf{i}C\textbf{\'u}C 
+root %$\surd$
+\textit{d.y.q} and the nominal vowel pattern C\textbf{i}C\textbf{\'u}C 
 a pattern that implies a relationship to a verb of the \textit{Pi`el} binyan.  
-The adverb \textit{\textsf{me\textglotstop{a}xoran\a'{i}t}} in 
+The adverb \textit{\textsf{me\textglotstop{a}xoran\'{i}t}} in 
 (\ref{ex:adv:dscr}) is even more complex. It has two nominalizing
 derivation affixes \textit{\textsf{-an}} and \textit{\textsf{-it}} in addition 
 to the prefixal preposition \textit{\textsf{me/i-}}. Moreover, it contains the 
-root $\surd$\textsf{\textipa{P}.x.r}, which is generally associated with meanings 
+root \textit{\textipa{P}.x.r}, %$\surd$\textsf{\textipa{P}.x.r}, 
+which is generally associated with meanings 
 related to `late' and `after'.
 
 I thus expanded the morphological analyses of complex adverbs in order to capture at 
@@ -1117,7 +1132,9 @@ To obtain the list of experiments, each $s$ and $\delta$ combination was paired 
 
 This study involves three main experimental variables. Two are the feature parameters, namely, affix length $s$ and precedence span $\delta$. The third variable is the representation of the input data. Three data sets were used in the experiments. Two were transcriptional---one with stress marking and one with no stress marking, and the other was orthographic. The latter two types were derived from the transcriptional data with stress marking. 
 
-Two feature types were chosen for experimentation, namely, \emph{positional features} and \emph{precedence features},
-because the former is variant and the latter invariant with respect to affixation. For example, if a prefix is represented only with \emph{positional} features, its feature-value representation will change when another prefix is attached before it. Thus, the same prefix may have different feature-value representations in different words. Precedence features, on the other hand, are defined in such a way that they are unaffected when additional material is attached to the fronts or ends of words. However, this does not mean that precedence features are going to be better than positional features in every case. Some morphological units may require positional features, just as the characters \textsf{6} and \textsf{9} require position-variant features in optical character recognition. 
+Two feature types were chosen for experimentation. One of these two, namely the \emph{positional}  feature type, is \emph{variant} with respect to affixation, while the other, namely the \emph{precedence} feature type, is affixation-\emph{invariant}. 
+%and the other invariant (with respect to affixation).\emph{positional features} and \emph{precedence features},
+%because the former is variant and the latter invariant with respect to affixation. 
+For example, if a prefix is represented only with positional features, its feature-value representation will change when another prefix is attached before it. Thus, the same prefix may have different feature-value representations in different words. Precedence features, on the other hand, are defined in such a way that they are unaffected when additional material is attached to the fronts or ends of words. However, this does not mean that precedence features are going to be better than positional features in every case. Some morphological units may require positional features, just as the characters \textsf{6} and \textsf{9} require position-variant features in optical character recognition. 
 
 The focus of the next chapter will be the methods of evaluating the results of the experiments. We shall see why, for instance, we needed to extract not just the words from the BLC, but their morphological analyses as well.

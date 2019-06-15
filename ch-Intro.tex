@@ -160,7 +160,8 @@ all belong to the same morphological unit. Observations such as these motivate t
 	\end{definition}
 I propose that these two properties are the essential properties that enable autosegmental morphology to handle nonconcatenative morphology. The main idea of this thesis is that these two properties must be present in any model in order for it to be capable of handling (or learning) nonconcatenative morphology.  We will later revisit the idea stated here as proposition~\ref{prop:nlns} (see in particular section~\ref{sec:framework-intro}).
 \begin{proposition}\label{prop:nlns}
-A model of morphology can handle nonconcatenative morphology if and only if it satisfies both \textbf{nonlinearity} and \textbf{nonsequentiality}. %  the modeling of nonconcatenative morphology.}
+%A model of morphology can handle nonconcatenative morphology if and only if it satisfies both \textbf{nonlinearity} and \textbf{nonsequentiality}.
+A model of morphology can handle nonconcatenative morphology if it satisfies both \textbf{nonlinearity} and \textbf{nonsequentiality}.
 \end{proposition}
 %\pex~ Two essential properties  %\ex \label{ex:properties}\begin{xlist}
 %	\a {\textsc{Nonlinearity}}: Morphemes are represented as being separate from the segmental tier.
@@ -295,7 +296,7 @@ What we call \emph{features} are essentially true-or-false statements like those
 %Each statement can be either true or false, which is to say that each feature is \emph{binary}, 
 %drawn from an alphabet of size $N = 2$.  
 Many machine learning models require that each input object or \emph{learning instance} 
-(in our case, each \emph{word}) be represented as a vector of binary features, not alphabetic 
+(in our case, each \emph{word}) be represented as a vector of \emph{binary} features rather than alphabetic 
 features. Moreover, all input objects (learning instances) must be described by the same feature 
 set, and all feature vectors must be of the same length.
 One cannot, of course, have an infinite number of features, since feature vectors must have a definite length.
@@ -323,7 +324,7 @@ In extracting features from the original data (a list of words), one alters the 
 By \emph{representation}, we refer mainly to the alphabet---the
 particular set of symbols---from which the strings (i.e., words) of the input wordlist 
 are composed.  A word is fundamentally something spoken, i.e., a sequence of sounds, and thus in order to write the word down, one must devise a way to represent the spoken phenomenon on paper. Like feature-set design, this is a means of emphasizing some information at the expense of other information. All else being equal---that is, even if the feature categories are the same---different modes of data representation will produce different features.  
-In the present work, three manners of data representations were tested, each presenting 
+In the present work, three manners of data representation were tested, each presenting 
 different information. 
 
 The question of how the input data should be represented is an important one in morphological 
@@ -358,10 +359,10 @@ consonants can be used to represent vowels, namely the Hebrew equivalents of \te
 are still fundamentally consonants. This and other matters of Hebrew orthography 
 will be discussed in chapter~\ref{ch:experi}.} An earlier version of the present work, 
 \citet{meyer-and-dickinson:2016}, considered only standard Hebrew orthography. 
-We therefore depart from this earlier work in a major way by including the transcriptional data in the present study. 
+We therefore depart from this earlier work in a major way in the present study by including the transcriptional data. 
 
 I initially hypothesized that models induced from the orthographic 
-data would be the worst-performing ones. My reasoning was that any orthographic system without dedicated vowel symbols would necessarily at least some morphologically salient information go unexpressed. I reasoned that this should be especially true in the case of Hebrew, as vowels appear to be especially salient to its morphology. %vowels %appear especially true in the case of Hebrew,  and second, vowels must be particularly important to 
+data would be the worst-performing ones. My reasoning was that any orthographic system without dedicated vowel symbols would necessarily let at least some morphologically salient information go unexpressed. I reasoned that this should be especially true in the case of Hebrew, as vowels appear to be especially salient to its morphology. %vowels %appear especially true in the case of Hebrew,  and second, vowels must be particularly important to 
 %Hebrew because 
 The derivational morphology of Hebrew is famously nonconcatenative, consisting in the interleaving of consonantal 
 roots and vowel patterns. The experimental results, however, proved to be somewhat surprising, 
@@ -473,10 +474,14 @@ The remaining five chapters (chapters \ref{autonomous} through \ref{ch:conclusio
 are concerned with the evaluation of Multimorph. Chapter~\ref{autonomous} addresses 
 the question of the sort of categories that Multimorph and other unsupervised morphological 
 should be expected to learn, i.e., the sort of categories that one should look for in evaluating such 
-systems. This is part of the ``question of evaluation'' introduced above. Chapter~\ref{ch:experi} 
-describes the experimental setup; that is, it describes the collection and preparation of the datasets 
-and the experimental variables, including the three modes of data representation and the 
-parameters for the feature sets. Chapter~\ref{ch:eval} completes this thesis's response to the 
+systems. This is part of the question of evaluation introduced above. Chapter~\ref{ch:experi} 
+%describes the experimental setup;
+describes the choices for Multimorph's features and the preparation of its datasets, thus addressing the questions of features and data representation.
+%describes the preparation of Multimorph's input
+%that is, it describes the collection and preparation of the datasets 
+%and the experimental variables, including the three modes of data representation and the 
+%parameters for the feature sets.
+ Chapter~\ref{ch:eval} completes this thesis's response to the 
 ``question of evaluation.'' It describes a dual-paradigm evaluation method consisting of 
 both an intrinsic and extrinsic component. The extrinsic component in particular may be 
 of interest to other ULM researchers as an alternative to conventional evaluation methods. 

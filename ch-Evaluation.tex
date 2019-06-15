@@ -67,7 +67,7 @@ quantitative evaluation.
 \section{Quantitative Evaluation}
 \subsection{Intrinsic Evaluation}
 \label{sec:intrinsic}
-An \emph{intrinsic} evaluation regards a system as a stand-alone system whose output is an end unto itself. An intrinsic evaluation thus judges a system's output directly as opposed to indirectly via the performance of a downstream system. However, intrinsic evaluations still require some \emph{externally-generated} standard against which to measure a system's performance. Such a \emph{gold standard} generally consists of a set of ``correct answers'' that humans have had some part in creating.
+An \emph{intrinsic} evaluation regards a system as a stand-alone system whose output is an end unto itself. An intrinsic evaluation thus judges a system's output directly as opposed to indirectly via the performance of a downstream system. However, intrinsic evaluations still require some \emph{externally-generated} standard against which to measure a system's performance. Such a \emph{gold standard} is generally a set of ``correct answers'' that humans have had some part in creating.
 This study's intrinsic evaluation component thus required a 
 set of \emph{gold-standard classes} against which to evaluate 
 Multimorph's clusterings\footnote{Note the use of the word \emph{class} 
@@ -208,10 +208,10 @@ As explained in chapter~\ref{ch:MCMM}, the
  \begin{equation}\label{eq:vote-criterion}
  m_{i,k}c_{j,k} \geq \theta_{\text{mc}}
  \end{equation}
- where $\theta_{\text{mc}}$ is the membership threshold. %In preliminary 
- In this study's experiments, $\theta_{\text{mc}}$ 
- was 
- set to 0.5.
+ where $\theta_{\text{mc}}$ is the membership threshold, set to 0.5 in this study's experiments. %In preliminary 
+% In this study's experiments, $\theta_{\text{mc}}$ 
+% was 
+% set to 0.5.
  In algorithm~\ref{alg:members}, the \textsc{while}-loop condition on line~\ref{line:vote-thresh} enforces the threshold criterion. 
 % ~\ref{line:vote-thresh}
 %requires the current vote to be greater than (or equal to) to the membership threshold. 
@@ -924,9 +924,9 @@ n|yad\&gen:fm\&num:sg\,\&\,poss:3mascSG-\'{a}yw=hand
 \end{exe}
 
 When a noun bears a pronominal suffix, both the noun and the suffix have their 
-own distinct gender and number features. In addition, the suffix has a person feature. 
-In such cases, the BLC treats the noun's gender and number as separate atomic
-categories in the usual way. To avoid additional and possibly conflicting gender 
+own distinct gender and number features. In addition, the suffix has its own a person, number, and gender. 
+In such cases, the BLC annotates the noun's gender and number as separate atomic
+categories in its usual way. However, to avoid additional and possibly conflicting gender 
 and number features in the same
 analysis, the BLC combines the suffix's person, gender, and number categories into 
 a single composite category labeled \texttt{poss} for \textit{possessive}, as in 
@@ -991,8 +991,8 @@ morphosyntactic features.
 A distinct gold-standard class was created for each formally distinct prefixal particle, as well as three additional categories for the composite
 prefixes \textit{la-} (`to the'), \textit{ba-} (`in the'), and \textit{ka-} (`as the'), 
 which result from the blending of the prefixal prepositions \textit{le-} (`to'), 
-\textit{be-} (`in'), and \textit{ke-} (`as') with the definite-article prefix \textit{ha-}.
-and \text{be-} `in'. See table~\ref{tab:mappings-prefixes} for a listing of the prefixal-particle mappings.
+\textit{be-} (`in'), and \textit{ke-} (`as') with the definite-article prefix \textit{ha-}
+(`the'). See table~\ref{tab:mappings-prefixes} for a listing of the prefixal-particle mappings.
 \end{description}
 
 \begin{table}[t]
@@ -2647,7 +2647,10 @@ whose first segment comprised the three
 CJK symbols corresponding to the morphs 64, 148, and 264, 
 and the second segment was the \emph{i}. In the final decoding process, 
 the morphs 64, 148, and 264 together (i.e., as a single segment) mapped onto the string \textit{hicl\'{a}xt}, 
-and thus Morfessor's segmentation became \textit{hicl\'{a}xt + i}.
+and thus Morfessor's segmentation became 
+\begin{center}
+\texttt{hicl\'{a}xt + i}
+\end{center}
 The same process was carried out for each word in the experimental segmentation file and the entire file was thus decoded. At this point, the words in the experimental segmentation file once again shared the same characters as their control counterparts.
 %That is, each
 %segment in experimental segmentation file was decoded separately in order to preserve Morfessor's segmentation decisions.

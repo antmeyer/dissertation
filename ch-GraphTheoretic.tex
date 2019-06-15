@@ -25,7 +25,7 @@ properties of the bipartite graph. We will thus see that
 McCarthy's 
 autosegmental framework can be reduced to a bipartite graph.
 Finally, in section~\ref{sec:mcmm-bipartite}, we will see that the MCMM is also a bipartite graph,
-though we will defer a detailed discussion of the MCMM to the next chapter.
+though we will defer a detailed discussion of MCMMs to the next chapter.
 Bipartiteness will ultimately serve as a common denominator, so to speak, between the autosegmental formalism and the MCMM, providing a means of expressing the autosegmental formalism as an MCMM.
  
 %itself has a bipartite architecture, which is to say that it can be represented as and thought of as a bipartite graph without information loss.  essentially bipartite in its architecture, and that it ; we will see that the autosegmental framework is essentially a bipartite graph. We shall then observe in section~\ref{sec:bipartite} that an \ac{MCMM} is itself a bipartite graph, and that autosegmental morphology and \ac{MCMM}s have the same graphical properties. From this point, the conclusion follows that an From a theoretical perspective, therefore, it is a sound choice to use the \ac{MCMM} as a computational``wrapper," as it were, for McCarthy's theoretical autosegmental framework, to package for it for use a machine learning system. 
@@ -205,9 +205,9 @@ and the two components of the definition of \emph{bipartite} in (\ref{ex:biparti
 The reason for this correspondence is that the autosegmental 
 framework is essentially a bipartite graph. 
 We can make this clearer simply by rearranging the morph 
-nodes $\mu_1$, $\mu_2$, and $\mu_3$. That is, can 
+nodes $\mu_1$, $\mu_2$, and $\mu_3$. That is, we can 
 simply move up $\mu_2$ so that it is situated between 
-$\mu_1$ and $\mu_3$, i.e., so that all three morphs are 
+$\mu_1$ and $\mu_3$, and all three morphs are 
 lined up in a row, as in figure-\ref{fig:autoseg-to-bipartite}. We can then view this row (or vector) of 
 morphs as one of the partitions in a bipartite graph.
 \begin{figure}[t]
@@ -394,7 +394,7 @@ we can still think of each morph in the vector of morphs as residing on its own 
 %with each morpheme represented as a single node in this tier.
 We will call this morph vector the \emph{hidden} \emph{layer}, 
 the segmental tier the \emph{surface} \emph{layer}. The morphs 
-in the hidden layer thus become \emph{hidden units}, and the phonological segments (or features or characters)
+in the hidden layer thus become \emph{hidden units}, and the phonological segments (or features, characters, etc.)
 in the surface layer become \emph{surface units}.
 In this way, the autosegmental multilinear framework can be 
 represented as a bipartite graph.
@@ -428,21 +428,21 @@ where
 %\begin{exe}
 %[+spread glottis] corresponds to the /h/ and [+front,-low,-round,+syllabic] to the /i/.
 When the feature matrices represented by /h/ and /i/ become linked to the first 
-C and the first V, respectively, the C and V inherit the feature specifications in these matrices; in effect,
+C and the first V, respectively, this C and V inherit the feature specifications in these matrices; in effect,
 the features matrices in (\ref{ex:h-feats}) and (\ref{ex:i-feats}) \emph{become} the
 feature matrices of the first C and V (respectively),
 which means that /h/ and /i/ can now stand in for them also. %(respectively). 
-
-A CV skeleton becomes a sequence of fully fledged phonemes, i.e., a phonological
-form, as soon as the morphs connect to the C and V slots, whereupon on the individual Cs and Vs inherit the individual feature matrices composing the morphs and hence, in effect, take on the phonological identities
-embodied by those feature matrices.  
+Thus, a CV skeleton becomes a sequence of fully fledged phonemes, i.e., a fully fledged phonological
+form, as soon as the morphs connect to the C and V slots. 
+% When this connection takes place, the individual Cs and Vs inherit the individual feature matrices composing the morphs and in effect take on the phonological identities
+%embodied by these feature matrices.  
 %on the identities of the phonological elements that compose the morphs. 
-Thus, just as \textipa{/hi/} and \textipa{/i/} (i.e, the feature bundles they represent) compose 
-$\mu_1$ in figure~\ref{subfig:multilinear-gt}, they also compose a morphological 
-unit within the segmental tier, once $\mu_1$ has linked to the appropriate C and V slots. The morphs $\mu_1$, $\mu_2$, and $\mu_3$ 
+Just as \textipa{/hi/} and \textipa{/i/} (i.e, the feature bundles they represent) compose 
+$\mu_1$ in figure~\ref{subfig:multilinear-gt}, they effectively form morphological 
+unit \emph{within} the segmental tier as soon as $\mu_1$ links to the appropriate C and V. In this way, the morphs $\mu_1$, $\mu_2$, and $\mu_3$ 
 essentially \emph{cause} the segmental tier to be realized as a fully fledged 
 phonological form. This observation will become especially relevant in 
-section~\ref{sec:mcmm-bipartite} below and in the following chapter, where we explore multiple cause mixture models (MCMMs) in depth.
+section~\ref{sec:mcmm-bipartite} below as well as in the following chapter, where we explore multiple cause mixture models (MCMMs) in depth.
 % the 
 %close to describing the workings of \ac{MCMM}. 
 

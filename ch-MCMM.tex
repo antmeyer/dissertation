@@ -789,7 +789,7 @@ hidden unit, namely $c_{j,k}$, must be either $-1$ or $1$. This would associate
 the surface unit $r_{i,j}$ to at least one cluster. Ultimately, mixing 
 function \eqref{eq:wwb} encourages hidden-unit activities to move toward 
 either $0$ or $1$ and the weights toward either $-1$ and $1$. These are 
-values with clear cluster-oriented interpretations: The $1$'s and $0$'s of the 
+values with clear cluster-oriented interpretations: The $1$s and $0$s of the 
 hidden-unit vector indicate cluster membership and nonmembership, respectively, 
 while the weights adopt the same values, namely $\{-1, 1\}$ present in the original data points. 
 This is important, since, as noted above, an MCMM's weight vectors have to be 
@@ -915,7 +915,7 @@ where $r_i,j$ is itself a function, namely the Noisy-OR fuction (see section~\re
 Because Multimorph's composite objective function is nonlinear, it requires a nonlinear optimization method.\footnote{Here, we mean \emph{nonlinear} in the standard mathematical sense, i.e., to describe functions whose graphs are not straight lines.} I chose a nonlinear conjugate-gradient method\footnote{In preliminary experiments, conjugate-gradiant methods tended to outperform quasi-Newton methods. Moreover, \citet{saund:94} also uses a conjugate-gradient method.} 
 
 To facilitate a general description of the class of nonlinear conjugate gradient methods, 
-we shall for moment consider a simple model with only one parameter 
+let us for the moment consider a simple model with only one parameter 
 %a hypothetical vector we shall call $\textbf{w}$.
 vector $\textbf{w}$.\footnote{Sometimes a parameter is most naturally expressed as a matrix (with multiple rows and columns) rather a vector. For instance, if a system should have two layers of nodes, one of $K$ nodes and the other of $J$ nodes, with $K \times J$ weights connecting the two layers, the objective function's parameters (i.e., the weights) would most naturally expressed as a  $K \times J$ matrix. In such a case, however, the matrix can be vectorized---i.e., converted into vectors---via the \textsf{vec()} operation. See, e.g., \citet{fackler:2005} for an explanation of this operation.} % connecting two layers of nodes. 
 Of course, as discussed in section~\ref{sec:architecture},
@@ -1729,7 +1729,7 @@ The input data matrix for the MCMM in figure~\ref{fig:example-1} consists of thr
 The hidden cluster activities $\mathbf{M}$, the weights $\mathbf{C}$, the surface-unit vectors $\mathbf{R}$,
 and the mixing function together constitute a model that reproduces the
 observed data points $\mathbf{X}$.
-The nodes $m_{i,k}$ are the hidden units and represent cluster-membership activities. There are three cluster-membership vectors $m_{i}$, one for each $i \in I$, i.e., one for each data point. Because there are two clusters, each cluster-membership vector has two components. For instance, $\textbf{m}_{0} = [0, 1]$, which means the first data point $\textbf{x}_{0}$ does not belong to the first cluster, but \emph{does} belong to the second. By contrast, $\textbf{m}_{1} = [1,0]$ indicates that $\textbf{x}_{1}$ belongs to first cluster, but not to the second. Finally, $\textbf{m}_{2} = [1,1]$ indicates that  $\textbf{x}_{2}$ belongs to \emph{both} clusters. 
+The nodes $m_{i,k}$ are the hidden units and represent cluster-membership activities. There are three cluster-membership vectors $m_{i}$, one for each $i \in I$, i.e., one for each data point. Because there are two clusters, each cluster-membership vector has two components. For instance, $\textbf{m}_{0} = [0, 1]$, which means the first data point $\textbf{x}_{0}$ does not belong to the first cluster, but \emph{does} belong to the second. By contrast, $\textbf{m}_{1} = [1,0]$ indicates that $\textbf{x}_{1}$ belongs to the first cluster, but not to the second. Finally, $\textbf{m}_{2} = [1,1]$ indicates that  $\textbf{x}_{2}$ belongs to \emph{both} clusters. 
 
  \begin{table}[b]
 \begin{mdframed}
