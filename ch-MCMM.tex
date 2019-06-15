@@ -36,8 +36,8 @@ MCMMs learn, paying particular attention to Multimorph's MCMM.
 \section{Basic MCMM Architecture}
 \label{sec:architecture}
 
-In \citet{saund:94}, the term \emph{multiple cause mixture model} refers to a family of algorithms rather than to a  a single, 
-specific algorithm. It does, however, denote a specific category of algorithms, and since
+In \citet{saund:94}, the term \emph{multiple cause mixture model} refers to a family of algorithms rather than to a single, 
+specific algorithm. It does, however, denote a specific category of algorithm, and since
 MCMMs constitute a definite category, 
 all MCMMs share certain key attributes.
 These attributes are 
@@ -150,7 +150,7 @@ row in $\textbf{X}$ is a data point, a feature-vector representation of a word.
 The $J$ columns in  $\textbf{X}$ each represent a particular feature.
 The identical subscript on $\mathbf{x}_i$ 
 and $\mathbf{r}_i$ means that these vectors correspond to the same data 
-point, and thus ultimately the same word. Notice that the hidden 
+point, and thus ultimately the same word (namely, the $i$th word). Notice that the hidden 
 layer $\textbf{m}_i$ bears this same index and is thus also tied to the $i$th word. In particular, it 
 is the 
 \emph{cluster-membership vector} of the $i$th word; that is, it is the $i$th row of 
@@ -497,7 +497,7 @@ refer to a different weight matrix
 An RBM's learning process is thus bi-directional: 
 The hidden-unit activities are conveyed to the reconstruction 
 units via the weight matrix $\textbf{C}$, and then the reconstruction 
-activities are conveyed back to the hidden units via the same weight matrix, resulting in a cyclic process 
+activities are conveyed back to the hidden units via the same weight matrix, resulting in a cyclic process. 
 %\citep{larochelle-and-bengio:2008}. 
 
 But despite these differences, RBMs and classical autoencoders can be grouped together where activation functions are concerned, since they both use the sigmoidal weighted sum.
@@ -558,7 +558,7 @@ it belongs to yet another. In a \emph{hard clustering}, the data point is
 assigned to the single most probable category, and the other less probable 
 possibilities are forgotten. However, the uncertainty can also be left 
 unresolved, so that, in the case of our example, all three possibilities, 
-along with their respective likelihoods, would be output. This is a 
+along with their respective likelihoods, would be returned. This is a 
 \emph{soft clustering}. But even in the case of a soft clustering, 
 we still assume that the data point in question \emph{fundamentally} 
 belongs to only one cluster; 
@@ -605,7 +605,7 @@ elemental objects within the same document.
 Like mixed-membership models, multiple-cause mixture models (MCMMs) 
 allow multiple causes to take part in accounting for a single data point. 
 That is, as in mixed-membership models, MCMMs provide a means for 
-different causes to take responsibility for different parts of data point. 
+different causes to take responsibility for different parts of a data point. 
 Thus, both MCMMs and mixed-membership models transcend the single-cause assumption of standard 
 mixture models.
 % and their assumption that each data point ultimately has 
@@ -621,7 +621,7 @@ This behavior is a consequence of the nature of \emph{mixing functions}, the act
 While MCMMs do allow individual clusters to claim responsibility 
 for particular features, they ultimately do not attribute different proportions of a given feature vector
 to different clusters. In an MCMM, as long as at least one feature is caused by a given cluster, the \emph{whole} feature
-vector (or data point) is assigned to that cluster in addition to whatever other clusters are responsible for one or more of its features. 
+vector (or data point) is assigned to that cluster. It is also wholly assigned to any a cluster that is responsible for one or more of its features. 
 %(i.e., individual components within data points). This is in fact a key property of MCMMs. 
 %The difference between MCMMs and mixed-membership models stems from 
 %both the neural nature and the mixing functions MCMMs: An MCMM's mixing 
@@ -718,7 +718,7 @@ possible mixing functions.
 to suit a particular data domain.  The two data domains, namely 
 the ``\textsc{write-black}'' and ``\textsc{write-white-and-black}'' 
 domains, are distinguished by the nature of the voting task that 
-determines the values of surface nodes. 
+determines the activities of surface nodes. 
 In the \textsc{write-black} domain, the decision in question is 
  whether a given surface unit should be ``black" (i.e., 1) or ``not black'' (i.e., 0). 
  The individual votes, as in the case of the sigmoidal activation function (see section~\ref{sec:context}), are products of the form $m_{i,k} c_{j,k}$,
@@ -802,7 +802,7 @@ failed to make progress toward learning to reconstruct the original
 data points. This may have been due to the sparseness of the data points 
 in this study; each data point is a vector of hundreds of feature slots, but 
 only a handful have the value $1$.
-There are hundreds of features, and each has a designated slot in each feature vector.
+%There are hundreds of features, and each has a designated slot in each feature vector.
 (We will discuss these features in detail in chapter~\ref{ch:experi}.)
 
 In a \textsc{write-black} formulation, absent features have the value $0$, but in the\textsc{write-white-and-black} formulation, they are $-1$. Therefore, in a sparse feature vector under the\textsc{write-white-and-black} formulation, the vast majority of features are $-1$. The cumulative effect of all these negatives in \eqref{eq:wwb} seemed to drown out the few positive features, making it impossible to reproduce the original data vectors. 
@@ -970,7 +970,7 @@ Armijo condition \citep{armijo:1966}. %^, i.e., that
 
 The direction is initialized as the negative of the objective function's gradient
 (line ~\ref{line:init-d} in algorithm~\ref{alg:gen-cg}). The gradient of an objective
-function $f$ with respective to a parameter vector $\textbf{w}$ is the first partial derivative of $f$ with respect to
+function $f$ with respect to a parameter vector $\textbf{w}$ is the first partial derivative of $f$ with respect to
 $\textbf{w}$, as in equation \eqref{eq:partial-vector}.  The gradient is of the same size (and same dimensions as) as the parameter vector $\textbf{w}$, and there is thus a one-to-one relationship between the parameter's components and the gradient's components.
 \begin{equation}
 \label{eq:partial-vector}
@@ -1747,7 +1747,11 @@ Cluster index ($k$) & Member Data Points & Cluster Centroid \\ \midrule
 \end{mdframed}
 \end{table}
 
-These cluster-membership vectors make more sense when we consider the this MCMM's $J \times K$ ($3 \times 2$) weight matrix $\textbf{C}$. The two column-vectors $\textbf{c}_0 = [0,1,0]$ and $\textbf{c}_1 = [1,0,1]$ are the \emph{centroids} of the first and second clusters, respectively. A cluster's centroid is a sort of average or composite of the cluster's member vectors; it represents the feature values that a cluster's members have in common and can thus serve as a label for a cluster. The first data point $\textbf{x}_0 = [0,1,0]$ is a member of the cluster whose centroid is $[0,1,0]$. Similarly, the second data point $\textbf{x}_1 = [1,0,1]$ is clearly a member of the cluster whose centroid is $[1,0,1]$. But just as clearly, the influence of \emph{both} clusters is evident in the third data point $\textbf{x}_2 = [1,1,1]$.
+These cluster-membership vectors make more sense when we consider them in light of this MCMM's $J \times K$ ($3 \times 2$) weight matrix $\textbf{C}$. The two (transposed) column-vectors 
+%$\textbf{C}^\textsf{T}[0,:] = [0,1,0]$ and $\textbf{C}^\textsf{T}[1,:]  = [1,0,1]$ (for $j = 0$ and $j =1$) 
+$\textbf{C}[\bullet,0] = [0,1,0]$ (for $k = 0$ and $j \in \{ 0,1,2\}$) and $\textbf{C}[\bullet,1]  = [1,0,1]$ (for $k = 1$ and $j \in \{ 0,1,2\}$)
+%(for $k = 0$ and $k=1$, respectively; the three components in each of vectors correspond to the three $j$ indices) 
+are the \emph{centroids} of the first and second clusters, respectively. A cluster's centroid is essentially a  sort of average or composite of the cluster's member vectors; it represents the feature values that a cluster's members have in common and can thus serve as a label for the cluster in question. The first data point $\textbf{x}_0 = [0,1,0]$ is a member of the cluster whose centroid is $[0,1,0]$. Similarly, the second data point $\textbf{x}_1 = [1,0,1]$ is clearly a member of the cluster whose centroid is $[1,0,1]$. But just as clearly, the influence of \emph{both} clusters is evident in the third data point $\textbf{x}_2 = [1,1,1]$.
 
 Table~\ref{tab:cl-members} shows the members as well as the centroids of each of the two clusters: Notice that the active components in each cluster centroid correspond to the shared component values among the cluster's members.
 We can see that while learning is in progress, the cluster activities
@@ -1770,7 +1774,7 @@ which will be concerned with the actual testing of the first part’s hypothesis
  an MCMM-driven system 
  %(as we have established the MCMM’s nonlinearity 
 % and nonsequentiality in this chapter and chapter~\ref{ch:graph} preceding chapters) 
- and trying it out on Hebrew words, which contain plenty of nonconcatenative morphology. 
+ and testing it on Hebrew words, which contain plenty of nonconcatenative morphology. 
 Additional research questions were raised along the way, and we 
  will address these in the following chapters. The next chapter discusses the 
  targets of Multimorph's learning, that is, the type of categories one should 

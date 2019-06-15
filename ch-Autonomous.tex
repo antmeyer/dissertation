@@ -398,25 +398,33 @@ but it is also more complex. It is to the morphome that we turn next.
 \label{sec:the-morphome}
 The morphome has sparked a 
 great deal of research since Aronoff introduced it in 1994. Researchers
-such as \cite{maiden:2005, maiden:md:2016}, \cite{round:2009, round:2011, 
-round:2012, round:2015, round:md:2016}, \cite{oneill:2014b,oneill:2018}, and \cite{bonami:2008, bonami:2010}, to name 
+such as \citet{maiden:2005, maiden:md:2016}, \citet{round:2009, round:2011, 
+round:2012, round:2015, round:md:2016}, \citet{oneill:2014b,oneill:2018}, and \citet{bonami:2008, bonami:2010}, to name 
 a few---have found examples of morphomicity in a wide variety of 
 languages and have thereby helped to flesh out the notion of the morphome.
-Round, for instance, in \cite{round:2009} and subsequent works, 
+Round, for instance, in \citet{round:2009} and subsequent works, 
 presents a complete morphome-based analysis of the morphology of 
 Kayardild, a nearly extinct language of northern Australia. 
 
 \subsubsection{Morphormic Representations}
 Round expresses a word's \emph{morphomic representation} as a pair 
 consisting of a particular lexical item and a particular set of properties.
-\cite{round:2011} argues that such pairs can be either inflectional 
+\citet{round:2011} argues that such pairs can be either inflectional 
  or derivational in nature, and moreover, that the same morphome can fill 
  both inflectional and derivational roles. In English, for example, \emph{-s} 
-functions as the \textsc{3.sg} present-tenxe suffix for verbs and as the \textsc{pl} 
+functions as the \textsc{3.sg} present-tense suffix for verbs and as the plural
  suffix for nouns, both of which are inflectional, but it can also serve a derivational 
- role as the possessive clitic, e.g.,
- {\emph{The girl\textbf{'s} new bicycle}, as well as a
- cliticization of the copula, e.g., \emph{The girl's bicycle\textbf{'s} new} (`The girl's bicycle \emph{is} new').
+role, particularly in the role of the possessive clitic, as in
+\begin{exe}
+\ex The girl\textbf{'s} new bicycle.
+\end{exe}
+Another derivational role for this morph is the cliticized form of the \textsc{3.sg} present-tense copula, as in
+\begin{exe}
+\ex The girl's bicycle\textbf{'s} new. 
+\end{exe}
+
+% {\emph{The girl\textbf{'s} new bicycle}, as well as  a
+% cliticization of the copula, e.g., \emph{The girl's bicycle\textbf{'s} new} (`The girl's bicycle \emph{is} new').
 
 %  \begin{exe} 
 % \emph{This is the \textbf{girl's} new bicyicle}
@@ -543,25 +551,27 @@ be the morphome corresponding to this suffix.
 
 \subsubsection{A Taxonomy of Morphomes}
 Another contribution of Round is his taxonomy of morphomes, which 
-classifies morphomes according to the types of groups they engender. 
-That is, if we think of morphomes as relations, we can think of them as 
-sets whose members all are alike in a particular way. \cite{round:2015, round:md:2016} 
-classifies morphomes according to the nature of this similarity. That is, 
-according to Round, there are different types of form-based similarity; i.e., different ``aspects of form'' that are 
-shareable \citep[][p.230]{round:md:2016} and these different shareable aspects of form correspond to different types of morphomes. 
-This sort of taxonomy will prove useful when we discuss the 
-limitations on unsupervised morphological learning, i.e., what a ULM 
-system can and cannot learn given the limited nature of its input.
-
-Round's taxonomy comprises three categories, namely 
+classifies morphomes according to the types of equivalence classes they represent. 
+Essentially, each category in this taxonomy is a different approach to relating forms---a different sort of standards putting two forms in the same category. %--orms can be considered ``the same.''
+%morphomes as relations, we can think of them as 
+%A morphome is thus a set whose members all are alike in a particular way. \cite{round:2015, round:md:2016} What counts as ``alike'' depends on the morphome type.
+%%classifies morphomes according to the nature of this similarity. That is, 
+%%according to Round, there are different types of form-based similarity; i.e., 
+%%According to Round, there are different ``aspects of form'' that are 
+%%shareable \citep[][p.230]{round:md:2016} and these different shareable aspects of form correspond to different types of morphomes.
+%This taxonomy will prove useful when we discuss the 
+%limitations on unsupervised morphological learning, i.e., what a ULM 
+%system can and cannot learn given the limited nature of its input.
+The taxonomy has three categories, namely 
 \textit{\textbf{rhizo}morphomes}, \textit{\textbf{meta}morphomes}, 
-and \textit{\textbf{mero}morphomes}. 
-Rhizomorphomes and metamorphomes both transcend the confines of 
-particular lexemes and are thus both
-rather abstract. Meromorphomes, in contrast, correspond to``concrete'' 
+and \textit{\textbf{mero}morphomes}. Meromorphomes are the most ``concrete'' type in that they correspond to actual 
 pieces of form. They are the raw material from which paradigms are constructed. 
+By contrast, both rhizomorphomes and metamorphomes transcend the confines of specific lexemes. A single rhizomorphome can incorporate many different lexemes. The same can be said of a single metamorphome. 
+%eas we will see below.% both comprise multiple %the confines of 
+%particular lexemes and are thus both
+%rather abstract. 
 Of these three, metamorphomes and meromorphomes will be most 
-relevant to the present discussion, but we shall touch on rhizomorphomes briefly 
+relevant to our discussion, but we will touch on rhizomorphomes briefly 
 before proceeding to metamorphomes and meromorphomes.
 
 \paragraph{Rhizomorphomes.} A rhizomorphome is a set of stems or roots
@@ -570,12 +580,14 @@ before proceeding to metamorphomes and meromorphomes.
 
 \paragraph{Metamorphomes.} A metamorphome is a pattern of stem 
 equivalence that spans multiple paradigms 
-(and thus multiple lexemes). See, for example, tables~\ref{subtab:digo}
-and \ref{subtab:crezco}, which demonstrate the L-morphome, a prominent 
+(and thus multiple lexemes as well). See, for example, tables~\ref{subtab:digo}
+and \ref{subtab:crezco}, which demonstrate the \emph{L-morphome}, a prominent 
 metamorphome in Romance languages \citep{maiden:2005}. Although the 
 lexemes defer in these tables, the morphome is the same. This is because 
 the morphome is not the particular stem in either table, but rather the 
-\emph{pattern} of stem equivalence. In this case, the equivalence class 
+\emph{pattern} of stem equivalence, i.e., the pattern or shape that the ``participating'' paradigm cells make.
+%inter-stem correspondences. 
+In this case, the equivalence class 
 forms  an ``L''-shape when the paradigm cells are arranged as in tables~\ref{subtab:digo} 
 and \ref{subtab:crezco}.
 \begin{table}[t]\label{tab:l-morphome}
@@ -615,8 +627,8 @@ stems that coincide with the following highly unnatural morphosyntactic property
 \{ \text{\textsc{tns}:pres, \textsc{mood}:subj}\} \vee \{\text{\textsc{tns}:pres},\text{\textsc{mood}:ind},\text{\textsc{pers}:1},\text{\textsc{num}:sg}\}
 \end{equation}
 
-Another example of a metamorphome is the English perfect participle, which was first 
-identified as a unified, albeit complex, morphome by \cite{aronoff:1994}. The term \emph{perfect participle} 
+Another example of a metamorphome is the English perfect participle, which \citet{aronoff:1994} first 
+identified as a unified, albeit complex, morphome.  The term \emph{perfect participle} 
 itself refers not to a particular syntactic category, but 
 to a class of 
 forms whose members 
@@ -626,7 +638,6 @@ with inflections of \emph{have} to form the perfect tenses, but also with
 
 In each of the examples~(\ref{ex:pastpart:kick}), (\ref{ex:pastpart:write}), and (\ref{ex:pastpart:sing}), a present-perfect verb is identical to 
 a passive verb.
-
 \begin{exe}
 \label{ex:pastpart}
 	\ex Root ($\rho$): $\surd$\textsc{kick}
@@ -668,7 +679,7 @@ Root & Type & Form & Perfect & Passive  \\ [0.5ex]
 \end{tabular}
 %instantiated across many different lexemes. Different lexemes can take different stem types. Each stem type may take a distinctive affix.}
 %\label{tab:engpastpart}
-\caption{The English past participle is a metamorphome: It is a single, abstract morphome that spans multiple lexemes and comprises multiple stem types and affixes.}
+\caption{The English past participle is a metamorphome: It is an abstract morphome that spans multiple lexemes and comprises multiple stem types and affixes.}
 \label{tab:engpastpart}
 \end{mdframed}
 \end{table}
@@ -766,21 +777,21 @@ Root & Type & Form & Perfect & Passive  \\ [0.5ex]
 \end{figure}
 
 \paragraph{Meromorphomes.} Whereas rhizomorphomes and metamorphomes 
-transcend the realms of individual lexemes and paradigms and thus highly 
-abstract, meromorphomes are comparatively concrete, as they 
-correspond to particular parts of word forms. Meromorphomes, it must be said, 
-are technically not the word parts themselves, since all morphomes reside at the 
+are abstract, representing trans-lexemic and inter-paradigmatic relationships, %the realms of  lexemes and paradigms and thus highly 
+meromorphomes are comparatively concrete. Meromorphomes 
+correspond to particular parts of word forms. They 
+are technically not the word parts themselves, as all morphomes reside at the 
 morphomic level rather than the phonological, or surface, level \citep{round:2011}. 
 Even so, meromorphomes map directly onto phonological forms, and 
 are thus more closely associated with phonological forms than rhizomorphomes 
-or metamorphomes. Indeed, both rhizomorphomes and metamorphomes are 
-composed of meromorphomes, since, at some point, the abstract, trans-lexemic 
-types of morphomes must interact with specific phonological forms. 
+and metamorphomes. Indeed, both rhizomorphomes and metamorphomes are themselves
+composed of meromorphomes, since, at some point, abstract, trans-lexemic 
+morphomes must interact with specific phonological forms. 
 
 For instance, in English perfect participles, each individual root, e.g., \textit{s-\textipa{2N}}, 
-\textit{br-k}, \textit{\textipa{kIk}}, etc., is a meromorphome, as is each suffix (e.g., \textit{-ed}, \textit{-en}, etc.}
+\textit{br.k}, \textit{\textipa{kIk}}, etc., is a meromorphome, as is each suffix (e.g., \textit{-ed}, \textit{-en}, etc.}
 and each distinct variety of ablaut (e.g., \textit{br\textbf{ea}k/br\textbf{o}ken}, \textit{s\textbf{i}ng/s\textbf{u}ng}, etc.) is also a meromorphome. 
-The Romance L-morphome is also composed of particular meromorphomes. 
+The Romance L-morphome is likewise composed of particular meromorphomes. 
 Within the paradigm of the lexeme \textsc{decir} \textsc{`to say'} 
 (see table~\ref{subtab:digo}), the stem \textit{dig-} is a meromorphome. 
 Similarly, the stem \textit{crezc-} is a meromorphome within the paradigm of 
@@ -834,11 +845,26 @@ Hebrew uses the vowel [i]
 in both noun-deriving and adjective-deriving suffixes. 
 As illustrated in table~\ref{subtab:der-adjectives}, 
 one can derive adjectives 
-in Hebrew by attaching \textit{-i} to noun bases. The \textit{-i} 
+in Hebrew by attaching \textit{-i} to noun bases. Thus,
+ \begin{exe} 
+\ex \label{ex:finished}
+\begin{tabbing}
+\hspace{.9in} \= \hspace{.4in} \= \hspace{.5in} \= \hspace{.4in} \= \hspace{.9in} \kill %\= \hspace{.3in} \= \hspace{1in} \kill
+merxav \> $+$ \>  -i \> $=$ \>  merxavi \\
+`space' \textsc{m.sg}   \> \> \textsc{adj} \>  \> `spatial' \textsc{m.sg}  \\
+%\> \>  \>  \> \textsc{m.sg}
+\end{tabbing}
+%noun (\textsc{m.sg}) \> \> \> \> \> adj (\textsc{m.sg}) \\
+%\textsf{matxilim} \> \textsf{\textbf{matxil+im}\$\$part\&root:txl\&ptn:hifil\&gen:ms\&num:pl}\, \\
+%\> \textsf{\textbf{matxil+im}\$\$adj\&root:txl\&ptn:tbd\&gen:ms\&num:pl}
+%\end{tabbing}
+\end{exe}
+The \textit{-i} 
 must be the `adjective' exponent
 in table \ref{subtab:der-adjectives} because it is the only suffixal 
 element to occur in each
 of the four columns. % It must therefore be the adjectival exponent in these cases. 
+
 \begin{table}[ht]
    \centering
    \subtable[Adjectives derived from nouns via \textit{-i}\label{subtab:der-adjectives}]{
@@ -887,13 +913,32 @@ of the four columns. % It must therefore be the adjectival exponent in these cas
         nagar \textit{`carpenter'} &  nagar-ut   &   nagr-uy-ot  & `carpentry' \\
         \bottomrule
 	\end{tabular}
- 
    }
    	\caption{Derivational and inflectional syncretism in Hebrew feminine endings}
 	\label{tab:deriv}
 \end{table}
-Thus, \textit{merxav} `space' + \textit{-i} = \textit{merxav-i} 
-`spatial (masc.sg)'. The fem.sg is obtained by attaching \textit{-t} to the masc.sg
+
+%Thus, 
+%\begin{center}
+%\begin{tabular}{ccccc}
+%merxav & + & -i & =  & merxavi \\
+%noun `space' &  & \textsc{adj} &   & `spatial' \\
+%noun (\textsc{m.sg}) &  & &   & adj (\textsc{m.sg}) \\
+%\end{tabular}
+%\end{center}
+
+%\exg. 
+%   J\'anos h\'aza\\ 
+%   John house.his\\ \hfill Hungarian (Finno-Ugric, \emph{reference}) 
+%   \glt    `John's house' 
+%\bigskip
+%\noindent{And thus},
+
+
+%\begin{equation*}
+%\textit{merxav} \,\,\, \text{`space'} \quad + \quad \textit{-i} \quad  = \quad \textit{merxavi} \,\,\, \text{`spatial'} \quad \text{(masculine singular)'}
+%\end{equation*}
+The feminine singular is obtained by attaching \textit{-t} to the masculine singular
 form. Feminine adjectives thus end in \textit{-it}. 
 Hebrew also uses \textit{-it} to derive nouns, usually by attaching it 
 to nouns, as in in table~\ref{subtab:der-nouns-i}. 
@@ -905,11 +950,11 @@ end in \textit{-t}. Indeed, the co-occurrence of \textit{-t} and the feminine ge
 too frequent to be the product of random chance \citep{faust:2013}.
 In fact, \textit{-t} serves as an exponent of both grammatical (or \emph{inflectional}) 
 gender as well as semantic (or \emph{derivational}) gender. For example, /-t/ 
-is an inflectional ending in \textit{merxavit} `spatial (fem.)' 
-(cf. the corresponding masc. form \textit{merxavi}). 
-It is as part of the derivational suffix \textit{-it}, used to 
-derive semantically feminine nouns, in \textit{nagar-it} 
-`female carpenter' (cf. \textit{nagar}`(male) carpenter'). 
+is an inflectional ending in \textit{merxavit} `spatial (feminine singular)' 
+(cf. the corresponding masculine form \textit{merxavi}). 
+It is part of the feminine nominal derivational suffix \textit{-it}, which is used to 
+derive semantically feminine nouns, as in in \textit{nagar-it} 
+`female carpenter' (cf. \textit{nagar}`(male) carpenter'.) 
 Tables~\ref{subtab:der-adjectives} and \ref{subtab:der-nouns-i} 
 show additional
 examples of these two disparate functions of \textit{-i}.
@@ -955,7 +1000,7 @@ a morpheme-based, Lexical-Realizational theory \citep{stump:2001}
 According to Faust, therefore, the suffixes /-i/, /-u/, and /-at/ are not only morphemes, 
 but \emph{roots.}
 In Distributed Morphology (DM), the term \emph{root} (along with \emph{formative}) is used to refer 
-to maximally primitive units of meaning. \footnote{However, is not to be confused with the 
+to minimal (i.e., ``maximally primitive'') units of meaning. \footnote{However, is not to be confused with the 
 consonantal root of Semitic morphology. Semitic roots would qualify as 
 DM roots, but the DM root is more general than the Semitic root.}
 A DM root has no particular morphosyntactic properties and thus belongs to 
@@ -1019,8 +1064,8 @@ feminine ending \textit{-a} and a \emph{different} morphome for
 underlying form /-at/.
  \begin{figure}[t]
   \small
-\begin{center}
-    \label{tab:heb-morphomic-analyses} 
+%\begin{center}
+\centering
    \subfigure[{\textglotstop}{avavit} `spring-like'\label{subtab:heb-avivit}]{
      \centering
      \setlength{\extrarowheight}{8pt}
@@ -1069,7 +1114,8 @@ underlying form /-at/.
        \end{tabular}
   }
     \caption{Morphomic analyses} 
-    \end{center}
+     \label{tab:heb-morphomic-analyses} 
+    %\end{center}
     \end{figure}
  Finally, we posit distinct morphomes for the abstract (-\textsc{concrete}) 
  nominalizing suffix \textit{-u}
@@ -1118,7 +1164,7 @@ noun-deriving /-it/. The formation of the complex morphome $\langle \mu\textsc{i
 $\mu\textsc{t} \rangle$ is conditioned upon presence of the 
 property \{\text{n}$\to$\text{n}[fem] among the derivational properties $\delta$.
 
-  By contrast, consider the masc.sg adjective form \emph{\textglotstop{aviv-i}} 
+  By contrast, consider the masculine singular adjective form \emph{\textglotstop{aviv-i}} 
   `spring-like', derived from the \emph{\textglotstop{aviv} `spring'}, 
   as well its feminine-adjective inflection  \emph{\textglotstop{aviv-i-t}}. Here, the /-t/ 
   is very much detachable; its removal simply produces the masculine form. We
@@ -1142,7 +1188,7 @@ property \{\text{n}$\to$\text{n}[fem] among the derivational properties $\delta$
  is that neither /-ot/ nor /-ut/ seem to be decomposable, at least not in a straightforward
  way; that is, /-ot/ as a whole is the feminine plural suffix. If /-t/ is the fem. suffix, then
  /-o/ should be plural suffix. If this were the case, we would expect to see
- /-o/ in the masc.pl. ending, but the masc.pl. suffix is in fact /-im/. The suffix /-ot/
+ /-o/ in the masculine plural ending, but the masculine plural suffix is in fact /-im/. The suffix /-ot/
  corresponds to the morphome pair $\langle \mu\textsc{o}$, $\mu\textsc{t} \rangle$, 
  as shown in table \ref{subtab:heb-xalaliyot}, and /-ut/ to $\langle \mu\textsc{u}$, 
  $\mu\textsc{t} \rangle$. Analyzed in this way, /-ot/ and /-it/ share the morphome 
@@ -1250,14 +1296,16 @@ meromorphome. For example, within the paradigm of the lexeme
 the stem \textit{dig-} is a meromorphome. Similarly, the stem \textit{crezc-} 
 is a meromorphome within the paradigm of 
 \textsc{crecir} \textsc{`to grow'}. Crucially, however, 
-\textit{dig-} and \textit{crezc-} are not same the meromorphome. 
+\textit{dig-} and \textit{crezc-} are \emph{not} the same meromorphome. 
 A metamorphome is a case of inter-paradigm identity, a situation 
 in which the same subset of paradigm cells across different lexemes 
 exhibit the sharing of a meromorphome, 
 though the particular meromorphome being shared differs from lexeme to 
-lexeme. Metamorphomes are beyond the capabilities of Multimorph. 
-That is, it can discover \textit{dig-} and \textit{crezc-} as units of form, 
-but in cannot learn that \textit{dig-} and \textit{crezc-} are the same 
+lexeme. 
+
+Metamorphomes are beyond the capabilities of Multimorph. 
+That is, while Multimorph is capable of discovering \textit{dig-} and \textit{crezc-} as units of form, 
+it cannot learn that \textit{dig-} and \textit{crezc-} are the same 
 in some way, i.e., that they are both lexeme-specific instantiations of the
 same metamorphome.
 
@@ -1317,4 +1365,5 @@ Among the most notable formulations of autonomous morphology to date are Paradig
 concept of the \emph{morphome} \citep{aronoff:1994}, and Round's expansions \citep[e.g.,][]{round:2011,round:2015} of Aronoff's original concept. The ever growing body of work on autonomous morphology vastly clarifies what ULM's target of learning is. Round's maxim in particular provides an implicit suggestion for how a ULM algorithm might proceed with its learning task: \textit{Look for similarities in form, since shared elements of form are indicators of shared morphomes.} Even though these morphomes, according to Round, have neither meaning nor form, they do, however, project something of themselves onto the phonological (or surface) level, since it is the surface level---particularly shared  form at the surface level, that allows us to identify morphomes in the first place. 
 
 Therefore, in evaluating the present study's ULM system, namely Multimorph, one should not look for classical morphemes in its output, but rather autonomous morphological units like morphomes. (We will being use the term \emph{morphs} when referring to Multimorph's targets of learning.)
-In the next chapter, we discuss the setup of the experiments by which Multimorph was evaluated.
+In the next chapter, our discussion turns to Multimorph itself and the setup of the experiments by which it was evaluated.
+%we discuss the setup of the experiments by which Multimorph was evaluated.
