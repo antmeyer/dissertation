@@ -316,7 +316,7 @@ Moreover, for both of these clusters, the two \emph{most-active} features are
 This makes sense. Clearly, no other feature, except perhaps \texttt{a<l}, would be as helpful in 
 encoding the sequence of  position-variant (or ``floating'') consonants \textit{a.k.l}. In figure~\ref{fig:cluster-182-1-3-O}, the activities of \texttt{k<l} and \texttt{a<k} are 1.0 and 0.8271, respectively.
 Figure~\ref{fig:cluster-91-3-2-O}, showing a purer cluster, has these features both at 1.0 activities. It also has \texttt{a<l} among its top ten features, 
-at an activity of 0.4196, a low activity to be sure, but this feature does not appear at all among the top ten features of the preceding
+at an activity of 0.4196, a low activity to be sure, but this feature does not appear at all among the top ten features of the preceding figure's
 cluster. 
 Finally, figure~\ref{fig:cluster-81-2-2-O}, the purest of these three clusters, has all three of the features \texttt{k<l}, \texttt{a<k}, and \texttt{a<l} among
 its ten most active,
@@ -470,7 +470,7 @@ a %position-variant
 sequence of position-variant consonants.
 % closer look at this cluster's top ten centroid features, one can see that they are not ideal for capturing the root \textit{\textipa{P}.k.l}. 
 The activities of the important features 
-{\textipa{P}<\textsubdot{k}} (= orthographic \texttt{a<k}) and \texttt{\textsubdot{k}<l} (= orthographic \texttt{k<l}) are only 0.4984 and
+\texttt{\textipa{P}<\textsubdot{k}} (= orthographic \texttt{a<k}) and \texttt{\textsubdot{k}<l} (= orthographic \texttt{k<l}) are only 0.4984 and
  0.7588, respectively. Both of these should probably be closer to 1.0 if this cluster is to represent the
  root \textit{{\textipa{P}.k.l}}. Moreover, six of these ten features reference vowels. 
 %at in figure~\ref{fig:cluster-33-0-2-TS} particularly well with
@@ -481,15 +481,20 @@ In fact, the two most active features, namely \texttt{a<\textsubdot{k}} (activit
 
 Another cluster of transcribed words (with stress-marking) is represented in figure~\ref{fig:cluster-339-4-3-TS}. 
 This one corresponds to the root \textit{d.l.q} and is considerably purer than the 
-cluster in figure~\ref{fig:cluster-33-0-2-TS}. The activities of the key features \texttt{d<l} and \texttt{l<q}  
-are 1.0 and 0.853, respectively. We also have, at an activity of 0.798, the feature \texttt{d<q}. Such features, i.e., features spanning 
-features spanning the first root consonant to the third, tend to be rarer and/or have weaker activities in the transcriptional models, 
-since the distance between the first and third root consonants often exceeds $\delta$ when vowels are 
-involved. While this third root feature has a fairly high activity in this cluster, recall that its analogue \texttt{a<l} had an activity of 1.0 in the orthographic cluster represented in figure~\ref{fig:cluster-81-2-2-O}. We again have problematic vowel-referencing features in this cluster, particularly features 
-referencing \textit{i} and \textit{\'{i}}, such as\texttt{d<\'{i}}, which is especially strong with an activity of 1.0, and \texttt{\'{i}<q} with  
- a modest activity of 0.501. The \textit{\'{i}} in these two features is reflected in frequency of \textit{\'{i}} in 
+cluster in figure~\ref{fig:cluster-33-0-2-TS}. The activities of the two key root features \texttt{d<l} and \texttt{l<q} are considerably higher than those of their counterpart (namely \texttt{\textipa{P}<\textsubdot{k}} and \texttt{\textsubdot{k}<l}) in figure~\ref{fig:cluster-33-0-2-TS}. We also have the ``third'' root feature \texttt{d<q} in this cluster. Such ``third'' root features, i.e., those spanning the first root consonant to the third (and generally last) root consonant, tend to be rarer and/or have weaker activities in transcriptional root clusters,
+since the distance between the first and last root consonants often exceeds $\delta$ when vowels are 
+involved. Moreover, the activity of this particular third root feature--namely, 0.798---is fairly high. (And yet it is still well below the perfect 1.0 of its analogue \texttt{a<l} in the orthographic cluster in figure~\ref{fig:cluster-81-2-2-O}.)
+%While the activity of this particular third root feature fairly high, namely, 0.798,  compare it to the 1.0 activity of its 
+% had an activity of 1.0.
+We must once again note the problematic influence of vowel-referencing features, however, particularly features that
+reference \textit{\'{i}}, such as \texttt{d<\'{i}} and \texttt{\'{i}<q}.
+The former is especially strong, with an activity of 1.0.  %especially strong, having an activity of 1.0, 
+%The feature \texttt{\'{i}<q} activity  
+% %a modest activity of 
+% 0.501. 
+ The \textit{\'{i}} in these two features is reflected in frequency of \textit{\'{i}} in 
 this cluster's words. It would thus be more accurate to say that this cluster represents a subset of the 
-occurrences of root \textit{d.l.q}, namely its co-occurrences with \textit{\'{i}} (and \textit{i}).
+occurrences of root \textit{d.l.q}, namely its co-occurrences with \textit{\'{i}}.
 
 Our last cluster example in this section is the one in figure~\ref{fig:cluster-19-2-3-TS}. It demonstrates 
 Multimorph's capacity to learn vowel patterns. The pattern in this case is \textit{a.\'{e}}.

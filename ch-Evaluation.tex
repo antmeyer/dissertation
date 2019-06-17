@@ -901,26 +901,27 @@ The only functional difference between these two suffixes is that the former
 attaches to singular nouns (and certain prepositions), whereas the latter 
 attaches to the plural nouns (and the other prepositions). 
 \begin{exe}
-{\fontfamily{cmtt}\selectfont \small
+%{\fontfamily{cmtt}\selectfont \small
 \ex \label{ex:prep-pro-to}
+\textsf{
 li \qquad \textrm{(i.e., \textit{le-} + \textit{-i})} \\
 prep:pro|le\&pers:1\&gen:unsp\&num:sg-i=to
 }
 \ex \label{ex:prep-pro-on}
-{\fontfamily{cmtt}\selectfont \small
+\textsf{%\fontfamily{cmtt}\selectfont \small
 \textipa{Q}al\'{a}yw  \\
 prep:pro|\textipa{Q}al\&pers:3\&gen:ms\&num:sg-\'{a}yw=on
 }
 \ex \label{ex:prosuf-3ms}
-{\fontfamily{cmtt}\selectfont \small
+\textsf{%\fontfamily{cmtt}\selectfont \small
 yad\'{o} \\
 n|yad\&gen:fm\&num:sg\&poss:3mascSG-\'{o}=hand
 }
 \ex \label{ex:prosuf-3mpl}
-{\fontfamily{cmvtt}\selectfont \small
-yad\'{a}yw \\
-n|yad\&gen:fm\&num:sg\,\&\,poss:3mascSG-\'{a}yw=hand
-}
+%{\fontfamily{cmvtt}\selectfont \small
+\textsf{yad\'{a}yw} \\
+\textsf{n|yad\&gen:fm\&num:sg\,\&\,poss:3mascSG-\'{a}yw=hand}
+%
 \end{exe}
 
 When a noun bears a pronominal suffix, both the noun and the suffix have their 
@@ -2205,7 +2206,7 @@ Weight & Path \small(morph-ID sequence) \\
 
 
 The weight of a path was derived from
- the weights of its morphs, and the weight of each morph was derived from the weights of its component features. 
+ the weights of its morphs, and the weight of each morph was derived from the weights---i.e., the \emph{activities}---of its component features. 
 %More specifically, each morph's weight is a real number between 0 and 1 derived from the activities of its component features.  is therefore given a numerical weight in the interval $[0,1]$.
 %As described in the discussion of Stage 1 above, each morph is composed of one or more features. 
 %-either precedence features, 
@@ -2238,11 +2239,10 @@ Figure~\ref{fig:best-paths} illustrates this path graphically, i.e., as a path t
 \textit{hicl\'{a}cti}.
  % best path through the morph IDs associated with the word \textit{hicl\'{a}xti}. This was the path with
  % the maximal weight. 
-However, while this path is certainly among the best, it does not appear to be the very best.  The true best path in this case seems to be the one with \textit{second-highest} weight in table~\ref{tab:weights-paths}, primarily because it keeps all four of the characters (i.e., morph-to-character mappings) associated with morph 264; %'s morph-to- 
-note the four characters in the regular expression associated with morph 264 in figure~\ref{fig:morph-regex}. 
-The fact that this path was not given the highest weight indicates a 
-flaw in the path-weighting algorithm.\footnote{Another problem is  s
-that morph 264, with regular expression \texttt{(c).?.?(l).?.?(x).?.?(t)}, was itself not entirely correct: The root in \textit{hicl\'{a}xti} is actually morph 264's first three consonants, namely \textit{c.l.x}; the \textit{t} is in fact part of the 1st-person past-tense suffix \textit{-ti}. Clearly, the various processes involved here have yet to be perfected, although they do show promise.}
+However, while this path is certainly among the best, it does not appear to be the very best.  The true best path in this case seems to be the one with the \emph{second-highest} weight in table~\ref{tab:weights-paths}, since it keeps all four of the characters (i.e., morph-to-character mappings) associated with morph 264. (Note %'s morph-to- 
+the four characters in the regular expression associated with morph 264 in figure~\ref{fig:morph-regex}.)
+The fact that this path was not given the highest weight indicates room for improvement in the path-weighting algorithm.\footnote{Another problem is  s
+that morph 264, with regular expression \texttt{(c).?.?(l).?.?(x).?.?(t)}, is itself not entirely correct: The root in \textit{hicl\'{a}xti} is actually morph 264's first three consonants, namely \textit{c.l.x}; the \textit{t} is in fact part of the 1st-person past-tense suffix \textit{-ti}. Clearly, the various processes involved here have yet to be perfected, although they do show promise.}
 % On the other hand, \textit{-i} three characters should have been mapped to t
 
 
