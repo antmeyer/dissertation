@@ -476,7 +476,7 @@ An RBM is can almost be described as an autoencoder in bipartite form. There are
 %\citep{hinton-and-salak:2006}. 
 The activation functions of an RBM are presented below as equations \eqref{eq:sig-m} to \eqref{eq:sig-m-sample}, where $\delta$ and $\theta$ are biases,\footnote{Another ostensible difference 
 is the presence of the biases in the 
-RBM activation functions. However, some authors, e.g., \citet{rudy-and-taylor:2014}, have included biases in the activation functions of classical autoencoders.} and $\hat{m}_k$ and $v_j$ denote preliminary activation values for a hidden and surface unit, respectively.
+RBM activation functions. However, some authors, e.g., \citet{rudy-and-taylor:2014}, have included biases in the activation functions of classical autoencoders.} and $\hat{m}_k$ and $\hat{r}_j$ denote preliminary activation values for the $k$th hidden unit and the $j$th surface unit, respectively.
 \begin{align}
 \label{eq:sig-m}
 %m_{k} &= \sigma\big(\sum_{j} r_{j} c_{j,k} + \delta_{j}\big) \\
@@ -494,12 +494,12 @@ m_{k}\,\, &= \,\, \text{rand}_{\textsc{BERN}}(\hat{m}_k)
 \hat{r}_k \,\, &= \quad p(r_{j}=1 \, | \, \mathbf{m}) \,\, =  \,\, \sigma\big(\sum_{k}  m_{k} c_{k,j} + \theta_{k}\big) \\
 \label{eq:sig-r-sample}
 %r_{j} &= \text{rand}_{\textsc{BERN}}\Big(p(r_{j}=1\,\,|\,\,\mathbf{m})\Big)
-r_{j} \,\, &= \,\, \text{rand}_{\textsc{BERN}}(v_k)
+r_{j} \,\, &= \,\, \text{rand}_{\textsc{BERN}}(\hat{r}_k)
 \end{align}
 Equations~\eqref{eq:sig-m} and \eqref{eq:sig-r} are basically the same as the classical autoencoder's activation functions. 
-However, one of the differences between RBMs and  classical autoencoders is that RBMs require the real-number outputs of the logistic sigmoid function to be mapped to either the 0 or 1.
+However, one of the differences between RBMs and  classical autoencoders is that RBMs require the real-number outputs of the logistic sigmoid function to be mapped to either the 0 or 1 \citep{hinton:2012}.
 %; that is, it requires strictly binary hidden and surface units. This is accomplished 
-RBMs accomplish this strict boolean mapping by treating each sigmoidal output as  the \emph{probability of getting a successful outcome} from a Bernoulli trial, where a ``successful outcome'' is a valuation of 1 (that is, $m_k = 1$ and $r_j = 1$). Thus, equation~\eqref{eq:sig-m} computes the probability $\hat{m} = p(m_{k}=1|\mathbf{r})$, the probability that the $k$th hidden unit is 1 given the surface-unit activities $\mathbf{r}$. Similarly, \eqref{eq:sig-m} computes $\hat{v}_k = p(r_{j}=1|\mathbf{m})$, the probability that $j$th surface unit is 1 given the hidden-unit activities. We use $\mathbf{h}$ and $\mathbf{v}$, respectively, to denote the vectors that comprise the individual probabilities
+RBMs accomplish this strict boolean mapping by treating each sigmoidal output as  the \emph{probability of getting a successful outcome} from a Bernoulli trial, where a ``successful outcome'' is a valuation of 1, as in $m_k = 1$ and $r_j = 1$). Thus, equation~\eqref{eq:sig-m} computes the probability $\hat{m} = p(m_{k}=1|\mathbf{r})$, the probability that the $k$th hidden unit is 1 given the surface-unit activities $\mathbf{r}$. Similarly, \eqref{eq:sig-m} computes $\hat{r}_k = p(r_{j}=1|\mathbf{m})$, the probability that $j$th surface unit is 1 given the hidden-unit activities. We use $\hat{\mathbf{m}}$ and $\hat{\mathbf{r}}$, respectively, to denote the vectors that comprise the individual probabilities
 $\hat{m}_k \text{for} k \in K$ and $\hat{r}_j \text{for} j \in J$.
 %equations~\eqref{eq:sig-m-sample} and \eqref{eq:sig-r-sample} 
 %via 
