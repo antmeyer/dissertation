@@ -439,7 +439,7 @@ class that excludes the classical autoencoder.
 %are essentially the same, generally  sharing the same activation function.
 However, MCMMs, as we shall see, call for a different type of activation function, a type of function that \citet{saund:94} calls a \emph{mixing function}.
 % that has different properties to those of sigmoidal weighted sum.
-The sigmoidal weighted sum is a composition of two functions: the ``outer" function is the logistic sigmoid, 
+The sigmoidal weighted sum is a composition of two functions: the ``outer'' function is the logistic sigmoid, 
 	\begin{equation} %\label{eq:sigws}
 	\label{eq:sig}
 	\sigma(t) = \frac{1}{1 + e^{-t}} 
@@ -476,22 +476,22 @@ An RBM is can almost be described as an autoencoder in bipartite form. There are
 %\citep{hinton-and-salak:2006}. 
 The activation functions of an RBM are presented below as equations \eqref{eq:sig-m} to \eqref{eq:sig-m-sample}, where $\delta$ and $\theta$ are biases,\footnote{Another ostensible difference 
 is the presence of the biases in the 
-RBM activation functions. However, some authors, e.g., \citet{rudy-and-taylor:2014}, have included biases in the activation functions of classical autoencoders.} and $h_k$ and $v_j$ denote preliminary activation values for the a hidden unit and a surface (or visible) unit, respectively.
+RBM activation functions. However, some authors, e.g., \citet{rudy-and-taylor:2014}, have included biases in the activation functions of classical autoencoders.} and $\hat{m}_k$ and $v_j$ denote preliminary activation values for a hidden and surface unit, respectively.
 \begin{align}
 \label{eq:sig-m}
 %m_{k} &= \sigma\big(\sum_{j} r_{j} c_{j,k} + \delta_{j}\big) \\
 %\label{eq:sig-m-sample}
 %m_{k} &= \sigma\big(\sum_{j} r_{j} c_{j,k} + \delta_{j}\big) \\
 %p(h_{k}=1|\mathbf{v}) &= \sigma\big(\sum_{j} r_{j} c_{j,k} + \delta_{j}\big) \\
-h_k \,\, &= \,\, p(m_{k}=1 \, | \, \mathbf{r}) \,\, = \,\, \sigma\big(\sum_{j} r_{j} c_{j,k} + \delta_{j}\big) \\
+\hat{m}_k \,\, &= \,\, p(m_{k}=1 \, | \, \mathbf{r}) \,\, = \,\, \sigma\big(\sum_{j} r_{j} c_{j,k} + \delta_{j}\big) \\
 \label{eq:sig-m-sample}
 %p_{k} &= \sigma\big(\sum_{j} r_{j} c_{j,k} + \delta_{j}\big) \\
 %m_{k} &= \text{rand}_{\textsc{BERN}}\Big(p(m_{k}=1\,\,|\,\,\mathbf{r})\Big)
-m_{k}\,\, &= \,\, \text{rand}_{\textsc{BERN}}(h_k)
+m_{k}\,\, &= \,\, \text{rand}_{\textsc{BERN}}(\hat{m}_k)
 \end{align}
 \begin{align}
 \label{eq:sig-r}
-v_k \,\, &= \quad p(r_{j}=1 \, | \, \mathbf{m}) \,\, =  \,\, \sigma\big(\sum_{k}  m_{k} c_{k,j} + \theta_{k}\big) \\
+\hat{r}_k \,\, &= \quad p(r_{j}=1 \, | \, \mathbf{m}) \,\, =  \,\, \sigma\big(\sum_{k}  m_{k} c_{k,j} + \theta_{k}\big) \\
 \label{eq:sig-r-sample}
 %r_{j} &= \text{rand}_{\textsc{BERN}}\Big(p(r_{j}=1\,\,|\,\,\mathbf{m})\Big)
 r_{j} \,\, &= \,\, \text{rand}_{\textsc{BERN}}(v_k)
@@ -499,8 +499,8 @@ r_{j} \,\, &= \,\, \text{rand}_{\textsc{BERN}}(v_k)
 Equations~\eqref{eq:sig-m} and \eqref{eq:sig-r} are basically the same as the classical autoencoder's activation functions. 
 However, one of the differences between RBMs and  classical autoencoders is that RBMs require the real-number outputs of the logistic sigmoid function to be mapped to either the 0 or 1.
 %; that is, it requires strictly binary hidden and surface units. This is accomplished 
-RBMs accomplish this strict boolean mapping by treating each sigmoidal output as  the \emph{probability of getting a successful outcome} from a Bernoulli trial, where a ``successful outcome'' is a valuation of 1 (that is, $m_k = 1$ and $r_j = 1$). Thus, equation~\eqref{eq:sig-m} computes the probability $h_k = p(m_{k}=1|\mathbf{v})$, the probability that the $k$th hidden unit is 1 given the surface-unit activities $\mathbf{r}$. Similarly, \eqref{eq:sig-m} computes $v_k = p(r_{j}=1|\mathbf{h})$, the probability that $j$th surface unit is 1 given the hidden-unit activities. We use $\mathbf{h}$ and $\mathbf{v}$, respectively, to denote the vectors that comprise the individual probabilities
-$h_k \text{for} k \in K$ and $v_j \text{for} j \in J$.
+RBMs accomplish this strict boolean mapping by treating each sigmoidal output as  the \emph{probability of getting a successful outcome} from a Bernoulli trial, where a ``successful outcome'' is a valuation of 1 (that is, $m_k = 1$ and $r_j = 1$). Thus, equation~\eqref{eq:sig-m} computes the probability $\hat{m} = p(m_{k}=1|\mathbf{r})$, the probability that the $k$th hidden unit is 1 given the surface-unit activities $\mathbf{r}$. Similarly, \eqref{eq:sig-m} computes $\hat{v}_k = p(r_{j}=1|\mathbf{m})$, the probability that $j$th surface unit is 1 given the hidden-unit activities. We use $\mathbf{h}$ and $\mathbf{v}$, respectively, to denote the vectors that comprise the individual probabilities
+$\hat{m}_k \text{for} k \in K$ and $\hat{r}_j \text{for} j \in J$.
 %equations~\eqref{eq:sig-m-sample} and \eqref{eq:sig-r-sample} 
 %via 
 %applying 
@@ -618,7 +618,7 @@ along with their respective likelihoods, would be returned. This is a
 \emph{soft clustering}. But even in the case of a soft clustering, 
 we still assume that the data point in question \emph{fundamentally} 
 belongs to only one cluster; 
-the ``softness" of the clustering just expresses the model's uncertainty 
+the ``softness'' of the clustering just expresses the model's uncertainty 
 as to which cluster this is. %the data point belongs.
 
 By contrast, a mixed-membership model, e.g., Latent Dirichlet Allocation \citep{blei-et-al:2003},
@@ -756,7 +756,7 @@ indicates membership, and $0$ non-membership. Thus, in the case of
 Multimorph, a given word belongs to the 
 $k$th cluster if its $k$th hidden-unit activity is $1$.
 \item Each column in the matrix $\textbf{C}$ must be interpretable as the centroid 
-(or ``average" vector) of a particular cluster. That is, the $k$th column 
+(or ``average'' vector) of a particular cluster. That is, the $k$th column 
 $\textbf{C}$ (whose dimensions are $J \times K$) must be interpretable as the centroid vector of the $k$th cluster. This means that the $j$th element in the $k$th column of $\textbf{C}$ must be interpretable as the average $j$th feature value across the data points that belong to the $k$th cluster. 
 
 \end{enumerate}
@@ -776,7 +776,7 @@ the ``\textsc{write-black}'' and ``\textsc{write-white-and-black}''
 domains, are distinguished by the nature of the voting task that 
 determines the activities of surface nodes. 
 In the \textsc{write-black} domain, the decision in question is 
- whether a given surface unit should be ``black" (i.e., 1) or ``not black'' (i.e., 0). 
+ whether a given surface unit should be ``black'' (i.e., 1) or ``not black'' (i.e., 0). 
  The individual votes, as in the case of the sigmoidal activation function (see section~\ref{sec:context}), are products of the form $m_{i,k} c_{j,k}$,
  where $m_{i,k}$ is the $k$th hidden unit's activity and $c_{j,k}$ is its weight.
 The mixing function in the \textsc{write-black} domain, the function that combines these votes,
@@ -788,7 +788,7 @@ The mixing function in the \textsc{write-black} domain, the function that combin
 r_{i,j} = 1 - \prod\limits_{k} (1 - m_{i,k} c_{j,k})
 \end{equation}
  The Noisy-OR function is essentially an \textit{OR} gate, or, to put it another way, 
- an ``at-least-one" gate. That is, the surface node $r_{i,j}$ is $1$ (and thus ``\textsc{on}") as long as 
+ an ``at-least-one'' gate. That is, the surface node $r_{i,j}$ is $1$ (and thus ``\textsc{on}'') as long as 
  \emph{at least one} vote (or cause) is active.
 %Increasing the number of active votes beyond 1 does not further increase the activity of $r_{i,j}$: If more than one vote is active,
 %$r_{i,j}$ is still going to be $1$. The activity , the number of active votes does not matter, as long as 
@@ -964,7 +964,7 @@ all data points (i.e., $I \times J$ features) \citep{somandepalli:2018}.
 \begin{equation} \label{eq:sse}
 E = \bigg(\frac{1}{2}\bigg) \frac{1}{I \times J}\sum_{i} \sum_{j} {(r_{i,j} - x_{i,j})}^2
 \end{equation}
-where $r_i,j$ is itself a function, namely the Noisy-OR fuction (see section~\ref{sec:mixing-function}). The reason for factor $\frac{1}{2}$ in equation \eqref{eq:sse} is that it cancels out the coefficient 2 in the first derivative.\footnote{The first derivative plays an important role in the learning process, which we will discuss in section~\ref{sec:mcmm-learning}.}
+where $r_{i,j}$ is itself a function, namely the Noisy-OR fuction (see section~\ref{sec:mixing-function}). The reason for factor $\frac{1}{2}$ in equation \eqref{eq:sse} is that it cancels out the coefficient 2 in the first derivative.\footnote{The first derivative plays an important role in the learning process, which we will discuss in section~\ref{sec:mcmm-learning}.}
 
 \subsection{Nonlinear Conjugate Gradient Optimization}
 \label{sec:ncg-gen}
@@ -981,27 +981,29 @@ We shall fully examine the workings of this dual-parameter framework in section~
 %If there are $I$ nodes in one layer and $J$ nodes in the other, there are $I \times J$ 
 %individual node-to-node weights.
 \begin{algorithm}[t]
- \KwData{parameter vector \textbf{w} along with ancillary data}
-\KwResult{optimized parameter vector \textbf{w}}
+ \KwIn{Parameter vector \textbf{w} and any data necessary for computing the gradient \textbf{g}}
+\KwOut{Optimized parameter vector \textbf{w}}
  Choose $\epsilon_1, \epsilon_2$\;
- Compute gradient: $\textbf{g} := \frac{\partial f(\textbf{w})}{\partial \textbf{w}}$\;
-Initialize direction: $\textbf{d} := -\textbf{g}$\; \label{line:init-d}
+ Compute gradient: $\textbf{g} \gets \frac{\partial f(\textbf{w})}{\partial \textbf{w}}$\;
+Initialize direction: $\textbf{d} \gets -\text{copy}(\textbf{g})$\; \label{line:init-d}
  \While{$||\textbf{g}|| > \epsilon_1$}{
-   Compute $\alpha = \textsc{Line-Search}(\textbf{d})$\;  \label{line:alpha-update-1}
+   Compute step length: $\alpha \gets \textsc{Line-Search}(\textbf{d})$\;  \label{line:alpha-update-1}
   %Compute $\alpha$ so that $f(\textbf{w}+\alpha \textbf{d}) \geq f(\textbf{w}) +  c \, \alpha \, \textbf{g}^{\textsf{T}}\textbf{d})$ (Armijo rule)\;
-  Save parameter vector: \textbf{w}_{\text{old}} := \textbf{w}\;
-  Update parameter vector: $\textbf{w} := \textbf{w} + \alpha \textbf{d}$\;  \label{line:param-update-1}
-   Save gradient: $\textbf{g}_{\text{old}} := \textbf{g}$ \; \label{line:save-gradient-1}
-   Save direction: $\textbf{d}_{\text{old}} := \textbf{d}$ \; \label{line:save-direction-1}
-  Update $\textbf{g} := \frac{\partial f(\textbf{w})}{\partial \textbf{w}}$\;
+  $\textbf{w}_{\text{old}} \gets \text{copy}(\textbf{w})$\;
+  Update parameter vector: $\textbf{w} \gets \textbf{w} + \alpha \textbf{d}$\;  \label{line:param-update-1}
+   $\textbf{g}_{\text{old}} \gets \text{copy}(\textbf{g})$\; \label{line:save-gradient-1}
+   $\textbf{d}_{\text{old}} \gets \text{copy}(\textbf{d})$\; \label{line:save-direction-1}
+  Update gradient: $\textbf{g}\gets \frac{\partial f(\textbf{w})}{\partial \textbf{w}}$\;
   Compute $\beta$\;
-  Update direction: $\textbf{d} := -\textbf{g} + \beta \textbf{d}_{\text{old}}$\;  \label{line:d-update-1}
+  Update direction: $\textbf{d} \gets -\textbf{g} + \beta \textbf{d}_{\text{old}}$\;  \label{line:d-update-1}
   %Update $t := t + 1$\;
   \If{$f(\textbf{w}_{\text{old}}) - f(\textbf{w}) < \epsilon_2$}{
-   Stop\;
+  %\Stop\; 
+  Stop\;
    }
+    %\Return \textbf{w}\;
  }
-\caption{General (nonlinear) conjugate-gradient algorithm.}
+\caption{General (nonlinear) conjugate-gradient algorithm}
 \label{alg:gen-cg}
 \end{algorithm}
 The general process of nonlinear conjugate-gradient optimization 
@@ -1010,7 +1012,7 @@ is shown in algorithm~\ref{alg:gen-cg}. The process consists of a loop,
 which, in each iteration, updates the components of the parameter 
 vector $\textbf{w}$ (line \ref{line:param-update-1} in algorithm~\ref{alg:gen-cg}).
 Each update to $\textbf{w}$ can be thought of 
-as a ``step" composed of both a direction $\textbf{d}$ and a magnitude (or step length), 
+as a ``step'' composed of both a direction $\textbf{d}$ and a magnitude (or step length), 
 the latter being determined by a scaling factor $\alpha$. A step thus takes the form
 \begin{equation}\label{eq:gen-update}
 \textbf{w} = \textbf{w} + \alpha \, \textbf{d}
@@ -1104,26 +1106,26 @@ where
 The pseudocode for the \textsc{modified-PRP} is shown as algorithm~\ref{alg:mod-prp-cg}. It the \textsc{modified-PRP} is a more specific instantiation of algorithm~\ref{alg:gen-cg}; that is, it is a complete conjugate-gradient algorithm (and not a subpart).\citet{cheng-and-li:2012} essentially take \textsc{modified-PRP} and turn it into an \emph{active-set} method as described below in section~\ref{sec:active-set}.
 %by introducing to it mechanisms for partitioning parameter components into \emph{active} and \emph{inactive} sets, as described below in section~\ref{sec:active-set}.
 \begin{algorithm}[t]
-\KwData{parameter vector \textbf{w} to be optimized along with ancillary data}
-\KwResult{optimized parameter vector \textbf{w}}
+\KwIn{parameter vector \textbf{w} to be optimized along with ancillary data}
+\KwOut{optimized parameter vector \textbf{w}}
 	 Choose $\epsilon_1, \epsilon_2$\;
- Compute gradient: $\textbf{g} = \frac{\partial f(\mathbf{w})}{\partial \mathbf{w}} $\;
- Initialize direction: $\mathbf{d} = -\textbf{g}$\; \label{line:init-d-2}
+ Compute gradient: $\textbf{g} \gets \frac{\partial f(\mathbf{w})}{\partial \mathbf{w}} $\;
+ Initialize direction: $\mathbf{d} \gets -\text{copy}(\textbf{g})$\; \label{line:init-d-2}
  \While{$||\textbf{g} || > \epsilon_1$}{
-  Compute $\alpha = \textsc{Line-Search}(\textbf{d})$\;   \label{line:alpha-update-2}
-   Save parameter vector: $\textbf{w}_{\text{old}} := \textbf{w}$\;
-  Update parameter vector: $\textbf{w} := \textbf{w} + \alpha \textbf{d}$\;   \label{line:param-update-2}
+  Compute step length: $\alpha\gets \textsc{Line-Search}(\textbf{d})$\;   \label{line:alpha-update-2}
+   $\textbf{w}_{\text{old}} \gets \text{copy}(\textbf{w})$\;
+  Update parameter vector: $\textbf{w} \gets \textbf{w} + \alpha \textbf{d}$\;   \label{line:param-update-2}
       \If{$f(\textbf{w}_{\text{old}}) - f(\textbf{w}) < \epsilon_2$}{
    Stop\;
    }
-   Save gradient: $\textbf{g}_{\text{old}} := \textbf{g}$\;
-   Save direction: $\textbf{d}_{\text{old}} := \textbf{d}$ \;
-  Update gradient $\textbf{g} := \nabla f(\textbf{w})$\;
-  Update $\textbf{y} := \textbf{g} - \textbf{g}_{\text{old}}$\;
-  Compute $\beta^{PRP} := \frac{\textbf{g}^{\textsf{T}}{\textbf{y}}}{{||\textbf{g}_{\text{old}}||}^2}$\;
-  Update direction: $\textbf{d} := -\textbf{g} + \beta^{PRP} \textbf{d}_{\text{old}} - \eta \textbf{y}$\;   \label{line:d-update-2}
+   $\textbf{g}_{\text{old}} \gets \text{copy}(\textbf{g})$\;
+   $\textbf{d}_{\text{old}} \gets \text{copy}(\textbf{d})$\;
+  Update gradient: $\textbf{g} \gets \nabla f(\textbf{w})$\;
+$\textbf{y} \gets \textbf{g} - \textbf{g}_{\text{old}}$\;
+  Compute $\beta$: $\beta^{PRP} \gets \frac{\textbf{g}^{\textsf{T}}{\textbf{y}}}{{||\textbf{g}_{\text{old}}||}^2}$\;
+  Update direction: $\textbf{d} \gets -\textbf{g} + \beta^{PRP} \textbf{d}_{\text{old}} - \eta \textbf{y}$\;   \label{line:d-update-2}
  }
-\caption{\textsc{Modified-PRP}. \textit{Pseudocode for the modified version of Polak--Ribi\'{e}re--Polyak conjugate-gradient algorithm proposed by \citet{zhang-et-al:2006}.}} %\citet{zhang-et-al:2006}}.} % of  Cheng and Li (2012)}
+\caption{\textsc{Modified-PRP}. \textit{Pseudocode for the modified version of Polak--Ribi\'{e}re--Polyak conjugate-gradient algorithm proposed by \citet{zhang-et-al:2006}. Note that f(\textbf{w}) represents a generic error function} }%\citet{zhang-et-al:2006}}.} % of  Cheng and Li (2012)}
 \label{alg:mod-prp-cg}
 \end{algorithm}
 
@@ -1207,7 +1209,7 @@ so that constraints are honored.
 
 Active set methods typically take an 
 additional step to guarantee that parameter components stay within the boundaries 
-prescribed by the constraint(s): They ``clip" each parameter component that ends up being out 
+prescribed by the constraint(s): They ``clip'' each parameter component that ends up being out 
 of bounds after a round of updates. In the case of the constraint \eqref{eq:bounds-m}, i.e., $0 \leq m_{i,k} \leq 1$,
 any component $m_{i,k}$ that is less than $0$ is clipped back to $0$, and any component that is greater 
 than $1$ is clipped back to 1 \citep{ni:yuan:1997}.
@@ -1231,7 +1233,7 @@ cluster-membership matrix $\textbf{M}$ and the cluster-centroid matrix $\textbf{
 but rather 
 alternates between two separate optimization states, \textsc{Optimize-M} and \textsc{Optimize-C}. 
 In each state, one matrix is held fixed (i.e., treated as constant), 
-while the other is optimized. The fixed matrix serves as the``known" set 
+while the other is optimized. The fixed matrix serves as the``known'' set 
 of values so that the other matrix can take its turn as the unknown 
 parameter, i.e., the parameter to be optimized.
 Thus, in \textsc{Optimize-M}, $\textbf{C}$ is treated as constant, i.e., 
@@ -1241,7 +1243,7 @@ the newly updated $\textbf{M}$ takes its turn as the known matrix,
 while $\textbf{C}$ is optimized to the extent it can be. The alternation 
 between these states is essentially the same strategy as that found in 
 Expectation Maximization \citep{dempster-et-al:1977}.
-%\textbf{M}$'s components are the variables, and the $\textbf{C}$'s components are constants. In the other state, the components of $\textbf{C}$ become the variables, while the components of $\textbf{M}$ are treated as constants. The MCMM alternates between these two states, holding one matrix fixed while optimizing its counterpart. At any given time, the fixed matrix serves as a``known" set of values so that the other matrix can be the unknown parameter, even though both are unknown at the beginning of the process. This is essentially the same strategy as that found in Expectation Maximization (EM).
+%\textbf{M}$'s components are the variables, and the $\textbf{C}$'s components are constants. In the other state, the components of $\textbf{C}$ become the variables, while the components of $\textbf{M}$ are treated as constants. The MCMM alternates between these two states, holding one matrix fixed while optimizing its counterpart. At any given time, the fixed matrix serves as a``known'' set of values so that the other matrix can be the unknown parameter, even though both are unknown at the beginning of the process. This is essentially the same strategy as that found in Expectation Maximization (EM).
 \textsc{Optimize-M} and \textsc{Optimize-C} are implemented as two subroutines 
 nested within a loop, as shown in algorithm~\ref{alg:m-and-c}. %beginning on line~\ref{line:alternation-loop}). 
 In each iteration, \textsc{Optimize-M}  and \textsc{Optimize-M} are each run exactly once, 
@@ -1275,14 +1277,17 @@ give rise to an alternation between two states, hence the name \textsc{Alternati
 %\end{algorithm}
 
 \begin{algorithm}[th]
-\KwData{\textbf{M}, \textbf{C}, \textbf{X}, \textbf{R}}
+\KwIn{\textbf{M}, \textbf{C}, \textbf{X}, \textbf{R}}
 \KwResult{Optimized \textbf{M} and \textbf{C} matrices}
- Evaluate Error: $E = \frac{1}{2} \big(\frac{1}{I\times J}\big) \sum_i \sum_j (r_{i,j} - x_{i,j})^2$\;\label{line:init-E-alt} 
+$I \gets \text{number-of-rows}(\textbf{X})$\;
+$J \gets \text{number-of-columns}(\textbf{X})$\;
+ Evaluate Error: $E \gets \frac{1}{2} \big(\frac{1}{I\times J}\big) \sum_i \sum_j (r_{i,j} - x_{i,j})^2$\;\label{line:init-E-alt} 
  \While{\textbf{True}}{   \label{line:init-alternation-loop}
-Save current Error: $E_{\text{old}} = E$\;
+%$E_{\text{old}} \gets \text{copy}(E)$\;
+$E_{\text{old}} \gets E$\;
 \textsc{Optimize-M}(\textbf{M}, \textbf{C}, \textbf{X}, \textbf{R})\;
 \textsc{Optimize-C}(\textbf{C}, \textbf{M}, \textbf{X}, \textbf{R})\;
-Evaluate Error: $E = \frac{1}{2} \big( \frac{1}{I\times J} \big) \sum_i \sum_j (r_{i,j} - x_{i,j})^2$\;\label{line:update-E-alt}
+Evaluate Error: $E \gets \frac{1}{2} \big( \frac{1}{I\times J} \big) \sum_i \sum_j (r_{i,j} - x_{i,j})^2$\;\label{line:update-E-alt}
       \If{$E_{\text{old}} - E < \epsilon$}{
    Stop\;
    }
@@ -1311,8 +1316,8 @@ whereas any given cluster-membership vector $\textbf{m}_i$ is relevant only to o
 data point (namely, the $i$th data point).
 
 %\begin{algorithm}[t]
-%\KwData{\textbf{D}, \textbf{G}, \textbf{w}}
-%\KwResult{Constrained \textbf{D}}
+%\KwIn{\textbf{D}, \textbf{G}, \textbf{w}}
+%\KwOut{Constrained \textbf{D}}
 %	\For{$n \in N$}{
 %		% in the case of descent to toward minimum, is the Grad positive or negative?
 %		% --> We want gTd to be negative, and d = -Grad initially. That is, d and Grad
@@ -1408,8 +1413,8 @@ data point (namely, the $i$th data point).
 %whereupon \textsc{Optimize-M} proceeds to the next $\mathbf{m}_i$. 
 
 %\begin{algorithm}[h]
-%\KwData{Matrices: \textbf{X}, \textbf{R}, \textbf{M}, \textbf{C}; Scalars: $I$, $J$, $K$}
-%\KwResult{Optimized \textbf{M} matrix}
+%\KwIn{Matrices: \textbf{X}, \textbf{R}, \textbf{M}, \textbf{C}; Scalars: $I$, $J$, $K$}
+%\KwOut{Optimized \textbf{M} matrix}
 %Choose $\epsilon_1,\epsilon_2$\;
 % \For{$i \in \text{range}(0,I)$}{ \label{line:alternation-loop}
 %Evaluate error: $e = \frac{1}{J}\frac{1}{2}\sum_j x_{i,j} - r_{i,j})^2$\;\label{line:init-e}
@@ -1417,7 +1422,7 @@ data point (namely, the $i$th data point).
 % Initialize direction: $\textbf{d} = -\textbf{g}$\;
 %  \While{$||\textbf{g} || > \epsilon_1$}{
 %  Compute $\alpha = \textsc{Line-Search}(\textbf{d})$\;   \label{line:alpha-update-2}
-%%  Compute $\alpha$ so that $f(\textbf{w}+\alpha \textbf{d}) \geq f(\textbf{w}) +  c \, \alpha \, \textbf{g}^{\textsf{T}}\textbf{d})$ \;
+%%  Compute $\alpha$ so that $f(\textbf{w}+\alpha \textbf{d}) \geq f(\textbf{w}) +  c \, \alpha \, \textbf{g}^{\textsf{T}}\textbf{d})$\;
 %   %Save parameter vector: $\textbf{w}_{\text{old}} := \textbf{w}$\;
 %  Update parameter vector: $\textbf{m}_i := \textbf{m}_i + \alpha \textbf{d}$\;   \label{line:param-update-2}
 %Compute $\textbf{r}_i = \text{\textsc{predict}-r}(\textbf{m}_i, \textbf{c}_j,  J, K)$\;
@@ -1439,9 +1444,9 @@ data point (namely, the $i$th data point).
 %\end{algorithm}
 
 \begin{algorithm}[h]
-\KwData{\textbf{M}, \textbf{C},\textbf{X}, \textbf{R}}
+\KwIn{\textbf{M}, \textbf{C}, \textbf{X}, \textbf{R}}
 \KwResult{Optimized \textbf{M} matrix}
-$I = \textsc{Number-of-Rows}(\textbf{M})$\;
+$I \gets \text{number-of-rows}(\textbf{M})$\;
  \For{$i \in I$}{ \label{line:init-loop}
 \textsc{Active-Set-Modified-PRP-for-M}(\textbf{m}_i, \textbf{C}, \textbf{x}_i, \textbf{r}_i)\;
  }
@@ -1450,7 +1455,7 @@ $I = \textsc{Number-of-Rows}(\textbf{M})$\;
 \end{algorithm}
 
 \begin{algorithm}[h]
-\KwData{\textbf{C}, \textbf{M}, \textbf{X}, \textbf{R}}
+\KwIn{\textbf{C}, \textbf{M}, \textbf{X}, \textbf{R}}
 \KwResult{Optimized \textbf{C} matrix}
 %$I = \textsc{Number-of-Rows{\textbf{M}}$\;
 %$J = \textsc{Number-of-Rows{\textbf{C}}$\;
@@ -1461,7 +1466,16 @@ $I = \textsc{Number-of-Rows}(\textbf{M})$\;
 
 \subsection{Cluster Splitting}
 \label{sec:cl-split}
-The alternation loop (algorithm~{\ref{alg:m-and-c}) is nested within a still larger loop, which we shall call the ``outermost loop,'' which is responsible for increasing the number of clusters as necessary. That is, it launches the alternation loop (which alternates between \textsc{Optimize-M} and \textsc{Optimize-C}) and lets it run until it terminates (i.e., when $E$ stops decreasing significantly). Then, if the outermost loop's stopping condition has not yet been met, it adds a new cluster, and starts a new iteration (wherein the alternation loop is launched again). The stopping condition of the outermost loop is (in principle) that $E$ has fallen below a certain constant $\epsilon$.
+The alternation loop (algorithm~{\ref{alg:m-and-c}) is nested within a still 
+larger loop, which we shall call the ``outermost loop,'' which is responsible 
+for increasing the number of clusters as necessary. That is, it launches the 
+alternation loop (which alternates between \textsc{Optimize-M} and 
+\textsc{Optimize-C}) and lets it run until it terminates (i.e., when $E$ stops 
+decreasing significantly). Then, if the outermost loop's stopping condition 
+has not yet been met, it adds a new cluster, and starts a new iteration (wherein 
+the alternation loop is launched again). The stopping condition of the 
+outermost loop is (in principle) that $E$ has fallen below a certain 
+constant $\epsilon$.
 
  The outermost loop starts with a single cluster. This means that, initially, 
  $K = 1$, and thus the initial dimensions of the matrix $\textbf{M}$ are 
@@ -1470,10 +1484,10 @@ The alternation loop (algorithm~{\ref{alg:m-and-c}) is nested within a still lar
  single initial row is initialized to a random number between $0$ and $1$.  
 
 \begin{algorithm}[t]
-Initialize cluster count $K = 1$\;
+Initialize cluster count: $K \gets 1$\;
 Initialize $\textbf{M}$ and $\textbf{C}$\;
-Choose $\epsilon$\;
-Evaluate $E = \frac{1}{I\times J} \frac{1}{2} \sum_i \sum_j (r_{i,j} - x_{i,j})^2$\;\label{line:init-E}
+Choose initial $\epsilon$\;
+Evaluate Error: $E \gets\frac{1}{I\times J} \frac{1}{2} \sum_i \sum_j (r_{i,j} - x_{i,j})^2$\;\label{line:init-E}
 \While{$E \geq \epsilon$}{
 % \While{\textbf{True}}{\label{line:init-alternation-loop}
 %Save current Error: $E_{\text{old}} = E$\;
@@ -1484,21 +1498,22 @@ Evaluate $E = \frac{1}{I\times J} \frac{1}{2} \sum_i \sum_j (r_{i,j} - x_{i,j})^
 %   Stop\;
 %   }
 %   }
-   \textsc{Alternation-Loop}(\textbf{M},\textbf{C},\textbf{X},\textbf{R}, $I$, $J$, $K$)\;
+   \textsc{Alternation-Loop}(\textbf{M},\textbf{C},\textbf{X},\textbf{R})\;
    Split worst cluster\;
-   Increment cluster count: $K := K + 1$\;
-   Evaluate $E = \frac{1}{2} \big(\frac{1}{I\times J}\big) \sum_i \sum_j (r_{i,j} - x_{i,j})^2$\;\label{line:update-E}
+   Increment cluster count: $K \gets K + 1$\;
+   Evaluate Error: $E \gets \frac{1}{2} \big(\frac{1}{I\times J}\big) \sum_i \sum_j (r_{i,j} - x_{i,j})^2$\;\label{line:update-E}
    }
 \caption{\textsc{Outer-Loop}}
 \label{alg:outer-loop}
 \end{algorithm}
 
-To the add a cluster, the system splits a cluster, specifically the worst cluster. To find the worst cluster, 
+To the add a cluster, the system splits a cluster, specifically the worst cluster. 
+To find the worst cluster, 
  the system iterates through all existing clusters, for $k \in K$, and at each $k$, 
-it computes E^{\prime}_{k}, the MCMM's error \emph{without} the 
+it computes $E^{\prime}_{k}$, the MCMM's error \emph{without} the 
  $k$th cluster.  The worst cluster is the one whose \emph{absence} leads to the best model, 
  i.e., the one with the lowest $E^{\prime}$, and the index of the worst cluster is thus the 
- $k$ such that E^{\prime}_{k} is lowest. If this index is $h$, then cluster $h$ is the 
+ $k$ such that $E^{\prime}_{k}$ is lowest. If this index is $h$, then cluster $h$ is the 
  worst cluster and thus the cluster to split. To split cluster $h$, 
  the system would copy column $h$ in $\textbf{M}$ and paste it as the new 
  rightmost column in $\textbf{M}$ (so that its index is $K$).  At this point, 
@@ -1785,9 +1800,86 @@ The input data matrix for the MCMM in figure~\ref{fig:example-1} consists of thr
 The hidden cluster activities $\mathbf{M}$, the weights $\mathbf{C}$, the surface-unit vectors $\mathbf{R}$,
 and the mixing function together constitute a model that reproduces the
 observed data points $\mathbf{X}$.
-The nodes $m_{i,k}$ are the hidden units and represent cluster-membership activities. There are three cluster-membership vectors $m_{i}$, one for each $i \in I$, i.e., one for each data point. Because there are two clusters, each cluster-membership vector has two components. For instance, $\textbf{m}_{0} = [0, 1]$, which means the first data point $\textbf{x}_{0}$ does not belong to the first cluster, but \emph{does} belong to the second. By contrast, $\textbf{m}_{1} = [1,0]$ indicates that $\textbf{x}_{1}$ belongs to the first cluster, but not to the second. Finally, $\textbf{m}_{2} = [1,1]$ indicates that  $\textbf{x}_{2}$ belongs to \emph{both} clusters. 
+The $K = 2$ nodes in each $\mathbf{m}_i$
+%_{i,k}$ 
+are the hidden units and represent cluster-membership activities. There are three cluster-membership vectors $m_{i}$, one for each $i \in I$, i.e., one for each data point. Because there are two clusters, each cluster-membership vector has two components. For instance, $\textbf{m}_{0} = [0, 1]$, which means the first data point $\textbf{x}_{0}$ does not belong to the first cluster, but \emph{does} belong to the second. By contrast, $\textbf{m}_{1} = [1,0]$ indicates that $\textbf{x}_{1}$ belongs to the first cluster, but not to the second. Finally, $\textbf{m}_{2} = [1,1]$ indicates that  $\textbf{x}_{2}$ belongs to \emph{both} clusters. 
 
- \begin{table}[b]
+These cluster-membership vectors make more sense when we consider them in light of this 
+MCMM's $J \times K$ ($3 \times 2$) $\textbf{C}$ matrix, namely, %The two %(transposed) 
+%column-vectors
+% \begin{align}
+%        \textbf{C}  &= \begin{bmatrix}
+%          c_{0,0} = 0 \quad c_{0,1}= 1 \\
+%           c_{1,0} = 1 \quad c_{1,1} = 0 \\
+%           c_{2,0} = 0 \quad c_{2,1} = 1 \\
+%         \end{bmatrix} \hspace{12pt}
+\begin{equation*}
+        \textbf{C}  = \begin{bmatrix}
+          0 \quad 1 \\
+           1 \quad 0 \\
+           0 \quad 1 \\
+         \end{bmatrix} \hspace{12pt},
+ \end{equation*}
+%        \textbf{C}^{\textsf{T}} &= \begin{bmatrix} \\
+%          c_{0,0} = 0 \quad c_{0,1} = 1  \quad  c_{0,2} = 0 \\
+%           c_{1,0}=1 \quad c_{1,1}= 0  \quad  c_{1,2} = 1
+%         \end{bmatrix}
+whose two columns are the centroids of the two clusters. %That is, the column %that is, the column vector  
+%\begin{equation*}
+%%\textbf{c}^{\textsf{T}}_{k=0}   =
+%\textbf{C}[\cdot,0] =
+% %\begin{bmatrix}$c_{2,0}$ \quad $c_{1,0}$  \quad  $c_{0,0}$\end{bmatrix}
+%%\textbf{c}^{\textsf{T}}_{0}  &= 
+%\begin{bmatrix}
+%          0 \\
+%           1 \\
+%          0 \\
+%         \end{bmatrix} 
+% \end{equation*}
+%is the centroid of the cluster with index $k = 0$, and
+%\begin{equation*}
+% %\textbf{c}^{\textsf{T}}_{k=1}   =
+% \textbf{C}[\cdot,1] =
+% %\begin{bmatrix}$c_{2,0}$ \quad $c_{1,0}$  \quad  $c_{0,0}$\end{bmatrix}
+%%\textbf{c}^{\textsf{T}}_{0}  &= 
+%\begin{bmatrix}
+%         1 \\
+%           0 \\
+%          1 
+%         \end{bmatrix}
+%\end{equation*}
+%is the centroid of the cluster with index $k = 1$.
+%We can transpose these two column vectors to express them as row vectors:
+%\begin{align*}
+%\mathbf{C}^{\textsf{T}}[0,\cdot]  \,\, &= \,\, \mathbf{c}^{\textsf{T}}_{0} \,\, = \,\,  [\,0 \,\, 1 \,\,  0 \, ] \qquad \text{centroid of cluster $k = 0$}\\
+%\mathbf{C}^{\textsf{T}}[1,\cdot]\,\, &= \,\,  \mathbf{c}^{\textsf{T}}_{1} \,\, = \,\, [\,1 \,\, 0 \,\,  1 \, ]
+%\qquad \text{centroid of cluster $k = 1$} \\
+%\end{align*}
+%  is the centroid of the cluster indexed $k=0$
+%  \textbf{c}^{\textsf{T}}_{k=1}  &= \begin{bmatrix}
+%           x_{1} \\
+%           x_{2} \\
+%           \vdots \\
+%           x_{m}
+%         \end{bmatrix}
+%  \end{align}
+%$\textbf{C}^\textsf{T}[0,:] = [0,1,0]$ and $\textbf{C}^\textsf{T}[1,:]  = [1,0,1]$ (for $j = 0$ and $j =1$) 
+%$\textbf{C}[\bullet,0] = [0,1,0]$ (for $k = 0$ and $j \in \{ 0,1,2\}$) and $\textbf{C}[\bullet,1]  = [1,0,1]$ (for $k = 1$ and $j \in \{ 0,1,2\}$)
+%(for $k = 0$ and $k=1$, respectively; the three components in each of vectors correspond to the three $j$ indices) 
+%are the \emph{centroids} of the first and second clusters, respectively. 
+A cluster's centroid is essentially a sort of average or composite of its member vectors; it represents the feature values that its members have in common and thus concisely represents the cluster's meaning, i.e., what it is that makes the cluster an equivalence class. % thus serve as a label for the cluster in question.
+
+In our example, the first data point $\textbf{x}_0 = [0,1,0]$ is clearly a member of cluster 0, as it is identical to the centroid of cluster 0; no other cluster is necessary to account its components. %$[0,1,0]$. 
+Similarly, the second data point $\textbf{x}_1 = [1,0,1]$ is a member of cluster $1$, as it is identical to cluster $1$'s centroid $[1,0,1]$; no other cluster is necessary to explain its components. %all of its components are explained by cluster $1$.
+%Again, the data point is identical to the centroid, so cluster 1 is sufficient to account for the components of  $\textbf{x}_1$.
+However, the third data point $\textbf{x}_2 = [1,1,1]$ cannot be exclusively attributed to either cluster $0$ or cluster $1$; rather, it shows in its components the influence of \emph{both}: The middle $1$ can be attributed to cluster $0$
+% it is the $1$ in cluster $0$'s 
+(centroid $ [0,1,0]$),
+while the first and third $1$s are due to cluster $1$ (centroid $ [1,0,1]$). 
+%,  the influence of \emph{both} clusters is evident in the third data point $\textbf{x}_2 = [1,1,1]$; the 
+Table~\ref{tab:cl-members} shows the members as well as the centroids of each of the two clusters: Notice that the active components in each cluster centroid correspond to the shared component values among the cluster's members.
+
+ \begin{table}[!h]
 \begin{mdframed}
 \centering
 \setlength{\extrarowheight}{8pt}
@@ -1803,18 +1895,13 @@ Cluster index ($k$) & Member Data Points & Cluster Centroid \\ \midrule
 \end{mdframed}
 \end{table}
 
-These cluster-membership vectors make more sense when we consider them in light of this MCMM's $J \times K$ ($3 \times 2$) weight matrix $\textbf{C}$. The two (transposed) column-vectors 
-%$\textbf{C}^\textsf{T}[0,:] = [0,1,0]$ and $\textbf{C}^\textsf{T}[1,:]  = [1,0,1]$ (for $j = 0$ and $j =1$) 
-$\textbf{C}[\bullet,0] = [0,1,0]$ (for $k = 0$ and $j \in \{ 0,1,2\}$) and $\textbf{C}[\bullet,1]  = [1,0,1]$ (for $k = 1$ and $j \in \{ 0,1,2\}$)
-%(for $k = 0$ and $k=1$, respectively; the three components in each of vectors correspond to the three $j$ indices) 
-are the \emph{centroids} of the first and second clusters, respectively. A cluster's centroid is essentially a  sort of average or composite of the cluster's member vectors; it represents the feature values that a cluster's members have in common and can thus serve as a label for the cluster in question. The first data point $\textbf{x}_0 = [0,1,0]$ is a member of the cluster whose centroid is $[0,1,0]$. Similarly, the second data point $\textbf{x}_1 = [1,0,1]$ is clearly a member of the cluster whose centroid is $[1,0,1]$. But just as clearly, the influence of \emph{both} clusters is evident in the third data point $\textbf{x}_2 = [1,1,1]$.
+%Figure~\ref{fig:example:subfig1-1} shows the MCMM when it is in the process of learning. %We can see that while learning is in 
+%As it is learning, i.e., as it is reducing its reconstruction error, the cluster-membership indicators in $\mathbf{M}$ are in flux, as are the components of 
+%cluster centroids in $\textbf{C}$ (also known as the weights). As learning progresses, each value in $\mathbf{M}$ and  $\textbf{C}$ gradually approaches either 0 or 1. At convergence, the reconstruction vectors match the original data points, and all activities in $\mathbf{M}$ and $\textbf{C}$ are either $0$ or $1$, as in figure~\ref{fig:example:subfig2-1}.
 
-Table~\ref{tab:cl-members} shows the members as well as the centroids of each of the two clusters: Notice that the active components in each cluster centroid correspond to the shared component values among the cluster's members.
-We can see that while learning is in progress, the cluster activities
-$m_{i,k}$ and the cluster centers $c_{j,k}$ are in flux, as the
-error rate is being reduced, but that they converge to values of 0 and
-1.  At convergence, a reconstruction node $r_{i,j}$ is 1 if at least one
-$m_{i,k}c_{j,k} = 1$ (and $0$ otherwise).
+% they converge to values of 0 and
+%1.  At convergence, a reconstruction node $r_{i,j}$ is 1 if at least one
+%$m_{i,k}c_{j,k} = 1$ (and $0$ otherwise).
 
 \section{Conclusion}
 This chapter has been the culminating chapter of what can be regarded as 
