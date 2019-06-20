@@ -168,7 +168,7 @@ Root clusters therefore tended to be among the smallest of clusters.
 \begin{figure}[!t]
 \begin{mdframed}
 \vspace{2pt}
-{\LARGE \textbf{\textipa{P}.k.l}} \,\Large{\text{\,(a.k.l)}} \hfill \large{$s = \mathbf{1}$, $\delta = \mathbf{3}$} \hfill {\normalsize cluster 182}%: \textbf{4}, \textbf{3}} % \rangle$} \large{$s,
+{ \textbf{\textipa{P}.k.l}} \,{\text{\,(a.k.l)}} \hfill {$s = \mathbf{1}$, $\delta = \mathbf{3}$} \hfill { cluster 182}%: \textbf{4}, \textbf{3}} % \rangle$} {$s,
 \vspace{3pt}
 \begin{normalsize}
 \begin{tabbing}
@@ -203,7 +203,7 @@ hmikl \> enstkl \> blklk \> htlklkh \> \textbf{a}st\textbf{k}\textbf{l} \> h\tex
 \begin{figure}[!t]
 \begin{mdframed}
 \vspace{2pt}
-{\LARGE \textbf{\textipa{P}.k.l}}\, {\Large\text{(a.k.l)}} \hfill {\large$s = \mathbf{3}$, $\delta = \mathbf{2}$} \hfill {\normalsize cluster 91}
+{ \textbf{\textipa{P}.k.l}}\, {\text{(a.k.l)}} \hfill {$s = \mathbf{3}$, $\delta = \mathbf{2}$} \hfill { cluster 91}
 \vspace{3pt}
 \begin{normalsize}
 \begin{tabbing}
@@ -262,7 +262,7 @@ Notice that not all of the words in figure~\ref{fig:cluster-182-1-3-O} have this
 \begin{figure}[!t]
 \begin{mdframed}
 \vspace{2pt}
-{\LARGE \textbf{\textipa{P}.k.l}}\, {\Large\text{\, (a.k.l)}}  \hfill {\large$s = \mathbf{2}$, $\delta = \mathbf{2}$} \hfill {\normalsize cluster 81}
+{ \textbf{\textipa{P}.k.l}}\, {\text{\, (a.k.l)}}  \hfill {$s = \mathbf{2}$, $\delta = \mathbf{2}$} \hfill { cluster 81}
 %\vspace{-3pt}%\hfill {\scriptsize Size: 17}\\
 %{\small \emph{Purity: 1.0}}\\
 \vspace{3pt}
@@ -311,7 +311,7 @@ each has a greater proportion of words that actually contain the root \textit{a.
 Moreover, for both of these clusters, the two \emph{most-active} features are 
 %for both of these clusters are
 \begin{center}
- {\large \texttt{a<k}} \quad  and \quad {\large \texttt{k<l}}
+ { \texttt{a<k}} \quad  and \quad { \texttt{k<l}}
 \end{center}
 This makes sense. Clearly, no other feature, except perhaps \texttt{a<l}, would be as helpful in 
 encoding the sequence of  position-variant (or ``floating'') consonants \textit{a.k.l}. In figure~\ref{fig:cluster-182-1-3-O}, the activities of \texttt{k<l} and \texttt{a<k} are 1.0 and 0.8271, respectively.
@@ -325,7 +325,7 @@ and, moreover, it has each of these features at a perfect activity of 1.0.
 \begin{figure}[!t]
 \begin{mdframed}
 \vspace{2pt}
-{\LARGE \textbf{\textipa{P}.k.l}} \hfill \large{$s = \mathbf{0}$, $\delta = \mathbf{2}$} \hfill {\normalsize cluster 33}
+{ \textbf{\textipa{P}.k.l}} \hfill {$s = \mathbf{0}$, $\delta = \mathbf{2}$} \hfill { cluster 33}
  \vspace{3pt}
  \begin{normalsize}
 \begin{tabbing}
@@ -362,7 +362,7 @@ we\textbf{\textipa{P}}a\textbf{\textsubdot{k}}\a'{a}\textbf{l} \> leyad\textsubd
 \begin{figure}[!t]
 \begin{mdframed}
 \vspace{2pt}
-{\LARGE \textbf{d.l.q}} \hfill {\large$s = \mathbf{4}$, $\delta = \mathbf{3}$} \hfill {\normalsize cluster 339}\\ 
+{ \textbf{d.l.q}} \hfill {$s = \mathbf{4}$, $\delta = \mathbf{3}$} \hfill { cluster 339}\\ 
 \vspace{-3pt}
  \begin{normalsize}
 \begin{tabbing}
@@ -401,7 +401,7 @@ basandal\a'{i}m \> ma\textbf{d}\textbf{l}i\textbf{q}\a'{a} \> hi\textbf{d}\textb
 \begin{figure}[htb]
 \begin{mdframed}
 \vspace{2pt}
-{\LARGE\textbf{a.\'{e}}} \hfill {\large$s = \mathbf{2}$, $\delta = \mathbf{3}$} \hfill {\normalsize cluster 19}
+{\textbf{a.\'{e}}} \hfill {$s = \mathbf{2}$, $\delta = \mathbf{3}$} \hfill { cluster 19}
 \vspace{3pt}
 \begin{normalsize}
 \begin{tabbing}
@@ -746,15 +746,16 @@ Each table  is associated with a $K$ cutoff value, either 500 or 1000, and each 
 one for each of the three types of input data representation (DR).
 
 \begin{table}[!ht]
-\small
 \centering
 \subtable[Transcriptions with Stress Marking (TS)\label{subtab:intr-TS-500}]{
-\small
+%\small
 \centering
+\fontsize{11pt}{12pt}\selectfont
 %\caption{ Transcriptions with Stress Marking (TS)}
 \setlength{\extrarowheight}{3pt}
 \begin{tabular}{cc|ccccrr}
-$s$ & $\delta$ & Purity &  BP & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
+\toprule
+$s$ & $\delta$ & Purity &  BP & BR & F & Cov. & $K^{\prime}$ \\ \hline%\hline
 0 & 1 & 0.450 & 0.483 & 0.371 & 0.419 & 11585 & 88 \\%500 %TS %0_1_K1000_N12272_basic_181104_14-26_k-500
 0 & 2 & 0.479 & 0.329 & 0.504 & 0.386 & 11984 & 104 \\
 0 & 3 & 0.480 & 0.341 & 0.424 & 0.378 & 11348 & 75 \\ \hline %500 %TS %0_3_K1000_N12272_basic_181104_15-15_k-500
@@ -766,8 +767,9 @@ $s$ & $\delta$ & Purity &  BP & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 4 & 3 & 0.488 & 0.308 & 0.494 & 0.378 & 12121 & 165 \\ \hline 
 6 & 1 & 0.455 & 0.323 & 0.514 & 0.397 & 12101 & 82 \\%500 %TS %6_1_K6000_N12271_basic_180616_13-06_k-500
 6 & 2 & 0.494 & 0.336 & 0.510 & 0.405 & 11958 & 64 \\%500 %TS %6_2_K6000_N12272_basic_180620_02-37_k-500
-6 & 3 & 0.529 & 0.345 & 0.474 & 0.399 & 11858 & 76 \\ \hline \hline%500 %TS %6_3_K6000_N12271_basic_180621_07-59_k-500
+6 & 3 & 0.529 & 0.345 & 0.474 & 0.399 & 11858 & 76 \\ \hline %\hline%500 %TS %6_3_K6000_N12271_basic_180621_07-59_k-500
  \multicolumn{2}{r|}{\textit{Avgs:}} & 0.518 & 0.350 & 0.480 & 0.399 & 11966 & 117 \\
+ \bottomrule
 \end{tabular}
 }\\
 %\subtable[Transcriptions, no stress marking (TR), $K=500$ \label{subtab:intr-TR-500}]{
@@ -778,11 +780,14 @@ $s$ & $\delta$ & Purity &  BP & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 %\begin{table}
 \subtable[Transcriptions, No Stress Marking (TR)\label{subtab:intr-TR-500}]{
 %\footnotesize
-\small
+%\small
 \centering
+\fontsize{11pt}{12pt}\selectfont
+%\centering
 \setlength{\extrarowheight}{3pt}
 \begin{tabular}{cc|ccccrr}
-$s$ & $\delta$ & Purity &  BP & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
+\toprule
+$s$ & $\delta$ & Purity &  BP & BR & F & Cov. & $K^{\prime}$ \\ \hline %\hline
 0 & 1 & 0.460 & 0.366 & 0.366 & 0.365 & 11994 & 108 \\
 0 & 2 & 0.517 & 0.310 & 0.398 & 0.340 & 11748 & 74 \\
 0 & 3 & 0.416 & 0.243 & 0.571 & 0.341 & 12079 & 110 \\ \hline %500 %TR %0_3_K6000_N12222_basic_180626_18-27_k-500
@@ -794,8 +799,9 @@ $s$ & $\delta$ & Purity &  BP & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 4 & 3 & 0.431 & 0.272 & 0.565 & 0.367 & 12149 & 102 \\ \hline %500 %TR %4_3_K6000_N12222_basic_180621_01-45_k-500
 6 & 1 & 0.429 & 0.236 & 0.639 & 0.345 & 12191 & 130 \\  %500 %TR %6_1_K6000_N12221_basic_180616_12-58_k-500
 6 & 2 & 0.445 & 0.263 & 0.594 & 0.364 & 12153 & 102 \\
-6 & 3 & 0.432 & 0.268 & 0.576 & 0.366 & 12078 & 66 \\ \hline \hline %500 %TR %6_3_K6000_N12222_basic_180621_01-59_k-500
+6 & 3 & 0.432 & 0.268 & 0.576 & 0.366 & 12078 & 66 \\ \hline %\hline %500 %TR %6_3_K6000_N12222_basic_180621_01-59_k-500
  \multicolumn{2}{r|}{\textit{Avgs:}} & 0.446 & 0.276 & 0.547 & 0.359 & 12110 & 105 \\
+ \bottomrule
 \end{tabular}
 %\end{table} 
 }\\
@@ -814,12 +820,15 @@ $s$ & $\delta$ & Purity &  BP & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 %\begin{table}
 %\ContinuedFloat
 \subtable[Orthographic (O), $K=500$]{
-%\footnotesize
-\small
 \centering
+\fontsize{11pt}{12pt}\selectfont
+%\footnotesize
+%\small
+%\centering
 \setlength{\extrarowheight}{3pt}
 \begin{tabular}{cc|ccccrr}
-$s$ & $\delta$ & Purity &  BP & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
+\toprule
+$s$ & $\delta$ & Purity &  BP & BR & F & Cov. & $K^{\prime}$ \\ \hline%\hline
 0 & 1 & 0.431 & 0.348 & 0.152 & 0.212 & 10962 & 229 \\%500 %O %0_1_K6000_N11166_basic_180727_16-17_k-500
 0 & 2 & 0.422 & 0.295 & 0.247 & 0.269 & 11107 & 293 \\%500 %O %0_2_K6000_N11166_basic_180727_16-17_k-500
 0 & 3 & 0.435 & 0.283 & 0.325 & 0.303 & 11051 & 247 \\ \hline %500 %O %0_3_K6000_N11166_basic_180727_16-17_k-500
@@ -831,8 +840,8 @@ $s$ & $\delta$ & Purity &  BP & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 2 & 3 & 0.441 & 0.298 & 0.622 & 0.403 & 3445 & 132 \\ \hline %500 %O %2_3_K1000_N11166_basic_181015_00-18_k-500
 3 & 1 & 0.371 & 0.330 & 0.575 & 0.419 & 3447 & 78 \\%500 %O %3_1_K6000_N11166_basic_180727_03-42_k-500
 3 & 2 & 0.396 & 0.303 & 0.582 & 0.399 & 3444 & 113 \\%500 %O %3_2_K6000_N11166_basic_180723_13-19_k-500
-3 & 3 & 0.436 & 0.280 & 0.603 & 0.382 & 3444 & 142 \\ \hline \hline %500 %O %3_3_K6000_N11166_basic_180727_16-15_k-500
- \multicolumn{2}{r|}{\textit{Avgs:}} & 0.439 & 0.334 & 0.495 & 0.386 & 5605 & 168 \\
+3 & 3 & 0.436 & 0.280 & 0.603 & 0.382 & 3444 & 142 \\ \hline %\hline %500 %O %3_3_K6000_N11166_basic_180727_16-15_k-500
+ \multicolumn{2}{r|}{\textit{Avgs:}} & 0.439 & 0.334 & 0.495 & 0.386 & 5605 & 168 \\ \bottomrule
 \end{tabular}
 \label{subtab:intr-O-500}
 }
@@ -844,14 +853,16 @@ Intrinsic evaluation results at $K = 500$.
 \end{table}
 
 \begin{table}[!ht]
-\small
 \centering
 \subtable[Transcriptions with Stress Markings (TS)\label{subtab:intr-TS-1000}]{ %(TS), $K=1000$ 
+\centering
+\fontsize{11pt}{12pt}\selectfont
 %\label{subtab:intr-TS-1000}]{
-\small
-\setlength{\extrarowheight}{4pt}
+%\small
+\setlength{\extrarowheight}{3pt}
 \begin{tabular}{cc|ccccrr}
-$s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
+\toprule
+$s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline%\hline
 0 & 1 & 0.448 & 0.481 & 0.370 & 0.418 & 11613 & 90 \\%1000 %TS %0_1_K1000_N12272_basic_181104_14-26_k-1000
 0 & 2 & 0.486 & 0.397 & 0.438 & 0.417 & 11759 & 106 \\%1000 %TS %0_2_K1000_N12272_basic_181104_14-25_k-1000
 0 & 3 & 0.376 & 0.340 & 0.426 & 0.379 & 11691 & 999 \\ \hline %1000 %TS %0_3_K1000_N12272_basic_181104_15-15_k-1000
@@ -863,20 +874,23 @@ $s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 4 & 3 & 0.473 & 0.273 & 0.519 & 0.358 & 12242 & 297 \\ \hline %1000 %TS %4_3_K1000_N12272_basic_181015_00-21_k-1000
 6 & 1 & 0.648 & 0.295 & 0.552 & 0.385 & 12139 & 995 \\%1000 %TS %6_1_K6000_N12271_basic_180616_13-06_k-1000
 6 & 2 & 0.655 & 0.333 & 0.499 & 0.400 & 11908 & 1000 \\%1000 %TS %6_2_K6000_N12272_basic_180620_02-37_k-1000
-6 & 3 & 0.703 & 0.333 & 0.497 & 0.399 & 11877 & 999 \\ \hline \hline%1000 %TS %6_3_K1000_N12272_basic_181104_07-21_k-1000
+6 & 3 & 0.703 & 0.333 & 0.497 & 0.399 & 11877 & 999 \\ \hline %\hline%1000 %TS %6_3_K1000_N12272_basic_181104_07-21_k-1000
  \multicolumn{2}{r|}{\textit{Avgs:}} & 0.535 & 0.351 & 0.480 & 0.399 & 11983 & 605 \\
+ \bottomrule
 \end{tabular}
-}
+}\\
 %\end{table}
 %%\frame {
 %\frametitle{Intrinsic Evaluation, $K=1000$}
 %\begin{table}
 \subtable[Transcriptions, No Stress Marking (TR)\label{subtab:intr-TR-1000}]{
-\small
+%\small
 \centering
-\setlength{\extrarowheight}{4pt}
+\fontsize{11pt}{12pt}\selectfont
+\setlength{\extrarowheight}{3pt}
 \begin{tabular}{cc|ccccrr}
-$s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
+\toprule
+$s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline%\hline
 0 & 1 & 0.553 & 0.356 & 0.346 & 0.350 & 11936 & 427 \\
 0 & 2 & 0.615 & 0.302 & 0.516 & 0.381 & 12041 & 994 \\%1000 %TR %0_2_K6000_N12222_basic_180623_01-57_k-1000
 0 & 3 & 0.547 & 0.230 & 0.593 & 0.331 & 12168 & 860 \\ \hline %1000 %TR %0_3_K6000_N12222_basic_180626_18-27_k-1000
@@ -888,16 +902,18 @@ $s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 4 & 3 & 0.426 & 0.235 & 0.637 & 0.344 & 12136 & 113 \\ \hline %1000 %TR %4_3_K6000_N12222_basic_180621_01-45_k-1000
 6 & 1 & 0.705 & 0.234 & 0.643 & 0.343 & 12189 & 886 \\%1000 %TR %6_1_K6000_N12221_basic_180616_12-58_k-1000
 6 & 2 & 0.431 & 0.253 & 0.597 & 0.356 & 12152 & 114 \\%1000 %TR %6_2_K6000_N12222_basic_180626_17-48_k-1000
-6 & 3 & 0.446 & 0.271 & 0.569 & 0.367 & 12082 & 72 \\ \hline \hline%1000 %TR %6_3_K6000_N12222_basic_180621_01-59_k-1000
+6 & 3 & 0.446 & 0.271 & 0.569 & 0.367 & 12082 & 72 \\ \hline %\hline%1000 %TR %6_3_K6000_N12222_basic_180621_01-59_k-1000
  \multicolumn{2}{r|}{\textit{Avgs:}} & 0.563 & 0.270 & 0.546 & 0.354 & 12133 & 432 \\
+ \bottomrule
 \end{tabular}
-}
+}\\
 \subtable[Orthographic (O)]{
 \centering
 \small
-\setlength{\extrarowheight}{4pt}
+\setlength{\extrarowheight}{3pt}
 \begin{tabular}{cc|ccccrr}
-$s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
+\toprule
+$s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline%\hline
 0 & 1 & 0.565 & 0.348 & 0.152 & 0.212 & 11000 & 808 \\%1000 %O %0_1_K6000_N11166_basic_180727_16-17_k-1000
 0 & 2 & 0.427 & 0.295 & 0.248 & 0.269 & 11113 & 303 \\%1000 %O %0_2_K6000_N11166_basic_180727_16-17_k-1000
 0 & 3 & 0.439 & 0.280 & 0.326 & 0.302 & 11098 & 1000 \\ \hline %1000 %O %0_3_K6000_N11166_basic_180727_16-17_k-1000
@@ -909,8 +925,9 @@ $s$ & $\delta$ & Purity &  BPrc & BR & F & Cov. & $K^{\prime}$ \\ \hline\hline
 2 & 3 & 0.443 & 0.295 & 0.623 & 0.400 & 3446 & 137 \\ \hline %1000 %O %2_3_K1000_N11166_basic_181015_00-18_k-1000
 3 & 1 & 0.361 & 0.325 & 0.596 & 0.421 & 3446 & 385 \\
 3 & 2 & 0.389 & 0.317 & 0.617 & 0.418 & 3444 & 101 \\%1000 %O %3_2_K6000_N11166_basic_180727_16-16_k-1000
-3 & 3 & 0.418 & 0.271 & 0.609 & 0.375 & 3443 & 155 \\ \hline \hline%1000 %O %3_3_K6000_N11166_basic_180727_16-15_k-1000
+3 & 3 & 0.418 & 0.271 & 0.609 & 0.375 & 3443 & 155 \\ \hline %\hline%1000 %O %3_3_K6000_N11166_basic_180727_16-15_k-1000
  \multicolumn{2}{r|}{\textit{Avgs:}} & 0.439 & 0.331 & 0.502 & 0.386 & 5613 & 601 \\
+ \bottomrule
 \end{tabular}
 \label{subtab:intr-O-1000}
 }
@@ -1229,15 +1246,18 @@ The highest F-scores tended to occur at $s=1$ for the O models and $s=2$ for the
  \begin{table}
 %\scriptsize
 \centering
-\setlength{\extrarowheight}{3pt}
+%\setlength{\extrarowheight}{3pt}
 %\caption{ Transcriptions with Stress Marking (TS)}
 \subtable[Transcriptions with stress (TS), $K = 1000$\label{subtab:extr-1000-ts}]{
+\setlength{\extrarowheight}{2pt}
+\fontsize{11pt}{12pt}\selectfont
 %\footnotesize
-\small
-\centering
+%\small
+%\centering
 \begin{tabular}{cc|ccc|ccc}
+\toprule
 \multicolumn{2}{c}{} & \multicolumn{3}{c}{Four-stage process} & \multicolumn{3}{c}{Control} \\
-$s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
+$s$ & $\delta$ & P & R & F & P & R & F \\ \hline %\hline
 0 & 1 & 0.40 & 0.37 & 0.39 & 0.78 & 0.60 & 0.68 \\
 0 & 2 & 0.37 & 0.35 & 0.36 & 0.77 & 0.60 & 0.68 \\
 0 & 3 & 0.50 & 0.39 & 0.44 & 0.77 & 0.60 & 0.67 \\\hline
@@ -1260,27 +1280,30 @@ $s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
 %4 & 3 & 0.48 & 0.38 & 0.42 & 0.78 & 0.59 & 0.68 \\
 %6 & 1 & 0.55 & 0.50 & 0.52 & 0.78 & 0.60 & 0.68 \\
 %6 & 2 & 0.58 & 0.49 & 0.53 & 0.77 & 0.59 & 0.67 \\
-6 & 3 & 0.53 & 0.44 & 0.48 & 0.76 & 0.59 & 0.66 \\ \hline\hline
+6 & 3 & 0.53 & 0.44 & 0.48 & 0.76 & 0.59 & 0.66 \\ \hline %\hline
 \multicolumn{2}{r|}{\textit{Avgs:}}  & 0.49 & 0.43 & 0.46 & 0.77 & 0.60 & 0.67 \\
 %\multicolumn{2}{r|}{\textit{Avgs:}} & 0.48 & 0.43 & 0.45 & 0.78 & 0.60 & 0.67 \\
+\bottomrule
 \end{tabular}
-}
+} \\
 %\frame{
 %\frametitle{Extrinsic Evaluation, $K = 1000$} %\label{subtab:extr-1000-0}]{
 %\begin{table}
-
-\setlength{\extrarowheight}{3pt}
+%
 %\caption{ Transcriptions, No Stress Marking (TR)}
 \subtable[Transcriptions with stress (TR), $K = 1000$\label{subtab:extr-1000-tr}]{
+\setlength{\extrarowheight}{2pt}
+\fontsize{11pt}{12pt}\selectfont
 %\footnotesize
-\small
+%\small
 \centering
 \begin{tabular}{cc|ccc|ccc}
+ \toprule
 \multicolumn{2}{c}{} & \multicolumn{3}{c}{Four-stage process} & \multicolumn{3}{c}{Control} \\
-$s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
+$s$ & $\delta$ & P & R & F & P & R & F \\ \hline %\hline
 0 & 1 & 0.36 & 0.47 & 0.40 & 0.61 & 0.68 & 0.62 \\
 0 & 2 & 0.46 & 0.41 & 0.43 & 0.79 & 0.63 & 0.70 \\
-0 & 3 & 0.50 & 0.37 & 0.43 & 0.80 & 0.64 & 0.71 \\ \hline
+0 & 3 & 0.50 & 0.37 & 0.43 & 0.80 & 0.64 & 0.71 \\ \hline 
 2 & 1 & 0.50 & 0.46 & 0.48 & 0.81 & 0.65 & 0.72 \\
 2 & 2 & 0.44 & 0.40 & 0.42 & 0.81 & 0.64 & 0.71 \\
 2 & 3 & 0.31 & 0.56 & 0.40 & 0.40 & 0.73 & 0.52 \\ \hline
@@ -1289,33 +1312,35 @@ $s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
 4 & 3 & 0.47 & 0.43 & 0.45 & 0.79 & 0.63 & 0.71 \\ \hline
 6 & 1 & 0.53 & 0.49 & 0.51 & 0.81 & 0.64 & 0.72 \\
 6 & 2 & 0.51 & 0.43 & 0.47 & 0.81 & 0.64 & 0.71 \\
-6 & 3 & 0.59 & 0.46 & 0.52 & 0.79 & 0.64 & 0.71 \\ \hline\hline
+6 & 3 & 0.59 & 0.46 & 0.52 & 0.79 & 0.64 & 0.71 \\ \hline %\hline
  \multicolumn{2}{r|}{\textit{Avgs:}} & 0.48 & 0.44 & 0.46 & 0.76 & 0.65 & 0.69 \\
+ \bottomrule
 \end{tabular}
-}
-
-\setlength{\extrarowheight}{3pt}
+} \\
 %\caption{ Orthographic (O)}
 \subtable[Orthographic (O), $K = 1000$\label{subtab:extr-1000-o}]{
 %\footnotesize
-\small
+%\small
+\fontsize{11pt}{12pt}\selectfont
+\setlength{\extrarowheight}{2pt}
 \centering
 \begin{tabular}{cc|ccc|ccc}
+\toprule
 \multicolumn{2}{c}{} & \multicolumn{3}{c}{Four-stage process} & \multicolumn{3}{c}{Control} \\
-$s$ & $\delta$ & Prc & R & F & Prc & R & F \\ \hline\hline
+$s$ & $\delta$ & P & R & F & P & R & F \\\hline %[8pt]  \hline % \midrule 
 0 & 1 & 0.69 & 0.42 & 0.52 & 0.83 & 0.67 & 0.75 \\
 0 & 2 & 0.67 & 0.31 & 0.42 & 0.84 & 0.68 & 0.75 \\
-0 & 3 & 0.67 & 0.28 & 0.39 & 0.83 & 0.68 & 0.75 \\ \hline
+0 & 3 & 0.67 & 0.28 & 0.39 & 0.83 & 0.68 & 0.75 \\\hline %[5pt] \hline % \midrule
 1 & 1 & 0.49 & 0.56 & 0.52 & 0.59 & 0.64 & 0.61 \\
 1 & 2 & 0.53 & 0.48 & 0.51 & 0.60 & 0.64 & 0.62 \\
-1 & 3 & 0.72 & 0.30 & 0.42 & 0.59 & 0.64 & 0.61 \\ \hline
+1 & 3 & 0.72 & 0.30 & 0.42 & 0.59 & 0.64 & 0.61 \\\hline %[2pt] \hline %\midrule
 2 & 1 & 0.47 & 0.62 & 0.53 & 0.57 & 0.71 & 0.63 \\
 2 & 2 & 0.46 & 0.59 & 0.52 & 0.58 & 0.72 & 0.64 \\
-2 & 3 & 0.55 & 0.56 & 0.56 & 0.59 & 0.73 & 0.65 \\ \hline
+2 & 3 & 0.55 & 0.56 & 0.56 & 0.59 & 0.73 & 0.65 \\\hline %[8pt] \hline %\midrule
 3 & 1 & 0.46 & 0.59 & 0.51 & 0.58 & 0.73 & 0.65 \\
 3 & 2 & 0.43 & 0.56 & 0.49 & 0.60 & 0.70 & 0.65 \\
-3 & 3 & 0.49 & 0.58 & 0.53 & 0.58 & 0.74 & 0.65 \\ \hline\hline
- \multicolumn{2}{r|}{\textit{Avgs:}} & 0.55 & 0.49 & 0.49 & 0.65 & 0.69 & 0.66 \\
+3 & 3 & 0.49 & 0.58 & 0.53 & 0.58 & 0.74 & 0.65 \\\hline 
+ \multicolumn{2}{r|}{\textit{Avgs:}} & 0.55 & 0.49 & 0.49 & 0.65 & 0.69 & 0.66 \\\bottomrule
 \end{tabular}
 }
 \caption{Extrinsic evaluation results at $K = 1000$}%(Second Pass: Cluster-membership threshold set at 0.8 instead of 0.5.)}
@@ -1436,17 +1461,10 @@ the control results at this early stage in its development to indicate promise, 
 %\frame{
 %\frametitle{Extrinsic Evaluation, $K = 1000$} %\label{subtab:extr-1000-0}]{
 
-
-
 \section{Summary}
 To sum up, in the qualitative analysis, we found clusters corresponding to roots, vowel patterns, as well as concatenative affixes. The orthographic (O) models produced more clusters corresponding to consonantal roots than the transcriptional models TS and TR, and in general, their clusters were more coherent as well. But since the orthographic representation favors consonants at the expense of vowels (see chapter~\ref{ch:experi}), this was perhaps to be expected. We also saw all types of models represented nonconcatenative phenomena through precedence features, and that at least two precedence features were necessary to represent a tri-consonantal root, whereas one precedence feature sufficed to represent most vowel patterns.
 
-
-According to the intrinsic results, the O models performed at a level on par with the TS models. In the extrinsic results, the orthographic models were the best, coming closest to matching those of the control model. 
-%The O extrinsic results were quite %of the orthographic models 
-%good relative to those of the transcriptional models (TS and TR). 
-%proved to be considerably better. 
-%extrinsic results (see section~\ref{sec:extr-results}). 
+According to the intrinsic results, the O models performed at a level on par with the TS models. In the extrinsic results, the orthographic models were the best, coming closest to matching those of the control model.
 The relative success of the orthographic models in the extrinsic evaluation reinforces the idea that there is something about the orthographic representation that is inherently and unexpectedly beneficial---that more and/or better information is present in the orthographic representation than what seems immediately apparent. The quantitative results, like the qualitative results, suggest that there are limits to the usefulness of positional features. At the same time, however, the affix-length setting $s=1$ 
 %(the `affix length' parameter for positional features) 
 tended to lead to substantially results better than $s=0$.

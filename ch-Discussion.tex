@@ -32,7 +32,7 @@ noncatenative morphology.
 %The key to the whole problem was to find a way to realize these two properties computationally.
 %\item 
 In chapter~\ref{ch:graph}, I showed that nonlinearity 
-and nonsequentiality map nicely onto the formal properties of \emph{bipartite} graphs.
+and nonsequentiality map nicely onto the formal properties of bipartite graphs.
 This correspondence between the properties of the autosegmental formalism and the properties of bipartite graphs was crucial because it provided a path for realizing nonlinearity 
 and nonsequentiality in a computational system. This path, in particular, was to use a bipartite graphical learning algorithm. I thus chose the bipartite Multiple Cause Mixture Model (MCMM) \citep{saund:94} to serve as the core learning model in an unsupervised morphological learning system called \emph{Multimorph}. Chapter~\ref{ch:MCMM} provided a detailed, multi-perspective discussion of the MCMM. We considered it  in both
 its neural-network and mixture-model contexts. We also discussed its structure, mathematics, and implementation.
@@ -117,7 +117,7 @@ where $\gamma$ is a character occurring later in the word within the range of $\
 
 \begin{figure}[t] 
 \begin{mdframed}
-{\LARGE \textbf{\v{s}e-}} \hfill \large{$s=\textbf{4}, \delta=\textbf{3}$} \hfill Cluster 9\\
+{ \textbf{\v{s}e-}} \hfill {$s=\textbf{4}, \delta=\textbf{3}$} \hfill Cluster 9\\
 \vspace{-6pt}
 \begin{normalsize}
 \begin{tabbing}
@@ -135,7 +135,7 @@ where $\gamma$ is a character occurring later in the word within the range of $\
  
 \begin{figure}[htb] 
 \begin{mdframed}
-{\LARGE \textbf{-\'ot}} \hfill {\large$s=\textbf{4}, \delta=\textbf{3}$} \hfill Cluster 5\\
+{ \textbf{-\'ot}} \hfill {$s=\textbf{4}, \delta=\textbf{3}$} \hfill Cluster 5\\
 %4_3_cluster_5 \\
 \vspace{-10pt}
 \begin{normalsize}
@@ -152,7 +152,7 @@ where $\gamma$ is a character occurring later in the word within the range of $\
 
 \begin{figure}[b] 
 \begin{mdframed}
-{\LARGE \textbf{-\'{o}t}} {\large\,\,\, (-wt)} \hfill \large{$s=\textbf{2}, \delta=\textbf{3}$} \hfill Cluster 0\\
+{ \textbf{-\'{o}t}} {\,\,\, (-wt)} \hfill {$s=\textbf{2}, \delta=\textbf{3}$} \hfill Cluster 0\\
 \vspace{-10pt}
 \vspace{3pt}
 \begin{small}
@@ -173,7 +173,7 @@ We see the same pattern for suffixes, except that the components of the template
 
 \begin{figure}[t]
 \begin{mdframed}
-{\LARGE \textbf{b-}}  {\large\,\,\, (b-)} \hfill {\large$s=\textbf{2}, \delta=\textbf{2}$} \hfill Cluster 2\\
+{ \textbf{b-}}  {\,\,\, (b-)} \hfill {$s=\textbf{2}, \delta=\textbf{2}$} \hfill Cluster 2\\
 \vspace{-10pt}
 \begin{normalsize}
 \begin{tabbing}
@@ -224,7 +224,7 @@ Finally, figure~\ref{fig:cluster-16-2-3-O} shows a relatively rare instance of a
  
  \begin{figure}[h] 
 \begin{mdframed}
-{\LARGE \textbf{hi-}} {\large\,\,\, (h-)} \hfill \large{$s=\textbf{2}, \delta=\textbf{3}$} \hfill Cluster 16\\
+{ \textbf{hi-}} {\,\,\, (h-)} \hfill {$s=\textbf{2}, \delta=\textbf{3}$} \hfill Cluster 16\\
 \vspace{-6pt}
 \begin{normalsize}
 \begin{tabbing}
@@ -285,7 +285,7 @@ Even though vowels can be detrimental, however, they can also be helpful. For ex
 
 \begin{figure}[t] 
 \begin{mdframed}
-{\LARGE\textbf{\'{e}.et}} \large{\hfill $s=\textbf{4},\delta=\textbf{3}$} \hfill cluster 0
+{\textbf{\'{e}.et}} {\hfill $s=\textbf{4},\delta=\textbf{3}$} \hfill cluster 0
 \vspace{3pt}
 \begin{small}
 \begin{tabbing}
@@ -662,7 +662,7 @@ in the case of \textit{d.l.q} (that is, figure~\ref{fig:cluster-339-4-3-TS}).
 
 %In addition Multimorph also found numerous clusters corresponding to concatenative affixes. The following is just small sample:
 Multimorph found vowel patterns as well. Like roots, vowel patterns are nonconcatenative, since their vowels must interleave with root consonants to form stems. Some examples of the vowel patterns that Multimorph found are shown in table~\ref{tab:vowel-patterns}.
-\begin{table}[ht]
+\begin{table}[tb]
 \centering
 \setlength{\extrarowheight}{6pt}
 \begin{tabular}{cccc}
