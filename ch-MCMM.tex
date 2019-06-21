@@ -474,7 +474,8 @@ We then feed the resulting sum to the sigmoid function, thereby obtaining an act
 We do the same for each hidden node in $\textbf{m}_i$
 The process is the same for the reconstruction nodes, except that the just-computed hidden-node activities now become the input values, and the matrix $\textbf{B}$ now supplies the weight vectors instead of $\textbf{A}$.
 
-An RBM can almost be described as an autoencoder in bipartite form. There are a few differences, however, as we will soon see.
+An RBM can almost be described as an autoencoder in bipartite form. 
+%There are a few differences, however, as we will soon see.
 %\citep{hinton-and-salak:2006}. 
 The activation functions of an RBM are presented below as equations \eqref{eq:sig-m} to \eqref{eq:sig-m-sample}, where $\delta$ and $\theta$ are biases,\footnote{An ostensible difference between RBMs and autoencoders
 is the presence of the biases in the 
@@ -489,29 +490,37 @@ RBM activation functions. However, some authors, e.g., \citet{rudy-and-taylor:20
 \label{eq:sig-m-sample}
 %p_{k} &= \sigma\big(\sum_{j} r_{j} c_{j,k} + \delta_{j}\big) \\
 %m_{k} &= \text{rand}_{\textsc{BERN}}\Big(p(m_{k}=1\,\,|\,\,\mathbf{r})\Big)
-m_{k}\,\,&= \,\,\text{rand}_{\textsc{BERN}}(\hat{m}_k)
+m_{k}\,\,&= \,\,\textsc{Sample}_{\textsc{BERN}}(\hat{m}_k)
 \end{align}
 \begin{align}
 \label{eq:sig-r}
 \hat{r}_k \,\,&= \,\,p(r_{j}=1 \, | \, \mathbf{m}) \,\, =  \,\, \sigma\big(\sum_{k}  m_{k} c_{k,j} + \theta_{k}\big) \\
 \label{eq:sig-r-sample}
 %r_{j} &= \text{rand}_{\textsc{BERN}}\Big(p(r_{j}=1\,\,|\,\,\mathbf{m})\Big)
-r_{j} \,\, &= \,\, \text{rand}_{\textsc{BERN}}(\hat{r}_k)
+r_{j} \,\, &= \,\, \textsc{Sample}_{\textsc{BERN}}(\hat{r}_k)
 \end{align}
 Equations~\eqref{eq:sig-m} and \eqref{eq:sig-r} are basically the same as the classical autoencoder's activation functions. 
-However, one of the differences between RBMs and  classical autoencoders is that RBMs require the real-number outputs of the logistic sigmoid function to be mapped to either 0 or 1 \citep{hinton:2012}.
+However, one difference between RBMs and  classical autoencoders is that in RBMs, the activities of hidden and surface units are always mapped to strictly boolean values, i.e., either 0 or 1, after each each learning update during the learning process \citep{hinton:2012}.. 
+%the require the activities of its hidden and surface units to be strictly 0 or 1 the real-number outputs of the logistic sigmoid function to be mapped to either 0 or 1 \citep{hinton:2012}.
 %; that is, it requires strictly binary hidden and surface units. This is accomplished 
-RBMs accomplish this strict boolean mapping by treating each sigmoidal output as  the probability of getting a successful outcome from a Bernoulli trial, where a ``successful outcome'' is a valuation of 1, as in $m_k = 1$ and $r_j = 1$. Thus, equation~\eqref{eq:sig-m} computes $\hat{m}_k = p(m_{k}=1|\mathbf{r})$, i.e., the probability that the $k$th hidden unit is 1 given the surface-unit activities $\mathbf{r}$. Similarly, \eqref{eq:sig-m} computes $\hat{r}_k = p(r_{j}=1|\mathbf{m})$, i.e., the probability that the $j$th surface unit is 1 given the hidden-unit activities. We use $\hat{\mathbf{m}}$ and $\hat{\mathbf{r}}$ to denote the vectors that comprise the individual probabilities
-$\hat{m}_k$ for $0 \ge k < K$ and $\hat{r}_j$ for $0 \ge j < J$, respectively.
+%RBMs accomplish this strict boolean mapping by
+ RBMs carry out this mapping by interpreting sigmoidal outputs as probabilities and using these probabilities to choose 0 or 1 randomly for each unit. 
+ % probabilistically.  views each sigmoidal output as the \emph{probability} that the activity of the unit in question is 1.  
+% that the  setting each unit's activity to 1 \emph{randomly} according to the probability yielded my its corresponding (and to 0 according to the complement of this probability).
+%RMBs view each sigmoidal output as a \emph{probability}, namely 
+That is, an RBM views each sigmoidal output as the probability of getting a successful outcome from a Bernoulli trial, where a ``successful outcome'' is a valuation of 1 (that is, $m_k = 1$ or $r_j = 1$). Thus, equation~\eqref{eq:sig-m} computes $\hat{m}_k = p(m_{k}=1|\mathbf{r})$, i.e., the probability that the $k$th hidden unit is 1 given the surface-unit activities $\mathbf{r}$. Similarly, \eqref{eq:sig-m} computes $\hat{r}_k = p(r_{j}=1|\mathbf{m})$, i.e., the probability that the $j$th surface unit is 1 given the hidden-unit activities. 
+%Let $\mathbf{\hat{m}}$ and $\mathbf{\hat{r}}$ denote vectors comprising the individual preliminary activities (or probabilities of success)
+%$\hat{m}_k$ (for $0 \ge k < K$) and $\hat{r}_j$ (for $0 \ge j < J$), respectively.
 %equations~\eqref{eq:sig-m-sample} and \eqref{eq:sig-r-sample} 
 %via 
 %applying 
-The probabilities in these vectors are then passed to the Bernoulli random sampling function $\text{rand}_{\textsc{BERN}}$, which outputs 1 or 0 for each component. In particular, 
-$\text{rand}_{\textsc{BERN}}(\hat{m}_k)$ outputs 1 at probability $\hat{m}_k$ (i.e., $\hat{m}_k$\% of the time), and if it 
-does not output 1, it outputs 0. Likewise, $\text{rand}_{\textsc{BERN}}(\hat{r}_j)$ outputs 1 at probability $\hat{r}_j$.
-%$\text{rand}_{\textsc{BERN}}(v_j)$. which, for each individual probability $h_k$ or $v_j$, randomly chooses 1 at probability   out of the set $\{\,0,\,1\}$
+These probabilities % in these vectors 
+are passed to the Bernoulli random sampling function $\textsc{Sample}_{\textsc{BERN}}$, which outputs 1 or 0 for each component. In particular, 
+$\textsc{Sample}_{\textsc{BERN}}(\hat{m}_k)$ outputs 1 at probability $\hat{m}_k$ (i.e., $\hat{m}_k$\% of the time), and 0 at probability $1 - \hat{m}_k$.
+does not output 1, it outputs 0. Likewise, $\textsc{Sample}_{\textsc{BERN}}(\hat{r}_j)$ outputs 1 at probability $\hat{r}_j$ and 0 at probability $1 - \hat{r}_k$.
+%$\textsc{Sample}_{\textsc{BERN}}(v_j)$. which, for each individual probability $h_k$ or $v_j$, randomly chooses 1 at probability   out of the set $\{\,0,\,1\}$
 %which randomly chooses $1$ according to it
-%the binomial sampling function $\text{rand}_{\textsc{BERN}}$, which samples outcomes from a binomial distribution.
+%the binomial sampling function $\textsc{Sample}_{\textsc{BERN}}$, which samples outcomes from a binomial distribution.
 
 %these equations \eqref{eq:sig-m} and \eqref{eq:sig-r} do not calculate actual activities, but preliminary activities, i.e., the components of vectors  $\mathbf{h}$ and $\mathbf{v}$. These preliminary values are in fact \emph{probabilities}. That is, $h_k$ is the probability $p(h_{k}=1|\mathbf{v})$, i.e., the probability that the $k$th unit of the hidden vector $\mathbf{h}$ is 1 given the present activities of the surface (or visible) vector $\mathbf{r}$,  and 
 %and $\eqref{eq:sig-r} calculates$v_j$ is the probability $p(r_{j}=1|\mathbf{h})$, that is, the probability that the $j$th unit in the surface vector is 1 given the present activities in hidden vector $\mathbf{m}$.
@@ -522,7 +531,7 @@ does not output 1, it outputs 0. Likewise, $\text{rand}_{\textsc{BERN}}(\hat{r}_
 %\end{tabular}
 %\end{table}
 %An additional step is necessary to realize the actual activities from the values in $\mathbf{h}$ and $\mathbf{v}$.
-%One of the ways in which an RBM differs from a classical autoencoder is that it requires the real-number outputs of the logistic sigmoid function to be mapped to either 0 or 1. This is accomplished in equations~\eqref{eq:sig-m-sample} and \eqref{eq:sig-r-sample} via the binomial sampling function $\text{rand}_{\textsc{BINOM}}$, which takes two parameters, namely the input $n$, the number of the trials, and the (conditional) probability that a given trial should yield a ``successful outcome'' (i.e., a value of 1 for the variable in question). 
+%One of the ways in which an RBM differs from a classical autoencoder is that it requires the real-number outputs of the logistic sigmoid function to be mapped to either 0 or 1. This is accomplished in equations~\eqref{eq:sig-m-sample} and \eqref{eq:sig-r-sample} via the binomial sampling function $\textsc{Sample}_{\textsc{BINOM}}$, which takes two parameters, namely the input $n$, the number of the trials, and the (conditional) probability that a given trial should yield a ``successful outcome'' (i.e., a value of 1 for the variable in question). 
 Suppose, for example, that the logistic sigmoid \eqref{eq:sig-m} output the following preliminary activities for a hidden-unit vector.
 \begin{equation}
 \mathbf{\hat{m}} \,\,\,  = \,\,\,  [ \,  0.1,  \,  0.9,  \,  1 ,  \,  0.5, \,  0.5,  \,  0.5  \, ]
@@ -530,17 +539,17 @@ Suppose, for example, that the logistic sigmoid \eqref{eq:sig-m} output the foll
 That is, the probability that $\hat{m}_0 = 1$ is 0.1, and so on. 
 %the probability that $h_1 = 1$ is 0.9, and so on. %
 %These values are outputs of the logistic sigmoid equation \eqref{eq:sig-m}.
-To obtain the final hidden-unit activations, we pass the vector $\mathbf{\hat{m}} $ to the function $\text{rand}_{\textsc{BERN}}$, which generates a boolean vector by taking a random sample from the probabilities in 
-$\mathbf{\hat{m}}$.\footnote{Because the boolean vector in equation \eqref{eq:boolean} is randomly sampled, its values are not deterministic. If we should run $\text{rand}_{\textsc{BERN}}$ again, we might get $[0, 0, 1, 1, 0, 0]$ 
+To obtain the final hidden-unit activations, we pass the vector $\mathbf{\hat{m}} $ to the function $\textsc{Sample}_{\textsc{BERN}}$, which generates a boolean vector by taking a random sample from the probabilities in 
+$\mathbf{\hat{m}}$.\footnote{Because the boolean vector in equation \eqref{eq:boolean} is randomly sampled, its values are not deterministic. If we should run $\textsc{Sample}_{\textsc{BERN}}$ again, we might get $[0, 0, 1, 1, 0, 0]$ 
 or $[0, 1, 1, 0, 0, 0]$, etc.}
 \begin{equation}\label{eq:boolean}
-\mathbf{m} \,\,\, =  \,\,\,   \text{rand}_{\textsc{BERN}}(\mathbf{\hat{m}})  \,\,  =  \,\,   [ \, 0, \, 1, \, 1, \, 1, \, 0, \, 0 \,]
+\mathbf{m} \,\,\, =  \,\,\,   \textsc{Sample}_{\textsc{BERN}}(\mathbf{\hat{m}})  \,\,  =  \,\,   [ \, 0, \, 1, \, 1, \, 1, \, 0, \, 0 \,]
 \end{equation}
 %Because the boolean vector in equation \eqref{eq:boolean} is randomly sampled, its values are not deterministic.
 %Note, however, that each component in $\mathbf{m}$ is \emph{randomly} sampled given the probabilities in 
 %$\mathbf{\hat{m}}$. These values are thus not deterministic.
 %But note that is just one possible outcome for the vector $\mathbf{m}$; i.e., it is the output of a single as the number of trials $n$ is just 1. Another trial might produce 
-%If we should run $\text{rand}_{\textsc{BERN}}$ again, we might get $[0, 0, 1, 1, 0, 0]$ 
+%If we should run $\textsc{Sample}_{\textsc{BERN}}$ again, we might get $[0, 0, 1, 1, 0, 0]$ 
 %or $[0, 1, 1, 0, 0, 0]$, etc.  %Each component is randomly sampled given the probabilities in $\mathbf{h}$.
 
 %~\eqref{eq:sig-m-sample}  The final activity $m_{k}$ of a hidden unit must be either 1 or 0.  The in an RBM, the final hidden and surface-unit activities $\mathbf{m}$ and $\mathbf{r}
