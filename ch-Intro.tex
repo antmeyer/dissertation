@@ -201,21 +201,28 @@ The experimental component of the dissertation consisted of the development and 
 	 This is true regardless of whether the string is written, in which case the symbols are graphemes, or spoken,
 	 in which case they are phonemes. In either case, the symbols are each drawn from an alphabet of size $N$ and arranged along a single axis.
 By way of illustration, consider again the Hebrew word \textit{magdil}, but now specifically as a \emph{string of graphemes}: 
+\begin{center}
+%\textsf{m\,a\,g\,d\,i\,l}
+%\textsf{magdil}
+%\texttt{magdil}
+%\textipa{magdil}
+magdil
+\end{center}
 %from figure~\ref{fig:nonlinear}, but now we think of it specifically as the \emph{string of graphemes}.
-\begin{figure}[h]
-\vspace{12pt}
-	\centering
-	\begin{tikzpicture}[shorten >=2pt,shorten <=3pt, draw=black!100]
-	\Large
-	\def \rowoneht{0cm}
-	\def \rowtwoht{-0.8cm}
-	\tikzstyle{r-node}=[text height=10pt,inner sep=0pt,minimum size=10pt]
-	%\node[r-node] 	(r0)	at (0cm,\rowoneht)		{\textipa{magdil}};
-	\node[r-node] 	(r0)	at (0cm,\rowoneht)		{magdil};
-	%\node[r-node] 	(r0)	at (0cm,\rowoneht)		{s t o p};
-	%\node[r-node] 	(r0)	at (0cm,\rowtwoht)		{p o t s};
-	\end{tikzpicture}
-\end{figure} \\
+%\begin{figure}[h]
+%\vspace{12pt}
+%	\centering
+%	\begin{tikzpicture}[shorten >=2pt,shorten <=3pt, draw=black!100]
+%	\Large
+%	\def \rowoneht{0cm}
+%	\def \rowtwoht{-0.8cm}
+%	\tikzstyle{r-node}=[text height=10pt,inner sep=0pt,minimum size=10pt]
+%	%\node[r-node] 	(r0)	at (0cm,\rowoneht)		{\textipa{magdil}};
+%	\node[r-node] 	(r0)	at (0cm,\rowoneht)		{magdil};
+%	%\node[r-node] 	(r0)	at (0cm,\rowoneht)		{s t o p};
+%	%\node[r-node] 	(r0)	at (0cm,\rowtwoht)		{p o t s};
+%	\end{tikzpicture}
+%\end{figure} \\
 %This row of six graphemes contains a vast amount of tacit information. For instance, suppose we had to represent the string \textit{magdil} not as sequence of alphabetic symbols, but as a series of simple declarative statements. We might come up with statements like the following: 
 %%These statements might say that a certain character is present in the string, that one character precedes another character, that a particular character occurs at a particular position in the string, and so on, as in the following examples.
 %\begin{itemize}
@@ -280,6 +287,16 @@ statements like the following:
    \item \textit{m} is present, \textit{a} is present, \textit{g} is present, and so on.
    \item \emph{and so on \dots}
 \end{itemize}
+%\begin{itemize}
+%  \item \textit{\textipa{a}} immediately follows \textit{\textipa{m}}, \textit{\textipa{g}} immediately follows \textit{\textipa{a}}, \textit{\textipa{d}} immediately follows \textit{\textipa{g}}, and so on. 
+%  \item \textit{\textipa{i}} immediately precedes \textit{\textipa{l}}, \textit{\textipa{d}} immediately precedes \textit{\textipa{i}}, and so on. %What's more, we know that
+%   \item \textit{\textipa{g}} follows both \textit{\textipa{m}} and \textit{\textipa{a}}, \textit{\textipa{d}} follows \textit{\textipa{m}}, \textit{\textipa{a}}, and \textit{\textipa{g}}; \textit{\textipa{d}} precedes both \textit{\textipa{i}} and \textit{\textipa{l}}, \textit{\textipa{g}} precedes \textit{\textipa{d}}, \textit{\textipa{i}}, and \textit{\textipa{l}}, and so on.
+%   \item \textit{\textipa{m}} is the first character, \textit{\textipa{a}} is the second, \dots \textit{\textipa{i}} is the second-to-last character, and \textit{\textipa{l}} is the last character, and so on.
+%   %\item \textit{\textipa{l}} is the sixth character, \textit{\textipa{i}} is the fifth, \textit{\textipa{d}} is the fourth, and so on.
+%   \item \textit{\textipa{m}} precedes \textit{\textipa{a}}, \textit{\textipa{m}} precedes \textit{\textipa{g}}, \textit{\textipa{m}} precedes \textit{\textipa{d}}, \dots, \textit{\textipa{m}} precedes \textit{\textipa{l}}; \textit{\textipa{a}} precedes \textit{\textipa{g}}, \dots , \textit{\textipa{a}} precedes \textit{\textipa{l}}; and so on.
+%   \item \textit{\textipa{m}} is present, \textit{\textipa{a}} is present, \textit{\textipa{g}} is present, and so on.
+%   \item \emph{and so on \dots}
+%\end{itemize}
 %\hline
 %\end{tikzpicture}
 %\caption{Innumerable possible features.}
