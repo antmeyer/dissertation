@@ -391,7 +391,7 @@ the prefix and suffix stems in table~\ref{tab:hifil-paradigms} differ as a group
  
 \begin{table}[tb]
 \centering
-\subtable[One-to-one mappings from paradigm cells to categories\label{subtab:cats-one-to-one}]{
+\subtable[\fontsize{11pt}{12pt}\selectfont One-to-one mappings from paradigm cells to categories\label{subtab:cats-one-to-one}]{
  \setlength{\extrarowheight}{6pt}
 \begin{tabular}{lcl}
 \toprule
@@ -407,7 +407,7 @@ future-tense, 1st-person plural & $\to$  & \texttt{fut\%1\%Pl}\\
 \bottomrule
 \end{tabular}
 } \\
-\subtable[Many-to-one mappings from paradigm cells to categories\label{subtab:cats-many-to-one}]{
+\subtable[\fontsize{11pt}{12pt}\selectfont Many-to-one mappings from paradigm cells to categories\label{subtab:cats-many-to-one}]{
  \setlength{\extrarowheight}{6pt}
 \begin{tabular}{lcl}
 \toprule
@@ -862,7 +862,7 @@ in question, as in, for instance \textit{\textipa{Q}al-\'{a}y} `on me' (cf. \tex
     \bottomrule
 \end{tabular}
 }
-\subtable[Pro. Suffixes for Pl. Nouns\label{subtab:pron-suf-pl}]{
+\subtable[\fontsize{11pt}{12pt}\selectfont Pro. Suffixes for Pl. Nouns\label{subtab:pron-suf-pl}]{
 \setlength{\extrarowheight}{6pt}
 \begin{tabular}{lcc}
 \toprule
@@ -2506,75 +2506,6 @@ The experimental input files to Morfessor consisted of strings like \raisebox{-0
 % and then joining the characters together to form 
 %a string, e.g., a four-character string in the case of (\ref{ex:comp-no-indices}).
 
-%\begin{table}[ht!]
-%\setlength{\extrarowheight}{6pt}
-%\centering
-%\begin{tabular}{ccc}
-%\toprule
-%Morph ID & & CJK char \\
-%\midrule
-%64 & $\to$ & \raisebox{-0.13cm}{\includegraphics[scale=.3]{cjk-char-0-2}}\\
-%148 & $\to$ & \raisebox{-0.13cm}{\includegraphics[scale=.3]{cjk-char-0-1}} \\
-%264 & $\to$ & \raisebox{-0.12cm}{\includegraphics[scale=.3]{cjk-char-0-0}} \\
-%i & $\to$ & i \\
-%\bottomrule
-%\end{tabular}
-%\label{tab-cjk-mapping}
-%\caption{Replacing morph (i.e., morph IDs) with CJK chars in the word \textit{hicl\'{a}xti}}
-%\end{table}
-
-%\begin{figure}[t]
-%\centering
-%\setlength{\extrarowheight}{6pt}
-%\subfigure[Mapping\label{subtab:cjk-mapping}]{
-%\centering
-%\begin{tabular}{ccc}
-%\toprule
-%Morph ID & & CJK char \\
-%\midrule
-%64 & $\to$ & \raisebox{-0.13cm}{\includegraphics[scale=.3]{cjk-char-0-2}}\\
-%148 & $\to$ & \raisebox{-0.13cm}{\includegraphics[scale=.3]{cjk-char-0-1}} \\
-%264 & $\to$ & \raisebox{-0.12cm}{\includegraphics[scale=.3]{cjk-char-0-0}} \\
-%i & $\to$ & i \\
-%\bottomrule
-%\end{tabular}
-%} \\
-%%\label{tab-cjk-mapping}
-%\subfigure[In Stage 3, the morphs in the word \textit{hicl\'{a}xti} are replaced by atomic CJK characters.\label{subtab:cjk-replacement}]
-%{
-%\centering
-%%\begin{tabular}{ccc}
-%%\toprule
-%%Morph ID & & CJK char \\
-%%\midrule
-%%hicl\'{a}xti & $\to$ & hicl\'{a}xti \\
-%\includegraphics[scale=.3]{cjk-mappings-2}
-%%64 & $\to$ & \raisebox{-0.13cm}{\includegraphics[scale=.3]{cjk-char-0-2}}\\
-%%148 & $\to$ & \raisebox{-0.13cm}{\includegraphics[scale=.3]{cjk-char-0-1}} \\
-%%264 & $\to$ & \raisebox{-0.12cm}{\includegraphics[scale=.3]{cjk-char-0-0}} \\
-%%i & $\to$ & i \\
-%%\bottomrule
-%%\end{tabular}
-%}
-%\label{tab:map-and-replace}
-%\caption{Subfigures~\ref{subtab:cjk-mapping} and \ref{subtab:cjk-replacement}, baby!}
-%\end{figure}
-
-%\begin{figure}[t]
-%\centering
-%%\includegraphics[width=.3\linewidth]{example-image}\quad
-%\subfigure[Segmentation: Morphs and their constituent characters]{ 
-%\centering
-%\includegraphics[width=.3\linewidth]{cjk-mappings-0}} \\
-%[\baselineskip]
-%\subfigure[Morphs mapped to CJK characters]{ 
-%\centering
-%\qquad \qquad \includegraphics[width=.3\linewidth]{cjk-mappings-2}}
-%%\quad\includegraphics[width=.3\linewidth]{example-image-b}
-%%\\[\baselineskip]% adds vertical line spacing
-%%\includegraphics[width=.3\linewidth]{example-image}\quad\includegraphics[width=.3\linewidth]{example-image-a}\quad\includegraphics[width=.3\linewidth]{example-image-b}
-%\end{figure}
-
 \begin{figure}[t] 
 \centering
 \begin{mdframed}
@@ -2697,63 +2628,6 @@ In the next chapter, we examine the results of these evaluation approaches.
 %   \end{enumerate}
 %  \item If a cluster centroid has conflicting active features, then the cluster is void; it does not correspond to any morph.
 %\end{enumerate}
-%%EXAMPLES
-%
-%\begin{exe}
-%%Cluster #0 from 3_3_1_K-50_N-6888_2015-01-24_14-48
-%\ex Active features: e+w (1.0), e+i (1.0), l@[0] (1.0), e@[0] (1.0), e$<$w (0.9713), l+w (0.9466), e$<$i (0.8878), l<w (0.7655), e@[1] (0.7321), e+t (0.7049) \\
-%Morph: None \\
-%Pertinent rule: 4
-%%
-%%Cluster #2 from 3_3_1_K-50_N-6888_2015-01-24_14-48
-%\ex Active feature: w+i (1.0), l+i (1.0), i+m (1.0), i+i (1.0), w$<$i (1.0), i@[-2] (1.0), m@[-1] (1.0), l<i (0.9941), i<i (0.8206), l+m (0.7164) \\
-%Morph: -liim (suffix) \\
-%Pertinent rule: 3b
-%%
-%%Cluster #5 from 3_3_1_K-50_N-6888_2015-01-24_14-48
-%%Active features: m+i (1.0), i+m (1.0), m<i (1.0), i@[-2] (1.0), m@[-1] (1.0), m+m (0.9825), m@[0] (0.8077), w+m (0.7786), m+w (0.7006), m<m (0.6840)
-%%Morph: None
-%%Pertinent rule: 4
-%%
-%%Cluster #6 from 3_3_1_K-50_N-6888_2015-01-24_14-48
-%\ex Active features: b@[0] (1.0), b$<$w (0.9285), b$<$i (0.9232), b+t (0.6000), b+r (0.5867), b$<$t (0.4608), b+m (0.4576), b@[1] (0.4512) \\
-%Morph: b- (prefix) \\
-%Pertinent rules: 2a and 2b 
-%%
-%%Cluster #13 from 4_star_K-350_N-_2014-07-20_03-45.K@303
-%\ex Active features: p$<$q (1.0), p$<$d (0.9999), q$<$d (0.9999) \\
-%Morph: p.q.d. (root)  (The feature p*d is not relevant, as it turns out.) \\
-%Pertinent rule: 1b
-%%
-%%Cluster #1 from 4_star_K-350_N-_2014-07-20_03-45.K@303
-%\ex Active features: w$<$t (1.0), w@[-2] (1.0), t@[-1] (1.0) \\
-%Morph: -wt (suffix) \\
-%Pertinent rule: 3b
-%%
-%%Cluster #26 from 4_star_K-350_N-_2014-07-20_03-45.K@303
-%\ex Active features: r$<$i (0.99), r@[-3] (0.98), r+i (0.96), i@[-2] (0.9), i+r (0.84), r+m (0.8), h+r (0.8), r$<$m (0.79), r+t (0.74), w+r (0.68) \\
-%Morph: None (There are active features for both a prefix and a suffix.) \\
-%Pertinent rule: 4
-%%
-%%Cluster #184 from 4_star_K-350_N-_2014-07-20_03-45.K@303
-%\ex Active feature: p$<$g (1.0) \\
-%Morph: None \\
-%Pertinent rule: 1b 
-%%
-%%Cluster #201 from 4_star_K-350_N-_2014-07-20_03-45.K@303
-%\ex Active features: x$<$z (1.0), z$<$q (0.98) \\
-%Morph: x.z.q. (root) \\
-%Pertinent rule: 1b
-%%
-%%Cluster #219 from 4_star_K-350_N-_2014-07-20_03-45.K@303
-%\ex Active features: d$<$h (1.0), h$<$z (1.0), z$<$d (0.99), z$<$t (0.99) \\
-%Morph: None \\
-%Pertinent rule: 4
-%\end{exe}
-%
-%Via Chinese: Every symbol in an encoded morfessor segment is itself a distinct morph.
-%
-%\subsubsection{Stage 2: Match morph characters to word characters} Once a morph has been gleaned from a cluster's centroid vector, the characters of the morph must be matched to the corresponding characters in the cluster's member words. 
 %
 %The $\mathbf{M}$ matrix contains the cluster activities for each word. By consulting $\mathbf{M}$, we can ascertain the set of clusters to which each cluster belongs. Each cluster can be thought of as essentially equivalent to a particular morph, since the identities of morphs come from clusters. Indeed, Stage 1 ``extracts" from each cluster a $K$-length vector that  contains the key alphabetic characters associated with the cluster. Thus, via the cluster activities, each word is mapped to its set of morphs.
 %
