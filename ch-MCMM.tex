@@ -89,7 +89,7 @@ the vector $\mathbf{r}_i$. The process that achieves this reconstruction is the 
 	\node[dots] 	(r4) 	at (8.5cm,\rowoneht)   		{. . .};
 	\node[dots] 	(d4) 	at (8.5cm,\basement)   		{. . .};
 	
-	\footnotesize
+	\small
 	% hidden layer
 	\node[m-node] 	(m0)	at (3.25cm,\rowtwoht)		{$m_{i,0}$};
 	\node[m-node] 	(m1)	at (4.75cm,\rowtwoht)		{$m_{i,1}$};
@@ -225,7 +225,7 @@ It then makes adjustments to the model so as to reduce this error. % \citep{hint
 	\node[dots] 	(r4) 	at (8.5cm,\rowtwoht)   		{. . .};
 	\node[dots] 	(d4) 	at (8.5cm,\basement)   		{. . .};
 	
-	\footnotesize
+	\small
 	% hidden layer
 	\node[m-node] 	(m0)	at (3.25cm,\rowoneht)		{$m_{i,0}$};
 	\node[m-node] 	(m1)	at (4.75cm,\rowoneht)		{$m_{i,1}$};
@@ -315,7 +315,7 @@ In order to elucidate the MCMM's autoencoder nature, we will now consider it in 
 of two other types of autoencoder, namely the classical autoencoder and the Restricted Boltzmann Machine (RBM).
 In particular, we will compare the classical autoencoder, the RBM, and the MCMM across three dimensions: \emph{form}, \emph{node activation}, 
 (i.e., the means of computing node activities), and \emph{optimization procedure}
-(i.e., method for minimizing the model's error). 
+(i.e., the method for minimizing the model's error). 
 Authors whose work involves an autoencoder variant often describe their systems in relation to 
 the classical autoencoder, as do \citet{vincent:2010}, \citet{vincent:2011}, \citet{baldi:2012}, and \citet{chen-and-deng:2016}. 
 The descriptions and comparisons in these sources inform the bulk of the classical-autoencoder material in the following discussion. 
@@ -359,7 +359,7 @@ For the RBM material, my main sources were \citet{hinton-and-salak:2006}, \citet
 	\node[dots] 	(r4) 	at (8.5cm,\rowoneht)   		{. . .};
 	\node[dots] 	(d4) 	at (8.5cm,\basement)   		{. . .};
 	
-	\footnotesize
+	\small
 	% hidden layer
 	\node[m-node] 	(m0)	at (3.25cm,\rowtwoht)		{$m_{i,0}$};
 	\node[m-node] 	(m1)	at (4.75cm,\rowtwoht)		{$m_{i,1}$};
@@ -439,7 +439,7 @@ class that excludes the classical autoencoder.
 
 \paragraph{Node Activation.} The RBM and classical autoencoder essentially use the same function for computing node activities, namely the \emph{sigmoidal weighted sum} \citep{hinton:1987trans, hinton-and-salak:2006}.
 %are essentially the same, generally  sharing the same activation function.
-However, MCMMs, as we shall see, call for a different type of activation function, a type of function that \citet{saund:94} calls \emph{mixing function}.
+However, MCMMs, as we shall see, call for a different type of activation function, a type of function that \citet{saund:94} calls a \emph{mixing function}.
 % that has different properties to those of sigmoidal weighted sum.
 The sigmoidal weighted sum is a composition of two functions: the ``outer'' function is the logistic sigmoid, 
 	\begin{equation} %\label{eq:sigws}
@@ -457,7 +457,7 @@ The logistic sigmoid \eqref{eq:sig} maps the weighted sum (no matter how large o
 %	\label{eq:sig}
 %	\sigma(x) = \frac{1}{1 + e^{-x}} 
 %	\end{equation} %\label{eq:sigws
-Thus, in a classical autoencoder the activity of each the hidden node $m_k$ is computed by equation~\eqref{eq:sig-m-ac}. 
+Thus, in a classical autoencoder, the activity of each hidden node $m_k$ is computed by equation~\eqref{eq:sig-m-ac}. 
 %That is, a weighted sum of the input layer's activities is fed to the sigmoid function \citep{bourlard:1988}.
 \begin{align}
 \label{eq:sig-m-ac}
@@ -516,8 +516,8 @@ That is, an RBM views each sigmoidal output as the probability of getting a succ
 %applying 
 These probabilities % in these vectors 
 are passed to the Bernoulli random sampling function $\textsc{Sample}_{\textsc{BERN}}$, which outputs 1 or 0 for each component. In particular, 
-$\textsc{Sample}_{\textsc{BERN}}(\hat{m}_k)$ outputs 1 at probability $\hat{m}_k$ (i.e., $\hat{m}_k$\% of the time), and 0 at probability $1 - \hat{m}_k$.
-does not output 1, it outputs 0. Likewise, $\textsc{Sample}_{\textsc{BERN}}(\hat{r}_j)$ outputs 1 at probability $\hat{r}_j$ and 0 at probability $1 - \hat{r}_k$.
+$\textsc{Sample}_{\textsc{BERN}}(\hat{m}_k)$ outputs 1 at probability $\hat{m}_k$ (i.e., $\hat{m}_k$ percent of the time), and 0 at probability $1 - \hat{m}_k$.
+does not output 1, it outputs 0. Likewise, $\textsc{Sample}_{\textsc{BERN}}(\hat{r}_j)$ outputs 1 at probability $\hat{r}_j$ and 0 at probability $1 - \hat{r}_j$.
 %$\textsc{Sample}_{\textsc{BERN}}(v_j)$. which, for each individual probability $h_k$ or $v_j$, randomly chooses 1 at probability   out of the set $\{\,0,\,1\}$
 %which randomly chooses $1$ according to it
 %the binomial sampling function $\textsc{Sample}_{\textsc{BERN}}$, which samples outcomes from a binomial distribution.
@@ -558,15 +558,15 @@ or $[0, 1, 1, 0, 0, 0]$, etc.}
 %functions~\eqref{eq:sig-m-ac} and \eqref{eq:sig-r-ac},
 %but there are a few differences.  %but the classical encoder could in principle accomodate biases \citep{song:2013}   But the 
 Another important difference between
-RBMs and classical autoencoders is that the RBM's functions~\eqref{eq:sig-m} and \eqref{eq:sig-r} 
-both refer to the same weight matrix $\textbf{C}$, whereas the classical 
-autoencoder's  functions \eqref{eq:sig-m-ac} and \eqref{eq:sig-r-ac} each 
+the RBM and classical autoencoder is that the RBM's activation functions~\eqref{eq:sig-m} and \eqref{eq:sig-r} 
+both refer to the same weight matrix $\textbf{C}$, whereas those of the classical 
+autoencoder (equations~\eqref{eq:sig-m-ac} and \eqref{eq:sig-r-ac}) each 
 refer to a different weight matrix 
 ($\textbf{A}$ in equation~\eqref{eq:sig-m-ac} and $\textbf{B}$ in equation~\eqref{eq:sig-r-ac}). 
-An RBM's learning process is thus bi-directional: 
+An RBM's learning process is thus bidirectional: 
 The hidden-unit activities are conveyed to the reconstruction 
 units via the weight matrix $\textbf{C}$, and then the reconstruction 
-activities are conveyed back to the hidden units via the same weight matrix, resulting in a cyclic process.
+activities are conveyed back to the hidden units via the \emph{same} weight matrix, resulting in a cyclic process.
  
 %\citep{larochelle-and-bengio:2008}. 
 
@@ -907,7 +907,7 @@ placed in the \textsc{write-black} domain than the \textsc{write-white-and-black
 	\node[dots] 	(r4) 	at (8.5cm,\rowoneht)   		{. . .};
 	%\node[dots] 	(d4) 	at (8.5cm,\basement)   		{. . .};
 	
-	\footnotesize
+	\small
 	% hidden layer
 	\node[m-node] 	(m0)	at (3.25cm,\rowtwoht)		{$m_0$};
 	\node[m-node] 	(m1)	at (4.75cm,\rowtwoht)		{$m_{i,0}$};
@@ -940,8 +940,7 @@ placed in the \textsc{write-black} domain than the \textsc{write-white-and-black
 		(m3)	edge	node[right=0mm]	{$c_{2,k}$}		(r2)
 		%(m3)	edge	node[right=1mm]	{$w_{j,k}$}	(r4)	
 		(m4)	edge	node[right=2mm]	{$c_{2,K}$}	(r2);
-
-		
+	
 \end{tikzpicture}
 %\end{center}
 \caption{%The activity of each surface unit  is determined by a \emph{vote}, so to speak.  
@@ -1560,12 +1559,12 @@ it computes $E^{\prime}_{k}$, the MCMM's error \emph{without} the
  %\begin{mdframed}
  %\usetikzlibrary{positioning}
  \begin{center}
- \subfigure[\fontsize{11pt}{12pt}\selectfont Observed Data\label{fig:example:subfig0-1}]{
+ \subfigure[Observed Data\label{fig:example:subfig0-1}]{
  \begin{tikzpicture}[shorten <=1pt,->,draw=black!100]
- 	\scriptsize
+ 	\small
  	\tikzstyle{label}=[text width=3em, text centered]
  	\tikzstyle{annot}=[text width=2.5em]
- 	\tikzstyle{d-node}=[circle,draw=black!100,fill=gray!45,thick,inner sep=2pt,minimum size=6mm]
+ 	\tikzstyle{d-node}=[circle,draw=black!100,fill=gray!45,thick,inner sep=2pt,minimum size=7mm]
 	
  	\def \china{0.6cm}
  	\def \data{0cm}
@@ -1607,9 +1606,9 @@ it computes $E^{\prime}_{k}$, the MCMM's error \emph{without} the
  \usetikzlibrary{positioning}
  %\begin{minipage}{.3\textwidth}
  \begin{center}
- \subfigure[\fontsize{11pt}{12pt}\selectfont Learning in Progress\label{fig:example:subfig1-1}]{
+ \subfigure[Learning in Progress\label{fig:example:subfig1-1}]{
  \begin{tikzpicture}[shorten <=1pt,->,draw=black!100]
- 	\footnotesize
+ 	\small
  	\def \attic{5.95cm}
  	\def \rowtwoht{5.4cm}
  	\def \weightlevel{3.9cm}
@@ -1618,22 +1617,22 @@ it computes $E^{\prime}_{k}$, the MCMM's error \emph{without} the
 % 	\def \data{1cm}
 % 	\def \china{0cm}
 	
- 	\tikzstyle{m-node}=[circle,draw=black!100,thick,inner sep=2pt,minimum size=6mm]
- 	\tikzstyle{r-node}=[circle,draw=black!100,thick,inner sep=2pt,minimum size=6mm]
- 	\tikzstyle{d-node}=[circle,draw=black!100,fill=gray!45,thick,inner sep=2pt,minimum size=6mm]
+ 	\tikzstyle{m-node}=[circle,draw=black!100,thick,inner sep=2pt,minimum size=7mm]
+ 	\tikzstyle{r-node}=[circle,draw=black!100,thick,inner sep=2pt,minimum size=7mm]
+ 	\tikzstyle{d-node}=[circle,draw=black!100,fill=gray!45,thick,inner sep=2pt,minimum size=7mm]
  	%\tikzstyle{dots}=[text width=5ex, text centered]
  	\tikzstyle{annot}=[text width=3em]
  	% labels
  	\tikzstyle{label}=[text width=3em, text centered]
  	\tikzstyle{formula}=[text width=30em, text centered]
 	
- 	\scriptsize
+ 	\small
  	\node[annot] (hidden-layer) at (0cm,\rowtwoht) {$\mathbf{M}_{(i,k)}$};
  	\node[annot] (weights) at (0cm,\weightlevel) {$\mathbf{C}_{(j,k)}$};
  	\node[annot] (r-layer) at (0cm,\rowoneht) {$\mathbf{R}_{(i,j)}$};
 	
  	% hidden layer
- 	\scriptsize
+ 	\small
  	\node[m-node] 	(m00)	at (1.45cm,\rowtwoht)		{$.2$};
  	\node[m-node] 	(m01)	at (3.35cm,\rowtwoht)		{$.9$};
  	\node[m-node] 	(m10)	at (5.55cm,\rowtwoht) 	{$.8$};
@@ -1641,7 +1640,7 @@ it computes $E^{\prime}_{k}$, the MCMM's error \emph{without} the
  	\node[m-node] 	(m20)	at (9.65cm,\rowtwoht) 	{$.8$};
  	\node[m-node] 	(m21)	at (11.55cm,\rowtwoht)	 	{$.9$};
 	
- 	%\footnotesize
+ 	%\small
  	\node[label]	(ml00) 	at (1.45cm,\attic)		{$m_{0,0}$}; %1.75 -> 1.45
  	\node[label]	(ml01) 	at (3.35cm,\attic)		{$m_{0,1}$}; %3.05 -> 3.35
  	\node[label] 	(ml10)	at (5.55cm,\attic) 	{$m_{1,0}$};     %5.85 -> 5.55
@@ -1649,7 +1648,7 @@ it computes $E^{\prime}_{k}$, the MCMM's error \emph{without} the
  	\node[label] 	(ml20)	at (9.65cm,\attic) 	{$m_{2,0}$};     %9.95 -> 9.65
  	\node[label] 	(ml21)	at (11.55cm,\attic)	 	{$m_{2,1}$}; %11.25 -> 11.55
 	
- 	\scriptsize
+ 	\small
  	\node[r-node] 	(r00)	at (1.1cm,\rowoneht)		{$.24$};
  	\node[r-node] 	(r01)	at (2.4cm,\rowoneht)		{$.81$};
  	\node[r-node] 	(r02)	at (3.7cm,\rowoneht)	 	{$.23$};
@@ -1677,7 +1676,7 @@ it computes $E^{\prime}_{k}$, the MCMM's error \emph{without} the
  	\draw[-] (4.45cm, \attic+1.5mm) -- (4.45cm, \basement-1.5mm);
  	\draw[-] (8.55cm, \attic+1.5mm) -- (8.55cm, \basement-1.5mm);
 
- 	\scriptsize
+ 	\small
  	\path
  		(m00)	edge	node [left] 	{$.85$}	(r00)
  		(m00)	edge	node [left,xshift=-1mm,yshift=4mm]	{$.1$}	(r01)
@@ -1706,10 +1705,10 @@ it computes $E^{\prime}_{k}$, the MCMM's error \emph{without} the
  \end{tikzpicture}
  %\label{fig:example:subfig1-1}
  }
- \subfigure[\fontsize{11pt}{12pt}\selectfont Convergence\label{fig:example:subfig2-1}]{
+ \subfigure[Convergence\label{fig:example:subfig2-1}]{
 
  \begin{tikzpicture}[shorten <=1pt,->,draw=black!100]
- 	\footnotesize
+ 	\small
  	\def \attic{5.95cm}
  	\def \rowtwoht{5.4cm}
  	\def \weightlevel{3.9cm}
@@ -1718,10 +1717,10 @@ it computes $E^{\prime}_{k}$, the MCMM's error \emph{without} the
 % 	\def \data{1cm}
 % 	\def \china{0cm}
 	
- 	\scriptsize
- 	\tikzstyle{m-node}=[circle,draw=black!100,thick,inner sep=2pt,minimum size=6mm]
- 	\tikzstyle{r-node}=[circle,draw=black!100,thick,inner sep=2pt,minimum size=6mm]
- 	\tikzstyle{d-node}=[circle,draw=black!100,fill=gray!45,thick,inner sep=2pt,minimum size=6mm]
+ 	\small
+ 	\tikzstyle{m-node}=[circle,draw=black!100,thick,inner sep=2pt,minimum size=7mm]
+ 	\tikzstyle{r-node}=[circle,draw=black!100,thick,inner sep=2pt,minimum size=7mm]
+ 	\tikzstyle{d-node}=[circle,draw=black!100,fill=gray!45,thick,inner sep=2pt,minimum size=7mm]
  	\tikzstyle{annot}=[text width=2.5em]
  	% labels
  	\tikzstyle{label}=[text width=3em, text centered]
@@ -1737,7 +1736,7 @@ it computes $E^{\prime}_{k}$, the MCMM's error \emph{without} the
  	\node[m-node] 	(m20)	at (9.65cm,\rowtwoht) 	{$1$};
  	\node[m-node] 	(m21)	at (11.55cm,\rowtwoht)	 	{$1$};
 	
- 	\node[label]	(ml00) 	at (1.45cm,\attic)		{$m_{0,0}$};
+ 	\node[label]	(ml00) 	at (1.45cm,\attic)		{$\large m_{0,0}$};
  	\node[label]	(ml01) 	at (3.35cm,\attic)		{$m_{0,1}$};
  	\node[label] 	(ml10)	at (5.55cm,\attic) 	{$m_{1,0}$};
  	\node[label] 	(ml11)	at (7.45cm,\attic)	 	{$m_{1,1}$};
@@ -1797,7 +1796,7 @@ it computes $E^{\prime}_{k}$, the MCMM's error \emph{without} the
  }
  \begin{framed}
  	\centering
- 	\small
+ 	\normalsize
  	where
  	$\begin{aligned}
  	   r_{i,j} = 1 - \Pi_{k=1}^{K} (1 - m_{i,k}c_{j,k}) 
@@ -1832,7 +1831,7 @@ MCMM's $J \times K$ ($3 \times 2$) $\textbf{C}$ matrix, namely, %The two %(trans
           0 \quad 1 \\
            1 \quad 0 \\
            0 \quad 1 \\
-         \end{bmatrix} \hspace{12pt},
+         \end{bmatrix} \hspace{12pt}
  \end{equation*}
 %        \textbf{C}^{\textsf{T}} &= \begin{bmatrix} \\
 %          c_{0,0} = 0 \quad c_{0,1} = 1  \quad  c_{0,2} = 0 \\
